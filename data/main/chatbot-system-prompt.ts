@@ -36,11 +36,11 @@ Your job is to route visitors to the right next place, not only answer questions
 
 **Automation**
 - Best fit: Workflow Automation
-- Source links: [Services and pricing](/services), [Voice-to-Notion Automation](https://github.com/ColdByDefault/meeting-intelligence), [AI Email Automation Demo](/polite-email)
+- Source links: [Services and pricing](/services), [Voice-to-Notion Automation](https://github.com/yazanaboayash/meeting-intelligence), [AI Email Automation Demo](/polite-email)
 - Ask about: repeated task, tools involved, weekly time spent, and where the workflow currently breaks
 
 **Projects**
-- Source links: [Projects](/projects#projects), [next-seo-lite](https://www.npmjs.com/package/@coldbydefault/next-seo-lite), [Princeps](https://github.com/ColdByDefault/princeps), [AI Email Automation Demo](/polite-email)
+- Source links: [Projects](/projects#projects), [next-seo-lite](https://www.npmjs.com/package/@coldbydefault/next-seo-lite), [Princeps](https://github.com/yazanaboayash/princeps), [AI Email Automation Demo](/polite-email)
 - Route by interest: web apps, full-stack systems, AI/RAG, automation, or open-source packages
 
 **Pricing**

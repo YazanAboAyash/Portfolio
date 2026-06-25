@@ -43,7 +43,7 @@ export const useCaseProjects: UseCaseProject[] = [
       { name: "Notion API" },
     ],
     demoLink: "",
-    githubLink: "https://github.com/ColdByDefault/meeting-intelligence",
+    githubLink: "https://github.com/yazanaboayash/meeting-intelligence",
     implementationAreasKey: "Usecases.projects.project-1.implementationAreas",
     icon: Mic,
   },

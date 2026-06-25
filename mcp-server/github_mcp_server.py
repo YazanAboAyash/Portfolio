@@ -22,7 +22,7 @@ load_dotenv()  # Fallback to .env
 
 class GitHubMCPServer:
     def __init__(self, username: str = None, token: Optional[str] = None):
-        self.username = username or os.getenv('GITHUB_USERNAME', 'coldbydefault')
+        self.username = username or os.getenv('GITHUB_USERNAME', 'yazanaboayash')
         self.token = token or os.getenv('GITHUB_TOKEN')
         self.base_url = "https://api.github.com"
         self.headers = {

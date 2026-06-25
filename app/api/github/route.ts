@@ -31,7 +31,7 @@ class GitHubDataFetcher {
   private baseUrl = "https://api.github.com";
 
   constructor() {
-    this.username = process.env.GITHUB_USERNAME || "coldbydefault";
+    this.username = process.env.GITHUB_USERNAME || "yazanaboayash";
     this.token = process.env.GITHUB_TOKEN;
     if (!this.username) {
       console.warn("GITHUB_USERNAME is not set.");

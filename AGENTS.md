@@ -64,7 +64,7 @@ public/assets/              Images, icons, use-case visuals
   skills/                   On-demand skills (i18n-checker, portfolio-architecture)
   workflows/                GitHub Actions (bump-version, codeql, dependency-review, lighthouse-ci)
   copilot-instructions.md   VS Code Copilot always-on context
-  CODEOWNERS                All files owned by @ColdByDefault
+  CODEOWNERS                All files owned by @yazanaboayash
 ```
 
 ---

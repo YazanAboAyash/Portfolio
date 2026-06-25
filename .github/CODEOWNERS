@@ -10,18 +10,18 @@
 
 # Default owner for everything in the repo
 
--       @ColdByDefault
+-       @yazanaboayash
 
 # Core configuration
 
-package.json @ColdByDefault
-next.config.ts @ColdByDefault
-tsconfig.json @ColdByDefault
-prisma/schema.prisma @ColdByDefault
+package.json @yazanaboayash
+next.config.ts @yazanaboayash
+tsconfig.json @yazanaboayash
+prisma/schema.prisma @yazanaboayash
 
 # Security-sensitive paths
 
-lib/security.ts @ColdByDefault
-app/api/** @ColdByDefault
-prisma/** @ColdByDefault
-.github/\*\* @ColdByDefault
+lib/security.ts @yazanaboayash
+app/api/** @yazanaboayash
+prisma/** @yazanaboayash
+.github/\*\* @yazanaboayash

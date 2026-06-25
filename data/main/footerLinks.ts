@@ -54,7 +54,7 @@ export const socialLinks: LinkItem[] = [
     variant: "social" as const,
   },
   {
-    href: "https://github.com/ColdByDefault",
+    href: "https://github.com/yazanaboayash",
     label: "GitHub",
     icon: "FaGithub",
     ariaLabel: "Visit ColdByDefault GitHub profile",
