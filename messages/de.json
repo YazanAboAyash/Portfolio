@@ -548,6 +548,11 @@
     "useCasesLabel": "Anwendungsfälle",
     "liveDemoButton": "Live-Demo",
     "viewCodeButton": "Code anzeigen",
+    "liveToolsShowcase": {
+      "description": "Probieren Sie diese interaktiven Tools aus, um das Automatisierungspotenzial Ihres Unternehmens zu erkunden:",
+      "auditButton": "KI-Automatisierungs-Audit",
+      "rioButton": "ROI-Rechner"
+    },
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",

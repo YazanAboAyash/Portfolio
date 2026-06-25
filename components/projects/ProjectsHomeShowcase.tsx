@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import { projects } from "@/data/hubs/projectsData";
 import { isFeaturedProject } from "./projects-showcase.utils";
+import { Button } from "../ui/button";
 
 const BOTGENOSSEN_TECHS = [
   "AI Avatar",
@@ -245,12 +246,14 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
 
       {/* View all link */}
       <div className="mt-10 text-center">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 border border-border/50 hover:border-muted-foreground/50 rounded-lg px-5 py-2.5"
-        >
-          {t("viewAllProjects")}
-          <FiExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+        <Link href="/projects" target="_blank" rel="noopener noreferrer">
+          <Button
+            variant="default"
+            className="gap-2 cursor-pointer hover:scale-105 transition-transform"
+          >
+            {t("viewAllProjects")}
+            <FiExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+          </Button>
         </Link>
       </div>
     </section>

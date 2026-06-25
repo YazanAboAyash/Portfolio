@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 
 export function ShowcaseSection() {
   const t = useTranslations("Usecases");
-  const tt = useTranslations("Usecases.projects.project-2");
+  const tLive = useTranslations("Usecases.liveToolsShowcase");
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20">
@@ -39,25 +39,38 @@ export function ShowcaseSection() {
           ))}
         </div>
 
-        <div
-          className="mt-10 flex flex-col items-center gap-1.5 justify-center
-          border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm"
-        >
-          <p className="text-center text-muted-foreground max-w-md font-semibold pb-2">
-            {tt("description2")}
+        <div className="mt-10 flex flex-col items-center gap-4 justify-center border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm">
+          <p className="text-center text-muted-foreground max-w-md font-semibold">
+            {tLive("description")}
           </p>
-          <Link
-            href="/rio-calculator"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              variant="default"
-              className="gap-2 cursor-pointer hover:scale-105 transition-transform"
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <Link
+              href="/automation-audit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
-              {tt("title")}
-            </Button>
-          </Link>
+              <Button
+                variant="default"
+                className="gap-2 cursor-pointer hover:scale-105 transition-transform w-full sm:w-auto"
+              >
+                {tLive("auditButton")}
+              </Button>
+            </Link>
+            <Link
+              href="/rio-calculator"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button
+                variant="default"
+                className="gap-2 cursor-pointer hover:scale-105 transition-transform w-full sm:w-auto"
+              >
+                {tLive("rioButton")}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

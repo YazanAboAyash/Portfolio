@@ -548,6 +548,11 @@
     "useCasesLabel": "Use Cases",
     "liveDemoButton": "Live Demo",
     "viewCodeButton": "View Code",
+    "liveToolsShowcase": {
+      "description": "Try these interactive tools to explore automation potential for your business:",
+      "auditButton": "AI Automation Audit",
+      "rioButton": "ROI Calculator"
+    },
     "projects": {
       "project-1": {
         "title": "Voice-to-Notion Automation",
