@@ -536,7 +536,60 @@
     "packages": {
       "title": "Tjänstepaket",
       "cta": "Boka ett gratis samtal",
+      "tiers": {
+        "starter": "Bas",
+        "advanced": "Avancerad",
+        "custom": "Skräddarsytt"
+      },
+      "website": {
+        "tier": "starter",
+        "name": "Webbplats",
+        "headline": "Redo att lanseras snabbt",
+        "description": "En modern, snabb och juridiskt korrekt webbplats för ert företag — byggd för att omvandla besökare till samtal. Inklusive optimering av er Google-företagsprofil.",
+        "pricing": "Från 599 €",
+        "timeline": "1-2 veckor",
+        "features": {
+          "design": "Modern, responsiv design",
+          "compliant": "Juridiskt korrekt (företagsinfo, integritetspolicy)",
+          "gbp": "Uppsättning av Google-företagsprofil",
+          "contact": "Kontaktformulär",
+          "goLive": "Valfritt Go-Live-paket (domän & hosting) +150 €",
+          "ownership": "Engångsbetalning, ni äger allt"
+        }
+      },
+      "chatbotStarter": {
+        "tier": "starter",
+        "name": "AI-webbplats & chatbot",
+        "headline": "Svara kunder dygnet runt",
+        "description": "En webbplats med inbyggd AI-chatbot tränad på er företagsinformation — som svarar på kundfrågor automatiskt, dygnet runt.",
+        "pricing": "Från 1 290 €",
+        "timeline": "2-3 veckor",
+        "features": {
+          "website": "Allt som ingår i Webbplats-paketet",
+          "chatbot": "Anpassad AI-chatbot tränad på ert företag",
+          "availability": "Automatiska frågor och svar dygnet runt",
+          "transparency": "Transparensinformation enligt EU:s AI-förordning ingår",
+          "handover": "Uppsättning & fullständig överlämning",
+          "ownership": "Engångsbetalning, ingen prenumeration"
+        }
+      },
+      "automationStarter": {
+        "tier": "starter",
+        "name": "Automatisering",
+        "headline": "Sluta upprepa dig",
+        "description": "Automatisera bokningsbekräftelser och återkommande svar på kundförfrågningar, så att inget faller mellan stolarna.",
+        "pricing": "Från 390 €",
+        "timeline": "3-5 dagar",
+        "features": {
+          "booking": "Automatiska bokningsbekräftelser",
+          "replies": "Automatiska svar på förfrågningar",
+          "setup": "Uppsättning i era befintliga verktyg",
+          "handover": "Överlämning & genomgång",
+          "ownership": "Engångsbetalning, ingen prenumeration"
+        }
+      },
       "mvp": {
+        "tier": "advanced",
         "name": "MVP-lansering",
         "headline": "Validera och lansera snabbt",
         "description": "Digitalisera manuella processer med skräddarsydda webbapplikationer. Jag bygger mjukvara anpassad efter era specifika arbetsflöden, vilket gör att ni kan hantera fler kunder effektivt och säkert.",
@@ -552,6 +605,7 @@
         }
       },
       "automation": {
+        "tier": "advanced",
         "name": "Workflow Automation",
         "headline": "Effektivare verksamhet",
         "description": "Koppla ihop era befintliga verktyg (CRM, E-post, Kalkylark) för ett sömlöst dataflöde. Jag implementerar automatiserade system som hanterar repetitiva uppgifter och säkerställer datakvalitet.",
@@ -567,6 +621,7 @@
         }
       },
       "ai": {
+        "tier": "advanced",
         "name": "Intern AI",
         "headline": "Smart kunskapshantering",
         "description": "Få direkt tillgång till företagets samlade kunskap. Jag kopplar säkra AI-assistenter till era dokument, vilket gör att teamet kan få exakta svar baserade på er interna data.",
@@ -582,6 +637,7 @@
         }
       },
       "custom": {
+        "tier": "custom",
         "name": "Skräddarsytt Projekt",
         "headline": "Anpassad Utveckling",
         "description": "För projekt med unika krav eller komplex omfattning. Vi tar fram en specifik färdplan för att bygga exakt det ert företag behöver, oberoende av standardpaket.",

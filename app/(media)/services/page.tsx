@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { PackageCard } from "@/components/services";
 import {
-  servicePackages,
+  packagesByTier,
   processSteps,
   trustSignals,
 } from "@/data/hubs/servicesData";
@@ -183,19 +183,26 @@ export default function ServicesPage() {
 
         {/* Packages Section - ON TOP as per user requirement */}
         <section className="py-16 px-4 lg:px-8">
-          <div className="max-w-8xl mx-auto">
+          <div className="max-w-8xl mx-auto space-y-16">
             <h2 className="sr-only">{t("packages.title")}</h2>
-            <m.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerChildren}
-              className="flex flex-wrap justify-center gap-6"
-            >
-              {servicePackages.map((pkg) => (
-                <PackageCard key={pkg.id} pkg={pkg} />
-              ))}
-            </m.div>
+            {packagesByTier.map(({ tier, packages }) => (
+              <div key={tier}>
+                <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+                  {t(`packages.tiers.${tier}`)}
+                </h3>
+                <m.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
+                  variants={staggerChildren}
+                  className="flex flex-wrap justify-center gap-6"
+                >
+                  {packages.map((pkg) => (
+                    <PackageCard key={pkg.id} pkg={pkg} />
+                  ))}
+                </m.div>
+              </div>
+            ))}
           </div>
         </section>
 

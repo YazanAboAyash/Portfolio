@@ -536,7 +536,60 @@
     "packages": {
       "title": "Service Packages",
       "cta": "Book a Free Call",
+      "tiers": {
+        "starter": "Starter",
+        "advanced": "Advanced",
+        "custom": "Custom"
+      },
+      "website": {
+        "tier": "starter",
+        "name": "Website",
+        "headline": "Launch-Ready, Fast",
+        "description": "A modern, fast, legally compliant website for your business — built to convert visitors into calls. Includes Google Business Profile optimization.",
+        "pricing": "Starting at €599",
+        "timeline": "1-2 weeks",
+        "features": {
+          "design": "Modern, responsive design",
+          "compliant": "Legally compliant (Impressum, Datenschutz)",
+          "gbp": "Google Business Profile setup",
+          "contact": "Contact form",
+          "goLive": "Optional Go-Live package (domain & hosting) +€150",
+          "ownership": "One-time payment, you own everything"
+        }
+      },
+      "chatbotStarter": {
+        "tier": "starter",
+        "name": "AI Website & Chatbot",
+        "headline": "Answer Customers 24/7",
+        "description": "A website with a built-in AI chatbot trained on your business info — answering customer questions automatically, day and night.",
+        "pricing": "Starting at €1,290",
+        "timeline": "2-3 weeks",
+        "features": {
+          "website": "Everything in the Website package",
+          "chatbot": "Custom AI chatbot trained on your business",
+          "availability": "24/7 automated customer Q&A",
+          "transparency": "EU AI Act transparency notice included",
+          "handover": "Setup & full handover",
+          "ownership": "One-time payment, no subscription"
+        }
+      },
+      "automationStarter": {
+        "tier": "starter",
+        "name": "Automation",
+        "headline": "Stop Repeating Yourself",
+        "description": "Automate booking confirmations and repetitive replies to customer inquiries, so nothing falls through the cracks.",
+        "pricing": "Starting at €390",
+        "timeline": "3-5 days",
+        "features": {
+          "booking": "Automated appointment confirmations",
+          "replies": "Automatic replies to inquiries",
+          "setup": "Setup on your existing tools",
+          "handover": "Handover & walkthrough",
+          "ownership": "One-time payment, no subscription"
+        }
+      },
       "mvp": {
+        "tier": "advanced",
         "name": "MVP Launch",
         "headline": "Validate & Launch Fast",
         "description": "Digitize manual processes with custom web applications. I build software tailored to your specific workflows, allowing you to handle more customers efficiently and securely.",
@@ -552,6 +605,7 @@
         }
       },
       "automation": {
+        "tier": "advanced",
         "name": "Workflow Automation",
         "headline": "Streamlined Operations",
         "description": "Connect your existing tools (CRM, Email, Sheets) to ensure seamless data flow. I implement automated systems that handle repetitive tasks, ensuring data accuracy and saving team hours.",
@@ -567,6 +621,7 @@
         }
       },
       "ai": {
+        "tier": "advanced",
         "name": "Internal AI",
         "headline": "Intelligent Knowledge Access",
         "description": "Access your company knowledge instantly. I connect secure AI assistants to your documents (PDFs, Notion, Docs), enabling your team to retrieve accurate answers based on your internal data.",
@@ -582,6 +637,7 @@
         }
       },
       "custom": {
+        "tier": "custom",
         "name": "Custom Project",
         "headline": "Tailored Engineering",
         "description": "For projects with unique requirements or complex scope. We together define a specific roadmap to build exactly what your business needs, independent of standard packages.",

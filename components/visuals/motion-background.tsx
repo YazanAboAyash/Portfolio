@@ -13,6 +13,14 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const emptySubscribe = () => () => {};
 
+// Shared grid styling so the background reads identically on every route
+const GRID_COLOR_DARK = "rgba(255, 255, 255, 0.07)";
+const GRID_COLOR_LIGHT = "rgba(0, 0, 0, 0.07)";
+
+// Softens the grid toward the edges so it never reads as a hard, high-contrast mesh
+const GRID_FADE =
+  "radial-gradient(ellipse 110% 90% at 50% 30%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.18) 80%, transparent 100%)";
+
 function useHasMounted() {
   return useSyncExternalStore(
     emptySubscribe,
@@ -101,9 +109,7 @@ export function Background() {
     return null;
   }
 
-  const gridColor = isDarkTheme
-    ? "rgba(255, 255, 255, 0.15)"
-    : "rgba(0, 0, 0, 0.12)";
+  const gridColor = isDarkTheme ? GRID_COLOR_DARK : GRID_COLOR_LIGHT;
 
   // Use static background for mobile/medium screens for better performance
   if (!shouldUseMotion) {
@@ -111,7 +117,7 @@ export function Background() {
       <div className="fixed inset-0 -z-10">
         <div
           className={`absolute inset-0 ${
-            isDarkTheme ? "bg-black/3" : "bg-white/3"
+            isDarkTheme ? "bg-black/5" : "bg-white/5"
           }`}
         />
         <div
@@ -119,6 +125,8 @@ export function Background() {
           style={{
             backgroundImage: `linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)`,
             backgroundSize: "clamp(25px, 5vw, 35px) clamp(25px, 5vw, 35px)",
+            maskImage: GRID_FADE,
+            WebkitMaskImage: GRID_FADE,
           }}
         />
       </div>
@@ -137,6 +145,8 @@ export function Background() {
         style={{
           backgroundImage: `linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)`,
           backgroundSize: "clamp(20px, 4vw, 40px) clamp(20px, 4vw, 40px)",
+          maskImage: GRID_FADE,
+          WebkitMaskImage: GRID_FADE,
           x: gridX,
           y: gridY,
         }}

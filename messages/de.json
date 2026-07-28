@@ -536,7 +536,60 @@
     "packages": {
       "title": "Servicepakete",
       "cta": "Kostenloses Erstgespräch buchen",
+      "tiers": {
+        "starter": "Einstieg",
+        "advanced": "Erweitert",
+        "custom": "Individuell"
+      },
+      "website": {
+        "tier": "starter",
+        "name": "Website",
+        "headline": "Schnell startklar",
+        "description": "Eine moderne, schnelle und rechtssichere Website für Ihr Unternehmen — gebaut, um Besucher in Anrufe zu verwandeln. Inklusive Optimierung Ihres Google-Unternehmensprofils.",
+        "pricing": "Ab 599 €",
+        "timeline": "1-2 Wochen",
+        "features": {
+          "design": "Modernes, responsives Design",
+          "compliant": "Rechtssicher (Impressum, Datenschutz)",
+          "gbp": "Einrichtung des Google-Unternehmensprofils",
+          "contact": "Kontaktformular",
+          "goLive": "Optionales Go-Live-Paket (Domain & Hosting) +150 €",
+          "ownership": "Einmalzahlung, alles gehört Ihnen"
+        }
+      },
+      "chatbotStarter": {
+        "tier": "starter",
+        "name": "KI-Website & Chatbot",
+        "headline": "Kunden rund um die Uhr beantworten",
+        "description": "Eine Website mit integriertem KI-Chatbot, trainiert auf Ihre Unternehmensdaten — beantwortet Kundenfragen automatisch, Tag und Nacht.",
+        "pricing": "Ab 1.290 €",
+        "timeline": "2-3 Wochen",
+        "features": {
+          "website": "Alles aus dem Website-Paket",
+          "chatbot": "Eigener, auf Ihr Unternehmen trainierter KI-Chatbot",
+          "availability": "Automatisierte Kundenfragen rund um die Uhr",
+          "transparency": "Transparenzhinweis nach EU-KI-Verordnung inklusive",
+          "handover": "Einrichtung & vollständige Übergabe",
+          "ownership": "Einmalzahlung, kein Abo"
+        }
+      },
+      "automationStarter": {
+        "tier": "starter",
+        "name": "Automatisierung",
+        "headline": "Schluss mit Wiederholungen",
+        "description": "Automatisieren Sie Terminbestätigungen und wiederkehrende Antworten auf Kundenanfragen, damit nichts mehr untergeht.",
+        "pricing": "Ab 390 €",
+        "timeline": "3-5 Tage",
+        "features": {
+          "booking": "Automatische Terminbestätigungen",
+          "replies": "Automatische Antworten auf Anfragen",
+          "setup": "Einrichtung in Ihren bestehenden Tools",
+          "handover": "Übergabe & Einweisung",
+          "ownership": "Einmalzahlung, kein Abo"
+        }
+      },
       "mvp": {
+        "tier": "advanced",
         "name": "MVP Launch",
         "headline": "Schnelle Markteinführung",
         "description": "Digitalisieren Sie manuelle Prozesse mit maßgeschneiderten Webanwendungen. Ich entwickle Software, die exakt auf Ihre Abläufe zugeschnitten ist, damit Sie Kunden effizienter und sicherer bedienen können.",
@@ -552,6 +605,7 @@
         }
       },
       "automation": {
+        "tier": "advanced",
         "name": "Workflow-Automation",
         "headline": "Prozesse Optimieren",
         "description": "Verbinden Sie Ihre bestehenden Tools (CRM, E-Mail, Tabellen) für einen nahtlosen Datenfluss. Ich implementiere automatisierte Systeme, die repetitive Aufgaben übernehmen und Datengenauigkeit sicherstellen.",
@@ -567,6 +621,7 @@
         }
       },
       "ai": {
+        "tier": "advanced",
         "name": "Interne AI",
         "headline": "Intelligente Wissensnutzung",
         "description": "Greifen Sie sofort auf Ihr Unternehmenswissen zu. Ich verbinde sichere KI-Assistenten mit Ihren Dokumenten, damit Ihr Team präzise Antworten direkt aus Ihren internen Daten erhält.",
@@ -582,6 +637,7 @@
         }
       },
       "custom": {
+        "tier": "custom",
         "name": "Individuelles Projekt",
         "headline": "Maßgeschneiderte Entwicklung",
         "description": "Für Projekte mit speziellen Anforderungen oder komplexem Umfang. Wir gemeinsam definieren einen konkreten Fahrplan, um genau das zu bauen, was Ihr Unternehmen benötigt.",

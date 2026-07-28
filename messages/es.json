@@ -536,7 +536,60 @@
     "packages": {
       "title": "Paquetes de Servicios",
       "cta": "Reservar llamada gratuita",
+      "tiers": {
+        "starter": "Inicial",
+        "advanced": "Avanzado",
+        "custom": "A medida"
+      },
+      "website": {
+        "tier": "starter",
+        "name": "Sitio Web",
+        "headline": "Listo para Lanzar, Rápido",
+        "description": "Un sitio web moderno, rápido y legalmente conforme para su negocio — diseñado para convertir visitantes en llamadas. Incluye la optimización de su Perfil de Empresa en Google.",
+        "pricing": "Desde 599 €",
+        "timeline": "1-2 semanas",
+        "features": {
+          "design": "Diseño moderno y adaptable",
+          "compliant": "Legalmente conforme (aviso legal, privacidad)",
+          "gbp": "Configuración del Perfil de Empresa en Google",
+          "contact": "Formulario de contacto",
+          "goLive": "Paquete Go-Live opcional (dominio y hosting) +150 €",
+          "ownership": "Pago único, todo es suyo"
+        }
+      },
+      "chatbotStarter": {
+        "tier": "starter",
+        "name": "Sitio Web con IA y Chatbot",
+        "headline": "Atienda a sus Clientes 24/7",
+        "description": "Un sitio web con un chatbot de IA integrado, entrenado con la información de su negocio — respondiendo preguntas de clientes automáticamente, día y noche.",
+        "pricing": "Desde 1.290 €",
+        "timeline": "2-3 semanas",
+        "features": {
+          "website": "Todo lo incluido en el paquete Sitio Web",
+          "chatbot": "Chatbot de IA entrenado con su negocio",
+          "availability": "Preguntas y respuestas automáticas 24/7",
+          "transparency": "Incluye el aviso de transparencia del Reglamento de IA de la UE",
+          "handover": "Configuración y entrega completa",
+          "ownership": "Pago único, sin suscripción"
+        }
+      },
+      "automationStarter": {
+        "tier": "starter",
+        "name": "Automatización",
+        "headline": "Deje de Repetirse",
+        "description": "Automatice las confirmaciones de citas y las respuestas repetitivas a consultas de clientes, para que nada se quede sin atender.",
+        "pricing": "Desde 390 €",
+        "timeline": "3-5 días",
+        "features": {
+          "booking": "Confirmaciones automáticas de citas",
+          "replies": "Respuestas automáticas a consultas",
+          "setup": "Configuración en sus herramientas actuales",
+          "handover": "Entrega e incorporación",
+          "ownership": "Pago único, sin suscripción"
+        }
+      },
       "mvp": {
+        "tier": "advanced",
         "name": "Lanzamiento MVP",
         "headline": "Validación y Lanzamiento Rápido",
         "description": "Digitalice procesos manuales con aplicaciones web a medida. Desarrollo software adaptado a sus flujos de trabajo específicos, permitiéndole gestionar más clientes de forma eficiente y segura.",
@@ -552,7 +605,8 @@
         }
       },
       "automation": {
-        "name": "Automatización",
+        "tier": "advanced",
+        "name": "Automatización de Flujos de Trabajo",
         "headline": "Operaciones Optimizadas",
         "description": "Conecte sus herramientas actuales (CRM, Email, Hojas de cálculo) para un flujo de datos sin interrupciones. Implemento sistemas automatizados que manejan tareas repetitivas y aseguran la precisión de los datos.",
         "pricing": "Desde 2.000 €",
@@ -567,6 +621,7 @@
         }
       },
       "ai": {
+        "tier": "advanced",
         "name": "IA Interna",
         "headline": "Acceso Inteligente al Conocimiento",
         "description": "Acceda al conocimiento de su empresa al instante. Conecto asistentes de IA seguros a sus documentos, permitiendo a su equipo obtener respuestas precisas basadas en sus datos internos.",
@@ -582,6 +637,7 @@
         }
       },
       "custom": {
+        "tier": "custom",
         "name": "Proyecto a Medida",
         "headline": "Ingeniería Personalizada",
         "description": "Para proyectos con requisitos únicos o alcance complejo. Definimos una hoja de ruta específica para construir exactamente lo que su negocio necesita.",
