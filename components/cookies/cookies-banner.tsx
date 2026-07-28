@@ -6,7 +6,7 @@
 
 "use client";
 
-import { useState, useEffect, useSyncExternalStore } from "react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -17,65 +17,40 @@ import { Button } from "@/components/ui/button";
 import { X, Cookie } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-
-const emptySubscribe = () => () => {};
+import { useCookieConsent, useConsentActions } from "./use-cookie-consent";
 
 export function CookiesBanner() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [delayElapsed, setDelayElapsed] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
   const t = useTranslations("CookieBanner");
-  const mounted = useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false,
-  );
 
+  const consent = useCookieConsent();
+  const { accept, decline } = useConsentActions();
+
+  // Show after a short delay for better UX. Decisions made in another tab —
+  // including a withdrawal from the privacy page — flow in through the shared
+  // consent store, so every open tab reacts without a reload.
   useEffect(() => {
-    if (!mounted) return;
+    const timer = setTimeout(() => setDelayElapsed(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
-    // If this tab already has a stored decision, never show the banner
-    const cookieConsent = localStorage.getItem("cookie-consent");
-    if (cookieConsent) return undefined;
-
-    // Show banner after a short delay for better UX
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 3000);
-
-    // Listen for decisions made in other tabs so they all hide simultaneously
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "cookie-consent" && e.newValue) {
-        clearTimeout(timer);
-        setIsVisible(false);
-      }
-    };
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, [mounted]);
-
-  const handleAccept = () => {
-    if (mounted) {
-      localStorage.setItem("cookie-consent", "accepted");
-    }
-    setIsVisible(false);
-  };
-
-  const handleDecline = () => {
-    if (mounted) {
-      localStorage.setItem("cookie-consent", "declined");
-    }
-    setIsVisible(false);
-  };
+  // A withdrawal resets the banner so the visitor can make a fresh choice.
+  // Adjusted during render rather than in an effect: this is a reaction to the
+  // consent value changing, not a synchronisation with an external system.
+  const [lastConsent, setLastConsent] = useState(consent);
+  if (lastConsent !== consent) {
+    setLastConsent(consent);
+    if (consent === null) setDismissed(false);
+  }
 
   const handleClose = () => {
-    // If user closes without choosing, we'll ask again next time
-    setIsVisible(false);
+    // Closing without choosing records nothing: analytics stay off and we ask
+    // again on the next visit. Silence is never treated as consent.
+    setDismissed(true);
   };
 
-  if (!mounted || !isVisible) return null;
+  if (consent !== null || !delayElapsed || dismissed) return null;
 
   return (
     <div
@@ -122,14 +97,14 @@ export function CookiesBanner() {
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col sm:flex-row gap-2">
                   <Button
-                    onClick={handleAccept}
+                    onClick={accept}
                     size="sm"
                     className="flex-1 text-xs"
                   >
                     {t("acceptAll")}
                   </Button>
                   <Button
-                    onClick={handleDecline}
+                    onClick={decline}
                     variant="outline"
                     size="sm"
                     className="flex-1 text-xs"
@@ -138,7 +113,7 @@ export function CookiesBanner() {
                   </Button>
                 </div>
                 <Button
-                  onClick={handleDecline}
+                  onClick={decline}
                   variant="ghost"
                   size="sm"
                   className="text-xs text-muted-foreground hover:text-foreground"

@@ -75,6 +75,10 @@ export default function GitHubShowcase({ className }: { className?: string }) {
   }, []);
 
   useEffect(() => {
+    // Fetch-on-mount. The rule flags any call reaching a setState, without
+    // distinguishing awaits: here the only synchronous one is setLoading(true),
+    // which matches the initial state and so does not re-render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void fetchGitHubData();
   }, [fetchGitHubData]);
 

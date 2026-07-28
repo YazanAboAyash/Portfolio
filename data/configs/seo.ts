@@ -78,7 +78,7 @@ export const BASE_CONFIG = {
   },
   structured: {
     name: "Yazan Abo-Ayash",
-    email: "contact@coldbydefault.com",
+    email: "contact@yazan-abo-ayash.de",
     github: "https://github.com/yazanaboayash",
     skills: [
       "React",

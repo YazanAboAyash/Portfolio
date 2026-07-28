@@ -4,19 +4,37 @@
  * @version 6.x.x
  */
 
+import type { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
   Shield,
   User,
   Phone,
-  Receipt,
   FileEdit,
   Scale,
   ExternalLink,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { generateLegalPageSEO } from "@/lib/configs/seo";
 import Link from "next/link";
+
+/**
+ * Without this the route inherits the (legals) group layout's metadata, which is
+ * hardcoded to the privacy page.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return generateLegalPageSEO("impressum", locale);
+}
+
+/**
+ * The review date is fixed rather than `new Date()`. A notice that always claims
+ * to have been updated today tells the reader nothing about when its contents
+ * were actually checked. Bump this by hand whenever the legal notice changes.
+ */
+const LAST_REVIEWED = "2026-07-28";
 
 export default async function Impressum() {
   const t = await getTranslations("Impressum");
@@ -88,24 +106,6 @@ export default async function Impressum() {
           </CardContent>
         </Card>
 
-        {/* VAT ID */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Receipt className="w-5 h-5" />
-              {t("vat.title")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              {t("vat.description")}
-            </p>
-            <p className="text-sm font-medium mt-2">
-              {t("vat.value")} Will be provided soon
-            </p>
-          </CardContent>
-        </Card>
-
         {/* Editorial Responsibility (for Blog) */}
         <Card>
           <CardHeader>
@@ -171,7 +171,7 @@ export default async function Impressum() {
         {/* Last Updated */}
         <div className="text-center pt-6">
           <p className="text-xs text-muted-foreground">
-            {t("lastUpdated")} {new Date().toLocaleDateString()}
+            {t("lastUpdated")} {LAST_REVIEWED}
           </p>
         </div>
       </div>

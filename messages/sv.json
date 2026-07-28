@@ -208,12 +208,7 @@
       "phone": "Telefon:",
       "phoneValue": "På begäran",
       "email": "E-post:",
-      "emailValue": "abo.ayash@service.com"
-    },
-    "vat": {
-      "title": "Moms-ID",
-      "description": "Momsidentifikationsnummer enligt § 27 a i den tyska momslagen:",
-      "value": ""
+      "emailValue": "contact@yazan-abo-ayash.de"
     },
     "editorial": {
       "title": "Redaktionellt ansvarig",
@@ -233,52 +228,160 @@
   },
   "Privacy": {
     "title": "Integritetspolicy",
-    "subtitle": "Hur jag hanterar dina data och integritet",
+    "subtitle": "Information om behandlingen av dina uppgifter enligt art. 13 GDPR",
+    "controller": {
+      "title": "Personuppgiftsansvarig",
+      "intro": "Personuppgiftsansvarig för behandlingen av personuppgifter på denna webbplats är:",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen",
+      "country": "Tyskland",
+      "emailLabel": "E-post:",
+      "email": "contact@yazan-abo-ayash.de",
+      "impressumNote": "Ytterligare uppgifter om utgivaren finns i",
+      "impressumLink": "den rättsliga informationen"
+    },
     "overview": {
       "title": "Översikt",
-      "description": "Denna integritetspolicy förklarar hur denna portfolio hanterar dina data. Jag samlar inte in några personuppgifter och prioriterar din integritet.",
-      "keyPoint": "Integritet först",
-      "keyPointDescription": "Jag samlar inte in, lagrar eller säljer dina personuppgifter. Allt är designat med integritet i åtanke."
+      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. Vissa funktioner – AI-assistenten, e-postverktyget, automatiseringsgenomgången och tidsbokningen – överför uppgifter till externa tjänsteleverantörer, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
+      "keyPoint": "Vad detta innebär i praktiken",
+      "keyPointDescription": "Du kan läsa den här webbplatsen utan att identifiera dig. Det förekommer ingen reklam, ingen spårning mellan webbplatser och ingen profilering. Samtidigt är din IP-adress och allt du skriver in i assistenten eller AI-verktygen personuppgifter – avsnitten nedan förklarar exakt vad som händer med dem, på vilken rättslig grund och hur länge något sparas."
+    },
+    "hosting": {
+      "title": "Drift och serverloggar",
+      "description": "Webbplatsen driftas av Vercel Inc. När du öppnar en sida överför din webbläsare med nödvändighet din IP-adress, den begärda adressen, hänvisande sida, din webbläsaridentifikation och tidpunkten för begäran. Vercel behandlar dessa uppgifter för att leverera webbplatsen och skydda den mot angrepp och överbelastning. Assistenten och AI-verktygen använder dessutom din IP-adress för att begränsa antalet anrop, så att en enskild besökare inte kan tömma tjänsten för alla andra.",
+      "legalBasis": "Rättslig grund: art. 6.1 f GDPR – mitt berättigade intresse av att tillhandahålla en fungerande, säker och missbruksbeständig webbplats."
     },
     "cookies": {
-      "title": "Cookies & Lokal Lagring",
-      "essential": {
-        "title": "Nödvändiga Cookies",
-        "description": "Språkpreferenser och temainställningar som lagras lokalt i din webbläsare. Krävs för webbplatsens funktionalitet."
+      "title": "Kakor och lokal lagring",
+      "description": "Webbplatsen sätter inga reklam- eller spårningskakor. Följande poster lagras på din enhet:",
+      "locale": {
+        "title": "Språkinställning (kaka)",
+        "description": "Sparar det språk du har valt och det språk din webbläsare uppgav, så att rätt version visas vid ditt nästa besök.",
+        "retention": "Lagringstid: upp till 12 månader."
       },
-      "analytics": {
-        "title": "Analytiska Cookies",
-        "description": "Integritetsvänlig Vercel Analytics och Speed Insights för att övervaka webbplatsens prestanda. Inga personuppgifter spåras eller lagras."
-      }
+      "theme": {
+        "title": "Utseendeinställning (lokal lagring)",
+        "description": "Sparar om du valt ljust eller mörkt utseende.",
+        "retention": "Lagringstid: tills du rensar din webbläsarlagring."
+      },
+      "consent": {
+        "title": "Samtyckesbeslut (lokal lagring)",
+        "description": "Registrerar om du tillåtit eller avvisat den valfria mätningen, så att du inte tillfrågas på nytt på varje sida.",
+        "retention": "Lagringstid: tills du återställer ditt val eller rensar din webbläsarlagring."
+      },
+      "chat": {
+        "title": "Assistentkonversation (lokal lagring)",
+        "description": "Innehåller den pågående konversationen med AI-assistenten, dess sessionsidentifierare och ditt samtyckesbeslut för assistenten, så att tråden finns kvar när du navigerar mellan sidor.",
+        "retention": "Lagringstid: rensas när du lämnar webbplatsen, eller omedelbart med raderingsknappen nedan."
+      },
+      "legalBasis": "Rättslig grund: § 25.2 i den tyska TDDDG jämförd med art. 6.1 f GDPR – dessa poster är strikt nödvändiga för att tillhandahålla de funktioner du har begärt. Posten om mätningssamtycke lagras enligt § 25.1 TDDDG och art. 6.1 a GDPR."
     },
-    "dataProcessing": {
-      "title": "Databehandling",
-      "description": "Denna webbplats bearbetar minimal data för att tillhandahålla funktionalitet. All bearbetning sker på klientsidan i din webbläsare eller genom integritetsvänliga tjänster.",
-      "vercelTitle": "Vercel Analytics & Speed Insights",
-      "vercelDescription": "Dessa tjänster samlar in anonyma prestandamått för att hjälpa till att förbättra webbplatsen. Ingen personlig information samlas in eller lagras."
+    "analytics": {
+      "title": "Besöks- och prestandamätning",
+      "description": "Jag använder Vercel Web Analytics och Vercel Speed Insights för att se vilka sidor som besöks och hur snabbt de laddas. Ingen av tjänsterna sätter kakor och ingen bygger någon profil över dig på flera webbplatser. De är ändå valfria: skripten laddas överhuvudtaget inte förrän du aktivt godkänner dem, och de tas bort igen så snart du återkallar ditt samtycke.",
+      "dataCollected": "När de är aktiva behandlar tjänsterna den besökta sidan, hänvisande sida, en grov plats härledd ur din IP-adress, din enhetstyp, ditt operativsystem och din webbläsare. Enligt Vercel lagras inte själva IP-adressen och ingen identifierare sparas på din enhet.",
+      "legalBasis": "Rättslig grund: ditt samtycke enligt art. 6.1 a GDPR och § 25.1 TDDDG. Du kan när som helst återkalla det med verkan för framtiden via reglagen nedan."
+    },
+    "controls": {
+      "title": "Dina samtyckesinställningar",
+      "description": "Att återkalla samtycket är lika enkelt som att lämna det. Ändringar träder i kraft omedelbart, både i den här fliken och i alla andra öppna flikar.",
+      "analyticsLabel": "Besöks- och prestandamätning:",
+      "statusAccepted": "för närvarande tillåten",
+      "statusDeclined": "för närvarande avvisad",
+      "statusUndecided": "inget val registrerat – inget valfritt laddas",
+      "allowAnalytics": "Tillåt",
+      "refuseAnalytics": "Avvisa",
+      "resetChoice": "Återställ valet",
+      "analyticsHint": "Att avvisa påverkar inte webbplatsens användbarhet. Om du återställer ditt val visas samtyckesrutan igen.",
+      "chatLabel": "Assistentuppgifter som lagras i den här webbläsaren",
+      "clearChatData": "Radera konversationen från den här webbläsaren",
+      "chatCleared": "Raderat.",
+      "chatHint": "Detta tar bort konversationen, sessionsidentifieraren och ditt samtyckesbeslut för assistenten från den här webbläsaren. Konversationer som redan sparats på servern med ditt samtycke berörs inte – skriv till adressen ovan för att få även dessa raderade."
     },
     "chatbot": {
-      "title": "AI Chatbot-tjänst",
-      "description": "Denna webbplats inkluderar en AI-chatbot för interaktiv assistans och information.",
-      "apiTitle": "OpenAI API Integration",
-      "apiDescription": "Chatboten drivs av OpenAI. Genom att använda chatboten accepterar du OpenAIs användarvillkor och integritetspolicy. Chattförfrågningar bearbetas via OpenAI API.",
-      "temporaryTitle": "Valfri Datalagring (Med Samtycke)",
-      "temporaryDescription": "Med ditt uttryckliga samtycke kan chattkonversationer sparas för kvalitetsförbättring och analysändamål. Detta inkluderar: chattmeddelanden, tidsstämplar, anonymiserad IP-adress och allmän plats (land/stad). Du kan återkalla ditt samtycke när som helst. Utan samtycke förblir all chattdata enbart i din webbläsare."
+      "title": "AI-assistent (Reem)",
+      "description": "Webbplatsen innehåller en AI-assistent som besvarar frågor om mitt arbete. Det är ett artificiellt system och ingen person, och dess svar kan vara felaktiga eller ofullständiga.",
+      "alwaysTitle": "Vad som alltid överförs när du skickar ett meddelande",
+      "alwaysDescription": "När du skickar ett meddelande överförs dess text till min server och därifrån till OpenAI, som genererar svaret. Tillsammans med meddelandet skickas den sida du befann dig på, ditt webbläsarspråk, din webbläsaridentifikation och en sessionsidentifierare, och din IP-adress når min server som en del av begäran. Detta är oundvikligt: utan det kan assistenten inte producera något svar. Min server håller konversationen i minnet under sessionen så att följdfrågor har sammanhang. Anropen märks så att de inte används för att träna OpenAI:s modeller, men OpenAI kan enligt sina egna villkor spara API-data under en begränsad tid för missbrukskontroll.",
+      "storedTitle": "Vad som lagras endast med ditt samtycke",
+      "storedDescription": "Om du godkänner assistentens samtyckesfråga sparas konversationen dessutom i min databas: meddelandena, deras tidsstämplar, en förkortad IP-adress, ditt webbläsarspråk och din webbläsaridentifikation. Om du avböjer sparas inget av detta – utbytet finns då bara i den körande serverns minne under sessionen och i din egen webbläsare.",
+      "aiNoticeTitle": "AI-transparens",
+      "aiNoticeDescription": "Du interagerar med ett AI-system, inte med mig personligen. Ange inte lösenord, betaluppgifter, hälsouppgifter eller annat som du inte vill ska behandlas av en amerikansk AI-leverantör.",
+      "legalBasis": "Rättslig grund: art. 6.1 b och f GDPR för att producera det svar du bett om; art. 6.1 a GDPR – ditt samtycke – för att lagra konversationen."
+    },
+    "aiTools": {
+      "title": "AI-baserade verktyg",
+      "description": "Vissa verktyg på webbplatsen skickar den text du matar in till externa AI-leverantörer för att ta fram ett resultat. Texten behandlas för att besvara din begäran och lagras därefter inte av mig.",
+      "emailTitle": "E-postassistent",
+      "emailDescription": "Det e-postmeddelande du klistrar in, tillsammans med den kontext du lägger till, överförs till Groq, Inc. för analys och omformulering. Ange inte personuppgifter om tredje part som du inte har rätt att lämna vidare.",
+      "auditTitle": "Automatiseringsgenomgång",
+      "auditDescription": "De svar du lämnar i genomgången överförs till OpenAI för att generera utvärderingen.",
+      "legalBasis": "Rättslig grund: art. 6.1 b GDPR – utförande av en tjänst du aktivt begärt; art. 6.1 f GDPR för säker drift av verktyget."
     },
     "booking": {
-      "title": "Bokningstjänst",
-      "description": "Denna webbplats använder Calendly för tidsbokning.",
-      "calendlyTitle": "Calendly Integration",
-      "calendlyDescription": "När du bokar ett samtal behandlas dina uppgifter (namn, e-post, bokningsdetaljer) av Calendly enligt deras integritetspolicy. Jag tar endast emot den information som är nödvändig för vårt möte."
+      "title": "Tidsbokning",
+      "description": "Möten bokas via Calendly.",
+      "calendlyTitle": "Calendly",
+      "calendlyDescription": "Om du bokar ett samtal behandlar Calendly LLC namn, e-postadress och de uppgifter du fyller i bokningsformuläret, och sätter sina egna kakor på sina sidor. Jag får den information som behövs för att genomföra mötet. För bokningen gäller Calendlys egen integritetspolicy.",
+      "legalBasis": "Rättslig grund: art. 6.1 b GDPR – åtgärder före avtals ingående på din begäran."
+    },
+    "recipients": {
+      "title": "Mottagare och överföringar till tredjeland",
+      "description": "Personuppgifter lämnas till följande personuppgiftsbiträden och tjänsteleverantörer. Inga uppgifter säljs och inga lämnas vidare till andra, om jag inte är rättsligt skyldig att göra det.",
+      "vercel": {
+        "name": "Vercel Inc.",
+        "purpose": "Drift och leverans av webbplatsen samt den valfria besöks- och prestandamätningen.",
+        "location": "USA, med edge-infrastruktur inom EU."
+      },
+      "openai": {
+        "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
+        "purpose": "Genererar AI-assistentens svar och resultatet av automatiseringsgenomgången.",
+        "location": "USA."
+      },
+      "groq": {
+        "name": "Groq, Inc.",
+        "purpose": "Analyserar och skriver om texten som skickas till e-postassistenten.",
+        "location": "USA."
+      },
+      "calendly": {
+        "name": "Calendly LLC",
+        "purpose": "Tidsbokning.",
+        "location": "USA."
+      },
+      "transfersTitle": "Överföringar till tredjeland",
+      "transfersDescription": "Dessa leverantörer är etablerade i USA, vilket innebär att dina uppgifter överförs utanför EU/EES. Var och en av dem erbjuder ett personuppgiftsbiträdesavtal som innehåller Europeiska kommissionens standardavtalsklausuler; om en leverantör dessutom är certifierad enligt EU-US Data Privacy Framework gäller den certifieringen som komplement. Trots dessa skyddsåtgärder kan amerikanska myndigheter ha åtkomsträttigheter som inte motsvarar europeisk standard, och det kan vara svårare att hävda dina rättigheter där än inom EU. Vill du undvika detta är det bara att låta bli assistenten, AI-verktygen och bokningsformuläret – resten av webbplatsen fungerar utan dem."
+    },
+    "retention": {
+      "title": "Lagringstid",
+      "description": "Jag sparar personuppgifter endast så länge det behövs för det ändamål de samlades in för, eller så länge lagstadgade lagringsskyldigheter kräver det.",
+      "serverLogs": "Drift- och anropsloggar sparas av Vercel under den tid som anges i deras egen lagringspolicy; jag för inga separata åtkomstloggar.",
+      "chatSessions": "En assistentkonversation som hålls i serverns minne kastas automatiskt när sessionen varit inaktiv under den konfigurerade tiden, och under alla omständigheter när serverprocessen startas om.",
+      "chatRecords": "Konversationer som med ditt samtycke sparats i databasen raderas för närvarande manuellt vid genomgång, inte enligt ett fast automatiskt schema. Du kan när som helst begära radering genom att skriva till adressen ovan; jag gör det utan onödigt dröjsmål.",
+      "browser": "Poster i din egen webbläsare finns kvar tills de löper ut, tills du rensar din webbläsarlagring, eller tills du använder raderingsknappen på den här sidan."
     },
     "rights": {
-      "title": "Dina Rättigheter",
-      "description": "Du har full kontroll över dina data och integritet på denna webbplats:",
-      "clearCookies": "Rensa dina webbläsarcookies när som helst för att återställa preferenser",
-      "disableAnalytics": "Använd cookie-bannern för att inaktivera analysspårning",
-      "contact": "Kontakta oss om du har frågor om din integritet"
+      "title": "Dina rättigheter",
+      "description": "Enligt GDPR har du följande rättigheter i fråga om dina personuppgifter:",
+      "access": "Rätt till tillgång – att få veta om och vilka uppgifter om dig som behandlas (art. 15 GDPR).",
+      "rectification": "Rätt till rättelse av felaktiga uppgifter (art. 16 GDPR).",
+      "erasure": "Rätt till radering (art. 17 GDPR).",
+      "restriction": "Rätt till begränsning av behandling (art. 18 GDPR).",
+      "portability": "Rätt till dataportabilitet (art. 20 GDPR).",
+      "objection": "Rätt att när som helst, av skäl som hänför sig till din specifika situation, invända mot behandling som grundas på berättigat intresse (art. 21 GDPR).",
+      "withdraw": "Rätt att när som helst återkalla ett samtycke med verkan för framtiden, utan att det påverkar lagligheten av behandlingen dessförinnan (art. 7.3 GDPR).",
+      "howTo": "För att utöva någon av dessa rättigheter, skriv till e-postadressen högst upp på den här sidan. Jag svarar inom en månad.",
+      "complaintTitle": "Rätt att lämna in klagomål",
+      "complaintDescription": "Du kan även lämna in klagomål till en tillsynsmyndighet, särskilt i den medlemsstat där du bor, arbetar eller där den påstådda överträdelsen skedde. Den myndighet som är behörig för mig är:",
+      "authorityName": "Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg",
+      "authorityAddress": "Lautenschlagerstraße 20",
+      "authorityCity": "70173 Stuttgart, Tyskland"
     },
-    "lastUpdated": "Senast uppdaterad:"
+    "changes": {
+      "title": "Ändringar av denna policy",
+      "description": "Jag uppdaterar denna information när webbplatsens funktioner eller tjänsterna bakom dem förändras. Datumet nedan anger när texten senast granskades."
+    },
+    "lastUpdated": "Senast granskad:"
   },
   "MediaDashboard": {
     "title": "Media Dashboard",
@@ -433,7 +536,60 @@
     "packages": {
       "title": "Tjänstepaket",
       "cta": "Boka ett gratis samtal",
+      "tiers": {
+        "starter": "Bas",
+        "advanced": "Avancerad",
+        "custom": "Skräddarsytt"
+      },
+      "website": {
+        "tier": "starter",
+        "name": "Webbplats",
+        "headline": "Redo att lanseras snabbt",
+        "description": "En modern, snabb och juridiskt korrekt webbplats för ert företag — byggd för att omvandla besökare till samtal. Inklusive optimering av er Google-företagsprofil.",
+        "pricing": "Från 599 €",
+        "timeline": "1-2 veckor",
+        "features": {
+          "design": "Modern, responsiv design",
+          "compliant": "Juridiskt korrekt (företagsinfo, integritetspolicy)",
+          "gbp": "Uppsättning av Google-företagsprofil",
+          "contact": "Kontaktformulär",
+          "goLive": "Valfritt Go-Live-paket (domän & hosting) +150 €",
+          "ownership": "Engångsbetalning, ni äger allt"
+        }
+      },
+      "chatbotStarter": {
+        "tier": "starter",
+        "name": "AI-webbplats & chatbot",
+        "headline": "Svara kunder dygnet runt",
+        "description": "En webbplats med inbyggd AI-chatbot tränad på er företagsinformation — som svarar på kundfrågor automatiskt, dygnet runt.",
+        "pricing": "Från 1 290 €",
+        "timeline": "2-3 veckor",
+        "features": {
+          "website": "Allt som ingår i Webbplats-paketet",
+          "chatbot": "Anpassad AI-chatbot tränad på ert företag",
+          "availability": "Automatiska frågor och svar dygnet runt",
+          "transparency": "Transparensinformation enligt EU:s AI-förordning ingår",
+          "handover": "Uppsättning & fullständig överlämning",
+          "ownership": "Engångsbetalning, ingen prenumeration"
+        }
+      },
+      "automationStarter": {
+        "tier": "starter",
+        "name": "Automatisering",
+        "headline": "Sluta upprepa dig",
+        "description": "Automatisera bokningsbekräftelser och återkommande svar på kundförfrågningar, så att inget faller mellan stolarna.",
+        "pricing": "Från 390 €",
+        "timeline": "3-5 dagar",
+        "features": {
+          "booking": "Automatiska bokningsbekräftelser",
+          "replies": "Automatiska svar på förfrågningar",
+          "setup": "Uppsättning i era befintliga verktyg",
+          "handover": "Överlämning & genomgång",
+          "ownership": "Engångsbetalning, ingen prenumeration"
+        }
+      },
       "mvp": {
+        "tier": "advanced",
         "name": "MVP-lansering",
         "headline": "Validera och lansera snabbt",
         "description": "Digitalisera manuella processer med skräddarsydda webbapplikationer. Jag bygger mjukvara anpassad efter era specifika arbetsflöden, vilket gör att ni kan hantera fler kunder effektivt och säkert.",
@@ -449,6 +605,7 @@
         }
       },
       "automation": {
+        "tier": "advanced",
         "name": "Workflow Automation",
         "headline": "Effektivare verksamhet",
         "description": "Koppla ihop era befintliga verktyg (CRM, E-post, Kalkylark) för ett sömlöst dataflöde. Jag implementerar automatiserade system som hanterar repetitiva uppgifter och säkerställer datakvalitet.",
@@ -464,6 +621,7 @@
         }
       },
       "ai": {
+        "tier": "advanced",
         "name": "Intern AI",
         "headline": "Smart kunskapshantering",
         "description": "Få direkt tillgång till företagets samlade kunskap. Jag kopplar säkra AI-assistenter till era dokument, vilket gör att teamet kan få exakta svar baserade på er interna data.",
@@ -479,6 +637,7 @@
         }
       },
       "custom": {
+        "tier": "custom",
         "name": "Skräddarsytt Projekt",
         "headline": "Anpassad Utveckling",
         "description": "För projekt med unika krav eller komplex omfattning. Vi tar fram en specifik färdplan för att bygga exakt det ert företag behöver, oberoende av standardpaket.",
@@ -717,7 +876,7 @@
   },
   "CookieBanner": {
     "title": "Vi värdesätter din integritet",
-    "description": "Jag bakar mina egna kakor! Temainställningar lagras lokalt i din webbläsare. Jag använder Vercel Analytics och Speed Insights för att övervaka prestanda, som är integritetsvänaliga och inte spårar personuppgifter.",
+    "description": "Inställningar för utseende och språk lagras lokalt i din webbläsare och behövs för att webbplatsen ska fungera. Jag skulle dessutom vilja använda Vercel Analytics och Speed Insights för att se vilka sidor som besöks och hur snabbt de laddas – dessa är valfria och laddas inte utan ditt samtycke.",
     "learnMore": "Läs mer om integritetspolicyn",
     "learnMoreAriaLabel": "Läs mer om integritetspolicyn och användning av cookies",
     "acceptAll": "Acceptera alla cookies",

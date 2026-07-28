@@ -30,32 +30,23 @@ import {
   type AdminContext,
 } from "@/lib/blog-admin/blog-admin";
 import { createAdminSession, invalidateAdminSession } from "@/proxy";
+import { adminAuthLimiter, getClientIP } from "@/lib/security";
 
 // Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
-function getClientIP(request: NextRequest): string {
-  const headers = [
-    "x-forwarded-for",
-    "x-real-ip",
-    "x-client-ip",
-    "x-forwarded",
-    "x-cluster-client-ip",
-    "forwarded-for",
-    "forwarded",
-  ];
-
-  for (const header of headers) {
-    const value = request.headers.get(header);
-    if (value) {
-      const ip = value.split(",")[0]?.trim();
-      if (ip && ip !== "unknown") {
-        return ip;
-      }
-    }
+/**
+ * Rejects an unauthenticated request, throttling repeated token guesses.
+ */
+function rejectUnauthorized(clientIP: string): NextResponse<ApiErrorResponse> {
+  if (!adminAuthLimiter.isAllowed(clientIP)) {
+    return NextResponse.json(
+      { error: "Too many failed authentication attempts" },
+      { status: 429 },
+    );
   }
 
-  return "unknown";
+  return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }
 
 function isAuthorized(request: NextRequest): boolean {
@@ -209,12 +200,12 @@ const updateBlogSchema = z.object({
 export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
+  const clientIP = getClientIP(request);
   if (!isAuthorized(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return rejectUnauthorized(clientIP);
   }
 
   // Rate limiting
-  const clientIP = getClientIP(request);
   if (!checkAdminRateLimit(clientIP)) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
@@ -333,12 +324,12 @@ export async function GET(
 export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
+  const clientIP = getClientIP(request);
   if (!isAuthorized(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return rejectUnauthorized(clientIP);
   }
 
   // Rate limiting
-  const clientIP = getClientIP(request);
   if (!checkAdminRateLimit(clientIP)) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }

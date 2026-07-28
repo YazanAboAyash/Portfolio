@@ -5,9 +5,30 @@
  */
 
 /**
- * Service package tier/type
+ * Service package identifier
  */
-export type ServiceTier = "mvp" | "automation" | "ai" | "custom";
+export type ServicePackageId =
+  | "website"
+  | "chatbotStarter"
+  | "automationStarter"
+  | "mvp"
+  | "automation"
+  | "ai"
+  | "custom";
+
+/**
+ * Tier a package belongs to — drives grouping and the card badge
+ */
+export type ServiceTier = "starter" | "advanced" | "custom";
+
+/**
+ * Tier display order on the services page
+ */
+export const serviceTierOrder: readonly ServiceTier[] = [
+  "starter",
+  "advanced",
+  "custom",
+] as const;
 
 /**
  * Individual feature/deliverable within a package
@@ -24,7 +45,9 @@ export interface ServiceFeature {
  */
 export interface ServicePackage {
   /** Unique identifier for the package */
-  readonly id: ServiceTier;
+  readonly id: ServicePackageId;
+  /** Tier this package belongs to */
+  readonly tier: ServiceTier;
   /** Translation key for package name */
   readonly nameKey: string;
   /** Translation key for package headline */

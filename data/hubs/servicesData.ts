@@ -6,17 +6,94 @@
 
 import type {
   ServicePackage,
+  ServiceTier,
   ProcessStep,
   TrustSignal,
   ServicesPageData,
 } from "@/types/hubs/services";
+import { serviceTierOrder } from "@/types/hubs/services";
 
 /**
  * Service packages with translation keys
  */
 export const servicePackages: readonly ServicePackage[] = [
   {
+    id: "website",
+    tier: "starter",
+    nameKey: "packages.website.name",
+    headlineKey: "packages.website.headline",
+    descriptionKey: "packages.website.description",
+    pricingKey: "packages.website.pricing",
+    timelineKey: "packages.website.timeline",
+    icon: "Globe",
+    ctaKey: "packages.cta",
+    features: [
+      { textKey: "packages.website.features.design", included: true },
+      { textKey: "packages.website.features.compliant", included: true },
+      { textKey: "packages.website.features.gbp", included: true },
+      { textKey: "packages.website.features.contact", included: true },
+      { textKey: "packages.website.features.goLive", included: true },
+      { textKey: "packages.website.features.ownership", included: true },
+    ],
+  },
+  {
+    id: "chatbotStarter",
+    tier: "starter",
+    nameKey: "packages.chatbotStarter.name",
+    headlineKey: "packages.chatbotStarter.headline",
+    descriptionKey: "packages.chatbotStarter.description",
+    pricingKey: "packages.chatbotStarter.pricing",
+    timelineKey: "packages.chatbotStarter.timeline",
+    icon: "Bot",
+    ctaKey: "packages.cta",
+    features: [
+      { textKey: "packages.chatbotStarter.features.website", included: true },
+      { textKey: "packages.chatbotStarter.features.chatbot", included: true },
+      {
+        textKey: "packages.chatbotStarter.features.availability",
+        included: true,
+      },
+      {
+        textKey: "packages.chatbotStarter.features.transparency",
+        included: true,
+      },
+      { textKey: "packages.chatbotStarter.features.handover", included: true },
+      { textKey: "packages.chatbotStarter.features.ownership", included: true },
+    ],
+  },
+  {
+    id: "automationStarter",
+    tier: "starter",
+    nameKey: "packages.automationStarter.name",
+    headlineKey: "packages.automationStarter.headline",
+    descriptionKey: "packages.automationStarter.description",
+    pricingKey: "packages.automationStarter.pricing",
+    timelineKey: "packages.automationStarter.timeline",
+    icon: "Zap",
+    ctaKey: "packages.cta",
+    features: [
+      {
+        textKey: "packages.automationStarter.features.booking",
+        included: true,
+      },
+      {
+        textKey: "packages.automationStarter.features.replies",
+        included: true,
+      },
+      { textKey: "packages.automationStarter.features.setup", included: true },
+      {
+        textKey: "packages.automationStarter.features.handover",
+        included: true,
+      },
+      {
+        textKey: "packages.automationStarter.features.ownership",
+        included: true,
+      },
+    ],
+  },
+  {
     id: "mvp",
+    tier: "advanced",
     nameKey: "packages.mvp.name",
     headlineKey: "packages.mvp.headline",
     descriptionKey: "packages.mvp.description",
@@ -35,6 +112,7 @@ export const servicePackages: readonly ServicePackage[] = [
   },
   {
     id: "automation",
+    tier: "advanced",
     nameKey: "packages.automation.name",
     headlineKey: "packages.automation.headline",
     descriptionKey: "packages.automation.description",
@@ -53,6 +131,7 @@ export const servicePackages: readonly ServicePackage[] = [
   },
   {
     id: "ai",
+    tier: "advanced",
     nameKey: "packages.ai.name",
     headlineKey: "packages.ai.headline",
     descriptionKey: "packages.ai.description",
@@ -71,6 +150,7 @@ export const servicePackages: readonly ServicePackage[] = [
   },
   {
     id: "custom",
+    tier: "custom",
     nameKey: "packages.custom.name",
     headlineKey: "packages.custom.headline",
     descriptionKey: "packages.custom.description",
@@ -88,6 +168,19 @@ export const servicePackages: readonly ServicePackage[] = [
     ],
   },
 ] as const;
+
+/**
+ * Packages grouped by tier, in display order. Empty tiers are dropped.
+ */
+export const packagesByTier: readonly {
+  readonly tier: ServiceTier;
+  readonly packages: readonly ServicePackage[];
+}[] = serviceTierOrder
+  .map((tier) => ({
+    tier,
+    packages: servicePackages.filter((pkg) => pkg.tier === tier),
+  }))
+  .filter((group) => group.packages.length > 0);
 
 /**
  * Process workflow steps

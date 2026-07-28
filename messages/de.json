@@ -208,12 +208,7 @@
       "phone": "Telefon:",
       "phoneValue": "Auf Anfrage",
       "email": "E-Mail:",
-      "emailValue": "abo.ayash@service.com"
-    },
-    "vat": {
-      "title": "Umsatzsteuer-ID",
-      "description": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-      "value": ""
+      "emailValue": "contact@yazan-abo-ayash.de"
     },
     "editorial": {
       "title": "Redaktionell verantwortlich",
@@ -233,52 +228,160 @@
   },
   "Privacy": {
     "title": "Datenschutzerklärung",
-    "subtitle": "Wie ich mit Ihren Daten und Ihrer Privatsphäre umgehe",
+    "subtitle": "Informationen zur Verarbeitung Ihrer Daten gemäß Art. 13 DSGVO",
+    "controller": {
+      "title": "Verantwortlicher",
+      "intro": "Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen",
+      "country": "Deutschland",
+      "emailLabel": "E-Mail:",
+      "email": "contact@yazan-abo-ayash.de",
+      "impressumNote": "Weitere Angaben zum Betreiber finden Sie im",
+      "impressumLink": "Impressum"
+    },
     "overview": {
-      "title": "Übersicht",
-      "description": "Diese Datenschutzerklärung erläutert, wie dieses Portfolio mit Ihren Daten umgeht. Ich sammle keine persönlichen Daten und priorisiere Ihre Privatsphäre.",
-      "keyPoint": "Privatsphäre zuerst",
-      "keyPointDescription": "Ich sammle, speichere oder verkaufe keine persönlichen Daten. Alles ist auf Privatsphäre ausgelegt."
+      "title": "Überblick",
+      "description": "Diese Website ist ein persönliches Portfolio. Sie können sie besuchen, ohne Angaben zu Ihrer Person zu machen. Einige Funktionen – der KI-Assistent, das E-Mail-Werkzeug, der Automatisierungs-Check und die Terminbuchung – übermitteln Daten an externe Dienstleister; die Reichweiten- und Leistungsmessung läuft nur, wenn Sie ihr zustimmen. Die folgenden Abschnitte beschreiben jeden Fall, den Zweck, die Rechtsgrundlage und die Speicherdauer.",
+      "keyPoint": "Was das praktisch bedeutet",
+      "keyPointDescription": "Sie können diese Website lesen, ohne sich zu identifizieren. Es gibt keine Werbung, kein seitenübergreifendes Tracking und kein Profiling. Zugleich sind Ihre IP-Adresse und alles, was Sie in den Assistenten oder die KI-Werkzeuge eingeben, personenbezogene Daten – die folgenden Abschnitte erläutern genau, was damit geschieht, auf welcher Rechtsgrundlage und wie lange etwas gespeichert wird."
+    },
+    "hosting": {
+      "title": "Hosting und Server-Protokolle",
+      "description": "Diese Website wird von Vercel Inc. gehostet. Beim Aufruf einer Seite übermittelt Ihr Browser zwangsläufig Ihre IP-Adresse, die angeforderte Adresse, die verweisende Seite, Ihre Browserkennung und den Zeitpunkt der Anfrage. Vercel verarbeitet diese Daten, um die Website auszuliefern und sie vor Angriffen und Überlastung zu schützen. Der Assistent und die KI-Werkzeuge nutzen Ihre IP-Adresse zusätzlich zur Anfragebegrenzung, damit ein einzelner Besucher den Dienst nicht für alle anderen erschöpfen kann.",
+      "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO – mein berechtigtes Interesse an einer funktionsfähigen, sicheren und missbrauchsresistenten Website."
     },
     "cookies": {
-      "title": "Cookies & lokaler Speicher",
-      "essential": {
-        "title": "Essentielle Cookies",
-        "description": "Spracheinstellungen und Theme-Einstellungen werden lokal in Ihrem Browser gespeichert. Erforderlich für die Website-Funktionalität."
+      "title": "Cookies und lokale Speicherung",
+      "description": "Diese Website setzt keine Werbe- oder Tracking-Cookies. Auf Ihrem Endgerät werden folgende Einträge gespeichert:",
+      "locale": {
+        "title": "Spracheinstellung (Cookie)",
+        "description": "Speichert die von Ihnen gewählte Sprache sowie die von Ihrem Browser gemeldete Sprache, damit beim nächsten Besuch die richtige Fassung angezeigt wird.",
+        "retention": "Speicherdauer: bis zu 12 Monate."
       },
-      "analytics": {
-        "title": "Analyse-Cookies",
-        "description": "Datenschutzfreundliche Vercel Analytics und Speed Insights zur Überwachung der Website-Performance. Keine persönlichen Daten werden verfolgt oder gespeichert."
-      }
+      "theme": {
+        "title": "Darstellungseinstellung (lokale Speicherung)",
+        "description": "Speichert, ob Sie die helle oder die dunkle Darstellung gewählt haben.",
+        "retention": "Speicherdauer: bis Sie Ihren Browserspeicher leeren."
+      },
+      "consent": {
+        "title": "Einwilligungsentscheidung (lokale Speicherung)",
+        "description": "Hält fest, ob Sie die optionale Messung erlaubt oder abgelehnt haben, damit Sie nicht auf jeder Seite erneut gefragt werden.",
+        "retention": "Speicherdauer: bis Sie Ihre Entscheidung zurücksetzen oder Ihren Browserspeicher leeren."
+      },
+      "chat": {
+        "title": "Assistenten-Konversation (lokale Speicherung)",
+        "description": "Enthält die laufende Unterhaltung mit dem KI-Assistenten, deren Sitzungskennung und Ihre Einwilligungsentscheidung für den Assistenten, damit der Verlauf beim Wechsel zwischen Seiten erhalten bleibt.",
+        "retention": "Speicherdauer: wird beim Verlassen der Website gelöscht oder sofort über die Löschschaltfläche weiter unten."
+      },
+      "legalBasis": "Rechtsgrundlage: § 25 Abs. 2 TDDDG i. V. m. Art. 6 Abs. 1 lit. f DSGVO – diese Einträge sind zur Bereitstellung der von Ihnen gewünschten Funktionen unbedingt erforderlich. Der Eintrag zur Messungs-Einwilligung wird nach § 25 Abs. 1 TDDDG und Art. 6 Abs. 1 lit. a DSGVO gespeichert."
     },
-    "dataProcessing": {
-      "title": "Datenverarbeitung",
-      "description": "Diese Website verarbeitet minimale Daten zur Bereitstellung der Funktionalität. Alle Verarbeitung erfolgt clientseitig in Ihrem Browser oder über datenschutzkonforme Dienste.",
-      "vercelTitle": "Vercel Analytics & Speed Insights",
-      "vercelDescription": "Diese Dienste sammeln anonyme Performance-Metriken zur Verbesserung der Website. Keine persönlichen Informationen werden gesammelt oder gespeichert."
+    "analytics": {
+      "title": "Reichweiten- und Leistungsmessung",
+      "description": "Ich nutze Vercel Web Analytics und Vercel Speed Insights, um zu sehen, welche Seiten aufgerufen werden und wie schnell sie laden. Beide Dienste setzen keine Cookies und erstellen kein seitenübergreifendes Profil von Ihnen. Sie sind dennoch optional: Die Skripte werden erst geladen, wenn Sie aktiv zustimmen, und wieder entfernt, sobald Sie widerrufen.",
+      "dataCollected": "Sind sie aktiv, verarbeiten diese Dienste die aufgerufene Seite, die verweisende Seite, einen groben Standort aus Ihrer IP-Adresse, Ihren Gerätetyp, Ihr Betriebssystem und Ihren Browser. Nach Angaben von Vercel wird die IP-Adresse selbst nicht gespeichert und keine Kennung auf Ihrem Gerät abgelegt.",
+      "legalBasis": "Rechtsgrundlage: Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Sie können sie jederzeit mit Wirkung für die Zukunft über die nachstehenden Schaltflächen widerrufen."
+    },
+    "controls": {
+      "title": "Ihre Einwilligungseinstellungen",
+      "description": "Der Widerruf ist so einfach wie die Erteilung. Änderungen wirken sofort – in diesem Tab und in allen weiteren geöffneten Tabs.",
+      "analyticsLabel": "Reichweiten- und Leistungsmessung:",
+      "statusAccepted": "derzeit erlaubt",
+      "statusDeclined": "derzeit abgelehnt",
+      "statusUndecided": "keine Entscheidung gespeichert – nichts Optionales wird geladen",
+      "allowAnalytics": "Erlauben",
+      "refuseAnalytics": "Ablehnen",
+      "resetChoice": "Entscheidung zurücksetzen",
+      "analyticsHint": "Bei Ablehnung bleibt die Website vollständig nutzbar. Beim Zurücksetzen erscheint der Einwilligungshinweis erneut.",
+      "chatLabel": "In diesem Browser gespeicherte Assistenten-Daten",
+      "clearChatData": "Konversation aus diesem Browser löschen",
+      "chatCleared": "Gelöscht.",
+      "chatHint": "Damit werden die Unterhaltung, die Sitzungskennung und Ihre Einwilligungsentscheidung für den Assistenten aus diesem Browser entfernt. Bereits mit Ihrer Einwilligung auf dem Server gespeicherte Unterhaltungen sind davon nicht betroffen – schreiben Sie an die oben genannte Adresse, um auch diese löschen zu lassen."
     },
     "chatbot": {
-      "title": "KI-Chatbot-Service",
-      "description": "Diese Website enthält einen KI-Chatbot für interaktive Unterstützung und Informationen.",
-      "apiTitle": "OpenAI API Integration",
-      "apiDescription": "Der Chatbot wird von OpenAI betrieben. Durch die Nutzung des Chatbots akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinien von OpenAI. Chat-Anfragen werden über die OpenAI API verarbeitet.",
-      "temporaryTitle": "Optionale Datenspeicherung (mit Einwilligung)",
-      "temporaryDescription": "Mit Ihrer ausdrücklichen Einwilligung können Chat-Gespräche zur Qualitätsverbesserung und Analyse gespeichert werden. Dies umfasst: Chat-Nachrichten, Zeitstempel, anonymisierte IP-Adresse und allgemeinen Standort (Land/Stadt). Sie können Ihre Einwilligung jederzeit widerrufen. Ohne Einwilligung verbleiben alle Chat-Daten ausschließlich in Ihrem Browser."
+      "title": "KI-Assistent (Reem)",
+      "description": "Diese Website enthält einen KI-Assistenten, der Fragen zu meiner Arbeit beantwortet. Es handelt sich um ein künstliches System und nicht um eine Person; seine Antworten können falsch oder unvollständig sein.",
+      "alwaysTitle": "Was beim Absenden einer Nachricht immer übermittelt wird",
+      "alwaysDescription": "Mit dem Absenden einer Nachricht wird deren Text an meinen Server und von dort an OpenAI übermittelt, das die Antwort erzeugt. Zusammen mit der Nachricht werden die aufgerufene Seite, Ihre Browsersprache, Ihre Browserkennung und eine Sitzungskennung übertragen; Ihre IP-Adresse erreicht meinen Server als Teil der Anfrage. Das ist unvermeidbar – ohne diese Übermittlung kann der Assistent keine Antwort erzeugen. Mein Server hält die Unterhaltung für die Dauer der Sitzung im Arbeitsspeicher, damit Rückfragen im Kontext beantwortet werden können. Die Anfragen sind so gekennzeichnet, dass sie nicht zum Training der Modelle von OpenAI verwendet werden; OpenAI kann API-Daten jedoch nach eigenen Bedingungen für eine begrenzte Zeit zur Missbrauchskontrolle aufbewahren.",
+      "storedTitle": "Was ausschließlich mit Ihrer Einwilligung gespeichert wird",
+      "storedDescription": "Wenn Sie der Einwilligungsabfrage des Assistenten zustimmen, wird die Unterhaltung zusätzlich in meiner Datenbank gespeichert: die Nachrichten, ihre Zeitstempel, eine gekürzte IP-Adresse, Ihre Browsersprache und Ihre Browserkennung. Lehnen Sie ab, wird nichts davon gespeichert – der Austausch besteht dann nur im Arbeitsspeicher des laufenden Servers für die Dauer der Sitzung sowie in Ihrem eigenen Browser.",
+      "aiNoticeTitle": "KI-Transparenz",
+      "aiNoticeDescription": "Sie interagieren mit einem KI-System, nicht mit mir persönlich. Geben Sie bitte keine Passwörter, Zahlungsdaten, Gesundheitsdaten oder sonstige Angaben ein, deren Verarbeitung durch einen US-amerikanischen KI-Anbieter Sie nicht wünschen.",
+      "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b und f DSGVO für die Erzeugung der von Ihnen angeforderten Antwort; Art. 6 Abs. 1 lit. a DSGVO – Ihre Einwilligung – für die Speicherung der Unterhaltung."
+    },
+    "aiTools": {
+      "title": "KI-gestützte Werkzeuge",
+      "description": "Einige Werkzeuge auf dieser Website übermitteln den von Ihnen eingegebenen Text an externe KI-Anbieter, um ein Ergebnis zu erzeugen. Dieser Text wird zur Beantwortung Ihrer Anfrage verarbeitet und von mir anschließend nicht gespeichert.",
+      "emailTitle": "E-Mail-Assistent",
+      "emailDescription": "Die von Ihnen eingefügte E-Mail wird zusammen mit dem von Ihnen ergänzten Kontext zur Analyse und Umformulierung an Groq, Inc. übermittelt. Geben Sie bitte keine personenbezogenen Daten Dritter ein, zu deren Weitergabe Sie nicht berechtigt sind.",
+      "auditTitle": "Automatisierungs-Check",
+      "auditDescription": "Die von Ihnen im Check gegebenen Antworten werden zur Erstellung der Auswertung an OpenAI übermittelt.",
+      "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – Erbringung einer von Ihnen aktiv angeforderten Leistung; Art. 6 Abs. 1 lit. f DSGVO für den sicheren Betrieb des Werkzeugs."
     },
     "booking": {
-      "title": "Buchungsservice",
-      "description": "Diese Website verwendet Calendly zur Terminvereinbarung.",
-      "calendlyTitle": "Calendly Integration",
-      "calendlyDescription": "Wenn Sie einen Termin buchen, werden Ihre Daten (Name, E-Mail, Buchungsdetails) von Calendly gemäß deren Datenschutzerklärung verarbeitet. Ich erhalte nur die für unser Gespräch notwendigen Informationen."
+      "title": "Terminbuchung",
+      "description": "Termine werden über Calendly vereinbart.",
+      "calendlyTitle": "Calendly",
+      "calendlyDescription": "Wenn Sie ein Gespräch buchen, verarbeitet die Calendly LLC den Namen, die E-Mail-Adresse und alle weiteren Angaben, die Sie in das Buchungsformular eintragen, und setzt auf ihren Seiten eigene Cookies. Ich erhalte die zur Durchführung des Termins erforderlichen Informationen. Für den Buchungsvorgang gilt die Datenschutzerklärung von Calendly.",
+      "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – vorvertragliche Maßnahmen auf Ihre Anfrage."
+    },
+    "recipients": {
+      "title": "Empfänger und Drittlandübermittlungen",
+      "description": "Personenbezogene Daten werden an folgende Auftragsverarbeiter und Dienstleister weitergegeben. Es werden keine Daten verkauft und keine an Dritte weitergegeben, sofern ich dazu nicht gesetzlich verpflichtet bin.",
+      "vercel": {
+        "name": "Vercel Inc.",
+        "purpose": "Hosting und Auslieferung dieser Website sowie die optionale Reichweiten- und Leistungsmessung.",
+        "location": "Vereinigte Staaten, mit Edge-Infrastruktur in der EU."
+      },
+      "openai": {
+        "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
+        "purpose": "Erzeugt die Antworten des KI-Assistenten und das Ergebnis des Automatisierungs-Checks.",
+        "location": "Vereinigte Staaten."
+      },
+      "groq": {
+        "name": "Groq, Inc.",
+        "purpose": "Analysiert und formuliert den an den E-Mail-Assistenten übermittelten Text um.",
+        "location": "Vereinigte Staaten."
+      },
+      "calendly": {
+        "name": "Calendly LLC",
+        "purpose": "Terminvereinbarung.",
+        "location": "Vereinigte Staaten."
+      },
+      "transfersTitle": "Übermittlung in Drittländer",
+      "transfersDescription": "Diese Anbieter sind in den Vereinigten Staaten ansässig; Ihre Daten werden daher außerhalb der EU/des EWR übermittelt. Jeder dieser Anbieter stellt einen Auftragsverarbeitungsvertrag mit den Standardvertragsklauseln der Europäischen Kommission bereit; soweit ein Anbieter zusätzlich nach dem EU-US Data Privacy Framework zertifiziert ist, gilt diese Zertifizierung ergänzend. Trotz dieser Garantien können US-Behörden Zugriffsrechte haben, die europäischen Standards nicht entsprechen, und die Durchsetzung Ihrer Rechte kann dort schwieriger sein als in der EU. Wenn Sie das vermeiden möchten, nutzen Sie den Assistenten, die KI-Werkzeuge und das Buchungsformular einfach nicht – die übrige Website funktioniert auch ohne sie."
+    },
+    "retention": {
+      "title": "Speicherdauer",
+      "description": "Ich speichere personenbezogene Daten nur so lange, wie es für den Zweck der Erhebung erforderlich ist oder gesetzliche Aufbewahrungspflichten es verlangen.",
+      "serverLogs": "Hosting- und Anfrageprotokolle werden von Vercel für den in dessen eigener Aufbewahrungsrichtlinie festgelegten Zeitraum gespeichert; eigene Zugriffsprotokolle führe ich nicht.",
+      "chatSessions": "Eine im Arbeitsspeicher des Servers gehaltene Assistenten-Unterhaltung wird automatisch verworfen, sobald die Sitzung für die konfigurierte Zeitspanne inaktiv war, spätestens jedoch beim Neustart des Serverprozesses.",
+      "chatRecords": "Mit Ihrer Einwilligung in der Datenbank gespeicherte Unterhaltungen werden derzeit im Rahmen einer manuellen Durchsicht gelöscht und nicht nach einem festen automatischen Zeitplan. Sie können die Löschung jederzeit unter der oben genannten Adresse verlangen; ich komme dem unverzüglich nach.",
+      "browser": "Einträge in Ihrem eigenen Browser bleiben bestehen, bis sie ablaufen, bis Sie Ihren Browserspeicher leeren oder bis Sie die Löschschaltfläche auf dieser Seite verwenden."
     },
     "rights": {
       "title": "Ihre Rechte",
-      "description": "Sie haben vollständige Kontrolle über Ihre Daten und Privatsphäre auf dieser Website:",
-      "clearCookies": "Löschen Sie jederzeit Ihre Browser-Cookies, um Einstellungen zurückzusetzen",
-      "disableAnalytics": "Verwenden Sie das Cookie-Banner, um Analyse-Tracking zu deaktivieren",
-      "contact": "Kontaktieren Sie uns bei Fragen zu Ihrer Privatsphäre"
+      "description": "Nach der DSGVO stehen Ihnen bezüglich Ihrer personenbezogenen Daten folgende Rechte zu:",
+      "access": "Recht auf Auskunft darüber, ob und welche Daten über Sie verarbeitet werden (Art. 15 DSGVO).",
+      "rectification": "Recht auf Berichtigung unrichtiger Daten (Art. 16 DSGVO).",
+      "erasure": "Recht auf Löschung (Art. 17 DSGVO).",
+      "restriction": "Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO).",
+      "portability": "Recht auf Datenübertragbarkeit (Art. 20 DSGVO).",
+      "objection": "Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch gegen eine auf berechtigten Interessen beruhende Verarbeitung einzulegen (Art. 21 DSGVO).",
+      "withdraw": "Recht, eine Einwilligung jederzeit mit Wirkung für die Zukunft zu widerrufen, ohne dass die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung berührt wird (Art. 7 Abs. 3 DSGVO).",
+      "howTo": "Zur Ausübung dieser Rechte schreiben Sie bitte an die oben auf dieser Seite genannte E-Mail-Adresse. Ich antworte innerhalb eines Monats.",
+      "complaintTitle": "Beschwerderecht",
+      "complaintDescription": "Sie können sich außerdem bei einer Aufsichtsbehörde beschweren, insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Die für mich zuständige Behörde ist:",
+      "authorityName": "Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg",
+      "authorityAddress": "Lautenschlagerstraße 20",
+      "authorityCity": "70173 Stuttgart"
     },
-    "lastUpdated": "Zuletzt aktualisiert:"
+    "changes": {
+      "title": "Änderungen dieser Erklärung",
+      "description": "Ich aktualisiere diese Erklärung, wenn sich die Funktionen der Website oder die dahinterstehenden Dienste ändern. Das nachstehende Datum gibt an, wann der Text zuletzt geprüft wurde."
+    },
+    "lastUpdated": "Zuletzt geprüft:"
   },
   "MediaDashboard": {
     "title": "Medien Dashboard",
@@ -433,7 +536,60 @@
     "packages": {
       "title": "Servicepakete",
       "cta": "Kostenloses Erstgespräch buchen",
+      "tiers": {
+        "starter": "Einstieg",
+        "advanced": "Erweitert",
+        "custom": "Individuell"
+      },
+      "website": {
+        "tier": "starter",
+        "name": "Website",
+        "headline": "Schnell startklar",
+        "description": "Eine moderne, schnelle und rechtssichere Website für Ihr Unternehmen — gebaut, um Besucher in Anrufe zu verwandeln. Inklusive Optimierung Ihres Google-Unternehmensprofils.",
+        "pricing": "Ab 599 €",
+        "timeline": "1-2 Wochen",
+        "features": {
+          "design": "Modernes, responsives Design",
+          "compliant": "Rechtssicher (Impressum, Datenschutz)",
+          "gbp": "Einrichtung des Google-Unternehmensprofils",
+          "contact": "Kontaktformular",
+          "goLive": "Optionales Go-Live-Paket (Domain & Hosting) +150 €",
+          "ownership": "Einmalzahlung, alles gehört Ihnen"
+        }
+      },
+      "chatbotStarter": {
+        "tier": "starter",
+        "name": "KI-Website & Chatbot",
+        "headline": "Kunden rund um die Uhr beantworten",
+        "description": "Eine Website mit integriertem KI-Chatbot, trainiert auf Ihre Unternehmensdaten — beantwortet Kundenfragen automatisch, Tag und Nacht.",
+        "pricing": "Ab 1.290 €",
+        "timeline": "2-3 Wochen",
+        "features": {
+          "website": "Alles aus dem Website-Paket",
+          "chatbot": "Eigener, auf Ihr Unternehmen trainierter KI-Chatbot",
+          "availability": "Automatisierte Kundenfragen rund um die Uhr",
+          "transparency": "Transparenzhinweis nach EU-KI-Verordnung inklusive",
+          "handover": "Einrichtung & vollständige Übergabe",
+          "ownership": "Einmalzahlung, kein Abo"
+        }
+      },
+      "automationStarter": {
+        "tier": "starter",
+        "name": "Automatisierung",
+        "headline": "Schluss mit Wiederholungen",
+        "description": "Automatisieren Sie Terminbestätigungen und wiederkehrende Antworten auf Kundenanfragen, damit nichts mehr untergeht.",
+        "pricing": "Ab 390 €",
+        "timeline": "3-5 Tage",
+        "features": {
+          "booking": "Automatische Terminbestätigungen",
+          "replies": "Automatische Antworten auf Anfragen",
+          "setup": "Einrichtung in Ihren bestehenden Tools",
+          "handover": "Übergabe & Einweisung",
+          "ownership": "Einmalzahlung, kein Abo"
+        }
+      },
       "mvp": {
+        "tier": "advanced",
         "name": "MVP Launch",
         "headline": "Schnelle Markteinführung",
         "description": "Digitalisieren Sie manuelle Prozesse mit maßgeschneiderten Webanwendungen. Ich entwickle Software, die exakt auf Ihre Abläufe zugeschnitten ist, damit Sie Kunden effizienter und sicherer bedienen können.",
@@ -449,6 +605,7 @@
         }
       },
       "automation": {
+        "tier": "advanced",
         "name": "Workflow-Automation",
         "headline": "Prozesse Optimieren",
         "description": "Verbinden Sie Ihre bestehenden Tools (CRM, E-Mail, Tabellen) für einen nahtlosen Datenfluss. Ich implementiere automatisierte Systeme, die repetitive Aufgaben übernehmen und Datengenauigkeit sicherstellen.",
@@ -464,6 +621,7 @@
         }
       },
       "ai": {
+        "tier": "advanced",
         "name": "Interne AI",
         "headline": "Intelligente Wissensnutzung",
         "description": "Greifen Sie sofort auf Ihr Unternehmenswissen zu. Ich verbinde sichere KI-Assistenten mit Ihren Dokumenten, damit Ihr Team präzise Antworten direkt aus Ihren internen Daten erhält.",
@@ -479,6 +637,7 @@
         }
       },
       "custom": {
+        "tier": "custom",
         "name": "Individuelles Projekt",
         "headline": "Maßgeschneiderte Entwicklung",
         "description": "Für Projekte mit speziellen Anforderungen oder komplexem Umfang. Wir gemeinsam definieren einen konkreten Fahrplan, um genau das zu bauen, was Ihr Unternehmen benötigt.",
@@ -717,7 +876,7 @@
   },
   "CookieBanner": {
     "title": "Wir schätzen Ihre Privatsphäre",
-    "description": "Ich backe meine eigenen Cookies! Theme-Einstellungen werden lokal in Ihrem Browser gespeichert. Ich verwende Vercel Analytics und Speed Insights zur Leistungsüberwachung, die datenschutzfreundlich sind und keine personenbezogenen Daten erfassen.",
+    "description": "Darstellungs- und Spracheinstellungen werden lokal in Ihrem Browser gespeichert und sind für den Betrieb der Website erforderlich. Zusätzlich möchte ich Vercel Analytics und Speed Insights einsetzen, um zu sehen, welche Seiten aufgerufen werden und wie schnell sie laden – diese sind optional und werden ohne Ihre Zustimmung nicht geladen.",
     "learnMore": "Mehr über die Datenschutzrichtlinie erfahren",
     "learnMoreAriaLabel": "Mehr über die Datenschutzrichtlinie und Cookie-Nutzung erfahren",
     "acceptAll": "Alle Cookies akzeptieren",

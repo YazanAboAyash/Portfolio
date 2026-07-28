@@ -525,6 +525,9 @@ export function useBlogAdmin() {
   // Effects
   useEffect(() => {
     if (isAuthenticated && token) {
+      // Both loaders only setState after awaiting their fetch; the rule flags
+      // any call that can reach a setState, without distinguishing awaits.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       void loadStats();
       void loadCategories();
     }
@@ -532,6 +535,10 @@ export function useBlogAdmin() {
 
   useEffect(() => {
     if (isAuthenticated && token) {
+      // Refetch when paging/filters change. Same false positive as above, plus
+      // loadBlogs' leading setLoading(true), which is the intended entry into
+      // the loading state for this fetch.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       void loadBlogs();
     }
   }, [

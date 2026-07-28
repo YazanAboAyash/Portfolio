@@ -4,6 +4,7 @@
  * @version 6.x.x
  */
 
+import { cache } from "react";
 import type { Blog, BlogListQuery, BlogListResponse } from "@/types/hubs/blogs";
 import { prisma } from "@/lib/configs/prisma";
 import type { Prisma } from "@/lib/generated/prisma/client";
@@ -111,9 +112,12 @@ export async function getBlogs(
 }
 
 /**
- * Get a single blog by slug
+ * Get a single blog by slug and count the read.
+ *
+ * Wrapped in `cache()` below so a page render that resolves the blog in both
+ * `generateMetadata` and the page body counts a single view, not two.
  */
-export async function getBlogBySlug(slug: string): Promise<Blog | null> {
+async function fetchBlogBySlug(slug: string): Promise<Blog | null> {
   if (!slug || typeof slug !== "string") {
     return null;
   }
@@ -142,12 +146,10 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     });
 
     if (blog) {
-      // Increment read count
+      // Increment read count via raw SQL: a Prisma update would also stamp the
+      // `@updatedAt` field, making every visitor read look like a content edit.
       try {
-        await prisma.blog.update({
-          where: { id: blog.id },
-          data: { readCount: { increment: 1 } },
-        });
+        await prisma.$executeRaw`UPDATE blogs SET "readCount" = "readCount" + 1 WHERE id = ${blog.id}`;
 
         // Return the blog with incremented read count
         return { ...blog, readCount: blog.readCount + 1 } as Blog;
@@ -163,6 +165,11 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     return null;
   }
 }
+
+/**
+ * Get a single blog by slug (per-request deduplicated)
+ */
+export const getBlogBySlug = cache(fetchBlogBySlug);
 
 /**
  * Get featured blogs

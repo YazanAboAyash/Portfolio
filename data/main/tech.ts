@@ -19,7 +19,7 @@ import {
   SiGithubactions,
   SiMiro,
   SiLatex,
-  SiCanva,
+  SiCanvas,
   SiN8N,
 } from "react-icons/si";
 import { FaRobot } from "react-icons/fa";
@@ -118,7 +118,7 @@ export const serviceGroups: ServiceGroup[] = [
           { name: "System Design", Icon: Workflow },
           { name: "LaTeX", Icon: SiLatex },
           { name: "Miro", Icon: SiMiro },
-          { name: "Canva", Icon: SiCanva },
+          { name: "Canva", Icon: SiCanvas },
         ],
       },
     ],

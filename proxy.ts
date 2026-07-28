@@ -11,11 +11,6 @@ import { createHmac, timingSafeEqual } from "crypto";
 // Supported locales
 const supportedLocales = ["en", "de", "es", "fr", "sv"];
 
-const failedAttempts = new Map<string, number>();
-const blockedIPs = new Map<string, number>();
-const BLOCK_DURATION = 15 * 60 * 1000;
-const MAX_ATTEMPTS = 2;
-
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 const SESSION_DURATION = 8 * 60 * 60 * 1000; // 8 hours
 
@@ -25,36 +20,7 @@ function signToken(payload: string): string {
     .digest("hex");
 }
 
-function getClientIP(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) return forwarded.split(",")[0]?.trim() || "unknown";
-  const realIP = request.headers.get("x-real-ip");
-  if (realIP) return realIP;
-  return "unknown";
-}
-
-function isIPBlocked(ip: string): boolean {
-  const blockExpiry = blockedIPs.get(ip);
-  if (!blockExpiry) return false;
-
-  if (Date.now() < blockExpiry) return true;
-
-  // Expired, clean up
-  blockedIPs.delete(ip);
-  failedAttempts.delete(ip);
-  return false;
-}
-
-function recordFailedAttempt(ip: string): void {
-  const attempts = (failedAttempts.get(ip) || 0) + 1;
-  failedAttempts.set(ip, attempts);
-
-  if (attempts >= MAX_ATTEMPTS) {
-    blockedIPs.set(ip, Date.now() + BLOCK_DURATION);
-  }
-}
-
-function hasValidAdminSession(request: NextRequest): boolean {
+export function hasValidAdminSession(request: NextRequest): boolean {
   if (!ADMIN_TOKEN) return false;
 
   const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
@@ -190,45 +156,6 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const isDev = process.env.NODE_ENV === "development";
-
-  // Admin route protection - Minimal server-side security (disabled in dev)
-  if (
-    pathname.startsWith("/admin") &&
-    !pathname.startsWith("/admin/blocked") &&
-    !isDev
-  ) {
-    const clientIP = getClientIP(request);
-
-    // Check if IP is blocked
-    if (isIPBlocked(clientIP)) {
-      return NextResponse.redirect(new URL("/admin/blocked", request.url));
-    }
-
-    // Check for valid admin session
-    if (!hasValidAdminSession(request)) {
-      // Record failed page access attempt
-      recordFailedAttempt(clientIP);
-
-      const attempts = failedAttempts.get(clientIP) || 0;
-
-      // If just exceeded limit, redirect to blocked page
-      if (attempts >= MAX_ATTEMPTS) {
-        return NextResponse.redirect(new URL("/admin/blocked", request.url));
-      }
-
-      // Allow access but add warning header
-      const response = NextResponse.next();
-      response.headers.set(
-        "X-Remaining-Attempts",
-        String(MAX_ATTEMPTS - attempts),
-      );
-      return response;
-    }
-
-    // Valid session - clear attempts and allow access
-    failedAttempts.delete(clientIP);
-  }
 
   // Define valid routes to avoid redirecting legitimate paths
   const validRoutes = [

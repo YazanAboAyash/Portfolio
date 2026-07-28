@@ -9,8 +9,25 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import type { ChatLogsResponse, ChatSessionLog } from "@/types/configs/chatbot";
 import { prisma } from "@/lib/configs/prisma";
+import { adminAuthLimiter, getClientIP } from "@/lib/security";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+
+/**
+ * Rejects an unauthenticated request, throttling repeated token guesses.
+ */
+function rejectUnauthorized(request: NextRequest): NextResponse<{
+  error: string;
+}> {
+  if (!adminAuthLimiter.isAllowed(getClientIP(request))) {
+    return NextResponse.json(
+      { error: "Too many failed authentication attempts" },
+      { status: 429 },
+    );
+  }
+
+  return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+}
 
 function isAuthorized(request: NextRequest): boolean {
   if (!ADMIN_TOKEN) return false;
@@ -55,7 +72,7 @@ export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<ChatLogsResponse | { error: string }>> {
   if (!isAuthorized(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return rejectUnauthorized(request);
   }
 
   try {
@@ -225,7 +242,7 @@ export async function DELETE(
   request: NextRequest,
 ): Promise<NextResponse<{ success: boolean } | { error: string }>> {
   if (!isAuthorized(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return rejectUnauthorized(request);
   }
 
   try {

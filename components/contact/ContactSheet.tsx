@@ -41,7 +41,7 @@ interface ContactSheetProps {
 }
 
 const defaultContactInfo: ContactInfo = {
-  email: "contact@coldbydefault.com",
+  email: "contact@yazan-abo-ayash.de",
   location: "Germany",
   availability: "Available for hobby projects",
 };

@@ -6,10 +6,21 @@
 
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import type { ServicePackage } from "@/types/hubs/services";
 import { m } from "framer-motion";
-import { Rocket, Cog, Brain, Check, Clock } from "lucide-react";
+import {
+  Rocket,
+  Cog,
+  Brain,
+  Settings,
+  Globe,
+  Bot,
+  Zap,
+  Check,
+  Clock,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 
 /** Icon mapping for dynamic rendering */
@@ -17,6 +28,10 @@ const iconMap: Record<string, React.ElementType> = {
   Rocket,
   Cog,
   Brain,
+  Settings,
+  Globe,
+  Bot,
+  Zap,
 };
 
 /** Animation variant for fade-in-up effect */
@@ -48,9 +63,12 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
                 <IconComponent className="h-5 w-5" aria-hidden="true" />
               </div>
             )}
-            <div>
+            <div className="min-w-0">
               <h3 className="text-xl font-semibold">{t(pkg.nameKey)}</h3>
             </div>
+            <Badge variant="outline" className="ml-auto shrink-0">
+              {t(`packages.tiers.${pkg.tier}`)}
+            </Badge>
           </div>
           <p className="text-2xl font-bold text-sky-500">
             {t(pkg.headlineKey)}

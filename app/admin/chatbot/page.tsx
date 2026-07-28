@@ -159,6 +159,10 @@ export default function AdminChatLogsPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      // Refetch on filter change. The rule flags any call reaching a setState,
+      // without distinguishing awaits; fetchLogs' synchronous setLoading(true)
+      // and setError(null) both match the initial state on mount.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       void fetchLogs();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

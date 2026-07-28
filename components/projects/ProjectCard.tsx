@@ -195,7 +195,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2 truncate text-center"
                 >
-                  <SiNpm className="h-4 w-4" />
+                  <SiNpm className="h-4 w-4" aria-hidden="true" />
                   {t("npmPackage")}
                 </Link>
               </Button>
