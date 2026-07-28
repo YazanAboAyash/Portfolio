@@ -152,18 +152,6 @@ export default async function RootLayout({
 
         {/* Critical Performance Optimizations - Only preconnect to immediately needed resources */}
 
-        {/* Essential: Google Fonts - Needed immediately for page render */}
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
         {/* Essential: Vercel Analytics - Needed early for performance tracking */}
         <link rel="preconnect" href="https://vitals.vercel-analytics.com" />
 

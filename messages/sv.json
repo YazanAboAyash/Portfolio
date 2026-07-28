@@ -210,11 +210,6 @@
       "email": "E-post:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
-    "vat": {
-      "title": "Moms-ID",
-      "description": "Momsidentifikationsnummer enligt § 27 a i den tyska momslagen:",
-      "value": ""
-    },
     "editorial": {
       "title": "Redaktionellt ansvarig",
       "name": "Yazan Abo-Ayash",

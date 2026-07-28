@@ -210,11 +210,6 @@
       "email": "Email:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
-    "vat": {
-      "title": "VAT ID",
-      "description": "VAT identification number according to § 27 a of the German VAT Act:",
-      "value": ""
-    },
     "editorial": {
       "title": "Editorially Responsible",
       "name": "Yazan Abo-Ayash",

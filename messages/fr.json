@@ -210,11 +210,6 @@
       "email": "E-mail :",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
-    "vat": {
-      "title": "Numéro de TVA",
-      "description": "Numéro d'identification TVA conformément au § 27 a de la loi allemande sur la TVA :",
-      "value": ""
-    },
     "editorial": {
       "title": "Responsable éditorial",
       "name": "Yazan Abo-Ayash",

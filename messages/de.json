@@ -210,11 +210,6 @@
       "email": "E-Mail:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
-    "vat": {
-      "title": "Umsatzsteuer-ID",
-      "description": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-      "value": ""
-    },
     "editorial": {
       "title": "Redaktionell verantwortlich",
       "name": "Yazan Abo-Ayash",
