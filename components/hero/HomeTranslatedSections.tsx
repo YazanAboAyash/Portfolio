@@ -48,7 +48,8 @@ export function ServicesSection() {
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
-        <div className="flex flex-wrap justify-center gap-6 mt-10">
+        {/* max-w fits exactly 3 cards (3 x max-w-sm + 2 x gap-6) */}
+        <div className="flex flex-wrap justify-center gap-6 mt-10 mx-auto max-w-[75rem]">
           {servicePackages.map((pkg) => (
             <PackageCard key={pkg.id} pkg={pkg} variant="compact" />
           ))}
