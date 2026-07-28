@@ -4,6 +4,8 @@
  * @version 6.x.x
  */
 
+import type { NextRequest } from "next/server";
+
 /**
  * Validates GitHub API data type parameter
  */
@@ -70,6 +72,46 @@ export class RateLimiter {
     }
   }
 }
+
+/**
+ * Resolves the client IP from the proxy headers forwarded by the host
+ */
+export function getClientIP(request: NextRequest): string {
+  const headers = [
+    "x-forwarded-for",
+    "x-real-ip",
+    "x-client-ip",
+    "x-forwarded",
+    "x-cluster-client-ip",
+    "forwarded-for",
+    "forwarded",
+  ];
+
+  for (const header of headers) {
+    const value = request.headers.get(header);
+    if (value) {
+      const ip = value.split(",")[0]?.trim();
+      if (ip && ip !== "unknown") {
+        return ip;
+      }
+    }
+  }
+
+  return "unknown";
+}
+
+/**
+ * Throttles failed admin credential attempts on `app/api/admin/**`.
+ *
+ * Only rejected attempts are recorded, so a valid token is never locked out
+ * and an attacker cannot exhaust the limit to deny the owner access. Must be
+ * consulted on the rejection path itself — checking it after an early 401
+ * return leaves token guessing unthrottled.
+ *
+ * State is in-memory and per-instance, so on serverless this is best-effort
+ * mitigation rather than a hard guarantee.
+ */
+export const adminAuthLimiter = new RateLimiter(15 * 60 * 1000, 5);
 
 /**
  * Enhanced input sanitization for contact forms
