@@ -75,7 +75,7 @@ export default function Footer() {
                   className="flex items-center gap-1 text-gray-400 hover:text-foreground transition-colors"
                   aria-label="Vercel"
                 >
-                  <SiVercel className="h-4 w-4" />
+                  <SiVercel className="h-4 w-4" aria-hidden="true" />
                   <span className="text-xs font-medium">Vercel</span>
                 </Link>
                 <Link
