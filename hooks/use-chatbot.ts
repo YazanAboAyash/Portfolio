@@ -26,54 +26,67 @@ interface UseChatBotReturn {
   setConsent: (consent: boolean) => void;
 }
 
+// Storage keys for persistence
+const STORAGE_KEY_MESSAGES = "chatbot_messages";
+const STORAGE_KEY_SESSION = "chatbot_session";
+const STORAGE_KEY_CONSENT = "chatbot_consent";
+
+interface PersistedChatState {
+  messages: ChatMessage[];
+  sessionId: string | null;
+  consentGiven: boolean;
+}
+
+const EMPTY_PERSISTED_STATE: PersistedChatState = {
+  messages: [],
+  sessionId: null,
+  consentGiven: false,
+};
+
+/**
+ * Read the previous conversation back out of localStorage. Runs as a lazy state
+ * initializer rather than in an effect, so the restored conversation is present
+ * on the first client render instead of causing a second one. On the server this
+ * returns the empty state, which is what the panel renders while closed.
+ */
+function loadPersistedState(): PersistedChatState {
+  if (typeof window === "undefined") {
+    return EMPTY_PERSISTED_STATE;
+  }
+
+  try {
+    const savedMessages = localStorage.getItem(STORAGE_KEY_MESSAGES);
+    const savedSession = localStorage.getItem(STORAGE_KEY_SESSION);
+    const savedConsent = localStorage.getItem(STORAGE_KEY_CONSENT);
+
+    return {
+      // Convert timestamp strings back to Date objects
+      messages: savedMessages
+        ? (JSON.parse(savedMessages) as ChatMessage[]).map((msg) => ({
+            ...msg,
+            timestamp: new Date(msg.timestamp),
+          }))
+        : [],
+      sessionId: savedSession,
+      consentGiven: savedConsent === "true",
+    };
+  } catch {
+    // Clear corrupted data silently
+    localStorage.removeItem(STORAGE_KEY_MESSAGES);
+    localStorage.removeItem(STORAGE_KEY_SESSION);
+    localStorage.removeItem(STORAGE_KEY_CONSENT);
+    return EMPTY_PERSISTED_STATE;
+  }
+}
+
 export function useChatBot(): UseChatBotReturn {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [persisted] = useState(loadPersistedState);
+  const [messages, setMessages] = useState<ChatMessage[]>(persisted.messages);
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [consentGiven, setConsentGiven] = useState(false);
-  const sessionIdRef = useRef<string | null>(null);
-
-  // Storage keys for persistence
-  const STORAGE_KEY_MESSAGES = "chatbot_messages";
-  const STORAGE_KEY_SESSION = "chatbot_session";
-  const STORAGE_KEY_CONSENT = "chatbot_consent";
-
-  // Load messages from localStorage on component mount
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const savedMessages = localStorage.getItem(STORAGE_KEY_MESSAGES);
-        const savedSession = localStorage.getItem(STORAGE_KEY_SESSION);
-        const savedConsent = localStorage.getItem(STORAGE_KEY_CONSENT);
-
-        if (savedMessages) {
-          const parsedMessages = JSON.parse(savedMessages) as ChatMessage[];
-          // Convert timestamp strings back to Date objects
-          const messagesWithDates: ChatMessage[] = parsedMessages.map(
-            (msg) => ({
-              ...msg,
-              timestamp: new Date(msg.timestamp),
-            }),
-          );
-          setMessages(messagesWithDates);
-        }
-
-        if (savedSession) {
-          sessionIdRef.current = savedSession;
-        }
-
-        if (savedConsent === "true") {
-          setConsentGiven(true);
-        }
-      } catch {
-        // Clear corrupted data silently
-        localStorage.removeItem(STORAGE_KEY_MESSAGES);
-        localStorage.removeItem(STORAGE_KEY_SESSION);
-        localStorage.removeItem(STORAGE_KEY_CONSENT);
-      }
-    }
-  }, []);
+  const [consentGiven, setConsentGiven] = useState(persisted.consentGiven);
+  const sessionIdRef = useRef<string | null>(persisted.sessionId);
 
   // Save messages to localStorage whenever messages change
   useEffect(() => {
