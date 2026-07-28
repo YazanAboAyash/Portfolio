@@ -26,7 +26,7 @@ This Code of Conduct applies in all project spaces — GitHub Issues, Pull Reque
 
 Violations may result in comments being removed, issues being closed, or the offending account being blocked from the repository.
 
-To report an issue, contact: **contact@coldbydefault.com**
+To report an issue, contact: **contact@yazan-abo-ayash.de**
 
 ## Attribution
 
