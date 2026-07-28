@@ -19,7 +19,6 @@ const accessibilityRoutes = [
   { label: "booking confirmation page", path: "/booking-confirmed" },
   { label: "impressum page", path: "/impressum" },
   { label: "privacy page", path: "/privacy" },
-  { label: "admin blocked page", path: "/admin/blocked" },
 ] as const;
 
 const adminAuthenticationRoutes = [
