@@ -36,9 +36,13 @@ export function CookiesBanner() {
   }, []);
 
   // A withdrawal resets the banner so the visitor can make a fresh choice.
-  useEffect(() => {
+  // Adjusted during render rather than in an effect: this is a reaction to the
+  // consent value changing, not a synchronisation with an external system.
+  const [lastConsent, setLastConsent] = useState(consent);
+  if (lastConsent !== consent) {
+    setLastConsent(consent);
     if (consent === null) setDismissed(false);
-  }, [consent]);
+  }
 
   const handleClose = () => {
     // Closing without choosing records nothing: analytics stay off and we ask
