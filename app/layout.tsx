@@ -13,15 +13,13 @@
  * @see @link https://www.coldbydefault.com for the live website.
  */
 
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import "@/styles/company-banner.css";
 import React from "react";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { CookiesBanner } from "@/components/cookies";
+import { CookiesBanner, ConsentedAnalytics } from "@/components/cookies";
 import { LocaleAutoDetect } from "@/components/languages";
 import { ChatBot } from "@/components/chatbot";
 import { NoSSR } from "@/components/NoSSR";
@@ -216,8 +214,7 @@ export default async function RootLayout({
             </MotionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
-        <Analytics />
-        <SpeedInsights />
+        <ConsentedAnalytics />
       </body>
     </html>
   );

@@ -22,7 +22,6 @@ import {
   REEM_CONFIG,
 } from "@/data/main/chatbot-system-prompt";
 import {
-  getGeoIPInfo,
   anonymizeIP,
   isChatLoggingEnabled,
   shouldAnonymizeIP,
@@ -310,7 +309,6 @@ async function logChatToDB(
   try {
     // User consented - collect data with privacy protections
     const ipToStore = shouldAnonymizeIP() ? anonymizeIP(clientIP) : clientIP;
-    const geoInfo = await getGeoIPInfo(clientIP);
 
     // Check if session exists
     const existingSession = await prisma.chatSession.findUnique({
@@ -323,8 +321,8 @@ async function logChatToDB(
         data: {
           id: sessionId,
           ipAddress: ipToStore,
-          ipCountry: geoInfo.country || null,
-          ipCity: geoInfo.city || null,
+          ipCountry: null,
+          ipCity: null,
           userAgent: requestBody.context?.userAgent || null,
           language: requestBody.context?.language || null,
           consentGiven: true,
