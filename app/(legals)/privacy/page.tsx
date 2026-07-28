@@ -19,11 +19,10 @@ import {
   SlidersHorizontal,
   Wrench,
   Check,
-  Gavel,
+  CalendarClock,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { PrivacyControls } from "@/components/cookies";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 /**
@@ -34,77 +33,65 @@ import Link from "next/link";
 const LAST_REVIEWED = "2026-07-28";
 
 /**
- * The theme's `--primary` is a zero-chroma neutral, so `text-primary` renders as
- * grey. Emphasis on this page therefore comes from explicit palette hues, used
- * sparingly so that a highlight still means something:
- *
- *   blue    — explanatory callouts (what a section means in practice)
- *   amber   — legal bases and statutory citations
- *   emerald — things you can act on, and your rights
- *   rose    — escalation (the supervisory authority)
+ * Section order for the whole notice. The table of contents, the numbering and
+ * the heading icons all read from this one list, so a section cannot appear in
+ * the contents without appearing in the document.
  */
-const tones = {
-  blue: {
-    chip: "bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300",
-    box: "border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-950/30",
-    title: "text-blue-900 dark:text-blue-100",
-    body: "text-blue-800 dark:text-blue-200/90",
-  },
-  amber: {
-    chip: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
-    box: "border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950/30",
-    title: "text-amber-900 dark:text-amber-100",
-    body: "text-amber-800 dark:text-amber-200/90",
-  },
-  emerald: {
-    chip:
-      "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
-    box: "border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950/30",
-    title: "text-emerald-900 dark:text-emerald-100",
-    body: "text-emerald-800 dark:text-emerald-200/90",
-  },
-  rose: {
-    chip: "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300",
-    box: "border-rose-200 bg-rose-50 dark:border-rose-900 dark:bg-rose-950/30",
-    title: "text-rose-900 dark:text-rose-100",
-    body: "text-rose-800 dark:text-rose-200/90",
-  },
-} as const;
+const SECTIONS = [
+  { id: "controller", icon: Scale, titleKey: "controller.title" },
+  { id: "overview", icon: Eye, titleKey: "overview.title" },
+  { id: "hosting", icon: Server, titleKey: "hosting.title" },
+  { id: "cookies", icon: Cookie, titleKey: "cookies.title" },
+  { id: "analytics", icon: Globe, titleKey: "analytics.title" },
+  { id: "controls", icon: SlidersHorizontal, titleKey: "controls.title" },
+  { id: "chatbot", icon: Bot, titleKey: "chatbot.title" },
+  { id: "ai-tools", icon: Wrench, titleKey: "aiTools.title" },
+  { id: "booking", icon: CalendarClock, titleKey: "booking.title" },
+  { id: "recipients", icon: Users, titleKey: "recipients.title" },
+  { id: "retention", icon: Timer, titleKey: "retention.title" },
+  { id: "rights", icon: Shield, titleKey: "rights.title" },
+  { id: "changes", icon: Eye, titleKey: "changes.title" },
+] as const;
 
-type Tone = keyof typeof tones;
+type SectionId = (typeof SECTIONS)[number]["id"];
 
 /**
- * One numbered block of the notice. Sections are separated by rules rather than
- * by their own cards, so the whole notice reads as a single continuous document.
+ * The site's palette is deliberately monochrome — every theme token is a
+ * zero-chroma neutral. Emphasis here therefore comes from rules, weight and
+ * fills drawn from those same tokens, never from an imported accent hue, so the
+ * notice sits in the same visual system as the rest of the site and stays
+ * legible in both themes without per-colour dark-mode overrides.
  */
 function Section({
   id,
-  icon: Icon,
   title,
-  tone = "blue",
   children,
 }: {
-  id: string;
-  icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+  id: SectionId;
   title: string;
-  tone?: Tone;
   children: React.ReactNode;
 }) {
+  const index = SECTIONS.findIndex((s) => s.id === id);
+  const Icon = SECTIONS[index]!.icon;
+
   return (
     <section
       id={id}
-      className="scroll-mt-24 border-t px-5 py-8 first:border-t-0 sm:px-8"
+      className="scroll-mt-28 border-t px-6 py-9 first:border-t-0 sm:px-10"
     >
-      <h2 className="mb-4 flex items-center gap-3 text-lg font-semibold tracking-tight">
-        <span
-          className={cn(
-            "flex size-8 shrink-0 items-center justify-center rounded-lg",
-            tones[tone].chip,
-          )}
-        >
+      <h2 className="mb-5 flex items-center gap-3">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted/60 text-foreground/70">
           <Icon className="size-4" aria-hidden={true} />
         </span>
-        {title}
+        <span className="flex-1 text-lg font-semibold tracking-tight text-foreground">
+          {title}
+        </span>
+        <span
+          className="text-xs font-medium tabular-nums text-muted-foreground/50"
+          aria-hidden={true}
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
       </h2>
       <div className="space-y-4">{children}</div>
     </section>
@@ -119,55 +106,45 @@ function Prose({ children }: { children: React.ReactNode }) {
 
 /**
  * Splits "Legal basis: Art. 6(1)(f) GDPR — …" at the first colon so the label can
- * be emphasised. The slice keeps the colon and anything before it, which also
+ * be set apart. The slice keeps the colon and anything before it, which also
  * preserves the French space-before-colon convention.
  */
 function LegalBasis({ children }: { children: string }) {
   const colon = children.indexOf(":");
-  const label = colon === -1 ? null : children.slice(0, colon + 1);
-  const rest = colon === -1 ? children : children.slice(colon + 1).trimStart();
+  const label = colon === -1 ? null : children.slice(0, colon).trim();
+  const rest = colon === -1 ? children : children.slice(colon + 1).trim();
 
   return (
-    <p
-      className={cn(
-        "flex items-start gap-2.5 rounded-lg border px-3.5 py-2.5 text-xs leading-relaxed",
-        tones.amber.box,
-        tones.amber.body,
+    <div className="border-l-2 border-foreground/25 bg-muted/40 py-3 pl-4 pr-4">
+      {label && (
+        <p className="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-foreground/70">
+          {label}
+        </p>
       )}
-    >
-      <Gavel className="mt-px size-3.5 shrink-0" aria-hidden={true} />
-      <span>
-        {label && (
-          <strong className={cn("font-semibold", tones.amber.title)}>
-            {label}{" "}
-          </strong>
-        )}
-        {rest}
-      </span>
-    </p>
+      <p className="text-xs leading-relaxed text-muted-foreground">{rest}</p>
+    </div>
   );
 }
 
+/** Pulled-out passage: same neutral system, stronger fill and a full border. */
 function Callout({
-  tone = "blue",
   title,
   children,
 }: {
-  tone?: Tone;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn("space-y-1.5 rounded-lg border p-4", tones[tone].box)}>
-      <p className={cn("text-sm font-semibold", tones[tone].title)}>{title}</p>
-      <div className={cn("text-sm leading-relaxed", tones[tone].body)}>
+    <div className="space-y-1.5 rounded-lg border bg-muted/60 p-5">
+      <p className="text-sm font-semibold text-foreground">{title}</p>
+      <div className="text-sm leading-relaxed text-muted-foreground">
         {children}
       </div>
     </div>
   );
 }
 
-/** Neutral sub-item, so the coloured callouts keep their emphasis. */
+/** Plain sub-item in a list of cookies, recipients or tools. */
 function Item({
   title,
   children,
@@ -180,51 +157,78 @@ function Item({
   as?: "p" | "h3";
 }) {
   return (
-    <div className="space-y-1 rounded-lg border bg-muted/30 p-4">
-      <Heading className="text-sm font-medium">{title}</Heading>
-      <p className="text-sm text-muted-foreground">{children}</p>
-      {meta && <p className="text-xs text-muted-foreground">{meta}</p>}
+    <div className="space-y-1 rounded-lg border p-4">
+      <Heading className="text-sm font-medium text-foreground">{title}</Heading>
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        {children}
+      </p>
+      {meta && <p className="text-xs text-muted-foreground/80">{meta}</p>}
     </div>
   );
 }
+
+const linkClass =
+  "font-medium text-foreground underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors";
 
 export default async function Privacy() {
   const t = await getTranslations("Privacy");
 
   return (
-    <div className="container mx-auto mt-20 max-w-4xl px-4 py-8">
-      <div className="space-y-6">
-        <div className="space-y-4 text-center">
-          <div className="flex justify-center">
-            <div
-              className={cn(
-                "flex size-12 items-center justify-center rounded-full",
-                tones.blue.chip,
-              )}
-            >
-              <Shield className="size-6" aria-hidden={true} />
-            </div>
+    <div className="container mx-auto mt-20 max-w-6xl px-4 py-8">
+      <div className="mx-auto max-w-4xl space-y-4 text-center">
+        <div className="flex justify-center">
+          <div className="flex size-12 items-center justify-center rounded-full border bg-muted/60">
+            <Shield className="size-6 text-foreground/70" aria-hidden={true} />
           </div>
-          <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="text-lg text-muted-foreground">{t("subtitle")}</p>
         </div>
+        <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
+        <p className="text-lg text-muted-foreground">{t("subtitle")}</p>
+      </div>
 
-        <Separator />
+      <Separator className="my-6" />
+
+      <div className="lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:items-start lg:gap-10">
+        {/* Contents — the ids below are the anchor targets */}
+        <nav
+          aria-label={t("title")}
+          className="sticky top-24 hidden self-start rounded-xl border bg-card/60 p-4 backdrop-blur-md lg:block"
+        >
+          <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+            {t("title")}
+          </p>
+          <ol className="space-y-0.5 border-l">
+            {SECTIONS.map((section, i) => (
+              <li key={section.id}>
+                <a
+                  href={`#${section.id}`}
+                  className="-ml-px flex items-start gap-2 border-l border-transparent py-1.5 pl-3 text-sm text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground"
+                >
+                  <span className="pt-px text-[0.7rem] tabular-nums text-muted-foreground/50">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="leading-snug">{t(section.titleKey)}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
 
         <Card className="gap-0 overflow-hidden py-0">
           {/* Art. 13(1)(a) DSGVO — identity and contact details of the controller */}
-          <Section id="controller" icon={Scale} title={t("controller.title")}>
+          <Section id="controller" title={t("controller.title")}>
             <Prose>{t("controller.intro")}</Prose>
-            <address className="not-italic space-y-1 rounded-lg border bg-muted/30 p-4 text-sm">
-              <p className="font-medium">{t("controller.name")}</p>
+            <address className="not-italic space-y-1 rounded-lg border bg-muted/40 p-4 text-sm">
+              <p className="font-medium text-foreground">
+                {t("controller.name")}
+              </p>
               <p className="text-muted-foreground">{t("controller.address")}</p>
               <p className="text-muted-foreground">{t("controller.city")}</p>
               <p className="text-muted-foreground">{t("controller.country")}</p>
-              <p className="pt-1">
+              <p className="pt-1 text-muted-foreground">
                 {t("controller.emailLabel")}{" "}
                 <a
                   href={`mailto:${t("controller.email")}`}
-                  className="font-medium text-blue-700 hover:underline dark:text-blue-400"
+                  className={linkClass}
                 >
                   {t("controller.email")}
                 </a>
@@ -232,16 +236,13 @@ export default async function Privacy() {
             </address>
             <Prose>
               {t("controller.impressumNote")}{" "}
-              <Link
-                href="/impressum"
-                className="font-medium text-blue-700 hover:underline dark:text-blue-400"
-              >
+              <Link href="/impressum" className={linkClass}>
                 {t("controller.impressumLink")}
               </Link>
             </Prose>
           </Section>
 
-          <Section id="overview" icon={Eye} title={t("overview.title")}>
+          <Section id="overview" title={t("overview.title")}>
             <Prose>{t("overview.description")}</Prose>
             <Callout title={t("overview.keyPoint")}>
               {t("overview.keyPointDescription")}
@@ -249,13 +250,13 @@ export default async function Privacy() {
           </Section>
 
           {/* Server logs / hosting */}
-          <Section id="hosting" icon={Server} title={t("hosting.title")}>
+          <Section id="hosting" title={t("hosting.title")}>
             <Prose>{t("hosting.description")}</Prose>
             <LegalBasis>{t("hosting.legalBasis")}</LegalBasis>
           </Section>
 
           {/* Cookies and local storage */}
-          <Section id="cookies" icon={Cookie} title={t("cookies.title")}>
+          <Section id="cookies" title={t("cookies.title")}>
             <Prose>{t("cookies.description")}</Prose>
             <div className="space-y-3">
               {(["locale", "theme", "consent", "chat"] as const).map((key) => (
@@ -273,25 +274,20 @@ export default async function Privacy() {
           </Section>
 
           {/* Analytics — consent-gated */}
-          <Section id="analytics" icon={Globe} title={t("analytics.title")}>
+          <Section id="analytics" title={t("analytics.title")}>
             <Prose>{t("analytics.description")}</Prose>
             <Prose>{t("analytics.dataCollected")}</Prose>
             <LegalBasis>{t("analytics.legalBasis")}</LegalBasis>
           </Section>
 
           {/* Consent controls — Art. 7(3) DSGVO */}
-          <Section
-            id="controls"
-            icon={SlidersHorizontal}
-            title={t("controls.title")}
-            tone="emerald"
-          >
+          <Section id="controls" title={t("controls.title")}>
             <Prose>{t("controls.description")}</Prose>
             <PrivacyControls />
           </Section>
 
           {/* AI chatbot */}
-          <Section id="chatbot" icon={Bot} title={t("chatbot.title")}>
+          <Section id="chatbot" title={t("chatbot.title")}>
             <Prose>{t("chatbot.description")}</Prose>
             <Item title={t("chatbot.alwaysTitle")}>
               {t("chatbot.alwaysDescription")}
@@ -306,7 +302,7 @@ export default async function Privacy() {
           </Section>
 
           {/* Other AI-backed tools */}
-          <Section id="ai-tools" icon={Wrench} title={t("aiTools.title")}>
+          <Section id="ai-tools" title={t("aiTools.title")}>
             <Prose>{t("aiTools.description")}</Prose>
             <Item title={t("aiTools.emailTitle")}>
               {t("aiTools.emailDescription")}
@@ -318,7 +314,7 @@ export default async function Privacy() {
           </Section>
 
           {/* Booking */}
-          <Section id="booking" icon={Server} title={t("booking.title")}>
+          <Section id="booking" title={t("booking.title")}>
             <Prose>{t("booking.description")}</Prose>
             <Item title={t("booking.calendlyTitle")}>
               {t("booking.calendlyDescription")}
@@ -327,7 +323,7 @@ export default async function Privacy() {
           </Section>
 
           {/* Art. 13(1)(e)-(f) — recipients and third-country transfers */}
-          <Section id="recipients" icon={Users} title={t("recipients.title")}>
+          <Section id="recipients" title={t("recipients.title")}>
             <Prose>{t("recipients.description")}</Prose>
             <div className="space-y-3">
               {(["vercel", "openai", "groq", "calendly"] as const).map((key) => (
@@ -341,36 +337,33 @@ export default async function Privacy() {
                 </Item>
               ))}
             </div>
-            <Callout tone="amber" title={t("recipients.transfersTitle")}>
+            <Callout title={t("recipients.transfersTitle")}>
               {t("recipients.transfersDescription")}
             </Callout>
           </Section>
 
           {/* Art. 13(2)(a) — retention */}
-          <Section id="retention" icon={Timer} title={t("retention.title")}>
+          <Section id="retention" title={t("retention.title")}>
             <Prose>{t("retention.description")}</Prose>
             <ul className="grid gap-2.5">
               {(
                 ["serverLogs", "chatSessions", "chatRecords", "browser"] as const
               ).map((key) => (
-                <li key={key} className="flex items-start gap-2.5">
+                <li key={key} className="flex items-start gap-3">
                   <span
-                    className="mt-1.5 size-2 shrink-0 rounded-full bg-blue-500 dark:bg-blue-400"
+                    className="mt-[0.45rem] size-1.5 shrink-0 rounded-full bg-foreground/40"
                     aria-hidden={true}
                   />
-                  <span className="text-sm">{t(`retention.${key}`)}</span>
+                  <span className="text-sm leading-relaxed">
+                    {t(`retention.${key}`)}
+                  </span>
                 </li>
               ))}
             </ul>
           </Section>
 
           {/* Art. 13(2)(b)-(d) — data subject rights */}
-          <Section
-            id="rights"
-            icon={Shield}
-            title={t("rights.title")}
-            tone="emerald"
-          >
+          <Section id="rights" title={t("rights.title")}>
             <Prose>{t("rights.description")}</Prose>
             <ul className="grid gap-2.5">
               {(
@@ -384,19 +377,21 @@ export default async function Privacy() {
                   "withdraw",
                 ] as const
               ).map((key) => (
-                <li key={key} className="flex items-start gap-2.5">
+                <li key={key} className="flex items-start gap-3">
                   <Check
-                    className="mt-0.5 size-4 shrink-0 text-emerald-600 dark:text-emerald-400"
+                    className="mt-0.5 size-4 shrink-0 text-foreground/60"
                     aria-hidden={true}
                   />
-                  <span className="text-sm">{t(`rights.${key}`)}</span>
+                  <span className="text-sm leading-relaxed">
+                    {t(`rights.${key}`)}
+                  </span>
                 </li>
               ))}
             </ul>
             <Prose>{t("rights.howTo")}</Prose>
-            <Callout tone="rose" title={t("rights.complaintTitle")}>
+            <Callout title={t("rights.complaintTitle")}>
               <p>{t("rights.complaintDescription")}</p>
-              <address className="not-italic mt-2 space-y-0.5">
+              <address className="not-italic mt-2 space-y-0.5 text-foreground/80">
                 <p>{t("rights.authorityName")}</p>
                 <p>{t("rights.authorityAddress")}</p>
                 <p>{t("rights.authorityCity")}</p>
@@ -404,16 +399,16 @@ export default async function Privacy() {
             </Callout>
           </Section>
 
-          <Section id="changes" icon={Eye} title={t("changes.title")}>
+          <Section id="changes" title={t("changes.title")}>
             <Prose>{t("changes.description")}</Prose>
           </Section>
         </Card>
+      </div>
 
-        <div className="pt-2 text-center">
-          <p className="text-xs text-muted-foreground">
-            {t("lastUpdated")} {LAST_REVIEWED}
-          </p>
-        </div>
+      <div className="mt-6 text-center">
+        <p className="text-xs text-muted-foreground">
+          {t("lastUpdated")} {LAST_REVIEWED}
+        </p>
       </div>
     </div>
   );
