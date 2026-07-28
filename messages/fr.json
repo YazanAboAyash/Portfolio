@@ -208,7 +208,7 @@
       "phone": "Téléphone :",
       "phoneValue": "Sur demande",
       "email": "E-mail :",
-      "emailValue": "abo.ayash@service.com"
+      "emailValue": "contact@yazan-abo-ayash.de"
     },
     "vat": {
       "title": "Numéro de TVA",
@@ -232,53 +232,161 @@
     "lastUpdated": "Dernière mise à jour :"
   },
   "Privacy": {
-    "title": "Politique de Confidentialité",
-    "subtitle": "Comment je gère vos données et votre vie privée",
+    "title": "Politique de confidentialité",
+    "subtitle": "Informations sur le traitement de vos données au titre de l'art. 13 du RGPD",
+    "controller": {
+      "title": "Responsable du traitement",
+      "intro": "Le responsable du traitement des données à caractère personnel sur ce site est :",
+      "name": "Yazan Abo-Ayash",
+      "address": "Invalidengasse 4",
+      "city": "68723 Schwetzingen",
+      "country": "Allemagne",
+      "emailLabel": "E-mail :",
+      "email": "contact@yazan-abo-ayash.de",
+      "impressumNote": "Vous trouverez d'autres informations sur l'éditeur dans les",
+      "impressumLink": "mentions légales"
+    },
     "overview": {
       "title": "Aperçu",
-      "description": "Cette politique de confidentialité explique comment ce portfolio traite vos données. Je ne collecte aucune donnée personnelle et priorise votre vie privée.",
-      "keyPoint": "Vie privée d'abord",
-      "keyPointDescription": "Je ne collecte, ne stocke ni ne vends vos données personnelles. Tout est conçu en pensant à la vie privée."
+      "description": "Ce site est un portfolio personnel. Vous pouvez le consulter sans fournir la moindre information vous concernant. Certaines fonctions — l'assistant IA, l'outil e-mail, l'audit d'automatisation et la prise de rendez-vous — transmettent des données à des prestataires externes, et la mesure de performance ne s'exécute que si vous l'acceptez. Les sections ci-dessous décrivent chaque cas, sa finalité, sa base légale et la durée de conservation.",
+      "keyPoint": "Ce que cela signifie concrètement",
+      "keyPointDescription": "Vous pouvez consulter ce site sans vous identifier. Il n'y a ni publicité, ni pistage inter-sites, ni profilage. Dans le même temps, votre adresse IP et tout ce que vous saisissez dans l'assistant ou les outils IA constituent des données à caractère personnel : les sections ci-dessous expliquent précisément ce qu'il en advient, sur quelle base légale et pendant combien de temps."
+    },
+    "hosting": {
+      "title": "Hébergement et journaux serveur",
+      "description": "Ce site est hébergé par Vercel Inc. À l'ouverture d'une page, votre navigateur transmet nécessairement votre adresse IP, l'adresse demandée, la page d'origine, l'identification de votre navigateur et l'heure de la requête. Vercel traite ces données pour délivrer le site et le protéger contre les attaques et les surcharges. L'assistant et les outils IA utilisent en outre votre adresse IP pour limiter le nombre de requêtes, afin qu'un visiteur seul ne puisse pas épuiser le service pour tous les autres.",
+      "legalBasis": "Base légale : art. 6, § 1, point f du RGPD — mon intérêt légitime à proposer un site fonctionnel, sûr et résistant aux abus."
     },
     "cookies": {
-      "title": "Cookies et Stockage Local",
-      "essential": {
-        "title": "Cookies Essentiels",
-        "description": "Préférences de langue et paramètres de thème stockés localement dans votre navigateur. Requis pour la fonctionnalité du site web."
+      "title": "Cookies et stockage local",
+      "description": "Ce site ne dépose aucun cookie publicitaire ou de pistage. Les entrées suivantes sont enregistrées sur votre appareil :",
+      "locale": {
+        "title": "Préférence de langue (cookie)",
+        "description": "Conserve la langue que vous avez choisie ainsi que celle annoncée par votre navigateur, afin d'afficher la bonne version lors de votre prochaine visite.",
+        "retention": "Conservation : jusqu'à 12 mois."
       },
-      "analytics": {
-        "title": "Cookies d'Analyse",
-        "description": "Vercel Analytics et Speed Insights respectueux de la vie privée pour surveiller les performances du site web. Aucune donnée personnelle n'est suivie ou stockée."
-      }
+      "theme": {
+        "title": "Préférence d'apparence (stockage local)",
+        "description": "Conserve votre choix entre l'apparence claire et l'apparence sombre.",
+        "retention": "Conservation : jusqu'à ce que vous effaciez le stockage de votre navigateur."
+      },
+      "consent": {
+        "title": "Décision de consentement (stockage local)",
+        "description": "Enregistre si vous avez autorisé ou refusé la mesure facultative, afin de ne pas vous solliciter à chaque page.",
+        "retention": "Conservation : jusqu'à ce que vous réinitialisiez votre choix ou effaciez le stockage de votre navigateur."
+      },
+      "chat": {
+        "title": "Conversation avec l'assistant (stockage local)",
+        "description": "Contient la conversation en cours avec l'assistant IA, son identifiant de session et votre décision de consentement pour l'assistant, afin que le fil soit conservé lors de la navigation entre les pages.",
+        "retention": "Conservation : effacée lorsque vous quittez le site, ou immédiatement au moyen du bouton de suppression ci-dessous."
+      },
+      "legalBasis": "Base légale : § 25, al. 2 de la TDDDG allemande combiné à l'art. 6, § 1, point f du RGPD — ces entrées sont strictement nécessaires à la fourniture des fonctions que vous avez demandées. L'entrée relative au consentement à la mesure est enregistrée au titre du § 25, al. 1 de la TDDDG et de l'art. 6, § 1, point a du RGPD."
     },
-    "dataProcessing": {
-      "title": "Traitement des Données",
-      "description": "Ce site web traite des données minimales pour fournir des fonctionnalités. Tout le traitement est effectué côté client dans votre navigateur ou via des services respectueux de la vie privée.",
-      "vercelTitle": "Vercel Analytics & Speed Insights",
-      "vercelDescription": "Ces services collectent des métriques de performance anonymes pour aider à améliorer le site web. Aucune information personnelle n'est collectée ou stockée."
+    "analytics": {
+      "title": "Mesure d'audience et de performance",
+      "description": "J'utilise Vercel Web Analytics et Vercel Speed Insights pour savoir quelles pages sont consultées et à quelle vitesse elles se chargent. Aucun de ces services ne dépose de cookies ni ne constitue de profil vous concernant entre les sites. Ils restent néanmoins facultatifs : les scripts ne sont pas chargés tant que vous n'avez pas accepté activement, et ils sont retirés dès que vous retirez votre consentement.",
+      "dataCollected": "Lorsqu'ils sont actifs, ces services traitent la page consultée, la page d'origine, une localisation approximative déduite de votre adresse IP, le type d'appareil, le système d'exploitation et le navigateur. Selon Vercel, l'adresse IP elle-même n'est pas conservée et aucun identifiant n'est stocké sur votre appareil.",
+      "legalBasis": "Base légale : votre consentement au titre de l'art. 6, § 1, point a du RGPD et du § 25, al. 1 de la TDDDG. Vous pouvez le retirer à tout moment pour l'avenir au moyen des commandes ci-dessous."
+    },
+    "controls": {
+      "title": "Vos réglages de consentement",
+      "description": "Retirer son consentement est aussi simple que de le donner. Les modifications prennent effet immédiatement, dans cet onglet comme dans tous les autres onglets ouverts.",
+      "analyticsLabel": "Mesure d'audience et de performance :",
+      "statusAccepted": "actuellement autorisée",
+      "statusDeclined": "actuellement refusée",
+      "statusUndecided": "aucun choix enregistré — rien de facultatif n'est chargé",
+      "allowAnalytics": "Autoriser",
+      "refuseAnalytics": "Refuser",
+      "resetChoice": "Réinitialiser le choix",
+      "analyticsHint": "Le refus n'enlève rien aux fonctionnalités du site. La réinitialisation de votre choix fait réapparaître la bannière de consentement.",
+      "chatLabel": "Données de l'assistant enregistrées dans ce navigateur",
+      "clearChatData": "Supprimer la conversation de ce navigateur",
+      "chatCleared": "Supprimé.",
+      "chatHint": "Cette action retire de ce navigateur la conversation, l'identifiant de session et votre décision de consentement pour l'assistant. Les conversations déjà enregistrées sur le serveur avec votre consentement ne sont pas concernées : écrivez à l'adresse indiquée ci-dessus pour en demander également la suppression."
     },
     "chatbot": {
-      "title": "Service de Chatbot IA",
-      "description": "Ce site web inclut un chatbot IA pour l'assistance interactive et l'information.",
-      "apiTitle": "Intégration de l'API OpenAI",
-      "apiDescription": "Le chatbot est alimenté par OpenAI. En utilisant le chatbot, vous acceptez les conditions d'utilisation et la politique de confidentialité d'OpenAI. Les requêtes de chat sont traitées via l'API OpenAI.",
-      "temporaryTitle": "Stockage Optionnel des Données (Avec Consentement)",
-      "temporaryDescription": "Avec votre consentement explicite, les conversations du chat peuvent être enregistrées à des fins d'amélioration de la qualité et d'analyse. Cela inclut : les messages du chat, les horodatages, l'adresse IP anonymisée et la localisation générale (pays/ville). Vous pouvez retirer votre consentement à tout moment. Sans consentement, toutes les données du chat restent uniquement dans votre navigateur."
+      "title": "Assistant IA (Reem)",
+      "description": "Ce site comporte un assistant IA qui répond aux questions sur mon travail. Il s'agit d'un système artificiel et non d'une personne ; ses réponses peuvent être erronées ou incomplètes.",
+      "alwaysTitle": "Ce qui est toujours transmis lorsque vous envoyez un message",
+      "alwaysDescription": "L'envoi d'un message transmet son texte à mon serveur, puis de là à OpenAI, qui génère la réponse. Sont transmis avec le message la page sur laquelle vous vous trouviez, la langue de votre navigateur, l'identification de votre navigateur et un identifiant de session ; votre adresse IP parvient à mon serveur dans le cadre de la requête. C'est inévitable : sans cela, l'assistant ne peut produire aucune réponse. Mon serveur conserve la conversation en mémoire pendant la durée de la session afin que les questions de suivi disposent du contexte. Les requêtes sont marquées de manière à ne pas servir à l'entraînement des modèles d'OpenAI, mais OpenAI peut conserver les données d'API pendant une durée limitée à des fins de contrôle des abus, selon ses propres conditions.",
+      "storedTitle": "Ce qui n'est enregistré qu'avec votre consentement",
+      "storedDescription": "Si vous acceptez la demande de consentement de l'assistant, la conversation est en outre enregistrée dans ma base de données : les messages, leurs horodatages, une adresse IP tronquée, la langue de votre navigateur et l'identification de votre navigateur. Si vous refusez, rien de tout cela n'est enregistré : l'échange n'existe alors que dans la mémoire du serveur pendant la session et dans votre propre navigateur.",
+      "aiNoticeTitle": "Transparence sur l'IA",
+      "aiNoticeDescription": "Vous interagissez avec un système d'IA, et non avec moi personnellement. Merci de ne pas saisir de mots de passe, de coordonnées bancaires, de données de santé ni aucune autre information dont vous ne souhaiteriez pas le traitement par un prestataire d'IA établi aux États-Unis.",
+      "legalBasis": "Base légale : art. 6, § 1, points b et f du RGPD pour produire la réponse que vous avez demandée ; art. 6, § 1, point a du RGPD — votre consentement — pour l'enregistrement de la conversation."
+    },
+    "aiTools": {
+      "title": "Outils reposant sur l'IA",
+      "description": "Certains outils de ce site transmettent le texte que vous saisissez à des prestataires d'IA externes afin de produire un résultat. Ce texte est traité pour répondre à votre demande et n'est ensuite pas conservé par mes soins.",
+      "emailTitle": "Assistant e-mail",
+      "emailDescription": "L'e-mail que vous collez, ainsi que le contexte que vous ajoutez, sont transmis à Groq, Inc. pour analyse et reformulation. Merci de ne pas y saisir de données à caractère personnel de tiers que vous n'êtes pas autorisé à communiquer.",
+      "auditTitle": "Audit d'automatisation",
+      "auditDescription": "Les réponses que vous fournissez dans l'audit sont transmises à OpenAI afin de générer l'évaluation.",
+      "legalBasis": "Base légale : art. 6, § 1, point b du RGPD — exécution d'une prestation que vous avez activement demandée ; art. 6, § 1, point f du RGPD pour l'exploitation sécurisée de l'outil."
     },
     "booking": {
-      "title": "Service de Réservation",
-      "description": "Ce site utilise Calendly pour la prise de rendez-vous.",
-      "calendlyTitle": "Intégration Calendly",
-      "calendlyDescription": "Lorsque vous réservez un appel, vos données (nom, e-mail, détails de réservation) sont traitées par Calendly conformément à leur politique de confidentialité. Je ne reçois que les informations nécessaires à notre réunion."
+      "title": "Prise de rendez-vous",
+      "description": "Les rendez-vous sont planifiés via Calendly.",
+      "calendlyTitle": "Calendly",
+      "calendlyDescription": "Si vous réservez un entretien, Calendly LLC traite le nom, l'adresse e-mail et toutes les informations que vous saisissez dans son formulaire de réservation, et dépose ses propres cookies sur ses pages. Je reçois les informations nécessaires à la tenue du rendez-vous. La politique de confidentialité de Calendly s'applique au processus de réservation.",
+      "legalBasis": "Base légale : art. 6, § 1, point b du RGPD — mesures précontractuelles prises à votre demande."
+    },
+    "recipients": {
+      "title": "Destinataires et transferts internationaux",
+      "description": "Les données à caractère personnel sont communiquées aux sous-traitants et prestataires suivants. Aucune donnée n'est vendue ni transmise à des tiers, sauf obligation légale.",
+      "vercel": {
+        "name": "Vercel Inc.",
+        "purpose": "Hébergement et diffusion de ce site, ainsi que la mesure facultative d'audience et de performance.",
+        "location": "États-Unis, avec une infrastructure edge dans l'UE."
+      },
+      "openai": {
+        "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
+        "purpose": "Génère les réponses de l'assistant IA et le résultat de l'audit d'automatisation.",
+        "location": "États-Unis."
+      },
+      "groq": {
+        "name": "Groq, Inc.",
+        "purpose": "Analyse et reformule le texte soumis à l'assistant e-mail.",
+        "location": "États-Unis."
+      },
+      "calendly": {
+        "name": "Calendly LLC",
+        "purpose": "Planification de rendez-vous.",
+        "location": "États-Unis."
+      },
+      "transfersTitle": "Transferts vers des pays tiers",
+      "transfersDescription": "Ces prestataires sont établis aux États-Unis ; vos données sont donc transférées hors de l'UE/EEE. Chacun d'eux propose un contrat de sous-traitance intégrant les clauses contractuelles types de la Commission européenne ; lorsqu'un prestataire dispose en outre d'une certification au titre du cadre de protection des données UE—États-Unis, celle-ci s'applique en complément. Malgré ces garanties, les autorités américaines peuvent disposer de droits d'accès qui ne correspondent pas aux standards européens, et y faire valoir vos droits peut s'avérer plus difficile que dans l'UE. Si vous préférez l'éviter, n'utilisez tout simplement pas l'assistant, les outils IA ou le formulaire de réservation : le reste du site fonctionne sans eux."
+    },
+    "retention": {
+      "title": "Durées de conservation",
+      "description": "Je ne conserve les données à caractère personnel que le temps nécessaire à la finalité pour laquelle elles ont été collectées, ou aussi longtemps que l'exigent des obligations légales de conservation.",
+      "serverLogs": "Les journaux d'hébergement et de requêtes sont conservés par Vercel pendant la durée fixée par sa propre politique de conservation ; je ne tiens pas de journaux d'accès distincts.",
+      "chatSessions": "Une conversation d'assistant conservée dans la mémoire du serveur est automatiquement supprimée lorsque la session est restée inactive pendant le délai configuré, et en tout état de cause au redémarrage du processus serveur.",
+      "chatRecords": "Les conversations enregistrées en base de données avec votre consentement sont actuellement supprimées manuellement lors d'une revue, et non selon un calendrier automatique fixe. Vous pouvez en demander la suppression à tout moment en écrivant à l'adresse indiquée ci-dessus ; j'y procéderai dans les meilleurs délais.",
+      "browser": "Les entrées présentes dans votre navigateur subsistent jusqu'à leur expiration, jusqu'à ce que vous effaciez le stockage de votre navigateur, ou jusqu'à ce que vous utilisiez le bouton de suppression de cette page."
     },
     "rights": {
-      "title": "Vos Droits",
-      "description": "Vous avez un contrôle total sur vos données et votre vie privée sur ce site web :",
-      "clearCookies": "Effacez les cookies de votre navigateur à tout moment pour réinitialiser les préférences",
-      "disableAnalytics": "Utilisez la bannière de cookies pour désactiver le suivi analytique",
-      "contact": "Contactez-moi si vous avez des questions sur votre vie privée"
+      "title": "Vos droits",
+      "description": "Le RGPD vous confère les droits suivants concernant vos données à caractère personnel :",
+      "access": "Droit d'accès — savoir si des données vous concernant sont traitées et lesquelles (art. 15 du RGPD).",
+      "rectification": "Droit de rectification des données inexactes (art. 16 du RGPD).",
+      "erasure": "Droit à l'effacement (art. 17 du RGPD).",
+      "restriction": "Droit à la limitation du traitement (art. 18 du RGPD).",
+      "portability": "Droit à la portabilité des données (art. 20 du RGPD).",
+      "objection": "Droit de vous opposer à tout moment, pour des raisons tenant à votre situation particulière, à un traitement fondé sur l'intérêt légitime (art. 21 du RGPD).",
+      "withdraw": "Droit de retirer votre consentement à tout moment pour l'avenir, sans que cela n'affecte la licéité du traitement effectué auparavant (art. 7, § 3 du RGPD).",
+      "howTo": "Pour exercer l'un de ces droits, écrivez à l'adresse e-mail indiquée en haut de cette page. Je réponds dans un délai d'un mois.",
+      "complaintTitle": "Droit d'introduire une réclamation",
+      "complaintDescription": "Vous pouvez également introduire une réclamation auprès d'une autorité de contrôle, en particulier dans l'État membre de votre résidence, de votre lieu de travail ou du lieu de la violation alléguée. L'autorité compétente à mon égard est :",
+      "authorityName": "Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg",
+      "authorityAddress": "Lautenschlagerstraße 20",
+      "authorityCity": "70173 Stuttgart, Allemagne"
     },
-    "lastUpdated": "Dernière mise à jour :"
+    "changes": {
+      "title": "Modifications de la présente politique",
+      "description": "Je mets cet avis à jour lorsque les fonctions du site ou les services qui les sous-tendent évoluent. La date ci-dessous indique quand le texte a été vérifié pour la dernière fois."
+    },
+    "lastUpdated": "Dernière vérification :"
   },
   "MediaDashboard": {
     "title": "Tableau de Bord Média",
@@ -717,7 +825,7 @@
   },
   "CookieBanner": {
     "title": "Nous respectons votre vie privée",
-    "description": "Je prépare mes propres cookies ! Les préférences de thème sont stockées localement dans votre navigateur. J'utilise Vercel Analytics et Speed Insights pour surveiller les performances, qui respectent la vie privée et ne suivent pas les données personnelles.",
+    "description": "Les préférences d'apparence et de langue sont enregistrées localement dans votre navigateur et sont nécessaires au fonctionnement du site. Je souhaiterais également utiliser Vercel Analytics et Speed Insights pour savoir quelles pages sont consultées et à quelle vitesse elles se chargent : ces outils sont facultatifs et ne sont pas chargés sans votre accord.",
     "learnMore": "En savoir plus sur la politique de confidentialité",
     "learnMoreAriaLabel": "En savoir plus sur la politique de confidentialité et l'utilisation des cookies",
     "acceptAll": "Accepter tous les cookies",
