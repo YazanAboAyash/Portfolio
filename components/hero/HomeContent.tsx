@@ -95,7 +95,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <SpeedInsight className="py-12 px-4 sm:px-6 lg:px-8" />
+            <SpeedInsight className="pb-32 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           {/* Project Showcase Section */}
@@ -106,7 +106,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <ProjectsHomeShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+            <ProjectsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           <Suspense
@@ -116,7 +116,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+            <CertificationShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           {/* Service Packages Section */}
@@ -137,7 +137,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <section className="py-12 px-4 sm:px-6 lg:px-8">
+            <section className="py-24 px-4 sm:px-6 lg:px-8">
               <div className="max-w-7xl mx-auto">
                 <ShowcaseSection />
               </div>
@@ -152,7 +152,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <section className="py-12 px-4 sm:px-6 lg:px-8" id="github">
+            <section className="py-24 px-4 sm:px-6 lg:px-8" id="github">
               <div className="max-w-6xl mx-auto">
                 <GitHubShowcase />
               </div>
