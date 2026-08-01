@@ -13,7 +13,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -133,17 +132,6 @@
   /* Ensure proper scroll offset for sticky navbar */
   [id] {
     scroll-margin-top: 4rem; /* 64px - navbar height */
-  }
-}
-
-/* Project card gradient animation */
-@keyframes gradient-shift {
-  0%,
-  100% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
   }
 }
 
