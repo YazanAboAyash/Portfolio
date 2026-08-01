@@ -122,7 +122,7 @@ export function DesktopNavigation({
           >
             <div className="flex items-center space-x-1 xl:space-x-2 min-w-0">
               <Icon
-                className="h-4 w-4 transition-colors duration-300 group-hover:text-sky-600 shrink-0"
+                className="h-4 w-4 transition-colors duration-300 group-hover:text-blue-100 shrink-0"
                 aria-hidden={true}
               />
               <div className="relative overflow-hidden max-w-20 xl:max-w-none">

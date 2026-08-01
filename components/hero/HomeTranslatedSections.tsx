@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
 import { PackageCard } from "@/components/services";
 import { servicePackages } from "@/data/hubs/servicesData";
-import { RevealGroup, RevealItem } from "@/components/visuals";
+import { RevealGroup, RevealItem, ScrambleText } from "@/components/visuals";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -35,8 +35,8 @@ export function ServicesSection() {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-8xl mx-auto">
-        <h2 className="lg:text-4xl text-xl font-medium text-center mb-8 text-black dark:text-white">
-          {t("services.title")}
+        <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-8 text-black dark:text-white">
+          <ScrambleText text={t("services.title")} />
         </h2>
         <div className="flex justify-center mt-10">
           <Link

@@ -17,3 +17,4 @@ export {
   cardRailFeatured,
 } from "./card-system";
 export { RevealGroup, RevealItem } from "./Reveal";
+export { ScrambleText } from "./ScrambleText";

@@ -11,6 +11,7 @@ import {
   cardSurface,
   RevealGroup,
   RevealItem,
+  ScrambleText,
 } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 
@@ -41,8 +42,8 @@ export function CertificationShowcaseDesktop({
 
   return (
     <section className={className} id="cert">
-      <h2 className="text-3xl font-light sm:text-4xl text-center mb-12 text-black dark:text-white">
-        {t("title")}
+      <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-12 text-black dark:text-white">
+        <ScrambleText text={t("title")} />
       </h2>
       <RevealGroup className="max-w-6xl mx-auto grid grid-cols-2 gap-x-16 gap-y-12">
         {certifications.map((cert, index) => (

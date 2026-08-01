@@ -9,7 +9,7 @@
 import { useTranslations } from "next-intl";
 import { useCaseProjects } from "@/data/hubs/use-cases";
 import { ProjectCard } from "./project-card";
-import { RevealGroup, RevealItem } from "@/components/visuals";
+import { RevealGroup, RevealItem, ScrambleText } from "@/components/visuals";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -22,7 +22,7 @@ export function ShowcaseSection() {
       <div className="container px-4 md:px-6">
         <div className="space-y-4 text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-balance">
-            {t("title")}
+            <ScrambleText text={t("title")} />
           </h2>
           <p className="mx-auto max-w-175 text-muted-foreground md:text-xl text-pretty">
             {t("subtitle")}

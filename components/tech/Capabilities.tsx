@@ -7,7 +7,12 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { cardSurface, RevealGroup, RevealItem } from "@/components/visuals";
+import {
+  cardSurface,
+  RevealGroup,
+  RevealItem,
+  ScrambleText,
+} from "@/components/visuals";
 import { cn } from "@/lib/utils";
 import { capabilities } from "@/data/main/capabilitiesData";
 import type { Capability } from "@/types/main/capabilities";
@@ -115,9 +120,9 @@ export default function Capabilities() {
         <div className="text-center space-y-4">
           <h2
             id="capabilities-section-title"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold"
           >
-            {t("title")}
+            <ScrambleText text={t("title")} />
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t("subtitle")}
