@@ -66,7 +66,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
               {t(`packages.tiers.${pkg.tier}`)}
             </Badge>
           </div>
-          <p className="text-2xl font-bold text-sky-500">
+          <p className="text-2xl font-bold text-gray-500">
             {t(pkg.headlineKey)}
           </p>
           {variant === "detailed" && (
