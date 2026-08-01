@@ -18,12 +18,12 @@ import { ArrowRight } from "lucide-react";
 export function HeroBannerSection() {
   const t = useTranslations("Home");
   return (
-    <>
-      <span className="text-sm font-medium text-center text-black dark:text-white">
+    <div className="flex flex-col gap-2">
+      <span className="text-sm pb-4 font-medium text-center text-black dark:text-white">
         {t("companiesContributing")}
       </span>
       <CompanyBanner />
-    </>
+    </div>
   );
 }
 
