@@ -892,6 +892,16 @@
   },
   "SectionRail": {
     "label": "Sidans avsnitt",
-    "scrollTo": "Rulla till avsnittet {section}"
+    "scrollTo": "Rulla till avsnittet {section}",
+    "sections": {
+      "home": "Hem",
+      "speed-insight": "Prestanda",
+      "projects": "Projekt",
+      "cert": "Certifieringar",
+      "services": "Tjänster",
+      "use-cases": "Användningsfall",
+      "github": "GitHub",
+      "capabilities": "Förmågor"
+    }
   }
 }

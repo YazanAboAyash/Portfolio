@@ -9,6 +9,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useReducedMotion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 /**
  * Homepage anchor ids in document order — one major graduation each. The
@@ -46,7 +47,7 @@ const BOTTOM_SLACK = 2;
 /**
  * A ruler pinned to the right edge, next to the scrollbar: fine graduations for
  * texture, one longer tick per section. The tick tracking the section you're
- * reading stays extended; hovering any tick names its anchor, and clicking
+ * reading stays extended; hovering any tick names its section, and clicking
  * scrolls there. Desktop only — the labels are hover-driven, which touch has no
  * equivalent for, and the navbar menu already covers small screens.
  */
@@ -116,41 +117,49 @@ export default function SectionRail() {
       {/* Fine graduations and the spine they hang off — texture only. */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 w-1.5 border-r border-foreground/15 text-foreground/15"
+        className="pointer-events-none absolute inset-y-0 right-0 w-2.5 border-r border-foreground/15 text-foreground/15"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px 5px)",
+            "repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px 6px)",
         }}
       />
 
       {SECTION_IDS.map((id) => {
         const isActive = id === activeId;
+        // The anchor ids are abbreviated (`cert`, `speed-insight`), so the chip
+        // shows a written-out title instead.
+        const title = t(`sections.${id}`);
 
         return (
-          <button
+          <Button
             key={id}
             type="button"
+            variant="ghost"
+            size="sm"
             onClick={() => scrollToSection(id)}
-            aria-label={t("scrollTo", { section: id })}
+            aria-label={t("scrollTo", { section: title })}
             aria-current={isActive ? "true" : undefined}
-            className="group relative flex flex-1 cursor-pointer items-center justify-end rounded-sm pl-3 pr-1 focus-visible:outline-1 focus-visible:outline-ring"
+            // Height and padding come off the size preset because the ticks
+            // divide the rail's height between them, and the hover fill is
+            // dropped — on a rule this thin the tick growing is the feedback.
+            className="group relative h-auto flex-1 cursor-pointer justify-end rounded-sm pl-4 pr-1.5 hover:bg-transparent dark:hover:bg-transparent"
           >
             {/*
               Pinned to the button's left edge so it trails whatever width the
               tick currently has, and inert to the pointer so the invisible chip
               never swallows a click meant for the page behind it.
             */}
-            <span className="pointer-events-none absolute right-full mr-2 rounded-sm border border-border bg-background/90 px-1.5 py-0.5 font-mono text-[10px] leading-none tracking-widest text-foreground opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none">
-              #{id}
+            <span className="pointer-events-none absolute right-full mr-2 rounded-sm border border-border bg-background/90 px-2 py-1 text-xs font-medium leading-none tracking-wide text-foreground opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none">
+              {title}
             </span>
             <span
               className={`h-px transition-all duration-300 motion-reduce:transition-none ${
                 isActive
-                  ? "w-8 bg-foreground"
-                  : "w-4 bg-foreground/30 group-hover:w-6 group-hover:bg-foreground/70"
+                  ? "w-12 bg-foreground"
+                  : "w-6 bg-foreground/30 group-hover:w-12 group-hover:bg-foreground/70"
               }`}
             />
-          </button>
+          </Button>
         );
       })}
     </nav>

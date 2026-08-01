@@ -892,6 +892,16 @@
   },
   "SectionRail": {
     "label": "Sections de la page",
-    "scrollTo": "Faire défiler jusqu'à la section {section}"
+    "scrollTo": "Faire défiler jusqu'à la section {section}",
+    "sections": {
+      "home": "Accueil",
+      "speed-insight": "Performance",
+      "projects": "Projets",
+      "cert": "Certifications",
+      "services": "Services",
+      "use-cases": "Cas d'Usage",
+      "github": "GitHub",
+      "capabilities": "Compétences"
+    }
   }
 }
