@@ -889,5 +889,9 @@
     "tryAgain": "Försök igen",
     "goHome": "Gå hem",
     "persist": "Om problemet kvarstår, kontakta vårt supportteam."
+  },
+  "SectionRail": {
+    "label": "Sidans avsnitt",
+    "scrollTo": "Rulla till avsnittet {section}"
   }
 }

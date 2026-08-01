@@ -889,5 +889,9 @@
     "tryAgain": "Intentar de nuevo",
     "goHome": "Ir al inicio",
     "persist": "Si el problema persiste, ponte en contacto con nuestro equipo de soporte."
+  },
+  "SectionRail": {
+    "label": "Secciones de la página",
+    "scrollTo": "Desplazarse a la sección {section}"
   }
 }

@@ -33,7 +33,7 @@ export function ServicesSection() {
   const tt = useTranslations("Services");
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <section className="py-16 px-4 sm:px-6 lg:px-8" id="services">
       <div className="max-w-8xl mx-auto">
         <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-8 text-black dark:text-white">
           <ScrambleText text={t("services.title")} />

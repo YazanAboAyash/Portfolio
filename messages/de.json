@@ -889,5 +889,9 @@
     "tryAgain": "Erneut versuchen",
     "goHome": "Zur Startseite",
     "persist": "Wenn das Problem weiterhin besteht, wenden Sie sich bitte an unser Support-Team."
+  },
+  "SectionRail": {
+    "label": "Seitenabschnitte",
+    "scrollTo": "Zum Abschnitt {section} scrollen"
   }
 }

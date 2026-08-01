@@ -114,7 +114,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
     useSpeedInsight();
 
   return (
-    <section className={className} aria-label={t("title")}>
+    <section className={className} id="speed-insight" aria-label={t("title")}>
       <RevealGroup>
         <RevealItem>
           <Card className={cn(cardSurface, "max-w-3xl mx-auto")}>

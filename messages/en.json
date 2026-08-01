@@ -889,5 +889,9 @@
     "tryAgain": "Try Again",
     "goHome": "Go Home",
     "persist": "If this problem persists, please contact our support team."
+  },
+  "SectionRail": {
+    "label": "Page sections",
+    "scrollTo": "Scroll to section {section}"
   }
 }
