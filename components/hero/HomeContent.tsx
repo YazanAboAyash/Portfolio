@@ -33,16 +33,6 @@ const CertificationShowcase = dynamic(
   },
 );
 
-const ClientBackground = dynamic(
-  () =>
-    import("@/components/visuals").then((mod) => ({
-      default: mod.ClientBackground,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
 
 const GitHubShowcase = dynamic(
   () =>
@@ -80,7 +70,6 @@ const SpeedInsight = dynamic(
 export default function HomeContent() {
   return (
     <div>
-      <ClientBackground />
       {/* Scroll Indicator */}
       <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 xl:left-1/5 xl:bottom-40 2xl:left-1/4 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">

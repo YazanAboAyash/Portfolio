@@ -6,7 +6,6 @@
 
 "use client";
 
-import dynamic from "next/dynamic";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
@@ -30,13 +29,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const Background = dynamic(
-  () =>
-    import("@/components/visuals/motion-background").then((mod) => ({
-      default: mod.Background,
-    })),
-  { loading: () => null, ssr: false },
-);
 
 // Icon mapping for dynamic rendering
 const iconMap: Record<string, React.ElementType> = {
@@ -150,7 +142,6 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen relative">
-      <Background />
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="pt-32 pb-16 px-4 lg:px-8">

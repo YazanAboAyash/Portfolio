@@ -131,7 +131,7 @@ export const ChatMessage = React.memo(function ChatMessage({
                       href={href}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="font-medium text-blue-600 underline underline-offset-4 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 break-words"
+                      className="font-medium text-blue-600 underline underline-offset-4 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 wrap-break-word"
                     >
                       {children}
                     </a>
