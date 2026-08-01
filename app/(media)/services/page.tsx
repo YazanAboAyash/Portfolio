@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { PackageCard } from "@/components/services";
+import { RevealItem } from "@/components/visuals";
 import {
   packagesByTier,
   processSteps,
@@ -189,7 +190,9 @@ export default function ServicesPage() {
                   className="flex flex-wrap justify-center gap-6"
                 >
                   {packages.map((pkg) => (
-                    <PackageCard key={pkg.id} pkg={pkg} />
+                    <RevealItem key={pkg.id} className="w-full max-w-sm">
+                      <PackageCard pkg={pkg} />
+                    </RevealItem>
                   ))}
                 </m.div>
               </div>
