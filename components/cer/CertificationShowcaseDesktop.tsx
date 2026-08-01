@@ -6,6 +6,13 @@
 
 import { useTranslations } from "next-intl";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
+import {
+  cardRail,
+  cardSurface,
+  RevealGroup,
+  RevealItem,
+} from "@/components/visuals";
+import { cn } from "@/lib/utils";
 
 interface Certification {
   readonly id: number;
@@ -37,32 +44,31 @@ export function CertificationShowcaseDesktop({
       <h2 className="text-3xl font-light sm:text-4xl text-center mb-12 text-black dark:text-white">
         {t("title")}
       </h2>
-      <div className="max-w-6xl mx-auto grid grid-cols-2 gap-x-16 gap-y-12">
+      <RevealGroup className="max-w-6xl mx-auto grid grid-cols-2 gap-x-16 gap-y-12">
         {certifications.map((cert, index) => (
-          <div
-            key={cert.id}
-            className="bg-background/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-muted-foreground/30 transition-all duration-300 overflow-hidden group"
-          >
-            <div className="pl-5 border-l-2 border-foreground/20 group-hover:border-foreground/60 transition-colors duration-300 p-6">
-              <span className="text-5xl font-bold text-foreground/8 select-none leading-none block mb-3">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="text-xl font-semibold mb-1 text-foreground">
-                {cert.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-1">
-                {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
-              </p>
-              <p className="text-xs text-muted-foreground/60 mb-3 font-mono">
-                {cert.date}
-              </p>
-              <p className="text-sm text-foreground/75 leading-relaxed">
-                {tDescriptions(cert.descriptionKey)}
-              </p>
+          <RevealItem key={cert.id} className="h-full">
+            <div className={cn(cardSurface, "h-full overflow-hidden")}>
+              <div className={cn(cardRail, "pl-5 p-6")}>
+                <span className="text-5xl font-bold text-foreground/8 select-none leading-none block mb-3">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-xl font-semibold mb-1 text-foreground">
+                  {cert.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-1">
+                  {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
+                </p>
+                <p className="text-xs text-muted-foreground/60 mb-3 font-mono">
+                  {cert.date}
+                </p>
+                <p className="text-sm text-foreground/75 leading-relaxed">
+                  {tDescriptions(cert.descriptionKey)}
+                </p>
+              </div>
             </div>
-          </div>
+          </RevealItem>
         ))}
-      </div>
+      </RevealGroup>
     </section>
   );
 }

@@ -7,3 +7,13 @@
 // Visual effects and loading components
 export { default as LoadingSkeleton } from "./LoadingSkeleton";
 export { default as CentralizedLoading } from "./CentralizedLoading";
+
+// Shared card appearance + scroll-reveal system
+export {
+  cardSurface,
+  cardSurfaceFeatured,
+  cardSurfaceGitHub,
+  cardRail,
+  cardRailFeatured,
+} from "./card-system";
+export { RevealGroup, RevealItem } from "./Reveal";

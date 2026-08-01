@@ -9,7 +9,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import type { ServicePackage } from "@/types/hubs/services";
-import { m } from "framer-motion";
+import { cardSurface } from "@/components/visuals";
+import { cn } from "@/lib/utils";
 import {
   Rocket,
   Cog,
@@ -34,19 +35,14 @@ const iconMap: Record<string, React.ElementType> = {
   Zap,
 };
 
-/** Animation variant for fade-in-up effect */
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 interface PackageCardProps {
   readonly pkg: ServicePackage;
   readonly variant?: "compact" | "detailed";
 }
 
 /**
- * Displays a service package card with pricing, features, and CTA
+ * Displays a service package card with pricing, features, and CTA.
+ * Scroll motion is supplied by the caller via `RevealItem`.
  * @param variant - "compact" for homepage preview, "detailed" for full information (default)
  */
 export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
@@ -54,8 +50,8 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
   const IconComponent = iconMap[pkg.icon];
 
   return (
-    <m.div variants={fadeInUp} className="w-full max-w-sm">
-      <Card className="h-full relative overflow-hidden transition-all duration-300 hover:shadow-lg bg-background/80 backdrop-blur-sm border-border/50 hover:border-muted-foreground/30">
+    <div className="w-full max-w-sm">
+      <Card className={cn(cardSurface, "h-full relative overflow-hidden")}>
         <CardHeader className="space-y-4">
           <div className="flex items-center gap-3">
             {IconComponent && (
@@ -113,6 +109,6 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
           )}
         </CardContent>
       </Card>
-    </m.div>
+    </div>
   );
 }

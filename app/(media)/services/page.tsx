@@ -30,7 +30,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-
 // Icon mapping for dynamic rendering
 const iconMap: Record<string, React.ElementType> = {
   MessageSquare,

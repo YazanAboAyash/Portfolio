@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
 import { PackageCard } from "@/components/services";
 import { servicePackages } from "@/data/hubs/servicesData";
+import { RevealGroup, RevealItem } from "@/components/visuals";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -49,11 +50,13 @@ export function ServicesSection() {
           </Link>
         </div>
         {/* max-w fits exactly 3 cards (3 x max-w-sm + 2 x gap-6) */}
-        <div className="flex flex-wrap justify-center gap-6 mt-10 mx-auto max-w-[75rem]">
+        <RevealGroup className="flex flex-wrap justify-center gap-6 mt-10 mx-auto max-w-300">
           {servicePackages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} variant="compact" />
+            <RevealItem key={pkg.id} className="w-full max-w-sm">
+              <PackageCard pkg={pkg} variant="compact" />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

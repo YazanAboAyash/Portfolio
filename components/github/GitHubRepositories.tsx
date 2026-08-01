@@ -15,9 +15,11 @@ import { m } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  getCardHoverClasses,
-  getOverlayStyles,
-} from "@/components/visuals/card-animations";
+  cardSurfaceGitHub,
+  RevealGroup,
+  RevealItem,
+} from "@/components/visuals";
+import { cn } from "@/lib/utils";
 import type { GitHubRepositoriesProps } from "@/types/configs/github";
 
 const LanguageColors: Record<string, string> = {
@@ -63,7 +65,6 @@ export default function GitHubRepositories({
     });
   };
 
-  const [hoveredRepo, setHoveredRepo] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -93,21 +94,15 @@ export default function GitHubRepositories({
         transition={{ duration: 0.3, ease: "easeInOut" }}
         style={{ overflow: "hidden" }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-          {repositories.slice(0, 3).map((repo, index) => {
-            const isHovered = hoveredRepo === repo.name;
+        <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+          {repositories.slice(0, 3).map((repo) => {
             return (
-              <m.div
-                key={repo.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <RevealItem key={repo.name} className="h-full">
                 <Card
-                  className={getCardHoverClasses(isHovered)}
-                  onMouseEnter={() => setHoveredRepo(repo.name)}
-                  onMouseLeave={() => setHoveredRepo(null)}
+                  className={cn(
+                    cardSurfaceGitHub,
+                    "h-full relative overflow-hidden",
+                  )}
                 >
                   <CardContent className="p-4">
                     <div className="flex justify-between items-start mb-2">
@@ -170,18 +165,11 @@ export default function GitHubRepositories({
                       </div>
                     )}
                   </CardContent>
-                  <div
-                    className={`
-                    absolute inset-0 rounded-lg transition-opacity duration-500
-                    ${isHovered ? "opacity-100" : "opacity-0"}
-                  `}
-                    style={getOverlayStyles(isHovered)}
-                  />
                 </Card>
-              </m.div>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealGroup>
       </m.div>
     </div>
   );

@@ -6,8 +6,9 @@
 
 "use client";
 
-import { m } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { cardSurface, RevealGroup, RevealItem } from "@/components/visuals";
+import { cn } from "@/lib/utils";
 import { capabilities } from "@/data/main/capabilitiesData";
 import type { Capability } from "@/types/main/capabilities";
 import { Rocket, TrendingUp, Shield, Globe } from "lucide-react";
@@ -41,22 +42,6 @@ const techIconMap: Record<string, React.ElementType> = {
   SiPrisma,
 };
 
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerChildren = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
 /**
  * Individual Capability Card
  */
@@ -70,8 +55,8 @@ function CapabilityCard({
   const IconComponent = iconMap[capability.icon];
 
   return (
-    <m.div variants={fadeInUp}>
-      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl hover:border-muted-foreground/30 transition-all duration-300">
+    <RevealItem className="h-full">
+      <Card className={cn(cardSurface, "h-full")}>
         <CardContent className="pt-6 space-y-4">
           <div className="flex items-start gap-4">
             {IconComponent && (
@@ -108,7 +93,7 @@ function CapabilityCard({
           )}
         </CardContent>
       </Card>
-    </m.div>
+    </RevealItem>
   );
 }
 
@@ -125,15 +110,9 @@ export default function Capabilities() {
       aria-labelledby="capabilities-section-title"
       role="region"
     >
-      <m.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={staggerChildren}
-        className="space-y-12"
-      >
+      <div className="space-y-12">
         {/* Section Header */}
-        <m.div variants={fadeInUp} className="text-center space-y-4">
+        <div className="text-center space-y-4">
           <h2
             id="capabilities-section-title"
             className="text-3xl sm:text-4xl lg:text-5xl font-bold"
@@ -143,15 +122,15 @@ export default function Capabilities() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
-        </m.div>
+        </div>
 
         {/* Capabilities Grid */}
-        <m.div variants={staggerChildren} className="grid sm:grid-cols-2 gap-6">
+        <RevealGroup className="grid sm:grid-cols-2 gap-6">
           {capabilities.map((capability) => (
             <CapabilityCard key={capability.id} capability={capability} t={t} />
           ))}
-        </m.div>
-      </m.div>
+        </RevealGroup>
+      </div>
     </section>
   );
 }

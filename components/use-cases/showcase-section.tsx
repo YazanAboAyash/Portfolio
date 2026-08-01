@@ -9,6 +9,7 @@
 import { useTranslations } from "next-intl";
 import { useCaseProjects } from "@/data/hubs/use-cases";
 import { ProjectCard } from "./project-card";
+import { RevealGroup, RevealItem } from "@/components/visuals";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -28,16 +29,16 @@ export function ShowcaseSection() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <RevealGroup className="flex flex-wrap justify-center gap-6">
           {useCaseProjects.map((project) => (
-            <div
+            <RevealItem
               key={project.id}
               className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
             >
               <ProjectCard project={project} />
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
         <div className="mt-10 flex flex-col items-center gap-4 justify-center border max-w-xl mx-auto p-6 rounded-lg bg-background/70 backdrop-blur-sm">
           <p className="text-center text-muted-foreground max-w-md font-semibold">
