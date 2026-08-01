@@ -29,6 +29,8 @@ import { Badge } from "@/components/ui/badge";
 import type { SpeedInsightScore } from "@/types/configs/speed-insight";
 import { useSpeedInsight } from "./SpeedInsight.logic";
 import { RING, SCORE_THRESHOLDS } from "./SpeedInsight.constants";
+import { cardSurface, RevealGroup, RevealItem } from "@/components/visuals";
+import { cn } from "@/lib/utils";
 
 /** Calculate stroke-dashoffset for the ring gauge */
 function getOffset(score: number): number {
@@ -112,153 +114,161 @@ export default function SpeedInsight({ className }: { className?: string }) {
     useSpeedInsight();
 
   return (
-    <section className={className} aria-label={t("title")}>
-      <Card className="max-w-3xl mx-auto bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl hover:border-muted-foreground/30 transition-all duration-300">
-        <CardHeader className="pb-3">
-          {/* Header row */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-                <SiGoogle
-                  className="h-4 w-4 sm:h-5 sm:w-5 text-primary"
-                  aria-hidden="true"
-                />
-              </div>
-              <div>
-                <CardTitle className="text-base sm:text-lg md:text-xl">
-                  {t("title")}
-                </CardTitle>
-                <CardDescription className="text-[11px] sm:text-sm">
-                  {t("subtitle")}
-                </CardDescription>
-              </div>
-            </div>
+    <section className={className} id="speed-insight" aria-label={t("title")}>
+      <RevealGroup>
+        <RevealItem>
+          <Card className={cn(cardSurface, "max-w-3xl mx-auto")}>
+            <CardHeader className="pb-3">
+              {/* Header row */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary/10 shrink-0">
+                    <SiGoogle
+                      className="h-4 w-4 sm:h-5 sm:w-5 text-primary"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div>
+                    <CardTitle className="text-base sm:text-lg md:text-xl">
+                      {t("title")}
+                    </CardTitle>
+                    <CardDescription className="text-[11px] sm:text-sm">
+                      {t("subtitle")}
+                    </CardDescription>
+                  </div>
+                </div>
 
-            {/* Live indicator */}
-            {!error && !loading && (
-              <Badge
-                variant="outline"
-                className="gap-1 sm:gap-1.5 text-[10px] sm:text-xs px-1.5 sm:px-2.5 border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-400 shrink-0"
-              >
-                <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-green-500" />
-                </span>
-                {t("liveLabel")}
-              </Badge>
-            )}
-          </div>
-
-          {/* Portfolio URL indicator */}
-          <div className="flex items-center gap-1.5 mt-2 text-xs text-muted-foreground">
-            <Globe className="h-3 w-3" />
-            <span>{t("analyzingPortfolio")}</span>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          {/* Error state */}
-          {error && !loading && (
-            <div className="flex flex-col items-center gap-3 py-8 text-center">
-              <AlertCircle className="w-8 h-8 text-destructive" />
-              <p className="text-sm text-muted-foreground">{t("error")}</p>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => void refetch()}
-              >
-                <RefreshCw className="w-4 h-4 mr-1" />
-                {t("retry")}
-              </Button>
-            </div>
-          )}
-
-          {/* Data / Loading */}
-          {!error && (
-            <Tabs defaultValue="desktop" className="w-full">
-              <div className="flex items-center justify-between mb-2">
-                <TabsList className="h-8 sm:h-10">
-                  <TabsTrigger
-                    value="desktop"
-                    className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
+                {/* Live indicator */}
+                {!error && !loading && (
+                  <Badge
+                    variant="outline"
+                    className="gap-1 sm:gap-1.5 text-[10px] sm:text-xs px-1.5 sm:px-2.5 border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-400 shrink-0"
                   >
-                    <Monitor className="w-3 h-3 sm:w-4 sm:h-4" />
-                    {t("desktop")}
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="mobile"
-                    className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
-                  >
-                    <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
-                    {t("mobile")}
-                  </TabsTrigger>
-                </TabsList>
+                    <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                      <span className="relative inline-flex h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-green-500" />
+                    </span>
+                    {t("liveLabel")}
+                  </Badge>
+                )}
+              </div>
 
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => void refetch()}
-                  disabled={loading || cooldownRemaining > 0}
-                  aria-label={
-                    cooldownRemaining > 0
-                      ? `${t("retry")} (${cooldownRemaining}s)`
-                      : t("retry")
-                  }
-                  title={
-                    cooldownRemaining > 0 ? `${cooldownRemaining}s` : undefined
-                  }
-                  className="h-8 w-8"
-                >
-                  <RefreshCw
-                    className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
+              {/* Portfolio URL indicator */}
+              <div className="flex items-center gap-1.5 mt-2 text-xs text-muted-foreground">
+                <Globe className="h-3 w-3" />
+                <span>{t("analyzingPortfolio")}</span>
+              </div>
+            </CardHeader>
+
+            <CardContent>
+              {/* Error state */}
+              {error && !loading && (
+                <div className="flex flex-col items-center gap-3 py-8 text-center">
+                  <AlertCircle className="w-8 h-8 text-destructive" />
+                  <p className="text-sm text-muted-foreground">{t("error")}</p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => void refetch()}
+                  >
+                    <RefreshCw className="w-4 h-4 mr-1" />
+                    {t("retry")}
+                  </Button>
+                </div>
+              )}
+
+              {/* Data / Loading */}
+              {!error && (
+                <Tabs defaultValue="desktop" className="w-full">
+                  <div className="flex items-center justify-between mb-2">
+                    <TabsList className="h-8 sm:h-10">
+                      <TabsTrigger
+                        value="desktop"
+                        className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
+                      >
+                        <Monitor className="w-3 h-3 sm:w-4 sm:h-4" />
+                        {t("desktop")}
+                      </TabsTrigger>
+                      <TabsTrigger
+                        value="mobile"
+                        className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
+                      >
+                        <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
+                        {t("mobile")}
+                      </TabsTrigger>
+                    </TabsList>
+
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => void refetch()}
+                      disabled={loading || cooldownRemaining > 0}
+                      aria-label={
+                        cooldownRemaining > 0
+                          ? `${t("retry")} (${cooldownRemaining}s)`
+                          : t("retry")
+                      }
+                      title={
+                        cooldownRemaining > 0
+                          ? `${cooldownRemaining}s`
+                          : undefined
+                      }
+                      className="h-8 w-8"
+                    >
+                      <RefreshCw
+                        className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
+                      />
+                    </Button>
+                  </div>
+
+                  <TabsContent value="desktop">
+                    {loading ? (
+                      <StrategySkeleton />
+                    ) : desktop ? (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
+                        {desktop.categories.map((cat) => (
+                          <ScoreRing key={cat.label} category={cat} />
+                        ))}
+                      </div>
+                    ) : null}
+                  </TabsContent>
+
+                  <TabsContent value="mobile">
+                    {loading ? (
+                      <StrategySkeleton />
+                    ) : mobile ? (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
+                        {mobile.categories.map((cat) => (
+                          <ScoreRing key={cat.label} category={cat} />
+                        ))}
+                      </div>
+                    ) : null}
+                  </TabsContent>
+                </Tabs>
+              )}
+
+              {/* Footer */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-1 pt-3 border-t mt-2">
+                <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground">
+                  <SiGoogle
+                    className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0"
+                    aria-hidden="true"
                   />
-                </Button>
+                  <span className="truncate">{t("poweredBy")}</span>
+                </div>
+                {desktop?.fetchedAt && (
+                  <span className="text-[10px] sm:text-xs text-muted-foreground whitespace-nowrap">
+                    <span className="hidden sm:inline">
+                      {t("lastUpdated")}:{" "}
+                    </span>
+                    {new Date(desktop.fetchedAt).toLocaleTimeString()}
+                  </span>
+                )}
               </div>
-
-              <TabsContent value="desktop">
-                {loading ? (
-                  <StrategySkeleton />
-                ) : desktop ? (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
-                    {desktop.categories.map((cat) => (
-                      <ScoreRing key={cat.label} category={cat} />
-                    ))}
-                  </div>
-                ) : null}
-              </TabsContent>
-
-              <TabsContent value="mobile">
-                {loading ? (
-                  <StrategySkeleton />
-                ) : mobile ? (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
-                    {mobile.categories.map((cat) => (
-                      <ScoreRing key={cat.label} category={cat} />
-                    ))}
-                  </div>
-                ) : null}
-              </TabsContent>
-            </Tabs>
-          )}
-
-          {/* Footer */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 pt-3 border-t mt-2">
-            <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground">
-              <SiGoogle
-                className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0"
-                aria-hidden="true"
-              />
-              <span className="truncate">{t("poweredBy")}</span>
-            </div>
-            {desktop?.fetchedAt && (
-              <span className="text-[10px] sm:text-xs text-muted-foreground whitespace-nowrap">
-                <span className="hidden sm:inline">{t("lastUpdated")}: </span>
-                {new Date(desktop.fetchedAt).toLocaleTimeString()}
-              </span>
-            )}
-          </div>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+        </RevealItem>
+      </RevealGroup>
     </section>
   );
 }

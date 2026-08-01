@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import { CompanyBanner } from "@/components/companies";
 import { PackageCard } from "@/components/services";
 import { servicePackages } from "@/data/hubs/servicesData";
+import { RevealGroup, RevealItem, ScrambleText } from "@/components/visuals";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -17,12 +18,12 @@ import { ArrowRight } from "lucide-react";
 export function HeroBannerSection() {
   const t = useTranslations("Home");
   return (
-    <>
-      <span className="text-sm font-medium text-center text-black dark:text-white">
+    <div className="flex flex-col gap-2">
+      <span className="text-sm pb-4 font-medium text-center text-black dark:text-white">
         {t("companiesContributing")}
       </span>
       <CompanyBanner />
-    </>
+    </div>
   );
 }
 
@@ -32,10 +33,10 @@ export function ServicesSection() {
   const tt = useTranslations("Services");
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <section className="py-16 px-4 sm:px-6 lg:px-8" id="services">
       <div className="max-w-8xl mx-auto">
-        <h2 className="lg:text-4xl text-xl font-medium text-center mb-8 text-black dark:text-white">
-          {t("services.title")}
+        <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-8 text-black dark:text-white">
+          <ScrambleText text={t("services.title")} />
         </h2>
         <div className="flex justify-center mt-10">
           <Link
@@ -49,11 +50,13 @@ export function ServicesSection() {
           </Link>
         </div>
         {/* max-w fits exactly 3 cards (3 x max-w-sm + 2 x gap-6) */}
-        <div className="flex flex-wrap justify-center gap-6 mt-10 mx-auto max-w-[75rem]">
+        <RevealGroup className="flex flex-wrap justify-center gap-6 mt-10 mx-auto max-w-300">
           {servicePackages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} variant="compact" />
+            <RevealItem key={pkg.id} className="w-full max-w-sm">
+              <PackageCard pkg={pkg} variant="compact" />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

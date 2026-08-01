@@ -89,12 +89,6 @@ export default async function Impressum() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">{t("contact.phone")}</span>
-              <span className="text-sm text-muted-foreground">
-                {t("contact.phoneValue")}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
               <span className="text-sm font-medium">{t("contact.email")}</span>
               <Link
                 href={`mailto:${t("contact.emailValue")}`}

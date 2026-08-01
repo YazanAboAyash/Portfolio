@@ -21,6 +21,8 @@ import { TechStackGrid } from "./tech-stack-grid";
 import { ImplementationAreas } from "./implementation-areas";
 import { ProjectLinks } from "./project-links";
 import { Separator } from "@/components/ui/separator";
+import { cardSurface } from "@/components/visuals";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
   project: UseCaseProject;
@@ -30,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const t = useTranslations();
 
   return (
-    <Card className="flex flex-col h-full bg-background/80 backdrop-blur-sm">
+    <Card className={cn(cardSurface, "flex flex-col h-full")}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-balance">
           {project.icon && (

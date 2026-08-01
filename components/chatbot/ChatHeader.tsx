@@ -53,7 +53,7 @@ export const ChatHeader = React.memo(function ChatHeader({
               {t(CHATBOT_TRANSLATION_KEYS.PRONUNCIATION)}
             </span>
             <span className="font-bold text-muted-foreground">
-              v1.3.6
+              v2.8.12
             </span>
           </CardTitle>
           <span

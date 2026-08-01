@@ -92,7 +92,7 @@ function CompanyLogoItem({
             alt={`${company.name} logo`}
             fill
             className="object-contain"
-            sizes="40px"
+            sizes="auto"
             loading="eager"
             quality={75}
             placeholder="blur"

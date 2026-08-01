@@ -206,7 +206,6 @@
     "contact": {
       "title": "Kontakt",
       "phone": "Telefon:",
-      "phoneValue": "Auf Anfrage",
       "email": "E-Mail:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
@@ -890,5 +889,19 @@
     "tryAgain": "Erneut versuchen",
     "goHome": "Zur Startseite",
     "persist": "Wenn das Problem weiterhin besteht, wenden Sie sich bitte an unser Support-Team."
+  },
+  "SectionRail": {
+    "label": "Seitenabschnitte",
+    "scrollTo": "Zum Abschnitt {section} scrollen",
+    "sections": {
+      "home": "Startseite",
+      "speed-insight": "Performance",
+      "projects": "Projekte",
+      "cert": "Zertifikate",
+      "services": "Leistungen",
+      "use-cases": "Anwendungsfälle",
+      "github": "GitHub",
+      "capabilities": "Fähigkeiten"
+    }
   }
 }

@@ -60,7 +60,7 @@ function Hero() {
                 </h2>
               </div>
             </div>
-            <p className="text-md text-muted-foreground max-w-2xl mx-auto leading-relaxed bg-background/80 backdrop-blur-sm rounded-lg px-4 py-3">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed bg-background/80 backdrop-blur-sm rounded-lg px-4 py-3">
               {t("description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">

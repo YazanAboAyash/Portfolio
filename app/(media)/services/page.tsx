@@ -6,11 +6,11 @@
 
 "use client";
 
-import dynamic from "next/dynamic";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { PackageCard } from "@/components/services";
+import { RevealItem } from "@/components/visuals";
 import {
   packagesByTier,
   processSteps,
@@ -29,14 +29,6 @@ import {
   Plug,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-
-const Background = dynamic(
-  () =>
-    import("@/components/visuals/motion-background").then((mod) => ({
-      default: mod.Background,
-    })),
-  { loading: () => null, ssr: false },
-);
 
 // Icon mapping for dynamic rendering
 const iconMap: Record<string, React.ElementType> = {
@@ -150,7 +142,6 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen relative">
-      <Background />
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="pt-32 pb-16 px-4 lg:px-8">
@@ -198,7 +189,9 @@ export default function ServicesPage() {
                   className="flex flex-wrap justify-center gap-6"
                 >
                   {packages.map((pkg) => (
-                    <PackageCard key={pkg.id} pkg={pkg} />
+                    <RevealItem key={pkg.id} className="w-full max-w-sm">
+                      <PackageCard pkg={pkg} />
+                    </RevealItem>
                   ))}
                 </m.div>
               </div>

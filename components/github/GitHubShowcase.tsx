@@ -20,6 +20,7 @@ import { FaGithub, FaTerminal } from "react-icons/fa";
 import GitHubProfile from "@/components/github/GitHubProfile";
 import GitHubRepositories from "@/components/github/GitHubRepositories";
 import type { GitHubData, GitHubApiResponse } from "@/types/configs/github";
+import { ScrambleText } from "@/components/visuals";
 import {
   Drawer,
   DrawerContent,
@@ -167,8 +168,8 @@ export default function GitHubShowcase({ className }: { className?: string }) {
     >
       {/* Section Header */}
       <div className="flex flex-col items-center space-y-2 text-center">
-        <h2 className="text-3xl font-light text-black dark:text-white py-6">
-          GitHub Activity
+        <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-black dark:text-white py-6">
+          <ScrambleText text="GitHub Activity" />
         </h2>
         <Drawer>
           <TooltipProvider>

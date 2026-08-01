@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";
 import { ShowcaseSection } from "@/components/use-cases";
+import { SectionRail } from "@/components/nav";
 
 // Dynamically import heavy components with loading states
 const Capabilities = dynamic(
@@ -33,16 +34,6 @@ const CertificationShowcase = dynamic(
   },
 );
 
-const ClientBackground = dynamic(
-  () =>
-    import("@/components/visuals").then((mod) => ({
-      default: mod.ClientBackground,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
 
 const GitHubShowcase = dynamic(
   () =>
@@ -80,7 +71,9 @@ const SpeedInsight = dynamic(
 export default function HomeContent() {
   return (
     <div>
-      <ClientBackground />
+      {/* Section ruler pinned beside the scrollbar */}
+      <SectionRail />
+
       {/* Scroll Indicator */}
       <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 xl:left-1/5 xl:bottom-40 2xl:left-1/4 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
@@ -106,7 +99,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <SpeedInsight className="py-12 px-4 sm:px-6 lg:px-8" />
+            <SpeedInsight className="pb-32 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           {/* Project Showcase Section */}
@@ -117,7 +110,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <ProjectsHomeShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+            <ProjectsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           <Suspense
@@ -127,7 +120,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <CertificationShowcase className="py-12 px-4 sm:px-6 lg:px-8" />
+            <CertificationShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           {/* Service Packages Section */}
@@ -148,7 +141,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <section className="py-12 px-4 sm:px-6 lg:px-8">
+            <section className="py-24 px-4 sm:px-6 lg:px-8" id="use-cases">
               <div className="max-w-7xl mx-auto">
                 <ShowcaseSection />
               </div>
@@ -163,7 +156,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <section className="py-12 px-4 sm:px-6 lg:px-8" id="github">
+            <section className="py-24 px-4 sm:px-6 lg:px-8" id="github">
               <div className="max-w-6xl mx-auto">
                 <GitHubShowcase />
               </div>

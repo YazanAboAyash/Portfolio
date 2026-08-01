@@ -14,6 +14,7 @@ import type { ProjectsShowcaseProps } from "@/types/hubs/projects";
 import { useProjectsFilter, getAllCategories } from "./projects-showcase.utils";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectsFilter } from "./ProjectsFilter";
+import { RevealGroup } from "@/components/visuals";
 
 export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
   const sectionRef = useRef(null);
@@ -58,16 +59,11 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
         />
 
         {/* Projects Grid */}
-        <m.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-        >
+        <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
-        </m.div>
+        </RevealGroup>
 
         {/* Empty State */}
         {filteredProjects.length === 0 && (

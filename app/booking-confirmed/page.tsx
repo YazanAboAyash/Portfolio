@@ -10,25 +10,13 @@ import { useTranslations } from "next-intl";
 import { Calendar, ArrowLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
-const ClientBackground = dynamic(
-  () =>
-    import("@/components/visuals").then((mod) => ({
-      default: mod.ClientBackground,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
 
 export default function BookingConfirmedPage() {
   const t = useTranslations("BookingConfirmed");
 
   return (
     <>
-      <ClientBackground />
       <main
         className="min-h-[80vh] w-full flex items-center justify-center px-4 pt-12 md:pt-24"
         role="main"

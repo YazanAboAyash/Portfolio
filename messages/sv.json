@@ -206,7 +206,6 @@
     "contact": {
       "title": "Kontakt",
       "phone": "Telefon:",
-      "phoneValue": "På begäran",
       "email": "E-post:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
@@ -890,5 +889,19 @@
     "tryAgain": "Försök igen",
     "goHome": "Gå hem",
     "persist": "Om problemet kvarstår, kontakta vårt supportteam."
+  },
+  "SectionRail": {
+    "label": "Sidans avsnitt",
+    "scrollTo": "Rulla till avsnittet {section}",
+    "sections": {
+      "home": "Hem",
+      "speed-insight": "Prestanda",
+      "projects": "Projekt",
+      "cert": "Certifieringar",
+      "services": "Tjänster",
+      "use-cases": "Användningsfall",
+      "github": "GitHub",
+      "capabilities": "Förmågor"
+    }
   }
 }

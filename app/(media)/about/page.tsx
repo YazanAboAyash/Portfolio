@@ -6,20 +6,12 @@
 
 "use client";
 
-import dynamic from "next/dynamic";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import type { AboutTranslations } from "@/types/configs/i18n";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-const Background = dynamic(
-  () =>
-    import("@/components/visuals/motion-background").then((mod) => ({
-      default: mod.Background,
-    })),
-  { loading: () => null, ssr: false },
-);
 
 export default function AboutPage() {
   const t = useTranslations("About");
@@ -30,7 +22,6 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen relative">
-      <Background />
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="pt-12 pb-20 px-4 lg:px-8">

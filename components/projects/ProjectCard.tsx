@@ -6,8 +6,6 @@
 
 "use client";
 
-import { m, useInView } from "framer-motion";
-import { useRef, useState } from "react";
 import {
   Card,
   CardContent,
@@ -22,10 +20,7 @@ import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { SiNpm } from "react-icons/si";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import {
-  getCardHoverClasses,
-  getOverlayStyles,
-} from "@/components/visuals/card-animations";
+import { cardSurface, RevealItem } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 import type { ProjectCardProps } from "@/types/hubs/projects";
 import {
@@ -36,10 +31,6 @@ import {
 } from "./projects-showcase.utils";
 
 export function ProjectCard({ project, index: _index }: ProjectCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true, margin: "-50px" });
-
   const t = useTranslations("Projects");
   const tCategories = useTranslations("Projects.categories");
   const tLicenses = useTranslations("Projects.licenses");
@@ -50,25 +41,9 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
     project.description,
   );
 
-  const onMouseEnter = () => setIsHovered(true);
-  const onMouseLeave = () => setIsHovered(false);
-
   return (
-    <m.div
-      ref={cardRef}
-      initial={{ y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { y: 50 }}
-      className="group w-full h-full"
-    >
-      <Card
-        className={cn(
-          getCardHoverClasses(isHovered),
-          "h-full gap-0 overflow-hidden border-border/60 bg-background/80 py-0 shadow-sm backdrop-blur-sm",
-          "hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10",
-        )}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
+    <RevealItem className="w-full h-full">
+      <Card className={cn(cardSurface, "h-full gap-0 overflow-hidden py-0")}>
         {/* Top accent line - gradient for featured, subtle for the rest */}
         <div
           className={`h-1 shrink-0 ${
@@ -96,7 +71,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
 
           {/* Title row */}
           <div className="min-h-12 overflow-hidden">
-            <CardTitle className="line-clamp-2 text-lg font-semibold leading-tight tracking-normal text-foreground transition-colors group-hover:text-primary lg:text-xl">
+            <CardTitle className="line-clamp-2 text-lg font-semibold leading-tight tracking-normal text-foreground transition-colors group-hover/card:text-primary lg:text-xl">
               {project.title}
             </CardTitle>
           </div>
@@ -150,7 +125,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md border border-border/50 bg-secondary/60 px-2 py-1 text-xs font-medium text-secondary-foreground/90 transition-colors group-hover:border-primary/20 group-hover:bg-primary/10"
+                  className="rounded-md border border-border/50 bg-secondary/60 px-2 py-1 text-xs font-medium text-secondary-foreground/90 transition-colors group-hover/card:border-primary/20 group-hover/card:bg-primary/10"
                 >
                   {tech}
                 </span>
@@ -220,15 +195,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
             )}
           </div>
         </CardFooter>
-
-        <div
-          className={`
-            absolute inset-0 rounded-lg transition-opacity duration-500 pointer-events-none
-            ${isHovered ? "opacity-100" : "opacity-0"}
-          `}
-          style={getOverlayStyles(isHovered)}
-        />
       </Card>
-    </m.div>
+    </RevealItem>
   );
 }
