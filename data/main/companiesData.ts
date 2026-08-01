@@ -28,12 +28,6 @@ export const companiesData: CompanyLogo[] = [
     period: "2025~",
   },
   {
-    id: "beRichHub",
-    name: "beRich.Hub",
-    url: "https://berich-hub.vercel.app/",
-    period: "2024~",
-  },
-  {
     id: "avarno",
     name: "Avarno-GmbH",
     logo: "/assets/companies/avarno.png",
@@ -48,12 +42,6 @@ export const companiesData: CompanyLogo[] = [
     period: "2025~",
   },
   {
-    id: "beRichHub",
-    name: "beRich.Hub",
-    url: "https://berich-hub.vercel.app/",
-    period: "2024~",
-  },
-  {
     id: "avarno",
     name: "Avarno-GmbH",
     logo: "/assets/companies/avarno.png",
@@ -66,11 +54,5 @@ export const companiesData: CompanyLogo[] = [
     logo: "/assets/companies/botgenossen.png",
     url: "https://botgenossen.de",
     period: "2025~",
-  },
-  {
-    id: "beRichHub",
-    name: "beRich.Hub",
-    url: "https://berich-hub.vercel.app/",
-    period: "2024~",
   },
 ];
