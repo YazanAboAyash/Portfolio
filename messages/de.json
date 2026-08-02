@@ -508,7 +508,7 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Senden"
+      "generating": "Generiert"
     },
     "errors": {
       "generic": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",

@@ -103,7 +103,7 @@ export const ChatMessage = React.memo(function ChatMessage({
                   className={`w-3 h-3 mr-1 ${CHATBOT_STYLES.SPIN_ANIMATION}`}
                   aria-hidden="true"
                 />
-                {t(CHATBOT_TRANSLATION_KEYS.STATUS_SENDING)}
+                {t(CHATBOT_TRANSLATION_KEYS.STATUS_GENERATING)}
               </Badge>
             )}
           </div>

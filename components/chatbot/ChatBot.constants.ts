@@ -133,7 +133,7 @@ export const CHATBOT_TRANSLATION_KEYS = {
   TYPING_PROCESSING: "typing.processing",
 
   // Status
-  STATUS_SENDING: "status.sending",
+  STATUS_GENERATING: "status.generating",
 
   // Input
   INPUT_PLACEHOLDER: "input.placeholder",

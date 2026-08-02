@@ -508,7 +508,7 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Skickar"
+      "generating": "Genererar"
     },
     "errors": {
       "generic": "Något gick fel. Vänligen försök igen.",

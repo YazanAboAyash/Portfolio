@@ -508,7 +508,7 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Envoi"
+      "generating": "Génération"
     },
     "errors": {
       "generic": "Quelque chose s'est mal passé. Veuillez réessayer.",
