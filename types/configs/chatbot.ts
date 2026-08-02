@@ -27,6 +27,9 @@ export type ChatBotErrorCode =
   | "RATE_LIMIT_EXCEEDED"
   | "QUOTA_EXCEEDED"
   | "INVALID_INPUT"
+  // Distinct from INVALID_INPUT on purpose: the conversation is full, so
+  // rewording the message cannot help and the user has to start a new chat.
+  | "SESSION_LIMIT_REACHED"
   | "SERVICE_UNAVAILABLE"
   | "TIMEOUT";
 

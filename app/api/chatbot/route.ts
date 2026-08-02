@@ -65,10 +65,10 @@ if (CHATBOT_ENABLED && !OPENAI_CHAT_MODEL) {
  * structurally by `validateUIMessages` further down.
  */
 const chatRequestSchema = z.object({
-  messages: z
-    .array(z.unknown())
-    .min(1, "Conversation cannot be empty")
-    .max(chatbotConfig.maxMessagesPerSession, "Conversation too long"),
+  // The session cap is deliberately *not* enforced here. Failing it inside the
+  // envelope schema made a full conversation indistinguishable from a malformed
+  // one, and both came back as INVALID_INPUT — see the check after parsing.
+  messages: z.array(z.unknown()).min(1, "Conversation cannot be empty"),
   // Minted by the client and taken on trust, deliberately. It selects which
   // stored transcript this turn is appended to and nothing else: it is never
   // returned in a response, and it never reaches the model — the conversation
@@ -258,10 +258,11 @@ function rejectInvalid(reason: string): NextResponse {
   return errorResponse("INVALID_INPUT", 400);
 }
 
-const CHATBOT_ERROR_CODES: readonly string[] = [
+const CHATBOT_ERROR_CODES: readonly ChatBotErrorCode[] = [
   "RATE_LIMIT_EXCEEDED",
   "QUOTA_EXCEEDED",
   "INVALID_INPUT",
+  "SESSION_LIMIT_REACHED",
   "SERVICE_UNAVAILABLE",
   "TIMEOUT",
 ];
@@ -442,6 +443,20 @@ export async function POST(request: NextRequest): Promise<Response> {
       .map((issue) => `${issue.path.join(".") || "(root)"}: ${issue.message}`)
       .join("; ");
     return rejectInvalid(`request envelope failed validation — ${issues}`);
+  }
+
+  // Before the structural walk below, so an oversized payload is refused without
+  // being parsed. This is its own code because the user-facing consequence is
+  // different from every other 400: the client replays the whole conversation
+  // from local storage on each turn, so a full one stays full and "please
+  // rephrase" would loop forever. The answer is a new chat, and only a distinct
+  // code lets the UI say so.
+  if (parsed.data.messages.length > chatbotConfig.maxMessagesPerSession) {
+    diagnostic(
+      "warn",
+      `rejected: conversation has ${parsed.data.messages.length} messages, cap is ${chatbotConfig.maxMessagesPerSession}`,
+    );
+    return errorResponse("SESSION_LIMIT_REACHED", 409);
   }
 
   const { sessionId = generateSessionId(), context, consentGiven } = parsed.data;

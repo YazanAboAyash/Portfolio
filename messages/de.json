@@ -518,6 +518,7 @@
       "quotaExceeded": "Ich mache eine kurze Pause. Bitte versuchen Sie es gleich noch einmal.",
       "serviceUnavailable": "Ich kann gerade nicht antworten. Bitte versuchen Sie es in einem Moment erneut.",
       "validation": "Ich konnte Ihre Nachricht nicht verarbeiten. Bitte formulieren Sie sie anders.",
+      "sessionLimit": "Diese Unterhaltung hat ihre Grenze erreicht. Bitte starten Sie über \"Neuer Chat\" eine neue, um weiterzusprechen.",
       "timeout": "Die Anfrage dauert zu lange. Bitte versuchen Sie es erneut."
     },
     "accessibility": {

@@ -518,6 +518,7 @@
       "quotaExceeded": "Je fais une courte pause. Veuillez réessayer dans quelques instants.",
       "serviceUnavailable": "Je n'arrive pas à répondre pour le moment. Veuillez réessayer dans un instant.",
       "validation": "Je n'ai pas pu traiter votre message. Veuillez essayer de le reformuler.",
+      "sessionLimit": "Cette conversation a atteint sa limite. Démarrez-en une nouvelle avec « Nouveau chat » pour continuer.",
       "timeout": "La requête prend trop de temps. Veuillez réessayer."
     },
     "accessibility": {

@@ -518,6 +518,7 @@
       "quotaExceeded": "Jag tar en kort paus. Vänligen försök igen om en liten stund.",
       "serviceUnavailable": "Jag har svårt att svara just nu. Vänligen försök igen om en stund.",
       "validation": "Jag kunde inte behandla ditt meddelande. Vänligen försök formulera om det.",
+      "sessionLimit": "Det här samtalet har nått sin gräns. Starta ett nytt med \"Ny chatt\" för att fortsätta prata.",
       "timeout": "Förfrågan tar för lång tid. Vänligen försök igen."
     },
     "accessibility": {

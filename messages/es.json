@@ -518,6 +518,7 @@
       "quotaExceeded": "Estoy tomando un breve descanso. Por favor, inténtalo de nuevo en unos momentos.",
       "serviceUnavailable": "Ahora mismo no puedo responder. Por favor, inténtalo de nuevo en un momento.",
       "validation": "No pude procesar tu mensaje. Por favor, intenta reformularlo.",
+      "sessionLimit": "Esta conversación ha alcanzado su límite. Inicia una nueva con \"Nuevo chat\" para seguir hablando.",
       "timeout": "La solicitud está tardando demasiado. Por favor, inténtalo de nuevo."
     },
     "accessibility": {
