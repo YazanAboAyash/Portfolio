@@ -258,14 +258,17 @@ function rejectInvalid(reason: string): NextResponse {
   return errorResponse("INVALID_INPUT", 400);
 }
 
-const CHATBOT_ERROR_CODES: readonly ChatBotErrorCode[] = [
+// Declared as strings so it can be tested against an arbitrary `error.message`,
+// but `satisfies` still holds every entry to the union — a code renamed in the
+// type and not here stops compiling instead of silently never matching.
+const CHATBOT_ERROR_CODES: readonly string[] = [
   "RATE_LIMIT_EXCEEDED",
   "QUOTA_EXCEEDED",
   "INVALID_INPUT",
   "SESSION_LIMIT_REACHED",
   "SERVICE_UNAVAILABLE",
   "TIMEOUT",
-];
+] satisfies readonly ChatBotErrorCode[];
 
 /**
  * True when the error is just our own code coming back around.
