@@ -69,6 +69,14 @@ const chatRequestSchema = z.object({
     .array(z.unknown())
     .min(1, "Conversation cannot be empty")
     .max(chatbotConfig.maxMessagesPerSession, "Conversation too long"),
+  // Minted by the client and taken on trust, deliberately. It selects which
+  // stored transcript this turn is appended to and nothing else: it is never
+  // returned in a response, and it never reaches the model — the conversation
+  // the model sees arrives in `messages`. So learning someone else's id means
+  // already reading their browser storage, where the transcript itself sits
+  // next to it. Binding it to a cookie would not change that, and the notice
+  // documents it as local storage (`Privacy.cookies.chat`). The 128 bits of
+  // randomness are what make it unguessable; keep them if the format changes.
   sessionId: z
     .string()
     .regex(/^session_[0-9]+_[a-f0-9]+$/, "Invalid session ID format")
@@ -307,17 +315,17 @@ async function logChatToDB(
         },
       });
     } else {
-      // Update existing session
+      // Consent is deliberately not touched here. Everything above this point
+      // has already returned unless `consentGiven` is true, so a stored session
+      // can only ever have been created with it set — code that flipped a
+      // stored `false` to `true` would read like consent laundering while being
+      // unreachable. Incremented rather than recomputed from the row we just
+      // read, so two turns racing cannot lose one another's count.
       await prisma.chatSession.update({
         where: { id: sessionId },
         data: {
           lastActivityAt: new Date(),
-          totalMessages: existingSession.totalMessages + 2,
-          // Update consent if not already recorded
-          ...(!existingSession.consentGiven && {
-            consentGiven: true,
-            consentTimestamp: new Date(),
-          }),
+          totalMessages: { increment: 2 },
         },
       });
     }
