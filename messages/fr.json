@@ -515,10 +515,15 @@
     "errors": {
       "generic": "Quelque chose s'est mal passé. Veuillez réessayer.",
       "network": "Erreur réseau. Veuillez vérifier votre connexion.",
-      "rateLimit": "Trop de messages. Veuillez patienter un moment."
+      "rateLimit": "Trop de messages. Veuillez patienter un moment.",
+      "quotaExceeded": "Je fais une courte pause. Veuillez réessayer dans quelques instants.",
+      "serviceUnavailable": "Je n'arrive pas à répondre pour le moment. Veuillez réessayer dans un instant.",
+      "validation": "Je n'ai pas pu traiter votre message. Veuillez essayer de le reformuler.",
+      "timeout": "La requête prend trop de temps. Veuillez réessayer."
     },
     "accessibility": {
-      "sendMessage": "Envoyer le message"
+      "sendMessage": "Envoyer le message",
+      "stopGenerating": "Arrêter la génération"
     },
     "consent": {
       "title": "Confidentialité et Collecte de Données",

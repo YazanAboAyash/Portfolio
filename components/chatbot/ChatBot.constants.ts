@@ -4,6 +4,8 @@
  * @version 6.x.x
  */
 
+import type { ChatBotErrorCode } from "@/types/configs/chatbot";
+
 export const CHATBOT_CONFIG = {
   // UI Constants
   DEFAULT_BOTTOM_OFFSET: 4, // 6 * 4 (1.5rem in Tailwind)
@@ -150,6 +152,7 @@ export const CHATBOT_TRANSLATION_KEYS = {
 
   // Accessibility
   ACCESSIBILITY_SEND_MESSAGE: "accessibility.sendMessage",
+  ACCESSIBILITY_STOP_GENERATING: "accessibility.stopGenerating",
 };
 
 export const CHATBOT_GUIDED_ACTION_KEYS = [
@@ -160,20 +163,21 @@ export const CHATBOT_GUIDED_ACTION_KEYS = [
   "guidedActions.contact",
 ] as const;
 
-// Fallback messages (used when translations are not available)
-export const CHATBOT_FALLBACK_MESSAGES = {
-  GENERIC_ERROR:
-    "I'm having trouble responding right now. Please try again in a moment.",
-  NETWORK_ERROR:
-    "I can't reach the server at the moment. Please check your internet connection and try again.",
-  RATE_LIMIT_ERROR:
-    "I'm receiving too many requests. Please wait a moment before sending another message.",
-  QUOTA_EXCEEDED:
-    "I'm taking a short break. Please try again in a few moments.",
-  SERVER_ERROR: "Something went wrong on my end. Please try again later.",
-  VALIDATION_ERROR:
-    "I couldn't process your message. Please try rephrasing it.",
-  TIMEOUT_ERROR: "The request is taking too long. Please try again.",
+/**
+ * Maps the bare error codes the API returns onto `ChatBot` translation keys.
+ * The API never sends prose, so every failure the user sees is localised.
+ */
+export const CHATBOT_ERROR_TRANSLATION_KEYS: Record<
+  ChatBotErrorCode | "NETWORK" | "UNKNOWN",
+  string
+> = {
+  RATE_LIMIT_EXCEEDED: "errors.rateLimit",
+  QUOTA_EXCEEDED: "errors.quotaExceeded",
+  INVALID_INPUT: "errors.validation",
+  SERVICE_UNAVAILABLE: "errors.serviceUnavailable",
+  TIMEOUT: "errors.timeout",
+  NETWORK: "errors.network",
+  UNKNOWN: "errors.generic",
 };
 
 // Type exports for better type safety

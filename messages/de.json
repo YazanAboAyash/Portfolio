@@ -515,10 +515,15 @@
     "errors": {
       "generic": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
       "network": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
-      "rateLimit": "Zu viele Nachrichten. Bitte warten Sie einen Moment."
+      "rateLimit": "Zu viele Nachrichten. Bitte warten Sie einen Moment.",
+      "quotaExceeded": "Ich mache eine kurze Pause. Bitte versuchen Sie es gleich noch einmal.",
+      "serviceUnavailable": "Ich kann gerade nicht antworten. Bitte versuchen Sie es in einem Moment erneut.",
+      "validation": "Ich konnte Ihre Nachricht nicht verarbeiten. Bitte formulieren Sie sie anders.",
+      "timeout": "Die Anfrage dauert zu lange. Bitte versuchen Sie es erneut."
     },
     "accessibility": {
-      "sendMessage": "Nachricht senden"
+      "sendMessage": "Nachricht senden",
+      "stopGenerating": "Generierung stoppen"
     },
     "consent": {
       "title": "Datenschutz & Datenerfassung",

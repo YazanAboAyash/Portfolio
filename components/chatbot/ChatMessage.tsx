@@ -12,21 +12,24 @@ import { Badge } from "@/components/ui/badge";
 import { Bot, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import type { ChatMessage as ChatMessageType } from "@/types/configs/chatbot";
+import type { ChatMessageProps, ReemUIMessage } from "@/types/configs/chatbot";
 import {
   CHATBOT_CONFIG,
   CHATBOT_STYLES,
   CHATBOT_TRANSLATION_KEYS,
 } from "./ChatBot.constants";
 
-export interface ChatMessageProps {
-  message: ChatMessageType;
-  className?: string;
-}
-
 // Security helper to limit message content length for display
 function sanitizeMessageForDisplay(content: string): string {
   return content.substring(0, CHATBOT_CONFIG.MESSAGE_DISPLAY_LIMIT);
+}
+
+/** A UI message carries its text across one or more parts; the transcript shows them joined. */
+function joinTextParts(message: ReemUIMessage): string {
+  return message.parts
+    .filter((part) => part.type === "text")
+    .map((part) => part.text)
+    .join("");
 }
 
 function isSafeMarkdownHref(href: string | undefined): href is string {
@@ -41,22 +44,27 @@ function isSafeMarkdownHref(href: string | undefined): href is string {
 
 export const ChatMessage = React.memo(function ChatMessage({
   message,
+  isStreaming = false,
+  status,
   className = "",
 }: ChatMessageProps) {
   const t = useTranslations("ChatBot");
   const isUser = message.role === "user";
 
   const sanitizedContent = React.useMemo(
-    () => sanitizeMessageForDisplay(message.content),
-    [message.content]
+    () => sanitizeMessageForDisplay(joinTextParts(message)),
+    [message]
   );
   const formattedTime = React.useMemo(
     () =>
-      message.timestamp.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-    [message.timestamp]
+      new Date(message.metadata?.createdAt ?? Date.now()).toLocaleTimeString(
+        [],
+        {
+          hour: "2-digit",
+          minute: "2-digit",
+        }
+      ),
+    [message.metadata?.createdAt]
   );
 
   return (
@@ -85,7 +93,7 @@ export const ChatMessage = React.memo(function ChatMessage({
             <span className="text-xs text-muted-foreground font-medium">
               {t(CHATBOT_TRANSLATION_KEYS.NAME)}
             </span>
-            {message.status === "sending" && (
+            {isStreaming && (
               <Badge
                 variant="outline"
                 className="text-xs px-2 py-0.5"
@@ -174,13 +182,13 @@ export const ChatMessage = React.memo(function ChatMessage({
             >
               {formattedTime}
             </span>
-            {message.status === "sent" && (
+            {status === "sent" && (
               <CheckCircle2
                 className="w-3 h-3 text-green-500"
                 aria-label="Message sent successfully"
               />
             )}
-            {message.status === "error" && (
+            {status === "error" && (
               <AlertCircle
                 className="w-3 h-3 text-destructive"
                 aria-label="Message failed to send"

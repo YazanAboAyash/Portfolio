@@ -515,10 +515,15 @@
     "errors": {
       "generic": "Something went wrong. Please try again.",
       "network": "Network error. Please check your connection.",
-      "rateLimit": "Too many messages. Please wait a moment."
+      "rateLimit": "Too many messages. Please wait a moment.",
+      "quotaExceeded": "I'm taking a short break. Please try again in a few moments.",
+      "serviceUnavailable": "I'm having trouble responding right now. Please try again in a moment.",
+      "validation": "I couldn't process your message. Please try rephrasing it.",
+      "timeout": "The request is taking too long. Please try again."
     },
     "accessibility": {
-      "sendMessage": "Send message"
+      "sendMessage": "Send message",
+      "stopGenerating": "Stop generating"
     },
     "consent": {
       "title": "Privacy & Data Collection",

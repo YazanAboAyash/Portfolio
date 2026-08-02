@@ -10,27 +10,23 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Loader2, Send } from "lucide-react";
+import { Send, Square } from "lucide-react";
+import type { ChatInputProps } from "@/types/configs/chatbot";
 import {
   CHATBOT_CONFIG,
   CHATBOT_STYLES,
   CHATBOT_TRANSLATION_KEYS,
 } from "./ChatBot.constants";
 
-export interface ChatInputProps {
-  onSendMessage: (message: string) => Promise<void>;
-  isLoading: boolean;
-  disabled?: boolean;
-  className?: string;
-}
-
 export const ChatInput = React.memo(
   React.forwardRef<HTMLInputElement, ChatInputProps>(function ChatInput(
-    { onSendMessage, isLoading, disabled = false, className = "" },
+    { onSendMessage, status, onStop, disabled = false, className = "" },
     ref,
   ) {
     const [inputValue, setInputValue] = useState("");
     const t = useTranslations("ChatBot");
+
+    const isLoading = status === "submitted" || status === "streaming";
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -97,25 +93,37 @@ export const ChatInput = React.memo(
               </span>
             </div>
           </div>
-          <Button
-            type="submit"
-            disabled={!inputValue.trim() || isLoading || disabled}
-            className={`px-4 ${CHATBOT_STYLES.BUTTON_GRADIENT} ${CHATBOT_STYLES.INPUT_ROUNDED} ${CHATBOT_STYLES.INPUT_SHADOW} transition-all duration-200`}
-            aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
-            title={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
-          >
-            {isLoading ? (
-              <Loader2
-                className={`h-4 w-4 ${CHATBOT_STYLES.SPIN_ANIMATION}`}
-                aria-hidden="true"
-              />
-            ) : (
+          {isLoading ? (
+            <Button
+              type="button"
+              onClick={onStop}
+              className={`px-4 ${CHATBOT_STYLES.BUTTON_GRADIENT} ${CHATBOT_STYLES.INPUT_ROUNDED} ${CHATBOT_STYLES.INPUT_SHADOW} transition-all duration-200`}
+              aria-label={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_STOP_GENERATING,
+              )}
+              title={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_STOP_GENERATING,
+              )}
+            >
+              <Square className="h-4 w-4 fill-current" aria-hidden="true" />
+              <span className="sr-only">
+                {t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_STOP_GENERATING)}
+              </span>
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              disabled={!inputValue.trim() || disabled}
+              className={`px-4 ${CHATBOT_STYLES.BUTTON_GRADIENT} ${CHATBOT_STYLES.INPUT_ROUNDED} ${CHATBOT_STYLES.INPUT_SHADOW} transition-all duration-200`}
+              aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
+              title={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
+            >
               <Send className="h-4 w-4" aria-hidden="true" />
-            )}
-            <span className="sr-only">
-              {t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
-            </span>
-          </Button>
+              <span className="sr-only">
+                {t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
+              </span>
+            </Button>
+          )}
         </form>
       </div>
     );

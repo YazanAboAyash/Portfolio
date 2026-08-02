@@ -13,7 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Bot, CircleAlert, Shield, Sparkles } from "lucide-react";
 import { useChatBot } from "@/components/chatbot";
-import type { ChatBotUIProps, ChatMessage } from "@/types/configs/chatbot";
+import type { ChatBotUIProps } from "@/types/configs/chatbot";
 import {
   ChatHeader,
   ChatMessage as ChatMessageComponent,
@@ -43,14 +43,18 @@ export function ChatBot({
 
   const {
     messages,
+    status,
     isLoading,
-    error,
+    errorKey,
     consentGiven,
     sendMessage,
+    stop,
     clearError,
     setConsent,
   } = useChatBot();
   const [consentDismissed, setConsentDismissed] = useState(false);
+
+  const lastMessage = messages[messages.length - 1];
 
   // Derive consent banner visibility from state (no effect needed)
   const showConsentBanner =
@@ -74,10 +78,10 @@ export function ChatBot({
 
   // Clear error when opening chat
   useEffect(() => {
-    if (isOpen && error) {
+    if (isOpen && errorKey) {
       clearError();
     }
-  }, [isOpen, error, clearError]);
+  }, [isOpen, errorKey, clearError]);
 
   // Detect footer visibility and adjust chatbot position dynamically
   useEffect(() => {
@@ -288,13 +292,29 @@ export function ChatBot({
                   </div>
                 )}
 
-                {messages.map((message: ChatMessage) => (
-                  <ChatMessageComponent key={message.id} message={message} />
-                ))}
+                {messages.map((message) => {
+                  const isLast = message.id === lastMessage?.id;
 
-                {isLoading && <TypingIndicator />}
+                  return (
+                    <ChatMessageComponent
+                      key={message.id}
+                      message={message}
+                      isStreaming={
+                        isLast &&
+                        message.role === "assistant" &&
+                        status === "streaming"
+                      }
+                      {...(isLast && message.role === "user"
+                        ? { status: status === "error" ? "error" : "sent" }
+                        : {})}
+                    />
+                  );
+                })}
 
-                {error && (
+                {/* Once tokens are arriving the partial message is its own indicator */}
+                {status === "submitted" && <TypingIndicator />}
+
+                {errorKey && (
                   <div
                     className="flex justify-center py-4"
                     role="alert"
@@ -305,7 +325,7 @@ export function ChatBot({
                         className="w-4 h-4 shrink-0"
                         aria-hidden="true"
                       />
-                      <span>{error}</span>
+                      <span>{t(errorKey)}</span>
                     </div>
                   </div>
                 )}
@@ -318,8 +338,8 @@ export function ChatBot({
 
             <ChatInput
               onSendMessage={handleSendMessage}
-              isLoading={isLoading}
-              disabled={false}
+              status={status}
+              onStop={stop}
               ref={chatInputRef}
             />
           </CardContent>
