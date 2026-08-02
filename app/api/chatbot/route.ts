@@ -25,7 +25,7 @@ import type {
 import { sanitizeChatInput, isChatSpam } from "@/lib/security";
 import {
   REEM_SYSTEM_PROMPT,
-  REEM_CONFIG,
+  REEM_FACTS,
 } from "@/data/main/chatbot-system-prompt";
 import {
   anonymizeIP,
@@ -424,7 +424,7 @@ export async function POST(request: NextRequest): Promise<Response> {
 export function GET(): NextResponse<{
   status: string;
   config: Partial<ChatBotConfig>;
-  assistant: typeof REEM_CONFIG;
+  assistant: typeof REEM_FACTS;
 }> {
   return NextResponse.json({
     status: CHATBOT_ENABLED ? "available" : "disabled",
@@ -432,6 +432,8 @@ export function GET(): NextResponse<{
       maxMessageLength: chatbotConfig.maxMessageLength,
       maxMessagesPerSession: chatbotConfig.maxMessagesPerSession,
     },
-    assistant: REEM_CONFIG,
+    // REEM_FACTS is the public half of the prompt — the file states outright
+    // that nothing in it is secret. REEM_POLICY is deliberately not exposed.
+    assistant: REEM_FACTS,
   });
 }

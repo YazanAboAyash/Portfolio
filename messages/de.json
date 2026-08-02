@@ -521,11 +521,23 @@
     },
     "accessibility": {
       "sendMessage": "Nachricht senden",
-      "stopGenerating": "Generierung stoppen"
+      "stopGenerating": "Generierung stoppen",
+      "chatConversation": "Chat-Unterhaltung",
+      "welcomeIllustration": "Willkommensgrafik",
+      "pronunciation": "Aussprache",
+      "messageForm": "Nachricht an den Assistenten senden",
+      "typeMessage": "Geben Sie Ihre Nachricht ein",
+      "assistantAvatar": "Avatar des Assistenten",
+      "typingAnimation": "Schreibanimation",
+      "yourMessageAt": "Ihre Nachricht von {time}",
+      "assistantMessageAt": "Nachricht des Assistenten von {time}",
+      "sentAt": "Gesendet um {time}",
+      "messageSent": "Nachricht erfolgreich gesendet",
+      "messageFailed": "Nachricht konnte nicht gesendet werden"
     },
     "consent": {
       "title": "Datenschutz & Datenerfassung",
-      "description": "Ich speichere Chat-Gespräche zu Verbesserungszwecken. Alle DSGVO-Regeln für EU- und EWR-Nutzer werden vollständig angewendet. Sie können ablehnen und privat chatten.",
+      "description": "Wenn Sie zustimmen, bewahre ich diese Unterhaltung auf, um die Antwortqualität zu messen und zu verstehen, wonach Besucher suchen. Sie wird ohne Ihren Namen und ohne Kontaktdaten sowie mit gekürzter IP-Adresse gespeichert – niemals für Werbung oder Profiling. Bei Ablehnung wird nichts gespeichert.",
       "accept": "Akzeptieren & Fortfahren",
       "decline": "Ablehnen"
     }

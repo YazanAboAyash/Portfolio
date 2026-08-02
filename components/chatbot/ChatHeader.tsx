@@ -44,7 +44,9 @@ export const ChatHeader = React.memo(function ChatHeader({
             {t(CHATBOT_TRANSLATION_KEYS.NAME)}{" "}
             <span
               className="text-xs text-muted-foreground font-normal"
-              aria-label="pronunciation"
+              aria-label={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_PRONUNCIATION,
+              )}
             >
               {t(CHATBOT_TRANSLATION_KEYS.PRONUNCIATION)}
             </span>

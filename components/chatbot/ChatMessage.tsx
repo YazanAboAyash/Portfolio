@@ -73,9 +73,12 @@ export const ChatMessage = React.memo(function ChatMessage({
         isUser ? "justify-end" : "justify-start"
       } group ${className}`}
       role="article"
-      aria-label={`${
-        isUser ? "Your" : "Assistant"
-      } message from ${formattedTime}`}
+      aria-label={t(
+        isUser
+          ? CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_YOUR_MESSAGE_AT
+          : CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_ASSISTANT_MESSAGE_AT,
+        { time: formattedTime },
+      )}
     >
       <div className={`max-w-[85%] ${isUser ? "order-2" : "order-1"}`}>
         {!isUser && (
@@ -83,7 +86,9 @@ export const ChatMessage = React.memo(function ChatMessage({
             <div
               className={`w-6 h-6 ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.AVATAR_GRADIENT} flex items-center justify-center`}
               role="img"
-              aria-label="Assistant avatar"
+              aria-label={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_ASSISTANT_AVATAR,
+              )}
             >
               <Bot
                 className="w-3 h-3 text-primary-foreground"
@@ -178,20 +183,26 @@ export const ChatMessage = React.memo(function ChatMessage({
           >
             <span
               className="text-xs text-muted-foreground"
-              aria-label={`Sent at ${formattedTime}`}
+              aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SENT_AT, {
+                time: formattedTime,
+              })}
             >
               {formattedTime}
             </span>
             {status === "sent" && (
               <CheckCircle2
                 className="w-3 h-3 text-green-500"
-                aria-label="Message sent successfully"
+                aria-label={t(
+                  CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_MESSAGE_SENT,
+                )}
               />
             )}
             {status === "error" && (
               <AlertCircle
                 className="w-3 h-3 text-destructive"
-                aria-label="Message failed to send"
+                aria-label={t(
+                  CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_MESSAGE_FAILED,
+                )}
               />
             )}
           </div>

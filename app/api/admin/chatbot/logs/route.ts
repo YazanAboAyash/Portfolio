@@ -53,7 +53,6 @@ function isAuthorized(request: NextRequest): boolean {
 const chatLogsFilterSchema = z.object({
   startDate: z.string().datetime().optional(),
   endDate: z.string().datetime().optional(),
-  country: z.string().max(50).optional(),
   searchQuery: z.string().max(200).optional(),
   minMessages: z.coerce.number().min(0).max(1000).optional(),
   hasConsent: z
@@ -82,7 +81,6 @@ export async function GET(
     const filters = chatLogsFilterSchema.parse({
       startDate: searchParams.get("startDate") || undefined,
       endDate: searchParams.get("endDate") || undefined,
-      country: searchParams.get("country") || undefined,
       searchQuery: searchParams.get("searchQuery") || undefined,
       minMessages: searchParams.get("minMessages") || undefined,
       hasConsent: searchParams.get("hasConsent") || undefined,
@@ -106,10 +104,6 @@ export async function GET(
         ...((where.startedAt as Record<string, unknown>) || {}),
         lte: new Date(filters.endDate),
       };
-    }
-
-    if (filters.country) {
-      where.ipCountry = filters.country;
     }
 
     if (filters.minMessages !== undefined) {

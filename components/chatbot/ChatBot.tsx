@@ -236,7 +236,9 @@ export function ChatBot({
               className={`flex-1 p-3 sm:p-4 min-h-0 max-h-64 sm:max-h-80 ${showConsentBanner ? "overflow-hidden" : "overflow-y-auto"} ${CHATBOT_STYLES.SCROLLBAR}`}
               role="log"
               aria-live="polite"
-              aria-label="Chat conversation"
+              aria-label={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_CHAT_CONVERSATION,
+              )}
             >
               <div className="space-y-4">
                 {messages.length === 0 && !isLoading && (
@@ -248,7 +250,9 @@ export function ChatBot({
                     <div
                       className={`w-16 h-16 ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.WELCOME_ICON_GRADIENT} flex items-center justify-center mb-4`}
                       role="img"
-                      aria-label="Welcome illustration"
+                      aria-label={t(
+                        CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_WELCOME_ILLUSTRATION,
+                      )}
                     >
                       <Sparkles
                         className="w-8 h-8 text-primary"

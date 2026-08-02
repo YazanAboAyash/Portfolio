@@ -67,7 +67,7 @@ export const ChatInput = React.memo(
             void handleSubmit(e);
           }}
           className="flex gap-2 sm:gap-3"
-          aria-label="Send message to assistant"
+          aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_MESSAGE_FORM)}
         >
           <div className="flex-1 relative">
             <Input
@@ -80,7 +80,9 @@ export const ChatInput = React.memo(
               className={`pr-12 ${CHATBOT_STYLES.INPUT_BORDER} ${CHATBOT_STYLES.INPUT_ROUNDED} transition-all duration-200 placeholder:text-muted-foreground/60`}
               maxLength={CHATBOT_CONFIG.INPUT_MAX_LENGTH}
               aria-describedby="character-count"
-              aria-label="Type your message"
+              aria-label={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_TYPE_MESSAGE,
+              )}
             />
             <div className="absolute right-3 top-1/2 -translate-y-1/2">
               <span

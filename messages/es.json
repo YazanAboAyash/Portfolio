@@ -521,11 +521,23 @@
     },
     "accessibility": {
       "sendMessage": "Enviar mensaje",
-      "stopGenerating": "Detener la generación"
+      "stopGenerating": "Detener la generación",
+      "chatConversation": "Conversación del chat",
+      "welcomeIllustration": "Ilustración de bienvenida",
+      "pronunciation": "Pronunciación",
+      "messageForm": "Enviar mensaje al asistente",
+      "typeMessage": "Escriba su mensaje",
+      "assistantAvatar": "Avatar del asistente",
+      "typingAnimation": "Animación de escritura",
+      "yourMessageAt": "Su mensaje de las {time}",
+      "assistantMessageAt": "Mensaje del asistente de las {time}",
+      "sentAt": "Enviado a las {time}",
+      "messageSent": "Mensaje enviado correctamente",
+      "messageFailed": "No se pudo enviar el mensaje"
     },
     "consent": {
       "title": "Privacidad y Recopilación de Datos",
-      "description": "Guardo las conversaciones del chat con fines de mejora. Se aplican todas las normas del RGPD para usuarios de la UE y el EEE. Puedes rechazar y chatear de forma privada.",
+      "description": "Si acepta, conservo esta conversación para medir la calidad de las respuestas y entender qué buscan los visitantes. Se guarda sin su nombre ni datos de contacto y con su dirección IP abreviada; nunca para publicidad ni elaboración de perfiles. Si la rechaza, no se guarda nada.",
       "accept": "Aceptar y Continuar",
       "decline": "Rechazar"
     }

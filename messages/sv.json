@@ -521,11 +521,23 @@
     },
     "accessibility": {
       "sendMessage": "Skicka meddelande",
-      "stopGenerating": "Stoppa genereringen"
+      "stopGenerating": "Stoppa genereringen",
+      "chatConversation": "Chattkonversation",
+      "welcomeIllustration": "Välkomstillustration",
+      "pronunciation": "Uttal",
+      "messageForm": "Skicka meddelande till assistenten",
+      "typeMessage": "Skriv ditt meddelande",
+      "assistantAvatar": "Assistentens avatar",
+      "typingAnimation": "Skrivanimation",
+      "yourMessageAt": "Ditt meddelande från {time}",
+      "assistantMessageAt": "Assistentens meddelande från {time}",
+      "sentAt": "Skickat {time}",
+      "messageSent": "Meddelandet skickades",
+      "messageFailed": "Meddelandet kunde inte skickas"
     },
     "consent": {
       "title": "Integritet & Datainsamling",
-      "description": "Jag sparar chattkonversationer i förbättringssyfte. Alla GDPR-regler för EU- och EES-användare tillämpas fullt ut. Du kan avböja och chatta privat.",
+      "description": "Om du godkänner sparar jag denna konversation för att mäta svarens kvalitet och förstå vad besökare söker. Den lagras utan ditt namn eller dina kontaktuppgifter och med din IP-adress förkortad – aldrig för reklam eller profilering. Om du avböjer sparas ingenting.",
       "accept": "Acceptera & Fortsätt",
       "decline": "Avböj"
     }

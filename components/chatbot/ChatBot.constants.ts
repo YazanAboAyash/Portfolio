@@ -145,6 +145,18 @@ export const CHATBOT_TRANSLATION_KEYS = {
   // Accessibility
   ACCESSIBILITY_SEND_MESSAGE: "accessibility.sendMessage",
   ACCESSIBILITY_STOP_GENERATING: "accessibility.stopGenerating",
+  ACCESSIBILITY_CHAT_CONVERSATION: "accessibility.chatConversation",
+  ACCESSIBILITY_WELCOME_ILLUSTRATION: "accessibility.welcomeIllustration",
+  ACCESSIBILITY_PRONUNCIATION: "accessibility.pronunciation",
+  ACCESSIBILITY_MESSAGE_FORM: "accessibility.messageForm",
+  ACCESSIBILITY_TYPE_MESSAGE: "accessibility.typeMessage",
+  ACCESSIBILITY_ASSISTANT_AVATAR: "accessibility.assistantAvatar",
+  ACCESSIBILITY_TYPING_ANIMATION: "accessibility.typingAnimation",
+  ACCESSIBILITY_YOUR_MESSAGE_AT: "accessibility.yourMessageAt",
+  ACCESSIBILITY_ASSISTANT_MESSAGE_AT: "accessibility.assistantMessageAt",
+  ACCESSIBILITY_SENT_AT: "accessibility.sentAt",
+  ACCESSIBILITY_MESSAGE_SENT: "accessibility.messageSent",
+  ACCESSIBILITY_MESSAGE_FAILED: "accessibility.messageFailed",
 };
 
 export const CHATBOT_GUIDED_ACTION_KEYS = [

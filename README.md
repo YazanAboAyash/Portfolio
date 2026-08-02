@@ -13,7 +13,7 @@ Modern, secure, high‑performance developer portfolio built with Next.js 16, Ty
 **Stack:**
 Next.js 16.2 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui 
 Embla Carousel · Framer Motion 12.x · next-intl 4.11 · Prisma ORM 7.8 
-Neon PostgreSQL · Zod 4.x · ESLint 9.x · Playwright + axe-core · Vercel
+Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · ESLint 9.x · Playwright + axe-core · Vercel
 
 </div>
 
@@ -55,6 +55,10 @@ Beyond the portfolio surface, the project now hosts a small suite of **interacti
 
 Condensed summary of what shipped since the previous README revision (v6.0.8).
 
+**Vercel AI SDK — chatbot migration**
+
+The chatbot moved from a hand‑rolled `fetch` against the OpenAI Responses API to the **Vercel AI SDK 7** (`streamText` + `useChat`). Replies now stream token‑by‑token with a stop control, conversation history moved from a per‑instance in‑memory `Map` to the visitor's browser (fixing context loss across serverless instances), and error handling moved to a localized code contract. The hand‑rolled transport, session store and error‑mapping layers were deleted outright, leaving the chatbot surface a net ~250 lines smaller.
+
 **v6.1.1 — Navigation & motion polish**
 
 **v6.1.0 — Unified visual system**
@@ -78,6 +82,7 @@ Core:
 * next-intl 4.11 (server aware, cookie‑driven locale)
 * Zod 4.x (runtime schema validation)
 * Prisma ORM 7.8 + Neon serverless PostgreSQL
+* Vercel AI SDK 7 (`ai` 7.0.47, `@ai-sdk/openai` 4.0.27, `@ai-sdk/react` 4.0.50) — streaming chatbot transport
 * Vercel Hosting & Edge Network
 
 Development & Quality:
@@ -122,7 +127,7 @@ Three AI‑backed surfaces, each isolated behind its own validated, rate‑limit
 
 | Surface              | Route                        | Provider                   | Notes                                                     |
 | --- | --- | --- | --- |
-| Chatbot ("Reem")     | `/api/chatbot`               | OpenAI Responses API       | Session memory, spam/prompt sanitation, consent‑gated logging |
+| Chatbot ("Reem")     | `/api/chatbot`               | Vercel AI SDK 7 → `@ai-sdk/openai` (Responses API) | Streamed replies, client‑held history, spam/prompt sanitation, consent‑gated logging |
 | Automation Audit     | `/api/automation-audit`      | OpenAI Chat Completions    | Structured JSON audit result, dedicated rate limiter      |
 | Polite Email Rewriter| `/api/email-rewrite/*`       | Groq (`openai/gpt-oss-120b`) | Analyze / rewrite / remaining‑quota endpoints            |
 
@@ -133,8 +138,16 @@ Shared controls across all AI routes:
 * Model IDs and API keys supplied exclusively via environment variables — never hard‑coded
 * Provider errors normalized into standardized error envelopes; no upstream detail leakage
 * Feature flags (`CHATBOT_ENABLED`) allowing runtime disablement
+* Chat requests set `store: false`, opting out of OpenAI‑side response retention
 
-> **In progress:** all three surfaces currently call their providers through hand‑rolled `fetch` wrappers with bespoke response‑shape parsing. These are being consolidated onto the **Vercel AI SDK** — see §16 Roadmap.
+Chatbot specifics since the AI SDK migration:
+
+* `streamText` on the server, `useChat` + `DefaultChatTransport` on the client; replies stream as SSE with a stop control
+* Conversation history is owned by the browser and replayed with each message, so context no longer depends on which serverless instance answers. It is validated server‑side with `validateUIMessages`, capped by message count, and any client‑supplied `system` turn is rejected
+* Failures cross the wire as bare codes (`RATE_LIMIT_EXCEEDED`, `QUOTA_EXCEEDED`, …) that the client maps onto translated strings — no provider text ever reaches the UI
+* Consent‑gated persistence runs in the stream's `onFinish`, skipped when the visitor aborts
+
+> **Not yet migrated:** `/api/automation-audit` and `/api/email-rewrite/*` still call their providers through hand‑rolled `fetch` wrappers with bespoke response‑shape parsing — see §16 Roadmap.
 
 ---
 
@@ -233,7 +246,7 @@ Comprehensive API endpoints with security-first design:
 | `/api/blog/[slug]`              | Single post retrieval + read-count increment       | Optimized increment path                  |
 | `/api/github`                   | Fetches GitHub profile + repos (filtered)          | Tokenized (env)                           |
 | `/api/speed-insight`            | Surfaces PageSpeed metrics                         | 1h revalidate, `stale-while-revalidate`   |
-| `/api/chatbot`                  | Interactive AI chatbot (Reem) for visitor queries  | OpenAI Responses API                      |
+| `/api/chatbot`                  | Interactive AI chatbot (Reem) for visitor queries  | Vercel AI SDK 7, SSE streamed              |
 | `/api/automation-audit`         | Scored automation audit generation                 | OpenAI Chat Completions + audit rate limit |
 | `/api/email-rewrite/analyze`    | Tone/intent analysis of a draft email              | Groq                                      |
 | `/api/email-rewrite/rewriter`   | Rewrites a draft in the selected mode              | Groq                                      |
@@ -303,7 +316,8 @@ Security Posture Snapshot:
 
 * No invasive tracking; minimal analytical surface (Vercel Analytics & Speed Insights only).
 * Cookie consent banner gating non‑essential storage, synchronized across browser tabs.
-* **Chat logging is consent‑gated**: with no consent, nothing is persisted — the conversation stays ephemeral in memory.
+* **Chat logging is consent‑gated**: with no consent, nothing is persisted — the conversation exists only in the visitor's own browser, and the server keeps nothing once it has answered.
+* Chat requests are sent to OpenAI with `store: false`, so replies are not retained on the provider side.
 * **No geolocation**: IP‑to‑country/city lookup was removed entirely in v6.0.13; `ipCountry` and `ipCity` are never populated.
 * IP addresses are anonymized before storage when anonymization is enabled.
 * No third‑party ad or profiling scripts.
@@ -339,7 +353,7 @@ npm run docs         # generate TypeDoc output
 
 ## 16. Roadmap
 
-* **Vercel AI SDK migration (in progress)** — replace the hand‑rolled `fetch` calls to OpenAI and Groq across `/api/chatbot`, `/api/automation-audit` and `/api/email-rewrite/*` with the Vercel AI SDK. Goals: a single provider‑agnostic interface, streamed chatbot responses instead of buffered replies, schema‑validated structured output for the automation audit (removing bespoke JSON parsing), and unified error/quota handling. Work tracked on `feat/vercel-ai-sdk`.
+* **Vercel AI SDK migration** — `/api/chatbot` is **done** (`feat/vercel-ai-sdk`): streamed replies, provider‑agnostic model interface, unified error handling. Remaining: `/api/automation-audit`, where the SDK's schema‑validated structured output would replace the bespoke JSON parsing. The live tools (`/api/email-rewrite/*`) are tracked separately.
 * Typed message-key access for `next-intl` bundles
 * Expanded Playwright coverage for admin flows
 * Continued dependency modernization (Next 16.2.x line, next-intl 4.x)

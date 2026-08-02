@@ -521,11 +521,23 @@
     },
     "accessibility": {
       "sendMessage": "Send message",
-      "stopGenerating": "Stop generating"
+      "stopGenerating": "Stop generating",
+      "chatConversation": "Chat conversation",
+      "welcomeIllustration": "Welcome illustration",
+      "pronunciation": "Pronunciation",
+      "messageForm": "Send message to assistant",
+      "typeMessage": "Type your message",
+      "assistantAvatar": "Assistant avatar",
+      "typingAnimation": "Typing animation",
+      "yourMessageAt": "Your message from {time}",
+      "assistantMessageAt": "Assistant message from {time}",
+      "sentAt": "Sent at {time}",
+      "messageSent": "Message sent successfully",
+      "messageFailed": "Message failed to send"
     },
     "consent": {
       "title": "Privacy & Data Collection",
-      "description": "I save chat conversations for improvement purposes. All GDPR rules for EU and EEA users are fully applied. You can decline and chat privately.",
+      "description": "If you accept, I keep this conversation to measure answer quality and to understand what visitors are looking for. It is stored without your name or contact details and with your IP address shortened — never for advertising or profiling. Decline and nothing is saved.",
       "accept": "Accept & Continue",
       "decline": "Decline"
     }
