@@ -153,13 +153,48 @@ function getRetryAfterSeconds(clientIP: string): number {
   return Math.max(1, Math.ceil((nextMinuteReset - Date.now()) / 1000));
 }
 
-function cleanupRateLimits(): void {
-  const now = Date.now();
-  for (const [ip, limit] of rateLimits.entries()) {
-    if (now - limit.hour.lastRequest > 3600000) {
-      // 1 hour
-      rateLimits.delete(ip);
+// Nothing evicts an entry for a full hour after its last request, so the map's
+// size tracks distinct client IPs per hour. That is not a number this code gets
+// to choose: a single IPv6 /64 supplies more addresses than the process can
+// hold, so the ceiling — not the sweep — is what actually bounds memory.
+const MAX_TRACKED_CLIENTS = 10_000;
+const CLEANUP_INTERVAL_MS = 60_000;
+const HOUR_MS = 3_600_000;
+
+let lastCleanupAt = 0;
+
+/**
+ * Keeps `rateLimits` bounded. Replaces a `Math.random() < 0.1` coin flip, which
+ * tied the sweep's timing to traffic volume and so ran least reliably per entry
+ * exactly when entries were arriving fastest.
+ *
+ * Eviction order is the part that matters. Dropping an entry resets whoever is
+ * dropped, so evicting least-recently-active first means a client that is
+ * actively flooding is the last thing considered — it cannot clear its own
+ * counter by filling the map with other keys.
+ */
+function pruneRateLimits(now: number): void {
+  if (now - lastCleanupAt >= CLEANUP_INTERVAL_MS) {
+    lastCleanupAt = now;
+    for (const [ip, limit] of rateLimits.entries()) {
+      if (now - limit.hour.lastRequest > HOUR_MS) {
+        rateLimits.delete(ip);
+      }
     }
+  }
+
+  if (rateLimits.size <= MAX_TRACKED_CLIENTS) return;
+
+  // Cut back to 90% rather than to the ceiling, so the sort is paid once per
+  // thousand new clients instead of on every request while at capacity.
+  const byLeastRecent = [...rateLimits.entries()].sort(
+    (a, b) => a[1].hour.lastRequest - b[1].hour.lastRequest,
+  );
+  let remaining = rateLimits.size - Math.floor(MAX_TRACKED_CLIENTS * 0.9);
+  for (const [ip] of byLeastRecent) {
+    if (remaining <= 0) break;
+    rateLimits.delete(ip);
+    remaining--;
   }
 }
 
@@ -389,10 +424,9 @@ export async function POST(request: NextRequest): Promise<Response> {
     });
   }
 
-  // Cleanup stale rate limit entries periodically during requests
-  if (Math.random() < 0.1) {
-    cleanupRateLimits();
-  }
+  // Deterministic, and after the check above so a request cannot prune its way
+  // out of its own limit.
+  pruneRateLimits(Date.now());
 
   // Validate content type
   const contentType = request.headers.get("content-type");
