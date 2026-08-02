@@ -421,10 +421,14 @@ export async function POST(request: NextRequest): Promise<Response> {
   });
 }
 
+/**
+ * Availability probe. Deliberately exposes nothing about the assistant itself:
+ * the prompt's facts and policy stay server-side, so this cannot be used to
+ * enumerate services, pricing or behaviour without talking to Reem.
+ */
 export function GET(): NextResponse<{
   status: string;
   config: Partial<ChatBotConfig>;
-  assistant: typeof REEM_FACTS;
 }> {
   return NextResponse.json({
     status: CHATBOT_ENABLED ? "available" : "disabled",
@@ -432,8 +436,5 @@ export function GET(): NextResponse<{
       maxMessageLength: chatbotConfig.maxMessageLength,
       maxMessagesPerSession: chatbotConfig.maxMessagesPerSession,
     },
-    // REEM_FACTS is the public half of the prompt — the file states outright
-    // that nothing in it is secret. REEM_POLICY is deliberately not exposed.
-    assistant: REEM_FACTS,
   });
 }

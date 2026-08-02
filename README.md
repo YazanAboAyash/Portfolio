@@ -36,10 +36,9 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · ESLint 9.x · Playwright + axe-
 13. GitHub Actions & Automation
 14. Privacy & Data Handling
 15. Development (Local Setup)
-16. Roadmap
-17. License & Intellectual Property
-18. Contact
-19. Special Thanks
+16. License & Intellectual Property
+17. Contact
+18. Special Thanks
 
 ---
 
@@ -54,10 +53,6 @@ Beyond the portfolio surface, the project now hosts a small suite of **interacti
 ## 2. Recent Releases
 
 Condensed summary of what shipped since the previous README revision (v6.0.8).
-
-**Vercel AI SDK — chatbot migration**
-
-The chatbot moved from a hand‑rolled `fetch` against the OpenAI Responses API to the **Vercel AI SDK 7** (`streamText` + `useChat`). Replies now stream token‑by‑token with a stop control, conversation history moved from a per‑instance in‑memory `Map` to the visitor's browser (fixing context loss across serverless instances), and error handling moved to a localized code contract. The hand‑rolled transport, session store and error‑mapping layers were deleted outright, leaving the chatbot surface a net ~250 lines smaller.
 
 **v6.1.1 — Navigation & motion polish**
 
@@ -351,16 +346,7 @@ npm run docs         # generate TypeDoc output
 
 ---
 
-## 16. Roadmap
-
-* **Vercel AI SDK migration** — `/api/chatbot` is **done** (`feat/vercel-ai-sdk`): streamed replies, provider‑agnostic model interface, unified error handling. Remaining: `/api/automation-audit`, where the SDK's schema‑validated structured output would replace the bespoke JSON parsing. The live tools (`/api/email-rewrite/*`) are tracked separately.
-* Typed message-key access for `next-intl` bundles
-* Expanded Playwright coverage for admin flows
-* Continued dependency modernization (Next 16.2.x line, next-intl 4.x)
-
----
-
-## 17. License & Intellectual Property
+## 16. License & Intellectual Property
 
 Copyright © 2026 ColdByDefault. All rights reserved.
 
@@ -376,7 +362,7 @@ Refer to `LICENSE` file for formal wording.
 
 ---
 
-## 18. Contact
+## 17. Contact
 Portfolio: https://www.coldbydefault.com
 
 Documentation: https://docs.coldbydefault.com/ 
@@ -386,7 +372,7 @@ _P.S. If you find any bugs, they're not bugs - they're undocumented features!_
 
 ---
 
-## 19. Special Thanks
+## 18. Special Thanks
 
 <div align="center">
 
