@@ -244,49 +244,91 @@ export function sanitizeChatInput(input: string): string {
 }
 
 /**
- * Advanced spam detection for chat messages
+ * Cheap junk filter for the free text this site accepts from strangers — chat
+ * turns and the email rewriter's input.
+ *
+ * Deliberately biased toward letting things through. A wrongly rejected message
+ * is a lost client; a spam message that gets through costs a fraction of a cent
+ * in model tokens, and the per-IP rate limiter bounds how many are possible. So
+ * no signal counts on its own unless it has no innocent reading at all.
+ *
+ * The previous version scored a point per regex *match*, which is why an
+ * enquiry quoting a budget, a phone number and a link scored three before it
+ * said anything suspicious — a message naming a price and how to call back is
+ * the single most valuable thing this site receives. Money amounts and phone
+ * numbers are therefore no longer signals at any weight.
+ *
+ * English-only, knowingly: the vocabulary rules do not fire on de/es/fr/sv, so
+ * those locales are covered by the structural rules alone. Widening that means
+ * guessing at spam idiom in languages we cannot test, which risks exactly the
+ * false positives this rewrite removes.
  */
 export function isChatSpam(content: string): boolean {
-  if (!content) return true;
+  if (!content.trim()) return true;
 
-  // Prevent ReDoS by limiting input length
+  // Nothing below backtracks, but an unbounded input still gets scanned several
+  // times over, so refuse it before doing that work.
   if (content.length > 10000) return true;
 
-  // Check for common spam patterns (ReDoS-safe implementations)
-  const spamPatterns = [
-    /(.)\1{6,}/g, // Repeated characters (7+ times)
-    /[A-Z]{8,}/g, // Excessive ALL CAPS
-    /\b(CLICK|BUY|MONEY|FREE|URGENT|LIMITED|ACT NOW)\b/gi,
-    /\$[0-9,]+/g, // Money amounts
-    /\b[0-9]{3}[-.]?[0-9]{3}[-.]?[0-9]{4}\b/g, // Phone numbers (simplified, ReDoS safe)
-    /https?:\/\/\S+/gi, // URLs (more efficient)
-    /\b(bitcoin|crypto|lottery|casino|viagra|cialis)\b/gi,
+  const text = content.toLowerCase();
+  const urls = content.match(/https?:\/\/\S+/gi)?.length ?? 0;
+  let score = 0;
+
+  // --- decisive alone (>= the threshold) ---
+
+  // No innocent reading in an enquiry about web development.
+  if (/\b(viagra|cialis|casino|lottery|payday loan)\b/.test(text)) score += 4;
+
+  // Ten identical characters in a row is a keyboard mash. The old bound of
+  // seven was reachable by ordinary emphasis ("soooooo"), and — because it
+  // scored per match — a single mash still only counted one point, so
+  // "aaaaaaaaaaaaaaaaaaaaaaaaa" used to pass while real leads did not.
+  if (/(.)\1{9,}/.test(content)) score += 4;
+
+  // A link farm. Three is suspicious; four is not a conversation.
+  if (urls >= 4) score += 4;
+  else if (urls === 3) score += 2;
+
+  // --- weaker: real messages trip one of these, spam trips several ---
+
+  // Shouting, measured as a share of the letters rather than as a run length.
+  // `[A-Z]{8,}` flagged DSGVO and WCAG questions and ordinary German nouns.
+  const letters = content.replace(/[^\p{L}]/gu, "").length;
+  const upper = content.replace(/[^\p{Lu}]/gu, "").length;
+  if (letters >= 20 && upper / letters >= 0.8) score += 3;
+
+  if ((content.match(/!/g)?.length ?? 0) >= 4) score += 2;
+
+  // Marketing vocabulary counts only in bulk. "Are you free next week", "I want
+  // to buy a site" and "my budget is limited" are how real clients write, so any
+  // one of these in isolation has to mean nothing.
+  const promo = [
+    /\bfree\b/,
+    /\bfree money\b/,
+    /\bclick (here|now)\b/,
+    /\b(buy|order) now\b/,
+    /\bact now\b/,
+    /\blimited (time|offer)\b/,
+    /\bguaranteed\b/,
+    /\burgent\b/,
+    /\bbitcoin\b/,
+    /\bcrypto\b/,
+    /\bwinner\b/,
   ];
+  const promoHits = promo.filter((pattern) => pattern.test(text)).length;
+  if (promoHits >= 3) score += 3;
+  else if (promoHits === 2) score += 1;
 
-  let spamScore = 0;
-  spamPatterns.forEach((pattern) => {
-    const matches = content.match(pattern);
-    if (matches) {
-      spamScore += matches.length;
-    }
-  });
-
-  // Additional checks
-  if (content.length < 2) spamScore += 2;
-  if (content.length > 2000) spamScore += 3;
-
-  // Check for repeated words
-  const words = content.toLowerCase().split(/\s+/);
-  const wordCounts = new Map();
-  words.forEach((word) => {
-    if (word.length > 3) {
-      wordCounts.set(word, (wordCounts.get(word) || 0) + 1);
-    }
-  });
-
-  for (const count of wordCounts.values()) {
-    if (count > 3) spamScore += 2;
+  // Flooding a single word — decisive, because past ten words no sentence in any
+  // language is half one token. Measured as a share rather than as the old
+  // "any word four or more times", which fired on every long brief: over a few
+  // hundred words, "that" and "would" reach four on their own.
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length >= 10) {
+    const counts = new Map<string, number>();
+    for (const word of words) counts.set(word, (counts.get(word) ?? 0) + 1);
+    if (Math.max(...counts.values()) / words.length > 0.5) score += 4;
   }
 
-  return spamScore >= 4;
+  return score >= 4;
 }
