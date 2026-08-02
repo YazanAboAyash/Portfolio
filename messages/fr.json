@@ -271,8 +271,8 @@
       },
       "chat": {
         "title": "Conversation avec l'assistant (stockage local)",
-        "description": "Contient la conversation en cours avec l'assistant IA, son identifiant de session et votre décision de consentement pour l'assistant, afin que le fil soit conservé lors de la navigation entre les pages.",
-        "retention": "Conservation : effacée lorsque vous quittez le site, ou immédiatement au moyen du bouton de suppression ci-dessous."
+        "description": "Contient la conversation en cours avec l'assistant IA, son identifiant de session et votre décision de consentement pour l'assistant, afin que le fil soit conservé lors de la navigation entre les pages et lors du rechargement du site.",
+        "retention": "Conservation : demeure dans ce navigateur jusqu'à ce que vous effaciez la conversation dans l'assistant, utilisiez le bouton de suppression ci-dessous ou vidiez le stockage de votre navigateur."
       },
       "legalBasis": "Base légale : § 25, al. 2 de la TDDDG allemande combiné à l'art. 6, § 1, point f du RGPD — ces entrées sont strictement nécessaires à la fourniture des fonctions que vous avez demandées. L'entrée relative au consentement à la mesure est enregistrée au titre du § 25, al. 1 de la TDDDG et de l'art. 6, § 1, point a du RGPD."
     },
@@ -302,9 +302,9 @@
       "title": "Assistant IA (Reem)",
       "description": "Ce site comporte un assistant IA qui répond aux questions sur mon travail. Il s'agit d'un système artificiel et non d'une personne ; ses réponses peuvent être erronées ou incomplètes.",
       "alwaysTitle": "Ce qui est toujours transmis lorsque vous envoyez un message",
-      "alwaysDescription": "L'envoi d'un message transmet son texte à mon serveur, puis de là à OpenAI, qui génère la réponse. Sont transmis avec le message la page sur laquelle vous vous trouviez, la langue de votre navigateur, l'identification de votre navigateur et un identifiant de session ; votre adresse IP parvient à mon serveur dans le cadre de la requête. C'est inévitable : sans cela, l'assistant ne peut produire aucune réponse. Mon serveur conserve la conversation en mémoire pendant la durée de la session afin que les questions de suivi disposent du contexte. Les requêtes sont marquées de manière à ne pas servir à l'entraînement des modèles d'OpenAI, mais OpenAI peut conserver les données d'API pendant une durée limitée à des fins de contrôle des abus, selon ses propres conditions.",
+      "alwaysDescription": "L'envoi d'un message transmet son texte à mon serveur, puis de là à OpenAI, qui génère la réponse. La conversation est conservée dans votre propre navigateur et, afin que les questions de suivi disposent du contexte, les messages déjà échangés sont envoyés avec chaque nouveau message. Sont également transmis la page sur laquelle vous vous trouviez, la langue de votre navigateur, l'identification de votre navigateur et un identifiant de session ; votre adresse IP parvient à mon serveur dans le cadre de la requête. C'est inévitable : sans cela, l'assistant ne peut produire aucune réponse. Mon serveur ne conserve pas la conversation une fois la réponse fournie. Les requêtes sont marquées de manière qu'OpenAI ne les stocke pas et ne les utilise pas pour entraîner ses modèles, mais OpenAI peut conserver les données d'API pendant une durée limitée à des fins de contrôle des abus, selon ses propres conditions.",
       "storedTitle": "Ce qui n'est enregistré qu'avec votre consentement",
-      "storedDescription": "Si vous acceptez la demande de consentement de l'assistant, la conversation est en outre enregistrée dans ma base de données : les messages, leurs horodatages, une adresse IP tronquée, la langue de votre navigateur et l'identification de votre navigateur. Si vous refusez, rien de tout cela n'est enregistré : l'échange n'existe alors que dans la mémoire du serveur pendant la session et dans votre propre navigateur.",
+      "storedDescription": "Si vous acceptez la demande de consentement de l'assistant, la conversation est en outre enregistrée dans ma base de données : les messages, leurs horodatages, une adresse IP tronquée, la langue de votre navigateur et l'identification de votre navigateur. Si vous refusez, rien de tout cela n'est enregistré : l'échange n'existe alors que dans votre propre navigateur.",
       "aiNoticeTitle": "Transparence sur l'IA",
       "aiNoticeDescription": "Vous interagissez avec un système d'IA, et non avec moi personnellement. Merci de ne pas saisir de mots de passe, de coordonnées bancaires, de données de santé ni aucune autre information dont vous ne souhaiteriez pas le traitement par un prestataire d'IA établi aux États-Unis.",
       "legalBasis": "Base légale : art. 6, § 1, points b et f du RGPD pour produire la réponse que vous avez demandée ; art. 6, § 1, point a du RGPD — votre consentement — pour l'enregistrement de la conversation."
@@ -355,7 +355,7 @@
       "title": "Durées de conservation",
       "description": "Je ne conserve les données à caractère personnel que le temps nécessaire à la finalité pour laquelle elles ont été collectées, ou aussi longtemps que l'exigent des obligations légales de conservation.",
       "serverLogs": "Les journaux d'hébergement et de requêtes sont conservés par Vercel pendant la durée fixée par sa propre politique de conservation ; je ne tiens pas de journaux d'accès distincts.",
-      "chatSessions": "Une conversation d'assistant conservée dans la mémoire du serveur est automatiquement supprimée lorsque la session est restée inactive pendant le délai configuré, et en tout état de cause au redémarrage du processus serveur.",
+      "chatSessions": "Mon serveur ne conserve une conversation d'assistant que le temps nécessaire pour répondre au message. Une fois la réponse envoyée, il ne reste rien de l'échange sur le serveur, sauf si vous avez consenti à son enregistrement.",
       "chatRecords": "Les conversations enregistrées en base de données avec votre consentement sont actuellement supprimées manuellement lors d'une revue, et non selon un calendrier automatique fixe. Vous pouvez en demander la suppression à tout moment en écrivant à l'adresse indiquée ci-dessus ; j'y procéderai dans les meilleurs délais.",
       "browser": "Les entrées présentes dans votre navigateur subsistent jusqu'à leur expiration, jusqu'à ce que vous effaciez le stockage de votre navigateur, ou jusqu'à ce que vous utilisiez le bouton de suppression de cette page."
     },
@@ -486,6 +486,7 @@
     "subtitle": "Votre assistant portfolio IA",
     "openAssistant": "Ouvrir l'assistant IA Reem",
     "closeChat": "Fermer le chat",
+    "newChat": "Nouveau chat",
     "greeting": {
       "title": "Salut ! Je suis Reem 👋",
       "description": "Je suis votre assistant IA, ici pour vous aider à explorer le portfolio de Yazan et répondre aux questions sur ses projets, compétences et expérience."
@@ -508,21 +509,36 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Envoi",
-      "sent": "Envoyé",
-      "error": "Erreur"
+      "generating": "Génération"
     },
     "errors": {
       "generic": "Quelque chose s'est mal passé. Veuillez réessayer.",
       "network": "Erreur réseau. Veuillez vérifier votre connexion.",
-      "rateLimit": "Trop de messages. Veuillez patienter un moment."
+      "rateLimit": "Trop de messages. Veuillez patienter un moment.",
+      "quotaExceeded": "Je fais une courte pause. Veuillez réessayer dans quelques instants.",
+      "serviceUnavailable": "Je n'arrive pas à répondre pour le moment. Veuillez réessayer dans un instant.",
+      "validation": "Je n'ai pas pu traiter votre message. Veuillez essayer de le reformuler.",
+      "timeout": "La requête prend trop de temps. Veuillez réessayer."
     },
     "accessibility": {
-      "sendMessage": "Envoyer le message"
+      "sendMessage": "Envoyer le message",
+      "stopGenerating": "Arrêter la génération",
+      "chatConversation": "Conversation du chat",
+      "welcomeIllustration": "Illustration de bienvenue",
+      "pronunciation": "Prononciation",
+      "messageForm": "Envoyer un message à l'assistant",
+      "typeMessage": "Saisissez votre message",
+      "assistantAvatar": "Avatar de l'assistant",
+      "typingAnimation": "Animation de saisie",
+      "yourMessageAt": "Votre message de {time}",
+      "assistantMessageAt": "Message de l'assistant de {time}",
+      "sentAt": "Envoyé à {time}",
+      "messageSent": "Message envoyé avec succès",
+      "messageFailed": "Échec de l'envoi du message"
     },
     "consent": {
       "title": "Confidentialité et Collecte de Données",
-      "description": "J'enregistre les conversations de chat à des fins d'amélioration. Toutes les règles RGPD pour les utilisateurs de l'UE et de l'EEE sont pleinement appliquées. Vous pouvez refuser et discuter en privé.",
+      "description": "Si vous acceptez, je conserve cette conversation pour mesurer la qualité des réponses et comprendre ce que recherchent les visiteurs. Elle est enregistrée sans votre nom ni vos coordonnées et avec votre adresse IP tronquée — jamais à des fins publicitaires ou de profilage. Si vous refusez, rien n'est enregistré.",
       "accept": "Accepter et Continuer",
       "decline": "Refuser"
     }

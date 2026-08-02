@@ -62,7 +62,7 @@ public/assets/              Images, icons, use-case visuals
   agents/                   Custom VS Code Copilot agents
   instructions/             Auto-loaded instructions for .ts/.tsx files
   skills/                   On-demand skills (i18n-checker, portfolio-architecture)
-  workflows/                GitHub Actions (bump-version, codeql, dependency-review, lighthouse-ci)
+  workflows/                GitHub Actions (bump-version, codeql, dependency-review)
   copilot-instructions.md   VS Code Copilot always-on context
   CODEOWNERS                All files owned by @yazanaboayash
 ```
@@ -101,6 +101,8 @@ npm run build         # next build --webpack
 npm run lint          # eslint .
 npm run lint:fix      # eslint . --fix
 npm run typecheck     # tsc --noEmit
+npm run test:e2e      # playwright test (test:e2e:ui for the runner UI)
+npm run db:push       # prisma db push
 npm run db:migrate    # prisma migrate deploy
 npm run db:seed       # tsx prisma/seed.ts
 npm run db:generate   # prisma generate
@@ -154,6 +156,8 @@ components/[Feature]/
 | `bump-version.yml`      | push to `main`       | Bumps patch version in `package.json` + `README.md`, tags release |
 | `codeql.yml`            | push / PR / schedule | CodeQL security analysis                                          |
 | `dependency-review.yml` | PR                   | Dependency vulnerability check                                    |
-| `lighthouse-ci.yml`     | push / PR / manual   | Lighthouse CI performance, accessibility, and resource budgets     |
 
 The bump workflow commits with `[skip ci]` to prevent loops.
+
+Playwright is **not** wired into CI — `npm run test:e2e` runs locally only. The Lighthouse CI
+workflow was retired in v6.0.10; performance is tracked via Vercel Speed Insights instead.

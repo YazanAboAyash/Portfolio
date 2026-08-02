@@ -271,8 +271,8 @@
       },
       "chat": {
         "title": "Assistant conversation (local storage)",
-        "description": "Holds the current conversation with the AI assistant, its session identifier and your consent choice for the assistant, so the thread survives navigation between pages.",
-        "retention": "Retention: cleared when you leave the site, or immediately using the deletion button below."
+        "description": "Holds the current conversation with the AI assistant, its session identifier and your consent choice for the assistant, so the thread survives navigation between pages and reloading the site.",
+        "retention": "Retention: remains in this browser until you clear the conversation in the assistant, use the deletion button below, or clear your browser storage."
       },
       "legalBasis": "Legal basis: § 25(2) TDDDG together with Art. 6(1)(f) GDPR — these entries are strictly necessary to provide the functions you requested. The analytics consent entry is stored under § 25(1) TDDDG and Art. 6(1)(a) GDPR."
     },
@@ -302,9 +302,9 @@
       "title": "AI assistant (Reem)",
       "description": "This site includes an AI assistant that answers questions about my work. It is an artificial system, not a person, and its answers can be wrong or incomplete.",
       "alwaysTitle": "What is always transmitted when you send a message",
-      "alwaysDescription": "Sending a message transmits its text to my server and from there to OpenAI, which generates the reply. Along with the message, the page you were on, your browser language, your browser identification and a session identifier are sent, and your IP address reaches my server as part of the request. This is unavoidable: without it the assistant cannot produce an answer. My server holds the conversation in memory for the duration of the session so that follow-up questions have context. Requests are marked so that they are not used to train OpenAI's models, but OpenAI may retain API data for a limited period for abuse monitoring under its own terms.",
+      "alwaysDescription": "Sending a message transmits its text to my server and from there to OpenAI, which generates the reply. The conversation is kept in your own browser, and so that follow-up questions have context the messages exchanged so far are sent along with each new message. Also transmitted are the page you were on, your browser language, your browser identification and a session identifier, and your IP address reaches my server as part of the request. This is unavoidable: without it the assistant cannot produce an answer. My server does not keep the conversation after it has answered. Requests are marked so that OpenAI does not store them and does not use them to train its models, but OpenAI may retain API data for a limited period for abuse monitoring under its own terms.",
       "storedTitle": "What is stored only with your consent",
-      "storedDescription": "If you accept the assistant's consent prompt, the conversation is additionally written to my database: the messages, their timestamps, a shortened IP address, your browser language and your browser identification. If you decline, none of this is written — the exchange then exists only in the running server's memory for the session and in your own browser.",
+      "storedDescription": "If you accept the assistant's consent prompt, the conversation is additionally written to my database: the messages, their timestamps, a shortened IP address, your browser language and your browser identification. If you decline, none of this is written — the exchange then exists only in your own browser.",
       "aiNoticeTitle": "AI transparency",
       "aiNoticeDescription": "You are interacting with an AI system, not with me personally. Please do not enter passwords, payment details, health information or anything else you would not want processed by a US-based AI provider.",
       "legalBasis": "Legal basis: Art. 6(1)(b) and (f) GDPR for producing the answer you asked for; Art. 6(1)(a) GDPR — your consent — for storing the conversation."
@@ -355,7 +355,7 @@
       "title": "How long data is kept",
       "description": "I keep personal data only for as long as it is needed for the purpose it was collected for, or for as long as statutory retention duties require.",
       "serverLogs": "Hosting and request logs are kept by Vercel for the period set out in its own retention policy; I do not maintain separate access logs.",
-      "chatSessions": "An assistant conversation held in server memory is discarded automatically once the session has been inactive for the configured timeout, and in any case when the server process restarts.",
+      "chatSessions": "My server keeps an assistant conversation only for as long as it takes to answer the message. Nothing about the exchange remains on the server once the reply has been sent, unless you consented to it being stored.",
       "chatRecords": "Conversations stored in the database with your consent are currently deleted manually during review rather than on a fixed automatic schedule. You can have yours removed at any time by writing to the address above; I will do so without undue delay.",
       "browser": "Entries in your own browser remain until they expire, until you clear your browser storage, or until you use the deletion button on this page."
     },
@@ -486,6 +486,7 @@
     "subtitle": "Your AI portfolio assistant",
     "openAssistant": "Open Reem AI assistant",
     "closeChat": "Close chat",
+    "newChat": "New chat",
     "greeting": {
       "title": "Hi! I'm Reem 👋",
       "description": "I'm your AI assistant, here to help you explore Yazan's portfolio and answer questions about his projects, skills, and experience."
@@ -508,21 +509,36 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Sending",
-      "sent": "Sent",
-      "error": "Error"
+      "generating": "Generating"
     },
     "errors": {
       "generic": "Something went wrong. Please try again.",
       "network": "Network error. Please check your connection.",
-      "rateLimit": "Too many messages. Please wait a moment."
+      "rateLimit": "Too many messages. Please wait a moment.",
+      "quotaExceeded": "I'm taking a short break. Please try again in a few moments.",
+      "serviceUnavailable": "I'm having trouble responding right now. Please try again in a moment.",
+      "validation": "I couldn't process your message. Please try rephrasing it.",
+      "timeout": "The request is taking too long. Please try again."
     },
     "accessibility": {
-      "sendMessage": "Send message"
+      "sendMessage": "Send message",
+      "stopGenerating": "Stop generating",
+      "chatConversation": "Chat conversation",
+      "welcomeIllustration": "Welcome illustration",
+      "pronunciation": "Pronunciation",
+      "messageForm": "Send message to assistant",
+      "typeMessage": "Type your message",
+      "assistantAvatar": "Assistant avatar",
+      "typingAnimation": "Typing animation",
+      "yourMessageAt": "Your message from {time}",
+      "assistantMessageAt": "Assistant message from {time}",
+      "sentAt": "Sent at {time}",
+      "messageSent": "Message sent successfully",
+      "messageFailed": "Message failed to send"
     },
     "consent": {
       "title": "Privacy & Data Collection",
-      "description": "I save chat conversations for improvement purposes. All GDPR rules for EU and EEA users are fully applied. You can decline and chat privately.",
+      "description": "If you accept, I keep this conversation to measure answer quality and to understand what visitors are looking for. It is stored without your name or contact details and with your IP address shortened — never for advertising or profiling. Decline and nothing is saved.",
       "accept": "Accept & Continue",
       "decline": "Decline"
     }

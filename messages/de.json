@@ -271,8 +271,8 @@
       },
       "chat": {
         "title": "Assistenten-Konversation (lokale Speicherung)",
-        "description": "Enthält die laufende Unterhaltung mit dem KI-Assistenten, deren Sitzungskennung und Ihre Einwilligungsentscheidung für den Assistenten, damit der Verlauf beim Wechsel zwischen Seiten erhalten bleibt.",
-        "retention": "Speicherdauer: wird beim Verlassen der Website gelöscht oder sofort über die Löschschaltfläche weiter unten."
+        "description": "Enthält die laufende Unterhaltung mit dem KI-Assistenten, deren Sitzungskennung und Ihre Einwilligungsentscheidung für den Assistenten, damit der Verlauf beim Wechsel zwischen Seiten und beim Neuladen der Website erhalten bleibt.",
+        "retention": "Speicherdauer: verbleibt in diesem Browser, bis Sie die Unterhaltung im Assistenten löschen, die Löschschaltfläche weiter unten verwenden oder Ihren Browserspeicher leeren."
       },
       "legalBasis": "Rechtsgrundlage: § 25 Abs. 2 TDDDG i. V. m. Art. 6 Abs. 1 lit. f DSGVO – diese Einträge sind zur Bereitstellung der von Ihnen gewünschten Funktionen unbedingt erforderlich. Der Eintrag zur Messungs-Einwilligung wird nach § 25 Abs. 1 TDDDG und Art. 6 Abs. 1 lit. a DSGVO gespeichert."
     },
@@ -302,9 +302,9 @@
       "title": "KI-Assistent (Reem)",
       "description": "Diese Website enthält einen KI-Assistenten, der Fragen zu meiner Arbeit beantwortet. Es handelt sich um ein künstliches System und nicht um eine Person; seine Antworten können falsch oder unvollständig sein.",
       "alwaysTitle": "Was beim Absenden einer Nachricht immer übermittelt wird",
-      "alwaysDescription": "Mit dem Absenden einer Nachricht wird deren Text an meinen Server und von dort an OpenAI übermittelt, das die Antwort erzeugt. Zusammen mit der Nachricht werden die aufgerufene Seite, Ihre Browsersprache, Ihre Browserkennung und eine Sitzungskennung übertragen; Ihre IP-Adresse erreicht meinen Server als Teil der Anfrage. Das ist unvermeidbar – ohne diese Übermittlung kann der Assistent keine Antwort erzeugen. Mein Server hält die Unterhaltung für die Dauer der Sitzung im Arbeitsspeicher, damit Rückfragen im Kontext beantwortet werden können. Die Anfragen sind so gekennzeichnet, dass sie nicht zum Training der Modelle von OpenAI verwendet werden; OpenAI kann API-Daten jedoch nach eigenen Bedingungen für eine begrenzte Zeit zur Missbrauchskontrolle aufbewahren.",
+      "alwaysDescription": "Mit dem Absenden einer Nachricht wird deren Text an meinen Server und von dort an OpenAI übermittelt, das die Antwort erzeugt. Die Unterhaltung wird in Ihrem eigenen Browser vorgehalten; damit Rückfragen im Kontext beantwortet werden können, werden die bisher ausgetauschten Nachrichten zusammen mit jeder neuen Nachricht mitgesendet. Ebenfalls übertragen werden die aufgerufene Seite, Ihre Browsersprache, Ihre Browserkennung und eine Sitzungskennung; Ihre IP-Adresse erreicht meinen Server als Teil der Anfrage. Das ist unvermeidbar – ohne diese Übermittlung kann der Assistent keine Antwort erzeugen. Mein Server bewahrt die Unterhaltung nach der Beantwortung nicht auf. Die Anfragen sind so gekennzeichnet, dass OpenAI sie nicht speichert und nicht zum Training seiner Modelle verwendet; OpenAI kann API-Daten jedoch nach eigenen Bedingungen für eine begrenzte Zeit zur Missbrauchskontrolle aufbewahren.",
       "storedTitle": "Was ausschließlich mit Ihrer Einwilligung gespeichert wird",
-      "storedDescription": "Wenn Sie der Einwilligungsabfrage des Assistenten zustimmen, wird die Unterhaltung zusätzlich in meiner Datenbank gespeichert: die Nachrichten, ihre Zeitstempel, eine gekürzte IP-Adresse, Ihre Browsersprache und Ihre Browserkennung. Lehnen Sie ab, wird nichts davon gespeichert – der Austausch besteht dann nur im Arbeitsspeicher des laufenden Servers für die Dauer der Sitzung sowie in Ihrem eigenen Browser.",
+      "storedDescription": "Wenn Sie der Einwilligungsabfrage des Assistenten zustimmen, wird die Unterhaltung zusätzlich in meiner Datenbank gespeichert: die Nachrichten, ihre Zeitstempel, eine gekürzte IP-Adresse, Ihre Browsersprache und Ihre Browserkennung. Lehnen Sie ab, wird nichts davon gespeichert – der Austausch besteht dann nur in Ihrem eigenen Browser.",
       "aiNoticeTitle": "KI-Transparenz",
       "aiNoticeDescription": "Sie interagieren mit einem KI-System, nicht mit mir persönlich. Geben Sie bitte keine Passwörter, Zahlungsdaten, Gesundheitsdaten oder sonstige Angaben ein, deren Verarbeitung durch einen US-amerikanischen KI-Anbieter Sie nicht wünschen.",
       "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b und f DSGVO für die Erzeugung der von Ihnen angeforderten Antwort; Art. 6 Abs. 1 lit. a DSGVO – Ihre Einwilligung – für die Speicherung der Unterhaltung."
@@ -355,7 +355,7 @@
       "title": "Speicherdauer",
       "description": "Ich speichere personenbezogene Daten nur so lange, wie es für den Zweck der Erhebung erforderlich ist oder gesetzliche Aufbewahrungspflichten es verlangen.",
       "serverLogs": "Hosting- und Anfrageprotokolle werden von Vercel für den in dessen eigener Aufbewahrungsrichtlinie festgelegten Zeitraum gespeichert; eigene Zugriffsprotokolle führe ich nicht.",
-      "chatSessions": "Eine im Arbeitsspeicher des Servers gehaltene Assistenten-Unterhaltung wird automatisch verworfen, sobald die Sitzung für die konfigurierte Zeitspanne inaktiv war, spätestens jedoch beim Neustart des Serverprozesses.",
+      "chatSessions": "Mein Server hält eine Assistenten-Unterhaltung nur so lange vor, wie die Beantwortung der Nachricht dauert. Nach dem Versand der Antwort verbleibt nichts von dem Austausch auf dem Server, sofern Sie der Speicherung nicht zugestimmt haben.",
       "chatRecords": "Mit Ihrer Einwilligung in der Datenbank gespeicherte Unterhaltungen werden derzeit im Rahmen einer manuellen Durchsicht gelöscht und nicht nach einem festen automatischen Zeitplan. Sie können die Löschung jederzeit unter der oben genannten Adresse verlangen; ich komme dem unverzüglich nach.",
       "browser": "Einträge in Ihrem eigenen Browser bleiben bestehen, bis sie ablaufen, bis Sie Ihren Browserspeicher leeren oder bis Sie die Löschschaltfläche auf dieser Seite verwenden."
     },
@@ -486,6 +486,7 @@
     "subtitle": "Ihr KI-Portfolio-Assistent",
     "openAssistant": "Reem KI-Assistent öffnen",
     "closeChat": "Chat schließen",
+    "newChat": "Neuer Chat",
     "greeting": {
       "title": "Hallo! Ich bin Reem 👋",
       "description": "Ich bin Ihr KI-Assistent und helfe Ihnen dabei, Yazans Portfolio zu erkunden und Fragen zu seinen Projekten, Fähigkeiten und Erfahrungen zu beantworten."
@@ -508,21 +509,36 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Senden",
-      "sent": "Gesendet",
-      "error": "Fehler"
+      "generating": "Generiert"
     },
     "errors": {
       "generic": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
       "network": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
-      "rateLimit": "Zu viele Nachrichten. Bitte warten Sie einen Moment."
+      "rateLimit": "Zu viele Nachrichten. Bitte warten Sie einen Moment.",
+      "quotaExceeded": "Ich mache eine kurze Pause. Bitte versuchen Sie es gleich noch einmal.",
+      "serviceUnavailable": "Ich kann gerade nicht antworten. Bitte versuchen Sie es in einem Moment erneut.",
+      "validation": "Ich konnte Ihre Nachricht nicht verarbeiten. Bitte formulieren Sie sie anders.",
+      "timeout": "Die Anfrage dauert zu lange. Bitte versuchen Sie es erneut."
     },
     "accessibility": {
-      "sendMessage": "Nachricht senden"
+      "sendMessage": "Nachricht senden",
+      "stopGenerating": "Generierung stoppen",
+      "chatConversation": "Chat-Unterhaltung",
+      "welcomeIllustration": "Willkommensgrafik",
+      "pronunciation": "Aussprache",
+      "messageForm": "Nachricht an den Assistenten senden",
+      "typeMessage": "Geben Sie Ihre Nachricht ein",
+      "assistantAvatar": "Avatar des Assistenten",
+      "typingAnimation": "Schreibanimation",
+      "yourMessageAt": "Ihre Nachricht von {time}",
+      "assistantMessageAt": "Nachricht des Assistenten von {time}",
+      "sentAt": "Gesendet um {time}",
+      "messageSent": "Nachricht erfolgreich gesendet",
+      "messageFailed": "Nachricht konnte nicht gesendet werden"
     },
     "consent": {
       "title": "Datenschutz & Datenerfassung",
-      "description": "Ich speichere Chat-Gespräche zu Verbesserungszwecken. Alle DSGVO-Regeln für EU- und EWR-Nutzer werden vollständig angewendet. Sie können ablehnen und privat chatten.",
+      "description": "Wenn Sie zustimmen, bewahre ich diese Unterhaltung auf, um die Antwortqualität zu messen und zu verstehen, wonach Besucher suchen. Sie wird ohne Ihren Namen und ohne Kontaktdaten sowie mit gekürzter IP-Adresse gespeichert – niemals für Werbung oder Profiling. Bei Ablehnung wird nichts gespeichert.",
       "accept": "Akzeptieren & Fortfahren",
       "decline": "Ablehnen"
     }

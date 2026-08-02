@@ -4,67 +4,48 @@
  * @version 6.x.x
  */
 
-export interface ChatMessage {
-  id: string;
-  role: "user" | "assistant" | "system";
-  content: string;
-  timestamp: Date;
-  status?: "sending" | "sent" | "error";
+import type { ChatStatus, UIMessage } from "ai";
+
+/**
+ * Per-message metadata streamed alongside the assistant reply. `UIMessage` has no
+ * timestamp of its own, but the transcript renders one, so the server stamps it on
+ * the stream's `start` part and it travels with the message into localStorage.
+ */
+export interface ReemMessageMetadata {
+  createdAt: number;
 }
 
-export interface ChatSession {
-  id: string;
-  messages: ChatMessage[];
-  isActive: boolean;
-  startedAt: Date;
-  lastActivity: Date;
-}
+export type ReemUIMessage = UIMessage<ReemMessageMetadata>;
+
+/**
+ * Failures are reported to the client as a bare code, never as prose: `useChat`
+ * surfaces a non-2xx body verbatim as `error.message`, so anything human-readable
+ * put here would bypass i18n and could leak provider internals. The client maps
+ * these onto translated strings.
+ */
+export type ChatBotErrorCode =
+  | "RATE_LIMIT_EXCEEDED"
+  | "QUOTA_EXCEEDED"
+  | "INVALID_INPUT"
+  | "SERVICE_UNAVAILABLE"
+  | "TIMEOUT";
 
 export interface ChatBotConfig {
   maxMessagesPerSession: number;
   maxMessageLength: number;
   rateLimitPerMinute: number;
   rateLimitPerHour: number;
-  sessionTimeoutMs: number;
   systemPrompt: string;
 }
 
-export interface ChatBotRequest {
-  message: string;
-  sessionId?: string | undefined;
-  context?:
-    | {
-        page?: string | undefined;
-        userAgent?: string | undefined;
-        timestamp?: number | undefined;
-        language?: string | undefined;
-      }
-    | undefined;
-  csrfToken?: string | undefined;
-  consentGiven?: boolean | undefined; // User consent for data logging
-}
-
-export interface ChatBotResponse {
-  success: boolean;
-  data?: {
-    message: string;
-    sessionId: string;
-    messageId: string;
-    csrfToken?: string;
-  };
-  error?: string;
-  rateLimitInfo?: {
-    remaining: number;
-    resetTime: number;
-  };
-}
-
-export interface ChatBotState {
-  isOpen: boolean;
-  isLoading: boolean;
-  isConnected: boolean;
-  currentSession: ChatSession | null;
-  error: string | null;
+/**
+ * Fields the client sends alongside the `messages` array. `useChat` owns `messages`
+ * itself; everything here rides along via the transport body.
+ */
+export interface ChatBotRequestContext {
+  page?: string | undefined;
+  userAgent?: string | undefined;
+  language?: string | undefined;
 }
 
 export interface ChatBotUIProps {
@@ -74,35 +55,26 @@ export interface ChatBotUIProps {
 }
 
 export interface ChatInputProps {
-  onSendMessage: (message: string) => void;
-  isLoading: boolean;
-  disabled: boolean;
-  placeholder?: string;
-  maxLength: number;
+  onSendMessage: (message: string) => Promise<void>;
+  status: ChatStatus;
+  onStop: () => void;
+  disabled?: boolean;
+  className?: string;
 }
 
 export interface ChatMessageProps {
-  message: ChatMessage;
-  isLatest: boolean;
+  message: ReemUIMessage;
+  /** True for the assistant message currently receiving tokens. */
+  isStreaming?: boolean;
+  /** Delivery state, only meaningful for the most recent user message. */
+  status?: "sent" | "error";
+  className?: string;
 }
 
 export interface ChatHeaderProps {
   onClose: () => void;
-  onMinimize?: () => void;
-  isConnected: boolean;
-}
-
-// API Error Response Types
-export interface ChatBotApiError {
-  error: string;
-  code?:
-    | "RATE_LIMIT_EXCEEDED"
-    | "INVALID_INPUT"
-    | "SERVICE_UNAVAILABLE"
-    | "UNAUTHORIZED"
-    | "QUOTA_EXCEEDED";
-  details?: Record<string, unknown>;
-  retryAfter?: number;
+  onNewChat: () => void;
+  className?: string;
 }
 
 // Rate Limiting Types
@@ -115,23 +87,6 @@ export interface RateLimitEntry {
 export interface ChatBotRateLimit {
   minute: RateLimitEntry;
   hour: RateLimitEntry;
-}
-
-// Security Types
-export interface ChatBotSecurityContext {
-  clientIP: string;
-  userAgent: string;
-  timestamp: number;
-  sessionId: string;
-}
-
-// Analytics Types (optional)
-export interface ChatBotAnalytics {
-  sessionsCreated: number;
-  messagesProcessed: number;
-  averageSessionLength: number;
-  errorRate: number;
-  lastResetTime: number;
 }
 
 // Chat Logging Types
@@ -163,26 +118,8 @@ export interface ChatMessageLog {
   errorDetails: string | null;
 }
 
-export interface ChatLogsFilter {
-  startDate?: Date;
-  endDate?: Date;
-  country?: string;
-  searchQuery?: string;
-  minMessages?: number;
-  hasConsent?: boolean;
-  isActive?: boolean;
-  limit?: number;
-  offset?: number;
-}
-
 export interface ChatLogsResponse {
   sessions: ChatSessionLog[];
   total: number;
   hasMore: boolean;
-}
-
-export interface GeoIPInfo {
-  country?: string;
-  city?: string;
-  timezone?: string;
 }

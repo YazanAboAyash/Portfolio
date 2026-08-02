@@ -15,7 +15,6 @@ import { Authentication } from "@/components/blog/dashboard";
 
 import {
   MessageSquare,
-  Globe,
   Clock,
   User,
   Bot,
@@ -24,7 +23,6 @@ import {
   Trash2,
   CheckCircle2,
   XCircle,
-  MapPin,
 } from "lucide-react";
 import type { ChatSessionLog } from "@/types/configs/chatbot";
 
@@ -39,7 +37,6 @@ export default function AdminChatLogsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [countryFilter, setCountryFilter] = useState("");
   const [consentFilter, setConsentFilter] = useState<"all" | "yes" | "no">(
     "all",
   );
@@ -91,9 +88,6 @@ export default function AdminChatLogsPage() {
         offset: "0",
       });
 
-      if (countryFilter) {
-        params.append("country", countryFilter);
-      }
 
       if (consentFilter !== "all") {
         params.append("hasConsent", consentFilter === "yes" ? "true" : "false");
@@ -166,7 +160,7 @@ export default function AdminChatLogsPage() {
       void fetchLogs();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [countryFilter, consentFilter, isAuthenticated]);
+  }, [consentFilter, isAuthenticated]);
 
   if (!isAuthenticated) {
     return (
@@ -224,15 +218,6 @@ export default function AdminChatLogsPage() {
                     className="pl-9"
                   />
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Country</label>
-                <Input
-                  placeholder="e.g., US, DE, FR"
-                  value={countryFilter}
-                  onChange={(e) => setCountryFilter(e.target.value)}
-                />
               </div>
 
               <div className="space-y-2">
@@ -324,19 +309,6 @@ export default function AdminChatLogsPage() {
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Globe className="w-4 h-4 text-muted-foreground" />
-                          <span>
-                            {session.ipCountry || "Unknown"}{" "}
-                            {session.ipCity && `• ${session.ipCity}`}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4 text-muted-foreground" />
-                          <span className="font-mono text-xs">
-                            {session.ipAddress || "N/A"}
-                          </span>
-                        </div>
                         <div className="flex items-center gap-2">
                           <Clock className="w-4 h-4 text-muted-foreground" />
                           <span>

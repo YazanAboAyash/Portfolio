@@ -4,6 +4,8 @@
  * @version 6.x.x
  */
 
+import type { ChatBotErrorCode } from "@/types/configs/chatbot";
+
 export const CHATBOT_CONFIG = {
   // UI Constants
   DEFAULT_BOTTOM_OFFSET: 4, // 6 * 4 (1.5rem in Tailwind)
@@ -111,12 +113,6 @@ export const CHATBOT_STYLES = {
   SCROLLBAR: "scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent",
 };
 
-export const CHATBOT_ARIA_LABELS = {
-  OPEN_ASSISTANT: "openAssistant",
-  CLOSE_CHAT: "closeChat",
-  SEND_MESSAGE: "accessibility.sendMessage",
-};
-
 export const CHATBOT_TRANSLATION_KEYS = {
   // Main Labels
   NAME: "name",
@@ -126,6 +122,7 @@ export const CHATBOT_TRANSLATION_KEYS = {
   // Actions
   OPEN_ASSISTANT: "openAssistant",
   CLOSE_CHAT: "closeChat",
+  NEW_CHAT: "newChat",
 
   // Greeting
   GREETING_TITLE: "greeting.title",
@@ -137,19 +134,30 @@ export const CHATBOT_TRANSLATION_KEYS = {
   TYPING_PROCESSING: "typing.processing",
 
   // Status
-  STATUS_SENDING: "status.sending",
+  STATUS_GENERATING: "status.generating",
 
   // Input
   INPUT_PLACEHOLDER: "input.placeholder",
   INPUT_CHARACTER_LIMIT: "input.characterLimit",
 
-  // Errors
-  ERROR_GENERIC: "errors.generic",
-  ERROR_NETWORK: "errors.network",
-  ERROR_RATE_LIMIT: "errors.rateLimit",
+  // Errors are resolved through CHATBOT_ERROR_TRANSLATION_KEYS below, keyed by
+  // the API's error codes rather than listed individually here.
 
   // Accessibility
   ACCESSIBILITY_SEND_MESSAGE: "accessibility.sendMessage",
+  ACCESSIBILITY_STOP_GENERATING: "accessibility.stopGenerating",
+  ACCESSIBILITY_CHAT_CONVERSATION: "accessibility.chatConversation",
+  ACCESSIBILITY_WELCOME_ILLUSTRATION: "accessibility.welcomeIllustration",
+  ACCESSIBILITY_PRONUNCIATION: "accessibility.pronunciation",
+  ACCESSIBILITY_MESSAGE_FORM: "accessibility.messageForm",
+  ACCESSIBILITY_TYPE_MESSAGE: "accessibility.typeMessage",
+  ACCESSIBILITY_ASSISTANT_AVATAR: "accessibility.assistantAvatar",
+  ACCESSIBILITY_TYPING_ANIMATION: "accessibility.typingAnimation",
+  ACCESSIBILITY_YOUR_MESSAGE_AT: "accessibility.yourMessageAt",
+  ACCESSIBILITY_ASSISTANT_MESSAGE_AT: "accessibility.assistantMessageAt",
+  ACCESSIBILITY_SENT_AT: "accessibility.sentAt",
+  ACCESSIBILITY_MESSAGE_SENT: "accessibility.messageSent",
+  ACCESSIBILITY_MESSAGE_FAILED: "accessibility.messageFailed",
 };
 
 export const CHATBOT_GUIDED_ACTION_KEYS = [
@@ -160,23 +168,19 @@ export const CHATBOT_GUIDED_ACTION_KEYS = [
   "guidedActions.contact",
 ] as const;
 
-// Fallback messages (used when translations are not available)
-export const CHATBOT_FALLBACK_MESSAGES = {
-  GENERIC_ERROR:
-    "I'm having trouble responding right now. Please try again in a moment.",
-  NETWORK_ERROR:
-    "I can't reach the server at the moment. Please check your internet connection and try again.",
-  RATE_LIMIT_ERROR:
-    "I'm receiving too many requests. Please wait a moment before sending another message.",
-  QUOTA_EXCEEDED:
-    "I'm taking a short break. Please try again in a few moments.",
-  SERVER_ERROR: "Something went wrong on my end. Please try again later.",
-  VALIDATION_ERROR:
-    "I couldn't process your message. Please try rephrasing it.",
-  TIMEOUT_ERROR: "The request is taking too long. Please try again.",
+/**
+ * Maps the bare error codes the API returns onto `ChatBot` translation keys.
+ * The API never sends prose, so every failure the user sees is localised.
+ */
+export const CHATBOT_ERROR_TRANSLATION_KEYS: Record<
+  ChatBotErrorCode | "NETWORK" | "UNKNOWN",
+  string
+> = {
+  RATE_LIMIT_EXCEEDED: "errors.rateLimit",
+  QUOTA_EXCEEDED: "errors.quotaExceeded",
+  INVALID_INPUT: "errors.validation",
+  SERVICE_UNAVAILABLE: "errors.serviceUnavailable",
+  TIMEOUT: "errors.timeout",
+  NETWORK: "errors.network",
+  UNKNOWN: "errors.generic",
 };
-
-// Type exports for better type safety
-export type ChatBotPosition = keyof typeof CHATBOT_CONFIG.POSITION_CLASSES;
-export type ChatBotTranslationKey =
-  (typeof CHATBOT_TRANSLATION_KEYS)[keyof typeof CHATBOT_TRANSLATION_KEYS];

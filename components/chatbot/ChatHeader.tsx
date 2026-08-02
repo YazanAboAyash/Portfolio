@@ -11,18 +11,12 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 import { Bot, X } from "lucide-react";
-import {
-  CHATBOT_STYLES,
-  CHATBOT_TRANSLATION_KEYS,
-} from "@/components/chatbot";
-
-export interface ChatHeaderProps {
-  onClose: () => void;
-  className?: string;
-}
+import type { ChatHeaderProps } from "@/types/configs/chatbot";
+import { CHATBOT_STYLES, CHATBOT_TRANSLATION_KEYS } from "@/components/chatbot";
 
 export const ChatHeader = React.memo(function ChatHeader({
   onClose,
+  onNewChat,
   className = "",
 }: ChatHeaderProps) {
   const t = useTranslations("ChatBot");
@@ -48,13 +42,13 @@ export const ChatHeader = React.memo(function ChatHeader({
             {t(CHATBOT_TRANSLATION_KEYS.NAME)}{" "}
             <span
               className="text-xs text-muted-foreground font-normal"
-              aria-label="pronunciation"
+              aria-label={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_PRONUNCIATION,
+              )}
             >
               {t(CHATBOT_TRANSLATION_KEYS.PRONUNCIATION)}
             </span>
-            <span className="font-bold text-muted-foreground">
-              v2.8.12
-            </span>
+            <span className="font-bold text-muted-foreground">v3.0.0</span>
           </CardTitle>
           <span
             className="text-xs text-muted-foreground font-medium"
@@ -65,6 +59,16 @@ export const ChatHeader = React.memo(function ChatHeader({
         </div>
       </div>
       <div className="flex items-center gap-1">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onNewChat}
+          className={`h-8 px-2 text-xs ${CHATBOT_STYLES.BUTTON_ROUNDED} transition-colors`}
+          aria-label={t(CHATBOT_TRANSLATION_KEYS.NEW_CHAT)}
+          title={t(CHATBOT_TRANSLATION_KEYS.NEW_CHAT)}
+        >
+          {t(CHATBOT_TRANSLATION_KEYS.NEW_CHAT)}
+        </Button>
         <Button
           variant="ghost"
           size="sm"

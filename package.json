@@ -48,6 +48,8 @@
     "docs": "npx typedoc --entryPointStrategy expand --entryPoints components app types hooks data i18n lib mcp-server messages public styles --tsconfig tsconfig.json --out docs"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.27",
+    "@ai-sdk/react": "^4.0.50",
     "@hookform/resolvers": "^5.2.1",
     "@neondatabase/serverless": "^1.0.1",
     "@prisma/adapter-pg": "^7.8.0",
@@ -69,6 +71,7 @@
     "@tailwindcss/postcss": "^4",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
+    "ai": "^7.0.47",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.3",

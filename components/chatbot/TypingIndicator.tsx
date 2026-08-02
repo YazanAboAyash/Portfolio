@@ -36,7 +36,9 @@ export const TypingIndicator = React.memo(function TypingIndicator({
           <div
             className={`w-6 h-6 ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.AVATAR_GRADIENT} flex items-center justify-center`}
             role="img"
-            aria-label="Assistant avatar"
+            aria-label={t(
+              CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_ASSISTANT_AVATAR,
+            )}
           >
             <Bot
               className="w-3 h-3 text-primary-foreground"
@@ -59,7 +61,9 @@ export const TypingIndicator = React.memo(function TypingIndicator({
             <div
               className="flex space-x-1"
               role="img"
-              aria-label="Typing animation"
+              aria-label={t(
+                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_TYPING_ANIMATION,
+              )}
             >
               <div
                 className={`w-2 h-2 bg-primary/60 ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.BOUNCE_ANIMATION}`}
