@@ -22,7 +22,7 @@ import type {
   ChatBotRequestContext,
   ReemUIMessage,
 } from "@/types/configs/chatbot";
-import { sanitizeChatInput, isChatSpam } from "@/lib/security";
+import { sanitizeChatInput, isChatSpam, getClientIP } from "@/lib/security";
 import { positiveIntEnv } from "@/lib/env";
 import { REEM_SYSTEM_PROMPT } from "@/data/main/chatbot-system-prompt";
 import {
@@ -79,14 +79,6 @@ const chatRequestSchema = z.object({
 const rateLimits = new Map<string, ChatBotRateLimit>();
 
 // Utility functions
-function getClientIP(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  const realIp = request.headers.get("x-real-ip");
-  const cfConnectingIp = request.headers.get("cf-connecting-ip");
-
-  return cfConnectingIp || realIp || forwarded?.split(",")[0] || "127.0.0.1";
-}
-
 function generateSessionId(): string {
   const rand = randomBytes(16).toString("hex"); // 32 hex chars
   return `session_${Date.now()}_${rand}`;

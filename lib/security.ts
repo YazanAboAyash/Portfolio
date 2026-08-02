@@ -74,30 +74,31 @@ export class RateLimiter {
 }
 
 /**
- * Resolves the client IP from the proxy headers forwarded by the host
+ * Resolves the client IP used as a rate-limit key and in audit logs.
+ *
+ * Only `x-forwarded-for` is consulted, and that is the whole point. Vercel
+ * overwrites this header at the edge and refuses to forward an externally
+ * supplied value specifically to prevent spoofing, so it is the one address here
+ * the platform vouches for. `x-real-ip`, `cf-connecting-ip`, `x-client-ip` and
+ * the rest arrive exactly as the caller wrote them — nothing is in front of this
+ * app that rewrites them. Consulting those first let anyone reset their own
+ * bucket by sending a fresh value on every request, which on the chatbot route
+ * meant unlimited calls billed to the OpenAI key.
+ *
+ * **Do not add fallback headers here.** When `x-forwarded-for` is absent — local
+ * dev, or a platform change — every caller collapses into one shared bucket and
+ * is throttled together. That is the correct direction to fail: a rate limiter
+ * that cannot tell callers apart must not issue each request a fresh allowance.
  */
 export function getClientIP(request: NextRequest): string {
-  const headers = [
-    "x-forwarded-for",
-    "x-real-ip",
-    "x-client-ip",
-    "x-forwarded",
-    "x-cluster-client-ip",
-    "forwarded-for",
-    "forwarded",
-  ];
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
 
-  for (const header of headers) {
-    const value = request.headers.get(header);
-    if (value) {
-      const ip = value.split(",")[0]?.trim();
-      if (ip && ip !== "unknown") {
-        return ip;
-      }
-    }
-  }
+  // Vercel sets a single address, so the length cap is only there to stop a
+  // malformed value from becoming an unbounded rate-limiter map key. 45 chars is
+  // the longest valid textual IPv6 address (IPv4-mapped form).
+  if (!ip || ip.length > 45) return "unknown";
 
-  return "unknown";
+  return ip;
 }
 
 /**

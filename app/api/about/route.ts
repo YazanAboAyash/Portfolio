@@ -8,17 +8,10 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { aboutData } from "@/data/main/aboutData";
 import aboutProfile from "@/data/main/aboutProfile.json";
-import { RateLimiter } from "@/lib/security";
+import { RateLimiter, getClientIP } from "@/lib/security";
 
 // Rate limiter instance: 30 requests per minute
 const rateLimiter = new RateLimiter(60000, 30);
-
-function getClientIP(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  const realIp = request.headers.get("x-real-ip");
-  const cfConnectingIp = request.headers.get("cf-connecting-ip");
-  return cfConnectingIp || realIp || forwarded?.split(",")[0] || "127.0.0.1";
-}
 
 export function GET(request: NextRequest) {
   // Rate limiting check
