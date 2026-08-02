@@ -271,8 +271,8 @@
       },
       "chat": {
         "title": "Conversación con el asistente (almacenamiento local)",
-        "description": "Contiene la conversación en curso con el asistente de IA, su identificador de sesión y su decisión de consentimiento para el asistente, de modo que el hilo se mantenga al navegar entre páginas.",
-        "retention": "Conservación: se borra al salir del sitio, o de inmediato mediante el botón de eliminación que aparece más abajo."
+        "description": "Contiene la conversación en curso con el asistente de IA, su identificador de sesión y su decisión de consentimiento para el asistente, de modo que el hilo se mantenga al navegar entre páginas y al recargar el sitio.",
+        "retention": "Conservación: permanece en este navegador hasta que borre la conversación en el asistente, utilice el botón de eliminación que aparece más abajo o borre el almacenamiento de su navegador."
       },
       "legalBasis": "Base jurídica: § 25.2 de la TDDDG alemana en relación con el art. 6.1.f del RGPD — estas entradas son estrictamente necesarias para prestar las funciones que usted ha solicitado. La entrada relativa al consentimiento de medición se almacena conforme al § 25.1 de la TDDDG y al art. 6.1.a del RGPD."
     },
@@ -302,9 +302,9 @@
       "title": "Asistente de IA (Reem)",
       "description": "Este sitio incluye un asistente de IA que responde preguntas sobre mi trabajo. Es un sistema artificial, no una persona, y sus respuestas pueden ser erróneas o incompletas.",
       "alwaysTitle": "Qué se transmite siempre al enviar un mensaje",
-      "alwaysDescription": "Al enviar un mensaje, su texto se transmite a mi servidor y desde allí a OpenAI, que genera la respuesta. Junto con el mensaje se envían la página en la que se encontraba, el idioma de su navegador, la identificación de su navegador y un identificador de sesión; su dirección IP llega a mi servidor como parte de la solicitud. Esto es inevitable: sin ello el asistente no puede generar una respuesta. Mi servidor mantiene la conversación en memoria mientras dura la sesión para que las preguntas de seguimiento tengan contexto. Las solicitudes se marcan para que no se utilicen en el entrenamiento de los modelos de OpenAI, pero OpenAI puede conservar datos de la API durante un periodo limitado para el control de abusos, conforme a sus propias condiciones.",
+      "alwaysDescription": "Al enviar un mensaje, su texto se transmite a mi servidor y desde allí a OpenAI, que genera la respuesta. La conversación se guarda en su propio navegador y, para que las preguntas de seguimiento tengan contexto, los mensajes intercambiados hasta ese momento se envían junto con cada mensaje nuevo. También se transmiten la página en la que se encontraba, el idioma de su navegador, la identificación de su navegador y un identificador de sesión; su dirección IP llega a mi servidor como parte de la solicitud. Esto es inevitable: sin ello el asistente no puede generar una respuesta. Mi servidor no conserva la conversación una vez que ha respondido. Las solicitudes se marcan para que OpenAI no las almacene ni las utilice en el entrenamiento de sus modelos, pero OpenAI puede conservar datos de la API durante un periodo limitado para el control de abusos, conforme a sus propias condiciones.",
       "storedTitle": "Qué se almacena únicamente con su consentimiento",
-      "storedDescription": "Si acepta la solicitud de consentimiento del asistente, la conversación se guarda además en mi base de datos: los mensajes, sus marcas de tiempo, una dirección IP abreviada, el idioma de su navegador y su identificación de navegador. Si la rechaza, no se guarda nada de esto: el intercambio existe entonces solo en la memoria del servidor durante la sesión y en su propio navegador.",
+      "storedDescription": "Si acepta la solicitud de consentimiento del asistente, la conversación se guarda además en mi base de datos: los mensajes, sus marcas de tiempo, una dirección IP abreviada, el idioma de su navegador y su identificación de navegador. Si la rechaza, no se guarda nada de esto: el intercambio existe entonces solo en su propio navegador.",
       "aiNoticeTitle": "Transparencia sobre la IA",
       "aiNoticeDescription": "Está interactuando con un sistema de IA, no conmigo personalmente. Por favor, no introduzca contraseñas, datos de pago, información de salud ni ningún otro dato cuyo tratamiento por un proveedor de IA estadounidense no desee.",
       "legalBasis": "Base jurídica: art. 6.1.b y 6.1.f del RGPD para generar la respuesta que usted ha solicitado; art. 6.1.a del RGPD — su consentimiento — para almacenar la conversación."
@@ -355,7 +355,7 @@
       "title": "Plazos de conservación",
       "description": "Conservo los datos personales únicamente durante el tiempo necesario para la finalidad para la que se recogieron o mientras lo exijan las obligaciones legales de conservación.",
       "serverLogs": "Los registros de alojamiento y de peticiones los conserva Vercel durante el plazo fijado en su propia política de conservación; yo no mantengo registros de acceso separados.",
-      "chatSessions": "Una conversación del asistente mantenida en la memoria del servidor se descarta automáticamente cuando la sesión ha estado inactiva durante el tiempo configurado y, en todo caso, al reiniciarse el proceso del servidor.",
+      "chatSessions": "Mi servidor conserva una conversación del asistente únicamente durante el tiempo necesario para responder al mensaje. Una vez enviada la respuesta, no queda nada del intercambio en el servidor, salvo que usted haya consentido su almacenamiento.",
       "chatRecords": "Las conversaciones almacenadas en la base de datos con su consentimiento se eliminan actualmente de forma manual durante una revisión, y no según un calendario automático fijo. Puede solicitar su eliminación en cualquier momento escribiendo a la dirección indicada arriba; lo haré sin dilación indebida.",
       "browser": "Las entradas de su propio navegador permanecen hasta que caducan, hasta que borre el almacenamiento de su navegador o hasta que utilice el botón de eliminación de esta página."
     },
@@ -508,9 +508,7 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Enviando",
-      "sent": "Enviado",
-      "error": "Error"
+      "sending": "Enviando"
     },
     "errors": {
       "generic": "Algo salió mal. Por favor, inténtalo de nuevo.",

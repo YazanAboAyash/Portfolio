@@ -58,10 +58,6 @@ const chatbotConfig: ChatBotConfig = {
     process.env.CHATBOT_RATE_LIMIT_PER_HOUR || "50",
     10,
   ),
-  sessionTimeoutMs: parseInt(
-    process.env.CHATBOT_SESSION_TIMEOUT_MS || "1800000",
-    10,
-  ),
   systemPrompt: REEM_SYSTEM_PROMPT,
 };
 
@@ -398,6 +394,10 @@ export async function POST(request: NextRequest): Promise<Response> {
     maxOutputTokens: 1024,
     abortSignal: request.signal,
     experimental_transform: smoothStream({ chunking: "word" }),
+    // `store: false` opts the request out of OpenAI-side response retention.
+    // The Responses API defaults it to true and the SDK omits the field unless
+    // it is set here, so this is load-bearing: the privacy notice promises it.
+    providerOptions: { openai: { store: false } },
   });
 
   return result.toUIMessageStreamResponse<ReemUIMessage>({

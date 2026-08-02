@@ -23,22 +23,18 @@ export type ReemUIMessage = UIMessage<ReemMessageMetadata>;
  * put here would bypass i18n and could leak provider internals. The client maps
  * these onto translated strings.
  */
-export const CHATBOT_ERROR_CODES = [
-  "RATE_LIMIT_EXCEEDED",
-  "QUOTA_EXCEEDED",
-  "INVALID_INPUT",
-  "SERVICE_UNAVAILABLE",
-  "TIMEOUT",
-] as const;
-
-export type ChatBotErrorCode = (typeof CHATBOT_ERROR_CODES)[number];
+export type ChatBotErrorCode =
+  | "RATE_LIMIT_EXCEEDED"
+  | "QUOTA_EXCEEDED"
+  | "INVALID_INPUT"
+  | "SERVICE_UNAVAILABLE"
+  | "TIMEOUT";
 
 export interface ChatBotConfig {
   maxMessagesPerSession: number;
   maxMessageLength: number;
   rateLimitPerMinute: number;
   rateLimitPerHour: number;
-  sessionTimeoutMs: number;
   systemPrompt: string;
 }
 
@@ -92,23 +88,6 @@ export interface ChatBotRateLimit {
   hour: RateLimitEntry;
 }
 
-// Security Types
-export interface ChatBotSecurityContext {
-  clientIP: string;
-  userAgent: string;
-  timestamp: number;
-  sessionId: string;
-}
-
-// Analytics Types (optional)
-export interface ChatBotAnalytics {
-  sessionsCreated: number;
-  messagesProcessed: number;
-  averageSessionLength: number;
-  errorRate: number;
-  lastResetTime: number;
-}
-
 // Chat Logging Types
 export interface ChatSessionLog {
   id: string;
@@ -138,26 +117,8 @@ export interface ChatMessageLog {
   errorDetails: string | null;
 }
 
-export interface ChatLogsFilter {
-  startDate?: Date;
-  endDate?: Date;
-  country?: string;
-  searchQuery?: string;
-  minMessages?: number;
-  hasConsent?: boolean;
-  isActive?: boolean;
-  limit?: number;
-  offset?: number;
-}
-
 export interface ChatLogsResponse {
   sessions: ChatSessionLog[];
   total: number;
   hasMore: boolean;
-}
-
-export interface GeoIPInfo {
-  country?: string;
-  city?: string;
-  timezone?: string;
 }

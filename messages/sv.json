@@ -271,8 +271,8 @@
       },
       "chat": {
         "title": "Assistentkonversation (lokal lagring)",
-        "description": "Innehåller den pågående konversationen med AI-assistenten, dess sessionsidentifierare och ditt samtyckesbeslut för assistenten, så att tråden finns kvar när du navigerar mellan sidor.",
-        "retention": "Lagringstid: rensas när du lämnar webbplatsen, eller omedelbart med raderingsknappen nedan."
+        "description": "Innehåller den pågående konversationen med AI-assistenten, dess sessionsidentifierare och ditt samtyckesbeslut för assistenten, så att tråden finns kvar när du navigerar mellan sidor och när du laddar om webbplatsen.",
+        "retention": "Lagringstid: finns kvar i denna webbläsare tills du rensar konversationen i assistenten, använder raderingsknappen nedan eller rensar din webbläsarlagring."
       },
       "legalBasis": "Rättslig grund: § 25.2 i den tyska TDDDG jämförd med art. 6.1 f GDPR – dessa poster är strikt nödvändiga för att tillhandahålla de funktioner du har begärt. Posten om mätningssamtycke lagras enligt § 25.1 TDDDG och art. 6.1 a GDPR."
     },
@@ -302,9 +302,9 @@
       "title": "AI-assistent (Reem)",
       "description": "Webbplatsen innehåller en AI-assistent som besvarar frågor om mitt arbete. Det är ett artificiellt system och ingen person, och dess svar kan vara felaktiga eller ofullständiga.",
       "alwaysTitle": "Vad som alltid överförs när du skickar ett meddelande",
-      "alwaysDescription": "När du skickar ett meddelande överförs dess text till min server och därifrån till OpenAI, som genererar svaret. Tillsammans med meddelandet skickas den sida du befann dig på, ditt webbläsarspråk, din webbläsaridentifikation och en sessionsidentifierare, och din IP-adress når min server som en del av begäran. Detta är oundvikligt: utan det kan assistenten inte producera något svar. Min server håller konversationen i minnet under sessionen så att följdfrågor har sammanhang. Anropen märks så att de inte används för att träna OpenAI:s modeller, men OpenAI kan enligt sina egna villkor spara API-data under en begränsad tid för missbrukskontroll.",
+      "alwaysDescription": "När du skickar ett meddelande överförs dess text till min server och därifrån till OpenAI, som genererar svaret. Konversationen sparas i din egen webbläsare, och för att följdfrågor ska ha sammanhang skickas de meddelanden som hittills utbytts med varje nytt meddelande. Dessutom överförs den sida du befann dig på, ditt webbläsarspråk, din webbläsaridentifikation och en sessionsidentifierare, och din IP-adress når min server som en del av begäran. Detta är oundvikligt: utan det kan assistenten inte producera något svar. Min server behåller inte konversationen efter att den har svarat. Anropen märks så att OpenAI varken lagrar dem eller använder dem för att träna sina modeller, men OpenAI kan enligt sina egna villkor spara API-data under en begränsad tid för missbrukskontroll.",
       "storedTitle": "Vad som lagras endast med ditt samtycke",
-      "storedDescription": "Om du godkänner assistentens samtyckesfråga sparas konversationen dessutom i min databas: meddelandena, deras tidsstämplar, en förkortad IP-adress, ditt webbläsarspråk och din webbläsaridentifikation. Om du avböjer sparas inget av detta – utbytet finns då bara i den körande serverns minne under sessionen och i din egen webbläsare.",
+      "storedDescription": "Om du godkänner assistentens samtyckesfråga sparas konversationen dessutom i min databas: meddelandena, deras tidsstämplar, en förkortad IP-adress, ditt webbläsarspråk och din webbläsaridentifikation. Om du avböjer sparas inget av detta – utbytet finns då bara i din egen webbläsare.",
       "aiNoticeTitle": "AI-transparens",
       "aiNoticeDescription": "Du interagerar med ett AI-system, inte med mig personligen. Ange inte lösenord, betaluppgifter, hälsouppgifter eller annat som du inte vill ska behandlas av en amerikansk AI-leverantör.",
       "legalBasis": "Rättslig grund: art. 6.1 b och f GDPR för att producera det svar du bett om; art. 6.1 a GDPR – ditt samtycke – för att lagra konversationen."
@@ -355,7 +355,7 @@
       "title": "Lagringstid",
       "description": "Jag sparar personuppgifter endast så länge det behövs för det ändamål de samlades in för, eller så länge lagstadgade lagringsskyldigheter kräver det.",
       "serverLogs": "Drift- och anropsloggar sparas av Vercel under den tid som anges i deras egen lagringspolicy; jag för inga separata åtkomstloggar.",
-      "chatSessions": "En assistentkonversation som hålls i serverns minne kastas automatiskt när sessionen varit inaktiv under den konfigurerade tiden, och under alla omständigheter när serverprocessen startas om.",
+      "chatSessions": "Min server behåller en assistentkonversation endast så länge det tar att besvara meddelandet. När svaret har skickats finns ingenting av utbytet kvar på servern, såvida du inte har samtyckt till lagring.",
       "chatRecords": "Konversationer som med ditt samtycke sparats i databasen raderas för närvarande manuellt vid genomgång, inte enligt ett fast automatiskt schema. Du kan när som helst begära radering genom att skriva till adressen ovan; jag gör det utan onödigt dröjsmål.",
       "browser": "Poster i din egen webbläsare finns kvar tills de löper ut, tills du rensar din webbläsarlagring, eller tills du använder raderingsknappen på den här sidan."
     },
@@ -508,9 +508,7 @@
       "characterLimit": "/1000"
     },
     "status": {
-      "sending": "Skickar",
-      "sent": "Skickat",
-      "error": "Fel"
+      "sending": "Skickar"
     },
     "errors": {
       "generic": "Något gick fel. Vänligen försök igen.",

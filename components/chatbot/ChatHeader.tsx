@@ -11,15 +11,11 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 import { Bot, X } from "lucide-react";
+import type { ChatHeaderProps } from "@/types/configs/chatbot";
 import {
   CHATBOT_STYLES,
   CHATBOT_TRANSLATION_KEYS,
 } from "@/components/chatbot";
-
-export interface ChatHeaderProps {
-  onClose: () => void;
-  className?: string;
-}
 
 export const ChatHeader = React.memo(function ChatHeader({
   onClose,

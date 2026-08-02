@@ -30,7 +30,7 @@ import Link from "next/link";
  * to have been updated today tells the reader nothing about when its contents
  * were actually checked. Bump this by hand whenever the policy text changes.
  */
-const LAST_REVIEWED = "2026-07-28";
+const LAST_REVIEWED = "2026-08-02";
 
 /**
  * Section order for the whole notice. The table of contents, the numbering and

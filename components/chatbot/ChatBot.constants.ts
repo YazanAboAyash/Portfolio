@@ -113,12 +113,6 @@ export const CHATBOT_STYLES = {
   SCROLLBAR: "scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent",
 };
 
-export const CHATBOT_ARIA_LABELS = {
-  OPEN_ASSISTANT: "openAssistant",
-  CLOSE_CHAT: "closeChat",
-  SEND_MESSAGE: "accessibility.sendMessage",
-};
-
 export const CHATBOT_TRANSLATION_KEYS = {
   // Main Labels
   NAME: "name",
@@ -145,10 +139,8 @@ export const CHATBOT_TRANSLATION_KEYS = {
   INPUT_PLACEHOLDER: "input.placeholder",
   INPUT_CHARACTER_LIMIT: "input.characterLimit",
 
-  // Errors
-  ERROR_GENERIC: "errors.generic",
-  ERROR_NETWORK: "errors.network",
-  ERROR_RATE_LIMIT: "errors.rateLimit",
+  // Errors are resolved through CHATBOT_ERROR_TRANSLATION_KEYS below, keyed by
+  // the API's error codes rather than listed individually here.
 
   // Accessibility
   ACCESSIBILITY_SEND_MESSAGE: "accessibility.sendMessage",
@@ -179,8 +171,3 @@ export const CHATBOT_ERROR_TRANSLATION_KEYS: Record<
   NETWORK: "errors.network",
   UNKNOWN: "errors.generic",
 };
-
-// Type exports for better type safety
-export type ChatBotPosition = keyof typeof CHATBOT_CONFIG.POSITION_CLASSES;
-export type ChatBotTranslationKey =
-  (typeof CHATBOT_TRANSLATION_KEYS)[keyof typeof CHATBOT_TRANSLATION_KEYS];
