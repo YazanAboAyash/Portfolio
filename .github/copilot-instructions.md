@@ -31,6 +31,8 @@ npm run build        # next build --webpack
 npm run lint         # eslint .
 npm run lint:fix     # eslint . --fix
 npm run typecheck    # tsc --noEmit
+npm run test:e2e     # playwright test (test:e2e:ui for the runner UI)
+npm run db:push      # prisma db push
 npm run db:migrate   # prisma migrate deploy
 npm run db:seed      # tsx prisma/seed.ts
 ```

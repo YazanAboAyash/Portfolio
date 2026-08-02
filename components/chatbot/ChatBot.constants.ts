@@ -122,6 +122,7 @@ export const CHATBOT_TRANSLATION_KEYS = {
   // Actions
   OPEN_ASSISTANT: "openAssistant",
   CLOSE_CHAT: "closeChat",
+  NEW_CHAT: "newChat",
 
   // Greeting
   GREETING_TITLE: "greeting.title",

@@ -50,6 +50,7 @@ export function ChatBot({
     sendMessage,
     stop,
     clearError,
+    clearMessages,
     setConsent,
   } = useChatBot();
   const [consentDismissed, setConsentDismissed] = useState(false);
@@ -143,6 +144,12 @@ export function ChatBot({
     setConsentDismissed(true);
   };
 
+  const handleNewChat = () => {
+    clearMessages();
+    setConsentDismissed(false);
+    clearError();
+  };
+
   const handleSendMessage = async (message: string) => {
     try {
       await sendMessage(message);
@@ -188,7 +195,7 @@ export function ChatBot({
           aria-describedby="chatbot-subtitle"
           aria-modal="false"
         >
-          <ChatHeader onClose={handleCloseChat} />
+          <ChatHeader onClose={handleCloseChat} onNewChat={handleNewChat} />
 
           {/* Consent Banner */}
           {showConsentBanner && (

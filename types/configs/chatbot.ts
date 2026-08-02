@@ -73,6 +73,7 @@ export interface ChatMessageProps {
 
 export interface ChatHeaderProps {
   onClose: () => void;
+  onNewChat: () => void;
   className?: string;
 }
 

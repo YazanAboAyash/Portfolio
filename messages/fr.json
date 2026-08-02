@@ -486,6 +486,7 @@
     "subtitle": "Votre assistant portfolio IA",
     "openAssistant": "Ouvrir l'assistant IA Reem",
     "closeChat": "Fermer le chat",
+    "newChat": "Nouveau chat",
     "greeting": {
       "title": "Salut ! Je suis Reem 👋",
       "description": "Je suis votre assistant IA, ici pour vous aider à explorer le portfolio de Yazan et répondre aux questions sur ses projets, compétences et expérience."
