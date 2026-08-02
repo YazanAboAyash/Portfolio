@@ -91,6 +91,22 @@ const chatRequestSchema = z.object({
   consentGiven: z.boolean().optional(),
 });
 
+/**
+ * Ceiling on the request body, derived rather than picked so it follows the
+ * limits above if they are reconfigured.
+ *
+ * Every turn a well-behaved client can send is bounded by one of two things: a
+ * user turn by `maxMessageLength`, an assistant turn by `maxOutputTokens` (1024,
+ * so roughly 4 KB of text). Allowing each of `maxMessagesPerSession` turns the
+ * larger of the two, plus a little for the JSON around each message, leaves a
+ * full legitimate conversation about half the budget.
+ */
+const MAX_ASSISTANT_TURN_CHARS = 4096;
+const MAX_REQUEST_BODY_BYTES =
+  chatbotConfig.maxMessagesPerSession *
+    (Math.max(chatbotConfig.maxMessageLength, MAX_ASSISTANT_TURN_CHARS) + 512) +
+  8 * 1024;
+
 // In-memory rate limiting. Per-instance on Vercel, so treat it as a speed bump
 // rather than a hard guarantee.
 const rateLimits = new Map<string, ChatBotRateLimit>();
@@ -438,8 +454,42 @@ export async function POST(request: NextRequest): Promise<Response> {
     return rejectInvalid("content-type is not application/json");
   }
 
+  // Bounds the payload before anything parses or forwards it. Only the final
+  // turn is length-checked further down, so without this a caller can park
+  // megabytes of "history" in the earlier turns and have every byte relayed to
+  // the model on our key — the per-IP limiter does not contain that, because a
+  // third-party page can drive the requests from its own visitors' addresses.
+  // `experimental.serverActions.bodySizeLimit` in next.config.ts does not cover
+  // this route: it applies to Server Actions, not route handlers.
+  const declaredBytes = Number(request.headers.get("content-length"));
+  if (Number.isFinite(declaredBytes) && declaredBytes > MAX_REQUEST_BODY_BYTES) {
+    return rejectInvalid(
+      `content-length ${declaredBytes} exceeds cap ${MAX_REQUEST_BODY_BYTES}`,
+    );
+  }
+
+  // Re-checked against the body actually received: the header is caller-supplied
+  // and may be absent or wrong.
+  const rawBody = await request.text().catch(() => null);
+  if (rawBody === null) {
+    return rejectInvalid("request body could not be read");
+  }
+  if (rawBody.length > MAX_REQUEST_BODY_BYTES) {
+    return rejectInvalid(
+      `request body ${rawBody.length} bytes exceeds cap ${MAX_REQUEST_BODY_BYTES}`,
+    );
+  }
+
   // Parse and validate the request envelope
-  const parsed = chatRequestSchema.safeParse(await request.json().catch(() => null));
+  const parsed = chatRequestSchema.safeParse(
+    ((): unknown => {
+      try {
+        return JSON.parse(rawBody);
+      } catch {
+        return null;
+      }
+    })(),
+  );
   if (!parsed.success) {
     // Zod issue paths and messages are our own strings and carry no user text.
     const issues = parsed.error.issues
@@ -543,7 +593,16 @@ export async function POST(request: NextRequest): Promise<Response> {
     messageMetadata: ({ part }) =>
       part.type === "start" ? { createdAt: Date.now() } : undefined,
     onFinish: ({ responseMessage, isAborted }) => {
-      if (isAborted) return;
+      // `isAborted` alone is not enough. It only turns true when the SDK's abort
+      // chunk travels the whole pipeline, and a client disconnect does not do
+      // that — it cancels the stream, and the cancel path reaches this callback
+      // with the flag still false. That is how pressing "stop" used to persist an
+      // empty assistant turn. `request.signal` is what is actually set then.
+      if (isAborted || request.signal.aborted) return;
+
+      // Nothing worth keeping, and a blank turn in the transcript reads as a
+      // failure that never happened.
+      if (!extractText(responseMessage)) return;
 
       // Handed to `after()` rather than left as a bare floating promise. The
       // SDK calls this from the stream's flush, so the response closes as soon
