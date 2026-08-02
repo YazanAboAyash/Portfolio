@@ -198,7 +198,25 @@ export function sanitizeErrorMessage(error: unknown): string {
 }
 
 /**
- * ChatBot-specific input sanitization with XSS protection
+ * Normalises free-text a user typed before it is handed to a model provider and
+ * persisted. Used by the chatbot turn and by the email-rewriter tools.
+ *
+ * Deliberately **not** an HTML sanitiser, and it must not become one again. This
+ * text has no HTML sink: user turns render as plain text, assistant turns go
+ * through `react-markdown` without `rehype-raw`, and React escapes both on the
+ * way out. Escaping here bought nothing and corrupted the payload instead —
+ * `I'm building a client's dashboard` reached OpenAI, and was stored in
+ * `ChatMessage.content`, as `I&#x27;m building a client&#x27;s dashboard`, and
+ * stripping `<…>` swallowed ordinary prose like `if x < 5 and y > 3`. Escaping
+ * belongs at the sink; if a new surface ever renders this content as HTML, that
+ * surface escapes it.
+ *
+ * What survives is the work that is actually this layer's job: a length ceiling,
+ * and removal of characters that are never legitimate in typed text — C0/C1
+ * controls (NUL in particular, which Postgres rejects outright in `text`) plus
+ * the bidi-override and zero-width codepoints used to hide instructions from a
+ * human reader while the model still sees them. ZWNJ/ZWJ (U+200C/U+200D) are
+ * kept: Persian and Arabic text and emoji sequences need them.
  */
 export function sanitizeChatInput(input: string): string {
   if (!input) return "";
@@ -206,51 +224,22 @@ export function sanitizeChatInput(input: string): string {
   // Prevent ReDoS by limiting input length
   if (input.length > 10000) return "";
 
-  // Secure HTML tag removal using character-by-character parsing
-  let sanitized = "";
-  let insideTag = false;
-
-  for (let i = 0; i < input.length; i++) {
-    const char = input[i];
-
-    if (char === "<") {
-      insideTag = true;
-      continue;
-    }
-
-    if (char === ">" && insideTag) {
-      insideTag = false;
-      continue;
-    }
-
-    if (!insideTag) {
-      sanitized += char;
-    }
-  }
-
-  // Complete HTML entity encoding
-  sanitized = sanitized
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#x27;");
-
-  // Remove script tags and dangerous protocols in a single pass
-  sanitized = sanitized.replace(/(javascript|data|vbscript):/gi, "");
-
-  // Remove potentially dangerous event handler attributes iteratively
-  // This ensures complete removal of overlapping or nested patterns
-  let previousLength;
-  do {
-    previousLength = sanitized.length;
-    sanitized = sanitized.replace(/\bon\w+\s*=\s*[^>\s]*/gi, "");
-  } while (sanitized.length !== previousLength);
-
-  // Remove excessive whitespace but preserve line breaks
-  sanitized = sanitized.replace(/\s{2,}/g, " ").trim();
-
-  return sanitized;
+  return (
+    input
+      // Line endings first: CR sits inside the control range stripped below, so
+      // normalising afterwards would silently join the two halves of a CRLF.
+      .replace(/\r\n?/g, "\n")
+      // C0/C1 controls, except tab and newline, which are meaningful here.
+      .replace(/[\u0000-\u0008\u000B-\u001F\u007F-\u009F]/g, "")
+      // Zero-width space, bidi marks/overrides/isolates, BOM, and the Unicode
+      // tag block — all invisible carriers for prompt injection.
+      .replace(/[\u200B\u200E\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, "")
+      .replace(/[\u{E0000}-\u{E007F}]/gu, "")
+      // Cap blank-line runs. Paragraph structure in a pasted message survives;
+      // unbounded vertical padding does not.
+      .replace(/\n{3,}/g, "\n\n")
+      .trim()
+  );
 }
 
 /**

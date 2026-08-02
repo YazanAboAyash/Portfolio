@@ -23,6 +23,7 @@ import type {
   ReemUIMessage,
 } from "@/types/configs/chatbot";
 import { sanitizeChatInput, isChatSpam } from "@/lib/security";
+import { positiveIntEnv } from "@/lib/env";
 import { REEM_SYSTEM_PROMPT } from "@/data/main/chatbot-system-prompt";
 import {
   anonymizeIP,
@@ -38,23 +39,14 @@ export const maxDuration = 30;
 const OPENAI_CHAT_MODEL = process.env.OPENAI_CHAT_MODEL;
 const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 
+// Every limit below is enforced with a `>` comparison or a Zod `.max()`, both of
+// which silently misbehave against `NaN` — see `positiveIntEnv` for what a typo'd
+// value used to cost. A malformed value now falls back to the default and says so.
 const chatbotConfig: ChatBotConfig = {
-  maxMessagesPerSession: parseInt(
-    process.env.CHATBOT_MAX_MESSAGES_PER_SESSION || "20",
-    10,
-  ),
-  maxMessageLength: parseInt(
-    process.env.CHATBOT_MAX_MESSAGE_LENGTH || "1000",
-    10,
-  ),
-  rateLimitPerMinute: parseInt(
-    process.env.CHATBOT_RATE_LIMIT_PER_MINUTE || "10",
-    10,
-  ),
-  rateLimitPerHour: parseInt(
-    process.env.CHATBOT_RATE_LIMIT_PER_HOUR || "50",
-    10,
-  ),
+  maxMessagesPerSession: positiveIntEnv("CHATBOT_MAX_MESSAGES_PER_SESSION", 20),
+  maxMessageLength: positiveIntEnv("CHATBOT_MAX_MESSAGE_LENGTH", 1000),
+  rateLimitPerMinute: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_MINUTE", 10),
+  rateLimitPerHour: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_HOUR", 50),
   systemPrompt: REEM_SYSTEM_PROMPT,
 };
 
