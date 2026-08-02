@@ -50,6 +50,15 @@ const chatbotConfig: ChatBotConfig = {
   systemPrompt: REEM_SYSTEM_PROMPT,
 };
 
+// Said once per cold start rather than once per request: with the flag on but no
+// model configured the route answers SERVICE_UNAVAILABLE to everyone, and that is
+// indistinguishable from the chatbot being switched off on purpose.
+if (CHATBOT_ENABLED && !OPENAI_CHAT_MODEL) {
+  console.error(
+    "[chatbot] CHATBOT_ENABLED is true but OPENAI_CHAT_MODEL is unset — every request will answer SERVICE_UNAVAILABLE.",
+  );
+}
+
 /**
  * The conversation itself now lives on the client and arrives with every request,
  * so this schema only validates the envelope around it. `messages` is checked
@@ -159,6 +168,71 @@ function errorResponse(
     status,
     headers: { "Content-Type": "text/plain; charset=utf-8", ...headers },
   });
+}
+
+/**
+ * Records why a turn failed, server-side only.
+ *
+ * The client receives a bare code and nothing else, which is what keeps provider
+ * text out of the UI — but on its own that also means a bad `OPENAI_CHAT_MODEL`,
+ * an expired key and a malformed payload are indistinguishable from the outside
+ * and leave nothing behind to debug.
+ *
+ * What this must never record: message text, IP address, user agent, or the
+ * session id. The privacy notice promises that nothing about an exchange stays
+ * on the server once the reply has been sent unless the visitor consented to
+ * storage, and these lines outlive the request. Correlate a report to a specific
+ * request through Vercel's own `x-vercel-id` rather than minting an identifier
+ * here. Anything added below must stay non-identifying: codes, counts, lengths.
+ */
+function diagnostic(
+  level: "warn" | "error",
+  stage: string,
+  error?: unknown,
+): void {
+  let detail = "";
+  if (error instanceof Error) {
+    detail = ` — ${error.name}: ${error.message}`;
+  } else if (error !== undefined) {
+    detail = ` — ${String(error)}`;
+  }
+
+  // Capped: provider messages run long and occasionally quote the payload back.
+  const line = `[chatbot] ${stage}${detail}`.slice(0, 500);
+
+  if (level === "warn") console.warn(line);
+  else console.error(line);
+}
+
+/**
+ * Refuses the turn and says why. Every 400 below is a bare `INVALID_INPUT` to the
+ * caller, so without a reason recorded here "the bot rejects everything" is an
+ * unanswerable bug report — which is exactly how a malformed limit env var used
+ * to present.
+ */
+function rejectInvalid(reason: string): NextResponse {
+  diagnostic("warn", `rejected: ${reason}`);
+  return errorResponse("INVALID_INPUT", 400);
+}
+
+const CHATBOT_ERROR_CODES: readonly string[] = [
+  "RATE_LIMIT_EXCEEDED",
+  "QUOTA_EXCEEDED",
+  "INVALID_INPUT",
+  "SERVICE_UNAVAILABLE",
+  "TIMEOUT",
+];
+
+/**
+ * True when the error is just our own code coming back around.
+ *
+ * The SDK surfaces a failed stream to `onError` twice: once carrying the real
+ * provider error, then again wrapping the bare string the first call returned.
+ * Only the first tells you anything, so the second is dropped rather than
+ * writing `Error: SERVICE_UNAVAILABLE` under every genuine diagnostic.
+ */
+function isAlreadyMappedCode(error: unknown): boolean {
+  return error instanceof Error && CHATBOT_ERROR_CODES.includes(error.message);
 }
 
 function toErrorCode(error: unknown): ChatBotErrorCode {
@@ -279,8 +353,15 @@ async function logChatToDB(
       skipDuplicates: true,
     });
   } catch (error) {
-    console.error("Failed to log chat to database:", error);
-    // Don't throw - logging failure shouldn't break the chat functionality
+    // Name only: a Prisma error can quote the offending row back, and the row
+    // here is the visitor's message. Never throw — losing the transcript must
+    // not cost the user their reply.
+    diagnostic(
+      "error",
+      `persisting the transcript failed (${
+        error instanceof Error ? error.name : "unknown error"
+      })`,
+    );
   }
 }
 
@@ -308,13 +389,17 @@ export async function POST(request: NextRequest): Promise<Response> {
   // Validate content type
   const contentType = request.headers.get("content-type");
   if (!contentType?.includes("application/json")) {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("content-type is not application/json");
   }
 
   // Parse and validate the request envelope
   const parsed = chatRequestSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
-    return errorResponse("INVALID_INPUT", 400);
+    // Zod issue paths and messages are our own strings and carry no user text.
+    const issues = parsed.error.issues
+      .map((issue) => `${issue.path.join(".") || "(root)"}: ${issue.message}`)
+      .join("; ");
+    return rejectInvalid(`request envelope failed validation — ${issues}`);
   }
 
   const { sessionId = generateSessionId(), context, consentGiven } = parsed.data;
@@ -325,34 +410,45 @@ export async function POST(request: NextRequest): Promise<Response> {
     uiMessages = await validateUIMessages<ReemUIMessage>({
       messages: parsed.data.messages,
     });
-  } catch {
-    return errorResponse("INVALID_INPUT", 400);
+  } catch (error) {
+    // Name only, deliberately: this error is derived from the message parts
+    // themselves, so its text can quote the conversation back at us.
+    return rejectInvalid(
+      `conversation failed structural validation (${
+        error instanceof Error ? error.name : "unknown error"
+      })`,
+    );
   }
 
   // The client owns the history now, so a forged system turn would be a direct
   // route around REEM_SYSTEM_PROMPT. The system prompt is set server-side only.
   if (uiMessages.some((message) => message.role === "system")) {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("client supplied a system turn");
   }
 
   const lastMessage = uiMessages[uiMessages.length - 1];
   if (!lastMessage || lastMessage.role !== "user") {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("last message is not a user turn");
   }
 
-  // Moderate the turn the user actually just typed
+  // Moderate the turn the user actually just typed. Split apart so the logs say
+  // which rule fired — "too long" and "looks like spam" need different fixes.
   const rawText = extractText(lastMessage);
-  if (
-    !rawText ||
-    rawText.length > chatbotConfig.maxMessageLength ||
-    isChatSpam(rawText)
-  ) {
-    return errorResponse("INVALID_INPUT", 400);
+  if (!rawText) {
+    return rejectInvalid("last user turn carries no text");
+  }
+  if (rawText.length > chatbotConfig.maxMessageLength) {
+    return rejectInvalid(
+      `message length ${rawText.length} exceeds limit ${chatbotConfig.maxMessageLength}`,
+    );
+  }
+  if (isChatSpam(rawText)) {
+    return rejectInvalid(`message classified as spam (length ${rawText.length})`);
   }
 
   const sanitizedText = sanitizeChatInput(rawText);
   if (!sanitizedText) {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("message was empty after sanitisation");
   }
 
   // Feed the model the sanitized text rather than the raw client string
@@ -398,7 +494,20 @@ export async function POST(request: NextRequest): Promise<Response> {
         consentGiven ?? false,
       );
     },
-    onError: toErrorCode,
+    // `toErrorCode` collapses everything into one of five codes for the client;
+    // this is the only place the original error is still available, so it gets
+    // recorded before being thrown away.
+    onError: (error) => {
+      const code = toErrorCode(error);
+      if (!isAlreadyMappedCode(error)) {
+        diagnostic(
+          "error",
+          `stream failed as ${code} (model=${OPENAI_CHAT_MODEL})`,
+          error,
+        );
+      }
+      return code;
+    },
   });
 }
 
