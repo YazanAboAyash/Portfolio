@@ -5,7 +5,7 @@
  */
 
 import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 import { randomBytes } from "crypto";
 import { openai } from "@ai-sdk/openai";
@@ -485,13 +485,23 @@ export async function POST(request: NextRequest): Promise<Response> {
     onFinish: ({ responseMessage, isAborted }) => {
       if (isAborted) return;
 
-      void logChatToDB(
-        sessionId,
-        clientIP,
-        sanitizedLastMessage,
-        responseMessage,
-        context,
-        consentGiven ?? false,
+      // Handed to `after()` rather than left as a bare floating promise. The
+      // SDK calls this from the stream's flush, so the response closes as soon
+      // as this returns — a detached write is then racing a serverless freeze
+      // and the transcript disappears with no error anywhere. `after()` makes
+      // the platform hold the instance open until the write settles. The
+      // promise is started here rather than inside a callback so the write
+      // overlaps the response close instead of queueing behind it;
+      // `logChatToDB` swallows its own failures, so it never rejects.
+      after(
+        logChatToDB(
+          sessionId,
+          clientIP,
+          sanitizedLastMessage,
+          responseMessage,
+          context,
+          consentGiven ?? false,
+        ),
       );
     },
     // `toErrorCode` collapses everything into one of five codes for the client;
