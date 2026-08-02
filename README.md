@@ -142,7 +142,7 @@ Chatbot specifics since the AI SDK migration:
 * Failures cross the wire as bare codes (`RATE_LIMIT_EXCEEDED`, `QUOTA_EXCEEDED`, …) that the client maps onto translated strings — no provider text ever reaches the UI
 * Consent‑gated persistence runs in the stream's `onFinish`, skipped when the visitor aborts
 
-> **Not yet migrated:** `/api/automation-audit` and `/api/email-rewrite/*` still call their providers through hand‑rolled `fetch` wrappers with bespoke response‑shape parsing — see §16 Roadmap.
+> **Not yet migrated:** `/api/automation-audit` and `/api/email-rewrite/*` still call their providers through hand‑rolled `fetch` wrappers with bespoke response‑shape parsing.
 
 ---
 

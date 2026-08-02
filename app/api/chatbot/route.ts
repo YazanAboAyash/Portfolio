@@ -23,10 +23,7 @@ import type {
   ReemUIMessage,
 } from "@/types/configs/chatbot";
 import { sanitizeChatInput, isChatSpam } from "@/lib/security";
-import {
-  REEM_SYSTEM_PROMPT,
-  REEM_FACTS,
-} from "@/data/main/chatbot-system-prompt";
+import { REEM_SYSTEM_PROMPT } from "@/data/main/chatbot-system-prompt";
 import {
   anonymizeIP,
   isChatLoggingEnabled,

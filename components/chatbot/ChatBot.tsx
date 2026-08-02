@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Bot, CircleAlert, Shield, Sparkles } from "lucide-react";
+import { Bot, CircleAlert, Shield } from "lucide-react";
 import { useChatBot } from "@/components/chatbot";
 import type { ChatBotUIProps } from "@/types/configs/chatbot";
 import {
@@ -254,7 +254,7 @@ export function ChatBot({
                         CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_WELCOME_ILLUSTRATION,
                       )}
                     >
-                      <Sparkles
+                      <Bot
                         className="w-8 h-8 text-primary"
                         aria-hidden="true"
                       />
