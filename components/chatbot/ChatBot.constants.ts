@@ -179,6 +179,7 @@ export const CHATBOT_ERROR_TRANSLATION_KEYS: Record<
   RATE_LIMIT_EXCEEDED: "errors.rateLimit",
   QUOTA_EXCEEDED: "errors.quotaExceeded",
   INVALID_INPUT: "errors.validation",
+  SESSION_LIMIT_REACHED: "errors.sessionLimit",
   SERVICE_UNAVAILABLE: "errors.serviceUnavailable",
   TIMEOUT: "errors.timeout",
   NETWORK: "errors.network",

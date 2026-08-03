@@ -5,7 +5,7 @@
  */
 
 import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 import { randomBytes } from "crypto";
 import { openai } from "@ai-sdk/openai";
@@ -22,7 +22,8 @@ import type {
   ChatBotRequestContext,
   ReemUIMessage,
 } from "@/types/configs/chatbot";
-import { sanitizeChatInput, isChatSpam } from "@/lib/security";
+import { sanitizeChatInput, isChatSpam, getClientIP } from "@/lib/security";
+import { positiveIntEnv } from "@/lib/env";
 import { REEM_SYSTEM_PROMPT } from "@/data/main/chatbot-system-prompt";
 import {
   anonymizeIP,
@@ -38,25 +39,25 @@ export const maxDuration = 30;
 const OPENAI_CHAT_MODEL = process.env.OPENAI_CHAT_MODEL;
 const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 
+// Every limit below is enforced with a `>` comparison or a Zod `.max()`, both of
+// which silently misbehave against `NaN` — see `positiveIntEnv` for what a typo'd
+// value used to cost. A malformed value now falls back to the default and says so.
 const chatbotConfig: ChatBotConfig = {
-  maxMessagesPerSession: parseInt(
-    process.env.CHATBOT_MAX_MESSAGES_PER_SESSION || "20",
-    10,
-  ),
-  maxMessageLength: parseInt(
-    process.env.CHATBOT_MAX_MESSAGE_LENGTH || "1000",
-    10,
-  ),
-  rateLimitPerMinute: parseInt(
-    process.env.CHATBOT_RATE_LIMIT_PER_MINUTE || "10",
-    10,
-  ),
-  rateLimitPerHour: parseInt(
-    process.env.CHATBOT_RATE_LIMIT_PER_HOUR || "50",
-    10,
-  ),
+  maxMessagesPerSession: positiveIntEnv("CHATBOT_MAX_MESSAGES_PER_SESSION", 20),
+  maxMessageLength: positiveIntEnv("CHATBOT_MAX_MESSAGE_LENGTH", 1000),
+  rateLimitPerMinute: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_MINUTE", 10),
+  rateLimitPerHour: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_HOUR", 50),
   systemPrompt: REEM_SYSTEM_PROMPT,
 };
+
+// Said once per cold start rather than once per request: with the flag on but no
+// model configured the route answers SERVICE_UNAVAILABLE to everyone, and that is
+// indistinguishable from the chatbot being switched off on purpose.
+if (CHATBOT_ENABLED && !OPENAI_CHAT_MODEL) {
+  console.error(
+    "[chatbot] CHATBOT_ENABLED is true but OPENAI_CHAT_MODEL is unset — every request will answer SERVICE_UNAVAILABLE.",
+  );
+}
 
 /**
  * The conversation itself now lives on the client and arrives with every request,
@@ -64,10 +65,18 @@ const chatbotConfig: ChatBotConfig = {
  * structurally by `validateUIMessages` further down.
  */
 const chatRequestSchema = z.object({
-  messages: z
-    .array(z.unknown())
-    .min(1, "Conversation cannot be empty")
-    .max(chatbotConfig.maxMessagesPerSession, "Conversation too long"),
+  // The session cap is deliberately *not* enforced here. Failing it inside the
+  // envelope schema made a full conversation indistinguishable from a malformed
+  // one, and both came back as INVALID_INPUT — see the check after parsing.
+  messages: z.array(z.unknown()).min(1, "Conversation cannot be empty"),
+  // Minted by the client and taken on trust, deliberately. It selects which
+  // stored transcript this turn is appended to and nothing else: it is never
+  // returned in a response, and it never reaches the model — the conversation
+  // the model sees arrives in `messages`. So learning someone else's id means
+  // already reading their browser storage, where the transcript itself sits
+  // next to it. Binding it to a cookie would not change that, and the notice
+  // documents it as local storage (`Privacy.cookies.chat`). The 128 bits of
+  // randomness are what make it unguessable; keep them if the format changes.
   sessionId: z
     .string()
     .regex(/^session_[0-9]+_[a-f0-9]+$/, "Invalid session ID format")
@@ -82,19 +91,27 @@ const chatRequestSchema = z.object({
   consentGiven: z.boolean().optional(),
 });
 
+/**
+ * Ceiling on the request body, derived rather than picked so it follows the
+ * limits above if they are reconfigured.
+ *
+ * Every turn a well-behaved client can send is bounded by one of two things: a
+ * user turn by `maxMessageLength`, an assistant turn by `maxOutputTokens` (1024,
+ * so roughly 4 KB of text). Allowing each of `maxMessagesPerSession` turns the
+ * larger of the two, plus a little for the JSON around each message, leaves a
+ * full legitimate conversation about half the budget.
+ */
+const MAX_ASSISTANT_TURN_CHARS = 4096;
+const MAX_REQUEST_BODY_BYTES =
+  chatbotConfig.maxMessagesPerSession *
+    (Math.max(chatbotConfig.maxMessageLength, MAX_ASSISTANT_TURN_CHARS) + 512) +
+  8 * 1024;
+
 // In-memory rate limiting. Per-instance on Vercel, so treat it as a speed bump
 // rather than a hard guarantee.
 const rateLimits = new Map<string, ChatBotRateLimit>();
 
 // Utility functions
-function getClientIP(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  const realIp = request.headers.get("x-real-ip");
-  const cfConnectingIp = request.headers.get("cf-connecting-ip");
-
-  return cfConnectingIp || realIp || forwarded?.split(",")[0] || "127.0.0.1";
-}
-
 function generateSessionId(): string {
   const rand = randomBytes(16).toString("hex"); // 32 hex chars
   return `session_${Date.now()}_${rand}`;
@@ -152,13 +169,48 @@ function getRetryAfterSeconds(clientIP: string): number {
   return Math.max(1, Math.ceil((nextMinuteReset - Date.now()) / 1000));
 }
 
-function cleanupRateLimits(): void {
-  const now = Date.now();
-  for (const [ip, limit] of rateLimits.entries()) {
-    if (now - limit.hour.lastRequest > 3600000) {
-      // 1 hour
-      rateLimits.delete(ip);
+// Nothing evicts an entry for a full hour after its last request, so the map's
+// size tracks distinct client IPs per hour. That is not a number this code gets
+// to choose: a single IPv6 /64 supplies more addresses than the process can
+// hold, so the ceiling — not the sweep — is what actually bounds memory.
+const MAX_TRACKED_CLIENTS = 10_000;
+const CLEANUP_INTERVAL_MS = 60_000;
+const HOUR_MS = 3_600_000;
+
+let lastCleanupAt = 0;
+
+/**
+ * Keeps `rateLimits` bounded. Replaces a `Math.random() < 0.1` coin flip, which
+ * tied the sweep's timing to traffic volume and so ran least reliably per entry
+ * exactly when entries were arriving fastest.
+ *
+ * Eviction order is the part that matters. Dropping an entry resets whoever is
+ * dropped, so evicting least-recently-active first means a client that is
+ * actively flooding is the last thing considered — it cannot clear its own
+ * counter by filling the map with other keys.
+ */
+function pruneRateLimits(now: number): void {
+  if (now - lastCleanupAt >= CLEANUP_INTERVAL_MS) {
+    lastCleanupAt = now;
+    for (const [ip, limit] of rateLimits.entries()) {
+      if (now - limit.hour.lastRequest > HOUR_MS) {
+        rateLimits.delete(ip);
+      }
     }
+  }
+
+  if (rateLimits.size <= MAX_TRACKED_CLIENTS) return;
+
+  // Cut back to 90% rather than to the ceiling, so the sort is paid once per
+  // thousand new clients instead of on every request while at capacity.
+  const byLeastRecent = [...rateLimits.entries()].sort(
+    (a, b) => a[1].hour.lastRequest - b[1].hour.lastRequest,
+  );
+  let remaining = rateLimits.size - Math.floor(MAX_TRACKED_CLIENTS * 0.9);
+  for (const [ip] of byLeastRecent) {
+    if (remaining <= 0) break;
+    rateLimits.delete(ip);
+    remaining--;
   }
 }
 
@@ -175,6 +227,75 @@ function errorResponse(
     status,
     headers: { "Content-Type": "text/plain; charset=utf-8", ...headers },
   });
+}
+
+/**
+ * Records why a turn failed, server-side only.
+ *
+ * The client receives a bare code and nothing else, which is what keeps provider
+ * text out of the UI — but on its own that also means a bad `OPENAI_CHAT_MODEL`,
+ * an expired key and a malformed payload are indistinguishable from the outside
+ * and leave nothing behind to debug.
+ *
+ * What this must never record: message text, IP address, user agent, or the
+ * session id. The privacy notice promises that nothing about an exchange stays
+ * on the server once the reply has been sent unless the visitor consented to
+ * storage, and these lines outlive the request. Correlate a report to a specific
+ * request through Vercel's own `x-vercel-id` rather than minting an identifier
+ * here. Anything added below must stay non-identifying: codes, counts, lengths.
+ */
+function diagnostic(
+  level: "warn" | "error",
+  stage: string,
+  error?: unknown,
+): void {
+  let detail = "";
+  if (error instanceof Error) {
+    detail = ` — ${error.name}: ${error.message}`;
+  } else if (error !== undefined) {
+    detail = ` — ${String(error)}`;
+  }
+
+  // Capped: provider messages run long and occasionally quote the payload back.
+  const line = `[chatbot] ${stage}${detail}`.slice(0, 500);
+
+  if (level === "warn") console.warn(line);
+  else console.error(line);
+}
+
+/**
+ * Refuses the turn and says why. Every 400 below is a bare `INVALID_INPUT` to the
+ * caller, so without a reason recorded here "the bot rejects everything" is an
+ * unanswerable bug report — which is exactly how a malformed limit env var used
+ * to present.
+ */
+function rejectInvalid(reason: string): NextResponse {
+  diagnostic("warn", `rejected: ${reason}`);
+  return errorResponse("INVALID_INPUT", 400);
+}
+
+// Declared as strings so it can be tested against an arbitrary `error.message`,
+// but `satisfies` still holds every entry to the union — a code renamed in the
+// type and not here stops compiling instead of silently never matching.
+const CHATBOT_ERROR_CODES: readonly string[] = [
+  "RATE_LIMIT_EXCEEDED",
+  "QUOTA_EXCEEDED",
+  "INVALID_INPUT",
+  "SESSION_LIMIT_REACHED",
+  "SERVICE_UNAVAILABLE",
+  "TIMEOUT",
+] satisfies readonly ChatBotErrorCode[];
+
+/**
+ * True when the error is just our own code coming back around.
+ *
+ * The SDK surfaces a failed stream to `onError` twice: once carrying the real
+ * provider error, then again wrapping the bare string the first call returned.
+ * Only the first tells you anything, so the second is dropped rather than
+ * writing `Error: SERVICE_UNAVAILABLE` under every genuine diagnostic.
+ */
+function isAlreadyMappedCode(error: unknown): boolean {
+  return error instanceof Error && CHATBOT_ERROR_CODES.includes(error.message);
 }
 
 function toErrorCode(error: unknown): ChatBotErrorCode {
@@ -249,17 +370,17 @@ async function logChatToDB(
         },
       });
     } else {
-      // Update existing session
+      // Consent is deliberately not touched here. Everything above this point
+      // has already returned unless `consentGiven` is true, so a stored session
+      // can only ever have been created with it set — code that flipped a
+      // stored `false` to `true` would read like consent laundering while being
+      // unreachable. Incremented rather than recomputed from the row we just
+      // read, so two turns racing cannot lose one another's count.
       await prisma.chatSession.update({
         where: { id: sessionId },
         data: {
           lastActivityAt: new Date(),
-          totalMessages: existingSession.totalMessages + 2,
-          // Update consent if not already recorded
-          ...(!existingSession.consentGiven && {
-            consentGiven: true,
-            consentTimestamp: new Date(),
-          }),
+          totalMessages: { increment: 2 },
         },
       });
     }
@@ -295,8 +416,15 @@ async function logChatToDB(
       skipDuplicates: true,
     });
   } catch (error) {
-    console.error("Failed to log chat to database:", error);
-    // Don't throw - logging failure shouldn't break the chat functionality
+    // Name only: a Prisma error can quote the offending row back, and the row
+    // here is the visitor's message. Never throw — losing the transcript must
+    // not cost the user their reply.
+    diagnostic(
+      "error",
+      `persisting the transcript failed (${
+        error instanceof Error ? error.name : "unknown error"
+      })`,
+    );
   }
 }
 
@@ -316,21 +444,72 @@ export async function POST(request: NextRequest): Promise<Response> {
     });
   }
 
-  // Cleanup stale rate limit entries periodically during requests
-  if (Math.random() < 0.1) {
-    cleanupRateLimits();
-  }
+  // Deterministic, and after the check above so a request cannot prune its way
+  // out of its own limit.
+  pruneRateLimits(Date.now());
 
   // Validate content type
   const contentType = request.headers.get("content-type");
   if (!contentType?.includes("application/json")) {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("content-type is not application/json");
+  }
+
+  // Bounds the payload before anything parses or forwards it. Only the final
+  // turn is length-checked further down, so without this a caller can park
+  // megabytes of "history" in the earlier turns and have every byte relayed to
+  // the model on our key — the per-IP limiter does not contain that, because a
+  // third-party page can drive the requests from its own visitors' addresses.
+  // `experimental.serverActions.bodySizeLimit` in next.config.ts does not cover
+  // this route: it applies to Server Actions, not route handlers.
+  const declaredBytes = Number(request.headers.get("content-length"));
+  if (Number.isFinite(declaredBytes) && declaredBytes > MAX_REQUEST_BODY_BYTES) {
+    return rejectInvalid(
+      `content-length ${declaredBytes} exceeds cap ${MAX_REQUEST_BODY_BYTES}`,
+    );
+  }
+
+  // Re-checked against the body actually received: the header is caller-supplied
+  // and may be absent or wrong.
+  const rawBody = await request.text().catch(() => null);
+  if (rawBody === null) {
+    return rejectInvalid("request body could not be read");
+  }
+  if (rawBody.length > MAX_REQUEST_BODY_BYTES) {
+    return rejectInvalid(
+      `request body ${rawBody.length} bytes exceeds cap ${MAX_REQUEST_BODY_BYTES}`,
+    );
   }
 
   // Parse and validate the request envelope
-  const parsed = chatRequestSchema.safeParse(await request.json().catch(() => null));
+  const parsed = chatRequestSchema.safeParse(
+    ((): unknown => {
+      try {
+        return JSON.parse(rawBody);
+      } catch {
+        return null;
+      }
+    })(),
+  );
   if (!parsed.success) {
-    return errorResponse("INVALID_INPUT", 400);
+    // Zod issue paths and messages are our own strings and carry no user text.
+    const issues = parsed.error.issues
+      .map((issue) => `${issue.path.join(".") || "(root)"}: ${issue.message}`)
+      .join("; ");
+    return rejectInvalid(`request envelope failed validation — ${issues}`);
+  }
+
+  // Before the structural walk below, so an oversized payload is refused without
+  // being parsed. This is its own code because the user-facing consequence is
+  // different from every other 400: the client replays the whole conversation
+  // from local storage on each turn, so a full one stays full and "please
+  // rephrase" would loop forever. The answer is a new chat, and only a distinct
+  // code lets the UI say so.
+  if (parsed.data.messages.length > chatbotConfig.maxMessagesPerSession) {
+    diagnostic(
+      "warn",
+      `rejected: conversation has ${parsed.data.messages.length} messages, cap is ${chatbotConfig.maxMessagesPerSession}`,
+    );
+    return errorResponse("SESSION_LIMIT_REACHED", 409);
   }
 
   const { sessionId = generateSessionId(), context, consentGiven } = parsed.data;
@@ -341,34 +520,45 @@ export async function POST(request: NextRequest): Promise<Response> {
     uiMessages = await validateUIMessages<ReemUIMessage>({
       messages: parsed.data.messages,
     });
-  } catch {
-    return errorResponse("INVALID_INPUT", 400);
+  } catch (error) {
+    // Name only, deliberately: this error is derived from the message parts
+    // themselves, so its text can quote the conversation back at us.
+    return rejectInvalid(
+      `conversation failed structural validation (${
+        error instanceof Error ? error.name : "unknown error"
+      })`,
+    );
   }
 
   // The client owns the history now, so a forged system turn would be a direct
   // route around REEM_SYSTEM_PROMPT. The system prompt is set server-side only.
   if (uiMessages.some((message) => message.role === "system")) {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("client supplied a system turn");
   }
 
   const lastMessage = uiMessages[uiMessages.length - 1];
   if (!lastMessage || lastMessage.role !== "user") {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("last message is not a user turn");
   }
 
-  // Moderate the turn the user actually just typed
+  // Moderate the turn the user actually just typed. Split apart so the logs say
+  // which rule fired — "too long" and "looks like spam" need different fixes.
   const rawText = extractText(lastMessage);
-  if (
-    !rawText ||
-    rawText.length > chatbotConfig.maxMessageLength ||
-    isChatSpam(rawText)
-  ) {
-    return errorResponse("INVALID_INPUT", 400);
+  if (!rawText) {
+    return rejectInvalid("last user turn carries no text");
+  }
+  if (rawText.length > chatbotConfig.maxMessageLength) {
+    return rejectInvalid(
+      `message length ${rawText.length} exceeds limit ${chatbotConfig.maxMessageLength}`,
+    );
+  }
+  if (isChatSpam(rawText)) {
+    return rejectInvalid(`message classified as spam (length ${rawText.length})`);
   }
 
   const sanitizedText = sanitizeChatInput(rawText);
   if (!sanitizedText) {
-    return errorResponse("INVALID_INPUT", 400);
+    return rejectInvalid("message was empty after sanitisation");
   }
 
   // Feed the model the sanitized text rather than the raw client string
@@ -403,18 +593,50 @@ export async function POST(request: NextRequest): Promise<Response> {
     messageMetadata: ({ part }) =>
       part.type === "start" ? { createdAt: Date.now() } : undefined,
     onFinish: ({ responseMessage, isAborted }) => {
-      if (isAborted) return;
+      // `isAborted` alone is not enough. It only turns true when the SDK's abort
+      // chunk travels the whole pipeline, and a client disconnect does not do
+      // that — it cancels the stream, and the cancel path reaches this callback
+      // with the flag still false. That is how pressing "stop" used to persist an
+      // empty assistant turn. `request.signal` is what is actually set then.
+      if (isAborted || request.signal.aborted) return;
 
-      void logChatToDB(
-        sessionId,
-        clientIP,
-        sanitizedLastMessage,
-        responseMessage,
-        context,
-        consentGiven ?? false,
+      // Nothing worth keeping, and a blank turn in the transcript reads as a
+      // failure that never happened.
+      if (!extractText(responseMessage)) return;
+
+      // Handed to `after()` rather than left as a bare floating promise. The
+      // SDK calls this from the stream's flush, so the response closes as soon
+      // as this returns — a detached write is then racing a serverless freeze
+      // and the transcript disappears with no error anywhere. `after()` makes
+      // the platform hold the instance open until the write settles. The
+      // promise is started here rather than inside a callback so the write
+      // overlaps the response close instead of queueing behind it;
+      // `logChatToDB` swallows its own failures, so it never rejects.
+      after(
+        logChatToDB(
+          sessionId,
+          clientIP,
+          sanitizedLastMessage,
+          responseMessage,
+          context,
+          consentGiven ?? false,
+        ),
       );
     },
-    onError: toErrorCode,
+    // `toErrorCode` collapses everything into one of five codes for the client;
+    // this is the only place the original error is still available, so it gets
+    // recorded before being thrown away.
+    onError: (error) => {
+      const code = toErrorCode(error);
+      if (!isAlreadyMappedCode(error)) {
+        diagnostic(
+          "error",
+          `stream failed as ${code} (model=${OPENAI_CHAT_MODEL})`,
+          error,
+        );
+      }
+      return code;
+    },
   });
 }
 

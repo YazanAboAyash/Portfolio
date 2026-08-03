@@ -91,7 +91,7 @@ export const projects: Project[] = [
     image: "/assets/projects/email-ai.png",
     technologies: ["Next.js", "TypeScript", "Groq AI", "RAG"],
     githubUrl: "",
-    liveUrl: "https://coldbydefault.com/polite-email",
+    liveUrl: "",
     featured: false,
     category: "aiMl",
     license: {

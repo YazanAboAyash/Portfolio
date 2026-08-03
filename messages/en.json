@@ -518,6 +518,7 @@
       "quotaExceeded": "I'm taking a short break. Please try again in a few moments.",
       "serviceUnavailable": "I'm having trouble responding right now. Please try again in a moment.",
       "validation": "I couldn't process your message. Please try rephrasing it.",
+      "sessionLimit": "This conversation has reached its limit. Please start a new one with \"New chat\" to keep talking.",
       "timeout": "The request is taking too long. Please try again."
     },
     "accessibility": {
