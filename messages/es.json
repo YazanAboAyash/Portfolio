@@ -114,7 +114,7 @@
     "launch": {
       "title": "Lanzamiento",
       "headline": "Resultados tangibles en pocas semanas",
-      "description": "Nos centramos en lo esencial para que tengas un producto funcional cuanto antes. Valida tu idea rápidamente sin esperar meses."
+      "description": "Me centro en lo esencial para que tengas un producto funcional cuanto antes. Valida tu idea rápidamente sin esperar meses."
     },
     "scale": {
       "title": "Escalabilidad",
@@ -426,24 +426,27 @@
     "currentFocus": "Enfoque actual",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Desarrollo aplicaciones web rápidas y escalables que ayudan a las empresas a crecer",
+      "title": "Aplicaciones web, automatización de flujos de trabajo e integraciones de IA — desarrolladas de principio a fin por un solo desarrollador.",
       "currentPosition": "Desarrollador Freelance",
       "company": "",
       "location": "Alemania",
       "experience": "3+ años"
     },
-    "mainStory": "Ayudo a PYMEs y agencias a lanzar MVPs web más rápido, automatizar flujos de trabajo repetitivos e integrar asistentes de IA que ahorran horas de trabajo manual. Mis clientes normalmente ven resultados en 4-8 semanas, no meses. Ya sea que necesite un portal de clientes, una herramienta interna o una forma de optimizar los procesos de su equipo, entrego soluciones confiables, mantenibles y construidas para escalar con su negocio.",
+    "mainStory": "Trabajo con pymes, agencias y fundadores que necesitan software entregado, no gestionado. MVPs planificados para entregarse en 4–8 semanas, automatizaciones que liberan a su equipo del trabajo repetitivo y asistentes de IA construidos sobre una arquitectura de recuperación real — no una ventana de chat añadida a un sitio web.",
     "sections": {
       "philosophy": "Creo en la comunicación clara, plazos transparentes y entregar exactamente lo prometido. Sin jerga técnica, sin alcance creep — solo desarrollo confiable con actualizaciones regulares para que siempre sepa dónde está su proyecto. Cada solución se construye con sus objetivos comerciales en mente, no solo requisitos técnicos."
     },
     "currentFocusItems": [
-      "MVPs web entregados en 4-8 semanas",
-      "Automatización de flujos que ahorra horas semanalmente",
-      "Asistentes de IA para procesos internos",
-      "Puntuaciones de rendimiento 90+ garantizadas",
-      "Comunicación clara y proceso transparente",
-      "Soporte y mantenimiento a largo plazo"
-    ]
+      "MVPs web planificados para entrega en 4–8 semanas",
+      "Automatizaciones diseñadas para eliminar horas de trabajo manual cada semana",
+      "Asistentes de IA y sistemas RAG para procesos internos"
+    ],
+    "workingWithMe": "Trabaja directamente conmigo. Sin gestor de cuentas, sin traspaso a un desarrollador júnior. Next.js, TypeScript y React, con código fuente y documentación que le pertenecen por completo al final.",
+    "credentials": "Fachinformatiker certificado por la IHK con formación en el Reglamento Europeo de IA — relevante cuando la función de IA que necesita debe resistir la regulación europea.",
+    "cta": {
+      "work": "Ver los proyectos",
+      "call": "Reservar llamada gratuita de 15 min"
+    }
   },
   "PortfolioAbout": {
     "title": "Acerca de Este Portfolio",

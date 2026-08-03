@@ -114,7 +114,7 @@
     "launch": {
       "title": "Lansering",
       "headline": "Nå resultat inom några veckor",
-      "description": "Vi fokuserar på det viktigaste för att du ska få en fungerande produkt snabbt. Validera din idé direkt utan att vänta i månader."
+      "description": "Jag fokuserar på det viktigaste för att du ska få en fungerande produkt snabbt. Validera din idé direkt utan att vänta i månader."
     },
     "scale": {
       "title": "Skalning",
@@ -426,24 +426,27 @@
     "currentFocus": "Nuvarande fokus",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Jag bygger snabba, skalbara webbapplikationer som hjälper företag att växa",
+      "title": "Webbapplikationer, arbetsflödesautomation och AI-integrationer — byggda från början till slut av en enda utvecklare.",
       "currentPosition": "Frilansutvecklare",
       "company": "",
       "location": "Tyskland",
       "experience": "3+ år"
     },
-    "mainStory": "Jag hjälper små och medelstora företag och byråer att lansera webb-MVPs snabbare, automatisera repetitiva arbetsflöden och integrera AI-assistenter som sparar timmar av manuellt arbete. Mina kunder ser vanligtvis resultat inom 4-8 veckor — inte månader. Oavsett om du behöver en kundportal, ett internt verktyg eller ett sätt att effektivisera ditt teams processer, levererar jag pålitliga, underhållbara lösningar byggda för att skala med din verksamhet.",
+    "mainStory": "Jag arbetar med små och medelstora företag, byråer och grundare som behöver få mjukvara levererad, inte förvaltad. MVP:er planerade för leverans på 4–8 veckor, automationer som tar bort repetitivt arbete från ditt team, och AI-assistenter byggda på verklig retrieval-arkitektur — inte ett chattfönster fastskruvat på en webbplats.",
     "sections": {
       "philosophy": "Jag tror på tydlig kommunikation, transparenta tidsramar och att leverera exakt det som utlovats. Ingen teknisk jargong, ingen scope creep — bara pålitlig utveckling med regelbundna uppdateringar så att du alltid vet var ditt projekt står. Varje lösning byggs med dina affärsmål i åtanke, inte bara tekniska krav."
     },
     "currentFocusItems": [
-      "Webb-MVPs levererade på 4-8 veckor",
-      "Arbetsflödesautomation som sparar timmar varje vecka",
-      "AI-assistenter för interna processer",
-      "Garanterade 90+ prestandapoäng",
-      "Tydlig kommunikation & transparent process",
-      "Långsiktigt stöd & underhåll"
-    ]
+      "Webb-MVP:er planerade för leverans på 4–8 veckor",
+      "Automationer utformade för att ta bort timmar av manuellt arbete varje vecka",
+      "AI-assistenter och RAG-system för interna processer"
+    ],
+    "workingWithMe": "Du arbetar direkt med mig. Ingen account manager, ingen överlämning till en juniorutvecklare. Next.js, TypeScript och React, med källkod och dokumentation som du äger fullt ut när projektet är klart.",
+    "credentials": "IHK-certifierad Fachinformatiker med utbildning i EU:s AI-förordning — relevant när AI-funktionen du vill ha måste hålla för europeisk reglering.",
+    "cta": {
+      "work": "Se arbetet",
+      "call": "Boka ett kostnadsfritt 15-minutersmöte"
+    }
   },
   "PortfolioAbout": {
     "title": "Om Denna Portfolio",

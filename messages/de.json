@@ -114,7 +114,7 @@
     "launch": {
       "title": "Launch",
       "headline": "Erste Ergebnisse in wenigen Wochen",
-      "description": "Wir konzentrieren uns auf das Wesentliche, damit Sie schnell ein funktionierendes Produkt haben. Testen Sie Ihre Idee sofort, ohne monatelanges Warten."
+      "description": "Ich konzentriere mich auf das Wesentliche, damit Sie schnell ein funktionierendes Produkt haben. Testen Sie Ihre Idee sofort, ohne monatelanges Warten."
     },
     "scale": {
       "title": "Skalierung",
@@ -426,24 +426,27 @@
     "currentFocus": "Aktueller Fokus",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Ich entwickle schnelle, skalierbare Webanwendungen, die Unternehmen wachsen lassen",
+      "title": "Webanwendungen, Workflow-Automatisierung und KI-Integrationen — end-to-end umgesetzt von einem einzigen Entwickler.",
       "currentPosition": "Freiberuflicher Entwickler",
       "company": "",
       "location": "Deutschland",
       "experience": "3+ Jahre"
     },
-    "mainStory": "Ich helfe KMUs und Agenturen, Web-MVPs schneller zu launchen, wiederkehrende Arbeitsabläufe zu automatisieren und KI-Assistenten zu integrieren, die Stunden manueller Arbeit einsparen. Meine Kunden sehen typischerweise Ergebnisse innerhalb von 4-8 Wochen – nicht Monaten. Ob Sie ein Kundenportal, ein internes Tool oder eine Möglichkeit zur Optimierung Ihrer Teamprozesse benötigen – ich liefere zuverlässige, wartbare Lösungen, die mit Ihrem Unternehmen skalieren.",
+    "mainStory": "Ich arbeite mit KMU, Agenturen und Gründern, die Software ausgeliefert bekommen wollen, statt sie zu verwalten. MVPs mit geplanter Lieferung in 4–8 Wochen, Automatisierungen, die Ihrem Team wiederkehrende Arbeit abnehmen, und KI-Assistenten auf Basis echter Retrieval-Architektur — kein Chatfenster, das an eine Website geschraubt wird.",
     "sections": {
       "philosophy": "Ich glaube an klare Kommunikation, transparente Zeitpläne und die Lieferung dessen, was versprochen wurde. Kein Fachjargon, kein Scope Creep – nur zuverlässige Entwicklung mit regelmäßigen Updates, damit Sie immer wissen, wo Ihr Projekt steht. Jede Lösung wird mit Ihren Geschäftszielen im Blick entwickelt, nicht nur mit technischen Anforderungen."
     },
     "currentFocusItems": [
-      "Web-MVPs in 4-8 Wochen geliefert",
-      "Workflow-Automatisierung, die Stunden pro Woche spart",
-      "KI-Assistenten für interne Prozesse",
-      "Garantierte 90+ Performance-Scores",
-      "Klare Kommunikation & transparenter Prozess",
-      "Langfristiger Support & Wartung"
-    ]
+      "Web-MVPs mit geplanter Lieferung in 4–8 Wochen",
+      "Automatisierungen, die jede Woche Stunden manueller Arbeit einsparen",
+      "KI-Assistenten und RAG-Systeme für interne Prozesse"
+    ],
+    "workingWithMe": "Sie arbeiten direkt mit mir. Kein Account Manager, keine Übergabe an einen Junior-Entwickler. Next.js, TypeScript und React — mit Quellcode und Dokumentation, die am Ende vollständig Ihnen gehören.",
+    "credentials": "IHK-geprüfter Fachinformatiker mit Schulung zum EU AI Act — relevant, wenn die gewünschte KI-Funktion europäischer Regulierung standhalten muss.",
+    "cta": {
+      "work": "Arbeiten ansehen",
+      "call": "Kostenloses 15-Min-Gespräch buchen"
+    }
   },
   "PortfolioAbout": {
     "title": "Über Dieses Portfolio",

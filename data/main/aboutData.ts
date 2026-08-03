@@ -47,14 +47,15 @@ export interface AboutData {
 export const aboutData: AboutData = {
   personalInfo: {
     name: "Yazan Abo-Ayash",
-    title: "Web Developer & Automation Specialist",
+    title:
+      "Web apps, workflow automation, and AI integrations — built end to end by one developer",
     currentPosition: "Freelance Developer",
     company: "",
     location: "Germany",
     experience: "3+ years",
   },
   mainStory:
-    "I help SMEs and agencies launch web MVPs faster, automate repetitive workflows, and integrate AI assistants that save hours of manual work. My clients typically see results within 4-8 weeks — not months. Whether you need a customer portal, an internal tool, or a way to streamline your team's processes, I deliver solutions that are reliable, maintainable, and built to scale with your business.",
+    "I work with SMEs, agencies, and founders who need software shipped rather than managed. MVPs scoped for delivery in 4-8 weeks, automations that take repetitive work off your team, and AI assistants built on real retrieval architecture — not a chat window bolted onto a website. You work with me directly. No account manager, no handoff to a junior developer. Next.js, TypeScript and React, with source code and documentation you own outright at the end. IHK-certified Fachinformatiker with EU AI Act training — relevant when the AI feature you want has to hold up under European regulation.",
   sections: [
     {
       id: "journey",
@@ -115,12 +116,9 @@ export const aboutData: AboutData = {
     },
   ],
   currentFocus: [
-    "Web MVPs delivered in 4-8 weeks",
-    "Workflow automation that saves hours weekly",
-    "AI assistants for internal processes",
-    "Guaranteed 90+ performance scores",
-    "Clear communication & transparent process",
-    "Long-term support & maintenance",
+    "Web MVPs scoped for 4-8 week delivery",
+    "Automations designed to remove hours of manual work each week",
+    "AI assistants and RAG systems for internal processes",
   ],
   goals: [
     "Help businesses launch faster with reliable web applications",
