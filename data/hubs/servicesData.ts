@@ -206,6 +206,12 @@ export const processSteps: readonly ProcessStep[] = [
   },
   {
     step: 4,
+    titleKey: "process.acceptance.title",
+    descriptionKey: "process.acceptance.description",
+    icon: "ClipboardCheck",
+  },
+  {
+    step: 5,
     titleKey: "process.support.title",
     descriptionKey: "process.support.description",
     icon: "HeartHandshake",

@@ -136,8 +136,10 @@ function buildCommonMetadata(
   imageUrl: string
 ) {
   return {
+    // `default` must NOT include the site name: the root layout's template
+    // (`%s | siteName`) is applied to it, so baking it in duplicates the suffix.
     title: {
-      default: `${title} | ${config.siteName}`,
+      default: title,
       template: `%s | ${config.siteName}`,
     },
     description,

@@ -22,6 +22,7 @@ import {
   MessageSquare,
   Target,
   Code,
+  ClipboardCheck,
   HeartHandshake,
   Database,
   TrendingUp,
@@ -35,6 +36,7 @@ const iconMap: Record<string, React.ElementType> = {
   MessageSquare,
   Target,
   Code,
+  ClipboardCheck,
   HeartHandshake,
   Database,
   TrendingUp,
@@ -135,6 +137,32 @@ function TrustCard({
 }
 
 /**
+ * Fine print under the package grid: price note (PAngV), running costs,
+ * usage rights, warranty scope and payment terms.
+ * The price note renders only once `packages.notes.vat` is filled in.
+ */
+function PackageNotes({ t }: { t: ReturnType<typeof useTranslations> }) {
+  const vatNote = t("packages.notes.vat");
+
+  return (
+    <aside className="max-w-3xl mx-auto">
+      <Card className="bg-background/80 backdrop-blur-sm border-border/50">
+        <CardContent className="py-6 space-y-3">
+          <h3 className="font-semibold">{t("packages.notes.title")}</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
+            {vatNote !== "" && <li>{vatNote}</li>}
+            <li>{t("packages.notes.runningCosts")}</li>
+            <li>{t("packages.notes.rights")}</li>
+            <li>{t("packages.notes.warranty")}</li>
+            <li>{t("packages.notes.payment")}</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </aside>
+  );
+}
+
+/**
  * Services Page Main Component
  */
 export default function ServicesPage() {
@@ -196,6 +224,7 @@ export default function ServicesPage() {
                 </m.div>
               </div>
             ))}
+            <PackageNotes t={t} />
           </div>
         </section>
 

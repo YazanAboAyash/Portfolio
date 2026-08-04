@@ -564,16 +564,16 @@
         "tier": "starter",
         "name": "Sitio Web",
         "headline": "Listo para Lanzar, Rápido",
-        "description": "Un sitio web moderno, rápido y legalmente conforme para su negocio — diseñado para convertir visitantes en llamadas. Incluye la optimización de su Perfil de Empresa en Google.",
+        "description": "Un sitio web moderno y rápido para su negocio — diseñado para convertir visitantes en llamadas. Incluye la optimización de su Perfil de Empresa en Google.",
         "pricing": "Desde 599 €",
         "timeline": "1-2 semanas",
         "features": {
           "design": "Diseño moderno y adaptable",
-          "compliant": "Legalmente conforme (aviso legal, privacidad)",
+          "compliant": "Integración técnica del aviso legal y la política de privacidad (textos legales aportados por usted o por un proveedor — sin asesoramiento jurídico)",
           "gbp": "Configuración del Perfil de Empresa en Google",
           "contact": "Formulario de contacto",
           "goLive": "Paquete Go-Live opcional (dominio y hosting) +150 €",
-          "ownership": "Pago único, todo es suyo"
+          "ownership": "Tarifa única de desarrollo — derechos de uso completos con el pago final"
         }
       },
       "chatbotStarter": {
@@ -589,7 +589,7 @@
           "availability": "Preguntas y respuestas automáticas 24/7",
           "transparency": "Incluye el aviso de transparencia del Reglamento de IA de la UE",
           "handover": "Configuración y entrega completa",
-          "ownership": "Pago único, sin suscripción"
+          "ownership": "Tarifa única de desarrollo — el uso de IA y el hosting corren en sus propias cuentas"
         }
       },
       "automationStarter": {
@@ -604,7 +604,7 @@
           "replies": "Respuestas automáticas a consultas",
           "setup": "Configuración en sus herramientas actuales",
           "handover": "Entrega e incorporación",
-          "ownership": "Pago único, sin suscripción"
+          "ownership": "Tarifa única de desarrollo — las automatizaciones corren en sus propias cuentas de herramientas"
         }
       },
       "mvp": {
@@ -620,7 +620,7 @@
           "database": "Configuración de base de datos segura",
           "auth": "Inicio de sesión y cuentas",
           "deployment": "Puesta en producción",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+          "support": "2 semanas de corrección de errores gratuita tras el lanzamiento (la garantía legal no se ve afectada)"
         }
       },
       "automation": {
@@ -636,7 +636,7 @@
           "workflows": "Lógica y configuración de disparadores",
           "documentation": "Documentación técnica",
           "training": "Entrega del sistema e incorporación",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+          "support": "2 semanas de corrección de errores gratuita tras el lanzamiento (la garantía legal no se ve afectada)"
         }
       },
       "ai": {
@@ -652,7 +652,7 @@
           "integration": "Integración en sus herramientas actuales",
           "security": "Configuración de privacidad de datos",
           "training": "Entrega del sistema e incorporación",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+          "support": "2 semanas de corrección de errores gratuita tras el lanzamiento (la garantía legal no se ve afectada)"
         }
       },
       "custom": {
@@ -668,8 +668,16 @@
           "development": "Entrega basada en hitos",
           "flexibility": "Agnóstico a la tecnología",
           "handover": "Entrega completa del código fuente",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+          "support": "2 semanas de corrección de errores gratuita tras el lanzamiento (la garantía legal no se ve afectada)"
         }
+      },
+      "notes": {
+        "title": "Información importante",
+        "vat": "",
+        "runningCosts": "Todos los precios son tarifas únicas de desarrollo. Los costes recurrentes — uso de IA, hosting, dominios y herramientas de terceros — corren en sus propias cuentas y se los facturan directamente esos proveedores.",
+        "rights": "Con el pago final se le transfieren derechos de uso completos e ilimitados sobre el trabajo entregado.",
+        "warranty": "Se incluyen dos semanas de corrección de errores gratuita tras el lanzamiento. Sus derechos legales de garantía no se ven afectados.",
+        "payment": "Condiciones de pago: 50 % al confirmar el encargo, 50 % en la aceptación."
       }
     },
     "process": {
@@ -689,7 +697,11 @@
       },
       "support": {
         "title": "Lanzamiento y Soporte",
-        "description": "Entrega sin problemas con documentación, capacitación y soporte continuo."
+        "description": "Entrega sin problemas con documentación y capacitación. El soporte y el mantenimiento continuos se contratan por separado."
+      },
+      "acceptance": {
+        "title": "Aceptación y Entrega",
+        "description": "Usted revisa el resultado frente al alcance acordado y firmamos el acta de aceptación. Con la aceptación comienza el plazo de garantía y vence el pago final."
       }
     },
     "trust": {

@@ -564,16 +564,16 @@
         "tier": "starter",
         "name": "Website",
         "headline": "Launch-Ready, Fast",
-        "description": "A modern, fast, legally compliant website for your business — built to convert visitors into calls. Includes Google Business Profile optimization.",
+        "description": "A modern, fast website for your business — built to convert visitors into calls. Includes Google Business Profile optimization.",
         "pricing": "Starting at €599",
         "timeline": "1-2 weeks",
         "features": {
           "design": "Modern, responsive design",
-          "compliant": "Legally compliant (Impressum, Datenschutz)",
+          "compliant": "Technical setup of Impressum & privacy policy (legal texts from you or a provider such as eRecht24 — no legal advice)",
           "gbp": "Google Business Profile setup",
           "contact": "Contact form",
           "goLive": "Optional Go-Live package (domain & hosting) +€150",
-          "ownership": "One-time payment, you own everything"
+          "ownership": "One-time build fee — full usage rights transferred on final payment"
         }
       },
       "chatbotStarter": {
@@ -589,7 +589,7 @@
           "availability": "24/7 automated customer Q&A",
           "transparency": "EU AI Act transparency notice included",
           "handover": "Setup & full handover",
-          "ownership": "One-time payment, no subscription"
+          "ownership": "One-time build fee — AI usage & hosting run on your own accounts"
         }
       },
       "automationStarter": {
@@ -604,7 +604,7 @@
           "replies": "Automatic replies to inquiries",
           "setup": "Setup on your existing tools",
           "handover": "Handover & walkthrough",
-          "ownership": "One-time payment, no subscription"
+          "ownership": "One-time build fee — automations run on your own tool accounts"
         }
       },
       "mvp": {
@@ -620,7 +620,7 @@
           "database": "Secure database setup",
           "auth": "User logins & accounts",
           "deployment": "Production setup",
-          "support": "Includes 2-week post-launch testing"
+          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
         }
       },
       "automation": {
@@ -636,7 +636,7 @@
           "workflows": "Logic & trigger setup",
           "documentation": "How-to documentation",
           "training": "System handover & walkthrough",
-          "support": "Includes 2-week post-launch testing"
+          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
         }
       },
       "ai": {
@@ -652,7 +652,7 @@
           "integration": "Works within your current tools",
           "security": "Data privacy setup",
           "training": "System handover & walkthrough",
-          "support": "Includes 2-week post-launch testing"
+          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
         }
       },
       "custom": {
@@ -668,8 +668,16 @@
           "development": "Milestone-based delivery",
           "flexibility": "Technology agnostic",
           "handover": "Full source code handover",
-          "support": "Includes 2-week post-launch testing"
+          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
         }
+      },
+      "notes": {
+        "title": "Good to know",
+        "vat": "",
+        "runningCosts": "All prices are one-time build fees. Running costs — AI usage, hosting, domains and third-party tools — run on your own accounts and are billed to you directly by those providers.",
+        "rights": "Full, unlimited usage rights to the delivered work are transferred to you upon final payment.",
+        "warranty": "Two weeks of free bugfixing after launch are included. Your statutory warranty rights remain unaffected.",
+        "payment": "Payment terms: 50% on order confirmation, 50% on acceptance (Abnahme)."
       }
     },
     "process": {
@@ -689,7 +697,11 @@
       },
       "support": {
         "title": "Launch & Support",
-        "description": "Smooth handover with documentation, training, and ongoing support."
+        "description": "Smooth handover with documentation and training. Ongoing support and maintenance are available under a separate agreement."
+      },
+      "acceptance": {
+        "title": "Acceptance & Handover",
+        "description": "You check the result against the agreed scope and we sign the acceptance protocol. Acceptance starts the warranty period and makes the final payment due."
       }
     },
     "trust": {

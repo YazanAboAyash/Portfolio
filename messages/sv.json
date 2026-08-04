@@ -564,16 +564,16 @@
         "tier": "starter",
         "name": "Webbplats",
         "headline": "Redo att lanseras snabbt",
-        "description": "En modern, snabb och juridiskt korrekt webbplats för ert företag — byggd för att omvandla besökare till samtal. Inklusive optimering av er Google-företagsprofil.",
+        "description": "En modern och snabb webbplats för ert företag — byggd för att omvandla besökare till samtal. Inklusive optimering av er Google-företagsprofil.",
         "pricing": "Från 599 €",
         "timeline": "1-2 veckor",
         "features": {
           "design": "Modern, responsiv design",
-          "compliant": "Juridiskt korrekt (företagsinfo, integritetspolicy)",
+          "compliant": "Teknisk integrering av företagsinformation & integritetspolicy (juridiska texter från er eller en leverantör — ingen juridisk rådgivning)",
           "gbp": "Uppsättning av Google-företagsprofil",
           "contact": "Kontaktformulär",
           "goLive": "Valfritt Go-Live-paket (domän & hosting) +150 €",
-          "ownership": "Engångsbetalning, ni äger allt"
+          "ownership": "Engångsarvode för utvecklingen — fullständiga nyttjanderätter vid slutbetalning"
         }
       },
       "chatbotStarter": {
@@ -589,7 +589,7 @@
           "availability": "Automatiska frågor och svar dygnet runt",
           "transparency": "Transparensinformation enligt EU:s AI-förordning ingår",
           "handover": "Uppsättning & fullständig överlämning",
-          "ownership": "Engångsbetalning, ingen prenumeration"
+          "ownership": "Engångsarvode för utvecklingen — AI-användning & hosting körs på era egna konton"
         }
       },
       "automationStarter": {
@@ -604,7 +604,7 @@
           "replies": "Automatiska svar på förfrågningar",
           "setup": "Uppsättning i era befintliga verktyg",
           "handover": "Överlämning & genomgång",
-          "ownership": "Engångsbetalning, ingen prenumeration"
+          "ownership": "Engångsarvode för utvecklingen — automationerna körs på era egna verktygskonton"
         }
       },
       "mvp": {
@@ -620,7 +620,7 @@
           "database": "Säker databasuppsättning",
           "auth": "Användarinloggning & konton",
           "deployment": "Produktionssättning",
-          "support": "Inkluderar 2 veckors testperiod"
+          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
         }
       },
       "automation": {
@@ -636,7 +636,7 @@
           "workflows": "Logik & triggers",
           "documentation": "Dokumentation",
           "training": "Systemöverlämning & introduktion",
-          "support": "Inkluderar 2 veckors testperiod"
+          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
         }
       },
       "ai": {
@@ -652,7 +652,7 @@
           "integration": "Integration i nuvarande verktyg",
           "security": "Dataskyddsinställningar",
           "training": "Systemöverlämning & introduktion",
-          "support": "Inkluderar 2 veckors testperiod"
+          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
         }
       },
       "custom": {
@@ -668,8 +668,16 @@
           "development": "Etappbaserad leverans",
           "flexibility": "Teknologioberoende",
           "handover": "Överlämning av källkod",
-          "support": "Inkluderar 2 veckors testperiod"
+          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
         }
+      },
+      "notes": {
+        "title": "Bra att veta",
+        "vat": "",
+        "runningCosts": "Alla priser är engångsarvoden för utvecklingen. Löpande kostnader — AI-användning, hosting, domäner och tredjepartsverktyg — körs på era egna konton och faktureras er direkt av dessa leverantörer.",
+        "rights": "Vid slutbetalning överförs fullständiga, obegränsade nyttjanderätter till det levererade arbetet till er.",
+        "warranty": "Två veckors kostnadsfri buggfixning efter lansering ingår. Era lagstadgade garantirättigheter påverkas inte.",
+        "payment": "Betalningsvillkor: 50 % vid orderbekräftelse, 50 % vid godkännande."
       }
     },
     "process": {
@@ -689,7 +697,11 @@
       },
       "support": {
         "title": "Lansering och Support",
-        "description": "Smidig överlämning med dokumentation, utbildning och löpande support."
+        "description": "Smidig överlämning med dokumentation och utbildning. Löpande support och underhåll avtalas separat."
+      },
+      "acceptance": {
+        "title": "Godkännande & Överlämning",
+        "description": "Ni granskar resultatet mot den överenskomna omfattningen och vi undertecknar godkännandeprotokollet. Godkännandet startar garantitiden och gör slutbetalningen förfallen."
       }
     },
     "trust": {

@@ -564,16 +564,16 @@
         "tier": "starter",
         "name": "Website",
         "headline": "Schnell startklar",
-        "description": "Eine moderne, schnelle und rechtssichere Website für Ihr Unternehmen — gebaut, um Besucher in Anrufe zu verwandeln. Inklusive Optimierung Ihres Google-Unternehmensprofils.",
+        "description": "Eine moderne, schnelle Website für Ihr Unternehmen — gebaut, um Besucher in Anrufe zu verwandeln. Inklusive Optimierung Ihres Google-Unternehmensprofils.",
         "pricing": "Ab 599 €",
         "timeline": "1-2 Wochen",
         "features": {
           "design": "Modernes, responsives Design",
-          "compliant": "Rechtssicher (Impressum, Datenschutz)",
+          "compliant": "Technische Einbindung von Impressum & Datenschutzerklärung (Rechtstexte von Ihnen oder z. B. über eRecht24 — keine Rechtsberatung)",
           "gbp": "Einrichtung des Google-Unternehmensprofils",
           "contact": "Kontaktformular",
           "goLive": "Optionales Go-Live-Paket (Domain & Hosting) +150 €",
-          "ownership": "Einmalzahlung, alles gehört Ihnen"
+          "ownership": "Einmaliges Erstellungshonorar — vollständige Nutzungsrechte mit der Schlusszahlung"
         }
       },
       "chatbotStarter": {
@@ -589,7 +589,7 @@
           "availability": "Automatisierte Kundenfragen rund um die Uhr",
           "transparency": "Transparenzhinweis nach EU-KI-Verordnung inklusive",
           "handover": "Einrichtung & vollständige Übergabe",
-          "ownership": "Einmalzahlung, kein Abo"
+          "ownership": "Einmaliges Erstellungshonorar — KI-Nutzung & Hosting laufen über Ihre eigenen Konten"
         }
       },
       "automationStarter": {
@@ -604,7 +604,7 @@
           "replies": "Automatische Antworten auf Anfragen",
           "setup": "Einrichtung in Ihren bestehenden Tools",
           "handover": "Übergabe & Einweisung",
-          "ownership": "Einmalzahlung, kein Abo"
+          "ownership": "Einmaliges Erstellungshonorar — die Automatisierungen laufen über Ihre eigenen Tool-Konten"
         }
       },
       "mvp": {
@@ -620,7 +620,7 @@
           "database": "Sicheres Datenbank-Setup",
           "auth": "Benutzer-Logins & Konten",
           "deployment": "Produktions-Setup",
-          "support": "Inklusive 2 Wochen Testphase"
+          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
         }
       },
       "automation": {
@@ -636,7 +636,7 @@
           "workflows": "Logik- & Trigger-Setup",
           "documentation": "Dokumentation",
           "training": "Systemübergabe & Einweisung",
-          "support": "Inklusive 2 Wochen Testphase"
+          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
         }
       },
       "ai": {
@@ -652,7 +652,7 @@
           "integration": "Integration in Ihre Tools",
           "security": "Datenschutz-Setup",
           "training": "Systemübergabe & Einweisung",
-          "support": "Inklusive 2 Wochen Testphase"
+          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
         }
       },
       "custom": {
@@ -668,8 +668,16 @@
           "development": "Meilenstein-basierte Lieferung",
           "flexibility": "Technologieunabhängig",
           "handover": "Übergabe des Quellcodes",
-          "support": "Inklusive 2 Wochen Testphase"
+          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
         }
+      },
+      "notes": {
+        "title": "Gut zu wissen",
+        "vat": "",
+        "runningCosts": "Alle Preise sind einmalige Erstellungshonorare. Laufende Kosten — KI-Nutzung, Hosting, Domains und Drittanbieter-Tools — laufen über Ihre eigenen Konten und werden Ihnen direkt von diesen Anbietern berechnet.",
+        "rights": "Mit der Schlusszahlung erhalten Sie umfassende, zeitlich und räumlich unbeschränkte Nutzungsrechte am gelieferten Werk.",
+        "warranty": "Zwei Wochen kostenlose Fehlerbehebung nach dem Launch sind enthalten. Die gesetzliche Gewährleistung bleibt hiervon unberührt.",
+        "payment": "Zahlungsbedingungen: 50 % bei Auftragsbestätigung, 50 % bei Abnahme."
       }
     },
     "process": {
@@ -689,7 +697,11 @@
       },
       "support": {
         "title": "Launch & Support",
-        "description": "Reibungslose Übergabe mit Dokumentation, Schulung und laufendem Support."
+        "description": "Reibungslose Übergabe mit Dokumentation und Schulung. Laufender Support und Wartung sind über eine separate Vereinbarung möglich."
+      },
+      "acceptance": {
+        "title": "Abnahme & Übergabe",
+        "description": "Sie prüfen das Ergebnis gegen den vereinbarten Umfang, und wir zeichnen das Abnahmeprotokoll. Mit der Abnahme beginnt die Gewährleistungsfrist und die Schlusszahlung wird fällig."
       }
     },
     "trust": {

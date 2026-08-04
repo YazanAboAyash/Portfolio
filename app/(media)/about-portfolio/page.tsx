@@ -4,6 +4,9 @@
  * @version 6.x.x
  */
 
+import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
+import { generateMediaSectionSEO } from "@/lib/configs/seo";
 import { Separator } from "@/components/ui/separator";
 import {
   ArchitectureDiagram,
@@ -17,6 +20,12 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, FileText, Info } from "lucide-react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return generateMediaSectionSEO("aboutPortfolio", locale);
+}
 
 export default function PortfolioDocumentation() {
   return (

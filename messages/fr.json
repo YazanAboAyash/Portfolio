@@ -564,16 +564,16 @@
         "tier": "starter",
         "name": "Site Web",
         "headline": "Prêt à Lancer, Rapidement",
-        "description": "Un site web moderne, rapide et conforme à la réglementation pour votre entreprise — conçu pour transformer les visiteurs en appels. Inclut l'optimisation de votre fiche d'établissement Google.",
+        "description": "Un site web moderne et rapide pour votre entreprise — conçu pour transformer les visiteurs en appels. Inclut l'optimisation de votre fiche d'établissement Google.",
         "pricing": "À partir de 599 €",
         "timeline": "1-2 semaines",
         "features": {
           "design": "Design moderne et responsive",
-          "compliant": "Conforme à la réglementation (mentions légales, RGPD)",
+          "compliant": "Intégration technique des mentions légales et de la politique de confidentialité (textes juridiques fournis par vous ou un prestataire — sans conseil juridique)",
           "gbp": "Configuration de la fiche d'établissement Google",
           "contact": "Formulaire de contact",
           "goLive": "Pack Go-Live optionnel (domaine & hébergement) +150 €",
-          "ownership": "Paiement unique, tout vous appartient"
+          "ownership": "Forfait unique de réalisation — droits d'usage complets au paiement final"
         }
       },
       "chatbotStarter": {
@@ -589,7 +589,7 @@
           "availability": "Questions-réponses automatisées 24h/24 et 7j/7",
           "transparency": "Mention de transparence du règlement européen sur l'IA incluse",
           "handover": "Configuration & remise complète",
-          "ownership": "Paiement unique, sans abonnement"
+          "ownership": "Forfait unique de réalisation — l'usage de l'IA et l'hébergement fonctionnent sur vos propres comptes"
         }
       },
       "automationStarter": {
@@ -604,7 +604,7 @@
           "replies": "Réponses automatiques aux demandes",
           "setup": "Configuration sur vos outils existants",
           "handover": "Remise & prise en main",
-          "ownership": "Paiement unique, sans abonnement"
+          "ownership": "Forfait unique de réalisation — les automatisations tournent sur vos propres comptes d'outils"
         }
       },
       "mvp": {
@@ -620,7 +620,7 @@
           "database": "Configuration de base de données sécurisée",
           "auth": "Connexions utilisateurs & comptes",
           "deployment": "Mise en production",
-          "support": "Inclus 2 semaines de test post-lancement"
+          "support": "2 semaines de correction de bugs offertes après le lancement (la garantie légale reste applicable)"
         }
       },
       "automation": {
@@ -636,7 +636,7 @@
           "workflows": "Configuration logique & déclencheurs",
           "documentation": "Documentation technique",
           "training": "Remise du système & prise en main",
-          "support": "Inclus 2 semaines de test post-lancement"
+          "support": "2 semaines de correction de bugs offertes après le lancement (la garantie légale reste applicable)"
         }
       },
       "ai": {
@@ -652,7 +652,7 @@
           "integration": "Fonctionne dans vos outils actuels",
           "security": "Configuration de la confidentialité",
           "training": "Remise du système & prise en main",
-          "support": "Inclus 2 semaines de test post-lancement"
+          "support": "2 semaines de correction de bugs offertes après le lancement (la garantie légale reste applicable)"
         }
       },
       "custom": {
@@ -668,8 +668,16 @@
           "development": "Livraison par étapes",
           "flexibility": "Agnostique sur la technologie",
           "handover": "Remise complète du code source",
-          "support": "Inclus 2 semaines de test post-lancement"
+          "support": "2 semaines de correction de bugs offertes après le lancement (la garantie légale reste applicable)"
         }
+      },
+      "notes": {
+        "title": "Bon à savoir",
+        "vat": "",
+        "runningCosts": "Tous les prix sont des forfaits uniques de réalisation. Les coûts récurrents — usage de l'IA, hébergement, domaines et outils tiers — fonctionnent sur vos propres comptes et vous sont facturés directement par ces prestataires.",
+        "rights": "Au paiement final, des droits d'usage complets et illimités sur le travail livré vous sont transférés.",
+        "warranty": "Deux semaines de correction de bugs offertes après le lancement sont incluses. Vos droits de garantie légale restent inchangés.",
+        "payment": "Conditions de paiement : 50 % à la confirmation de commande, 50 % à la réception."
       }
     },
     "process": {
@@ -689,7 +697,11 @@
       },
       "support": {
         "title": "Lancement et Support",
-        "description": "Livraison fluide avec documentation, formation et support continu."
+        "description": "Livraison fluide avec documentation et formation. Le support et la maintenance continus font l'objet d'un contrat séparé."
+      },
+      "acceptance": {
+        "title": "Réception & Remise",
+        "description": "Vous vérifiez le résultat par rapport au périmètre convenu et nous signons le procès-verbal de réception. La réception fait courir le délai de garantie et rend le paiement final exigible."
       }
     },
     "trust": {

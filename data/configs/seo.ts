@@ -439,4 +439,32 @@ export const mediaSectionContent: MediaSectionContent = {
       path: "/services",
     },
   },
+  aboutPortfolio: {
+    en: {
+      title: "About This Portfolio - Architecture & Tech Stack",
+      description:
+        "A technical walkthrough of how this portfolio is built: Next.js App Router architecture, tech stack, workflows, and performance metrics.",
+      keywords: [
+        "portfolio architecture",
+        "tech stack",
+        ...COMMON_TECH_KEYWORDS,
+        "App Router",
+        "web performance",
+      ],
+      path: "/about-portfolio",
+    },
+    de: {
+      title: "Über dieses Portfolio - Architektur & Tech-Stack",
+      description:
+        "Ein technischer Einblick in den Aufbau dieses Portfolios: Next.js App-Router-Architektur, Tech-Stack, Workflows und Performance-Kennzahlen.",
+      keywords: [
+        "Portfolio Architektur",
+        "Tech-Stack",
+        ...COMMON_TECH_KEYWORDS,
+        "App Router",
+        "Web Performance",
+      ],
+      path: "/about-portfolio",
+    },
+  },
 };
