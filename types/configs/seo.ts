@@ -61,10 +61,6 @@ export interface LegalPageContent {
 }
 
 export interface MediaSectionContent {
-  dashboard: {
-    en: PageContent;
-    de: PageContent;
-  };
   about: {
     en: PageContent;
     de: PageContent;
@@ -93,7 +89,6 @@ export interface MediaSectionContent {
 
 export type LegalPageType = "privacy" | "impressum" | "terms";
 export type MediaSectionType =
-  | "dashboard"
   | "about"
   | "blog"
   | "projects"

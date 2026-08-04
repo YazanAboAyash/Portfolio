@@ -253,32 +253,6 @@ export const legalPageContent: LegalPageContent = {
 
 // Media section content data
 export const mediaSectionContent: MediaSectionContent = {
-  dashboard: {
-    en: {
-      title: "Media Dashboard",
-      description:
-        "Central hub for navigating all content and resources including blogs, projects, and more.",
-      keywords: [
-        "media dashboard",
-        "content hub",
-        "navigation",
-        "portfolio sections",
-      ],
-      path: "/media",
-    },
-    de: {
-      title: "Medien Dashboard",
-      description:
-        "Zentrale Anlaufstelle für die Navigation durch alle Inhalte und Ressourcen einschließlich Blogs, Projekte und mehr.",
-      keywords: [
-        "Medien Dashboard",
-        "Content Hub",
-        "Navigation",
-        "Portfolio Bereiche",
-      ],
-      path: "/media",
-    },
-  },
   about: {
     en: {
       title: "About Me - Full Stack Developer",

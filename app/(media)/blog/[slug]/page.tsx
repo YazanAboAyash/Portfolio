@@ -4,8 +4,11 @@
  * @version 6.x.x
  */
 
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getLocale } from "next-intl/server";
 import { BlogView, BlogBreadcrumb } from "@/components/blog";
+import { generateBlogSEO } from "@/lib/configs/seo";
 import { getBlogBySlug } from "@/lib/hubs/blogs";
 
 interface BlogPageProps {
@@ -41,9 +44,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
   );
 }
 
-export async function generateMetadata({ params }: BlogPageProps) {
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
   try {
     const { slug } = await params;
+    const locale = await getLocale();
     const blog = await getBlogBySlug(slug);
 
     if (!blog) {
@@ -52,13 +58,25 @@ export async function generateMetadata({ params }: BlogPageProps) {
       };
     }
 
+    const seo = generateBlogSEO(blog, locale);
+
     return {
-      title: blog.metaTitle || blog.title,
-      description: blog.metaDescription || blog.excerpt,
+      title: { absolute: seo.title },
+      description: seo.description,
+      keywords: seo.keywords,
+      alternates: {
+        canonical: seo.canonicalUrl,
+      },
       openGraph: {
-        title: blog.metaTitle || blog.title,
-        description: blog.metaDescription || blog.excerpt,
-        images: blog.featuredImage ? [blog.featuredImage] : undefined,
+        title: seo.ogTitle ?? seo.title,
+        description: seo.ogDescription ?? seo.description,
+        url: seo.canonicalUrl,
+        images: seo.ogImage ? [seo.ogImage] : undefined,
+      },
+      twitter: {
+        title: seo.twitterTitle ?? seo.title,
+        description: seo.twitterDescription ?? seo.description,
+        images: seo.twitterImage ? [seo.twitterImage] : undefined,
       },
     };
   } catch (error) {

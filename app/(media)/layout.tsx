@@ -4,24 +4,10 @@
  * @version 6.x.x
  */
 
-import type { Metadata } from "next";
-import { getLocale } from "next-intl/server";
-import { generateMediaSectionSEO } from "@/lib/configs/seo";
-
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
-
-  return generateMediaSectionSEO("dashboard", locale);
-}
-
 export default function MediaGroupLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="min-h-screen">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen">{children}</div>;
 }

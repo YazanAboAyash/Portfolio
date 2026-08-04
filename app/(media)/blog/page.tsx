@@ -4,7 +4,10 @@
  * @version 6.x.x
  */
 
+import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { BlogPageClient } from "@/components/blog";
+import { generateMediaSectionSEO } from "@/lib/configs/seo";
 import { getBlogs } from "@/lib/hubs/blogs";
 
 export const revalidate = 60;
@@ -22,8 +25,8 @@ export default async function BlogsPage() {
   return <BlogPageClient initialBlogs={blogs} />;
 }
 
-export const metadata = {
-  title: "Blog",
-  description:
-    "Read the latest articles about development, technology, and more.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return generateMediaSectionSEO("blog", locale);
+}
