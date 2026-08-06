@@ -40,10 +40,21 @@ test.describe("live tools", () => {
     await expect(page.getByText(/23\.400/)).toBeVisible();
   });
 
-  test("enables email analysis only after text is entered", async ({ page }) => {
+  test("enables email analysis only after text is entered", async ({
+    page,
+  }) => {
+    await page.route("/api/email-rewrite/remaining", (route) =>
+      route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify({ remaining: 10 }),
+      }),
+    );
+
     await page.goto("/polite-email");
 
-    await expect(page.getByText("Email Assistant", { exact: true })).toBeVisible();
+    await expect(
+      page.getByText("Email Assistant", { exact: true }),
+    ).toBeVisible();
 
     const submitButton = page.getByRole("button", {
       name: "Analyze & Generate Replies",

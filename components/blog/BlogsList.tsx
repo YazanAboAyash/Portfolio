@@ -29,14 +29,14 @@ interface BlogCardProps {
 
 function BlogCard({ blog, index }: BlogCardProps) {
   const [imageSrc, setImageSrc] = useState(
-    blog.featuredImage || "/assets/blogsFallback.png",
+    blog.featuredImage || "/assets/blogs/blogsFallback.png",
   );
   const [imageError, setImageError] = useState(false);
 
   const handleImageError = () => {
-    if (!imageError && imageSrc !== "/assets/blogsFallback.png") {
+    if (!imageError && imageSrc !== "/assets/blogs/blogsFallback.png") {
       setImageError(true);
-      setImageSrc("/assets/blogsFallback.png");
+      setImageSrc("/assets/blogs/blogsFallback.png");
     }
   };
 

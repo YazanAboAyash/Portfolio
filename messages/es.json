@@ -74,7 +74,8 @@
     "status": "Estado",
     "training": "Formación",
     "quickLinks": "Enlaces rápidos",
-    "openForCollaboration": "Disponible"
+    "openForCollaboration": "Disponible",
+    "legalNotice": "Mis servicios se ofrecen exclusivamente a empresarios según lo definido en el § 14 BGB."
   },
   "QuickActions": {
     "title": "Acciones Rápidas",
@@ -114,7 +115,7 @@
     "launch": {
       "title": "Lanzamiento",
       "headline": "Resultados tangibles en pocas semanas",
-      "description": "Nos centramos en lo esencial para que tengas un producto funcional cuanto antes. Valida tu idea rápidamente sin esperar meses."
+      "description": "Me centro en lo esencial para que tengas un producto funcional cuanto antes. Valida tu idea rápidamente sin esperar meses."
     },
     "scale": {
       "title": "Escalabilidad",
@@ -426,24 +427,27 @@
     "currentFocus": "Enfoque actual",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Desarrollo aplicaciones web rápidas y escalables que ayudan a las empresas a crecer",
+      "title": "Aplicaciones web, automatización de flujos de trabajo e integraciones de IA — desarrolladas de principio a fin por un solo desarrollador.",
       "currentPosition": "Desarrollador Freelance",
       "company": "",
       "location": "Alemania",
       "experience": "3+ años"
     },
-    "mainStory": "Ayudo a PYMEs y agencias a lanzar MVPs web más rápido, automatizar flujos de trabajo repetitivos e integrar asistentes de IA que ahorran horas de trabajo manual. Mis clientes normalmente ven resultados en 4-8 semanas, no meses. Ya sea que necesite un portal de clientes, una herramienta interna o una forma de optimizar los procesos de su equipo, entrego soluciones confiables, mantenibles y construidas para escalar con su negocio.",
+    "mainStory": "Trabajo con pymes, agencias y fundadores que necesitan software entregado, no gestionado. MVPs planificados para entregarse en 4–8 semanas, automatizaciones que liberan a su equipo del trabajo repetitivo y asistentes de IA construidos sobre una arquitectura de recuperación real — no una ventana de chat añadida a un sitio web.",
     "sections": {
       "philosophy": "Creo en la comunicación clara, plazos transparentes y entregar exactamente lo prometido. Sin jerga técnica, sin alcance creep — solo desarrollo confiable con actualizaciones regulares para que siempre sepa dónde está su proyecto. Cada solución se construye con sus objetivos comerciales en mente, no solo requisitos técnicos."
     },
     "currentFocusItems": [
-      "MVPs web entregados en 4-8 semanas",
-      "Automatización de flujos que ahorra horas semanalmente",
-      "Asistentes de IA para procesos internos",
-      "Puntuaciones de rendimiento 90+ garantizadas",
-      "Comunicación clara y proceso transparente",
-      "Soporte y mantenimiento a largo plazo"
-    ]
+      "MVPs web planificados para entrega en 4–8 semanas",
+      "Automatizaciones diseñadas para eliminar horas de trabajo manual cada semana",
+      "Asistentes de IA y sistemas RAG para procesos internos"
+    ],
+    "workingWithMe": "Trabaja directamente conmigo. Sin gestor de cuentas, sin traspaso a un desarrollador júnior. Next.js, TypeScript y React, con código fuente y documentación que le pertenecen por completo al final.",
+    "credentials": "Fachinformatiker certificado por la IHK con formación en el Reglamento Europeo de IA — relevante cuando la función de IA que necesita debe resistir la regulación europea.",
+    "cta": {
+      "work": "Ver los proyectos",
+      "call": "Reservar llamada gratuita de 15 min"
+    }
   },
   "PortfolioAbout": {
     "title": "Acerca de Este Portfolio",
@@ -552,121 +556,210 @@
     "packages": {
       "title": "Paquetes de Servicios",
       "cta": "Reservar llamada gratuita",
-      "tiers": {
-        "starter": "Inicial",
-        "advanced": "Avanzado",
-        "custom": "A medida"
-      },
       "website": {
-        "tier": "starter",
         "name": "Sitio Web",
-        "headline": "Listo para Lanzar, Rápido",
-        "description": "Un sitio web moderno, rápido y legalmente conforme para su negocio — diseñado para convertir visitantes en llamadas. Incluye la optimización de su Perfil de Empresa en Google.",
-        "pricing": "Desde 599 €",
-        "timeline": "1-2 semanas",
+        "headline": "Que le Encuentren. Que le Llamen.",
+        "description": "Un sitio rápido y moderno que funciona en cualquier dispositivo y aparece en búsquedas locales.",
+        "pricing": "890 €",
+        "timeline": "1–2 semanas",
         "features": {
-          "design": "Diseño moderno y adaptable",
-          "compliant": "Legalmente conforme (aviso legal, privacidad)",
-          "gbp": "Configuración del Perfil de Empresa en Google",
+          "pages": "Hasta 3 páginas, o un sitio de una sola página con hasta 5 secciones",
+          "businessInfo": "Información esencial del negocio: sobre nosotros, servicios, horarios, preguntas frecuentes, contacto",
           "contact": "Formulario de contacto",
-          "goLive": "Paquete Go-Live opcional (dominio y hosting) +150 €",
-          "ownership": "Pago único, todo es suyo"
+          "gbp": "Configuración y optimización del Perfil de Empresa en Google",
+          "legal": "Páginas legales básicas (implementación técnica)",
+          "seo": "Optimización SEO y de rendimiento, Lighthouse 90+"
+        },
+        "extras": {
+          "page": {
+            "label": "Página adicional",
+            "price": "190 €"
+          },
+          "section": {
+            "label": "Sección adicional (sitio de una página)",
+            "price": "120 €"
+          },
+          "secondLanguage": {
+            "label": "Segundo idioma (EN + DE), traducción incluida",
+            "price": "390 €"
+          },
+          "staticBlog": {
+            "label": "Blog estático (sin backend)",
+            "price": "490 €"
+          },
+          "cmsBlog": {
+            "label": "Blog editable con CMS",
+            "price": "desde 890 €"
+          },
+          "consentBanner": {
+            "label": "Banner de consentimiento (solo si desea herramientas de seguimiento)",
+            "price": "290 €"
+          },
+          "textPrep": {
+            "label": "Preparación de textos a partir de su material existente, por página",
+            "price": "90 €"
+          },
+          "managedSetup": {
+            "label": "Configuración gestionada (por plataforma)",
+            "price": "150 €"
+          }
         }
       },
-      "chatbotStarter": {
-        "tier": "starter",
-        "name": "Sitio Web con IA y Chatbot",
-        "headline": "Atienda a sus Clientes 24/7",
-        "description": "Un sitio web con un chatbot de IA integrado, entrenado con la información de su negocio — respondiendo preguntas de clientes automáticamente, día y noche.",
-        "pricing": "Desde 1.290 €",
-        "timeline": "2-3 semanas",
+      "webApplication": {
+        "name": "Aplicación Web",
+        "headline": "Software que Gestiona su Proceso.",
+        "description": "Todo lo de Sitio Web, más una base de datos y usuarios reales.",
+        "pricing": "desde 2.490 €",
+        "timeline": "4–6 semanas",
         "features": {
-          "website": "Todo lo incluido en el paquete Sitio Web",
-          "chatbot": "Chatbot de IA entrenado con su negocio",
-          "availability": "Preguntas y respuestas automáticas 24/7",
-          "transparency": "Incluye el aviso de transparencia del Reglamento de IA de la UE",
-          "handover": "Configuración y entrega completa",
-          "ownership": "Pago único, sin suscripción"
+          "website": "Todo lo incluido en Sitio Web",
+          "database": "Diseño y configuración de base de datos (proveedor de su elección)",
+          "auth": "Registro e inicio de sesión de usuarios",
+          "adminView": "Una vista de administración (crear, leer, actualizar, eliminar)",
+          "production": "Build listo para producción"
+        },
+        "extras": {
+          "booking": {
+            "label": "Sistema de reservas/citas",
+            "price": "desde 1.490 €"
+          },
+          "roles": {
+            "label": "Roles y permisos",
+            "price": "desde 490 €"
+          },
+          "payments": {
+            "label": "Pagos (Stripe)",
+            "price": "desde 690 €"
+          },
+          "fileUpload": {
+            "label": "Carga y gestión de archivos",
+            "price": "desde 390 €"
+          },
+          "adminView": {
+            "label": "Vista de administración adicional",
+            "price": "desde 390 €"
+          },
+          "notifications": {
+            "label": "Notificaciones por correo (a través de su buzón, Brevo o Mailjet)",
+            "price": "desde 290 €"
+          },
+          "page": {
+            "label": "Página o vista adicional",
+            "price": "190 €"
+          }
         }
       },
-      "automationStarter": {
-        "tier": "starter",
-        "name": "Automatización",
-        "headline": "Deje de Repetirse",
-        "description": "Automatice las confirmaciones de citas y las respuestas repetitivas a consultas de clientes, para que nada se quede sin atender.",
-        "pricing": "Desde 390 €",
-        "timeline": "3-5 días",
+      "aiIntegration": {
+        "name": "Integración de IA",
+        "headline": "Respuestas sin que Nadie las Escriba.",
+        "description": "Un chatbot o función de IA en un sitio nuevo, o añadido a uno existente.",
+        "pricing": "desde 890 €",
+        "timeline": "1–3 semanas",
         "features": {
-          "booking": "Confirmaciones automáticas de citas",
-          "replies": "Respuestas automáticas a consultas",
-          "setup": "Configuración en sus herramientas actuales",
-          "handover": "Entrega e incorporación",
-          "ownership": "Pago único, sin suscripción"
-        }
-      },
-      "mvp": {
-        "tier": "advanced",
-        "name": "Lanzamiento MVP",
-        "headline": "Validación y Lanzamiento Rápido",
-        "description": "Digitalice procesos manuales con aplicaciones web a medida. Desarrollo software adaptado a sus flujos de trabajo específicos, permitiéndole gestionar más clientes de forma eficiente y segura.",
-        "pricing": "Desde 3.000 €",
-        "timeline": "4-8 semanas",
-        "features": {
-          "fullStack": "Aplicación web Full-stack",
-          "responsive": "Diseño adaptable a móviles",
-          "database": "Configuración de base de datos segura",
-          "auth": "Inicio de sesión y cuentas",
-          "deployment": "Puesta en producción",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+          "chatbot": "Chatbot entrenado con la información de su negocio (inyección de texto, sin RAG)",
+          "knowledgeBase": "Base de conocimiento creada junto con usted",
+          "transparency": "Aviso de IA visible en la interfaz — transparencia según el Reglamento de IA de la UE",
+          "avv": "Acuerdo de tratamiento de datos (AVV) cuando se procesan datos personales",
+          "integration": "Integración en un sitio existente o en un paquete de los anteriores"
+        },
+        "extras": {
+          "rag": {
+            "label": "Sistema RAG — respuestas a partir de sus documentos (PDF, Notion, Docs)",
+            "price": "desde 1.690 €"
+          },
+          "existingApp": {
+            "label": "Función de IA en una app existente (resumir, clasificar, generar)",
+            "price": "desde 690 €"
+          },
+          "cloudSetup": {
+            "label": "Configuración de proveedor cloud (Azure OpenAI UE, OpenAI, Anthropic, Mistral)",
+            "price": "290 €"
+          },
+          "localModel": {
+            "label": "Modelo local en su propio servidor — nada sale de su infraestructura",
+            "price": "690 €"
+          },
+          "knowledgeSource": {
+            "label": "Fuente de conocimiento adicional",
+            "price": "desde 290 €"
+          },
+          "retraining": {
+            "label": "Reentrenamiento tras la aceptación",
+            "price": "70 €/h"
+          }
+        },
+        "scopeNote": {
+          "label": "Dónde puedo añadirlo",
+          "text": "Sitios construidos con Next.js, React, Astro, o un sitio estático — se aplica el precio estándar. Cualquier otra cosa (WordPress, PHP, Shopify, .NET, Wix) solo es posible como widget embebido, presupuestado como A Medida tras una revisión."
         }
       },
       "automation": {
-        "tier": "advanced",
-        "name": "Automatización de Flujos de Trabajo",
-        "headline": "Operaciones Optimizadas",
-        "description": "Conecte sus herramientas actuales (CRM, Email, Hojas de cálculo) para un flujo de datos sin interrupciones. Implemento sistemas automatizados que manejan tareas repetitivas y aseguran la precisión de los datos.",
-        "pricing": "Desde 2.000 €",
-        "timeline": "2-4 semanas",
+        "name": "Automatización e Integración",
+        "headline": "Conecte las Herramientas que Ya Paga.",
+        "description": "Yo soy el implementador técnico. Usted aporta las licencias, cuentas y acceso de administrador.",
+        "pricing": "desde 690 €",
+        "timeline": "3 días – 4 semanas",
         "features": {
-          "analysis": "Auditoría de procesos y estrategia",
-          "integration": "Conexión de API y herramientas",
-          "workflows": "Lógica y configuración de disparadores",
-          "documentation": "Documentación técnica",
-          "training": "Entrega del sistema e incorporación",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
-        }
-      },
-      "ai": {
-        "tier": "advanced",
-        "name": "IA Interna",
-        "headline": "Acceso Inteligente al Conocimiento",
-        "description": "Acceda al conocimiento de su empresa al instante. Conecto asistentes de IA seguros a sus documentos, permitiendo a su equipo obtener respuestas precisas basadas en sus datos internos.",
-        "pricing": "Desde 4.000 €",
-        "timeline": "4-6 semanas",
-        "features": {
-          "chatbot": "Asistente de IA personalizado",
-          "rag": "Conexión a sus datos específicos",
-          "integration": "Integración en sus herramientas actuales",
-          "security": "Configuración de privacidad de datos",
-          "training": "Entrega del sistema e incorporación",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+          "review": "Revisión del proceso a automatizar",
+          "connection": "Conexión de 2 herramientas (correo, calendario, formularios, hojas de cálculo, CRM)",
+          "triggers": "Configuración de disparadores y lógica",
+          "handover": "Pruebas y sesión de entrega",
+          "avv": "AVV cuando se procesan datos personales"
+        },
+        "extras": {
+          "workflow": {
+            "label": "Cada flujo de trabajo adicional",
+            "price": "290 €"
+          },
+          "tool": {
+            "label": "Cada herramienta adicional conectada",
+            "price": "desde 390 €"
+          },
+          "n8n": {
+            "label": "Configuración de n8n autoalojado en su servidor",
+            "price": "desde 890 €"
+          },
+          "customApi": {
+            "label": "Integración de API personalizada (sin conector prediseñado)",
+            "price": "desde 690 €"
+          }
+        },
+        "scopeNote": {
+          "label": "Lo que no hago",
+          "text": "Administración corporativa de Microsoft 365 o Google Workspace — configuración de tenant, arquitectura de Teams/SharePoint a nivel de empresa, gestión de licencias. Traiga a su administrador de TI; yo construyo la automatización sobre esa base."
         }
       },
       "custom": {
-        "tier": "custom",
-        "name": "Proyecto a Medida",
-        "headline": "Ingeniería Personalizada",
-        "description": "Para proyectos con requisitos únicos o alcance complejo. Definimos una hoja de ruta específica para construir exactamente lo que su negocio necesita.",
+        "name": "A Medida",
+        "headline": "Sus Requisitos, Bien Definidos.",
+        "description": "Para todo lo que no encaje en los paquetes anteriores.",
         "pricing": "Presupuesto personalizado",
         "timeline": "Flexible",
         "features": {
-          "scoping": "Taller de requisitos",
-          "roadmap": "Plan de proyecto a medida",
-          "development": "Entrega basada en hitos",
-          "flexibility": "Agnóstico a la tecnología",
+          "workshop": "Taller de requisitos",
+          "roadmap": "Hoja de ruta del proyecto a medida con hitos",
+          "milestones": "Entrega y facturación por hitos",
+          "agnostic": "Agnóstico a la tecnología — su stack, sus proveedores",
           "handover": "Entrega completa del código fuente",
-          "support": "Incluye 2 semanas de prueba post-lanzamiento"
+          "support": "2 semanas de corrección de errores gratuita tras el lanzamiento"
         }
+      },
+      "notes": {
+        "title": "Información importante",
+        "vat": "Todos los precios son precios finales. No se añade IVA — conforme al régimen alemán de pequeños empresarios (§ 19 UStG) no facturo IVA, así que el precio que ve es el precio que paga.",
+        "included": "Todos los paquetes incluyen diseño responsivo, un build de SEO y rendimiento (Lighthouse 90+), 2 rondas de revisión y documentación de entrega completa.",
+        "runningCosts": "Los costes recurrentes — hosting, base de datos, uso de IA y dominio — se los facturan directamente sus proveedores elegidos, en sus propias cuentas.",
+        "rights": "Los derechos de uso completos sobre el trabajo entregado se le transfieren con el pago final.",
+        "warranty": "Se incluyen dos semanas de corrección de errores gratuita tras el lanzamiento. Sus derechos legales de garantía no se ven afectados.",
+        "payment": "Pago: hasta 1.000 € se factura el importe completo tras la aceptación; por encima de 1.000 € es 40 % al encargo y 60 % tras la aceptación, 14 días neto.",
+        "rates": "El trabajo adicional fuera del alcance acordado se factura a 70 €/h, siempre presupuestado y aprobado antes. Una ronda de revisión extra cuesta 190 €. Respuesta en 5 días laborables, aceptación en 10.",
+        "notIncluded": "No incluido en ningún paquete: contenido — textos, imágenes, logotipos — y licencias de terceros, material de stock o fuentes de pago. Usted los aporta."
+      },
+      "extras": {
+        "seeAll": "Lista de precios completa",
+        "dialogTitle": "{package} — extras y precios",
+        "dialogDescription": "Todos los complementos disponibles para este paquete, con precio.",
+        "finalPrice": "Los precios definitivos se fijan en su presupuesto tras la llamada de alcance."
       }
     },
     "process": {
@@ -686,27 +779,11 @@
       },
       "support": {
         "title": "Lanzamiento y Soporte",
-        "description": "Entrega sin problemas con documentación, capacitación y soporte continuo."
-      }
-    },
-    "trust": {
-      "title": "Por Qué los Clientes me Eligen",
-      "subtitle": "Tecnología moderna, entregada con claridad y fiabilidad.",
-      "dynamic": {
-        "title": "Aplicaciones Basadas en Datos",
-        "description": "No son plantillas estáticas — aplicaciones reales con bases de datos, APIs y contenido dinámico que crece con tu negocio."
+        "description": "Entrega sin problemas con documentación y capacitación. El soporte y el mantenimiento continuos se contratan por separado."
       },
-      "scalable": {
-        "title": "Construido para Escalar",
-        "description": "Hosting empresarial en Vercel con arquitectura serverless. Tu app maneja el crecimiento automáticamente."
-      },
-      "reliable": {
-        "title": "Fiable y Seguro",
-        "description": "Código limpio, pruebas adecuadas y mejores prácticas de seguridad. Sin deuda técnica, sin sorpresas."
-      },
-      "integrated": {
-        "title": "Integraciones Perfectas",
-        "description": "Conéctate con tus herramientas existentes — CRMs, sistemas de pago, analytics y más."
+      "acceptance": {
+        "title": "Aceptación y Entrega",
+        "description": "Usted revisa el resultado frente al alcance acordado y firmamos el acta de aceptación. Con la aceptación comienza el plazo de garantía y vence el pago final."
       }
     },
     "cta": {
@@ -714,7 +791,47 @@
       "subtitle": "Reserva una llamada de descubrimiento gratuita de 15 minutos. Sin compromiso, solo una conversación sobre tu proyecto.",
       "button": "Reservar Consulta Gratuita",
       "viewAllLink": "Ver Todos los Servicios, Paquetes y Precios"
-    }
+    },
+    "stack": {
+      "title": "Su Stack, Sus Cuentas",
+      "subtitle": "Usted elige los proveedores y es dueño de cada cuenta — trabajo con un conjunto reducido de plataformas que puedo respaldar correctamente.",
+      "categories": {
+        "frontend": {
+          "label": "Frontend",
+          "options": "Next.js · React · Astro · build estático"
+        },
+        "database": {
+          "label": "Base de datos",
+          "options": "Supabase · Neon · PostgreSQL · MySQL"
+        },
+        "auth": {
+          "label": "Auth",
+          "options": "Supabase Auth · Auth.js · Clerk"
+        },
+        "ai": {
+          "label": "Proveedor de IA",
+          "options": "Azure OpenAI (región UE) · OpenAI · Anthropic · Mistral · modelo local en su servidor"
+        },
+        "hosting": {
+          "label": "Hosting",
+          "options": "Vercel · Netlify · Cloudflare Pages · Hetzner · su propio servidor"
+        },
+        "email": {
+          "label": "Envío de correo",
+          "options": "Su buzón existente vía SMTP (recomendado) · Brevo · Mailjet · Resend"
+        }
+      },
+      "codeOnly": {
+        "title": "Solo Código (por defecto)",
+        "description": "Recibe el código fuente completo, instrucciones de build y documentación de entrega. Usted despliega. Incluido sin coste adicional."
+      },
+      "managedSetup": {
+        "title": "Configuración Gestionada (+150 € por plataforma)",
+        "description": "Creo la cuenta a su nombre, la configuro, despliego y entrego todas las credenciales en la aceptación. Tras la entrega no tengo acceso ni responsabilidad continua."
+      },
+      "emailNote": "Los formularios de contacto y correos de notificación necesitan una vía de envío — normalmente su buzón de negocio existente vía SMTP, sin coste adicional. Brevo, Mailjet o Resend están disponibles si necesita otra cosa."
+    },
+    "legalNotice": "Mis servicios se ofrecen exclusivamente a empresarios según lo definido en el § 14 BGB (código civil alemán)."
   },
   "Usecases": {
     "title": "Casos de Uso",

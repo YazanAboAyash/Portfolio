@@ -70,7 +70,16 @@ const CentralizedLoading: React.FC<CentralizedLoadingProps> = ({
     );
   }
 
-  return <div className={cn("w-full", className)}>{content}</div>;
+  return (
+    <div
+      className={cn(
+        "flex w-full min-h-[calc(100vh-4rem)] items-center justify-center px-4",
+        className
+      )}
+    >
+      <div className="w-full max-w-4xl">{content}</div>
+    </div>
+  );
 };
 
 export default CentralizedLoading;

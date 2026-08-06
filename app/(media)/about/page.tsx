@@ -7,11 +7,14 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { CTAButton } from "@/components/ui/cta-button";
 import type { AboutTranslations } from "@/types/configs/i18n";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
-
 
 export default function AboutPage() {
   const t = useTranslations("About");
@@ -42,17 +45,37 @@ export default function AboutPage() {
                   <p className="text-xl text-primary font-semibold leading-relaxed">
                     {t("personalInfo.title")}
                   </p>
-                  <p className="text-lg leading-relaxed text-muted-foreground">
-                    {t("mainStory")}
-                  </p>
+                  <div className="space-y-4">
+                    <p className="text-lg leading-relaxed text-muted-foreground">
+                      {t("mainStory")}
+                    </p>
+                    <p className="text-lg leading-relaxed text-muted-foreground">
+                      {t("workingWithMe")}
+                    </p>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      {t("credentials")}
+                    </p>
+                  </div>
                   <div className="flex flex-wrap gap-3">
-                    {getCurrentFocusItems()
-                      .slice(0, 3)
-                      .map((focus: string, index: number) => (
+                    {getCurrentFocusItems().map(
+                      (focus: string, index: number) => (
                         <Badge key={index} variant="secondary">
                           {focus}
                         </Badge>
-                      ))}
+                      ),
+                    )}
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                    <Button asChild variant="outline">
+                      <Link href="/projects">
+                        {t("cta.work")}
+                        <ArrowRight
+                          className="h-4 w-4 ml-2"
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    </Button>
+                    <CTAButton label={t("cta.call")} />
                   </div>
                 </div>
                 <div className="relative">

@@ -253,32 +253,6 @@ export const legalPageContent: LegalPageContent = {
 
 // Media section content data
 export const mediaSectionContent: MediaSectionContent = {
-  dashboard: {
-    en: {
-      title: "Media Dashboard",
-      description:
-        "Central hub for navigating all content and resources including blogs, projects, and more.",
-      keywords: [
-        "media dashboard",
-        "content hub",
-        "navigation",
-        "portfolio sections",
-      ],
-      path: "/media",
-    },
-    de: {
-      title: "Medien Dashboard",
-      description:
-        "Zentrale Anlaufstelle für die Navigation durch alle Inhalte und Ressourcen einschließlich Blogs, Projekte und mehr.",
-      keywords: [
-        "Medien Dashboard",
-        "Content Hub",
-        "Navigation",
-        "Portfolio Bereiche",
-      ],
-      path: "/media",
-    },
-  },
   about: {
     en: {
       title: "About Me - Full Stack Developer",
@@ -437,6 +411,34 @@ export const mediaSectionContent: MediaSectionContent = {
         "Startup Entwicklung",
       ],
       path: "/services",
+    },
+  },
+  aboutPortfolio: {
+    en: {
+      title: "About This Portfolio - Architecture & Tech Stack",
+      description:
+        "A technical walkthrough of how this portfolio is built: Next.js App Router architecture, tech stack, workflows, and performance metrics.",
+      keywords: [
+        "portfolio architecture",
+        "tech stack",
+        ...COMMON_TECH_KEYWORDS,
+        "App Router",
+        "web performance",
+      ],
+      path: "/about-portfolio",
+    },
+    de: {
+      title: "Über dieses Portfolio - Architektur & Tech-Stack",
+      description:
+        "Ein technischer Einblick in den Aufbau dieses Portfolios: Next.js App-Router-Architektur, Tech-Stack, Workflows und Performance-Kennzahlen.",
+      keywords: [
+        "Portfolio Architektur",
+        "Tech-Stack",
+        ...COMMON_TECH_KEYWORDS,
+        "App Router",
+        "Web Performance",
+      ],
+      path: "/about-portfolio",
     },
   },
 };

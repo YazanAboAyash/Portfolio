@@ -189,6 +189,9 @@ export default function ContactSheet({
             </div>
           </div>
           <Separator />
+          <p className="text-xs text-muted-foreground text-center">
+            {t("legalNotice")}
+          </p>
         </div>
       </SheetContent>
     </Sheet>

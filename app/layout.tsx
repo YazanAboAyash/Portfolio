@@ -43,7 +43,7 @@ const urbanist = Urbanist({
 export const metadata = {
   metadataBase: new URL("https://www.coldbydefault.com"),
   title: {
-    default: seoConfigEN.title,
+    default: "Yazan Abo-Ayash | Full Stack Developer",
     template: `%s | ${seoConfigEN.siteName}`,
   },
   description: seoConfigEN.description,
@@ -60,39 +60,6 @@ export const metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: seoConfigEN.locale,
-    url: seoConfigEN.siteUrl,
-    title: seoConfigEN.openGraph.title,
-    description: seoConfigEN.openGraph.description,
-    siteName: seoConfigEN.siteName,
-    images: [
-      {
-        url: seoConfigEN.openGraph.image,
-        width: 1200,
-        height: 630,
-        alt: seoConfigEN.openGraph.imageAlt,
-      },
-    ],
-  },
-  twitter: {
-    card: seoConfigEN.twitter.cardType,
-    title: seoConfigEN.openGraph.title,
-    description: seoConfigEN.openGraph.description,
-    creator: seoConfigEN.twitter.handle,
-    images: [seoConfigEN.openGraph.image],
-  },
-  alternates: {
-    canonical: seoConfigEN.siteUrl,
-    languages: {
-      "en-US": seoConfigEN.siteUrl,
-      en: seoConfigEN.siteUrl,
-      "de-DE": `${seoConfigEN.siteUrl}/de`,
-      de: `${seoConfigEN.siteUrl}/de`,
-      "x-default": seoConfigEN.siteUrl,
     },
   },
   verification: {
@@ -129,22 +96,6 @@ export default async function RootLayout({
           httpEquiv="Permissions-Policy"
           content="camera=(), microphone=(), geolocation=()"
         />
-
-        {/* Language and Canonical URLs */}
-        <link rel="canonical" href={seoConfigEN.siteUrl} />
-        <link rel="alternate" hrefLang="en-US" href={seoConfigEN.siteUrl} />
-        <link rel="alternate" hrefLang="en" href={seoConfigEN.siteUrl} />
-        <link
-          rel="alternate"
-          hrefLang="de-DE"
-          href={`${seoConfigEN.siteUrl}/de`}
-        />
-        <link
-          rel="alternate"
-          hrefLang="de"
-          href={`${seoConfigEN.siteUrl}/de`}
-        />
-        <link rel="alternate" hrefLang="x-default" href={seoConfigEN.siteUrl} />
 
         {/* Favicon and App Icons */}
         <link rel="icon" href="/favicon.ico" />

@@ -42,8 +42,8 @@ export const infrastructureNodes: ArchitectureNode[] = [
   },
   {
     icon: Shield,
-    title: "Security Middleware",
-    subtitle: "CSP Headers + Rate Limiting + Locale Detection",
+    title: "Security Proxy Layer",
+    subtitle: "proxy.ts + CSP Headers + Route Guards + Locale Detection",
     color: "bg-red-500/10 text-red-600",
   },
 ];
@@ -59,19 +59,19 @@ export const applicationNodes: ArchitectureNode[] = [
   {
     icon: Layers,
     title: "Route Groups & Layouts",
-    subtitle: "(media) + (legals) + admin/* + Nested Layouts",
+    subtitle: "(media) + (legals) + (live-tools) + admin + Shared Layouts",
     color: "bg-purple-500/10 text-purple-600",
   },
   {
     icon: Zap,
     title: "Loading & Error States",
-    subtitle: "Strategic loading.tsx + Error Boundaries + not-found.tsx",
+    subtitle: "Group-level loading.tsx + Error Boundaries + not-found.tsx",
     color: "bg-yellow-500/10 text-yellow-600",
   },
   {
     icon: Settings,
     title: "Component Architecture",
-    subtitle: "Atomic Design + Custom Hooks + Logic Separation",
+    subtitle: "Feature Folders + Barrel Exports + Logic Separation",
     color: "bg-indigo-500/10 text-indigo-600",
   },
 ];
@@ -81,7 +81,7 @@ export const dataNodes: ArchitectureNode[] = [
   {
     icon: Target,
     title: "API Routes Structure",
-    subtitle: "RESTful Endpoints + GitHub API",
+    subtitle: "Typed Route Handlers + Zod Validation + Rate Limiting",
     color: "bg-orange-500/10 text-orange-600",
   },
   {
@@ -93,7 +93,7 @@ export const dataNodes: ArchitectureNode[] = [
   {
     icon: Languages,
     title: "Internationalization",
-    subtitle: "next-intl 4.3.5 (EN/DE/ES/FR/SV) + SEO Localization",
+    subtitle: "next-intl 4.11 (EN/DE/ES/FR/SV) + Cookie-driven Locale",
     color: "bg-teal-500/10 text-teal-600",
   },
 ];
@@ -110,10 +110,10 @@ export const techStacks: TechStackItem[] = [
     icon: Code,
     title: "Frontend Development",
     description:
-      "Modern reactive user interfaces with Next.js 16 and React 19.1.1, featuring server components and edge runtime optimization.",
+      "Modern reactive interfaces with Next.js 16.2 and React 19.2, using App Router, server components, and performance-focused rendering.",
     technologies: [
-      "Next.js 16",
-      "React 19.1.1",
+      "Next.js 16.2",
+      "React 19.2",
       "TypeScript 5.x",
       "Server Components",
       "Framer Motion 12.x",
@@ -125,14 +125,14 @@ export const techStacks: TechStackItem[] = [
     icon: Database,
     title: "Backend & Database",
     description:
-      "Type-safe backend development with Prisma ORM and serverless PostgreSQL, ensuring data integrity and optimal performance.",
+      "Type-safe backend architecture with Prisma 7.8 and Neon PostgreSQL, including validated API handlers and secure admin routes.",
     technologies: [
-      "Prisma ORM",
+      "Prisma 7.8",
       "Neon PostgreSQL",
       "Zod Validation",
       "Next.js API Routes",
-      "Vercel Edge Functions",
-      "Database Migrations",
+      "Admin Session Validation",
+      "Rate Limited Endpoints",
     ],
     level: 90,
   },
@@ -170,12 +170,12 @@ export const techStacks: TechStackItem[] = [
     icon: Settings,
     title: "Development Tools",
     description:
-      "Modern development workflow with strict TypeScript, comprehensive linting, and automated quality assurance for maintainable code.",
+      "Strict TypeScript workflow with linting, e2e + accessibility checks, and CI security automation for reliable releases.",
     technologies: [
       "ESLint 9.x",
       "TypeScript Strict Mode",
-      "Prettier",
-      "Git Workflow",
+      "Playwright + axe-core",
+      "CodeQL + Dependency Review",
       "Vercel Deployment",
       "TypeDoc",
     ],
@@ -185,10 +185,10 @@ export const techStacks: TechStackItem[] = [
     icon: Languages,
     title: "Internationalization",
     description:
-      "Multi-language support with next-intl 4.3.5, covering 5 languages with dynamic locale routing and SEO optimization.",
+      "Multi-language support with next-intl 4.11, cookie-driven locale selection, and SEO-aware metadata across five locales.",
     technologies: [
-      "next-intl 4.3.5",
-      "Dynamic Routing",
+      "next-intl 4.11",
+      "Cookie-driven Locale",
       "5 Languages (EN/DE/ES/FR/SV)",
       "Locale Detection",
       "SEO Localization",
@@ -201,7 +201,7 @@ export const techStacks: TechStackItem[] = [
 export const workflowSteps: WorkflowStep[] = [
   {
     icon: Target,
-    label: "Planning & Design",
+    label: "Planning & Architecture",
     color: "bg-blue-500/10 text-blue-600",
   },
   {
@@ -211,7 +211,7 @@ export const workflowSteps: WorkflowStep[] = [
   },
   {
     icon: TestTube,
-    label: "Quality Assurance",
+    label: "Lint + E2E + A11y Checks",
     color: "bg-purple-500/10 text-purple-600",
   },
   {
@@ -226,114 +226,79 @@ export const workflowSteps: WorkflowStep[] = [
   },
   {
     icon: CheckCircle,
-    label: "Performance Validation",
+    label: "Security + Performance Validation",
     color: "bg-indigo-500/10 text-indigo-600",
   },
 ];
 
 export const codeExamples: CodeExample[] = [
   {
-    title: "Custom Hook",
+    title: "Admin Session Validation",
     language: "TypeScript",
-    code: `// Custom hook for responsive behavior
-export function useResponsiveCarousel(): ResponsiveCarouselConfig {
-  const [cardsPerSlide, setCardsPerSlide] = useState<number>(3);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+    code: `// Stateless HMAC cookie session validation
+export function hasValidAdminSession(request: NextRequest): boolean {
+  const token = request.cookies.get(ADMIN_SESSION_COOKIE)?.value;
+  if (!token) return false;
 
-  useEffect(() => {
-    const checkScreenSize = (): void => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setCardsPerSlide(1);
-        setIsMobile(true);
-      } else if (width < 1024) {
-        setCardsPerSlide(2);
-        setIsMobile(false);
-      } else {
-        setCardsPerSlide(3);
-        setIsMobile(false);
-      }
-    };
+  const [randomId, expiresAtRaw, signature] = token.split(".");
+  if (!randomId || !expiresAtRaw || !signature) return false;
 
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
+  const expiresAt = Number(expiresAtRaw);
+  if (!Number.isFinite(expiresAt) || Date.now() > expiresAt) return false;
 
-  return { cardsPerSlide, isMobile };
-}`,
-  },
-  {
-    title: "Logic Hook",
-    language: "TypeScript",
-    code: `// Business logic separation in custom hook
-export function useCertificationShowcaseLogic(): CertificationShowcaseLogic {
-  const isMobile = useIsMobile();
-  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
-  const [isTablet, setIsTablet] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const payload = randomId + "." + expiresAtRaw;
+  const expectedSignature = createHmac("sha256", ADMIN_SESSION_SECRET)
+    .update(payload)
+    .digest("base64url");
 
-  useEffect(() => {
-    const checkIsTablet = () => {
-      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
-    };
-    
-    checkIsTablet();
-    window.addEventListener("resize", checkIsTablet);
-    return () => window.removeEventListener("resize", checkIsTablet);
-  }, []);
-
-  const toggleCard = (id: number) => {
-    setExpandedCards((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
-      } else {
-        newSet.add(id);
-      }
-      return newSet;
-    });
-  };
-
-  return { isMobile, isTablet, expandedCards, hoveredCard, toggleCard, setHoveredCard };
-}`,
-  },
-  {
-    title: "Component Structure",
-    language: "TypeScript",
-    code: `// Clean component with separated concerns
-export function CertificationShowcaseMobile({
-  certifications,
-  logic,
-  className,
-}: CertificationShowcaseMobileProps) {
-  
-  const getContainerClasses = () => {
-    if (logic.isMobile) {
-      return "flex flex-col gap-4 px-2 sm:px-4";
-    } else if (logic.isTablet) {
-      return "flex flex-col gap-4 px-4";
-    }
-    return "flex flex-col gap-4 px-4"; // fallback
-  };
-
-  const renderCard = (cert: Certification) => {
-    if (logic.isMobile) {
-      return renderMobileCard(cert);
-    } else if (logic.isTablet) {
-      return renderTabletCard(cert);
-    }
-    return renderMobileCard(cert);
-  };
-
-  return (
-    <section className={className} id="cert">
-      <Card className="max-w-7xl mx-auto">
-        {certifications.map((cert) => renderCard(cert))}
-      </Card>
-    </section>
+  return timingSafeEqual(
+    Buffer.from(signature),
+    Buffer.from(expectedSignature)
   );
 }`,
+  },
+  {
+    title: "Chat Input Validation",
+    language: "TypeScript",
+    code: `// Validate and sanitize chat input before provider calls
+const body = await request.json();
+const parsed = chatRequestSchema.safeParse(body);
+if (!parsed.success) {
+  return NextResponse.json({ error: "INVALID_INPUT" }, { status: 400 });
+}
+
+const cleanedMessage = sanitizeChatInput(parsed.data.message);
+if (!cleanedMessage) {
+  return NextResponse.json({ error: "INVALID_INPUT" }, { status: 400 });
+}
+
+if (isChatSpam(cleanedMessage)) {
+  return NextResponse.json({ error: "INVALID_INPUT" }, { status: 400 });
+}
+
+const rateLimit = await chatbotLimiter.check(getClientIP(request));
+if (!rateLimit.success) {
+  return NextResponse.json({ error: "RATE_LIMIT_EXCEEDED" }, { status: 429 });
+}`,
+  },
+  {
+    title: "Feature Folder Pattern",
+    language: "TypeScript",
+    code: `// Feature-oriented component organization
+components/blog/
+  index.ts                 // Barrel exports
+  BlogPageClient.tsx       // Main UI component
+  BlogView.tsx             // Presentation component
+  BlogsList.tsx            // List rendering component
+
+types/
+  main/                    // Shared object interfaces
+  hubs/                    // Section-specific types
+
+lib/blog-admin/
+  blog-create.service.ts   // Business logic and validation
+  blog-update.service.ts   // Update workflows
+  blog-query.service.ts    // Read/query operations`,
   },
 ];
 
@@ -354,8 +319,14 @@ export const routeStructure = {
     {
       name: "(media)",
       description: "Public content routes",
-      routes: ["about", "about-portfolio", "blog", "library", "projects"],
+      routes: ["about", "about-portfolio", "blog", "projects", "services"],
       layout: "Specialized media layout with enhanced SEO",
+    },
+    {
+      name: "(live-tools)",
+      description: "Interactive tool pages",
+      routes: ["automation-audit", "polite-email", "rio-calculator"],
+      layout: "Tool-focused layout with shared loading state",
     },
     {
       name: "(legals)",
@@ -366,22 +337,25 @@ export const routeStructure = {
     {
       name: "admin",
       description: "Admin dashboard",
-      routes: ["blog"],
+      routes: ["blog", "chatbot"],
       layout: "Protected admin interface",
     },
   ],
   apiRoutes: [
     "api/about/*",
     "api/admin/*",
+    "api/automation-audit/*",
     "api/blog/*",
     "api/chatbot/*",
+    "api/email-rewrite/*",
     "api/github/*",
+    "api/speed-insight/*",
   ],
 };
 
 // Component Organization
 export const componentStructure = {
-  pattern: "Atomic Design + Logic Separation",
+  pattern: "Feature Folders + Global Types/Hooks + Logic Separation",
   structure: [
     {
       folder: "components/[ComponentName]/",
@@ -396,12 +370,12 @@ export const componentStructure = {
     {
       folder: "hooks/",
       description: "Global reusable hooks",
-      examples: ["use-mobile.ts", "use-language.ts"],
+      examples: ["use-chatbot.ts", "use-client.ts", "use-mobile.ts"],
     },
     {
       folder: "lib/",
       description: "Cross-component utilities",
-      examples: ["security.ts", "seo.ts", "utils.ts"],
+      examples: ["security.ts", "configs/seo.ts", "blog-admin/*"],
     },
   ],
 };
@@ -433,10 +407,10 @@ export const performanceMetrics: PerformanceMetric[] = [
     icon: Zap,
     title: "Build Optimization",
     description:
-      "Advanced build optimization with Next.js 16 features, edge runtime, and intelligent code splitting strategies.",
+      "Optimized builds with Next.js 16, selective client boundaries, and targeted code-splitting for predictable runtime performance.",
     items: [
-      "Server Components optimization",
-      "Tree shaking & dead code elimination",
+      "Server-first rendering strategy",
+      "Targeted dynamic imports for heavy client modules",
     ],
     score: 91,
   },
@@ -452,10 +426,10 @@ export const performanceMetrics: PerformanceMetric[] = [
     icon: Smartphone,
     title: "Mobile Performance",
     description:
-      "Mobile-first responsive design with optimized performance for all device types and screen sizes.",
+      "Mobile-first responsive design with route-group loading states and accessible interactions across screen sizes.",
     items: [
       "Responsive breakpoint optimization",
-      "Mobile Core Web Vitals < targets",
+      "Touch-first navigation and controls",
     ],
     score: 80,
   },

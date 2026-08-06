@@ -38,8 +38,14 @@ export interface AboutTranslations {
     experience: string;
   };
   mainStory: string;
+  workingWithMe: string;
+  credentials: string;
   sections: {
     philosophy: string;
+  };
+  cta: {
+    work: string;
+    call: string;
   };
   currentFocusItems: string[];
   values: string[];

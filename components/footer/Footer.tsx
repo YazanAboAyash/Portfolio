@@ -115,6 +115,10 @@ export default function Footer() {
               </div>
             </div>
           </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400 text-center pt-3">
+            My services are offered exclusively to entrepreneurs as defined in
+            § 14 BGB.
+          </p>
         </div>
       </div>
     </footer>

@@ -133,12 +133,11 @@ function buildCommonMetadata(
   keywords: string[],
   canonicalUrl: string,
   config: SEOConfig,
-  imageUrl: string
+  imageUrl: string,
 ) {
   return {
     title: {
-      default: `${title} | ${config.siteName}`,
-      template: `%s | ${config.siteName}`,
+      absolute: `${title} | ${config.siteName}`,
     },
     description,
     keywords: [...config.keywords, ...keywords],
@@ -148,12 +147,6 @@ function buildCommonMetadata(
     metadataBase: new URL(config.siteUrl),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: canonicalUrl.replace("/de", ""),
-        de: canonicalUrl.includes("/de")
-          ? canonicalUrl
-          : `/de${canonicalUrl.replace(config.siteUrl, "")}`,
-      },
     },
     openGraph: {
       title,
@@ -197,7 +190,7 @@ function buildCommonMetadata(
  */
 export function generateLegalPageSEO(
   pageType: LegalPageType,
-  locale: string = "en"
+  locale: string = "en",
 ) {
   const config = getConfigByLocale(locale);
   const currentLang = locale === "de" ? "de" : "en";
@@ -211,7 +204,7 @@ export function generateLegalPageSEO(
     content.keywords,
     canonicalUrl,
     config,
-    imageUrl
+    imageUrl,
   );
 }
 
@@ -220,7 +213,7 @@ export function generateLegalPageSEO(
  */
 export function generateMediaSectionSEO(
   section: MediaSectionType,
-  locale: string = "en"
+  locale: string = "en",
 ) {
   const config = getConfigByLocale(locale);
   const currentLang = locale === "de" ? "de" : "en";
@@ -234,6 +227,6 @@ export function generateMediaSectionSEO(
     content.keywords,
     canonicalUrl,
     config,
-    imageUrl
+    imageUrl,
   );
 }

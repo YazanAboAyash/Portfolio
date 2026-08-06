@@ -4,6 +4,9 @@
  * @version 6.x.x
  */
 
+import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
+import { generateMediaSectionSEO } from "@/lib/configs/seo";
 import { Separator } from "@/components/ui/separator";
 import {
   ArchitectureDiagram,
@@ -18,6 +21,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, FileText, Info } from "lucide-react";
 
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  return generateMediaSectionSEO("aboutPortfolio", locale);
+}
+
 export default function PortfolioDocumentation() {
   return (
     <div className="min-h-screen">
@@ -26,14 +35,13 @@ export default function PortfolioDocumentation() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-6 text-balance">
-            Full-Stack Portfolio
+            ColdByDefault Portfolio
             <span className="block text-primary">Technical Documentation</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
-            Comprehensive technical documentation showcasing full-stack
-            development expertise, architectural decisions, and implementation
-            strategies across modern web technologies including Next.js,
-            TypeScript, and cloud infrastructure.
+            Technical documentation for the production Next.js 16 portfolio,
+            covering architecture, stack choices, API surface, security
+            hardening, and quality workflows aligned with the current README.
           </p>
         </div>
 
@@ -66,9 +74,9 @@ export default function PortfolioDocumentation() {
               System Architecture & Design
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Explore the comprehensive system design and architectural patterns
-              that power this portfolio, including microservices, API design,
-              and scalable infrastructure.
+              Explore the edge-first architecture behind this portfolio,
+              including App Router route groups, proxy-based locale handling,
+              API boundaries, and shared security layers.
             </p>
           </div>
           <ArchitectureDiagram />
@@ -83,9 +91,9 @@ export default function PortfolioDocumentation() {
               Technical Stack & Expertise
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive technology proficiency across the full development
-              stack, from frontend frameworks to backend services and database
-              management.
+              Current production stack across frontend, backend, AI surfaces,
+              database, and localization: Next.js 16, React 19, TypeScript,
+              Prisma, Neon, and next-intl.
             </p>
           </div>
           <TechStackGrid />
@@ -100,8 +108,9 @@ export default function PortfolioDocumentation() {
               Development Workflow & Methodology
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Structured development processes and agile methodologies including
-              CI/CD pipelines, testing strategies, and collaborative workflows.
+              End-to-end delivery workflow from planning and strict TypeScript
+              development to linting, Playwright accessibility checks, and
+              deployment automation.
             </p>
           </div>
           <WorkflowDiagram />
@@ -116,8 +125,9 @@ export default function PortfolioDocumentation() {
               Code Examples & Implementation
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real-world code samples and best practices implementation
-              showcasing clean code principles and modern development patterns.
+              Real-world code samples reflecting production patterns used across
+              this codebase, including auth/session validation, typed APIs, and
+              maintainable component structure.
             </p>
           </div>
           <CodeExamples />
@@ -132,9 +142,8 @@ export default function PortfolioDocumentation() {
               Performance & Quality Assurance
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive quality metrics and performance optimization
-              strategies ensuring excellent user experience and maintainable
-              code quality.
+              Practical quality and reliability metrics spanning Lighthouse,
+              accessibility, security headers, and build/runtime optimization.
             </p>
           </div>
           <PerformanceMetrics />
@@ -166,7 +175,8 @@ export default function PortfolioDocumentation() {
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                Comprehensive API documentation and component references.
+                Full API and component documentation with implementation
+                references.
               </p>
               <Button asChild variant="outline">
                 <Link

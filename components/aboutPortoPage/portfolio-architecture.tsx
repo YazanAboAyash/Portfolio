@@ -28,7 +28,7 @@ export function ArchitectureDiagram() {
     title: string,
     icon: React.ComponentType<{ className?: string }>,
     nodes: ArchitectureNode[],
-    description: string
+    description: string,
   ) => (
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-4">
@@ -187,8 +187,8 @@ export function ArchitectureDiagram() {
         </CardTitle>
         <CardDescription>
           Comprehensive architecture showcasing App Router, route groups, server
-          components, and modern React 19.1.1 patterns with strict TypeScript
-          implementation.
+          components, cookie-driven locale handling, and React 19.2.x patterns
+          with strict TypeScript implementation.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-8">
@@ -197,7 +197,7 @@ export function ArchitectureDiagram() {
           "Infrastructure Layer",
           Globe,
           infrastructureNodes,
-          "Edge-first infrastructure with global CDN distribution and security middleware"
+          "Edge-first infrastructure with global CDN distribution and security middleware",
         )}
 
         <ArrowDown className="w-6 h-6 text-muted-foreground mx-auto" />
@@ -207,7 +207,7 @@ export function ArchitectureDiagram() {
           "Application Layer",
           Code2,
           applicationNodes,
-          "Next.js 16 App Router with advanced routing patterns, server components, and component architecture"
+          "Next.js 16 App Router with advanced routing patterns, server components, and component architecture",
         )}
 
         <ArrowDown className="w-6 h-6 text-muted-foreground mx-auto" />
@@ -227,7 +227,7 @@ export function ArchitectureDiagram() {
           "Data & API Layer",
           Layers,
           dataNodes,
-          "Type-safe data layer with Prisma ORM, internationalization, and external API integrations"
+          "Type-safe data layer with Prisma ORM, internationalization, and external API integrations",
         )}
       </CardContent>
     </Card>

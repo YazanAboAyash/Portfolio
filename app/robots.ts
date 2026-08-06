@@ -33,7 +33,6 @@ export default function robots(): MetadataRoute.Robots {
           "/admin/chatbot",
           "/private/",
         ],
-        crawlDelay: 1,
       },
       {
         userAgent: "Googlebot",

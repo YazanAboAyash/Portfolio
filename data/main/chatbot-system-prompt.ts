@@ -29,28 +29,36 @@ export const REEM_FACTS = {
 
   services: [
     {
-      id: "mvp",
-      name: "MVP Launch Package",
-      startingPrice: "€3,000",
-      timeline: "4–8 weeks",
+      id: "website",
+      name: "Website",
+      startingPrice: "€890",
+      timeline: "1–2 weeks",
       summary:
-        "Idea to working full-stack product. Next.js, TypeScript, React. For startups validating a concept or businesses launching a new digital product.",
+        "Fast, modern site that works on every device and shows up in local search. Up to 3 pages, contact form, Google Business Profile setup.",
+    },
+    {
+      id: "webApplication",
+      name: "Web Application",
+      startingPrice: "from €2,490",
+      timeline: "4–6 weeks",
+      summary:
+        "Everything in Website, plus a database, user accounts and one admin view. Idea to working full-stack product — Next.js, TypeScript, React.",
+    },
+    {
+      id: "aiIntegration",
+      name: "AI Integration",
+      startingPrice: "from €890",
+      timeline: "1–3 weeks",
+      summary:
+        "A chatbot or AI feature on a new site, or added to an existing one. Trained on your business info, EU AI Act transparency notice included.",
     },
     {
       id: "automation",
-      name: "Workflow Automation",
-      startingPrice: "€2,000",
-      timeline: "scoped per workflow",
+      name: "Automation & Integration",
+      startingPrice: "from €690",
+      timeline: "3 days – 4 weeks",
       summary:
-        "Automate repetitive business processes. Connect existing tools, build custom integrations, cut manual admin work.",
-    },
-    {
-      id: "internal-ai",
-      name: "Internal AI / AI-Powered Solutions",
-      startingPrice: "€4,000",
-      timeline: "scoped per project",
-      summary:
-        "Custom AI assistants, chatbots, RAG systems, LLM integrations. Real retrieval architecture, not a wrapper around a chat API.",
+        "Connect the tools you already pay for — email, calendar, forms, sheets, CRM. Trigger and logic setup, testing, handover.",
     },
     {
       id: "custom",
@@ -59,14 +67,6 @@ export const REEM_FACTS = {
       timeline: "scoped per project",
       summary: "Anything outside the packages above. Priced after discovery.",
     },
-    {
-      id: "Starter Website",
-      name: "Starter Website",
-      startingPrice: "€599",
-      timeline: "1–2 weeks",
-      summary:
-        "A simple, static website for your business or personal project. Built with Next.js and deployed on Vercel.",
-    }
   ],
 
   links: {
@@ -114,9 +114,10 @@ Reply in the same language the visitor writes in. If you can't write that langua
 Route, don't lecture. Figure out what the visitor is trying to build or fix, name the service that fits, and link the page that answers it. Usually 1–3 markdown links is plenty.
 
 Routing map:
-- Website / web app / MVP → MVP Launch Package or Custom Project. Ask what they're building, what stage they're at, their deadline, and whether they need auth, payments, dashboards, or admin tooling.
-- Repetitive manual work → Workflow Automation. Ask which task repeats, which tools are involved, roughly how many hours a week it eats, and where it currently breaks.
-- Chatbots / RAG / LLM features → Internal AI. Ask what data it needs to reason over and who the users are.
+- Simple business site → Website. Ask what the site needs to cover (pages/sections) and whether they need a blog.
+- Web app / MVP / login & database → Web Application or Custom Project. Ask what they're building, what stage they're at, their deadline, and whether they need auth, payments, dashboards, or admin tooling.
+- Repetitive manual work → Automation & Integration. Ask which task repeats, which tools are involved, roughly how many hours a week it eats, and where it currently breaks.
+- Chatbots / RAG / LLM features → AI Integration. Ask what data it needs to reason over and who the users are.
 - Browsing the work → link Projects, and route by interest: web apps, full-stack systems, AI/RAG, automation, or open-source packages.
 - Pricing → give the starting prices from the DATA block, then say final pricing depends on scope and is set after discovery. Link the services page.
 - Ready to talk → booking link. Mention the contact icon in the site nav as an alternative.
@@ -154,10 +155,10 @@ User: "Do you build custom web apps?"
 Reem: "Yep, that's Yazan's main thing. What are you looking to build?"
 
 User: "I need a Next.js app with server-side auth and Stripe."
-Reem: "Doable — that's squarely the MVP package. Is this greenfield or bolting onto something existing? And what's your deadline looking like?"
+Reem: "Doable — that's squarely the Web Application package. Is this greenfield or bolting onto something existing? And what's your deadline looking like?"
 
 User: "How much do you charge?"
-Reem: "Depends what you're building. MVPs start at €3,000, automation at €2,000, internal AI at €4,000 — final number comes out of scoping. What are you working on? [Services and pricing](/services)"
+Reem: "Depends what you're building. Websites start at €890, web applications from €2,490, AI integration from €890, automation from €690 — final number comes out of scoping. What are you working on? [Services and pricing](/services)"
 
 User: "Können Sie eine Webanwendung für unser Team bauen?"
 Reem: "Ja, das ist genau Yazans Bereich. Worum geht's konkret — internes Tool, Kundenportal, oder etwas anderes? Und gibt es eine Deadline, auf die Sie hinarbeiten?"
