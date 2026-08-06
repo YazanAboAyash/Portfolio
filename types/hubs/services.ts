@@ -9,26 +9,10 @@
  */
 export type ServicePackageId =
   | "website"
-  | "chatbotStarter"
-  | "automationStarter"
-  | "mvp"
+  | "webApplication"
+  | "aiIntegration"
   | "automation"
-  | "ai"
   | "custom";
-
-/**
- * Tier a package belongs to — drives grouping and the card badge
- */
-export type ServiceTier = "starter" | "advanced" | "custom";
-
-/**
- * Tier display order on the services page
- */
-export const serviceTierOrder: readonly ServiceTier[] = [
-  "starter",
-  "advanced",
-  "custom",
-] as const;
 
 /**
  * Individual feature/deliverable within a package
@@ -41,13 +25,32 @@ export interface ServiceFeature {
 }
 
 /**
+ * A priced add-on for a package
+ */
+export interface ServiceExtra {
+  /** Translation key for the extra's label */
+  readonly labelKey: string;
+  /** Translation key for the extra's price */
+  readonly priceKey: string;
+}
+
+/**
+ * A scope boundary called out on the card — what a package does or does not
+ * cover, so a client doesn't assume more than what's priced.
+ */
+export interface ServiceScopeNote {
+  /** Translation key for the note's label, e.g. "Where I can add it" */
+  readonly labelKey: string;
+  /** Translation key for the note's body text */
+  readonly textKey: string;
+}
+
+/**
  * Service package definition
  */
 export interface ServicePackage {
   /** Unique identifier for the package */
   readonly id: ServicePackageId;
-  /** Tier this package belongs to */
-  readonly tier: ServiceTier;
   /** Translation key for package name */
   readonly nameKey: string;
   /** Translation key for package headline */
@@ -62,6 +65,10 @@ export interface ServicePackage {
   readonly icon: string;
   /** List of features included */
   readonly features: readonly ServiceFeature[];
+  /** Priced add-ons available for this package */
+  readonly extras?: readonly ServiceExtra[];
+  /** Scope boundary shown on the card (where it applies / what it excludes) */
+  readonly scopeNote?: ServiceScopeNote;
   /** CTA button translation key */
   readonly ctaKey: string;
 }
@@ -81,25 +88,10 @@ export interface ProcessStep {
 }
 
 /**
- * Trust signal/benefit item
- */
-export interface TrustSignal {
-  /** Unique identifier */
-  readonly id: string;
-  /** Translation key for title */
-  readonly titleKey: string;
-  /** Translation key for description */
-  readonly descriptionKey: string;
-  /** Icon identifier */
-  readonly icon: string;
-}
-
-/**
  * Complete services page data structure
  */
 export interface ServicesPageData {
   readonly packages: readonly ServicePackage[];
   readonly processSteps: readonly ProcessStep[];
-  readonly trustSignals: readonly TrustSignal[];
   readonly bookingLink: string;
 }

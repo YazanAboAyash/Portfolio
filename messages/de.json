@@ -74,7 +74,8 @@
     "status": "Status",
     "training": "Ausbildung",
     "quickLinks": "Schnelllinks",
-    "openForCollaboration": "Verfügbar"
+    "openForCollaboration": "Verfügbar",
+    "legalNotice": "Meine Leistungen richten sich ausschließlich an Unternehmer im Sinne von § 14 BGB."
   },
   "QuickActions": {
     "title": "Schnelle Aktionen",
@@ -555,129 +556,210 @@
     "packages": {
       "title": "Servicepakete",
       "cta": "Kostenloses Erstgespräch buchen",
-      "tiers": {
-        "starter": "Einstieg",
-        "advanced": "Erweitert",
-        "custom": "Individuell"
-      },
       "website": {
-        "tier": "starter",
         "name": "Website",
-        "headline": "Schnell startklar",
-        "description": "Eine moderne, schnelle Website für Ihr Unternehmen — gebaut, um Besucher in Anrufe zu verwandeln. Inklusive Optimierung Ihres Google-Unternehmensprofils.",
-        "pricing": "Ab 599 €",
-        "timeline": "1-2 Wochen",
+        "headline": "Gefunden werden. Angerufen werden.",
+        "description": "Eine schnelle, moderne Website, die auf jedem Gerät funktioniert und in der lokalen Suche auftaucht.",
+        "pricing": "890 €",
+        "timeline": "1–2 Wochen",
         "features": {
-          "design": "Modernes, responsives Design",
-          "compliant": "Technische Einbindung von Impressum & Datenschutzerklärung (Rechtstexte von Ihnen oder z. B. über eRecht24 — keine Rechtsberatung)",
-          "gbp": "Einrichtung des Google-Unternehmensprofils",
+          "pages": "Bis zu 3 Seiten, oder eine One-Page-Website mit bis zu 5 Abschnitten",
+          "businessInfo": "Zentrale Unternehmensinfos: Über uns, Leistungen, Öffnungszeiten, FAQ, Kontakt",
           "contact": "Kontaktformular",
-          "goLive": "Optionales Go-Live-Paket (Domain & Hosting) +150 €",
-          "ownership": "Einmaliges Erstellungshonorar — vollständige Nutzungsrechte mit der Schlusszahlung"
+          "gbp": "Einrichtung und Optimierung des Google-Unternehmensprofils",
+          "legal": "Grundlegende Rechtstexte-Seiten (technische Umsetzung)",
+          "seo": "SEO- und Performance-Optimierung, Lighthouse 90+"
+        },
+        "extras": {
+          "page": {
+            "label": "Zusätzliche Seite",
+            "price": "190 €"
+          },
+          "section": {
+            "label": "Zusätzlicher Abschnitt (One-Page-Website)",
+            "price": "120 €"
+          },
+          "secondLanguage": {
+            "label": "Zweite Sprache (DE + EN), Übersetzung inklusive",
+            "price": "390 €"
+          },
+          "staticBlog": {
+            "label": "Statischer Blog (ohne Backend)",
+            "price": "490 €"
+          },
+          "cmsBlog": {
+            "label": "Editierbarer Blog mit CMS",
+            "price": "ab 890 €"
+          },
+          "consentBanner": {
+            "label": "Consent-Banner (nur bei Tracking-Tools nötig)",
+            "price": "290 €"
+          },
+          "textPrep": {
+            "label": "Textaufbereitung aus Ihrem Material, pro Seite",
+            "price": "90 €"
+          },
+          "managedSetup": {
+            "label": "Managed Setup (pro Plattform)",
+            "price": "150 €"
+          }
         }
       },
-      "chatbotStarter": {
-        "tier": "starter",
-        "name": "KI-Website & Chatbot",
-        "headline": "Kunden rund um die Uhr beantworten",
-        "description": "Eine Website mit integriertem KI-Chatbot, trainiert auf Ihre Unternehmensdaten — beantwortet Kundenfragen automatisch, Tag und Nacht.",
-        "pricing": "Ab 1.290 €",
-        "timeline": "2-3 Wochen",
+      "webApplication": {
+        "name": "Webanwendung",
+        "headline": "Software, die Ihren Prozess trägt.",
+        "description": "Alles aus Website, plus Datenbank und echte Nutzerkonten.",
+        "pricing": "ab 2.490 €",
+        "timeline": "4–6 Wochen",
         "features": {
-          "website": "Alles aus dem Website-Paket",
-          "chatbot": "Eigener, auf Ihr Unternehmen trainierter KI-Chatbot",
-          "availability": "Automatisierte Kundenfragen rund um die Uhr",
-          "transparency": "Transparenzhinweis nach EU-KI-Verordnung inklusive",
-          "handover": "Einrichtung & vollständige Übergabe",
-          "ownership": "Einmaliges Erstellungshonorar — KI-Nutzung & Hosting laufen über Ihre eigenen Konten"
+          "website": "Alles aus Website",
+          "database": "Datenbankdesign und -einrichtung (Anbieter Ihrer Wahl)",
+          "auth": "Benutzerregistrierung und Login",
+          "adminView": "Eine Admin-Ansicht (Erstellen, Lesen, Bearbeiten, Löschen)",
+          "production": "Produktionsreifer Build"
+        },
+        "extras": {
+          "booking": {
+            "label": "Buchungs-/Terminsystem",
+            "price": "ab 1.490 €"
+          },
+          "roles": {
+            "label": "Rollen und Berechtigungen",
+            "price": "ab 490 €"
+          },
+          "payments": {
+            "label": "Zahlungen (Stripe)",
+            "price": "ab 690 €"
+          },
+          "fileUpload": {
+            "label": "Datei-Upload und -Verwaltung",
+            "price": "ab 390 €"
+          },
+          "adminView": {
+            "label": "Zusätzliche Admin-Ansicht",
+            "price": "ab 390 €"
+          },
+          "notifications": {
+            "label": "E-Mail-Benachrichtigungen (über Ihr Postfach, Brevo oder Mailjet)",
+            "price": "ab 290 €"
+          },
+          "page": {
+            "label": "Zusätzliche Seite oder Ansicht",
+            "price": "190 €"
+          }
         }
       },
-      "automationStarter": {
-        "tier": "starter",
-        "name": "Automatisierung",
-        "headline": "Schluss mit Wiederholungen",
-        "description": "Automatisieren Sie Terminbestätigungen und wiederkehrende Antworten auf Kundenanfragen, damit nichts mehr untergeht.",
-        "pricing": "Ab 390 €",
-        "timeline": "3-5 Tage",
+      "aiIntegration": {
+        "name": "KI-Integration",
+        "headline": "Antworten, ohne dass jemand tippt.",
+        "description": "Ein Chatbot oder eine KI-Funktion auf einer neuen Website oder in einer bestehenden.",
+        "pricing": "ab 890 €",
+        "timeline": "1–3 Wochen",
         "features": {
-          "booking": "Automatische Terminbestätigungen",
-          "replies": "Automatische Antworten auf Anfragen",
-          "setup": "Einrichtung in Ihren bestehenden Tools",
-          "handover": "Übergabe & Einweisung",
-          "ownership": "Einmaliges Erstellungshonorar — die Automatisierungen laufen über Ihre eigenen Tool-Konten"
-        }
-      },
-      "mvp": {
-        "tier": "advanced",
-        "name": "MVP Launch",
-        "headline": "Schnelle Markteinführung",
-        "description": "Digitalisieren Sie manuelle Prozesse mit maßgeschneiderten Webanwendungen. Ich entwickle Software, die exakt auf Ihre Abläufe zugeschnitten ist, damit Sie Kunden effizienter und sicherer bedienen können.",
-        "pricing": "Ab 3.000 €",
-        "timeline": "4-8 Wochen",
-        "features": {
-          "fullStack": "Full-Stack Webanwendung",
-          "responsive": "Mobilfreundliches Design",
-          "database": "Sicheres Datenbank-Setup",
-          "auth": "Benutzer-Logins & Konten",
-          "deployment": "Produktions-Setup",
-          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
+          "chatbot": "Chatbot, trainiert auf Ihre Unternehmensinformationen (Text-Injection, kein RAG)",
+          "knowledgeBase": "Gemeinsam mit Ihnen aufgebaute Wissensbasis",
+          "transparency": "Sichtbarer KI-Hinweis in der Oberfläche — Transparenz nach EU-KI-Verordnung",
+          "avv": "Auftragsverarbeitungsvertrag (AVV), sofern personenbezogene Daten verarbeitet werden",
+          "integration": "Integration in eine bestehende Website oder ein Paket von oben"
+        },
+        "extras": {
+          "rag": {
+            "label": "RAG-System — Antworten aus Ihren Dokumenten (PDF, Notion, Docs)",
+            "price": "ab 1.690 €"
+          },
+          "existingApp": {
+            "label": "KI-Funktion in einer bestehenden App (zusammenfassen, klassifizieren, generieren)",
+            "price": "ab 690 €"
+          },
+          "cloudSetup": {
+            "label": "Cloud-Anbieter-Setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)",
+            "price": "290 €"
+          },
+          "localModel": {
+            "label": "Lokales Modell auf Ihrem eigenen Server — nichts verlässt Ihre Infrastruktur",
+            "price": "690 €"
+          },
+          "knowledgeSource": {
+            "label": "Zusätzliche Wissensquelle",
+            "price": "ab 290 €"
+          },
+          "retraining": {
+            "label": "Nachtraining nach Abnahme",
+            "price": "70 €/Std."
+          }
+        },
+        "scopeNote": {
+          "label": "Wo ich es einbauen kann",
+          "text": "Websites auf Basis von Next.js, React, Astro oder einer statischen Website — Standardpreis gilt. Alles andere (WordPress, PHP, Shopify, .NET, Wix) ist nur als eingebettetes Widget möglich, nach Prüfung als Individuell kalkuliert."
         }
       },
       "automation": {
-        "tier": "advanced",
-        "name": "Workflow-Automation",
-        "headline": "Prozesse Optimieren",
-        "description": "Verbinden Sie Ihre bestehenden Tools (CRM, E-Mail, Tabellen) für einen nahtlosen Datenfluss. Ich implementiere automatisierte Systeme, die repetitive Aufgaben übernehmen und Datengenauigkeit sicherstellen.",
-        "pricing": "Ab 2.000 €",
-        "timeline": "2-4 Wochen",
+        "name": "Automatisierung & Integration",
+        "headline": "Verbinden Sie die Tools, die Sie schon bezahlen.",
+        "description": "Ich bin der technische Umsetzer. Sie stellen Lizenzen, Konten und Admin-Zugang.",
+        "pricing": "ab 690 €",
+        "timeline": "3 Tage – 4 Wochen",
         "features": {
-          "analysis": "Prozess-Audit & Strategie",
-          "integration": "API- & Tool-Verbindung",
-          "workflows": "Logik- & Trigger-Setup",
-          "documentation": "Dokumentation",
-          "training": "Systemübergabe & Einweisung",
-          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
-        }
-      },
-      "ai": {
-        "tier": "advanced",
-        "name": "Interne AI",
-        "headline": "Intelligente Wissensnutzung",
-        "description": "Greifen Sie sofort auf Ihr Unternehmenswissen zu. Ich verbinde sichere KI-Assistenten mit Ihren Dokumenten, damit Ihr Team präzise Antworten direkt aus Ihren internen Daten erhält.",
-        "pricing": "Ab 4.000 €",
-        "timeline": "4-6 Wochen",
-        "features": {
-          "chatbot": "Eigener KI-Assistent",
-          "rag": "Verbindung zu Ihren Daten",
-          "integration": "Integration in Ihre Tools",
-          "security": "Datenschutz-Setup",
-          "training": "Systemübergabe & Einweisung",
-          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
+          "review": "Prozess-Review des zu automatisierenden Workflows",
+          "connection": "Anbindung von 2 Tools (E-Mail, Kalender, Formulare, Tabellen, CRM)",
+          "triggers": "Trigger- und Logik-Setup",
+          "handover": "Test und Übergabe-Walkthrough",
+          "avv": "AVV, sofern personenbezogene Daten verarbeitet werden"
+        },
+        "extras": {
+          "workflow": {
+            "label": "Jeder weitere Workflow",
+            "price": "290 €"
+          },
+          "tool": {
+            "label": "Jedes weitere angebundene Tool",
+            "price": "ab 390 €"
+          },
+          "n8n": {
+            "label": "Self-Hosted n8n-Setup auf Ihrem Server",
+            "price": "ab 890 €"
+          },
+          "customApi": {
+            "label": "Individuelle API-Integration (kein fertiger Connector)",
+            "price": "ab 690 €"
+          }
+        },
+        "scopeNote": {
+          "label": "Was ich nicht mache",
+          "text": "Unternehmensweite Administration von Microsoft 365 oder Google Workspace — Tenant-Einrichtung, unternehmensweite Teams-/SharePoint-Architektur, Lizenzverwaltung. Bringen Sie Ihren IT-Administrator mit; ich baue die Automatisierung darauf auf."
         }
       },
       "custom": {
-        "tier": "custom",
-        "name": "Individuelles Projekt",
-        "headline": "Maßgeschneiderte Entwicklung",
-        "description": "Für Projekte mit speziellen Anforderungen oder komplexem Umfang. Wir gemeinsam definieren einen konkreten Fahrplan, um genau das zu bauen, was Ihr Unternehmen benötigt.",
+        "name": "Individuell",
+        "headline": "Ihre Anforderungen, sauber skizziert.",
+        "description": "Für alles, was nicht in die Pakete oben passt.",
         "pricing": "Individuelles Angebot",
         "timeline": "Flexibel",
         "features": {
-          "scoping": "Anforderungs-Workshop",
-          "roadmap": "Maßgeschneiderter Projektplan",
-          "development": "Meilenstein-basierte Lieferung",
-          "flexibility": "Technologieunabhängig",
-          "handover": "Übergabe des Quellcodes",
-          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch (gesetzliche Gewährleistung bleibt unberührt)"
+          "workshop": "Anforderungs-Workshop",
+          "roadmap": "Maßgeschneiderter Projektfahrplan mit Meilensteinen",
+          "milestones": "Meilenstein-basierte Lieferung und Abrechnung",
+          "agnostic": "Technologieunabhängig — Ihr Stack, Ihre Anbieter",
+          "handover": "Vollständige Quellcode-Übergabe",
+          "support": "2 Wochen kostenlose Fehlerbehebung nach dem Launch"
         }
       },
       "notes": {
         "title": "Gut zu wissen",
-        "vat": "",
-        "runningCosts": "Alle Preise sind einmalige Erstellungshonorare. Laufende Kosten — KI-Nutzung, Hosting, Domains und Drittanbieter-Tools — laufen über Ihre eigenen Konten und werden Ihnen direkt von diesen Anbietern berechnet.",
-        "rights": "Mit der Schlusszahlung erhalten Sie umfassende, zeitlich und räumlich unbeschränkte Nutzungsrechte am gelieferten Werk.",
+        "vat": "Alle Preise sind Endpreise. Es wird keine Umsatzsteuer ausgewiesen — nach der Kleinunternehmerregelung (§ 19 UStG) berechne ich keine Umsatzsteuer, der angezeigte Preis ist also der zu zahlende Preis.",
+        "included": "Jedes Paket enthält responsives Design, einen SEO- und Performance-Build (Lighthouse 90+), 2 Korrekturschleifen und vollständige Übergabedokumentation.",
+        "runningCosts": "Laufende Kosten — Hosting, Datenbank, KI-Nutzung und Domain — werden Ihnen direkt von Ihren gewählten Anbietern über Ihre eigenen Konten berechnet.",
+        "rights": "Mit der Schlusszahlung erhalten Sie die vollständigen Nutzungsrechte am gelieferten Werk.",
         "warranty": "Zwei Wochen kostenlose Fehlerbehebung nach dem Launch sind enthalten. Die gesetzliche Gewährleistung bleibt hiervon unberührt.",
-        "payment": "Zahlungsbedingungen: 50 % bei Auftragsbestätigung, 50 % bei Abnahme."
+        "payment": "Zahlung: bis 1.000 € wird der volle Betrag nach Abnahme in Rechnung gestellt; über 1.000 € gilt 40 % bei Auftrag und 60 % nach Abnahme, 14 Tage netto.",
+        "rates": "Mehraufwand außerhalb des vereinbarten Umfangs wird mit 70 €/Std. berechnet, immer vorab angeboten und freigegeben. Eine zusätzliche Korrekturschleife kostet 190 €. Feedback innerhalb von 5 Werktagen, Abnahme innerhalb von 10.",
+        "notIncluded": "Nicht in jedem Paket enthalten: Inhalte — Texte, Bilder, Logos — sowie Lizenzen von Drittanbietern, Stockmaterial oder kostenpflichtige Schriften. Diese stellen Sie bereit."
+      },
+      "extras": {
+        "seeAll": "Vollständige Preisliste",
+        "dialogTitle": "{package} — Extras & Preise",
+        "dialogDescription": "Alle buchbaren Zusatzleistungen für dieses Paket mit Preis.",
+        "finalPrice": "Endgültige Preise werden nach dem Scoping-Call in Ihrem Angebot fixiert."
       }
     },
     "process": {
@@ -704,32 +786,52 @@
         "description": "Sie prüfen das Ergebnis gegen den vereinbarten Umfang, und wir zeichnen das Abnahmeprotokoll. Mit der Abnahme beginnt die Gewährleistungsfrist und die Schlusszahlung wird fällig."
       }
     },
-    "trust": {
-      "title": "Warum Kunden mich wählen",
-      "subtitle": "Moderne Technologie, geliefert mit Klarheit und Zuverlässigkeit.",
-      "dynamic": {
-        "title": "Datengetriebene Anwendungen",
-        "description": "Keine statischen Templates — echte Anwendungen mit Datenbanken, APIs und dynamischen Inhalten, die mit Ihrem Unternehmen wachsen."
-      },
-      "scalable": {
-        "title": "Gebaut für Skalierung",
-        "description": "Enterprise-Hosting auf Vercel mit serverloser Architektur. Ihre App bewältigt Wachstum automatisch."
-      },
-      "reliable": {
-        "title": "Zuverlässig & Sicher",
-        "description": "Sauberer Code, ordentliche Tests und Sicherheits-Best-Practices. Keine technischen Schulden, keine Überraschungen."
-      },
-      "integrated": {
-        "title": "Nahtlose Integrationen",
-        "description": "Verbinden Sie sich mit Ihren bestehenden Tools — CRMs, Zahlungssysteme, Analytics und mehr."
-      }
-    },
     "cta": {
       "title": "Bereit loszulegen?",
       "subtitle": "Buchen Sie ein kostenloses 15-Minuten-Erstgespräch. Keine Verpflichtung, nur ein Gespräch über Ihr Projekt.",
       "button": "Kostenloses Gespräch buchen",
       "viewAllLink": "Alle Dienstleistungen, Pakete & Preise ansehen"
-    }
+    },
+    "stack": {
+      "title": "Ihr Stack, Ihre Konten",
+      "subtitle": "Sie wählen die Anbieter und besitzen jedes Konto — ich arbeite mit einer bewussten Auswahl an Plattformen, die ich zuverlässig betreuen kann.",
+      "categories": {
+        "frontend": {
+          "label": "Frontend",
+          "options": "Next.js · React · Astro · statischer Build"
+        },
+        "database": {
+          "label": "Datenbank",
+          "options": "Supabase · Neon · PostgreSQL · MySQL"
+        },
+        "auth": {
+          "label": "Auth",
+          "options": "Supabase Auth · Auth.js · Clerk"
+        },
+        "ai": {
+          "label": "KI-Anbieter",
+          "options": "Azure OpenAI (EU-Region) · OpenAI · Anthropic · Mistral · lokales Modell auf Ihrem Server"
+        },
+        "hosting": {
+          "label": "Hosting",
+          "options": "Vercel · Netlify · Cloudflare Pages · Hetzner · eigener Server"
+        },
+        "email": {
+          "label": "E-Mail-Versand",
+          "options": "Ihr bestehendes Postfach per SMTP (empfohlen) · Brevo · Mailjet · Resend"
+        }
+      },
+      "codeOnly": {
+        "title": "Code Only (Standard)",
+        "description": "Sie erhalten den vollständigen Quellcode, Build-Anleitung und Übergabedokumentation. Sie deployen selbst. Ohne Aufpreis enthalten."
+      },
+      "managedSetup": {
+        "title": "Managed Setup (+150 € pro Plattform)",
+        "description": "Ich erstelle das Konto auf Ihren Namen, richte es ein, deploye und übergebe bei Abnahme alle Zugangsdaten. Nach der Übergabe habe ich keinen Zugriff und keine laufende Verantwortung."
+      },
+      "emailNote": "Kontaktformulare und Benachrichtigungs-E-Mails brauchen einen Versandweg — meist Ihr bestehendes Geschäftspostfach per SMTP, ohne Zusatzkosten. Brevo, Mailjet oder Resend sind verfügbar, falls Sie etwas anderes brauchen."
+    },
+    "legalNotice": "Meine Leistungen richten sich ausschließlich an Unternehmer im Sinne von § 14 BGB."
   },
   "Usecases": {
     "title": "Anwendungsfälle",

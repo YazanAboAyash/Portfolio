@@ -11,12 +11,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { PackageCard } from "@/components/services";
 import { RevealItem } from "@/components/visuals";
-import {
-  packagesByTier,
-  processSteps,
-  trustSignals,
-} from "@/data/hubs/servicesData";
-import type { ProcessStep, TrustSignal } from "@/types/hubs/services";
+import { servicePackages, processSteps } from "@/data/hubs/servicesData";
+import type { ProcessStep } from "@/types/hubs/services";
 import { m } from "framer-motion";
 import {
   MessageSquare,
@@ -24,10 +20,6 @@ import {
   Code,
   ClipboardCheck,
   HeartHandshake,
-  Database,
-  TrendingUp,
-  Shield,
-  Plug,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -38,10 +30,6 @@ const iconMap: Record<string, React.ElementType> = {
   Code,
   ClipboardCheck,
   HeartHandshake,
-  Database,
-  TrendingUp,
-  Shield,
-  Plug,
 };
 
 // Animation variants — no opacity in hidden so LCP element is never invisible
@@ -101,42 +89,6 @@ function ProcessStepCard({
 }
 
 /**
- * Trust Signal Card Component
- */
-
-function TrustCard({
-  signal,
-  t,
-}: {
-  signal: TrustSignal;
-  t: ReturnType<typeof useTranslations>;
-}) {
-  const IconComponent = iconMap[signal.icon];
-
-  return (
-    <m.div variants={fadeInUp}>
-      <Card className="h-full hover:border-muted-foreground/30 transition-colors bg-background/80 backdrop-blur-sm border-border/50">
-        <CardContent className="pt-6">
-          <div className="flex items-start gap-4">
-            {IconComponent && (
-              <div className="p-2 rounded-lg bg-sky-500/10 text-sky-500 shrink-0">
-                <IconComponent className="h-5 w-5" />
-              </div>
-            )}
-            <div>
-              <h3 className="font-semibold mb-1">{t(signal.titleKey)}</h3>
-              <p className="text-sm text-muted-foreground">
-                {t(signal.descriptionKey)}
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </m.div>
-  );
-}
-
-/**
  * Fine print under the package grid: price note (PAngV), running costs,
  * usage rights, warranty scope and payment terms.
  * The price note renders only once `packages.notes.vat` is filled in.
@@ -151,14 +103,82 @@ function PackageNotes({ t }: { t: ReturnType<typeof useTranslations> }) {
           <h3 className="font-semibold">{t("packages.notes.title")}</h3>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
             {vatNote !== "" && <li>{vatNote}</li>}
+            <li>{t("packages.notes.included")}</li>
+            <li>{t("packages.notes.notIncluded")}</li>
             <li>{t("packages.notes.runningCosts")}</li>
             <li>{t("packages.notes.rights")}</li>
             <li>{t("packages.notes.warranty")}</li>
             <li>{t("packages.notes.payment")}</li>
+            <li>{t("packages.notes.rates")}</li>
           </ul>
         </CardContent>
       </Card>
     </aside>
+  );
+}
+
+/**
+ * Stack & delivery section: the providers a client can choose from, and the
+ * two delivery modes (Code Only vs Managed Setup).
+ */
+function StackAndDelivery({ t }: { t: ReturnType<typeof useTranslations> }) {
+  const categories = [
+    "frontend",
+    "database",
+    "auth",
+    "ai",
+    "hosting",
+    "email",
+  ] as const;
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl md:text-3xl font-bold">
+          {t("stack.title")}
+        </h2>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          {t("stack.subtitle")}
+        </p>
+      </div>
+      <Card className="bg-background/80 backdrop-blur-sm border-border/50">
+        <CardContent className="py-6 grid sm:grid-cols-2 gap-6">
+          {categories.map((category) => (
+            <div key={category}>
+              <h4 className="text-sm font-semibold mb-1">
+                {t(`stack.categories.${category}.label`)}
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                {t(`stack.categories.${category}.options`)}
+              </p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+      <div className="grid sm:grid-cols-2 gap-4">
+        <Card className="bg-background/80 backdrop-blur-sm border-border/50">
+          <CardContent className="py-6 space-y-2">
+            <h4 className="font-semibold">{t("stack.codeOnly.title")}</h4>
+            <p className="text-sm text-muted-foreground">
+              {t("stack.codeOnly.description")}
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="bg-background/80 backdrop-blur-sm border-border/50">
+          <CardContent className="py-6 space-y-2">
+            <h4 className="font-semibold">
+              {t("stack.managedSetup.title")}
+            </h4>
+            <p className="text-sm text-muted-foreground">
+              {t("stack.managedSetup.description")}
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+      <p className="text-sm text-muted-foreground text-center max-w-2xl mx-auto">
+        {t("stack.emailNote")}
+      </p>
+    </div>
   );
 }
 
@@ -202,30 +222,32 @@ export default function ServicesPage() {
 
         {/* Packages Section - ON TOP as per user requirement */}
         <section className="py-16 px-4 lg:px-8">
-          <div className="max-w-8xl mx-auto space-y-16">
+          <div className="max-w-6xl mx-auto space-y-8">
             <h2 className="sr-only">{t("packages.title")}</h2>
-            {packagesByTier.map(({ tier, packages }) => (
-              <div key={tier}>
-                <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
-                  {t(`packages.tiers.${tier}`)}
-                </h3>
-                <m.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-100px" }}
-                  variants={staggerChildren}
-                  className="flex flex-wrap justify-center gap-6"
-                >
-                  {packages.map((pkg) => (
-                    <RevealItem key={pkg.id} className="w-full max-w-sm">
-                      <PackageCard pkg={pkg} />
-                    </RevealItem>
-                  ))}
-                </m.div>
-              </div>
-            ))}
-            <PackageNotes t={t} />
+            <m.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerChildren}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch"
+            >
+              {servicePackages.map((pkg) => (
+                <RevealItem key={pkg.id} className="w-full h-full">
+                  <PackageCard pkg={pkg} />
+                </RevealItem>
+              ))}
+            </m.div>
           </div>
+        </section>
+
+        {/* Stack & Delivery Section */}
+        <section className="py-16 px-4 lg:px-8">
+          <StackAndDelivery t={t} />
+        </section>
+
+        {/* Good to Know Section */}
+        <section className="py-16 px-4 lg:px-8">
+          <PackageNotes t={t} />
         </section>
 
         {/* Process Section */}
@@ -257,32 +279,6 @@ export default function ServicesPage() {
                   ))}
                 </div>
               </Card>
-            </m.div>
-          </div>
-        </section>
-
-        {/* Trust Signals Section */}
-        <section className="py-16 px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <m.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerChildren}
-            >
-              <m.div variants={fadeInUp} className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {t("trust.title")}
-                </h2>
-                <p className="text-l text-black dark:text-muted-foreground max-w-2xl mx-auto bg-background/70 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
-                  {t("trust.subtitle")}
-                </p>
-              </m.div>
-              <div className="grid md:grid-cols-2 gap-4">
-                {trustSignals.map((signal) => (
-                  <TrustCard key={signal.id} signal={signal} t={t} />
-                ))}
-              </div>
             </m.div>
           </div>
         </section>
@@ -322,6 +318,11 @@ export default function ServicesPage() {
             </m.div>
           </div>
         </section>
+
+        {/* Legal notice */}
+        <p className="pb-12 px-4 text-center text-xs text-muted-foreground">
+          {t("legalNotice")}
+        </p>
       </div>
     </div>
   );

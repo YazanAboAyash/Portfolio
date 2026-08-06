@@ -6,12 +6,9 @@
 
 import type {
   ServicePackage,
-  ServiceTier,
   ProcessStep,
-  TrustSignal,
   ServicesPageData,
 } from "@/types/hubs/services";
-import { serviceTierOrder } from "@/types/hubs/services";
 
 /**
  * Service packages with translation keys
@@ -19,7 +16,6 @@ import { serviceTierOrder } from "@/types/hubs/services";
 export const servicePackages: readonly ServicePackage[] = [
   {
     id: "website",
-    tier: "starter",
     nameKey: "packages.website.name",
     headlineKey: "packages.website.headline",
     descriptionKey: "packages.website.description",
@@ -28,91 +24,162 @@ export const servicePackages: readonly ServicePackage[] = [
     icon: "Globe",
     ctaKey: "packages.cta",
     features: [
-      { textKey: "packages.website.features.design", included: true },
-      { textKey: "packages.website.features.compliant", included: true },
-      { textKey: "packages.website.features.gbp", included: true },
+      { textKey: "packages.website.features.pages", included: true },
+      { textKey: "packages.website.features.businessInfo", included: true },
       { textKey: "packages.website.features.contact", included: true },
-      { textKey: "packages.website.features.goLive", included: true },
-      { textKey: "packages.website.features.ownership", included: true },
+      { textKey: "packages.website.features.gbp", included: true },
+      { textKey: "packages.website.features.legal", included: true },
+      { textKey: "packages.website.features.seo", included: true },
     ],
-  },
-  {
-    id: "chatbotStarter",
-    tier: "starter",
-    nameKey: "packages.chatbotStarter.name",
-    headlineKey: "packages.chatbotStarter.headline",
-    descriptionKey: "packages.chatbotStarter.description",
-    pricingKey: "packages.chatbotStarter.pricing",
-    timelineKey: "packages.chatbotStarter.timeline",
-    icon: "Bot",
-    ctaKey: "packages.cta",
-    features: [
-      { textKey: "packages.chatbotStarter.features.website", included: true },
-      { textKey: "packages.chatbotStarter.features.chatbot", included: true },
+    extras: [
       {
-        textKey: "packages.chatbotStarter.features.availability",
-        included: true,
+        labelKey: "packages.website.extras.page.label",
+        priceKey: "packages.website.extras.page.price",
       },
       {
-        textKey: "packages.chatbotStarter.features.transparency",
-        included: true,
-      },
-      { textKey: "packages.chatbotStarter.features.handover", included: true },
-      { textKey: "packages.chatbotStarter.features.ownership", included: true },
-    ],
-  },
-  {
-    id: "automationStarter",
-    tier: "starter",
-    nameKey: "packages.automationStarter.name",
-    headlineKey: "packages.automationStarter.headline",
-    descriptionKey: "packages.automationStarter.description",
-    pricingKey: "packages.automationStarter.pricing",
-    timelineKey: "packages.automationStarter.timeline",
-    icon: "Zap",
-    ctaKey: "packages.cta",
-    features: [
-      {
-        textKey: "packages.automationStarter.features.booking",
-        included: true,
+        labelKey: "packages.website.extras.section.label",
+        priceKey: "packages.website.extras.section.price",
       },
       {
-        textKey: "packages.automationStarter.features.replies",
-        included: true,
-      },
-      { textKey: "packages.automationStarter.features.setup", included: true },
-      {
-        textKey: "packages.automationStarter.features.handover",
-        included: true,
+        labelKey: "packages.website.extras.secondLanguage.label",
+        priceKey: "packages.website.extras.secondLanguage.price",
       },
       {
-        textKey: "packages.automationStarter.features.ownership",
-        included: true,
+        labelKey: "packages.website.extras.staticBlog.label",
+        priceKey: "packages.website.extras.staticBlog.price",
+      },
+      {
+        labelKey: "packages.website.extras.cmsBlog.label",
+        priceKey: "packages.website.extras.cmsBlog.price",
+      },
+      {
+        labelKey: "packages.website.extras.consentBanner.label",
+        priceKey: "packages.website.extras.consentBanner.price",
+      },
+      {
+        labelKey: "packages.website.extras.textPrep.label",
+        priceKey: "packages.website.extras.textPrep.price",
+      },
+      {
+        labelKey: "packages.website.extras.managedSetup.label",
+        priceKey: "packages.website.extras.managedSetup.price",
       },
     ],
   },
   {
-    id: "mvp",
-    tier: "advanced",
-    nameKey: "packages.mvp.name",
-    headlineKey: "packages.mvp.headline",
-    descriptionKey: "packages.mvp.description",
-    pricingKey: "packages.mvp.pricing",
-    timelineKey: "packages.mvp.timeline",
-    icon: "Rocket",
+    id: "webApplication",
+    nameKey: "packages.webApplication.name",
+    headlineKey: "packages.webApplication.headline",
+    descriptionKey: "packages.webApplication.description",
+    pricingKey: "packages.webApplication.pricing",
+    timelineKey: "packages.webApplication.timeline",
+    icon: "Database",
     ctaKey: "packages.cta",
     features: [
-      { textKey: "packages.mvp.features.fullStack", included: true },
-      { textKey: "packages.mvp.features.responsive", included: true },
-      { textKey: "packages.mvp.features.database", included: true },
-      { textKey: "packages.mvp.features.auth", included: true },
-      { textKey: "packages.mvp.features.deployment", included: true },
-      { textKey: "packages.mvp.features.support", included: true },
+      { textKey: "packages.webApplication.features.website", included: true },
+      {
+        textKey: "packages.webApplication.features.database",
+        included: true,
+      },
+      { textKey: "packages.webApplication.features.auth", included: true },
+      {
+        textKey: "packages.webApplication.features.adminView",
+        included: true,
+      },
+      {
+        textKey: "packages.webApplication.features.production",
+        included: true,
+      },
+    ],
+    extras: [
+      {
+        labelKey: "packages.webApplication.extras.booking.label",
+        priceKey: "packages.webApplication.extras.booking.price",
+      },
+      {
+        labelKey: "packages.webApplication.extras.roles.label",
+        priceKey: "packages.webApplication.extras.roles.price",
+      },
+      {
+        labelKey: "packages.webApplication.extras.payments.label",
+        priceKey: "packages.webApplication.extras.payments.price",
+      },
+      {
+        labelKey: "packages.webApplication.extras.fileUpload.label",
+        priceKey: "packages.webApplication.extras.fileUpload.price",
+      },
+      {
+        labelKey: "packages.webApplication.extras.adminView.label",
+        priceKey: "packages.webApplication.extras.adminView.price",
+      },
+      {
+        labelKey: "packages.webApplication.extras.notifications.label",
+        priceKey: "packages.webApplication.extras.notifications.price",
+      },
+      {
+        labelKey: "packages.webApplication.extras.page.label",
+        priceKey: "packages.webApplication.extras.page.price",
+      },
+    ],
+  },
+  {
+    id: "aiIntegration",
+    nameKey: "packages.aiIntegration.name",
+    headlineKey: "packages.aiIntegration.headline",
+    descriptionKey: "packages.aiIntegration.description",
+    pricingKey: "packages.aiIntegration.pricing",
+    timelineKey: "packages.aiIntegration.timeline",
+    icon: "Brain",
+    ctaKey: "packages.cta",
+    scopeNote: {
+      labelKey: "packages.aiIntegration.scopeNote.label",
+      textKey: "packages.aiIntegration.scopeNote.text",
+    },
+    features: [
+      { textKey: "packages.aiIntegration.features.chatbot", included: true },
+      {
+        textKey: "packages.aiIntegration.features.knowledgeBase",
+        included: true,
+      },
+      {
+        textKey: "packages.aiIntegration.features.transparency",
+        included: true,
+      },
+      { textKey: "packages.aiIntegration.features.avv", included: true },
+      {
+        textKey: "packages.aiIntegration.features.integration",
+        included: true,
+      },
+    ],
+    extras: [
+      {
+        labelKey: "packages.aiIntegration.extras.rag.label",
+        priceKey: "packages.aiIntegration.extras.rag.price",
+      },
+      {
+        labelKey: "packages.aiIntegration.extras.existingApp.label",
+        priceKey: "packages.aiIntegration.extras.existingApp.price",
+      },
+      {
+        labelKey: "packages.aiIntegration.extras.cloudSetup.label",
+        priceKey: "packages.aiIntegration.extras.cloudSetup.price",
+      },
+      {
+        labelKey: "packages.aiIntegration.extras.localModel.label",
+        priceKey: "packages.aiIntegration.extras.localModel.price",
+      },
+      {
+        labelKey: "packages.aiIntegration.extras.knowledgeSource.label",
+        priceKey: "packages.aiIntegration.extras.knowledgeSource.price",
+      },
+      {
+        labelKey: "packages.aiIntegration.extras.retraining.label",
+        priceKey: "packages.aiIntegration.extras.retraining.price",
+      },
     ],
   },
   {
     id: "automation",
-    tier: "advanced",
     nameKey: "packages.automation.name",
     headlineKey: "packages.automation.headline",
     descriptionKey: "packages.automation.description",
@@ -120,37 +187,38 @@ export const servicePackages: readonly ServicePackage[] = [
     timelineKey: "packages.automation.timeline",
     icon: "Cog",
     ctaKey: "packages.cta",
+    scopeNote: {
+      labelKey: "packages.automation.scopeNote.label",
+      textKey: "packages.automation.scopeNote.text",
+    },
     features: [
-      { textKey: "packages.automation.features.analysis", included: true },
-      { textKey: "packages.automation.features.integration", included: true },
-      { textKey: "packages.automation.features.workflows", included: true },
-      { textKey: "packages.automation.features.documentation", included: true },
-      { textKey: "packages.automation.features.training", included: true },
-      { textKey: "packages.automation.features.support", included: true },
+      { textKey: "packages.automation.features.review", included: true },
+      { textKey: "packages.automation.features.connection", included: true },
+      { textKey: "packages.automation.features.triggers", included: true },
+      { textKey: "packages.automation.features.handover", included: true },
+      { textKey: "packages.automation.features.avv", included: true },
     ],
-  },
-  {
-    id: "ai",
-    tier: "advanced",
-    nameKey: "packages.ai.name",
-    headlineKey: "packages.ai.headline",
-    descriptionKey: "packages.ai.description",
-    pricingKey: "packages.ai.pricing",
-    timelineKey: "packages.ai.timeline",
-    icon: "Brain",
-    ctaKey: "packages.cta",
-    features: [
-      { textKey: "packages.ai.features.chatbot", included: true },
-      { textKey: "packages.ai.features.rag", included: true },
-      { textKey: "packages.ai.features.integration", included: true },
-      { textKey: "packages.ai.features.security", included: true },
-      { textKey: "packages.ai.features.training", included: true },
-      { textKey: "packages.ai.features.support", included: true },
+    extras: [
+      {
+        labelKey: "packages.automation.extras.workflow.label",
+        priceKey: "packages.automation.extras.workflow.price",
+      },
+      {
+        labelKey: "packages.automation.extras.tool.label",
+        priceKey: "packages.automation.extras.tool.price",
+      },
+      {
+        labelKey: "packages.automation.extras.n8n.label",
+        priceKey: "packages.automation.extras.n8n.price",
+      },
+      {
+        labelKey: "packages.automation.extras.customApi.label",
+        priceKey: "packages.automation.extras.customApi.price",
+      },
     ],
   },
   {
     id: "custom",
-    tier: "custom",
     nameKey: "packages.custom.name",
     headlineKey: "packages.custom.headline",
     descriptionKey: "packages.custom.description",
@@ -159,28 +227,15 @@ export const servicePackages: readonly ServicePackage[] = [
     icon: "Settings",
     ctaKey: "packages.cta",
     features: [
-      { textKey: "packages.custom.features.scoping", included: true },
+      { textKey: "packages.custom.features.workshop", included: true },
       { textKey: "packages.custom.features.roadmap", included: true },
-      { textKey: "packages.custom.features.development", included: true },
-      { textKey: "packages.custom.features.flexibility", included: true },
+      { textKey: "packages.custom.features.milestones", included: true },
+      { textKey: "packages.custom.features.agnostic", included: true },
       { textKey: "packages.custom.features.handover", included: true },
       { textKey: "packages.custom.features.support", included: true },
     ],
   },
 ] as const;
-
-/**
- * Packages grouped by tier, in display order. Empty tiers are dropped.
- */
-export const packagesByTier: readonly {
-  readonly tier: ServiceTier;
-  readonly packages: readonly ServicePackage[];
-}[] = serviceTierOrder
-  .map((tier) => ({
-    tier,
-    packages: servicePackages.filter((pkg) => pkg.tier === tier),
-  }))
-  .filter((group) => group.packages.length > 0);
 
 /**
  * Process workflow steps
@@ -219,42 +274,11 @@ export const processSteps: readonly ProcessStep[] = [
 ] as const;
 
 /**
- * Trust signals / benefits
- */
-export const trustSignals: readonly TrustSignal[] = [
-  {
-    id: "dynamic",
-    titleKey: "trust.dynamic.title",
-    descriptionKey: "trust.dynamic.description",
-    icon: "Database",
-  },
-  {
-    id: "scalable",
-    titleKey: "trust.scalable.title",
-    descriptionKey: "trust.scalable.description",
-    icon: "TrendingUp",
-  },
-  {
-    id: "reliable",
-    titleKey: "trust.reliable.title",
-    descriptionKey: "trust.reliable.description",
-    icon: "Shield",
-  },
-  {
-    id: "integrated",
-    titleKey: "trust.integrated.title",
-    descriptionKey: "trust.integrated.description",
-    icon: "Plug",
-  },
-] as const;
-
-/**
  * Complete services page data
  */
 export const servicesPageData: ServicesPageData = {
   packages: servicePackages,
   processSteps: processSteps,
-  trustSignals: trustSignals,
   bookingLink: "https://calendly.com/abo-ayash-yazan/intro-call",
 } as const;
 

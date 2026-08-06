@@ -74,7 +74,8 @@
     "status": "Status",
     "training": "Training",
     "quickLinks": "Quick Links",
-    "openForCollaboration": "Available"
+    "openForCollaboration": "Available",
+    "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."
   },
   "QuickActions": {
     "title": "Quick Actions",
@@ -555,130 +556,247 @@
     "packages": {
       "title": "Service Packages",
       "cta": "Book a Free Call",
-      "tiers": {
-        "starter": "Starter",
-        "advanced": "Advanced",
-        "custom": "Custom"
+      "extras": {
+        "seeAll": "Full price list",
+        "dialogTitle": "{package} — extras & prices",
+        "dialogDescription": "Every priced add-on available for this package.",
+        "finalPrice": "Final prices are fixed in your offer after the scoping call."
       },
       "website": {
-        "tier": "starter",
         "name": "Website",
-        "headline": "Launch-Ready, Fast",
-        "description": "A modern, fast website for your business — built to convert visitors into calls. Includes Google Business Profile optimization.",
-        "pricing": "Starting at €599",
-        "timeline": "1-2 weeks",
+        "headline": "Get Found. Get Called.",
+        "description": "A fast, modern site that works on every device and shows up in local search.",
+        "pricing": "890 €",
+        "timeline": "1–2 weeks",
         "features": {
-          "design": "Modern, responsive design",
-          "compliant": "Technical setup of Impressum & privacy policy (legal texts from you or a provider such as eRecht24 — no legal advice)",
-          "gbp": "Google Business Profile setup",
+          "pages": "Up to 3 pages, or a single-page site with up to 5 sections",
+          "businessInfo": "Core business info: about, services, opening hours, Q&A, contact",
           "contact": "Contact form",
-          "goLive": "Optional Go-Live package (domain & hosting) +€150",
-          "ownership": "One-time build fee — full usage rights transferred on final payment"
+          "gbp": "Google Business Profile setup and optimisation",
+          "legal": "Basic legal pages (technical implementation)",
+          "seo": "SEO and performance optimisation, Lighthouse 90+"
+        },
+        "extras": {
+          "page": { "label": "Additional page", "price": "190 €" },
+          "section": {
+            "label": "Additional section (single-page site)",
+            "price": "120 €"
+          },
+          "secondLanguage": {
+            "label": "Second language (EN + DE), translation included",
+            "price": "390 €"
+          },
+          "staticBlog": {
+            "label": "Static blog (no backend)",
+            "price": "490 €"
+          },
+          "cmsBlog": {
+            "label": "Editable blog with CMS",
+            "price": "from 890 €"
+          },
+          "consentBanner": {
+            "label": "Consent banner (only if you want tracking tools)",
+            "price": "290 €"
+          },
+          "textPrep": {
+            "label": "Text preparation from your existing material, per page",
+            "price": "90 €"
+          },
+          "managedSetup": {
+            "label": "Managed Setup (per platform)",
+            "price": "150 €"
+          }
         }
       },
-      "chatbotStarter": {
-        "tier": "starter",
-        "name": "AI Website & Chatbot",
-        "headline": "Answer Customers 24/7",
-        "description": "A website with a built-in AI chatbot trained on your business info — answering customer questions automatically, day and night.",
-        "pricing": "Starting at €1,290",
-        "timeline": "2-3 weeks",
+      "webApplication": {
+        "name": "Web Application",
+        "headline": "Software That Runs Your Process.",
+        "description": "Everything from Website, plus a database and real users.",
+        "pricing": "from 2.490 €",
+        "timeline": "4–6 weeks",
         "features": {
-          "website": "Everything in the Website package",
-          "chatbot": "Custom AI chatbot trained on your business",
-          "availability": "24/7 automated customer Q&A",
-          "transparency": "EU AI Act transparency notice included",
-          "handover": "Setup & full handover",
-          "ownership": "One-time build fee — AI usage & hosting run on your own accounts"
+          "website": "Everything in Website",
+          "database": "Database design and setup (your choice of provider)",
+          "auth": "User registration and login",
+          "adminView": "One admin view (create, read, update, delete)",
+          "production": "Production-ready build"
+        },
+        "extras": {
+          "booking": {
+            "label": "Booking / appointment system",
+            "price": "from 1.490 €"
+          },
+          "roles": {
+            "label": "Roles and permissions",
+            "price": "from 490 €"
+          },
+          "payments": {
+            "label": "Payments (Stripe)",
+            "price": "from 690 €"
+          },
+          "fileUpload": {
+            "label": "File upload and management",
+            "price": "from 390 €"
+          },
+          "adminView": {
+            "label": "Additional admin view",
+            "price": "from 390 €"
+          },
+          "notifications": {
+            "label": "Email notifications (via your mailbox, Brevo or Mailjet)",
+            "price": "from 290 €"
+          },
+          "page": {
+            "label": "Additional page or view",
+            "price": "190 €"
+          }
         }
       },
-      "automationStarter": {
-        "tier": "starter",
-        "name": "Automation",
-        "headline": "Stop Repeating Yourself",
-        "description": "Automate booking confirmations and repetitive replies to customer inquiries, so nothing falls through the cracks.",
-        "pricing": "Starting at €390",
-        "timeline": "3-5 days",
+      "aiIntegration": {
+        "name": "AI Integration",
+        "headline": "Answers Without a Person Typing Them.",
+        "description": "A chatbot or AI feature on a new site, or added to an existing one.",
+        "pricing": "from 890 €",
+        "timeline": "1–3 weeks",
         "features": {
-          "booking": "Automated appointment confirmations",
-          "replies": "Automatic replies to inquiries",
-          "setup": "Setup on your existing tools",
-          "handover": "Handover & walkthrough",
-          "ownership": "One-time build fee — automations run on your own tool accounts"
-        }
-      },
-      "mvp": {
-        "tier": "advanced",
-        "name": "MVP Launch",
-        "headline": "Validate & Launch Fast",
-        "description": "Digitize manual processes with custom web applications. I build software tailored to your specific workflows, allowing you to handle more customers efficiently and securely.",
-        "pricing": "Starting at €3,000",
-        "timeline": "4-8 weeks",
-        "features": {
-          "fullStack": "Full-stack web application",
-          "responsive": "Mobile-friendly design",
-          "database": "Secure database setup",
-          "auth": "User logins & accounts",
-          "deployment": "Production setup",
-          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
+          "chatbot": "Chatbot trained on your business information (text injection, no RAG)",
+          "knowledgeBase": "Knowledge base built together with you",
+          "transparency": "Visible AI notice in the interface — EU AI Act transparency",
+          "avv": "Data processing agreement (AVV) where personal data is processed",
+          "integration": "Integration into an existing site or a package above"
+        },
+        "scopeNote": {
+          "label": "Where I can add it",
+          "text": "Sites built with Next.js, React, Astro, or a plain static site — standard pricing applies. Anything else (WordPress, PHP, Shopify, .NET, Wix) is possible only as an embedded widget, quoted as Custom after a review."
+        },
+        "extras": {
+          "rag": {
+            "label": "RAG system — answers from your documents (PDF, Notion, Docs)",
+            "price": "from 1.690 €"
+          },
+          "existingApp": {
+            "label": "AI feature in an existing app (summarise, classify, generate)",
+            "price": "from 690 €"
+          },
+          "cloudSetup": {
+            "label": "Cloud provider setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)",
+            "price": "290 €"
+          },
+          "localModel": {
+            "label": "Local model on your own server — nothing leaves your infrastructure",
+            "price": "690 €"
+          },
+          "knowledgeSource": {
+            "label": "Additional knowledge source",
+            "price": "from 290 €"
+          },
+          "retraining": {
+            "label": "Retraining after acceptance",
+            "price": "70 €/h"
+          }
         }
       },
       "automation": {
-        "tier": "advanced",
-        "name": "Workflow Automation",
-        "headline": "Streamlined Operations",
-        "description": "Connect your existing tools (CRM, Email, Sheets) to ensure seamless data flow. I implement automated systems that handle repetitive tasks, ensuring data accuracy and saving team hours.",
-        "pricing": "Starting at €2,000",
-        "timeline": "2-4 weeks",
+        "name": "Automation & Integration",
+        "headline": "Connect The Tools You Already Pay For.",
+        "description": "I am the technical implementer. You provide the licences, accounts and admin access.",
+        "pricing": "from 690 €",
+        "timeline": "3 days – 4 weeks",
         "features": {
-          "analysis": "Process audit & strategy",
-          "integration": "API & Tool connection",
-          "workflows": "Logic & trigger setup",
-          "documentation": "How-to documentation",
-          "training": "System handover & walkthrough",
-          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
-        }
-      },
-      "ai": {
-        "tier": "advanced",
-        "name": "Internal AI",
-        "headline": "Intelligent Knowledge Access",
-        "description": "Access your company knowledge instantly. I connect secure AI assistants to your documents (PDFs, Notion, Docs), enabling your team to retrieve accurate answers based on your internal data.",
-        "pricing": "Starting at €4,000",
-        "timeline": "4-6 weeks",
-        "features": {
-          "chatbot": "Custom AI Assistant",
-          "rag": "Connects to your specific data",
-          "integration": "Works within your current tools",
-          "security": "Data privacy setup",
-          "training": "System handover & walkthrough",
-          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
+          "review": "Process review of the workflow to be automated",
+          "connection": "Connection of 2 tools (email, calendar, forms, sheets, CRM)",
+          "triggers": "Trigger and logic setup",
+          "handover": "Testing and handover walkthrough",
+          "avv": "AVV where personal data is processed"
+        },
+        "scopeNote": {
+          "label": "What I don't do",
+          "text": "Company-wide Microsoft 365 or Google Workspace administration — tenant setup, org-wide Teams/SharePoint architecture, licence management. Bring your IT admin; I build the automation layer on top."
+        },
+        "extras": {
+          "workflow": {
+            "label": "Each additional workflow",
+            "price": "290 €"
+          },
+          "tool": {
+            "label": "Each additional tool connected",
+            "price": "from 390 €"
+          },
+          "n8n": {
+            "label": "n8n self-hosted setup on your server",
+            "price": "from 890 €"
+          },
+          "customApi": {
+            "label": "Custom API integration (no ready-made connector)",
+            "price": "from 690 €"
+          }
         }
       },
       "custom": {
-        "tier": "custom",
-        "name": "Custom Project",
-        "headline": "Tailored Engineering",
-        "description": "For projects with unique requirements or complex scope. We together define a specific roadmap to build exactly what your business needs, independent of standard packages.",
+        "name": "Custom",
+        "headline": "Your Requirements, Scoped Properly.",
+        "description": "For anything that does not fit the packages above.",
         "pricing": "Custom Quote",
         "timeline": "Flexible",
         "features": {
-          "scoping": "Requirement workshops",
-          "roadmap": "Tailored project roadmap",
-          "development": "Milestone-based delivery",
-          "flexibility": "Technology agnostic",
+          "workshop": "Requirements workshop",
+          "roadmap": "Tailored project roadmap with milestones",
+          "milestones": "Milestone-based delivery and invoicing",
+          "agnostic": "Technology agnostic — your stack, your providers",
           "handover": "Full source code handover",
-          "support": "2 weeks of free bugfixing after launch (statutory warranty unaffected)"
+          "support": "2 weeks of free bugfixing after launch"
         }
       },
       "notes": {
         "title": "Good to know",
-        "vat": "",
-        "runningCosts": "All prices are one-time build fees. Running costs — AI usage, hosting, domains and third-party tools — run on your own accounts and are billed to you directly by those providers.",
-        "rights": "Full, unlimited usage rights to the delivered work are transferred to you upon final payment.",
+        "vat": "All prices are final prices. No VAT is added — under the German small business regulation (§ 19 UStG) I do not charge VAT, so the price you see is the price you pay.",
+        "included": "Every package includes responsive design, an SEO and performance build (Lighthouse 90+), 2 revision rounds, and full handover documentation.",
+        "notIncluded": "Not included in any package: content — texts, images, logos — and third-party licences, stock media or paid fonts. You supply these.",
+        "runningCosts": "Running costs — hosting, database, AI usage and domain — are billed to you directly by your chosen providers, on your own accounts.",
+        "rights": "Full usage rights to the delivered work are transferred to you on final payment.",
         "warranty": "Two weeks of free bugfixing after launch are included. Your statutory warranty rights remain unaffected.",
-        "payment": "Payment terms: 50% on order confirmation, 50% on acceptance (Abnahme)."
+        "payment": "Payment: up to 1.000 € the full amount is invoiced after acceptance; above 1.000 € it's 40% on order and 60% after acceptance, 14 days net.",
+        "rates": "Additional work beyond the agreed scope is billed at 70 €/h, always quoted and approved first. An extra revision round is 190 €. Feedback within 5 working days, acceptance within 10."
       }
+    },
+    "stack": {
+      "title": "Your Stack, Your Accounts",
+      "subtitle": "You choose the providers and own every account — I work with a focused set of platforms I can support properly.",
+      "categories": {
+        "frontend": {
+          "label": "Frontend",
+          "options": "Next.js · React · Astro · static build"
+        },
+        "database": {
+          "label": "Database",
+          "options": "Supabase · Neon · PostgreSQL · MySQL"
+        },
+        "auth": {
+          "label": "Auth",
+          "options": "Supabase Auth · Auth.js · Clerk"
+        },
+        "ai": {
+          "label": "AI provider",
+          "options": "Azure OpenAI (EU region) · OpenAI · Anthropic · Mistral · local model on your server"
+        },
+        "hosting": {
+          "label": "Hosting",
+          "options": "Vercel · Netlify · Cloudflare Pages · Hetzner · your own server"
+        },
+        "email": {
+          "label": "Email sending",
+          "options": "Your existing mailbox via SMTP (recommended) · Brevo · Mailjet · Resend"
+        }
+      },
+      "codeOnly": {
+        "title": "Code Only (default)",
+        "description": "You get the full source code, build instructions and handover docs. You deploy. Included at no extra cost."
+      },
+      "managedSetup": {
+        "title": "Managed Setup (+150 € per platform)",
+        "description": "I create the account in your name, configure it, deploy, and hand over all credentials at acceptance. After handover I have no access and no ongoing responsibility."
+      },
+      "emailNote": "Contact forms and notification emails need a sending route — usually your existing business mailbox via SMTP at no extra cost. Brevo, Mailjet or Resend are available if you need something else."
     },
     "process": {
       "title": "How It Works",
@@ -704,32 +822,13 @@
         "description": "You check the result against the agreed scope and we sign the acceptance protocol. Acceptance starts the warranty period and makes the final payment due."
       }
     },
-    "trust": {
-      "title": "Why Clients Choose Me",
-      "subtitle": "Modern technology, delivered with clarity and reliability.",
-      "dynamic": {
-        "title": "Data-Driven Applications",
-        "description": "Not static templates — real applications with databases, APIs, and dynamic content that grows with your business."
-      },
-      "scalable": {
-        "title": "Built to Scale",
-        "description": "Enterprise-grade hosting on Vercel with serverless architecture. Your app handles growth automatically."
-      },
-      "reliable": {
-        "title": "Reliable & Secure",
-        "description": "Clean code, proper testing, and security best practices. No technical debt, no surprises."
-      },
-      "integrated": {
-        "title": "Seamless Integrations",
-        "description": "Connect with your existing tools — CRMs, payment systems, analytics, and more."
-      }
-    },
     "cta": {
       "title": "Ready to Start?",
       "subtitle": "Book a free 15-minute discovery call. No commitment, just a conversation about your project.",
       "button": "Book Your Free Call",
       "viewAllLink": "View All Services, Packages & Pricing"
-    }
+    },
+    "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."
   },
   "Usecases": {
     "title": "Use-Cases",

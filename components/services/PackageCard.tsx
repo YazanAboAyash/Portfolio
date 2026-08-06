@@ -6,33 +6,39 @@
 
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import type { ServicePackage } from "@/types/hubs/services";
 import { cardSurface } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 import {
-  Rocket,
   Cog,
   Brain,
   Settings,
   Globe,
-  Bot,
-  Zap,
+  Database,
   Check,
   Clock,
+  Info,
+  ListPlus,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 /** Icon mapping for dynamic rendering */
 const iconMap: Record<string, React.ElementType> = {
-  Rocket,
   Cog,
   Brain,
   Settings,
   Globe,
-  Bot,
-  Zap,
+  Database,
 };
 
 interface PackageCardProps {
@@ -48,10 +54,16 @@ interface PackageCardProps {
 export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
   const t = useTranslations("Services");
   const IconComponent = iconMap[pkg.icon];
+  const extras = pkg.extras ?? [];
 
   return (
-    <div className="w-full max-w-sm">
-      <Card className={cn(cardSurface, "h-full relative overflow-hidden")}>
+    <div className="w-full h-full flex flex-col">
+      <Card
+        className={cn(
+          cardSurface,
+          "h-full flex flex-col relative overflow-hidden"
+        )}
+      >
         <CardHeader className="space-y-4">
           <div className="flex items-center gap-3">
             {IconComponent && (
@@ -62,18 +74,15 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
             <div className="min-w-0">
               <h3 className="text-xl font-semibold">{t(pkg.nameKey)}</h3>
             </div>
-            <Badge variant="outline" className="ml-auto shrink-0">
-              {t(`packages.tiers.${pkg.tier}`)}
-            </Badge>
           </div>
-          <p className="text-2xl font-bold text-gray-500">
+          <p className="text-2xl font-bold text-foreground/80">
             {t(pkg.headlineKey)}
           </p>
           {variant === "detailed" && (
             <p className="text-muted-foreground">{t(pkg.descriptionKey)}</p>
           )}
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="flex-1 flex flex-col space-y-6">
           {/* Pricing & Timeline */}
           {variant === "detailed" && (
             <div className="flex items-center justify-between pb-4 border-b">
@@ -88,7 +97,13 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
           )}
 
           {/* Features List */}
-          <ul className="space-y-3">
+          <ul
+            className={cn(
+              "space-y-3",
+              variant === "detailed" &&
+                "sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-3 sm:space-y-0"
+            )}
+          >
             {(variant === "compact"
               ? pkg.features.slice(0, 3)
               : pkg.features
@@ -106,6 +121,66 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
             <p className="text-xs text-muted-foreground text-center pt-2">
               +{pkg.features.length - 3} more features
             </p>
+          )}
+
+          {/* Scope note — what this package does or doesn't cover */}
+          {variant === "detailed" && pkg.scopeNote && (
+            <div className="flex items-start gap-2 rounded-md border border-border bg-muted/40 p-3">
+              <Info
+                className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5"
+                aria-hidden="true"
+              />
+              <p className="text-xs text-muted-foreground">
+                <span className="font-semibold text-foreground/80">
+                  {t(pkg.scopeNote.labelKey)}:
+                </span>{" "}
+                {t(pkg.scopeNote.textKey)}
+              </p>
+            </div>
+          )}
+
+          {/* Full price list — every priced extra for this package, in a dialog */}
+          {variant === "detailed" && extras.length > 0 && (
+            <div className="pt-4 border-t mt-auto">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="w-full">
+                    <ListPlus className="h-4 w-4" aria-hidden="true" />
+                    {t("packages.extras.seeAll")}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-xl max-h-[85vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle>
+                      {t("packages.extras.dialogTitle", {
+                        package: t(pkg.nameKey),
+                      })}
+                    </DialogTitle>
+                    <DialogDescription>
+                      {t("packages.extras.dialogDescription")}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <ul className="divide-y">
+                    {extras.map((extra, index) => (
+                      <li
+                        key={index}
+                        className="flex items-baseline justify-between gap-4 py-3 text-sm"
+                      >
+                        <span className="text-muted-foreground">
+                          {t(extra.labelKey)}
+                        </span>
+                        <span className="font-medium shrink-0">
+                          {t(extra.priceKey)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-muted-foreground/80 italic">
+                    {t("packages.extras.finalPrice")}
+                  </p>
+                </DialogContent>
+              </Dialog>
+            </div>
           )}
         </CardContent>
       </Card>

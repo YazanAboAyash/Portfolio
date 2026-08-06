@@ -74,7 +74,8 @@
     "status": "Status",
     "training": "Utbildning",
     "quickLinks": "Snabblänkar",
-    "openForCollaboration": "Tillgänglig"
+    "openForCollaboration": "Tillgänglig",
+    "legalNotice": "Mina tjänster erbjuds uteslutande till näringsidkare enligt § 14 BGB."
   },
   "QuickActions": {
     "title": "Snabbåtgärder",
@@ -555,129 +556,210 @@
     "packages": {
       "title": "Tjänstepaket",
       "cta": "Boka ett gratis samtal",
-      "tiers": {
-        "starter": "Bas",
-        "advanced": "Avancerad",
-        "custom": "Skräddarsytt"
-      },
       "website": {
-        "tier": "starter",
         "name": "Webbplats",
-        "headline": "Redo att lanseras snabbt",
-        "description": "En modern och snabb webbplats för ert företag — byggd för att omvandla besökare till samtal. Inklusive optimering av er Google-företagsprofil.",
-        "pricing": "Från 599 €",
-        "timeline": "1-2 veckor",
+        "headline": "Bli Hittad. Bli Uppringd.",
+        "description": "En snabb, modern webbplats som fungerar på alla enheter och syns i lokal sökning.",
+        "pricing": "890 €",
+        "timeline": "1–2 veckor",
         "features": {
-          "design": "Modern, responsiv design",
-          "compliant": "Teknisk integrering av företagsinformation & integritetspolicy (juridiska texter från er eller en leverantör — ingen juridisk rådgivning)",
-          "gbp": "Uppsättning av Google-företagsprofil",
+          "pages": "Upp till 3 sidor, eller en enkelsidig webbplats med upp till 5 sektioner",
+          "businessInfo": "Central företagsinfo: om oss, tjänster, öppettider, frågor och svar, kontakt",
           "contact": "Kontaktformulär",
-          "goLive": "Valfritt Go-Live-paket (domän & hosting) +150 €",
-          "ownership": "Engångsarvode för utvecklingen — fullständiga nyttjanderätter vid slutbetalning"
+          "gbp": "Uppsättning och optimering av Google-företagsprofil",
+          "legal": "Grundläggande juridiska sidor (teknisk implementering)",
+          "seo": "SEO- och prestandaoptimering, Lighthouse 90+"
+        },
+        "extras": {
+          "page": {
+            "label": "Ytterligare sida",
+            "price": "190 €"
+          },
+          "section": {
+            "label": "Ytterligare sektion (enkelsidig webbplats)",
+            "price": "120 €"
+          },
+          "secondLanguage": {
+            "label": "Andra språket (EN + DE), översättning ingår",
+            "price": "390 €"
+          },
+          "staticBlog": {
+            "label": "Statisk blogg (utan backend)",
+            "price": "490 €"
+          },
+          "cmsBlog": {
+            "label": "Redigerbar blogg med CMS",
+            "price": "från 890 €"
+          },
+          "consentBanner": {
+            "label": "Samtyckesbanner (endast om ni vill ha spårningsverktyg)",
+            "price": "290 €"
+          },
+          "textPrep": {
+            "label": "Textbearbetning från ert befintliga material, per sida",
+            "price": "90 €"
+          },
+          "managedSetup": {
+            "label": "Managed Setup (per plattform)",
+            "price": "150 €"
+          }
         }
       },
-      "chatbotStarter": {
-        "tier": "starter",
-        "name": "AI-webbplats & chatbot",
-        "headline": "Svara kunder dygnet runt",
-        "description": "En webbplats med inbyggd AI-chatbot tränad på er företagsinformation — som svarar på kundfrågor automatiskt, dygnet runt.",
-        "pricing": "Från 1 290 €",
-        "timeline": "2-3 veckor",
+      "webApplication": {
+        "name": "Webbapplikation",
+        "headline": "Mjukvara som Driver er Process.",
+        "description": "Allt från Webbplats, plus en databas och riktiga användare.",
+        "pricing": "från 2 490 €",
+        "timeline": "4–6 veckor",
         "features": {
-          "website": "Allt som ingår i Webbplats-paketet",
-          "chatbot": "Anpassad AI-chatbot tränad på ert företag",
-          "availability": "Automatiska frågor och svar dygnet runt",
-          "transparency": "Transparensinformation enligt EU:s AI-förordning ingår",
-          "handover": "Uppsättning & fullständig överlämning",
-          "ownership": "Engångsarvode för utvecklingen — AI-användning & hosting körs på era egna konton"
+          "website": "Allt som ingår i Webbplats",
+          "database": "Databasdesign och uppsättning (leverantör ni väljer)",
+          "auth": "Användarregistrering och inloggning",
+          "adminView": "En admin-vy (skapa, läsa, uppdatera, radera)",
+          "production": "Produktionsklar build"
+        },
+        "extras": {
+          "booking": {
+            "label": "Boknings-/tidsbokningssystem",
+            "price": "från 1 490 €"
+          },
+          "roles": {
+            "label": "Roller och behörigheter",
+            "price": "från 490 €"
+          },
+          "payments": {
+            "label": "Betalningar (Stripe)",
+            "price": "från 690 €"
+          },
+          "fileUpload": {
+            "label": "Filuppladdning och hantering",
+            "price": "från 390 €"
+          },
+          "adminView": {
+            "label": "Ytterligare admin-vy",
+            "price": "från 390 €"
+          },
+          "notifications": {
+            "label": "E-postaviseringar (via er brevlåda, Brevo eller Mailjet)",
+            "price": "från 290 €"
+          },
+          "page": {
+            "label": "Ytterligare sida eller vy",
+            "price": "190 €"
+          }
         }
       },
-      "automationStarter": {
-        "tier": "starter",
-        "name": "Automatisering",
-        "headline": "Sluta upprepa dig",
-        "description": "Automatisera bokningsbekräftelser och återkommande svar på kundförfrågningar, så att inget faller mellan stolarna.",
-        "pricing": "Från 390 €",
-        "timeline": "3-5 dagar",
+      "aiIntegration": {
+        "name": "AI-integration",
+        "headline": "Svar utan att Någon Skriver dem.",
+        "description": "En chatbot eller AI-funktion på en ny webbplats, eller tillagd på en befintlig.",
+        "pricing": "från 890 €",
+        "timeline": "1–3 veckor",
         "features": {
-          "booking": "Automatiska bokningsbekräftelser",
-          "replies": "Automatiska svar på förfrågningar",
-          "setup": "Uppsättning i era befintliga verktyg",
-          "handover": "Överlämning & genomgång",
-          "ownership": "Engångsarvode för utvecklingen — automationerna körs på era egna verktygskonton"
-        }
-      },
-      "mvp": {
-        "tier": "advanced",
-        "name": "MVP-lansering",
-        "headline": "Validera och lansera snabbt",
-        "description": "Digitalisera manuella processer med skräddarsydda webbapplikationer. Jag bygger mjukvara anpassad efter era specifika arbetsflöden, vilket gör att ni kan hantera fler kunder effektivt och säkert.",
-        "pricing": "Från 3 000 €",
-        "timeline": "4-8 veckor",
-        "features": {
-          "fullStack": "Full-stack webbapplikation",
-          "responsive": "Mobilanpassad design",
-          "database": "Säker databasuppsättning",
-          "auth": "Användarinloggning & konton",
-          "deployment": "Produktionssättning",
-          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
+          "chatbot": "Chatbot tränad på er företagsinformation (textinjektion, ingen RAG)",
+          "knowledgeBase": "Kunskapsbas byggd tillsammans med er",
+          "transparency": "Synlig AI-notis i gränssnittet — transparens enligt EU:s AI-förordning",
+          "avv": "Personuppgiftsbiträdesavtal (AVV) när personuppgifter behandlas",
+          "integration": "Integration i en befintlig webbplats eller ett paket ovan"
+        },
+        "extras": {
+          "rag": {
+            "label": "RAG-system — svar från era dokument (PDF, Notion, Docs)",
+            "price": "från 1 690 €"
+          },
+          "existingApp": {
+            "label": "AI-funktion i en befintlig app (sammanfatta, klassificera, generera)",
+            "price": "från 690 €"
+          },
+          "cloudSetup": {
+            "label": "Konfiguration av molnleverantör (Azure OpenAI EU, OpenAI, Anthropic, Mistral)",
+            "price": "290 €"
+          },
+          "localModel": {
+            "label": "Lokal modell på er egen server — inget lämnar er infrastruktur",
+            "price": "690 €"
+          },
+          "knowledgeSource": {
+            "label": "Ytterligare kunskapskälla",
+            "price": "från 290 €"
+          },
+          "retraining": {
+            "label": "Omträning efter godkännande",
+            "price": "70 €/tim"
+          }
+        },
+        "scopeNote": {
+          "label": "Var jag kan lägga till det",
+          "text": "Webbplatser byggda med Next.js, React, Astro, eller en statisk webbplats — standardpris gäller. Allt annat (WordPress, PHP, Shopify, .NET, Wix) är endast möjligt som inbäddad widget, offererat som Skräddarsytt efter genomgång."
         }
       },
       "automation": {
-        "tier": "advanced",
-        "name": "Workflow Automation",
-        "headline": "Effektivare verksamhet",
-        "description": "Koppla ihop era befintliga verktyg (CRM, E-post, Kalkylark) för ett sömlöst dataflöde. Jag implementerar automatiserade system som hanterar repetitiva uppgifter och säkerställer datakvalitet.",
-        "pricing": "Från 2 000 €",
-        "timeline": "2-4 veckor",
+        "name": "Automatisering & Integration",
+        "headline": "Koppla Ihop Verktygen ni Redan Betalar för.",
+        "description": "Jag är den tekniska implementeraren. Ni tillhandahåller licenser, konton och adminåtkomst.",
+        "pricing": "från 690 €",
+        "timeline": "3 dagar – 4 veckor",
         "features": {
-          "analysis": "Processanalys & strategi",
-          "integration": "API- & verktygskopplingar",
-          "workflows": "Logik & triggers",
-          "documentation": "Dokumentation",
-          "training": "Systemöverlämning & introduktion",
-          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
-        }
-      },
-      "ai": {
-        "tier": "advanced",
-        "name": "Intern AI",
-        "headline": "Smart kunskapshantering",
-        "description": "Få direkt tillgång till företagets samlade kunskap. Jag kopplar säkra AI-assistenter till era dokument, vilket gör att teamet kan få exakta svar baserade på er interna data.",
-        "pricing": "Från 4 000 €",
-        "timeline": "4-6 veckor",
-        "features": {
-          "chatbot": "Anpassad AI-assistent",
-          "rag": "Koppling till er data",
-          "integration": "Integration i nuvarande verktyg",
-          "security": "Dataskyddsinställningar",
-          "training": "Systemöverlämning & introduktion",
-          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
+          "review": "Processgenomgång av arbetsflödet som ska automatiseras",
+          "connection": "Anslutning av 2 verktyg (e-post, kalender, formulär, kalkylark, CRM)",
+          "triggers": "Trigger- och logikuppsättning",
+          "handover": "Testning och överlämning",
+          "avv": "AVV när personuppgifter behandlas"
+        },
+        "extras": {
+          "workflow": {
+            "label": "Varje ytterligare arbetsflöde",
+            "price": "290 €"
+          },
+          "tool": {
+            "label": "Varje ytterligare anslutet verktyg",
+            "price": "från 390 €"
+          },
+          "n8n": {
+            "label": "Självhostad n8n-uppsättning på er server",
+            "price": "från 890 €"
+          },
+          "customApi": {
+            "label": "Anpassad API-integration (ingen färdig connector)",
+            "price": "från 690 €"
+          }
+        },
+        "scopeNote": {
+          "label": "Vad jag inte gör",
+          "text": "Företagsövergripande administration av Microsoft 365 eller Google Workspace — tenant-uppsättning, organisationsövergripande Teams-/SharePoint-arkitektur, licenshantering. Ta med er IT-administratör; jag bygger automationen ovanpå."
         }
       },
       "custom": {
-        "tier": "custom",
-        "name": "Skräddarsytt Projekt",
-        "headline": "Anpassad Utveckling",
-        "description": "För projekt med unika krav eller komplex omfattning. Vi tar fram en specifik färdplan för att bygga exakt det ert företag behöver, oberoende av standardpaket.",
+        "name": "Skräddarsytt",
+        "headline": "Era Krav, Ordentligt Definierade.",
+        "description": "För allt som inte passar in i paketen ovan.",
         "pricing": "Offert",
         "timeline": "Flexibel",
         "features": {
-          "scoping": "Kravspecifikations-workshop",
-          "roadmap": "Skräddarsydd projektplan",
-          "development": "Etappbaserad leverans",
-          "flexibility": "Teknologioberoende",
-          "handover": "Överlämning av källkod",
-          "support": "2 veckors kostnadsfri buggfixning efter lansering (lagstadgad garanti påverkas inte)"
+          "workshop": "Kravworkshop",
+          "roadmap": "Skräddarsydd projektplan med milstolpar",
+          "milestones": "Milstolpebaserad leverans och fakturering",
+          "agnostic": "Teknikoberoende — er stack, era leverantörer",
+          "handover": "Fullständig överlämning av källkod",
+          "support": "2 veckors kostnadsfri buggfixning efter lansering"
         }
       },
       "notes": {
         "title": "Bra att veta",
-        "vat": "",
-        "runningCosts": "Alla priser är engångsarvoden för utvecklingen. Löpande kostnader — AI-användning, hosting, domäner och tredjepartsverktyg — körs på era egna konton och faktureras er direkt av dessa leverantörer.",
-        "rights": "Vid slutbetalning överförs fullständiga, obegränsade nyttjanderätter till det levererade arbetet till er.",
+        "vat": "Alla priser är slutpriser. Ingen moms läggs till — enligt den tyska småföretagarregeln (§ 19 UStG) tar jag inte ut moms, så priset ni ser är priset ni betalar.",
+        "included": "Varje paket inkluderar responsiv design, en SEO- och prestandabuild (Lighthouse 90+), 2 revideringsrundor och fullständig överlämningsdokumentation.",
+        "runningCosts": "Löpande kostnader — hosting, databas, AI-användning och domän — faktureras er direkt av era valda leverantörer, på era egna konton.",
+        "rights": "Fullständiga nyttjanderätter till det levererade arbetet överförs till er vid slutbetalning.",
         "warranty": "Två veckors kostnadsfri buggfixning efter lansering ingår. Era lagstadgade garantirättigheter påverkas inte.",
-        "payment": "Betalningsvillkor: 50 % vid orderbekräftelse, 50 % vid godkännande."
+        "payment": "Betalning: upp till 1 000 € faktureras hela beloppet efter godkännande; över 1 000 € gäller 40 % vid beställning och 60 % efter godkännande, 14 dagar netto.",
+        "rates": "Extra arbete utanför den överenskomna omfattningen debiteras 70 €/tim, alltid offererat och godkänt i förväg. En extra revideringsrunda kostar 190 €. Återkoppling inom 5 arbetsdagar, godkännande inom 10.",
+        "notIncluded": "Ingår inte i något paket: innehåll — texter, bilder, logotyper — samt tredjepartslicenser, stockmaterial eller betalda typsnitt. Ni tillhandahåller dessa."
+      },
+      "extras": {
+        "seeAll": "Fullständig prislista",
+        "dialogTitle": "{package} — tillval och priser",
+        "dialogDescription": "Alla tillval som kan bokas till detta paket, med pris.",
+        "finalPrice": "Slutliga priser fastställs i er offert efter avgränsningssamtalet."
       }
     },
     "process": {
@@ -704,32 +786,52 @@
         "description": "Ni granskar resultatet mot den överenskomna omfattningen och vi undertecknar godkännandeprotokollet. Godkännandet startar garantitiden och gör slutbetalningen förfallen."
       }
     },
-    "trust": {
-      "title": "Varför Kunder Väljer Mig",
-      "subtitle": "Modern teknik, levererad med tydlighet och pålitlighet.",
-      "dynamic": {
-        "title": "Datadrivna Applikationer",
-        "description": "Inga statiska mallar — riktiga appar med databaser, API:er och dynamiskt innehåll som växer med din verksamhet."
-      },
-      "scalable": {
-        "title": "Byggd för Skalning",
-        "description": "Enterprise-hosting på Vercel med serverlös arkitektur. Din app hanterar tillväxt automatiskt."
-      },
-      "reliable": {
-        "title": "Pålitlig och Säker",
-        "description": "Ren kod, ordentliga tester och säkerhetsbästa praxis. Ingen teknisk skuld, inga överraskningar."
-      },
-      "integrated": {
-        "title": "Sömlösa Integrationer",
-        "description": "Anslut till dina befintliga verktyg — CRM:er, betalningssystem, analytics och mer."
-      }
-    },
     "cta": {
       "title": "Redo att Börja?",
       "subtitle": "Boka ett gratis 15-minuters upptäcktssamtal. Inget åtagande, bara ett samtal om ditt projekt.",
       "button": "Boka Gratis Konsultation",
       "viewAllLink": "Visa Alla Tjänster, Paket & Priser"
-    }
+    },
+    "stack": {
+      "title": "Er Stack, Era Konton",
+      "subtitle": "Ni väljer leverantörerna och äger varje konto — jag arbetar med ett fokuserat urval plattformar jag kan supporta ordentligt.",
+      "categories": {
+        "frontend": {
+          "label": "Frontend",
+          "options": "Next.js · React · Astro · statisk build"
+        },
+        "database": {
+          "label": "Databas",
+          "options": "Supabase · Neon · PostgreSQL · MySQL"
+        },
+        "auth": {
+          "label": "Auth",
+          "options": "Supabase Auth · Auth.js · Clerk"
+        },
+        "ai": {
+          "label": "AI-leverantör",
+          "options": "Azure OpenAI (EU-region) · OpenAI · Anthropic · Mistral · lokal modell på er server"
+        },
+        "hosting": {
+          "label": "Hosting",
+          "options": "Vercel · Netlify · Cloudflare Pages · Hetzner · egen server"
+        },
+        "email": {
+          "label": "E-postutskick",
+          "options": "Er befintliga brevlåda via SMTP (rekommenderas) · Brevo · Mailjet · Resend"
+        }
+      },
+      "codeOnly": {
+        "title": "Endast Kod (standard)",
+        "description": "Ni får hela källkoden, build-instruktioner och överlämningsdokumentation. Ni driftsätter själva. Ingår utan extra kostnad."
+      },
+      "managedSetup": {
+        "title": "Managed Setup (+150 € per plattform)",
+        "description": "Jag skapar kontot i ert namn, konfigurerar det, driftsätter och överlämnar alla inloggningsuppgifter vid godkännande. Efter överlämningen har jag ingen åtkomst och inget löpande ansvar."
+      },
+      "emailNote": "Kontaktformulär och aviseringsmejl behöver en utskickskanal — oftast er befintliga företagsbrevlåda via SMTP, utan extra kostnad. Brevo, Mailjet eller Resend finns tillgängliga om ni behöver något annat."
+    },
+    "legalNotice": "Mina tjänster erbjuds uteslutande till näringsidkare enligt § 14 BGB (tysk civillag)."
   },
   "Usecases": {
     "title": "Användningsfall",
