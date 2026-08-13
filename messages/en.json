@@ -154,7 +154,6 @@
   "Projects": {
     "title": "My Projects",
     "categories": {
-      "all": "All",
       "webDevelopment": "Web Development",
       "fullStack": "Full Stack",
       "aiMl": "AI/ML"
@@ -165,7 +164,6 @@
       "llmAgent": "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
       "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
       "voiceToNotion": "Transforms voice memos and meeting recordings into structured Notion pages with transcripts, summaries, and action items. Automates post-meeting admin work in under 30 seconds.",
-      "aiEmailAutomation": "An interactive demo using RAG to analyze emails, offering selectable answer options and tone-based rewriting. Illustrates a workflow that runs fully autonomously in production environments.",
       "nextJsSeoOptimization": "A lightweight, zero-dependency SEO helper for Next.js App Router. Turns simple props into a full Metadata object — OpenGraph, Twitter Cards, canonical URLs, hreflang alternates, and JSON-LD structured data. Published on npm as @coldbydefault/next-seo-lite.",
       "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project.",
       "princeps": "Private AI workspace that acts as a personal executive secretariat. Features an AI chat assistant with RAG knowledge base, task management, contacts, meetings, decisions, goals, and proactive nudges — all backed by a single PostgreSQL database with pgvector."
@@ -185,7 +183,6 @@
     "npmPackage": "npm",
     "liveDemo": "Live Demo",
     "featuredProject": "Featured Project",
-    "noProjectsFound": "No projects found in this category.",
     "licenses": {
       "copyright": "All Rights Reserved",
       "openSource": "Modified MIT License",
@@ -243,7 +240,7 @@
     },
     "overview": {
       "title": "Overview",
-      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. Some features — the AI assistant, the email tool, the automation audit and appointment booking — transmit data to external service providers, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
+      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. Some features — the AI assistant, the automation audit and appointment booking — transmit data to external service providers, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
       "keyPoint": "What this means in practice",
       "keyPointDescription": "You can read this site without identifying yourself. There is no advertising, no cross-site tracking and no profiling. At the same time, your IP address and anything you type into the assistant or the AI tools are personal data — the sections below explain exactly what happens to them, on what legal basis, and how long anything is kept."
     },
@@ -313,8 +310,6 @@
     "aiTools": {
       "title": "AI-backed tools",
       "description": "Some tools on this site send the text you enter to external AI providers in order to produce a result. That text is processed to answer your request and is not stored by me afterwards.",
-      "emailTitle": "Email assistant",
-      "emailDescription": "The email you paste, together with any context you add, is transmitted to Groq, Inc. for analysis and rewriting. Please do not enter personal data of third parties that you are not entitled to pass on.",
       "auditTitle": "Automation audit",
       "auditDescription": "The answers you give in the audit are transmitted to OpenAI in order to generate the evaluation.",
       "legalBasis": "Legal basis: Art. 6(1)(b) GDPR — performing a service you actively requested; Art. 6(1)(f) GDPR for operating the tool securely."
@@ -337,11 +332,6 @@
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
         "purpose": "Generates the AI assistant's replies and the automation audit result.",
-        "location": "United States."
-      },
-      "groq": {
-        "name": "Groq, Inc.",
-        "purpose": "Analyses and rewrites the text submitted to the email assistant.",
         "location": "United States."
       },
       "calendly": {
@@ -577,7 +567,10 @@
           "seo": "SEO and performance optimisation, Lighthouse 90+"
         },
         "extras": {
-          "page": { "label": "Additional page", "price": "190 €" },
+          "page": {
+            "label": "Additional page",
+            "price": "190 €"
+          },
           "section": {
             "label": "Additional section (single-page site)",
             "price": "120 €"
@@ -856,12 +849,6 @@
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Financial Analysis, Business Process Automation, Cost Optimization"
       },
-      "project-3": {
-        "title": "AI Email Automation Demo",
-        "description": "An interactive demo using RAG to analyze emails, offering selectable answer options and tone-based rewriting. Illustrates a workflow that runs fully autonomously in production environments.",
-        "techStack": "React, Groq API, RAG",
-        "implementationAreas": "Email Automation, NLP, Content Generation"
-      },
       "project-4": {
         "title": "AI Automation Readiness Audit",
         "description": "Answer 8 questions about your business and receive a personalised automation readiness score with AI-generated recommendations for the top 3 workflows to automate first.",
@@ -977,20 +964,6 @@
           "c": "Scale without hiring",
           "d": "Cut operational costs"
         }
-      }
-    },
-    "rewriter": {
-      "title": "Email Analysis",
-      "summary": "Summary",
-      "keyPoints": "Key Points",
-      "chooseResponse": "Choose a Response",
-      "selected": "Selected",
-      "copied": "Copied",
-      "copy": "Copy",
-      "contextInput": {
-        "title": "Custom Context (RAG)",
-        "infoText": "Add custom context that the AI will use when analyzing or rewriting emails. This could include company policies, communication guidelines, project details, or any relevant background information.",
-        "placeholder": "Example: Our company policy is to respond within 24 hours. We offer 30-day money-back guarantees. The project deadline is March 15th..."
       }
     }
   },

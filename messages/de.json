@@ -154,7 +154,6 @@
   "Projects": {
     "title": "Meine Projekte",
     "categories": {
-      "all": "Alle",
       "webDevelopment": "Webentwicklung",
       "fullStack": "Full Stack",
       "aiMl": "KI/ML"
@@ -165,7 +164,6 @@
       "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, mit 2 Optionen für Vector DB: lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf deren Inhalt beantworten. Mehr kommt bald... Open Source.",
       "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen.",
       "voiceToNotion": "Wandelt Sprachmemos und Meeting-Aufzeichnungen in strukturierte Notion-Seiten mit Transkripten, Zusammenfassungen und Aktionspunkten um. Automatisiert die Nachbearbeitung von Meetings in unter 30 Sekunden.",
-      "aiEmailAutomation": "Eine interaktive Demo mit RAG zur E-Mail-Analyse, die auswählbare Antwortoptionen und tonbasierte Umformulierung bietet. Veranschaulicht einen Workflow, der in Produktionsumgebungen vollständig autonom läuft.",
       "nextJsSeoOptimization": "Ein leichtgewichtiges SEO-Hilfspaket ohne Laufzeitabhängigkeiten für den Next.js App Router. Wandelt einfache Props in ein vollständiges Metadata-Objekt um — OpenGraph, Twitter Cards, kanonische URLs, hreflang-Alternativen und JSON-LD-strukturierte Daten. Veröffentlicht auf npm als @coldbydefault/next-seo-lite.",
       "customizableBetterAuth": "Eine sofort einsetzbare, vollständig anpassbare Authentifizierungslösung mit Better Auth und Next.js. Unterstützt mehrere Authentifizierungsanbieter und lässt sich einfach in jedes Projekt integrieren.",
       "princeps": "Privater KI-Arbeitsbereich als persönliches Exekutivsekretariat. Enthält einen KI-Chat-Assistenten mit RAG-Wissensdatenbank, Aufgabenverwaltung, Kontakte, Meetings, Entscheidungen, Ziele und proaktive Benachrichtigungen — alles gespeichert in einer einzigen PostgreSQL-Datenbank mit pgvector."
@@ -185,7 +183,6 @@
     "npmPackage": "npm",
     "liveDemo": "Live Demo",
     "featuredProject": "Ausgewähltes Projekt",
-    "noProjectsFound": "Keine Projekte in dieser Kategorie gefunden.",
     "licenses": {
       "copyright": "Alle Rechte vorbehalten",
       "openSource": "Modifizierte MIT-Lizenz",
@@ -243,7 +240,7 @@
     },
     "overview": {
       "title": "Überblick",
-      "description": "Diese Website ist ein persönliches Portfolio. Sie können sie besuchen, ohne Angaben zu Ihrer Person zu machen. Einige Funktionen – der KI-Assistent, das E-Mail-Werkzeug, der Automatisierungs-Check und die Terminbuchung – übermitteln Daten an externe Dienstleister; die Reichweiten- und Leistungsmessung läuft nur, wenn Sie ihr zustimmen. Die folgenden Abschnitte beschreiben jeden Fall, den Zweck, die Rechtsgrundlage und die Speicherdauer.",
+      "description": "Diese Website ist ein persönliches Portfolio. Sie können sie besuchen, ohne Angaben zu Ihrer Person zu machen. Einige Funktionen – der KI-Assistent, der Automatisierungs-Check und die Terminbuchung – übermitteln Daten an externe Dienstleister; die Reichweiten- und Leistungsmessung läuft nur, wenn Sie ihr zustimmen. Die folgenden Abschnitte beschreiben jeden Fall, den Zweck, die Rechtsgrundlage und die Speicherdauer.",
       "keyPoint": "Was das praktisch bedeutet",
       "keyPointDescription": "Sie können diese Website lesen, ohne sich zu identifizieren. Es gibt keine Werbung, kein seitenübergreifendes Tracking und kein Profiling. Zugleich sind Ihre IP-Adresse und alles, was Sie in den Assistenten oder die KI-Werkzeuge eingeben, personenbezogene Daten – die folgenden Abschnitte erläutern genau, was damit geschieht, auf welcher Rechtsgrundlage und wie lange etwas gespeichert wird."
     },
@@ -313,8 +310,6 @@
     "aiTools": {
       "title": "KI-gestützte Werkzeuge",
       "description": "Einige Werkzeuge auf dieser Website übermitteln den von Ihnen eingegebenen Text an externe KI-Anbieter, um ein Ergebnis zu erzeugen. Dieser Text wird zur Beantwortung Ihrer Anfrage verarbeitet und von mir anschließend nicht gespeichert.",
-      "emailTitle": "E-Mail-Assistent",
-      "emailDescription": "Die von Ihnen eingefügte E-Mail wird zusammen mit dem von Ihnen ergänzten Kontext zur Analyse und Umformulierung an Groq, Inc. übermittelt. Geben Sie bitte keine personenbezogenen Daten Dritter ein, zu deren Weitergabe Sie nicht berechtigt sind.",
       "auditTitle": "Automatisierungs-Check",
       "auditDescription": "Die von Ihnen im Check gegebenen Antworten werden zur Erstellung der Auswertung an OpenAI übermittelt.",
       "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – Erbringung einer von Ihnen aktiv angeforderten Leistung; Art. 6 Abs. 1 lit. f DSGVO für den sicheren Betrieb des Werkzeugs."
@@ -337,11 +332,6 @@
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
         "purpose": "Erzeugt die Antworten des KI-Assistenten und das Ergebnis des Automatisierungs-Checks.",
-        "location": "Vereinigte Staaten."
-      },
-      "groq": {
-        "name": "Groq, Inc.",
-        "purpose": "Analysiert und formuliert den an den E-Mail-Assistenten übermittelten Text um.",
         "location": "Vereinigte Staaten."
       },
       "calendly": {
@@ -859,12 +849,6 @@
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finanzanalyse, Geschäftsprozessautomatisierung, Kostenoptimierung"
       },
-      "project-3": {
-        "title": "KI E-Mail-Automatisierung (Demo)",
-        "description": "Eine interaktive Demo, die RAG zur E-Mail-Analyse nutzt und verschiedene Antwortoptionen sowie Tonfall-Anpassungen bietet. Veranschaulicht einen Prozess, der in der Praxis vollautomatisch läuft.",
-        "techStack": "React, Groq API, RAG",
-        "implementationAreas": "E-Mail-Automatisierung, NLP, Inhaltsgenerierung"
-      },
       "project-4": {
         "title": "KI-Automatisierungsbereitschafts-Audit",
         "description": "Beantworte 8 Fragen zu deinem Unternehmen und erhalte einen persönlichen Automatisierungsscore mit KI-generierten Empfehlungen für die 3 wichtigsten Prozesse, die du zuerst automatisieren solltest.",
@@ -980,20 +964,6 @@
           "c": "Skalieren ohne Einstellungen",
           "d": "Betriebskosten senken"
         }
-      }
-    },
-    "rewriter": {
-      "title": "E-Mail-Analyse",
-      "summary": "Zusammenfassung",
-      "keyPoints": "Kernpunkte",
-      "chooseResponse": "Antwort wählen",
-      "selected": "Ausgewählt",
-      "copied": "Kopiert",
-      "copy": "Kopieren",
-      "contextInput": {
-        "title": "Benutzerdefinierter Kontext (RAG)",
-        "infoText": "Fügen Sie benutzerdefinierten Kontext hinzu, den die KI beim Analysieren oder Umschreiben von E-Mails verwendet. Dies kann Unternehmensrichtlinien, Kommunikationsleitfäden, Projektdetails oder andere relevante Hintergrundinformationen umfassen.",
-        "placeholder": "Beispiel: Unsere Unternehmensrichtlinie sieht eine Antwort innerhalb von 24 Stunden vor. Wir bieten eine 30-tägige Geld-zurück-Garantie. Die Projektfrist ist der 15. März..."
       }
     }
   },

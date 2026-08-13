@@ -48,7 +48,7 @@ Key security-sensitive files:
 ### A05 – Security Misconfiguration
 
 - [ ] Security headers present: `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `Content-Security-Policy`
-- [ ] Admin and email-rewrite API routes have `no-store` cache override in `next.config.ts`
+- [ ] Admin and chatbot API routes have `no-store` cache override in `next.config.ts`
 - [ ] No `.env` values exposed to the client bundle
 
 ### A06 – Vulnerable Components

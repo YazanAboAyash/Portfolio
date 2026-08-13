@@ -11,9 +11,8 @@ import { useRef } from "react";
 import { Card, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import type { ProjectsShowcaseProps } from "@/types/hubs/projects";
-import { useProjectsFilter, getAllCategories } from "./projects-showcase.utils";
+import { projects } from "@/data/hubs/projectsData";
 import { ProjectCard } from "./ProjectCard";
-import { ProjectsFilter } from "./ProjectsFilter";
 import { RevealGroup } from "@/components/visuals";
 
 export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
@@ -21,11 +20,6 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const t = useTranslations("Projects");
-
-  // Business logic hooks
-  const { selectedCategory, setSelectedCategory, filteredProjects } =
-    useProjectsFilter();
-  const categories = getAllCategories();
 
   return (
     <section
@@ -50,31 +44,12 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           </CardTitle>
         </m.div>
 
-        {/* Category Filter */}
-        <ProjectsFilter
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          isInView={isInView}
-        />
-
         {/* Projects Grid */}
         <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </RevealGroup>
-
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12"
-          >
-            <p className="text-muted-foreground">{t("noProjectsFound")}</p>
-          </m.div>
-        )}
       </Card>
     </section>
   );

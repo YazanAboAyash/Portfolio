@@ -157,20 +157,6 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Email-rewrite routes contain per-user state — never cache publicly
-        source: "/api/email-rewrite/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-cache, no-store, must-revalidate",
-          },
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow, nosnippet, noarchive",
-          },
-        ],
-      },
-      {
         // Enhanced security for ChatBot API
         source: "/api/chatbot",
         headers: [

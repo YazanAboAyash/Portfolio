@@ -200,7 +200,7 @@ export function sanitizeErrorMessage(error: unknown): string {
 
 /**
  * Normalises free-text a user typed before it is handed to a model provider and
- * persisted. Used by the chatbot turn and by the email-rewriter tools.
+ * persisted. Used by the chatbot turn.
  *
  * Deliberately **not** an HTML sanitiser, and it must not become one again. This
  * text has no HTML sink: user turns render as plain text, assistant turns go

@@ -154,7 +154,6 @@
   "Projects": {
     "title": "Mes Projets",
     "categories": {
-      "all": "Tous",
       "webDevelopment": "Développement Web",
       "fullStack": "Full Stack",
       "aiMl": "IA/ML"
@@ -165,7 +164,6 @@
       "llmAgent": "Chatbot IA local basé sur Ollama, personnalisable pour utiliser n'importe quel modèle LLM, n'importe quel modèle d'Embedding, 2 options pour la base vectorielle : Postgres local ou DataStax Astra. Peut lire des pages web et répondre aux questions basées sur leur contenu. D'autres fonctionnalités arrivent... Open source.",
       "subsApi": "API pour gérer les abonnements utilisateurs, incluant la facturation, la gestion des factures et le traitement des paiements. Construit avec Next.js et intégré avec Stripe pour des paiements sécurisés.",
       "voiceToNotion": "Transforme les mémos vocaux et les enregistrements de réunions en pages Notion structurées avec transcriptions, résumés et points d'action. Automatise le travail administratif post-réunion en moins de 30 secondes.",
-      "aiEmailAutomation": "Une démonstration interactive utilisant RAG pour analyser les e-mails, offrant des options de réponse sélectionnables et une réécriture basée sur le ton. Illustre un flux de travail qui fonctionne de manière totalement autonome dans les environnements de production.",
       "nextJsSeoOptimization": "Un assistant SEO léger et sans dépendances de runtime pour le App Router de Next.js. Convertit de simples props en un objet Metadata complet — OpenGraph, Twitter Cards, URLs canoniques, alternatives hreflang et données structurées JSON-LD. Publié sur npm sous @coldbydefault/next-seo-lite.",
       "customizableBetterAuth": "Une solution d'authentification prête à l'emploi et entièrement personnalisable construite avec Better Auth et Next.js. Prend en charge plusieurs fournisseurs d'authentification et s'intègre facilement dans n'importe quel projet.",
       "princeps": "Espace de travail IA privé fonctionnant comme un secrétariat exécutif personnel. Inclut un assistant de chat IA avec base de connaissances RAG, gestion des tâches, contacts, réunions, décisions, objectifs et notifications proactives — le tout stocké dans une seule base PostgreSQL avec pgvector."
@@ -185,7 +183,6 @@
     "npmPackage": "npm",
     "liveDemo": "Démo en direct",
     "featuredProject": "Projet vedette",
-    "noProjectsFound": "Aucun projet trouvé dans cette catégorie.",
     "licenses": {
       "copyright": "Tous droits réservés",
       "openSource": "Licence MIT modifiée",
@@ -243,7 +240,7 @@
     },
     "overview": {
       "title": "Aperçu",
-      "description": "Ce site est un portfolio personnel. Vous pouvez le consulter sans fournir la moindre information vous concernant. Certaines fonctions — l'assistant IA, l'outil e-mail, l'audit d'automatisation et la prise de rendez-vous — transmettent des données à des prestataires externes, et la mesure de performance ne s'exécute que si vous l'acceptez. Les sections ci-dessous décrivent chaque cas, sa finalité, sa base légale et la durée de conservation.",
+      "description": "Ce site est un portfolio personnel. Vous pouvez le consulter sans fournir la moindre information vous concernant. Certaines fonctions — l'assistant IA, l'audit d'automatisation et la prise de rendez-vous — transmettent des données à des prestataires externes, et la mesure de performance ne s'exécute que si vous l'acceptez. Les sections ci-dessous décrivent chaque cas, sa finalité, sa base légale et la durée de conservation.",
       "keyPoint": "Ce que cela signifie concrètement",
       "keyPointDescription": "Vous pouvez consulter ce site sans vous identifier. Il n'y a ni publicité, ni pistage inter-sites, ni profilage. Dans le même temps, votre adresse IP et tout ce que vous saisissez dans l'assistant ou les outils IA constituent des données à caractère personnel : les sections ci-dessous expliquent précisément ce qu'il en advient, sur quelle base légale et pendant combien de temps."
     },
@@ -313,8 +310,6 @@
     "aiTools": {
       "title": "Outils reposant sur l'IA",
       "description": "Certains outils de ce site transmettent le texte que vous saisissez à des prestataires d'IA externes afin de produire un résultat. Ce texte est traité pour répondre à votre demande et n'est ensuite pas conservé par mes soins.",
-      "emailTitle": "Assistant e-mail",
-      "emailDescription": "L'e-mail que vous collez, ainsi que le contexte que vous ajoutez, sont transmis à Groq, Inc. pour analyse et reformulation. Merci de ne pas y saisir de données à caractère personnel de tiers que vous n'êtes pas autorisé à communiquer.",
       "auditTitle": "Audit d'automatisation",
       "auditDescription": "Les réponses que vous fournissez dans l'audit sont transmises à OpenAI afin de générer l'évaluation.",
       "legalBasis": "Base légale : art. 6, § 1, point b du RGPD — exécution d'une prestation que vous avez activement demandée ; art. 6, § 1, point f du RGPD pour l'exploitation sécurisée de l'outil."
@@ -337,11 +332,6 @@
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
         "purpose": "Génère les réponses de l'assistant IA et le résultat de l'audit d'automatisation.",
-        "location": "États-Unis."
-      },
-      "groq": {
-        "name": "Groq, Inc.",
-        "purpose": "Analyse et reformule le texte soumis à l'assistant e-mail.",
         "location": "États-Unis."
       },
       "calendly": {
@@ -859,12 +849,6 @@
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Analyse financière, Automatisation des processus métier, Optimisation des coûts"
       },
-      "project-3": {
-        "title": "Démo d'Automatisation E-mail IA",
-        "description": "Une démo interactive utilisant RAG pour analyser les e-mails, offrant des choix de réponses et une réécriture par ton. Illustre un processus entièrement autonome en production.",
-        "techStack": "React, Groq API, RAG",
-        "implementationAreas": "Automatisation d'e-mails, NLP, Génération de contenu"
-      },
       "project-4": {
         "title": "Audit de Maturité en Automatisation IA",
         "description": "Répondez à 8 questions sur votre entreprise et recevez un score de maturité personnalisé avec des recommandations IA pour les 3 workflows à automatiser en priorité.",
@@ -980,20 +964,6 @@
           "c": "Croître sans embaucher",
           "d": "Réduire les coûts opérationnels"
         }
-      }
-    },
-    "rewriter": {
-      "title": "Analyse d'e-mail",
-      "summary": "Résumé",
-      "keyPoints": "Points clés",
-      "chooseResponse": "Choisir une réponse",
-      "selected": "Sélectionné",
-      "copied": "Copié",
-      "copy": "Copier",
-      "contextInput": {
-        "title": "Contexte personnalisé (RAG)",
-        "infoText": "Ajoutez un contexte personnalisé que l'IA utilisera lors de l'analyse ou de la réécriture d'e-mails. Cela peut inclure les politiques de l'entreprise, les directives de communication, les détails du projet ou toute information pertinente.",
-        "placeholder": "Exemple : La politique de notre entreprise est de répondre sous 24 heures. Nous offrons une garantie de remboursement de 30 jours. La date limite du projet est le 15 mars..."
       }
     }
   },

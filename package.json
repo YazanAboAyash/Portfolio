@@ -1,7 +1,7 @@
 {
   "name": "coldbydefault-portfolio",
   "version": "6.1.4",
-  "description": "Professional portfolio of Yazan Abo-Ayash (ColdByDefault©) - Full Stack Developer specializing in AI and automation, Next.js and modern web technologies.",
+  "description": "Professional portfolio of Yazan Abo-Ayash (ColdByDefault) - Full Stack Developer specializing in AI and automation, Next.js and modern web technologies.",
   "keywords": [
     "portfolio",
     "next.js",
@@ -17,14 +17,14 @@
     "ai-automation",
     "RAG-Systems",
     "yazan-abo-ayash",
-    "coldbydefault©",
+    "coldbydefault",
     "typescript",
     "responsive-design",
     "neondatabase",
     "vercel",
     "modern-web-technologies"
   ],
-  "author": "Yazan Abo-Ayash (ColdByDefault©)",
+  "author": "Yazan Abo-Ayash (ColdByDefault)",
   "license": "Copyright 2026 Yazan Abo-Ayash. All Rights Reserved.",
   "private": true,
   "scripts": {

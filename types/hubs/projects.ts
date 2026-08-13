@@ -27,11 +27,5 @@ export interface UseProjectLogicReturn {
   setCopied: (copied: boolean) => void;
 }
 
-export interface UseProjectsFilterReturn {
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
-  filteredProjects: Project[];
-}
-
 // Re-export for convenience
 export type { Project };

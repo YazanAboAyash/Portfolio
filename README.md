@@ -46,7 +46,7 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · ESLint 9.x · Playwright + axe-
 
 This portfolio serves as a professional showcase of engineering capability: performant UI, secure API integrations (GitHub, PageSpeed), accessibility‑focused design, production‑grade hardening, and multi‑language + deep structured SEO implementation.
 
-Beyond the portfolio surface, the project now hosts a small suite of **interactive live tools** (ROI calculator, email rewriter, automation audit) and a service/package offering — each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
+Beyond the portfolio surface, the project now hosts a small suite of **interactive live tools** (ROI calculator, automation audit) and a service/package offering — each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
 
 ---
 
@@ -124,7 +124,6 @@ Three AI‑backed surfaces, each isolated behind its own validated, rate‑limit
 | --- | --- | --- | --- |
 | Chatbot ("Reem")     | `/api/chatbot`               | Vercel AI SDK 7 → `@ai-sdk/openai` (Responses API) | Streamed replies, client‑held history, spam/prompt sanitation, consent‑gated logging |
 | Automation Audit     | `/api/automation-audit`      | OpenAI Chat Completions    | Structured JSON audit result, dedicated rate limiter      |
-| Polite Email Rewriter| `/api/email-rewrite/*`       | Groq (`openai/gpt-oss-120b`) | Analyze / rewrite / remaining‑quota endpoints            |
 
 Shared controls across all AI routes:
 
@@ -142,7 +141,7 @@ Chatbot specifics since the AI SDK migration:
 * Failures cross the wire as bare codes (`RATE_LIMIT_EXCEEDED`, `QUOTA_EXCEEDED`, …) that the client maps onto translated strings — no provider text ever reaches the UI
 * Consent‑gated persistence runs in the stream's `onFinish`, skipped when the visitor aborts
 
-> **Not yet migrated:** `/api/automation-audit` and `/api/email-rewrite/*` still call their providers through hand‑rolled `fetch` wrappers with bespoke response‑shape parsing.
+> **Not yet migrated:** `/api/automation-audit` still calls its provider through a hand‑rolled `fetch` wrapper with bespoke response‑shape parsing.
 
 ---
 
@@ -153,7 +152,6 @@ Self‑contained interactive tools that demonstrate applied automation and AI wo
 | Tool                | Route                | Description                                                                 |
 | --- | --- | --- |
 | ROI Calculator      | `/rio-calculator`    | Client‑side calculator estimating automation return on investment           |
-| Polite Email        | `/polite-email`      | Tone analysis and rewriting with selectable modes, quota‑limited per visitor |
 | Automation Audit    | `/automation-audit`  | Guided multi‑step questionnaire producing a scored audit + recommendations   |
 
 Each tool ships with typed data/config modules under `data/live-tools/`, dedicated types under `types/live-tools/`, and Playwright coverage in `tests/e2e/live-tools.spec.ts`.
@@ -243,9 +241,6 @@ Comprehensive API endpoints with security-first design:
 | `/api/speed-insight`            | Surfaces PageSpeed metrics                         | 1h revalidate, `stale-while-revalidate`   |
 | `/api/chatbot`                  | Interactive AI chatbot (Reem) for visitor queries  | Vercel AI SDK 7, SSE streamed              |
 | `/api/automation-audit`         | Scored automation audit generation                 | OpenAI Chat Completions + audit rate limit |
-| `/api/email-rewrite/analyze`    | Tone/intent analysis of a draft email              | Groq                                      |
-| `/api/email-rewrite/rewriter`   | Rewrites a draft in the selected mode              | Groq                                      |
-| `/api/email-rewrite/remaining`  | Remaining per‑visitor quota                        | Rate-limit introspection                  |
 | `/api/admin/blog`               | Administrative blog CRUD                           | HMAC session + rate limited               |
 | `/api/admin/chatbot/logs`       | Consent‑gated chat log review                      | HMAC session + rate limited               |
 
