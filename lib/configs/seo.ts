@@ -41,13 +41,60 @@ export function generateStructuredData(config: SEOConfig) {
     ],
     knowsAbout: config.structured.skills,
     address: {
-      "@type": "Place",
-      name: config.structured.location,
+      "@type": "PostalAddress",
+      addressLocality: config.structured.address.locality,
+      postalCode: config.structured.address.postalCode,
+      addressRegion: config.structured.address.region,
+      addressCountry: config.structured.address.country,
     },
     worksFor: {
       "@type": "Organization",
       name: "Freelance",
     },
+  };
+}
+
+/**
+ * Generate LocalBusiness (ProfessionalService) structured data so Google has a
+ * real local-relevance signal for "web design near me" style queries, distinct
+ * from the Person schema above. Uses city + postal code only — the exact street
+ * address is intentionally confined to the Impressum page.
+ *
+ * TODO: once the Google Business Profile is claimed/verified, append its URL to
+ * `sameAs` below.
+ */
+export function generateLocalBusinessStructuredData(config: SEOConfig) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: config.siteName,
+    url: config.siteUrl,
+    image: `${config.siteUrl}${config.openGraph.image}`,
+    email: config.structured.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: config.structured.address.locality,
+      postalCode: config.structured.address.postalCode,
+      addressRegion: config.structured.address.region,
+      addressCountry: config.structured.address.country,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: config.structured.geo.latitude,
+      longitude: config.structured.geo.longitude,
+    },
+    areaServed: config.structured.areaServed.map((city) => ({
+      "@type": "City",
+      name: city,
+    })),
+    founder: {
+      "@type": "Person",
+      name: config.structured.name,
+    },
+    sameAs: [
+      config.structured.github,
+      ...(config.structured.linkedIn ? [config.structured.linkedIn] : []),
+    ],
   };
 }
 
@@ -168,6 +215,69 @@ function buildCommonMetadata(
       card: config.twitter.cardType,
       title,
       description,
+      creator: config.twitter.handle,
+      images: [imageUrl],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large" as const,
+        "max-snippet": -1,
+      },
+    },
+  };
+}
+
+/**
+ * Generate SEO metadata for the homepage.
+ *
+ * Can't reuse `buildCommonMetadata` as-is: `config.title` here is already the
+ * complete homepage title (e.g. "Yazan Abo-Ayash | Full Stack Developer
+ * Portfolio - ColdByDefault™"), while `buildCommonMetadata` appends
+ * `| ${siteName}` on top of whatever title it's given — that would double up
+ * the site name. This mirrors `buildCommonMetadata`'s shape otherwise.
+ */
+export function generateHomeSEO(locale: string = "en") {
+  const config = getConfigByLocale(locale);
+  const imageUrl = config.openGraph.image;
+
+  return {
+    title: {
+      absolute: config.title,
+    },
+    description: config.description,
+    keywords: config.keywords,
+    authors: [{ name: config.author }],
+    creator: config.author,
+    publisher: config.siteName,
+    metadataBase: new URL(config.siteUrl),
+    alternates: {
+      canonical: config.siteUrl,
+    },
+    openGraph: {
+      title: config.openGraph.title,
+      description: config.openGraph.description,
+      url: config.siteUrl,
+      siteName: config.siteName,
+      type: "website" as const,
+      locale: config.locale,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: config.openGraph.imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: config.twitter.cardType,
+      title: config.openGraph.title,
+      description: config.openGraph.description,
       creator: config.twitter.handle,
       images: [imageUrl],
     },

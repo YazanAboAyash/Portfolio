@@ -752,6 +752,20 @@
         "finalPrice": "Los precios definitivos se fijan en su presupuesto tras la llamada de alcance."
       }
     },
+    "serviceArea": {
+      "title": "Tu desarrollador Full-Stack en la región metropolitana de Rhein-Neckar",
+      "subtitle": "Con sede en Schwetzingen, Alemania — trabajo presencialmente con clientes en Mannheim, Heidelberg, Ludwigshafen y la región, y de forma remota con clientes de cualquier lugar.",
+      "citiesLabel": "Cobertura presencial en:",
+      "cities": [
+        "Schwetzingen",
+        "Mannheim",
+        "Heidelberg",
+        "Ludwigshafen am Rhein",
+        "Speyer",
+        "Walldorf"
+      ],
+      "note": "Las reuniones presenciales están disponibles bajo petición — la colaboración diaria es remota y asíncrona, para una respuesta rápida sin tiempos de viaje."
+    },
     "process": {
       "title": "Cómo Funciona",
       "subtitle": "Un proceso claro y predecible desde la primera llamada hasta el lanzamiento.",

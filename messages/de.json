@@ -752,6 +752,20 @@
         "finalPrice": "Endgültige Preise werden nach dem Scoping-Call in Ihrem Angebot fixiert."
       }
     },
+    "serviceArea": {
+      "title": "Ihr Full-Stack-Entwickler in der Metropolregion Rhein-Neckar",
+      "subtitle": "Ansässig in Schwetzingen — ich arbeite vor Ort mit Kunden in Mannheim, Heidelberg, Ludwigshafen und der Region, remote mit Kunden überall.",
+      "citiesLabel": "Vor Ort unter anderem in:",
+      "cities": [
+        "Schwetzingen",
+        "Mannheim",
+        "Heidelberg",
+        "Ludwigshafen am Rhein",
+        "Speyer",
+        "Walldorf"
+      ],
+      "note": "Persönliche Termine vor Ort sind auf Anfrage möglich — die Zusammenarbeit selbst läuft in der Regel remote und asynchron, für schnelle Abstimmung ohne Reisezeit."
+    },
     "process": {
       "title": "So funktioniert's",
       "subtitle": "Ein klarer, vorhersehbarer Prozess vom ersten Anruf bis zum Launch.",

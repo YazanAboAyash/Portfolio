@@ -791,6 +791,20 @@
       },
       "emailNote": "Contact forms and notification emails need a sending route — usually your existing business mailbox via SMTP at no extra cost. Brevo, Mailjet or Resend are available if you need something else."
     },
+    "serviceArea": {
+      "title": "Your Full-Stack Developer in the Rhine-Neckar Metro Area",
+      "subtitle": "Based in Schwetzingen, Germany — working on-site with clients in Mannheim, Heidelberg, Ludwigshafen and the wider region, and remotely with clients anywhere.",
+      "citiesLabel": "On-site coverage includes:",
+      "cities": [
+        "Schwetzingen",
+        "Mannheim",
+        "Heidelberg",
+        "Ludwigshafen am Rhein",
+        "Speyer",
+        "Walldorf"
+      ],
+      "note": "In-person meetings are available on request — day-to-day collaboration runs remote and asynchronous, for fast turnaround without travel time."
+    },
     "process": {
       "title": "How It Works",
       "subtitle": "A clear, predictable process from first call to launch.",

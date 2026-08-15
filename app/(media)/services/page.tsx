@@ -20,6 +20,7 @@ import {
   Code,
   ClipboardCheck,
   HeartHandshake,
+  MapPin,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -114,6 +115,47 @@ function PackageNotes({ t }: { t: ReturnType<typeof useTranslations> }) {
         </CardContent>
       </Card>
     </aside>
+  );
+}
+
+/**
+ * Service area section: names the Rhein-Neckar cities served on-site, for
+ * local search relevance (Schwetzingen, Mannheim, Heidelberg, and neighbors).
+ */
+function ServiceArea({ t }: { t: ReturnType<typeof useTranslations> }) {
+  const cities = t.raw("serviceArea.cities") as string[];
+
+  return (
+    <div className="max-w-3xl mx-auto space-y-6 text-center">
+      <div className="flex justify-center">
+        <div className="w-12 h-12 bg-sky-500/10 rounded-full flex items-center justify-center">
+          <MapPin className="h-6 w-6 text-sky-500" />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <h2 className="text-2xl md:text-3xl font-bold">
+          {t("serviceArea.title")}
+        </h2>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          {t("serviceArea.subtitle")}
+        </p>
+      </div>
+      <div className="space-y-3">
+        <p className="text-sm font-medium text-muted-foreground">
+          {t("serviceArea.citiesLabel")}
+        </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {cities.map((city) => (
+            <Badge key={city} variant="secondary">
+              {city}
+            </Badge>
+          ))}
+        </div>
+      </div>
+      <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+        {t("serviceArea.note")}
+      </p>
+    </div>
   );
 }
 
@@ -238,6 +280,11 @@ export default function ServicesPage() {
               ))}
             </m.div>
           </div>
+        </section>
+
+        {/* Service Area Section */}
+        <section className="py-16 px-4 lg:px-8">
+          <ServiceArea t={t} />
         </section>
 
         {/* Stack & Delivery Section */}

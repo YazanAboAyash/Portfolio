@@ -23,7 +23,12 @@ import { CookiesBanner, ConsentedAnalytics } from "@/components/cookies";
 import { LocaleAutoDetect } from "@/components/languages";
 import { ChatBot } from "@/components/chatbot";
 import { NoSSR } from "@/components/NoSSR";
-import { seoConfigEN, generateStructuredData } from "@/lib/configs/seo";
+import {
+  seoConfigEN,
+  seoConfigDE,
+  generateStructuredData,
+  generateLocalBusinessStructuredData,
+} from "@/lib/configs/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Urbanist } from "next/font/google";
@@ -67,20 +72,22 @@ export const metadata = {
   },
 };
 
-const structuredData = generateStructuredData(seoConfigEN);
-
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const messages = await getMessages();
   const locale = await getLocale();
+  const seoConfig = locale === "de" ? seoConfigDE : seoConfigEN;
+  const structuredData = generateStructuredData(seoConfig);
+  const localBusinessStructuredData =
+    generateLocalBusinessStructuredData(seoConfig);
   return (
     <html lang={locale}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content={seoConfigEN.author} />
-        <meta name="keywords" content={seoConfigEN.keywords.join(", ")} />
+        <meta name="author" content={seoConfig.author} />
+        <meta name="keywords" content={seoConfig.keywords.join(", ")} />
 
         {/* Disable browser auto-translation */}
         <meta name="google" content="notranslate" />
@@ -115,11 +122,20 @@ export default async function RootLayout({
           href="https://generativelanguage.googleapis.com"
         />
 
-        {/* Structured Data - JSON-LD for SEO rich snippets */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        {/*
+          Structured Data - JSON-LD for SEO rich snippets.
+          Passed as JSX children (not dangerouslySetInnerHTML): both payloads
+          are built entirely from static config, never user input, but
+          dangerouslySetInnerHTML is still what CodeQL's XSS queries key on,
+          and raw HTML injection is genuinely riskier here too — a literal
+          "</script>" inside dangerouslySetInnerHTML's __html would prematurely
+          close the tag during SSR since it bypasses escaping. Children are
+          HTML-escaped by React during serialization, so neither risk applies.
+        */}
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessStructuredData)}
+        </script>
       </head>
       <body className={`${urbanist.variable} flex flex-col min-h-screen`}>
         {/* Skip to main content for accessibility */}

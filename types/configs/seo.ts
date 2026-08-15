@@ -31,7 +31,17 @@ export interface SEOConfig {
     jobTitle: string;
     description: string;
     skills: string[];
-    location: string;
+    address: {
+      locality: string;
+      postalCode: string;
+      region: string;
+      country: string;
+    };
+    geo: {
+      latitude: number;
+      longitude: number;
+    };
+    areaServed: string[];
     email: string;
     github: string;
     linkedIn?: string;

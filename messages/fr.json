@@ -752,6 +752,20 @@
         "finalPrice": "Les prix définitifs sont fixés dans votre devis après l'appel de cadrage."
       }
     },
+    "serviceArea": {
+      "title": "Votre développeur Full-Stack dans la région métropolitaine de Rhein-Neckar",
+      "subtitle": "Basé à Schwetzingen, en Allemagne — je travaille sur place avec des clients à Mannheim, Heidelberg, Ludwigshafen et dans toute la région, et à distance avec des clients partout ailleurs.",
+      "citiesLabel": "Zone de couverture sur place :",
+      "cities": [
+        "Schwetzingen",
+        "Mannheim",
+        "Heidelberg",
+        "Ludwigshafen am Rhein",
+        "Speyer",
+        "Walldorf"
+      ],
+      "note": "Les rendez-vous en personne sont possibles sur demande — la collaboration au quotidien se fait à distance et de manière asynchrone, pour une réactivité rapide sans temps de déplacement."
+    },
     "process": {
       "title": "Comment Ça Marche",
       "subtitle": "Un processus clair et prévisible du premier appel au lancement.",
