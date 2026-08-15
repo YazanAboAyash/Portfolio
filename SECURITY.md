@@ -19,7 +19,7 @@ If you discover a security vulnerability, please follow these steps:
 
 ### Where to Report
 
-**Email**: See Contact Information. 
+**Email**: contact@yazan-abo-ayash.de  
 
 ## Security Audit History
 

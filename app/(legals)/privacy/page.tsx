@@ -304,9 +304,6 @@ export default async function Privacy() {
           {/* Other AI-backed tools */}
           <Section id="ai-tools" title={t("aiTools.title")}>
             <Prose>{t("aiTools.description")}</Prose>
-            <Item title={t("aiTools.emailTitle")}>
-              {t("aiTools.emailDescription")}
-            </Item>
             <Item title={t("aiTools.auditTitle")}>
               {t("aiTools.auditDescription")}
             </Item>
@@ -326,7 +323,7 @@ export default async function Privacy() {
           <Section id="recipients" title={t("recipients.title")}>
             <Prose>{t("recipients.description")}</Prose>
             <div className="space-y-3">
-              {(["vercel", "openai", "groq", "calendly"] as const).map((key) => (
+              {(["vercel", "openai", "calendly"] as const).map((key) => (
                 <Item
                   key={key}
                   as="h3"

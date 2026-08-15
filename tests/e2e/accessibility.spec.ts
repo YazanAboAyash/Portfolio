@@ -15,7 +15,6 @@ const accessibilityRoutes = [
   { label: "project cards", path: "/projects" },
   { label: "blog list", path: "/blog" },
   { label: "ROI calculator", path: "/rio-calculator" },
-  { label: "email rewriter", path: "/polite-email" },
   { label: "booking confirmation page", path: "/booking-confirmed" },
   { label: "impressum page", path: "/impressum" },
   { label: "privacy page", path: "/privacy" },

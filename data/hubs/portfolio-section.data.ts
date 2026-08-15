@@ -325,7 +325,7 @@ export const routeStructure = {
     {
       name: "(live-tools)",
       description: "Interactive tool pages",
-      routes: ["automation-audit", "polite-email", "rio-calculator"],
+      routes: ["automation-audit", "rio-calculator"],
       layout: "Tool-focused layout with shared loading state",
     },
     {
@@ -347,7 +347,6 @@ export const routeStructure = {
     "api/automation-audit/*",
     "api/blog/*",
     "api/chatbot/*",
-    "api/email-rewrite/*",
     "api/github/*",
     "api/speed-insight/*",
   ],

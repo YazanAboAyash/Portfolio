@@ -8,7 +8,7 @@ See also `.github/copilot-instructions.md` for the VS Code Copilot-specific vers
 ## Project Overview
 
 Personal portfolio of Yazan Abo-Ayash (ColdByDefault). Deployed at `coldbydefault.com` on Vercel.
-Features: blog, projects, services, about, live tools (email rewriter, ROI calculator), admin dashboard, AI chatbot.
+Features: blog, projects, services, about, live tools (automation audit, ROI calculator), admin dashboard, AI chatbot.
 
 ---
 
@@ -32,14 +32,13 @@ Features: blog, projects, services, about, live tools (email rewriter, ROI calcu
 ```
 app/                        Next.js App Router
   (legals)/                 Route group — impressum, privacy
-  (live-tools)/             Route group — polite-email, rio-calculator
+  (live-tools)/             Route group — automation-audit, rio-calculator
   (media)/                  Route group — about, about-portfolio, blog, projects, services
   admin/                    Protected admin dashboard (blog management, chatbot config)
   api/                      API routes
     admin/                  Admin CRUD (auth-gated independently of proxy)
     blog/                   Public blog API
     chatbot/                AI chatbot endpoint
-    email-rewrite/          Email rewriter (live tool)
     github/                 GitHub stats
     speed-insight/          Vercel Speed Insights proxy
   booking-confirmed/        Post-booking page

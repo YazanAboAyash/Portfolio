@@ -76,7 +76,6 @@ export const REEM_FACTS = {
     booking: "https://calendly.com/abo-ayash-yazan/intro-call",
     email: "mailto:contact@yazan-abo-ayash.de",
     demos: {
-      emailAutomation: "/polite-email",
       meetingIntelligence:
         "https://github.com/yazanaboayash/meeting-intelligence",
       princeps: "https://github.com/yazanaboayash/princeps",

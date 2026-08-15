@@ -5,7 +5,7 @@
  */
 
 import type { UseCaseProject } from "@/types/hubs/use-cases";
-import { Bot, Mic, Mail } from "lucide-react";
+import { Bot, Mic } from "lucide-react";
 
 export const useCaseProjects: UseCaseProject[] = [
   {
@@ -46,24 +46,5 @@ export const useCaseProjects: UseCaseProject[] = [
     githubLink: "https://github.com/yazanaboayash/meeting-intelligence",
     implementationAreasKey: "Usecases.projects.project-1.implementationAreas",
     icon: Mic,
-  },
-  {
-    id: "project-3",
-    titleKey: "Usecases.projects.project-3.title",
-    descriptionKey: "Usecases.projects.project-3.description",
-    screenshots: [
-      "/assets/use-cases/use-case3-1.png",
-      "/assets/use-cases/use-case3-2.png",
-    ],
-    techStack: [
-      { name: "Next.js" },
-      { name: "TypeScript" },
-      { name: "Groq AI" },
-      { name: "RAG" },
-    ],
-    demoLink: "https://coldbydefault.com/polite-email",
-    githubLink: "",
-    implementationAreasKey: "Usecases.projects.project-3.implementationAreas",
-    icon: Mail,
   },
 ];

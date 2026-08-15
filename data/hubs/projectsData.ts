@@ -85,22 +85,6 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 4,
-    title: "AI Email Automation Demo",
-    description: "aiEmailAutomation",
-    image: "/assets/projects/email-ai.png",
-    technologies: ["Next.js", "TypeScript", "Groq AI", "RAG"],
-    githubUrl: "",
-    liveUrl: "",
-    featured: false,
-    category: "aiMl",
-    license: {
-      type: "copyright",
-      text: "copyright",
-      variant: "destructive",
-    },
-  },
-  {
     id: 5,
     title: "next-seo-lite",
     description: "nextJsSeoOptimization",
@@ -158,5 +142,3 @@ export const projects: Project[] = [
     },
   },
 ];
-
-export const projectCategories = ["all", "webDevelopment", "fullStack", "aiMl"];

@@ -154,7 +154,6 @@
   "Projects": {
     "title": "Mina projekt",
     "categories": {
-      "all": "Alla",
       "webDevelopment": "Webbutveckling",
       "fullStack": "Fullstack",
       "aiMl": "AI/ML"
@@ -165,7 +164,6 @@
       "llmAgent": "AI-chatbot baserad på lokal Ollama, anpassningsbar för att använda vilken LLM-modell som helst, valfri embedding-modell samt två alternativ för vektordatabas: lokal Postgres eller DataStax Astra. Kan läsa webbsidor och svara på frågor baserat på innehållet. Mer kommer snart... Öppen källkod.",
       "subsApi": "API för att hantera användarprenumerationer, inklusive fakturering och betalningshantering. Byggt med Next.js och integrerat med Stripe för säkra betalningar.",
       "voiceToNotion": "Omvandlar röstmemon och mötesinspelningar till strukturerade Notion-sidor med transkriptioner, sammanfattningar och åtgärdspunkter. Automatiserar administrativt arbete efter möten på under 30 sekunder.",
-      "aiEmailAutomation": "En interaktiv demo som använder RAG för att analysera e-post och erbjuder valbara svarsalternativ och tonbaserad omskrivning. Illustrerar ett arbetsflöde som körs helt autonomt i produktionsmiljöer.",
       "nextJsSeoOptimization": "Ett lättviktigt SEO-hjälppaket utan körtidsberoenden för Next.js App Router. Omvandlar enkla props till ett komplett Metadata-objekt — OpenGraph, Twitter Cards, kanoniska URL:er, hreflang-alternativ och JSON-LD strukturerade data. Publicerat på npm som @coldbydefault/next-seo-lite.",
       "customizableBetterAuth": "En färdig, fullt anpassningsbar autentiseringslösning byggd med Better Auth och Next.js. Stöder flera autentiseringsleverantörer och kan enkelt integreras i vilket projekt som helst.",
       "princeps": "Privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat. Innehåller en AI-chattassistent med RAG-kunskapsbas, uppgiftshantering, kontakter, möten, beslut, mål och proaktiva aviseringar — allt lagrat i en enda PostgreSQL-databas med pgvector."
@@ -185,7 +183,6 @@
     "npmPackage": "npm",
     "liveDemo": "Live-demo",
     "featuredProject": "Utvalt projekt",
-    "noProjectsFound": "Inga projekt hittades i denna kategori.",
     "licenses": {
       "copyright": "Alla rättigheter förbehållna",
       "openSource": "Modifierad MIT-licens",
@@ -243,7 +240,7 @@
     },
     "overview": {
       "title": "Översikt",
-      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. Vissa funktioner – AI-assistenten, e-postverktyget, automatiseringsgenomgången och tidsbokningen – överför uppgifter till externa tjänsteleverantörer, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
+      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. Vissa funktioner – AI-assistenten, automatiseringsgenomgången och tidsbokningen – överför uppgifter till externa tjänsteleverantörer, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
       "keyPoint": "Vad detta innebär i praktiken",
       "keyPointDescription": "Du kan läsa den här webbplatsen utan att identifiera dig. Det förekommer ingen reklam, ingen spårning mellan webbplatser och ingen profilering. Samtidigt är din IP-adress och allt du skriver in i assistenten eller AI-verktygen personuppgifter – avsnitten nedan förklarar exakt vad som händer med dem, på vilken rättslig grund och hur länge något sparas."
     },
@@ -313,8 +310,6 @@
     "aiTools": {
       "title": "AI-baserade verktyg",
       "description": "Vissa verktyg på webbplatsen skickar den text du matar in till externa AI-leverantörer för att ta fram ett resultat. Texten behandlas för att besvara din begäran och lagras därefter inte av mig.",
-      "emailTitle": "E-postassistent",
-      "emailDescription": "Det e-postmeddelande du klistrar in, tillsammans med den kontext du lägger till, överförs till Groq, Inc. för analys och omformulering. Ange inte personuppgifter om tredje part som du inte har rätt att lämna vidare.",
       "auditTitle": "Automatiseringsgenomgång",
       "auditDescription": "De svar du lämnar i genomgången överförs till OpenAI för att generera utvärderingen.",
       "legalBasis": "Rättslig grund: art. 6.1 b GDPR – utförande av en tjänst du aktivt begärt; art. 6.1 f GDPR för säker drift av verktyget."
@@ -337,11 +332,6 @@
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
         "purpose": "Genererar AI-assistentens svar och resultatet av automatiseringsgenomgången.",
-        "location": "USA."
-      },
-      "groq": {
-        "name": "Groq, Inc.",
-        "purpose": "Analyserar och skriver om texten som skickas till e-postassistenten.",
         "location": "USA."
       },
       "calendly": {
@@ -762,6 +752,20 @@
         "finalPrice": "Slutliga priser fastställs i er offert efter avgränsningssamtalet."
       }
     },
+    "serviceArea": {
+      "title": "Din Full-Stack-utvecklare i storstadsregionen Rhein-Neckar",
+      "subtitle": "Baserad i Schwetzingen, Tyskland — jag arbetar på plats med kunder i Mannheim, Heidelberg, Ludwigshafen och regionen, och på distans med kunder var som helst.",
+      "citiesLabel": "Täcker på plats bland annat:",
+      "cities": [
+        "Schwetzingen",
+        "Mannheim",
+        "Heidelberg",
+        "Ludwigshafen am Rhein",
+        "Speyer",
+        "Walldorf"
+      ],
+      "note": "Personliga möten går att boka på förfrågan — det dagliga samarbetet sker på distans och asynkront, för snabb respons utan restid."
+    },
     "process": {
       "title": "Så Fungerar Det",
       "subtitle": "En tydlig, förutsägbar process från första samtalet till lansering.",
@@ -858,12 +862,6 @@
         "description2": "Beräkna automatiseringsbesparingar och ROI.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
-      },
-      "project-3": {
-        "title": "AI-demo för e-postautomatisering",
-        "description": "En interaktiv demo som använder RAG för e-postanalys, med svarsalternativ och omskrivning baserad på tonläge. Visar en process som i produktion körs helt automatiskt.",
-        "techStack": "React, Groq API, RAG",
-        "implementationAreas": "E-postautomatisering, NLP, Innehållsgenerering"
       },
       "project-4": {
         "title": "AI-automationsmognadsaudit",
@@ -980,20 +978,6 @@
           "c": "Växa utan att anställa",
           "d": "Sänka driftskostnader"
         }
-      }
-    },
-    "rewriter": {
-      "title": "E-postanalys",
-      "summary": "Sammanfattning",
-      "keyPoints": "Huvudpunkter",
-      "chooseResponse": "Välj ett svar",
-      "selected": "Vald",
-      "copied": "Kopierad",
-      "copy": "Kopiera",
-      "contextInput": {
-        "title": "Anpassat sammanhang (RAG)",
-        "infoText": "Lägg till anpassat sammanhang som AI:n kommer att använda när den analyserar eller skriver om e-postmeddelanden. Detta kan inkludera företagspolicyer, riktlinjer för kommunikation, projektdetaljer eller annan relevant bakgrundsinformation.",
-        "placeholder": "Exempel: Vår företagspolicy är att svara inom 24 timmar. Vi erbjuder 30 dagars öppet köp. Projektets deadline är den 15 mars..."
       }
     }
   },

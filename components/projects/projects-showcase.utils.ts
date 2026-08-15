@@ -7,12 +7,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { projects, projectCategories } from "@/data/hubs/projectsData";
-import type {
-  UseProjectLogicReturn,
-  UseProjectsFilterReturn,
-  Project,
-} from "@/types/hubs/projects";
+import type { UseProjectLogicReturn, Project } from "@/types/hubs/projects";
 
 /**
  * Derives the GitHub social preview (OG) image URL from a repo URL.
@@ -56,28 +51,6 @@ export function useProjectLogic(): UseProjectLogicReturn {
 }
 
 /**
- * Custom hook for handling projects filtering
- */
-export function useProjectsFilter(): UseProjectsFilterReturn {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const filteredProjects = projects.filter(
-    (project) =>
-      selectedCategory === "all" || project.category === selectedCategory,
-  );
-
-  const handleCategoryChange = useCallback((category: string) => {
-    setSelectedCategory(category);
-  }, []);
-
-  return {
-    selectedCategory,
-    setSelectedCategory: handleCategoryChange,
-    filteredProjects,
-  };
-}
-
-/**
  * Custom hook for handling text truncation detection
  */
 export function useTruncationDetection(description: string) {
@@ -102,13 +75,6 @@ export function useTruncationDetection(description: string) {
     isTruncated,
     descriptionRef,
   };
-}
-
-/**
- * Utility to get all project categories
- */
-export function getAllCategories() {
-  return projectCategories;
 }
 
 /**

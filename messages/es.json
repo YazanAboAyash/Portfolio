@@ -154,7 +154,6 @@
   "Projects": {
     "title": "Mis proyectos",
     "categories": {
-      "all": "Todos",
       "webDevelopment": "Desarrollo web",
       "fullStack": "Full Stack",
       "aiMl": "IA/ML"
@@ -165,7 +164,6 @@
       "llmAgent": "Chatbot de IA local basado en ollama, personalizable para usar cualquier modelo LLM y cualquier modelo de embeddings, con 2 opciones de base de datos vectorial: Postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Próximamente habrá más... Código abierto.",
       "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros.",
       "voiceToNotion": "Transforma notas de voz y grabaciones de reuniones en páginas estructuradas de Notion con transcripciones, resúmenes y elementos de acción. Automatiza el trabajo administrativo post-reunión en menos de 30 segundos.",
-      "aiEmailAutomation": "Una demostración interactiva que utiliza RAG para analizar correos electrónicos, ofreciendo opciones de respuesta seleccionables y reescritura basada en tono. Ilustra un flujo de trabajo que funciona completamente de forma autónoma en entornos de producción.",
       "nextJsSeoOptimization": "Un asistente SEO ligero y sin dependencias de runtime para el App Router de Next.js. Convierte props simples en un objeto Metadata completo — OpenGraph, Twitter Cards, URLs canónicas, alternativas hreflang y datos estructurados JSON-LD. Publicado en npm como @coldbydefault/next-seo-lite.",
       "customizableBetterAuth": "Una solución de autenticación lista para usar y totalmente personalizable construida con Better Auth y Next.js. Soporta múltiples proveedores de autenticación y se integra fácilmente en cualquier proyecto.",
       "princeps": "Espacio de trabajo de IA privado que actúa como secretaría ejecutiva personal. Incluye un asistente de chat IA con base de conocimiento RAG, gestión de tareas, contactos, reuniones, decisiones, objetivos y notificaciones proactivas — todo almacenado en una única base de datos PostgreSQL con pgvector."
@@ -185,7 +183,6 @@
     "npmPackage": "npm",
     "liveDemo": "Demo en vivo",
     "featuredProject": "Proyecto destacado",
-    "noProjectsFound": "No se encontraron proyectos en esta categoría.",
     "licenses": {
       "copyright": "Todos los derechos reservados",
       "openSource": "Licencia MIT modificada",
@@ -243,7 +240,7 @@
     },
     "overview": {
       "title": "Resumen",
-      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Algunas funciones —el asistente de IA, la herramienta de correo, la auditoría de automatización y la reserva de citas— transmiten datos a proveedores externos, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
+      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Algunas funciones —el asistente de IA, la auditoría de automatización y la reserva de citas— transmiten datos a proveedores externos, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
       "keyPoint": "Qué significa esto en la práctica",
       "keyPointDescription": "Puede leer este sitio sin identificarse. No hay publicidad, ni seguimiento entre sitios, ni elaboración de perfiles. Al mismo tiempo, su dirección IP y todo lo que escriba en el asistente o en las herramientas de IA son datos personales: las secciones siguientes explican exactamente qué ocurre con ellos, sobre qué base jurídica y durante cuánto tiempo se conservan."
     },
@@ -313,8 +310,6 @@
     "aiTools": {
       "title": "Herramientas basadas en IA",
       "description": "Algunas herramientas de este sitio envían el texto que usted introduce a proveedores externos de IA para producir un resultado. Ese texto se trata para atender su solicitud y después no lo almaceno.",
-      "emailTitle": "Asistente de correo electrónico",
-      "emailDescription": "El correo que pegue, junto con el contexto que añada, se transmite a Groq, Inc. para su análisis y reescritura. Por favor, no introduzca datos personales de terceros que no esté autorizado a comunicar.",
       "auditTitle": "Auditoría de automatización",
       "auditDescription": "Las respuestas que facilite en la auditoría se transmiten a OpenAI para generar la evaluación.",
       "legalBasis": "Base jurídica: art. 6.1.b del RGPD — prestación de un servicio que usted ha solicitado activamente; art. 6.1.f del RGPD para el funcionamiento seguro de la herramienta."
@@ -337,11 +332,6 @@
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
         "purpose": "Genera las respuestas del asistente de IA y el resultado de la auditoría de automatización.",
-        "location": "Estados Unidos."
-      },
-      "groq": {
-        "name": "Groq, Inc.",
-        "purpose": "Analiza y reescribe el texto enviado al asistente de correo electrónico.",
         "location": "Estados Unidos."
       },
       "calendly": {
@@ -762,6 +752,20 @@
         "finalPrice": "Los precios definitivos se fijan en su presupuesto tras la llamada de alcance."
       }
     },
+    "serviceArea": {
+      "title": "Tu desarrollador Full-Stack en la región metropolitana de Rhein-Neckar",
+      "subtitle": "Con sede en Schwetzingen, Alemania — trabajo presencialmente con clientes en Mannheim, Heidelberg, Ludwigshafen y la región, y de forma remota con clientes de cualquier lugar.",
+      "citiesLabel": "Cobertura presencial en:",
+      "cities": [
+        "Schwetzingen",
+        "Mannheim",
+        "Heidelberg",
+        "Ludwigshafen am Rhein",
+        "Speyer",
+        "Walldorf"
+      ],
+      "note": "Las reuniones presenciales están disponibles bajo petición — la colaboración diaria es remota y asíncrona, para una respuesta rápida sin tiempos de viaje."
+    },
     "process": {
       "title": "Cómo Funciona",
       "subtitle": "Un proceso claro y predecible desde la primera llamada hasta el lanzamiento.",
@@ -858,12 +862,6 @@
         "description2": "Calcule ahorros y ROI de automatización.",
         "techStack": "React, TypeScript, Tailwind CSS",
         "implementationAreas": "Análisis financiero, Automatización de procesos de negocio, Optimización de costes"
-      },
-      "project-3": {
-        "title": "Demo de Automatización de Email con IA",
-        "description": "Una demo interactiva que usa RAG para analizar correos, ofreciendo opciones de respuesta y reescritura por tono. Ilustra un proceso que funciona de forma totalmente autónoma en producción.",
-        "techStack": "React, Groq API, RAG",
-        "implementationAreas": "Automatización de correos, NLP, Generación de contenido"
       },
       "project-4": {
         "title": "Auditoría de Preparación para la Automatización con IA",
@@ -980,20 +978,6 @@
           "c": "Escalar sin contratar",
           "d": "Reducir costos operativos"
         }
-      }
-    },
-    "rewriter": {
-      "title": "Análisis de correo electrónico",
-      "summary": "Resumen",
-      "keyPoints": "Puntos clave",
-      "chooseResponse": "Elegir una respuesta",
-      "selected": "Seleccionado",
-      "copied": "Copiado",
-      "copy": "Copiar",
-      "contextInput": {
-        "title": "Contexto personalizado (RAG)",
-        "infoText": "Añade contexto personalizado que la IA utilizará al analizar o reescribir correos electrónicos. Esto podría incluir políticas de la empresa, guías de comunicación, detalles del proyecto o cualquier información de fondo relevante.",
-        "placeholder": "Ejemplo: Nuestra política de empresa es responder en 24 horas. Ofrecemos una garantía de devolución de 30 días. La fecha límite del proyecto es el 15 de marzo..."
       }
     }
   },

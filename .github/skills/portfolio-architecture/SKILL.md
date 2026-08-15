@@ -34,7 +34,7 @@ app/                      Next.js App Router pages
   (live-tools)/           Route group — interactive tools
   (media)/                Route group — content pages (about, blog, projects, services)
   admin/                  Protected admin dashboard
-  api/                    API routes (admin, blog, chatbot, github, email-rewrite, speed-insight)
+  api/                    API routes (admin, blog, chatbot, github, automation-audit, speed-insight)
   booking-confirmed/      Post-booking confirmation page
 
 components/               All UI components

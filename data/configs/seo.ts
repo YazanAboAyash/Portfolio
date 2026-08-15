@@ -67,6 +67,25 @@ const COMMON_CONCEPTS_DE = [
   "MVP Entwicklung",
 ];
 
+// Regional keywords for local SEO around Schwetzingen / the Rhein-Neckar metro
+// area. German set is the primary target; English set is a lighter subset for
+// non-German searchers who still search by region name.
+const REGIONAL_KEYWORDS_DE = [
+  "Webdesign Schwetzingen",
+  "Webentwickler Mannheim",
+  "Webagentur Heidelberg",
+  "Full Stack Entwickler Rhein-Neckar",
+  "Webentwicklung Ludwigshafen",
+  "Softwareentwicklung Metropolregion Rhein-Neckar",
+];
+
+const REGIONAL_KEYWORDS_EN = [
+  "Web Developer Rhein-Neckar",
+  "Web Developer Mannheim",
+  "Web Developer Heidelberg",
+  "Full Stack Developer Schwetzingen Germany",
+];
+
 // Base configuration with shared values to reduce duplication
 export const BASE_CONFIG = {
   author: "Yazan Abo-Ayash (ColdByDefault™)",
@@ -97,6 +116,26 @@ export const BASE_CONFIG = {
       "Git",
       "Tailwind CSS",
     ],
+    // City + postal code only — the exact street address stays confined to the
+    // Impressum. Coordinates are Schwetzingen's town center, not the home address.
+    address: {
+      locality: "Schwetzingen",
+      postalCode: "68723",
+      region: "Baden-Württemberg",
+      country: "DE",
+    },
+    geo: {
+      latitude: 49.3838,
+      longitude: 8.5686,
+    },
+    areaServed: [
+      "Schwetzingen",
+      "Mannheim",
+      "Heidelberg",
+      "Ludwigshafen am Rhein",
+      "Speyer",
+      "Walldorf",
+    ],
   },
 };
 
@@ -110,6 +149,7 @@ export const seoConfigEN: SEOConfig = {
     ...COMMON_TECH_KEYWORDS.map((tech) => `${tech} Developer`),
     "Computer Science Student",
     ...COMMON_CONCEPTS_EN,
+    ...REGIONAL_KEYWORDS_EN,
   ],
   ...BASE_CONFIG,
   locale: "en_US",
@@ -127,7 +167,6 @@ export const seoConfigEN: SEOConfig = {
     jobTitle: "Full Stack Developer",
     description:
       "Full Stack Developer specializing in Next.js, AI and automations, RAG Systems, MVP development.",
-    location: "Germany",
   },
 };
 
@@ -147,6 +186,7 @@ export const seoConfigDE: SEOConfig = {
     "Automatisierungsentwickler",
     "MVP Entwicklung",
     ...COMMON_CONCEPTS_DE,
+    ...REGIONAL_KEYWORDS_DE,
   ],
   ...BASE_CONFIG,
   locale: "de_DE",
@@ -164,7 +204,6 @@ export const seoConfigDE: SEOConfig = {
     jobTitle: "Full Stack Entwickler",
     description:
       "Full Stack Entwickler, spezialisiert auf Next.js und moderne Webtechnologien, AI und Automatisierungen, RAG Systeme, MVP Entwicklung.",
-    location: "Deutschland",
   },
 };
 
