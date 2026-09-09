@@ -64,18 +64,17 @@ export function CookiesBanner() {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-2 right-2 h-11 w-11"
+          className="absolute top-2 left-2 h-11 w-11"
           onClick={handleClose}
         >
           <X className="h-4 w-4" />
           <span className="sr-only">{t("close")}</span>
         </Button>
 
+        <Cookie className="absolute top-2 right-2 h-6 w-6 text-amber-600 dark:text-amber-400 pr-1" />
+
         <CardContent className="p-6">
           <div className="flex items-start space-x-3">
-            <div className="shrink-0">
-              <Cookie className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-            </div>
             <div className="flex-1 space-y-3">
               <div>
                 <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white">
@@ -96,11 +95,7 @@ export function CookiesBanner() {
 
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col sm:flex-row gap-2">
-                  <Button
-                    onClick={accept}
-                    size="sm"
-                    className="flex-1 text-xs"
-                  >
+                  <Button onClick={accept} size="sm" className="flex-1 text-xs">
                     {t("acceptAll")}
                   </Button>
                   <Button
