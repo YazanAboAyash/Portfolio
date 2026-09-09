@@ -37,8 +37,8 @@
     "description": "Tack för att du bokade ett samtal med mig. Jag ser fram emot att lära mig om ditt projekt och utforska hur jag kan hjälpa.",
     "whatsNext": "Vad händer härnäst?",
     "step1": "Du får en kalenderinbjudan med möteslänken.",
-    "step2": "Jag går igenom eventuella detaljer du delat inför vårt samtal.",
-    "step3": "Vi har ett fokuserat 15-minuters samtal om dina behov.",
+    "step2": "Jag går igenom eventuella detaljer du delat inför samtalet.",
+    "step3": "Jag har ett fokuserat 15-minuters samtal med dig om dina behov.",
     "backToHome": "Tillbaka till Startsidan",
     "learnMore": "Läs Mer Om Mig"
   },
@@ -217,9 +217,9 @@
       "title": "Tvistlösning",
       "euTitle": "EU Konsumenträttelse",
       "euDescription": "Europeiska kommissionen tillhandahåller information om konsumenträttelse:",
-      "emailNote": "Du hittar vår e-postadress i den juridiska informationen ovan.",
+      "emailNote": "Du hittar min e-postadress i den juridiska informationen ovan.",
       "arbitrationTitle": "Konsumenttvistlösning / Universell skiljenämnd",
-      "arbitrationDescription": "Vi är varken villiga eller skyldiga att delta i tvistlösningsförfaranden inför en konsumentskiljenämnd."
+      "arbitrationDescription": "Jag är varken villig eller skyldig att delta i tvistlösningsförfaranden inför en konsumentskiljenämnd."
     },
     "lastUpdated": "Senast uppdaterad:"
   },
@@ -554,7 +554,7 @@
         "timeline": "1–2 veckor",
         "features": {
           "pages": "Upp till 3 sidor, eller en enkelsidig webbplats med upp till 5 sektioner",
-          "businessInfo": "Central företagsinfo: om oss, tjänster, öppettider, frågor och svar, kontakt",
+          "businessInfo": "Central företagsinfo: om mig, tjänster, öppettider, frågor och svar, kontakt",
           "contact": "Kontaktformulär",
           "gbp": "Uppsättning och optimering av Google-företagsprofil",
           "legal": "Grundläggande juridiska sidor (teknisk implementering)",
@@ -675,7 +675,7 @@
           },
           "retraining": {
             "label": "Omträning efter godkännande",
-            "price": "70 €/tim"
+            "price": "80 €/tim"
           }
         },
         "scopeNote": {
@@ -742,14 +742,14 @@
         "rights": "Fullständiga nyttjanderätter till det levererade arbetet överförs till er vid slutbetalning.",
         "warranty": "Två veckors kostnadsfri buggfixning efter lansering ingår. Era lagstadgade garantirättigheter påverkas inte.",
         "payment": "Betalning: upp till 1 000 € faktureras hela beloppet efter godkännande; över 1 000 € gäller 40 % vid beställning och 60 % efter godkännande, 14 dagar netto.",
-        "rates": "Extra arbete utanför den överenskomna omfattningen debiteras 70 €/tim, alltid offererat och godkänt i förväg. En extra revideringsrunda kostar 190 €. Återkoppling inom 5 arbetsdagar, godkännande inom 10.",
+        "rates": "Extra arbete utanför den överenskomna omfattningen debiteras 80 €/tim, alltid offererat och godkänt i förväg. En extra revideringsrunda kostar 190 €. Återkoppling inom 5 arbetsdagar, godkännande inom 10.",
         "notIncluded": "Ingår inte i något paket: innehåll — texter, bilder, logotyper — samt tredjepartslicenser, stockmaterial eller betalda typsnitt. Ni tillhandahåller dessa."
       },
       "extras": {
-        "seeAll": "Fullständig prislista",
-        "dialogTitle": "{package} — tillval och priser",
-        "dialogDescription": "Alla tillval som kan bokas till detta paket, med pris.",
-        "finalPrice": "Slutliga priser fastställs i er offert efter avgränsningssamtalet."
+        "seeAll": "Tillgängliga tillval",
+        "dialogTitle": "{package} — tillval",
+        "dialogDescription": "Alla tillval som kan bokas till detta paket.",
+        "finalPrice": "Hör av er så offererar jag dessa utifrån ert projekt."
       }
     },
     "serviceArea": {
@@ -771,7 +771,7 @@
       "subtitle": "En tydlig, förutsägbar process från första samtalet till lansering.",
       "discovery": {
         "title": "Upptäcktssamtal",
-        "description": "Vi diskuterar dina mål, utmaningar och tidsramar. Inget åtagande, bara klarhet."
+        "description": "Jag diskuterar dina mål, utmaningar och tidsramar med dig. Inget åtagande, bara klarhet."
       },
       "strategy": {
         "title": "Strategi och Omfattning",
@@ -787,7 +787,7 @@
       },
       "acceptance": {
         "title": "Godkännande & Överlämning",
-        "description": "Ni granskar resultatet mot den överenskomna omfattningen och vi undertecknar godkännandeprotokollet. Godkännandet startar garantitiden och gör slutbetalningen förfallen."
+        "description": "Ni granskar resultatet mot den överenskomna omfattningen och jag utfärdar det undertecknade godkännandeprotokollet. Godkännandet startar garantitiden och gör slutbetalningen förfallen."
       }
     },
     "cta": {
@@ -992,7 +992,7 @@
     "serverDetected": "Identifierat på serversidan"
   },
   "CookieBanner": {
-    "title": "Vi värdesätter din integritet",
+    "title": "Jag värdesätter din integritet",
     "description": "Inställningar för utseende och språk lagras lokalt i din webbläsare och behövs för att webbplatsen ska fungera. Jag skulle dessutom vilja använda Vercel Analytics och Speed Insights för att se vilka sidor som besöks och hur snabbt de laddas – dessa är valfria och laddas inte utan ditt samtycke.",
     "learnMore": "Läs mer om integritetspolicyn",
     "learnMoreAriaLabel": "Läs mer om integritetspolicyn och användning av cookies",
@@ -1003,10 +1003,10 @@
   },
   "GlobalError": {
     "title": "Något gick fel!",
-    "description": "Vi stötte på ett oväntat fel. Försök igen eller gå tillbaka till startsidan.",
+    "description": "Jag stötte på ett oväntat fel. Försök igen eller gå tillbaka till startsidan.",
     "tryAgain": "Försök igen",
     "goHome": "Gå hem",
-    "persist": "Om problemet kvarstår, kontakta vårt supportteam."
+    "persist": "Om problemet kvarstår, kontakta mig direkt."
   },
   "SectionRail": {
     "label": "Sidans avsnitt",

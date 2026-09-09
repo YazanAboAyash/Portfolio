@@ -47,7 +47,7 @@ interface PackageCardProps {
 }
 
 /**
- * Displays a service package card with pricing, features, and CTA.
+ * Displays a service package card with timeline, features, and CTA.
  * Scroll motion is supplied by the caller via `RevealItem`.
  * @param variant - "compact" for homepage preview, "detailed" for full information (default)
  */
@@ -83,16 +83,11 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
           )}
         </CardHeader>
         <CardContent className="flex-1 flex flex-col space-y-6">
-          {/* Pricing & Timeline */}
+          {/* Timeline */}
           {variant === "detailed" && (
-            <div className="flex items-center justify-between pb-4 border-b">
-              <div>
-                <p className="text-2xl font-bold">{t(pkg.pricingKey)}</p>
-              </div>
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" aria-hidden="true" />
-                <span>{t(pkg.timelineKey)}</span>
-              </div>
+            <div className="flex items-center gap-1 text-sm text-muted-foreground pb-4 border-b">
+              <Clock className="h-4 w-4" aria-hidden="true" />
+              <span>{t(pkg.timelineKey)}</span>
             </div>
           )}
 
@@ -139,7 +134,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
             </div>
           )}
 
-          {/* Full price list — every priced extra for this package, in a dialog */}
+          {/* Available extras for this package, in a dialog — no prices shown */}
           {variant === "detailed" && extras.length > 0 && (
             <div className="pt-4 border-t mt-auto">
               <Dialog>
@@ -162,16 +157,8 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
                   </DialogHeader>
                   <ul className="divide-y">
                     {extras.map((extra, index) => (
-                      <li
-                        key={index}
-                        className="flex items-baseline justify-between gap-4 py-3 text-sm"
-                      >
-                        <span className="text-muted-foreground">
-                          {t(extra.labelKey)}
-                        </span>
-                        <span className="font-medium shrink-0">
-                          {t(extra.priceKey)}
-                        </span>
+                      <li key={index} className="py-3 text-sm">
+                        {t(extra.labelKey)}
                       </li>
                     ))}
                   </ul>

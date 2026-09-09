@@ -37,8 +37,8 @@
     "description": "Gracias por reservar una llamada conmigo. Espero conocer tu proyecto y explorar cómo puedo ayudarte.",
     "whatsNext": "¿Qué sigue?",
     "step1": "Recibirás una invitación de calendario con el enlace de la reunión.",
-    "step2": "Revisaré los detalles que compartiste antes de nuestra llamada.",
-    "step3": "Tendremos una conversación enfocada de 15 minutos sobre tus necesidades.",
+    "step2": "Revisaré los detalles que compartiste antes de la llamada.",
+    "step3": "Tendré contigo una conversación enfocada de 15 minutos sobre tus necesidades.",
     "backToHome": "Volver al Inicio",
     "learnMore": "Conoce Más Sobre Mí"
   },
@@ -217,9 +217,9 @@
       "title": "Resolución de disputas",
       "euTitle": "Reparación al consumidor de la UE",
       "euDescription": "La Comisión Europea proporciona información sobre la reparación al consumidor:",
-      "emailNote": "Puede encontrar nuestra dirección de correo electrónico en el aviso legal anterior.",
+      "emailNote": "Puede encontrar mi dirección de correo electrónico en el aviso legal anterior.",
       "arbitrationTitle": "Resolución de disputas del consumidor / Junta de arbitraje universal",
-      "arbitrationDescription": "No estamos dispuestos ni obligados a participar en procedimientos de resolución de disputas ante una junta de arbitraje del consumidor."
+      "arbitrationDescription": "No estoy dispuesto ni obligado a participar en procedimientos de resolución de disputas ante una junta de arbitraje del consumidor."
     },
     "lastUpdated": "Última actualización:"
   },
@@ -554,7 +554,7 @@
         "timeline": "1–2 semanas",
         "features": {
           "pages": "Hasta 3 páginas, o un sitio de una sola página con hasta 5 secciones",
-          "businessInfo": "Información esencial del negocio: sobre nosotros, servicios, horarios, preguntas frecuentes, contacto",
+          "businessInfo": "Información esencial del negocio: sobre mí, servicios, horarios, preguntas frecuentes, contacto",
           "contact": "Formulario de contacto",
           "gbp": "Configuración y optimización del Perfil de Empresa en Google",
           "legal": "Páginas legales básicas (implementación técnica)",
@@ -675,7 +675,7 @@
           },
           "retraining": {
             "label": "Reentrenamiento tras la aceptación",
-            "price": "70 €/h"
+            "price": "80 €/h"
           }
         },
         "scopeNote": {
@@ -742,14 +742,14 @@
         "rights": "Los derechos de uso completos sobre el trabajo entregado se le transfieren con el pago final.",
         "warranty": "Se incluyen dos semanas de corrección de errores gratuita tras el lanzamiento. Sus derechos legales de garantía no se ven afectados.",
         "payment": "Pago: hasta 1.000 € se factura el importe completo tras la aceptación; por encima de 1.000 € es 40 % al encargo y 60 % tras la aceptación, 14 días neto.",
-        "rates": "El trabajo adicional fuera del alcance acordado se factura a 70 €/h, siempre presupuestado y aprobado antes. Una ronda de revisión extra cuesta 190 €. Respuesta en 5 días laborables, aceptación en 10.",
+        "rates": "El trabajo adicional fuera del alcance acordado se factura a 80 €/h, siempre presupuestado y aprobado antes. Una ronda de revisión extra cuesta 190 €. Respuesta en 5 días laborables, aceptación en 10.",
         "notIncluded": "No incluido en ningún paquete: contenido — textos, imágenes, logotipos — y licencias de terceros, material de stock o fuentes de pago. Usted los aporta."
       },
       "extras": {
-        "seeAll": "Lista de precios completa",
-        "dialogTitle": "{package} — extras y precios",
-        "dialogDescription": "Todos los complementos disponibles para este paquete, con precio.",
-        "finalPrice": "Los precios definitivos se fijan en su presupuesto tras la llamada de alcance."
+        "seeAll": "Extras disponibles",
+        "dialogTitle": "{package} — extras",
+        "dialogDescription": "Todos los complementos disponibles para este paquete.",
+        "finalPrice": "Contácteme y le daré un precio según su proyecto."
       }
     },
     "serviceArea": {
@@ -771,7 +771,7 @@
       "subtitle": "Un proceso claro y predecible desde la primera llamada hasta el lanzamiento.",
       "discovery": {
         "title": "Llamada de Descubrimiento",
-        "description": "Hablamos de tus objetivos, desafíos y plazos. Sin compromiso, solo claridad."
+        "description": "Hablo contigo de tus objetivos, desafíos y plazos. Sin compromiso, solo claridad."
       },
       "strategy": {
         "title": "Estrategia y Alcance",
@@ -787,7 +787,7 @@
       },
       "acceptance": {
         "title": "Aceptación y Entrega",
-        "description": "Usted revisa el resultado frente al alcance acordado y firmamos el acta de aceptación. Con la aceptación comienza el plazo de garantía y vence el pago final."
+        "description": "Usted revisa el resultado frente al alcance acordado y yo emito el acta de aceptación firmada. Con la aceptación comienza el plazo de garantía y vence el pago final."
       }
     },
     "cta": {
@@ -992,7 +992,7 @@
     "serverDetected": "Detectado del servidor"
   },
   "CookieBanner": {
-    "title": "Valoramos tu privacidad",
+    "title": "Valoro tu privacidad",
     "description": "Las preferencias de apariencia e idioma se guardan localmente en su navegador y son necesarias para el funcionamiento del sitio. Además, me gustaría utilizar Vercel Analytics y Speed Insights para saber qué páginas se visitan y con qué rapidez cargan: son opcionales y no se cargan sin su consentimiento.",
     "learnMore": "Más información sobre la política de privacidad",
     "learnMoreAriaLabel": "Más información sobre la política de privacidad y el uso de cookies",
@@ -1006,7 +1006,7 @@
     "description": "Se ha producido un error inesperado. Por favor, inténtalo de nuevo o vuelve a la página de inicio.",
     "tryAgain": "Intentar de nuevo",
     "goHome": "Ir al inicio",
-    "persist": "Si el problema persiste, ponte en contacto con nuestro equipo de soporte."
+    "persist": "Si el problema persiste, ponte en contacto conmigo directamente."
   },
   "SectionRail": {
     "label": "Secciones de la página",
