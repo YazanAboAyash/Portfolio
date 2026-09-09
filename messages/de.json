@@ -37,8 +37,8 @@
     "description": "Vielen Dank für Ihre Terminbuchung. Ich freue mich darauf, mehr über Ihr Projekt zu erfahren und zu erkunden, wie ich helfen kann.",
     "whatsNext": "Was passiert als Nächstes?",
     "step1": "Sie erhalten eine Kalendereinladung mit dem Meeting-Link.",
-    "step2": "Ich werde alle geteilten Details vor unserem Gespräch durchgehen.",
-    "step3": "Wir führen ein fokussiertes 15-Minuten-Gespräch über Ihre Anforderungen.",
+    "step2": "Ich werde alle geteilten Details vor dem Gespräch durchgehen.",
+    "step3": "Ich führe mit Ihnen ein fokussiertes 15-Minuten-Gespräch über Ihre Anforderungen.",
     "backToHome": "Zurück zur Startseite",
     "learnMore": "Mehr über mich erfahren"
   },
@@ -74,7 +74,13 @@
     "status": "Status",
     "training": "Ausbildung",
     "quickLinks": "Schnelllinks",
-    "openForCollaboration": "Verfügbar",
+    "limitedAvailability": "Eingeschränkt verfügbar",
+    "position": "Position",
+    "employer": "Arbeitgeber",
+    "freelancer": "Freelancer",
+    "trainingTitle": "IHK Fachinformatiker AE",
+    "specialization": "Einsatzgebiet",
+    "specializationValue": "Künstliche Intelligenz",
     "legalNotice": "Meine Leistungen richten sich ausschließlich an Unternehmer im Sinne von § 14 BGB."
   },
   "QuickActions": {
@@ -217,9 +223,9 @@
       "title": "Streitbeilegung",
       "euTitle": "EU-Verbraucherbeschwerde",
       "euDescription": "Die Europäische Kommission stellt Informationen zur Verbraucherbeschwerde bereit:",
-      "emailNote": "Unsere E-Mail-Adresse finden Sie oben im Impressum.",
+      "emailNote": "Meine E-Mail-Adresse finden Sie oben im Impressum.",
       "arbitrationTitle": "Verbraucherstreitbeilegung / Universalschlichtungsstelle",
-      "arbitrationDescription": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+      "arbitrationDescription": "Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
     },
     "lastUpdated": "Zuletzt aktualisiert:"
   },
@@ -554,7 +560,7 @@
         "timeline": "1–2 Wochen",
         "features": {
           "pages": "Bis zu 3 Seiten, oder eine One-Page-Website mit bis zu 5 Abschnitten",
-          "businessInfo": "Zentrale Unternehmensinfos: Über uns, Leistungen, Öffnungszeiten, FAQ, Kontakt",
+          "businessInfo": "Zentrale Unternehmensinfos: Über mich, Leistungen, Öffnungszeiten, FAQ, Kontakt",
           "contact": "Kontaktformular",
           "gbp": "Einrichtung und Optimierung des Google-Unternehmensprofils",
           "legal": "Grundlegende Rechtstexte-Seiten (technische Umsetzung)",
@@ -675,7 +681,7 @@
           },
           "retraining": {
             "label": "Nachtraining nach Abnahme",
-            "price": "70 €/Std."
+            "price": "80 €/Std."
           }
         },
         "scopeNote": {
@@ -742,14 +748,14 @@
         "rights": "Mit der Schlusszahlung erhalten Sie die vollständigen Nutzungsrechte am gelieferten Werk.",
         "warranty": "Zwei Wochen kostenlose Fehlerbehebung nach dem Launch sind enthalten. Die gesetzliche Gewährleistung bleibt hiervon unberührt.",
         "payment": "Zahlung: bis 1.000 € wird der volle Betrag nach Abnahme in Rechnung gestellt; über 1.000 € gilt 40 % bei Auftrag und 60 % nach Abnahme, 14 Tage netto.",
-        "rates": "Mehraufwand außerhalb des vereinbarten Umfangs wird mit 70 €/Std. berechnet, immer vorab angeboten und freigegeben. Eine zusätzliche Korrekturschleife kostet 190 €. Feedback innerhalb von 5 Werktagen, Abnahme innerhalb von 10.",
+        "rates": "Mehraufwand außerhalb des vereinbarten Umfangs wird mit 80 €/Std. berechnet, immer vorab angeboten und freigegeben. Eine zusätzliche Korrekturschleife kostet 190 €. Feedback innerhalb von 5 Werktagen, Abnahme innerhalb von 10.",
         "notIncluded": "Nicht in jedem Paket enthalten: Inhalte — Texte, Bilder, Logos — sowie Lizenzen von Drittanbietern, Stockmaterial oder kostenpflichtige Schriften. Diese stellen Sie bereit."
       },
       "extras": {
-        "seeAll": "Vollständige Preisliste",
-        "dialogTitle": "{package} — Extras & Preise",
-        "dialogDescription": "Alle buchbaren Zusatzleistungen für dieses Paket mit Preis.",
-        "finalPrice": "Endgültige Preise werden nach dem Scoping-Call in Ihrem Angebot fixiert."
+        "seeAll": "Verfügbare Extras",
+        "dialogTitle": "{package} — Extras",
+        "dialogDescription": "Alle buchbaren Zusatzleistungen für dieses Paket.",
+        "finalPrice": "Sprechen Sie mich an — ich kalkuliere diese individuell für Ihr Projekt."
       }
     },
     "serviceArea": {
@@ -771,7 +777,7 @@
       "subtitle": "Ein klarer, vorhersehbarer Prozess vom ersten Anruf bis zum Launch.",
       "discovery": {
         "title": "Erstgespräch",
-        "description": "Wir besprechen Ihre Ziele, Herausforderungen und Zeitrahmen. Keine Verpflichtung, nur Klarheit."
+        "description": "Ich bespreche mit Ihnen Ihre Ziele, Herausforderungen und Zeitrahmen. Keine Verpflichtung, nur Klarheit."
       },
       "strategy": {
         "title": "Strategie & Umfang",
@@ -787,7 +793,7 @@
       },
       "acceptance": {
         "title": "Abnahme & Übergabe",
-        "description": "Sie prüfen das Ergebnis gegen den vereinbarten Umfang, und wir zeichnen das Abnahmeprotokoll. Mit der Abnahme beginnt die Gewährleistungsfrist und die Schlusszahlung wird fällig."
+        "description": "Sie prüfen das Ergebnis gegen den vereinbarten Umfang, und ich stelle das unterschriebene Abnahmeprotokoll aus. Mit der Abnahme beginnt die Gewährleistungsfrist und die Schlusszahlung wird fällig."
       }
     },
     "cta": {
@@ -992,7 +998,7 @@
     "serverDetected": "Serverseitig erkannt"
   },
   "CookieBanner": {
-    "title": "Wir schätzen Ihre Privatsphäre",
+    "title": "Ich schätze Ihre Privatsphäre",
     "description": "Darstellungs- und Spracheinstellungen werden lokal in Ihrem Browser gespeichert und sind für den Betrieb der Website erforderlich. Zusätzlich möchte ich Vercel Analytics und Speed Insights einsetzen, um zu sehen, welche Seiten aufgerufen werden und wie schnell sie laden – diese sind optional und werden ohne Ihre Zustimmung nicht geladen.",
     "learnMore": "Mehr über die Datenschutzrichtlinie erfahren",
     "learnMoreAriaLabel": "Mehr über die Datenschutzrichtlinie und Cookie-Nutzung erfahren",
@@ -1006,7 +1012,7 @@
     "description": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut oder kehren Sie zur Startseite zurück.",
     "tryAgain": "Erneut versuchen",
     "goHome": "Zur Startseite",
-    "persist": "Wenn das Problem weiterhin besteht, wenden Sie sich bitte an unser Support-Team."
+    "persist": "Wenn das Problem weiterhin besteht, wenden Sie sich bitte direkt an mich."
   },
   "SectionRail": {
     "label": "Seitenabschnitte",

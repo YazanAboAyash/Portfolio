@@ -9,6 +9,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
+import { Separator } from "@/components/ui/separator";
 import { PackageCard } from "@/components/services";
 import { RevealItem } from "@/components/visuals";
 import { servicePackages, processSteps } from "@/data/hubs/servicesData";
@@ -184,15 +185,22 @@ function StackAndDelivery({ t }: { t: ReturnType<typeof useTranslations> }) {
         </p>
       </div>
       <Card className="bg-background/80 backdrop-blur-sm border-border/50">
-        <CardContent className="py-6 grid sm:grid-cols-2 gap-6">
-          {categories.map((category) => (
-            <div key={category}>
-              <h4 className="text-sm font-semibold mb-1">
-                {t(`stack.categories.${category}.label`)}
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                {t(`stack.categories.${category}.options`)}
-              </p>
+        <CardContent className="py-6 space-y-6">
+          {[0, 2, 4].map((rowStart, rowIndex) => (
+            <div key={rowStart} className="grid sm:grid-cols-2 gap-6">
+              {categories.slice(rowStart, rowStart + 2).map((category) => (
+                <div key={category} className="flex h-full flex-col">
+                  <h4 className="text-sm font-semibold mb-1">
+                    {t(`stack.categories.${category}.label`)}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t(`stack.categories.${category}.options`)}
+                  </p>
+                  {rowIndex < 2 && (
+                    <Separator className="mt-auto bg-muted-foreground/30" />
+                  )}
+                </div>
+              ))}
             </div>
           ))}
         </CardContent>

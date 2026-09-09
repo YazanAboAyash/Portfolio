@@ -37,8 +37,8 @@
     "description": "Merci d'avoir réservé un appel avec moi. J'ai hâte d'en apprendre davantage sur votre projet et d'explorer comment je peux vous aider.",
     "whatsNext": "Que se passe-t-il ensuite ?",
     "step1": "Vous recevrez une invitation calendrier avec le lien de réunion.",
-    "step2": "Je passerai en revue les détails partagés avant notre appel.",
-    "step3": "Nous aurons une conversation ciblée de 15 minutes sur vos besoins.",
+    "step2": "Je passerai en revue les détails partagés avant l'appel.",
+    "step3": "J'aurai avec vous une conversation ciblée de 15 minutes sur vos besoins.",
     "backToHome": "Retour à l'Accueil",
     "learnMore": "En Savoir Plus Sur Moi"
   },
@@ -74,7 +74,13 @@
     "status": "Statut",
     "training": "Formation",
     "quickLinks": "Liens rapides",
-    "openForCollaboration": "Disponible",
+    "limitedAvailability": "Disponibilité limitée",
+    "position": "Poste",
+    "employer": "Employeur",
+    "freelancer": "Freelance",
+    "trainingTitle": "IHK Fachinformatiker AE",
+    "specialization": "Spécialisation",
+    "specializationValue": "Intelligence Artificielle",
     "legalNotice": "Mes services s'adressent exclusivement aux entrepreneurs au sens du § 14 BGB."
   },
   "QuickActions": {
@@ -217,9 +223,9 @@
       "title": "Règlement des litiges",
       "euTitle": "Recours des consommateurs de l'UE",
       "euDescription": "La Commission européenne met à disposition des informations sur le recours des consommateurs :",
-      "emailNote": "Vous trouverez notre adresse e-mail dans les mentions légales ci-dessus.",
+      "emailNote": "Vous trouverez mon adresse e-mail dans les mentions légales ci-dessus.",
       "arbitrationTitle": "Règlement des litiges de consommation / Commission d'arbitrage universelle",
-      "arbitrationDescription": "Nous ne sommes ni disposés ni obligés de participer à des procédures de règlement des litiges devant une commission d'arbitrage des consommateurs."
+      "arbitrationDescription": "Je ne suis ni disposé ni obligé de participer à des procédures de règlement des litiges devant une commission d'arbitrage des consommateurs."
     },
     "lastUpdated": "Dernière mise à jour :"
   },
@@ -675,7 +681,7 @@
           },
           "retraining": {
             "label": "Réentraînement après réception",
-            "price": "70 €/h"
+            "price": "80 €/h"
           }
         },
         "scopeNote": {
@@ -742,14 +748,14 @@
         "rights": "Les droits d'usage complets sur le travail livré vous sont transférés au paiement final.",
         "warranty": "Deux semaines de correction de bugs offertes après le lancement sont incluses. Vos droits de garantie légale restent inchangés.",
         "payment": "Paiement : jusqu'à 1 000 €, le montant total est facturé après réception ; au-delà de 1 000 €, c'est 40 % à la commande et 60 % après réception, 14 jours net.",
-        "rates": "Le travail supplémentaire hors périmètre convenu est facturé 70 €/h, toujours devisé et approuvé au préalable. Un tour de révision supplémentaire coûte 190 €. Retour sous 5 jours ouvrés, réception sous 10 jours.",
+        "rates": "Le travail supplémentaire hors périmètre convenu est facturé 80 €/h, toujours devisé et approuvé au préalable. Un tour de révision supplémentaire coûte 190 €. Retour sous 5 jours ouvrés, réception sous 10 jours.",
         "notIncluded": "Non inclus dans aucun forfait : le contenu — textes, images, logos — ainsi que les licences tierces, banques d'images ou polices payantes. Vous les fournissez."
       },
       "extras": {
-        "seeAll": "Liste de prix complète",
-        "dialogTitle": "{package} — options et tarifs",
-        "dialogDescription": "Toutes les options disponibles pour cette formule, avec leur tarif.",
-        "finalPrice": "Les prix définitifs sont fixés dans votre devis après l'appel de cadrage."
+        "seeAll": "Extras disponibles",
+        "dialogTitle": "{package} — options",
+        "dialogDescription": "Toutes les options disponibles pour cette formule.",
+        "finalPrice": "Contactez-moi et je vous chiffrerai cela selon votre projet."
       }
     },
     "serviceArea": {
@@ -771,7 +777,7 @@
       "subtitle": "Un processus clair et prévisible du premier appel au lancement.",
       "discovery": {
         "title": "Appel Découverte",
-        "description": "Nous discutons de vos objectifs, défis et délais. Sans engagement, juste de la clarté."
+        "description": "Je discute avec vous de vos objectifs, défis et délais. Sans engagement, juste de la clarté."
       },
       "strategy": {
         "title": "Stratégie et Périmètre",
@@ -787,7 +793,7 @@
       },
       "acceptance": {
         "title": "Réception & Remise",
-        "description": "Vous vérifiez le résultat par rapport au périmètre convenu et nous signons le procès-verbal de réception. La réception fait courir le délai de garantie et rend le paiement final exigible."
+        "description": "Vous vérifiez le résultat par rapport au périmètre convenu et j'établis le procès-verbal de réception signé. La réception fait courir le délai de garantie et rend le paiement final exigible."
       }
     },
     "cta": {
@@ -992,7 +998,7 @@
     "serverDetected": "Détecté côté serveur"
   },
   "CookieBanner": {
-    "title": "Nous respectons votre vie privée",
+    "title": "Je respecte votre vie privée",
     "description": "Les préférences d'apparence et de langue sont enregistrées localement dans votre navigateur et sont nécessaires au fonctionnement du site. Je souhaiterais également utiliser Vercel Analytics et Speed Insights pour savoir quelles pages sont consultées et à quelle vitesse elles se chargent : ces outils sont facultatifs et ne sont pas chargés sans votre accord.",
     "learnMore": "En savoir plus sur la politique de confidentialité",
     "learnMoreAriaLabel": "En savoir plus sur la politique de confidentialité et l'utilisation des cookies",
@@ -1003,10 +1009,10 @@
   },
   "GlobalError": {
     "title": "Une erreur s'est produite !",
-    "description": "Nous avons rencontré une erreur inattendue. Veuillez réessayer ou revenir à la page d'accueil.",
+    "description": "J'ai rencontré une erreur inattendue. Veuillez réessayer ou revenir à la page d'accueil.",
     "tryAgain": "Réessayer",
     "goHome": "Accueil",
-    "persist": "Si le problème persiste, veuillez contacter notre équipe d'assistance."
+    "persist": "Si le problème persiste, veuillez me contacter directement."
   },
   "SectionRail": {
     "label": "Sections de la page",

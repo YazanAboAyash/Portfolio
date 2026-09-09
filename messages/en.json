@@ -37,8 +37,8 @@
     "description": "Thank you for booking a call with me. I'm looking forward to learning about your project and exploring how I can help.",
     "whatsNext": "What happens next?",
     "step1": "You'll receive a calendar invite with the meeting link.",
-    "step2": "I'll review any details you shared ahead of our call.",
-    "step3": "We'll have a focused 15-minute conversation about your needs.",
+    "step2": "I'll review any details you shared ahead of the call.",
+    "step3": "I'll have a focused 15-minute conversation with you about your needs.",
     "backToHome": "Back to Home",
     "learnMore": "Learn More About Me"
   },
@@ -74,7 +74,13 @@
     "status": "Status",
     "training": "Training",
     "quickLinks": "Quick Links",
-    "openForCollaboration": "Available",
+    "limitedAvailability": "Limited Availability",
+    "position": "Position",
+    "employer": "Employer",
+    "freelancer": "Freelancer",
+    "trainingTitle": "IHK Fachinformatiker AE",
+    "specialization": "Specialization",
+    "specializationValue": "Artificial Intelligence",
     "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."
   },
   "QuickActions": {
@@ -217,9 +223,9 @@
       "title": "Dispute Resolution",
       "euTitle": "EU Consumer Redress",
       "euDescription": "The European Commission provides information on consumer redress:",
-      "emailNote": "You can find our email address in the legal notice above.",
+      "emailNote": "You can find my email address in the legal notice above.",
       "arbitrationTitle": "Consumer Dispute Resolution / Universal Arbitration Board",
-      "arbitrationDescription": "We are neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board."
+      "arbitrationDescription": "I am neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board."
     },
     "lastUpdated": "Last updated:"
   },
@@ -547,10 +553,10 @@
       "title": "Service Packages",
       "cta": "Book a Free Call",
       "extras": {
-        "seeAll": "Full price list",
-        "dialogTitle": "{package} — extras & prices",
-        "dialogDescription": "Every priced add-on available for this package.",
-        "finalPrice": "Final prices are fixed in your offer after the scoping call."
+        "seeAll": "Available extras",
+        "dialogTitle": "{package} — extras",
+        "dialogDescription": "Additional options available for this package.",
+        "finalPrice": "Get in touch and I'll quote these based on your project."
       },
       "website": {
         "name": "Website",
@@ -685,7 +691,7 @@
           },
           "retraining": {
             "label": "Retraining after acceptance",
-            "price": "70 €/h"
+            "price": "80 €/h"
           }
         }
       },
@@ -749,7 +755,7 @@
         "rights": "Full usage rights to the delivered work are transferred to you on final payment.",
         "warranty": "Two weeks of free bugfixing after launch are included. Your statutory warranty rights remain unaffected.",
         "payment": "Payment: up to 1.000 € the full amount is invoiced after acceptance; above 1.000 € it's 40% on order and 60% after acceptance, 14 days net.",
-        "rates": "Additional work beyond the agreed scope is billed at 70 €/h, always quoted and approved first. An extra revision round is 190 €. Feedback within 5 working days, acceptance within 10."
+        "rates": "Additional work beyond the agreed scope is billed at 80 €/h, always quoted and approved first. An extra revision round is 190 €. Feedback within 5 working days, acceptance within 10."
       }
     },
     "stack": {
@@ -810,7 +816,7 @@
       "subtitle": "A clear, predictable process from first call to launch.",
       "discovery": {
         "title": "Discovery Call",
-        "description": "We discuss your goals, challenges, and timeline. No commitment, just clarity."
+        "description": "I discuss your goals, challenges, and timeline with you. No commitment, just clarity."
       },
       "strategy": {
         "title": "Strategy & Scope",
@@ -826,7 +832,7 @@
       },
       "acceptance": {
         "title": "Acceptance & Handover",
-        "description": "You check the result against the agreed scope and we sign the acceptance protocol. Acceptance starts the warranty period and makes the final payment due."
+        "description": "You check the result against the agreed scope and I issue the signed acceptance protocol. Acceptance starts the warranty period and makes the final payment due."
       }
     },
     "cta": {
@@ -992,7 +998,7 @@
     "serverDetected": "Server-side detected"
   },
   "CookieBanner": {
-    "title": "We value your privacy",
+    "title": "I value your privacy",
     "description": "Theme and language preferences are stored locally in your browser and are needed for the site to work. I would also like to use Vercel Analytics and Speed Insights to see which pages are visited and how fast they load — these are optional and are not loaded unless you agree.",
     "learnMore": "Learn more about privacy policy",
     "learnMoreAriaLabel": "Learn more about privacy policy and cookie usage",
@@ -1003,10 +1009,10 @@
   },
   "GlobalError": {
     "title": "Something went wrong!",
-    "description": "We encountered an unexpected error. Please try again or return to the home page.",
+    "description": "I encountered an unexpected error. Please try again or return to the home page.",
     "tryAgain": "Try Again",
     "goHome": "Go Home",
-    "persist": "If this problem persists, please contact our support team."
+    "persist": "If this problem persists, please contact me directly."
   },
   "SectionRail": {
     "label": "Page sections",

@@ -165,26 +165,37 @@ export default function ContactSheet({
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("status")}:</span>
                 <Badge variant="secondary" className="text-xs">
-                  {t("openForCollaboration")}
+                  {t("limitedAvailability")}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Position:</span>
+                <span className="text-muted-foreground">{t("position")}:</span>
                 <Badge variant="outline" className="text-xs">
-                  Freelancer
+                  {t("freelancer")}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Position:</span>
+                <span className="text-muted-foreground">{t("employer")}:</span>
                 <Badge variant="outline" className="text-xs">
                   Botgenossen GmbH
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">{t("employer")}:</span>
+                <Badge variant="outline" className="text-xs">
+                  Avarno GmbH
+                </Badge>
+              </div>
+              <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("training")}:</span>
                 <Badge variant="secondary" className="text-xs">
-                  Graduated from GFN
+                  {t("trainingTitle")}
                 </Badge>
+              </div>
+              <div className="flex items-center justify-end">
+                <span className="text-xs text-muted-foreground text-right">
+                  {t("specialization")}: {t("specializationValue")}
+                </span>
               </div>
             </div>
           </div>
