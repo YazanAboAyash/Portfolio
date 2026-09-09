@@ -74,7 +74,13 @@
     "status": "Status",
     "training": "Training",
     "quickLinks": "Quick Links",
-    "openForCollaboration": "Available",
+    "limitedAvailability": "Limited Availability",
+    "position": "Position",
+    "employer": "Employer",
+    "freelancer": "Freelancer",
+    "trainingTitle": "IHK Fachinformatiker AE",
+    "specialization": "Specialization",
+    "specializationValue": "Artificial Intelligence",
     "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."
   },
   "QuickActions": {

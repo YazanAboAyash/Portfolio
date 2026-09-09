@@ -74,7 +74,13 @@
     "status": "Status",
     "training": "Utbildning",
     "quickLinks": "Snabblänkar",
-    "openForCollaboration": "Tillgänglig",
+    "limitedAvailability": "Begränsad tillgänglighet",
+    "position": "Position",
+    "employer": "Arbetsgivare",
+    "freelancer": "Frilansare",
+    "trainingTitle": "IHK Fachinformatiker AE",
+    "specialization": "Inriktning",
+    "specializationValue": "Artificiell Intelligens",
     "legalNotice": "Mina tjänster erbjuds uteslutande till näringsidkare enligt § 14 BGB."
   },
   "QuickActions": {

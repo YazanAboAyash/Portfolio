@@ -74,7 +74,13 @@
     "status": "Status",
     "training": "Ausbildung",
     "quickLinks": "Schnelllinks",
-    "openForCollaboration": "Verfügbar",
+    "limitedAvailability": "Eingeschränkt verfügbar",
+    "position": "Position",
+    "employer": "Arbeitgeber",
+    "freelancer": "Freelancer",
+    "trainingTitle": "IHK Fachinformatiker AE",
+    "specialization": "Einsatzgebiet",
+    "specializationValue": "Künstliche Intelligenz",
     "legalNotice": "Meine Leistungen richten sich ausschließlich an Unternehmer im Sinne von § 14 BGB."
   },
   "QuickActions": {
