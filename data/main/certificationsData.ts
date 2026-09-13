@@ -6,6 +6,17 @@
 
 export const certifications = [
   {
+    id: 4,
+    title: "Computer Science Expert",
+    image: "/default.png",
+    issuer: "IHK Rhein-Neckar (German Chamber of Commerce and Industry)",
+    issuerKey: "ihkRheinNeckar",
+    description:
+      "Subject Area: Software Development and AI, as per § 37 German Vocational Training Act (BBiG).",
+    descriptionKey: "computerScienceExpert",
+    date: "2026",
+  },
+  {
     id: 5,
     title: "GitHub Foundations Certification",
     image: "/default.png",
@@ -23,17 +34,6 @@ export const certifications = [
     description:
       "Earned the GitHub Copilot Certification, validating skills in AI-assisted software development using GitHub Copilot.",
     descriptionKey: "githubCopilot",
-    date: "2026",
-  },
-  {
-    id: 4,
-    title: "Computer Science Expert",
-    image: "/default.png",
-    issuer: "IHK Rhein-Neckar (German Chamber of Commerce and Industry)",
-    issuerKey: "ihkRheinNeckar",
-    description:
-      "Subject Area: Software Development and AI, as per § 37 German Vocational Training Act (BBiG).",
-    descriptionKey: "computerScienceExpert",
     date: "2026",
   },
   {
