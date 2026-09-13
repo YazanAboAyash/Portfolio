@@ -176,14 +176,6 @@
     "openSourceNote": "Tous les projets ci-dessous sont open source.",
     "seeMoreOnGitHub": "voir plus sur GitHub...",
     "viewAllProjects": "Voir tous les projets",
-    "featuredCollab": "Collaboration en vedette",
-    "botgenossen": {
-      "title": "Ville de Büttelborn — Avatar IA pour le maire",
-      "description": "Membre de l'équipe Botgenossen ayant construit l'avatar IA interactif multilingue pour le Bürgermeister de Büttelborn, une ville en Allemagne. L'avatar s'entretient avec les citoyens dans plusieurs langues, répond aux questions sur les services municipaux et représente numériquement le maire sur le site officiel de la ville.",
-      "role": "Développement d'Avatar IA",
-      "company": "Botgenossen",
-      "live": "En direct"
-    },
     "cloneRepository": "Cloner le dépôt",
     "code": "Code",
     "npmPackage": "npm",
@@ -197,12 +189,24 @@
       "agpl": "Licence AGPL-3.0"
     }
   },
+  "Collaboration": {
+    "title": "Collaboration",
+    "subtitle": "Développé en équipe au sein d'une entreprise.",
+    "badge": "Projet d'équipe",
+    "project": {
+      "title": "Ville de Büttelborn — Avatar IA pour le maire",
+      "description": "Membre de l'équipe Botgenossen ayant construit l'avatar IA interactif multilingue pour le Bürgermeister de Büttelborn, une ville en Allemagne. L'avatar s'entretient avec les citoyens dans plusieurs langues, répond aux questions sur les services municipaux et représente numériquement le maire sur le site officiel de la ville.",
+      "role": "Développement d'Avatar IA",
+      "company": "Botgenossen",
+      "live": "En direct"
+    }
+  },
   "Products": {
     "title": "Produits",
     "requestDemo": "Demander une démo",
     "descriptions": {
       "princeps": "Un espace de travail IA privé qui fonctionne comme un secrétariat exécutif personnel, apportant la préparation, la mémoire, la coordination et le suivi structuré qu'offrirait un chef de cabinet. Chaque fonctionnalité écrit dans une base PostgreSQL unique propre à l'utilisateur, de sorte que l'assistant IA reste contextuel sur l'ensemble de l'espace de travail, pas seulement sur l'historique de discussion.",
-      "logix": "Enregistrement du temps de travail auto-hébergé et mono-locataire, conçu pour le marché allemand. Les règles légales sont évaluées chaque jour via des fonctions de conformité pures et sans effets de bord — chaque seuil est une configuration avec une valeur légale par défaut, jamais une valeur codée en dur."
+      "logix": "Enregistrement du temps de travail auto-hébergé et mono-locataire pour le marché allemand (ArbZG), avec conformité légale évaluée chaque jour."
     }
   },
   "Impressum": {
@@ -1028,6 +1032,7 @@
     "sections": {
       "home": "Accueil",
       "speed-insight": "Performance",
+      "collaboration": "Collaboration",
       "projects": "Projets",
       "cert": "Certifications",
       "services": "Services",

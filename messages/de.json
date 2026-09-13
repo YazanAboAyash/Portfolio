@@ -176,14 +176,6 @@
     "openSourceNote": "Alle unten aufgeführten Projekte sind Open Source.",
     "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
     "viewAllProjects": "Alle Projekte ansehen",
-    "featuredCollab": "Vorgestellte Zusammenarbeit",
-    "botgenossen": {
-      "title": "Stadt Büttleborn — KI-Avatar für den Bürgermeister",
-      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttleborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
-      "role": "KI-Avatar-Entwicklung",
-      "company": "Botgenossen",
-      "live": "Live"
-    },
     "cloneRepository": "Repository klonen",
     "code": "Code",
     "npmPackage": "npm",
@@ -197,12 +189,24 @@
       "agpl": "AGPL-3.0-Lizenz"
     }
   },
+  "Collaboration": {
+    "title": "Zusammenarbeit",
+    "subtitle": "Kooperieren. Kollaborieren. Liefern.",
+    "badge": "Teamprojekt",
+    "project": {
+      "title": "Stadt Büttleborn — KI-Avatar für den Bürgermeister",
+      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttleborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
+      "role": "KI-Avatar-Entwicklung",
+      "company": "Botgenossen",
+      "live": "Live"
+    }
+  },
   "Products": {
     "title": "Produkte",
     "requestDemo": "Demo anfragen",
     "descriptions": {
       "princeps": "Ein privater KI-Arbeitsbereich, der als persönliches Exekutivsekretariat fungiert — mit der Vorbereitung, dem Gedächtnis, der Koordination und der strukturierten Nachverfolgung, die sonst ein Chief of Staff liefert. Jede Funktion schreibt in eine einzige benutzerbezogene PostgreSQL-Datenbank, sodass der KI-Assistent über den gesamten Arbeitsbereich hinweg kontextbewusst bleibt — nicht nur innerhalb des Chatverlaufs.",
-      "logix": "Selbst gehostete Arbeitszeiterfassung für den deutschen Markt, single-tenant. Die gesetzlichen Vorgaben werden täglich über reine, seiteneffektfreie Compliance-Funktionen ausgewertet — jeder Schwellenwert ist Konfiguration mit gesetzeskonformem Standardwert, niemals ein fest codierter Literal."
+      "logix": "Selbst gehostete, single-tenant Arbeitszeiterfassung für den deutschen Markt mit täglich geprüfter gesetzlicher Compliance (ArbZG)."
     }
   },
   "Impressum": {
@@ -1028,6 +1032,7 @@
     "sections": {
       "home": "Startseite",
       "speed-insight": "Performance",
+      "collaboration": "Zusammenarbeit",
       "projects": "Projekte",
       "cert": "Zertifikate",
       "services": "Leistungen",

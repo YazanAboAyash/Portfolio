@@ -176,14 +176,6 @@
     "openSourceNote": "Todos los proyectos a continuación son de código abierto.",
     "seeMoreOnGitHub": "ver más en GitHub...",
     "viewAllProjects": "Ver todos los proyectos",
-    "featuredCollab": "Colaboración destacada",
-    "botgenossen": {
-      "title": "Ciudad de Büttelborn — Avatar IA para el alcalde",
-      "description": "Parte del equipo de Botgenossen que construyó el avatar de IA interactivo multilingüe para el Bürgermeister de Büttelborn, una ciudad en Alemania. El avatar habla con los ciudadanos en varios idiomas, responde preguntas sobre los servicios municipales y representa digitalmente al alcalde en el sitio web oficial de la ciudad.",
-      "role": "Desarrollo de Avatar IA",
-      "company": "Botgenossen",
-      "live": "En vivo"
-    },
     "cloneRepository": "Clonar repositorio",
     "code": "Código",
     "npmPackage": "npm",
@@ -197,12 +189,24 @@
       "agpl": "Licencia AGPL-3.0"
     }
   },
+  "Collaboration": {
+    "title": "Colaboración",
+    "subtitle": "Cooperar. Colaborar. Entregar.",
+    "badge": "Proyecto en equipo",
+    "project": {
+      "title": "Ciudad de Büttelborn — Avatar IA para el alcalde",
+      "description": "Parte del equipo de Botgenossen que construyó el avatar de IA interactivo multilingüe para el Bürgermeister de Büttelborn, una ciudad en Alemania. El avatar habla con los ciudadanos en varios idiomas, responde preguntas sobre los servicios municipales y representa digitalmente al alcalde en el sitio web oficial de la ciudad.",
+      "role": "Desarrollo de Avatar IA",
+      "company": "Botgenossen",
+      "live": "En vivo"
+    }
+  },
   "Products": {
     "title": "Productos",
     "requestDemo": "Solicitar una demo",
     "descriptions": {
       "princeps": "Un espacio de trabajo de IA privado que funciona como una secretaría ejecutiva personal, aportando la preparación, la memoria, la coordinación y el seguimiento estructurado que ofrecería un jefe de gabinete. Cada función escribe en una única base de datos PostgreSQL por usuario, de modo que el asistente de IA mantiene el contexto de todo el espacio de trabajo, no solo del historial de chat.",
-      "logix": "Registro de jornada laboral autoalojado y de un solo inquilino, diseñado para el mercado alemán. Las normas legales se evalúan diariamente mediante funciones de cumplimiento puras y sin efectos secundarios — cada umbral es una configuración con un valor legal por defecto, nunca un literal fijado en el código."
+      "logix": "Registro de jornada laboral autoalojado y de un solo inquilino para el mercado alemán (ArbZG), con cumplimiento normativo evaluado a diario."
     }
   },
   "Impressum": {
@@ -1028,6 +1032,7 @@
     "sections": {
       "home": "Inicio",
       "speed-insight": "Rendimiento",
+      "collaboration": "Colaboración",
       "projects": "Proyectos",
       "cert": "Certificaciones",
       "services": "Servicios",

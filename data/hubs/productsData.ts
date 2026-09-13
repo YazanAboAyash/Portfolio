@@ -49,7 +49,7 @@ export const products: Product[] = [
     description: "logix",
     media: {
       type: "image",
-      src: "/assets/products/logix-placeholder.png",
+      src: "/assets/products/logix.jpg",
       alt: "LogiX working-time recording screenshot",
     },
     technologies: ["TypeScript", "PostgreSQL", "Self-hosted", "Compliance Engine"],

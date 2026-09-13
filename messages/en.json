@@ -176,14 +176,6 @@
     "openSourceNote": "All projects below are open source.",
     "seeMoreOnGitHub": "see more on GitHub...",
     "viewAllProjects": "View all projects",
-    "featuredCollab": "Featured Collaboration",
-    "botgenossen": {
-      "title": "Büttleborn City — AI Avatar for the Mayor",
-      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttleborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
-      "role": "AI Avatar Development",
-      "company": "Botgenossen",
-      "live": "Live"
-    },
     "cloneRepository": "Clone Repository",
     "code": "Code",
     "npmPackage": "npm",
@@ -197,12 +189,24 @@
       "agpl": "AGPL-3.0 License"
     }
   },
+  "Collaboration": {
+    "title": "Collaboration",
+    "subtitle": "Cooperate. Collaborate. Deliver.",
+    "badge": "Team Project",
+    "project": {
+      "title": "Büttleborn City — AI Avatar for the Mayor",
+      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttleborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
+      "role": "AI Avatar Development",
+      "company": "Botgenossen",
+      "live": "Live"
+    }
+  },
   "Products": {
     "title": "Products",
     "requestDemo": "Request a Demo",
     "descriptions": {
       "princeps": "A private AI workspace that functions as a personal executive secretariat — the preparation, memory, coordination, and structured follow-through a chief of staff provides. Every feature writes to a single user-scoped PostgreSQL database, so the AI assistant stays context-aware across the entire workspace, not just the chat history.",
-      "logix": "Self-hosted, single-tenant working-time recording built for the German market. Statutory rules are evaluated per day through pure, side-effect-free compliance functions — every threshold is configuration with a lawful default, never a hardcoded literal."
+      "logix": "Self-hosted, single-tenant working-time recording built for the German market (ArbZG), with statutory compliance evaluated per day."
     }
   },
   "Impressum": {
@@ -1028,6 +1032,7 @@
     "sections": {
       "home": "Home",
       "speed-insight": "Performance",
+      "collaboration": "Collaboration",
       "projects": "Projects",
       "cert": "Certifications",
       "services": "Services",

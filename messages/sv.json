@@ -176,14 +176,6 @@
     "openSourceNote": "Alla projekt nedan är öppen källkod.",
     "seeMoreOnGitHub": "se mer på GitHub...",
     "viewAllProjects": "Visa alla projekt",
-    "featuredCollab": "Utmärkt samarbete",
-    "botgenossen": {
-      "title": "Staden Büttelborn — AI-avatar för borgmästaren",
-      "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
-      "role": "AI-avatarutveckling",
-      "company": "Botgenossen",
-      "live": "Live"
-    },
     "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",
@@ -197,12 +189,24 @@
       "agpl": "AGPL-3.0-licens"
     }
   },
+  "Collaboration": {
+    "title": "Samarbete",
+    "subtitle": "Byggt i team på ett företag.",
+    "badge": "Teamprojekt",
+    "project": {
+      "title": "Staden Büttelborn — AI-avatar för borgmästaren",
+      "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
+      "role": "AI-avatarutveckling",
+      "company": "Botgenossen",
+      "live": "Live"
+    }
+  },
   "Products": {
     "title": "Produkter",
     "requestDemo": "Begär en demo",
     "descriptions": {
       "princeps": "En privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat — med den förberedelse, det minne, den koordinering och den strukturerade uppföljning som en stabschef annars ger. Varje funktion skriver till en enda användarbunden PostgreSQL-databas, så AI-assistenten förblir kontextmedveten i hela arbetsytan, inte bara i chatthistoriken.",
-      "logix": "Självhostad, single-tenant arbetstidsregistrering byggd för den tyska marknaden. De lagstadgade reglerna utvärderas per dag genom rena, sidoeffektfria efterlevnadsfunktioner — varje tröskelvärde är konfiguration med ett lagenligt standardvärde, aldrig en hårdkodad literal."
+      "logix": "Självhostad, single-tenant arbetstidsregistrering för den tyska marknaden (ArbZG), med lagstadgad efterlevnad som utvärderas dagligen."
     }
   },
   "Impressum": {
@@ -1028,6 +1032,7 @@
     "sections": {
       "home": "Hem",
       "speed-insight": "Prestanda",
+      "collaboration": "Samarbete",
       "projects": "Projekt",
       "cert": "Certifieringar",
       "services": "Tjänster",
