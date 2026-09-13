@@ -46,9 +46,12 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
 
   return (
     <section className={className} id="projects">
-      <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-12 text-black dark:text-white">
+      <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-3 text-black dark:text-white">
         <ScrambleText text={t("title")} />
       </h2>
+      <p className="text-sm text-muted-foreground text-center mb-12">
+        {t("openSourceNote")}
+      </p>
 
       {/* ── Botgenossen featured collaboration card ── */}
       <RevealGroup className="max-w-6xl mx-auto mb-8">

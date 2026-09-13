@@ -57,6 +57,17 @@ const ProjectsHomeShowcase = dynamic(
   },
 );
 
+const ProductsHomeShowcase = dynamic(
+  () =>
+    import("@/components/products").then((mod) => ({
+      default: mod.ProductsHomeShowcase,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  },
+);
+
 const SpeedInsight = dynamic(
   () =>
     import("@/components/speed-insight").then((mod) => ({
@@ -111,6 +122,17 @@ export default function HomeContent() {
             }
           >
             <ProjectsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+
+          {/* Products Showcase Section */}
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <ProductsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           <Suspense

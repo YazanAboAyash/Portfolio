@@ -171,9 +171,9 @@
       "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen.",
       "voiceToNotion": "Wandelt Sprachmemos und Meeting-Aufzeichnungen in strukturierte Notion-Seiten mit Transkripten, Zusammenfassungen und Aktionspunkten um. Automatisiert die Nachbearbeitung von Meetings in unter 30 Sekunden.",
       "nextJsSeoOptimization": "Ein leichtgewichtiges SEO-Hilfspaket ohne Laufzeitabhängigkeiten für den Next.js App Router. Wandelt einfache Props in ein vollständiges Metadata-Objekt um — OpenGraph, Twitter Cards, kanonische URLs, hreflang-Alternativen und JSON-LD-strukturierte Daten. Veröffentlicht auf npm als @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "Eine sofort einsetzbare, vollständig anpassbare Authentifizierungslösung mit Better Auth und Next.js. Unterstützt mehrere Authentifizierungsanbieter und lässt sich einfach in jedes Projekt integrieren.",
-      "princeps": "Privater KI-Arbeitsbereich als persönliches Exekutivsekretariat. Enthält einen KI-Chat-Assistenten mit RAG-Wissensdatenbank, Aufgabenverwaltung, Kontakte, Meetings, Entscheidungen, Ziele und proaktive Benachrichtigungen — alles gespeichert in einer einzigen PostgreSQL-Datenbank mit pgvector."
+      "customizableBetterAuth": "Eine sofort einsetzbare, vollständig anpassbare Authentifizierungslösung mit Better Auth und Next.js. Unterstützt mehrere Authentifizierungsanbieter und lässt sich einfach in jedes Projekt integrieren."
     },
+    "openSourceNote": "Alle unten aufgeführten Projekte sind Open Source.",
     "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
     "viewAllProjects": "Alle Projekte ansehen",
     "featuredCollab": "Vorgestellte Zusammenarbeit",
@@ -195,6 +195,14 @@
       "fullyOpen": "Vollständig Open Source",
       "mit": "MIT-Lizenz",
       "agpl": "AGPL-3.0-Lizenz"
+    }
+  },
+  "Products": {
+    "title": "Produkte",
+    "requestDemo": "Demo anfragen",
+    "descriptions": {
+      "princeps": "Ein privater KI-Arbeitsbereich, der als persönliches Exekutivsekretariat fungiert — mit der Vorbereitung, dem Gedächtnis, der Koordination und der strukturierten Nachverfolgung, die sonst ein Chief of Staff liefert. Jede Funktion schreibt in eine einzige benutzerbezogene PostgreSQL-Datenbank, sodass der KI-Assistent über den gesamten Arbeitsbereich hinweg kontextbewusst bleibt — nicht nur innerhalb des Chatverlaufs.",
+      "logix": "Selbst gehostete Arbeitszeiterfassung für den deutschen Markt, single-tenant. Die gesetzlichen Vorgaben werden täglich über reine, seiteneffektfreie Compliance-Funktionen ausgewertet — jeder Schwellenwert ist Konfiguration mit gesetzeskonformem Standardwert, niemals ein fest codierter Literal."
     }
   },
   "Impressum": {

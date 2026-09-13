@@ -171,9 +171,9 @@
       "subsApi": "API för att hantera användarprenumerationer, inklusive fakturering och betalningshantering. Byggt med Next.js och integrerat med Stripe för säkra betalningar.",
       "voiceToNotion": "Omvandlar röstmemon och mötesinspelningar till strukturerade Notion-sidor med transkriptioner, sammanfattningar och åtgärdspunkter. Automatiserar administrativt arbete efter möten på under 30 sekunder.",
       "nextJsSeoOptimization": "Ett lättviktigt SEO-hjälppaket utan körtidsberoenden för Next.js App Router. Omvandlar enkla props till ett komplett Metadata-objekt — OpenGraph, Twitter Cards, kanoniska URL:er, hreflang-alternativ och JSON-LD strukturerade data. Publicerat på npm som @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "En färdig, fullt anpassningsbar autentiseringslösning byggd med Better Auth och Next.js. Stöder flera autentiseringsleverantörer och kan enkelt integreras i vilket projekt som helst.",
-      "princeps": "Privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat. Innehåller en AI-chattassistent med RAG-kunskapsbas, uppgiftshantering, kontakter, möten, beslut, mål och proaktiva aviseringar — allt lagrat i en enda PostgreSQL-databas med pgvector."
+      "customizableBetterAuth": "En färdig, fullt anpassningsbar autentiseringslösning byggd med Better Auth och Next.js. Stöder flera autentiseringsleverantörer och kan enkelt integreras i vilket projekt som helst."
     },
+    "openSourceNote": "Alla projekt nedan är öppen källkod.",
     "seeMoreOnGitHub": "se mer på GitHub...",
     "viewAllProjects": "Visa alla projekt",
     "featuredCollab": "Utmärkt samarbete",
@@ -195,6 +195,14 @@
       "fullyOpen": "Helt öppen källkod",
       "mit": "MIT-licens",
       "agpl": "AGPL-3.0-licens"
+    }
+  },
+  "Products": {
+    "title": "Produkter",
+    "requestDemo": "Begär en demo",
+    "descriptions": {
+      "princeps": "En privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat — med den förberedelse, det minne, den koordinering och den strukturerade uppföljning som en stabschef annars ger. Varje funktion skriver till en enda användarbunden PostgreSQL-databas, så AI-assistenten förblir kontextmedveten i hela arbetsytan, inte bara i chatthistoriken.",
+      "logix": "Självhostad, single-tenant arbetstidsregistrering byggd för den tyska marknaden. De lagstadgade reglerna utvärderas per dag genom rena, sidoeffektfria efterlevnadsfunktioner — varje tröskelvärde är konfiguration med ett lagenligt standardvärde, aldrig en hårdkodad literal."
     }
   },
   "Impressum": {

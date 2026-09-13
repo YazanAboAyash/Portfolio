@@ -171,9 +171,9 @@
       "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros.",
       "voiceToNotion": "Transforma notas de voz y grabaciones de reuniones en páginas estructuradas de Notion con transcripciones, resúmenes y elementos de acción. Automatiza el trabajo administrativo post-reunión en menos de 30 segundos.",
       "nextJsSeoOptimization": "Un asistente SEO ligero y sin dependencias de runtime para el App Router de Next.js. Convierte props simples en un objeto Metadata completo — OpenGraph, Twitter Cards, URLs canónicas, alternativas hreflang y datos estructurados JSON-LD. Publicado en npm como @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "Una solución de autenticación lista para usar y totalmente personalizable construida con Better Auth y Next.js. Soporta múltiples proveedores de autenticación y se integra fácilmente en cualquier proyecto.",
-      "princeps": "Espacio de trabajo de IA privado que actúa como secretaría ejecutiva personal. Incluye un asistente de chat IA con base de conocimiento RAG, gestión de tareas, contactos, reuniones, decisiones, objetivos y notificaciones proactivas — todo almacenado en una única base de datos PostgreSQL con pgvector."
+      "customizableBetterAuth": "Una solución de autenticación lista para usar y totalmente personalizable construida con Better Auth y Next.js. Soporta múltiples proveedores de autenticación y se integra fácilmente en cualquier proyecto."
     },
+    "openSourceNote": "Todos los proyectos a continuación son de código abierto.",
     "seeMoreOnGitHub": "ver más en GitHub...",
     "viewAllProjects": "Ver todos los proyectos",
     "featuredCollab": "Colaboración destacada",
@@ -195,6 +195,14 @@
       "fullyOpen": "Completamente de código abierto",
       "mit": "Licencia MIT",
       "agpl": "Licencia AGPL-3.0"
+    }
+  },
+  "Products": {
+    "title": "Productos",
+    "requestDemo": "Solicitar una demo",
+    "descriptions": {
+      "princeps": "Un espacio de trabajo de IA privado que funciona como una secretaría ejecutiva personal, aportando la preparación, la memoria, la coordinación y el seguimiento estructurado que ofrecería un jefe de gabinete. Cada función escribe en una única base de datos PostgreSQL por usuario, de modo que el asistente de IA mantiene el contexto de todo el espacio de trabajo, no solo del historial de chat.",
+      "logix": "Registro de jornada laboral autoalojado y de un solo inquilino, diseñado para el mercado alemán. Las normas legales se evalúan diariamente mediante funciones de cumplimiento puras y sin efectos secundarios — cada umbral es una configuración con un valor legal por defecto, nunca un literal fijado en el código."
     }
   },
   "Impressum": {

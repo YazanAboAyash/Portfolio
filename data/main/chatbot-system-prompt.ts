@@ -78,7 +78,6 @@ export const REEM_FACTS = {
     demos: {
       meetingIntelligence:
         "https://github.com/yazanaboayash/meeting-intelligence",
-      princeps: "https://github.com/yazanaboayash/princeps",
       nextSeoLite: "https://www.npmjs.com/package/@coldbydefault/next-seo-lite",
     },
   },

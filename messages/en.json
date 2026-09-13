@@ -171,9 +171,9 @@
       "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
       "voiceToNotion": "Transforms voice memos and meeting recordings into structured Notion pages with transcripts, summaries, and action items. Automates post-meeting admin work in under 30 seconds.",
       "nextJsSeoOptimization": "A lightweight, zero-dependency SEO helper for Next.js App Router. Turns simple props into a full Metadata object — OpenGraph, Twitter Cards, canonical URLs, hreflang alternates, and JSON-LD structured data. Published on npm as @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project.",
-      "princeps": "Private AI workspace that acts as a personal executive secretariat. Features an AI chat assistant with RAG knowledge base, task management, contacts, meetings, decisions, goals, and proactive nudges — all backed by a single PostgreSQL database with pgvector."
+      "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project."
     },
+    "openSourceNote": "All projects below are open source.",
     "seeMoreOnGitHub": "see more on GitHub...",
     "viewAllProjects": "View all projects",
     "featuredCollab": "Featured Collaboration",
@@ -195,6 +195,14 @@
       "fullyOpen": "Fully Open Source",
       "mit": "MIT License",
       "agpl": "AGPL-3.0 License"
+    }
+  },
+  "Products": {
+    "title": "Products",
+    "requestDemo": "Request a Demo",
+    "descriptions": {
+      "princeps": "A private AI workspace that functions as a personal executive secretariat — the preparation, memory, coordination, and structured follow-through a chief of staff provides. Every feature writes to a single user-scoped PostgreSQL database, so the AI assistant stays context-aware across the entire workspace, not just the chat history.",
+      "logix": "Self-hosted, single-tenant working-time recording built for the German market. Statutory rules are evaluated per day through pure, side-effect-free compliance functions — every threshold is configuration with a lawful default, never a hardcoded literal."
     }
   },
   "Impressum": {
