@@ -120,7 +120,7 @@ const nextConfig: NextConfig = {
       {
         // Static assets cache optimization
         source:
-          "/((?!api/).*).(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp|avif)",
+          "/((?!api/).*).(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp|avif|mp4|webm)",
         headers: [
           {
             key: "Cache-Control",

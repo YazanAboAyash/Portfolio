@@ -154,7 +154,9 @@
       "gitGithubBootcamp": "Complété un cours complet sur Git et GitHub, couvrant le contrôle de version, le branching et les flux de collaboration.",
       "fullStackWebDev": "Cours de développement web Frontend et Backend, couvrant HTML, CSS, JavaScript, Node.js et React.",
       "kiKompetenzSchulung": "Formation aux compétences en IA selon l'Article 4 de la loi européenne sur l'IA, couvrant l'utilisation responsable de l'IA et la conformité.",
-      "computerScienceExpert": "Expert en Informatique, Domaine : Développement Logiciel et IA, selon le § 37 de la loi allemande sur la formation professionnelle (BBiG)."
+      "computerScienceExpert": "Expert en Informatique, Domaine : Développement Logiciel et IA, selon le § 37 de la loi allemande sur la formation professionnelle (BBiG).",
+      "githubFoundations": "Certification GitHub Foundations obtenue, démontrant des connaissances fondamentales de Git, GitHub et des flux de travail collaboratifs de développement logiciel.",
+      "githubCopilot": "Certification GitHub Copilot obtenue, validant des compétences en développement logiciel assisté par IA avec GitHub Copilot."
     }
   },
   "Projects": {
@@ -171,19 +173,11 @@
       "subsApi": "API pour gérer les abonnements utilisateurs, incluant la facturation, la gestion des factures et le traitement des paiements. Construit avec Next.js et intégré avec Stripe pour des paiements sécurisés.",
       "voiceToNotion": "Transforme les mémos vocaux et les enregistrements de réunions en pages Notion structurées avec transcriptions, résumés et points d'action. Automatise le travail administratif post-réunion en moins de 30 secondes.",
       "nextJsSeoOptimization": "Un assistant SEO léger et sans dépendances de runtime pour le App Router de Next.js. Convertit de simples props en un objet Metadata complet — OpenGraph, Twitter Cards, URLs canoniques, alternatives hreflang et données structurées JSON-LD. Publié sur npm sous @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "Une solution d'authentification prête à l'emploi et entièrement personnalisable construite avec Better Auth et Next.js. Prend en charge plusieurs fournisseurs d'authentification et s'intègre facilement dans n'importe quel projet.",
-      "princeps": "Espace de travail IA privé fonctionnant comme un secrétariat exécutif personnel. Inclut un assistant de chat IA avec base de connaissances RAG, gestion des tâches, contacts, réunions, décisions, objectifs et notifications proactives — le tout stocké dans une seule base PostgreSQL avec pgvector."
+      "customizableBetterAuth": "Une solution d'authentification prête à l'emploi et entièrement personnalisable construite avec Better Auth et Next.js. Prend en charge plusieurs fournisseurs d'authentification et s'intègre facilement dans n'importe quel projet."
     },
+    "openSourceNote": "Tous les projets ci-dessous sont open source.",
     "seeMoreOnGitHub": "voir plus sur GitHub...",
     "viewAllProjects": "Voir tous les projets",
-    "featuredCollab": "Collaboration en vedette",
-    "botgenossen": {
-      "title": "Ville de Büttelborn — Avatar IA pour le maire",
-      "description": "Membre de l'équipe Botgenossen ayant construit l'avatar IA interactif multilingue pour le Bürgermeister de Büttelborn, une ville en Allemagne. L'avatar s'entretient avec les citoyens dans plusieurs langues, répond aux questions sur les services municipaux et représente numériquement le maire sur le site officiel de la ville.",
-      "role": "Développement d'Avatar IA",
-      "company": "Botgenossen",
-      "live": "En direct"
-    },
     "cloneRepository": "Cloner le dépôt",
     "code": "Code",
     "npmPackage": "npm",
@@ -195,6 +189,26 @@
       "fullyOpen": "Entièrement open source",
       "mit": "Licence MIT",
       "agpl": "Licence AGPL-3.0"
+    }
+  },
+  "Collaboration": {
+    "title": "Collaboration",
+    "subtitle": "Développé en équipe au sein d'une entreprise.",
+    "badge": "Projet d'équipe",
+    "project": {
+      "title": "Ville de Büttelborn — Avatar IA pour le maire",
+      "description": "Membre de l'équipe Botgenossen ayant construit l'avatar IA interactif multilingue pour le Bürgermeister de Büttelborn, une ville en Allemagne. L'avatar s'entretient avec les citoyens dans plusieurs langues, répond aux questions sur les services municipaux et représente numériquement le maire sur le site officiel de la ville.",
+      "role": "Développement d'Avatar IA",
+      "company": "Botgenossen",
+      "live": "En direct"
+    }
+  },
+  "Products": {
+    "title": "Produits",
+    "requestDemo": "Demander une démo",
+    "descriptions": {
+      "princeps": "Un espace de travail IA privé qui fonctionne comme un secrétariat exécutif personnel, apportant la préparation, la mémoire, la coordination et le suivi structuré qu'offrirait un chef de cabinet. Chaque fonctionnalité écrit dans une base PostgreSQL unique propre à l'utilisateur, de sorte que l'assistant IA reste contextuel sur l'ensemble de l'espace de travail, pas seulement sur l'historique de discussion.",
+      "logix": "Enregistrement du temps de travail auto-hébergé et mono-locataire pour le marché allemand (ArbZG), avec conformité légale évaluée chaque jour."
     }
   },
   "Impressum": {
@@ -1020,6 +1034,7 @@
     "sections": {
       "home": "Accueil",
       "speed-insight": "Performance",
+      "collaboration": "Collaboration",
       "projects": "Projets",
       "cert": "Certifications",
       "services": "Services",

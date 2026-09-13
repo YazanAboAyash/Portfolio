@@ -154,7 +154,9 @@
       "gitGithubBootcamp": "Completed a comprehensive Git and GitHub course, covering version control, branching, and collaboration workflows.",
       "fullStackWebDev": "Frontend and Backend Web Development course, covering HTML, CSS, JavaScript, Node.js, and React.",
       "kiKompetenzSchulung": "AI Competence Training according to Article 4 of the EU AI Act, covering responsible AI usage and compliance.",
-      "computerScienceExpert": "Computer Science Expert, Subject Area: Software Development and AI, as per § 37 German Vocational Training Act (BBiG)."
+      "computerScienceExpert": "Computer Science Expert, Subject Area: Software Development and AI, as per § 37 German Vocational Training Act (BBiG).",
+      "githubFoundations": "Earned the GitHub Foundations Certification, demonstrating core knowledge of Git, GitHub, and collaborative software development workflows.",
+      "githubCopilot": "Earned the GitHub Copilot Certification, validating skills in AI-assisted software development using GitHub Copilot."
     }
   },
   "Projects": {
@@ -171,19 +173,11 @@
       "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
       "voiceToNotion": "Transforms voice memos and meeting recordings into structured Notion pages with transcripts, summaries, and action items. Automates post-meeting admin work in under 30 seconds.",
       "nextJsSeoOptimization": "A lightweight, zero-dependency SEO helper for Next.js App Router. Turns simple props into a full Metadata object — OpenGraph, Twitter Cards, canonical URLs, hreflang alternates, and JSON-LD structured data. Published on npm as @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project.",
-      "princeps": "Private AI workspace that acts as a personal executive secretariat. Features an AI chat assistant with RAG knowledge base, task management, contacts, meetings, decisions, goals, and proactive nudges — all backed by a single PostgreSQL database with pgvector."
+      "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project."
     },
+    "openSourceNote": "All projects below are open source.",
     "seeMoreOnGitHub": "see more on GitHub...",
     "viewAllProjects": "View all projects",
-    "featuredCollab": "Featured Collaboration",
-    "botgenossen": {
-      "title": "Büttleborn City — AI Avatar for the Mayor",
-      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttleborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
-      "role": "AI Avatar Development",
-      "company": "Botgenossen",
-      "live": "Live"
-    },
     "cloneRepository": "Clone Repository",
     "code": "Code",
     "npmPackage": "npm",
@@ -195,6 +189,26 @@
       "fullyOpen": "Fully Open Source",
       "mit": "MIT License",
       "agpl": "AGPL-3.0 License"
+    }
+  },
+  "Collaboration": {
+    "title": "Collaboration",
+    "subtitle": "Cooperate. Collaborate. Deliver.",
+    "badge": "Team Project",
+    "project": {
+      "title": "Büttleborn City — AI Avatar for the Mayor",
+      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttleborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
+      "role": "AI Avatar Development",
+      "company": "Botgenossen",
+      "live": "Live"
+    }
+  },
+  "Products": {
+    "title": "Products",
+    "requestDemo": "Request a Demo",
+    "descriptions": {
+      "princeps": "A private AI workspace that functions as a personal executive secretariat — the preparation, memory, coordination, and structured follow-through a chief of staff provides. Every feature writes to a single user-scoped PostgreSQL database, so the AI assistant stays context-aware across the entire workspace, not just the chat history.",
+      "logix": "Self-hosted, single-tenant working-time recording built for the German market (ArbZG), with statutory compliance evaluated per day."
     }
   },
   "Impressum": {
@@ -1020,6 +1034,7 @@
     "sections": {
       "home": "Home",
       "speed-insight": "Performance",
+      "collaboration": "Collaboration",
       "projects": "Projects",
       "cert": "Certifications",
       "services": "Services",

@@ -46,10 +46,32 @@ const GitHubShowcase = dynamic(
   },
 );
 
+const CollaborationShowcase = dynamic(
+  () =>
+    import("@/components/collaboration").then((mod) => ({
+      default: mod.CollaborationShowcase,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  },
+);
+
 const ProjectsHomeShowcase = dynamic(
   () =>
     import("@/components/projects").then((mod) => ({
       default: mod.ProjectsHomeShowcase,
+    })),
+  {
+    loading: () => <LoadingSkeleton />,
+    ssr: false,
+  },
+);
+
+const ProductsHomeShowcase = dynamic(
+  () =>
+    import("@/components/products").then((mod) => ({
+      default: mod.ProductsHomeShowcase,
     })),
   {
     loading: () => <LoadingSkeleton />,
@@ -99,7 +121,18 @@ export default function HomeContent() {
               </div>
             }
           >
-            <SpeedInsight className="pb-32 px-4 sm:px-6 lg:px-8" />
+            <SpeedInsight className="pb-32 pt-8 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+
+          {/* Collaboration Showcase Section */}
+          <Suspense
+            fallback={
+              <div className="min-h-80">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <CollaborationShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           {/* Project Showcase Section */}
@@ -111,6 +144,17 @@ export default function HomeContent() {
             }
           >
             <ProjectsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
+          </Suspense>
+
+          {/* Products Showcase Section */}
+          <Suspense
+            fallback={
+              <div className="min-h-100">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <ProductsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
           </Suspense>
 
           <Suspense

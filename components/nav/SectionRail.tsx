@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 const SECTION_IDS = [
   "home",
   "speed-insight",
+  "collaboration",
   "projects",
   "cert",
   "services",

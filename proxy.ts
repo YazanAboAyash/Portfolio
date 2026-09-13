@@ -226,7 +226,10 @@ export const config = {
      * - favicon.ico (favicon file)
      * - robots.txt, sitemap.xml (now generated dynamically)
      * - .well-known (for verification files)
+     * - any path with a file extension (public/ static assets — video, images,
+     *   fonts, etc.) so Vercel's CDN serves them directly and honors Range
+     *   requests; letting the proxy touch them breaks video seeking/autoplay
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.well-known).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.well-known|.*\\..*).*)",
   ],
 };

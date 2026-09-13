@@ -17,6 +17,26 @@ export const certifications = [
     date: "2026",
   },
   {
+    id: 5,
+    title: "GitHub Foundations Certification",
+    image: "/default.png",
+    issuer: "GitHub",
+    description:
+      "Earned the GitHub Foundations Certification, demonstrating core knowledge of Git, GitHub, and collaborative software development workflows.",
+    descriptionKey: "githubFoundations",
+    date: "2026",
+  },
+  {
+    id: 6,
+    title: "GitHub Copilot Certification",
+    image: "/default.png",
+    issuer: "GitHub",
+    description:
+      "Earned the GitHub Copilot Certification, validating skills in AI-assisted software development using GitHub Copilot.",
+    descriptionKey: "githubCopilot",
+    date: "2026",
+  },
+  {
     id: 1,
     title: "Python PCEP",
     image: "/assets/cer/cer1.png",

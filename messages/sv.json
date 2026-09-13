@@ -154,7 +154,9 @@
       "gitGithubBootcamp": "Genomfört en omfattande Git- och GitHub-kurs som täckte versionshantering, branching och samarbetsarbetsflöden.",
       "fullStackWebDev": "Kurs i frontend- och backendutveckling som täcker HTML, CSS, JavaScript, Node.js och React.",
       "kiKompetenzSchulung": "AI-kompetensutbildning enligt artikel 4 i EU:s AI-förordning, som täcker ansvarsfull AI-användning och efterlevnad.",
-      "computerScienceExpert": "Datavetenskapsexpert, Ämnesområde: Mjukvaruutveckling och AI, enligt § 37 av den tyska yrkesutbildningslagen (BBiG)."
+      "computerScienceExpert": "Datavetenskapsexpert, Ämnesområde: Mjukvaruutveckling och AI, enligt § 37 av den tyska yrkesutbildningslagen (BBiG).",
+      "githubFoundations": "Erhöll certifieringen GitHub Foundations, som visar grundläggande kunskaper i Git, GitHub och kollaborativa arbetsflöden för mjukvaruutveckling.",
+      "githubCopilot": "Erhöll certifieringen GitHub Copilot, som validerar färdigheter inom AI-assisterad mjukvaruutveckling med GitHub Copilot."
     }
   },
   "Projects": {
@@ -171,19 +173,11 @@
       "subsApi": "API för att hantera användarprenumerationer, inklusive fakturering och betalningshantering. Byggt med Next.js och integrerat med Stripe för säkra betalningar.",
       "voiceToNotion": "Omvandlar röstmemon och mötesinspelningar till strukturerade Notion-sidor med transkriptioner, sammanfattningar och åtgärdspunkter. Automatiserar administrativt arbete efter möten på under 30 sekunder.",
       "nextJsSeoOptimization": "Ett lättviktigt SEO-hjälppaket utan körtidsberoenden för Next.js App Router. Omvandlar enkla props till ett komplett Metadata-objekt — OpenGraph, Twitter Cards, kanoniska URL:er, hreflang-alternativ och JSON-LD strukturerade data. Publicerat på npm som @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "En färdig, fullt anpassningsbar autentiseringslösning byggd med Better Auth och Next.js. Stöder flera autentiseringsleverantörer och kan enkelt integreras i vilket projekt som helst.",
-      "princeps": "Privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat. Innehåller en AI-chattassistent med RAG-kunskapsbas, uppgiftshantering, kontakter, möten, beslut, mål och proaktiva aviseringar — allt lagrat i en enda PostgreSQL-databas med pgvector."
+      "customizableBetterAuth": "En färdig, fullt anpassningsbar autentiseringslösning byggd med Better Auth och Next.js. Stöder flera autentiseringsleverantörer och kan enkelt integreras i vilket projekt som helst."
     },
+    "openSourceNote": "Alla projekt nedan är öppen källkod.",
     "seeMoreOnGitHub": "se mer på GitHub...",
     "viewAllProjects": "Visa alla projekt",
-    "featuredCollab": "Utmärkt samarbete",
-    "botgenossen": {
-      "title": "Staden Büttelborn — AI-avatar för borgmästaren",
-      "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
-      "role": "AI-avatarutveckling",
-      "company": "Botgenossen",
-      "live": "Live"
-    },
     "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",
@@ -195,6 +189,26 @@
       "fullyOpen": "Helt öppen källkod",
       "mit": "MIT-licens",
       "agpl": "AGPL-3.0-licens"
+    }
+  },
+  "Collaboration": {
+    "title": "Samarbete",
+    "subtitle": "Byggt i team på ett företag.",
+    "badge": "Teamprojekt",
+    "project": {
+      "title": "Staden Büttelborn — AI-avatar för borgmästaren",
+      "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
+      "role": "AI-avatarutveckling",
+      "company": "Botgenossen",
+      "live": "Live"
+    }
+  },
+  "Products": {
+    "title": "Produkter",
+    "requestDemo": "Begär en demo",
+    "descriptions": {
+      "princeps": "En privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat — med den förberedelse, det minne, den koordinering och den strukturerade uppföljning som en stabschef annars ger. Varje funktion skriver till en enda användarbunden PostgreSQL-databas, så AI-assistenten förblir kontextmedveten i hela arbetsytan, inte bara i chatthistoriken.",
+      "logix": "Självhostad, single-tenant arbetstidsregistrering för den tyska marknaden (ArbZG), med lagstadgad efterlevnad som utvärderas dagligen."
     }
   },
   "Impressum": {
@@ -1020,6 +1034,7 @@
     "sections": {
       "home": "Hem",
       "speed-insight": "Prestanda",
+      "collaboration": "Samarbete",
       "projects": "Projekt",
       "cert": "Certifieringar",
       "services": "Tjänster",
