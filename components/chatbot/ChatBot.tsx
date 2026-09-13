@@ -174,7 +174,7 @@ export function ChatBot({
         <Button
           onClick={handleOpenChat}
           size="lg"
-          className={`relative ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.BUTTON_SHADOW} transition-all duration-300 ${CHATBOT_STYLES.BUTTON_GRADIENT} h-14 w-14 border-2 border-primary/20 group`}
+          className={`relative ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.BUTTON_SHADOW} transition-all duration-300 ${CHATBOT_STYLES.BUTTON_GRADIENT} h-14 w-14 border-2 border-primary/20 group cursor-pointer`}
           aria-label={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
           title={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
         >
