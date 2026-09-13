@@ -154,7 +154,9 @@
       "gitGithubBootcamp": "Complété un cours complet sur Git et GitHub, couvrant le contrôle de version, le branching et les flux de collaboration.",
       "fullStackWebDev": "Cours de développement web Frontend et Backend, couvrant HTML, CSS, JavaScript, Node.js et React.",
       "kiKompetenzSchulung": "Formation aux compétences en IA selon l'Article 4 de la loi européenne sur l'IA, couvrant l'utilisation responsable de l'IA et la conformité.",
-      "computerScienceExpert": "Expert en Informatique, Domaine : Développement Logiciel et IA, selon le § 37 de la loi allemande sur la formation professionnelle (BBiG)."
+      "computerScienceExpert": "Expert en Informatique, Domaine : Développement Logiciel et IA, selon le § 37 de la loi allemande sur la formation professionnelle (BBiG).",
+      "githubFoundations": "Certification GitHub Foundations obtenue, démontrant des connaissances fondamentales de Git, GitHub et des flux de travail collaboratifs de développement logiciel.",
+      "githubCopilot": "Certification GitHub Copilot obtenue, validant des compétences en développement logiciel assisté par IA avec GitHub Copilot."
     }
   },
   "Projects": {

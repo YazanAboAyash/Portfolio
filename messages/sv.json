@@ -154,7 +154,9 @@
       "gitGithubBootcamp": "Genomfört en omfattande Git- och GitHub-kurs som täckte versionshantering, branching och samarbetsarbetsflöden.",
       "fullStackWebDev": "Kurs i frontend- och backendutveckling som täcker HTML, CSS, JavaScript, Node.js och React.",
       "kiKompetenzSchulung": "AI-kompetensutbildning enligt artikel 4 i EU:s AI-förordning, som täcker ansvarsfull AI-användning och efterlevnad.",
-      "computerScienceExpert": "Datavetenskapsexpert, Ämnesområde: Mjukvaruutveckling och AI, enligt § 37 av den tyska yrkesutbildningslagen (BBiG)."
+      "computerScienceExpert": "Datavetenskapsexpert, Ämnesområde: Mjukvaruutveckling och AI, enligt § 37 av den tyska yrkesutbildningslagen (BBiG).",
+      "githubFoundations": "Erhöll certifieringen GitHub Foundations, som visar grundläggande kunskaper i Git, GitHub och kollaborativa arbetsflöden för mjukvaruutveckling.",
+      "githubCopilot": "Erhöll certifieringen GitHub Copilot, som validerar färdigheter inom AI-assisterad mjukvaruutveckling med GitHub Copilot."
     }
   },
   "Projects": {
