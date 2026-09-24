@@ -520,7 +520,8 @@
     },
     "input": {
       "placeholder": "ask Reem..",
-      "characterLimit": "/1000"
+      "characterCount": "{count}/{max}",
+      "limitReached": "Limite de {max} caractères atteinte"
     },
     "status": {
       "generating": "Génération"

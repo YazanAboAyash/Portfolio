@@ -27,6 +27,8 @@ export const ChatInput = React.memo(
     const t = useTranslations("ChatBot");
 
     const isLoading = status === "submitted" || status === "streaming";
+    // maxLength stops typing/pasting past the cap; the counter only appears once it is hit
+    const isAtLimit = inputValue.length >= CHATBOT_CONFIG.INPUT_MAX_LENGTH;
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -77,23 +79,31 @@ export const ChatInput = React.memo(
               onKeyDown={handleKeyDown}
               placeholder={t(CHATBOT_TRANSLATION_KEYS.INPUT_PLACEHOLDER)}
               disabled={isLoading || disabled}
-              className={`pr-12 ${CHATBOT_STYLES.INPUT_BORDER} ${CHATBOT_STYLES.INPUT_ROUNDED} transition-all duration-200 placeholder:text-muted-foreground/60`}
+              className={`${isAtLimit ? "pr-16 text-muted-foreground" : ""} ${CHATBOT_STYLES.INPUT_BORDER} ${CHATBOT_STYLES.INPUT_ROUNDED} transition-all duration-200 placeholder:text-muted-foreground/60`}
               maxLength={CHATBOT_CONFIG.INPUT_MAX_LENGTH}
-              aria-describedby="character-count"
+              aria-describedby="character-limit"
               aria-label={t(
                 CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_TYPE_MESSAGE,
               )}
             />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2">
+            <span id="character-limit" aria-live="polite" className="sr-only">
+              {isAtLimit
+                ? t(CHATBOT_TRANSLATION_KEYS.INPUT_LIMIT_REACHED, {
+                    max: CHATBOT_CONFIG.INPUT_MAX_LENGTH,
+                  })
+                : ""}
+            </span>
+            {isAtLimit && (
               <span
-                className="text-xs text-muted-foreground"
-                id="character-count"
-                aria-live="polite"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground"
+                aria-hidden="true"
               >
-                {inputValue.length}
-                {t(CHATBOT_TRANSLATION_KEYS.INPUT_CHARACTER_LIMIT)}
+                {t(CHATBOT_TRANSLATION_KEYS.INPUT_CHARACTER_COUNT, {
+                  count: inputValue.length,
+                  max: CHATBOT_CONFIG.INPUT_MAX_LENGTH,
+                })}
               </span>
-            </div>
+            )}
           </div>
           {isLoading ? (
             <Button

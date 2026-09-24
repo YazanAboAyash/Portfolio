@@ -15,7 +15,7 @@ export const CHATBOT_CONFIG = {
 
   // Message Limits
   MESSAGE_DISPLAY_LIMIT: 2000, // Max characters to display per message
-  INPUT_MAX_LENGTH: 1000, // Max input length
+  INPUT_MAX_LENGTH: 100, // Max input length — keep in sync with CHATBOT_MAX_MESSAGE_LENGTH (api/chatbot)
   INPUT_MIN_LENGTH: 2, // Min input length to prevent spam
 
   // Chat Dimensions - Responsive
@@ -138,7 +138,8 @@ export const CHATBOT_TRANSLATION_KEYS = {
 
   // Input
   INPUT_PLACEHOLDER: "input.placeholder",
-  INPUT_CHARACTER_LIMIT: "input.characterLimit",
+  INPUT_CHARACTER_COUNT: "input.characterCount",
+  INPUT_LIMIT_REACHED: "input.limitReached",
 
   // Errors are resolved through CHATBOT_ERROR_TRANSLATION_KEYS below, keyed by
   // the API's error codes rather than listed individually here.
