@@ -4,6 +4,7 @@
  * @version 6.x.x
  */
 
+import type { OrbSize, OrbState } from "thinking-orbs";
 import type { ChatBotErrorCode } from "@/types/configs/chatbot";
 
 export const CHATBOT_CONFIG = {
@@ -39,10 +40,10 @@ export const CHATBOT_CONFIG = {
   // Animation & Timing
   SCROLL_BEHAVIOR: "smooth" as ScrollBehavior,
   ANIMATION_DURATION: 300, // transition duration in ms
-  BOUNCE_DELAY: {
-    FIRST: -0.3, // [animation-delay:-0.3s]
-    SECOND: -0.15, // [animation-delay:-0.15s]
-    THIRD: 0, // no delay
+  // thinking-orbs typing indicator — 20 is the tuned inline-text preset
+  TYPING_ORB: {
+    STATE: "working" as OrbState,
+    SIZE: 20 as OrbSize,
   },
 
   // UI Sizing
@@ -107,7 +108,6 @@ export const CHATBOT_STYLES = {
 
   // Animation Classes
   SPIN_ANIMATION: "animate-spin",
-  BOUNCE_ANIMATION: "animate-bounce",
 
   // Scrollbar Classes
   SCROLLBAR: "scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent",
