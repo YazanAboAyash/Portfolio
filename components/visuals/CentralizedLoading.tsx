@@ -6,6 +6,7 @@
 
 import React from "react";
 import {LoadingSkeleton} from "@/components/visuals";
+import LoadingOrb from "./LoadingOrb";
 import { cn } from "@/lib/utils";
 
 interface CentralizedLoadingProps {
@@ -35,11 +36,9 @@ const CentralizedLoading: React.FC<CentralizedLoadingProps> = ({
       {(title || description) && (
         <div className="text-center space-y-2 mb-8">
           {title && (
-            <div className="flex items-center justify-center space-x-2">
-              <div className="h-2 w-2 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-              <div className="h-2 w-2 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-              <div className="h-2 w-2 bg-primary rounded-full animate-bounce"></div>
-              <h2 className="text-lg font-semibold text-muted-foreground ml-3">
+            <div className="flex items-center justify-center gap-3">
+              <LoadingOrb />
+              <h2 className="text-lg font-semibold text-muted-foreground">
                 {title}
               </h2>
             </div>

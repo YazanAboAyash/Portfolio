@@ -47,6 +47,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^4.0.27",
     "@ai-sdk/react": "^4.0.50",
+    "@blobatar/react": "^2.7.0",
     "@hookform/resolvers": "^5.2.1",
     "@neondatabase/serverless": "^1.0.1",
     "@prisma/adapter-pg": "^7.8.0",
@@ -69,6 +70,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "ai": "^7.0.47",
+    "blobatar": "^2.7.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.3",
@@ -89,6 +91,7 @@
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.12",
+    "thinking-orbs": "^0.3.2",
     "vaul": "^1.1.2",
     "zod": "^4.0.17"
   },

@@ -67,8 +67,6 @@ export interface ChatInputProps {
 
 export interface ChatMessageProps {
   message: ReemUIMessage;
-  /** True for the assistant message currently receiving tokens. */
-  isStreaming?: boolean;
   /** Delivery state, only meaningful for the most recent user message. */
   status?: "sent" | "error";
   className?: string;

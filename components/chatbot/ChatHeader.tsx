@@ -10,9 +10,14 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, X } from "lucide-react";
+import { X } from "lucide-react";
+import { Blobatar } from "@blobatar/react";
 import type { ChatHeaderProps } from "@/types/configs/chatbot";
-import { CHATBOT_STYLES, CHATBOT_TRANSLATION_KEYS } from "@/components/chatbot";
+import {
+  CHATBOT_CONFIG,
+  CHATBOT_STYLES,
+  CHATBOT_TRANSLATION_KEYS,
+} from "@/components/chatbot";
 
 export const ChatHeader = React.memo(function ChatHeader({
   onClose,
@@ -28,11 +33,16 @@ export const ChatHeader = React.memo(function ChatHeader({
     >
       <div className="flex items-center gap-3">
         <div
-          className={`w-10 h-10 ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.AVATAR_GRADIENT} flex items-center justify-center`}
+          className="w-10 h-10 flex items-center justify-center"
           role="img"
           aria-label={t(CHATBOT_TRANSLATION_KEYS.NAME)}
         >
-          <Bot className="w-5 h-5 text-primary-foreground" aria-hidden="true" />
+          <Blobatar
+            name={CHATBOT_CONFIG.AVATAR_SEED}
+            animate="always"
+            className="size-10"
+            aria-hidden="true"
+          />
         </div>
         <div className="flex flex-col">
           <CardTitle

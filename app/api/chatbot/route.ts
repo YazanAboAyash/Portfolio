@@ -44,7 +44,8 @@ const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 // value used to cost. A malformed value now falls back to the default and says so.
 const chatbotConfig: ChatBotConfig = {
   maxMessagesPerSession: positiveIntEnv("CHATBOT_MAX_MESSAGES_PER_SESSION", 20),
-  maxMessageLength: positiveIntEnv("CHATBOT_MAX_MESSAGE_LENGTH", 1000),
+  // Mirrors CHATBOT_CONFIG.INPUT_MAX_LENGTH, the hard cap on the chat input
+  maxMessageLength: positiveIntEnv("CHATBOT_MAX_MESSAGE_LENGTH", 100),
   rateLimitPerMinute: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_MINUTE", 10),
   rateLimitPerHour: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_HOUR", 50),
   systemPrompt: REEM_SYSTEM_PROMPT,

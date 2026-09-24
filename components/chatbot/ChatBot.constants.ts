@@ -4,6 +4,7 @@
  * @version 6.x.x
  */
 
+import type { OrbSize, OrbState } from "thinking-orbs";
 import type { ChatBotErrorCode } from "@/types/configs/chatbot";
 
 export const CHATBOT_CONFIG = {
@@ -14,7 +15,7 @@ export const CHATBOT_CONFIG = {
 
   // Message Limits
   MESSAGE_DISPLAY_LIMIT: 2000, // Max characters to display per message
-  INPUT_MAX_LENGTH: 1000, // Max input length
+  INPUT_MAX_LENGTH: 100, // Max input length — keep in sync with CHATBOT_MAX_MESSAGE_LENGTH (api/chatbot)
   INPUT_MIN_LENGTH: 2, // Min input length to prevent spam
 
   // Chat Dimensions - Responsive
@@ -39,10 +40,10 @@ export const CHATBOT_CONFIG = {
   // Animation & Timing
   SCROLL_BEHAVIOR: "smooth" as ScrollBehavior,
   ANIMATION_DURATION: 300, // transition duration in ms
-  BOUNCE_DELAY: {
-    FIRST: -0.3, // [animation-delay:-0.3s]
-    SECOND: -0.15, // [animation-delay:-0.15s]
-    THIRD: 0, // no delay
+  // thinking-orbs typing indicator — 20 is the tuned inline-text preset
+  TYPING_ORB: {
+    STATE: "working" as OrbState,
+    SIZE: 20 as OrbSize,
   },
 
   // UI Sizing
@@ -63,6 +64,9 @@ export const CHATBOT_CONFIG = {
     },
   },
 
+  // Blobatar seed for every Reem avatar — hashed, never shown; changing it changes the face
+  AVATAR_SEED: "Reem",
+
   // Position Classes - Responsive
   POSITION_CLASSES: {
     "bottom-left": "bottom-2 left-2 sm:left-4 md:left-6", // Progressive spacing increase
@@ -82,9 +86,7 @@ export const CHATBOT_STYLES = {
   // Gradient Classes
   BUTTON_GRADIENT:
     "bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70",
-  AVATAR_GRADIENT: "bg-gradient-to-br from-primary to-primary/70",
   MESSAGE_USER_GRADIENT: "bg-gradient-to-br from-primary to-primary/90",
-  WELCOME_ICON_GRADIENT: "bg-gradient-to-br from-primary/20 to-primary/10",
 
   // Shadow Classes
   BUTTON_SHADOW: "shadow-2xl hover:shadow-3xl",
@@ -105,9 +107,7 @@ export const CHATBOT_STYLES = {
   INPUT_ROUNDED: "rounded-full",
 
   // Animation Classes
-  BOT_ANIMATION: "animate-subtle-shake",
   SPIN_ANIMATION: "animate-spin",
-  BOUNCE_ANIMATION: "animate-bounce",
 
   // Scrollbar Classes
   SCROLLBAR: "scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent",
@@ -138,7 +138,8 @@ export const CHATBOT_TRANSLATION_KEYS = {
 
   // Input
   INPUT_PLACEHOLDER: "input.placeholder",
-  INPUT_CHARACTER_LIMIT: "input.characterLimit",
+  INPUT_CHARACTER_COUNT: "input.characterCount",
+  INPUT_LIMIT_REACHED: "input.limitReached",
 
   // Errors are resolved through CHATBOT_ERROR_TRANSLATION_KEYS below, keyed by
   // the API's error codes rather than listed individually here.
