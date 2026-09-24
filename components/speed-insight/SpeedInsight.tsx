@@ -24,11 +24,15 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
+import { ThinkingOrb } from "thinking-orbs";
 import type { SpeedInsightScore } from "@/types/configs/speed-insight";
 import { useSpeedInsight } from "./SpeedInsight.logic";
-import { RING, SCORE_THRESHOLDS } from "./SpeedInsight.constants";
+import {
+  LOADING_ORB,
+  RING,
+  SCORE_THRESHOLDS,
+} from "./SpeedInsight.constants";
 import { cardSurface, RevealGroup, RevealItem } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 
@@ -94,16 +98,20 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
   );
 }
 
-/** Loading skeleton for a strategy tab */
-function StrategySkeleton() {
+/** Loading state for a strategy tab — the orb's own untranslated label is hidden */
+function StrategyLoading({ label }: { label: string }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="flex flex-col items-center gap-1">
-          <Skeleton className="rounded-full w-9 h-9" />
-          <Skeleton className="h-2.5 sm:h-3 w-12 sm:w-16" />
-        </div>
-      ))}
+    <div
+      className="flex flex-col items-center justify-center gap-2 py-3"
+      role="status"
+      aria-live="polite"
+    >
+      <ThinkingOrb
+        state={LOADING_ORB.state}
+        size={LOADING_ORB.size}
+        aria-hidden="true"
+      />
+      <span className="text-xs text-muted-foreground">{label}</span>
     </div>
   );
 }
@@ -223,7 +231,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
 
                   <TabsContent value="desktop">
                     {loading ? (
-                      <StrategySkeleton />
+                      <StrategyLoading label={t("loading")} />
                     ) : desktop ? (
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
                         {desktop.categories.map((cat) => (
@@ -235,7 +243,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
 
                   <TabsContent value="mobile">
                     {loading ? (
-                      <StrategySkeleton />
+                      <StrategyLoading label={t("loading")} />
                     ) : mobile ? (
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
                         {mobile.categories.map((cat) => (
