@@ -11,7 +11,9 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Bot, CircleAlert, Shield } from "lucide-react";
+import { CircleAlert, Shield } from "lucide-react";
+import { Blobatar } from "@blobatar/react";
+import "blobatar/motion.css";
 import { useChatBot } from "@/components/chatbot";
 import type { ChatBotUIProps } from "@/types/configs/chatbot";
 import {
@@ -56,6 +58,13 @@ export function ChatBot({
   const [consentDismissed, setConsentDismissed] = useState(false);
 
   const lastMessage = messages[messages.length - 1];
+  // Covers both "submitted" and a stream that has opened but not yet sent text
+  const awaitingFirstToken =
+    isLoading &&
+    !(
+      lastMessage?.role === "assistant" &&
+      lastMessage.parts.some((part) => part.type === "text" && part.text)
+    );
 
   // Derive consent banner visibility from state (no effect needed)
   const showConsentBanner =
@@ -178,9 +187,11 @@ export function ChatBot({
           aria-label={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
           title={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
         >
-          <Bot
-            className={`w-6 h-6 ${CHATBOT_STYLES.BOT_ANIMATION}`}
-            style={{ width: "1.5rem", height: "1.5rem" }}
+          {/* size-* class opts out of the Button's [&_svg]:size-4 override */}
+          <Blobatar
+            name={CHATBOT_CONFIG.AVATAR_SEED}
+            animate="always"
+            className="size-10 lg:size-11"
             aria-hidden="true"
           />
           <span className="sr-only">
@@ -250,19 +261,21 @@ export function ChatBot({
               <div className="space-y-4">
                 {messages.length === 0 && !isLoading && (
                   <div
-                    className="flex flex-col items-center justify-center py-12 text-center"
+                    className="flex flex-col items-center justify-center pt-1 pb-4 sm:pt-2 sm:pb-6 text-center"
                     role="region"
                     aria-labelledby="welcome-title"
                   >
                     <div
-                      className={`w-16 h-16 ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.WELCOME_ICON_GRADIENT} flex items-center justify-center mb-4`}
+                      className="w-16 h-16 flex items-center justify-center mb-4"
                       role="img"
                       aria-label={t(
                         CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_WELCOME_ILLUSTRATION,
                       )}
                     >
-                      <Bot
-                        className="w-8 h-8 text-primary"
+                      <Blobatar
+                        name={CHATBOT_CONFIG.AVATAR_SEED}
+                        animate="always"
+                        className="size-16"
                         aria-hidden="true"
                       />
                     </div>
@@ -310,11 +323,6 @@ export function ChatBot({
                     <ChatMessageComponent
                       key={message.id}
                       message={message}
-                      isStreaming={
-                        isLast &&
-                        message.role === "assistant" &&
-                        status === "streaming"
-                      }
                       {...(isLast && message.role === "user"
                         ? { status: status === "error" ? "error" : "sent" }
                         : {})}
@@ -322,8 +330,7 @@ export function ChatBot({
                   );
                 })}
 
-                {/* Once tokens are arriving the partial message is its own indicator */}
-                {status === "submitted" && <TypingIndicator />}
+                {awaitingFirstToken && <TypingIndicator />}
 
                 {errorKey && (
                   <div

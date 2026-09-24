@@ -63,6 +63,9 @@ export const CHATBOT_CONFIG = {
     },
   },
 
+  // Blobatar seed for every Reem avatar — hashed, never shown; changing it changes the face
+  AVATAR_SEED: "Reem",
+
   // Position Classes - Responsive
   POSITION_CLASSES: {
     "bottom-left": "bottom-2 left-2 sm:left-4 md:left-6", // Progressive spacing increase
@@ -82,9 +85,7 @@ export const CHATBOT_STYLES = {
   // Gradient Classes
   BUTTON_GRADIENT:
     "bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70",
-  AVATAR_GRADIENT: "bg-gradient-to-br from-primary to-primary/70",
   MESSAGE_USER_GRADIENT: "bg-gradient-to-br from-primary to-primary/90",
-  WELCOME_ICON_GRADIENT: "bg-gradient-to-br from-primary/20 to-primary/10",
 
   // Shadow Classes
   BUTTON_SHADOW: "shadow-2xl hover:shadow-3xl",
@@ -105,7 +106,6 @@ export const CHATBOT_STYLES = {
   INPUT_ROUNDED: "rounded-full",
 
   // Animation Classes
-  BOT_ANIMATION: "animate-subtle-shake",
   SPIN_ANIMATION: "animate-spin",
   BOUNCE_ANIMATION: "animate-bounce",
 

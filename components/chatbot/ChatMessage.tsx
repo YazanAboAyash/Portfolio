@@ -8,8 +8,8 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { Badge } from "@/components/ui/badge";
-import { Bot, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { Blobatar } from "@blobatar/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { ChatMessageProps, ReemUIMessage } from "@/types/configs/chatbot";
@@ -44,7 +44,6 @@ function isSafeMarkdownHref(href: string | undefined): href is string {
 
 export const ChatMessage = React.memo(function ChatMessage({
   message,
-  isStreaming = false,
   status,
   className = "",
 }: ChatMessageProps) {
@@ -67,6 +66,9 @@ export const ChatMessage = React.memo(function ChatMessage({
     [message.metadata?.createdAt]
   );
 
+  // The assistant turn exists before its first token; render nothing until text arrives
+  if (!isUser && !sanitizedContent) return null;
+
   return (
     <div
       className={`flex ${
@@ -84,33 +86,22 @@ export const ChatMessage = React.memo(function ChatMessage({
         {!isUser && (
           <div className="flex items-center gap-2 mb-2">
             <div
-              className={`w-6 h-6 ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.AVATAR_GRADIENT} flex items-center justify-center`}
+              className="w-6 h-6 flex items-center justify-center"
               role="img"
               aria-label={t(
                 CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_ASSISTANT_AVATAR,
               )}
             >
-              <Bot
-                className="w-3 h-3 text-primary-foreground"
+              <Blobatar
+                name={CHATBOT_CONFIG.AVATAR_SEED}
+                className="size-6"
+                alt=""
                 aria-hidden="true"
               />
             </div>
             <span className="text-xs text-muted-foreground font-medium">
               {t(CHATBOT_TRANSLATION_KEYS.NAME)}
             </span>
-            {isStreaming && (
-              <Badge
-                variant="outline"
-                className="text-xs px-2 py-0.5"
-                role="status"
-              >
-                <Loader2
-                  className={`w-3 h-3 mr-1 ${CHATBOT_STYLES.SPIN_ANIMATION}`}
-                  aria-hidden="true"
-                />
-                {t(CHATBOT_TRANSLATION_KEYS.STATUS_GENERATING)}
-              </Badge>
-            )}
           </div>
         )}
 
