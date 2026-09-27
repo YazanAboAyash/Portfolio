@@ -19,7 +19,7 @@ import {
   SlidersHorizontal,
   Wrench,
   Check,
-  CalendarClock,
+  Mail,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { PrivacyControls } from "@/components/cookies";
@@ -30,7 +30,7 @@ import Link from "next/link";
  * to have been updated today tells the reader nothing about when its contents
  * were actually checked. Bump this by hand whenever the policy text changes.
  */
-const LAST_REVIEWED = "2026-08-02";
+const LAST_REVIEWED = "2026-09-27";
 
 /**
  * Section order for the whole notice. The table of contents, the numbering and
@@ -46,7 +46,7 @@ const SECTIONS = [
   { id: "controls", icon: SlidersHorizontal, titleKey: "controls.title" },
   { id: "chatbot", icon: Bot, titleKey: "chatbot.title" },
   { id: "ai-tools", icon: Wrench, titleKey: "aiTools.title" },
-  { id: "booking", icon: CalendarClock, titleKey: "booking.title" },
+  { id: "contact", icon: Mail, titleKey: "contact.title" },
   { id: "recipients", icon: Users, titleKey: "recipients.title" },
   { id: "retention", icon: Timer, titleKey: "retention.title" },
   { id: "rights", icon: Shield, titleKey: "rights.title" },
@@ -310,29 +310,28 @@ export default async function Privacy() {
             <LegalBasis>{t("aiTools.legalBasis")}</LegalBasis>
           </Section>
 
-          {/* Booking */}
-          <Section id="booking" title={t("booking.title")}>
-            <Prose>{t("booking.description")}</Prose>
-            <Item title={t("booking.calendlyTitle")}>
-              {t("booking.calendlyDescription")}
-            </Item>
-            <LegalBasis>{t("booking.legalBasis")}</LegalBasis>
+          {/* Contact by email */}
+          <Section id="contact" title={t("contact.title")}>
+            <Prose>{t("contact.description")}</Prose>
+            <LegalBasis>{t("contact.legalBasis")}</LegalBasis>
           </Section>
 
           {/* Art. 13(1)(e)-(f) — recipients and third-country transfers */}
           <Section id="recipients" title={t("recipients.title")}>
             <Prose>{t("recipients.description")}</Prose>
             <div className="space-y-3">
-              {(["vercel", "openai", "calendly"] as const).map((key) => (
-                <Item
-                  key={key}
-                  as="h3"
-                  title={t(`recipients.${key}.name`)}
-                  meta={t(`recipients.${key}.location`)}
-                >
-                  {t(`recipients.${key}.purpose`)}
-                </Item>
-              ))}
+              {(["vercel", "openai", "squarespace", "google"] as const).map(
+                (key) => (
+                  <Item
+                    key={key}
+                    as="h3"
+                    title={t(`recipients.${key}.name`)}
+                    meta={t(`recipients.${key}.location`)}
+                  >
+                    {t(`recipients.${key}.purpose`)}
+                  </Item>
+                ),
+              )}
             </div>
             <Callout title={t("recipients.transfersTitle")}>
               {t("recipients.transfersDescription")}
@@ -344,7 +343,13 @@ export default async function Privacy() {
             <Prose>{t("retention.description")}</Prose>
             <ul className="grid gap-2.5">
               {(
-                ["serverLogs", "chatSessions", "chatRecords", "browser"] as const
+                [
+                  "serverLogs",
+                  "chatSessions",
+                  "chatRecords",
+                  "emails",
+                  "browser",
+                ] as const
               ).map((key) => (
                 <li key={key} className="flex items-start gap-3">
                   <span

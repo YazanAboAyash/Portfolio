@@ -279,7 +279,7 @@ export const processSteps: readonly ProcessStep[] = [
 export const servicesPageData: ServicesPageData = {
   packages: servicePackages,
   processSteps: processSteps,
-  bookingLink: "https://calendly.com/abo-ayash-yazan/intro-call",
+  contactLink: "mailto:contact@yazan-abo-ayash.de",
 } as const;
 
 export default servicesPageData;

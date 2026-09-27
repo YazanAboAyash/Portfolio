@@ -27,20 +27,9 @@
     "availableForCollaboration": "Disponible para colaborar",
     "fullStackDeveloper": "Automatización & MVPs Web con IA",
     "description": "Soluciones de automatización, asistentes de IA internos y desarrollo de MVPs. Entregando aplicaciones web de principio a fin, desde el concepto hasta el despliegue—construyendo herramientas prácticas que ahorran tiempo e impulsan la eficiencia.",
-    "bookFreeCall": "Reserva una Llamada Gratis de 15 Min",
+    "contact": "Contacto",
     "learnMoreAboutMe": "Conoce más sobre mí",
     "moreAboutMe": "Más sobre mí en"
-  },
-  "BookingConfirmed": {
-    "confirmed": "Reserva Confirmada",
-    "title": "¡Todo Listo!",
-    "description": "Gracias por reservar una llamada conmigo. Espero conocer tu proyecto y explorar cómo puedo ayudarte.",
-    "whatsNext": "¿Qué sigue?",
-    "step1": "Recibirás una invitación de calendario con el enlace de la reunión.",
-    "step2": "Revisaré los detalles que compartiste antes de la llamada.",
-    "step3": "Tendré contigo una conversación enfocada de 15 minutos sobre tus necesidades.",
-    "backToHome": "Volver al Inicio",
-    "learnMore": "Conoce Más Sobre Mí"
   },
   "Navigation": {
     "home": "Inicio",
@@ -48,7 +37,6 @@
     "work": "Trabajos",
     "about": "Sobre mí",
     "blog": "Blog",
-    "bookCall": "Reservar Llamada",
     "aboutSite": "Sobre el Sitio",
     "projects": "Proyectos",
     "mcp": "MCP",
@@ -65,9 +53,9 @@
   },
   "Contact": {
     "getInTouch": "Conectemos",
-    "description": "¿Listo para discutir tu proyecto? Programa una llamada o conéctate conmigo en redes sociales.",
-    "schedule": "Programar",
-    "bookMeeting": "Reservar reunión",
+    "description": "¿Listo para discutir tu proyecto? Envíame un correo o conéctate conmigo en redes sociales.",
+    "email": "Correo electrónico",
+    "sendEmail": "Enviar un correo",
     "socialMedia": "Redes sociales",
     "info": "Info",
     "location": "Ubicación",
@@ -260,7 +248,7 @@
     },
     "overview": {
       "title": "Resumen",
-      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Algunas funciones —el asistente de IA, la auditoría de automatización y la reserva de citas— transmiten datos a proveedores externos, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
+      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Algunas funciones —el asistente de IA y la auditoría de automatización— transmiten datos a proveedores externos, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
       "keyPoint": "Qué significa esto en la práctica",
       "keyPointDescription": "Puede leer este sitio sin identificarse. No hay publicidad, ni seguimiento entre sitios, ni elaboración de perfiles. Al mismo tiempo, su dirección IP y todo lo que escriba en el asistente o en las herramientas de IA son datos personales: las secciones siguientes explican exactamente qué ocurre con ellos, sobre qué base jurídica y durante cuánto tiempo se conservan."
     },
@@ -334,12 +322,10 @@
       "auditDescription": "Las respuestas que facilite en la auditoría se transmiten a OpenAI para generar la evaluación.",
       "legalBasis": "Base jurídica: art. 6.1.b del RGPD — prestación de un servicio que usted ha solicitado activamente; art. 6.1.f del RGPD para el funcionamiento seguro de la herramienta."
     },
-    "booking": {
-      "title": "Reserva de citas",
-      "description": "Las citas se conciertan a través de Calendly.",
-      "calendlyTitle": "Calendly",
-      "calendlyDescription": "Si reserva una llamada, Calendly LLC trata el nombre, la dirección de correo electrónico y cualquier dato que introduzca en su formulario de reserva, e instala sus propias cookies en sus páginas. Yo recibo la información necesaria para celebrar la reunión. Al proceso de reserva se aplica la política de privacidad de Calendly.",
-      "legalBasis": "Base jurídica: art. 6.1.b del RGPD — medidas precontractuales adoptadas a petición suya."
+    "contact": {
+      "title": "Contacto por correo electrónico",
+      "description": "Los botones de contacto de este sitio abren su propio programa de correo con mi dirección ya indicada; al pulsarlos no se envía nada ni a mí ni a terceros. Si después me escribe, trato su dirección de correo electrónico, su nombre si lo facilita y el contenido de su mensaje para responder a su consulta.",
+      "legalBasis": "Base jurídica: art. 6.1.b del RGPD cuando su consulta se refiera a un contrato o a medidas precontractuales; en los demás casos, art. 6.1.f del RGPD — mi interés legítimo en responder a los mensajes que se me dirigen."
     },
     "recipients": {
       "title": "Destinatarios y transferencias internacionales",
@@ -354,13 +340,18 @@
         "purpose": "Genera las respuestas del asistente de IA y el resultado de la auditoría de automatización.",
         "location": "Estados Unidos."
       },
-      "calendly": {
-        "name": "Calendly LLC",
-        "purpose": "Concertación de citas.",
+      "squarespace": {
+        "name": "Squarespace, Inc.",
+        "purpose": "Recibe los mensajes enviados a la dirección de contacto y los reenvía a mi buzón.",
         "location": "Estados Unidos."
       },
+      "google": {
+        "name": "Google Ireland Limited (Gmail)",
+        "purpose": "Almacena los mensajes reenviados en mi buzón para que pueda leerlos y responderlos.",
+        "location": "Irlanda; los datos también pueden tratarse en Estados Unidos."
+      },
       "transfersTitle": "Transferencias a terceros países",
-      "transfersDescription": "Estos proveedores están establecidos en Estados Unidos, por lo que sus datos se transfieren fuera de la UE/EEE. Todos ellos ofrecen un contrato de encargo del tratamiento que incorpora las cláusulas contractuales tipo de la Comisión Europea; cuando un proveedor dispone además de certificación conforme al Marco de Privacidad de Datos UE-EE. UU., dicha certificación se aplica adicionalmente. Pese a estas garantías, las autoridades estadounidenses pueden tener facultades de acceso que no se corresponden con los estándares europeos, y hacer valer allí sus derechos puede resultar más difícil que en la UE. Si prefiere evitarlo, basta con que no utilice el asistente, las herramientas de IA ni el formulario de reserva: el resto del sitio funciona sin ellos."
+      "transfersDescription": "Vercel, OpenAI y Squarespace están establecidos en Estados Unidos, y Google también puede tratar datos allí, por lo que sus datos pueden transferirse fuera de la UE/EEE. Vercel y OpenAI ofrecen cada uno un contrato de encargo del tratamiento que incorpora las cláusulas contractuales tipo de la Comisión Europea; cuando un proveedor dispone además de certificación conforme al Marco de Privacidad de Datos UE-EE. UU., dicha certificación se aplica adicionalmente. Squarespace y Google tratan los correos enviados a la dirección de contacto conforme a sus propias condiciones y políticas de privacidad. Pese a estas garantías, las autoridades estadounidenses pueden tener facultades de acceso que no se corresponden con los estándares europeos, y hacer valer allí sus derechos puede resultar más difícil que en la UE. Si prefiere evitarlo, basta con que no utilice el asistente ni las herramientas de IA —el resto del sitio funciona sin ellos— y me escriba por correo postal a la dirección indicada al principio de esta página en lugar de por correo electrónico."
     },
     "retention": {
       "title": "Plazos de conservación",
@@ -368,6 +359,7 @@
       "serverLogs": "Los registros de alojamiento y de peticiones los conserva Vercel durante el plazo fijado en su propia política de conservación; yo no mantengo registros de acceso separados.",
       "chatSessions": "Mi servidor conserva una conversación del asistente únicamente durante el tiempo necesario para responder al mensaje. Una vez enviada la respuesta, no queda nada del intercambio en el servidor, salvo que usted haya consentido su almacenamiento.",
       "chatRecords": "Las conversaciones almacenadas en la base de datos con su consentimiento se eliminan actualmente de forma manual durante una revisión, y no según un calendario automático fijo. Puede solicitar su eliminación en cualquier momento escribiendo a la dirección indicada arriba; lo haré sin dilación indebida.",
+      "emails": "Los correos que me envíe se eliminan una vez atendida por completo su consulta, salvo que las obligaciones legales de conservación de la correspondencia comercial (§ 257 HGB, § 147 AO del Derecho alemán) exijan conservarlos durante más tiempo.",
       "browser": "Las entradas de su propio navegador permanecen hasta que caducan, hasta que borre el almacenamiento de su navegador o hasta que utilice el botón de eliminación de esta página."
     },
     "rights": {
@@ -456,7 +448,7 @@
     "credentials": "Fachinformatiker certificado por la IHK con formación en el Reglamento Europeo de IA — relevante cuando la función de IA que necesita debe resistir la regulación europea.",
     "cta": {
       "work": "Ver los proyectos",
-      "call": "Reservar llamada gratuita de 15 min"
+      "contact": "Contacto"
     }
   },
   "PortfolioAbout": {
@@ -566,7 +558,7 @@
     },
     "packages": {
       "title": "Paquetes de Servicios",
-      "cta": "Reservar llamada gratuita",
+      "cta": "Contacto",
       "website": {
         "name": "Sitio Web",
         "headline": "Que le Encuentren. Que le Llamen.",
@@ -813,8 +805,8 @@
     },
     "cta": {
       "title": "¿Listo para Empezar?",
-      "subtitle": "Reserva una llamada de descubrimiento gratuita de 15 minutos. Sin compromiso, solo una conversación sobre tu proyecto.",
-      "button": "Reservar Consulta Gratuita",
+      "subtitle": "Envíame un correo breve sobre tu proyecto. Sin compromiso: si encaja, concertamos una llamada de descubrimiento gratuita de 15 minutos.",
+      "button": "Contacto",
       "viewAllLink": "Ver Todos los Servicios, Paquetes y Precios"
     },
     "stack": {

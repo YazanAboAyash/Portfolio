@@ -27,20 +27,9 @@
     "availableForCollaboration": "Available for collaboration",
     "fullStackDeveloper": "Automation & AI-Powered Web MVPs",
     "description": "Automation solutions, internal AI assistants, and MVP development. Delivering end-to-end web applications, From concept to deployment—building practical tools that save time and drive efficiency.",
-    "bookFreeCall": "Book a Free 15-Min Call",
+    "contact": "Contact",
     "learnMoreAboutMe": "Learn More About Me",
     "moreAboutMe": "More about me on"
-  },
-  "BookingConfirmed": {
-    "confirmed": "Booking Confirmed",
-    "title": "You're All Set!",
-    "description": "Thank you for booking a call with me. I'm looking forward to learning about your project and exploring how I can help.",
-    "whatsNext": "What happens next?",
-    "step1": "You'll receive a calendar invite with the meeting link.",
-    "step2": "I'll review any details you shared ahead of the call.",
-    "step3": "I'll have a focused 15-minute conversation with you about your needs.",
-    "backToHome": "Back to Home",
-    "learnMore": "Learn More About Me"
   },
   "Navigation": {
     "home": "Home",
@@ -48,7 +37,6 @@
     "work": "Work",
     "about": "About",
     "blog": "Blog",
-    "bookCall": "Book a Call",
     "aboutSite": "About Site",
     "projects": "Projects",
     "mcp": "MCP",
@@ -65,9 +53,9 @@
   },
   "Contact": {
     "getInTouch": "Let's Connect",
-    "description": "Ready to discuss your project? Schedule a call or connect with me on social media.",
-    "schedule": "Schedule",
-    "bookMeeting": "Book a Meeting",
+    "description": "Ready to discuss your project? Send me an email or connect with me on social media.",
+    "email": "Email",
+    "sendEmail": "Send an Email",
     "socialMedia": "Social Media",
     "info": "Info",
     "location": "Location",
@@ -260,7 +248,7 @@
     },
     "overview": {
       "title": "Overview",
-      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. Some features — the AI assistant, the automation audit and appointment booking — transmit data to external service providers, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
+      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. Some features — the AI assistant and the automation audit — transmit data to external service providers, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
       "keyPoint": "What this means in practice",
       "keyPointDescription": "You can read this site without identifying yourself. There is no advertising, no cross-site tracking and no profiling. At the same time, your IP address and anything you type into the assistant or the AI tools are personal data — the sections below explain exactly what happens to them, on what legal basis, and how long anything is kept."
     },
@@ -334,12 +322,10 @@
       "auditDescription": "The answers you give in the audit are transmitted to OpenAI in order to generate the evaluation.",
       "legalBasis": "Legal basis: Art. 6(1)(b) GDPR — performing a service you actively requested; Art. 6(1)(f) GDPR for operating the tool securely."
     },
-    "booking": {
-      "title": "Appointment booking",
-      "description": "Appointments are scheduled through Calendly.",
-      "calendlyTitle": "Calendly",
-      "calendlyDescription": "If you book a call, Calendly LLC processes the name, email address and any details you enter into its booking form, and sets its own cookies on its pages. I receive the information needed to hold the meeting. Calendly's own privacy policy applies to the booking process.",
-      "legalBasis": "Legal basis: Art. 6(1)(b) GDPR — steps taken at your request prior to entering into a contract."
+    "contact": {
+      "title": "Contact by email",
+      "description": "The contact buttons on this site open your own email program with my address filled in; clicking them sends nothing to me or to any third party. If you then write to me, I process your email address, your name if you give it, and the content of your message in order to answer your enquiry.",
+      "legalBasis": "Legal basis: Art. 6(1)(b) GDPR where your enquiry concerns a contract or steps prior to entering into one; otherwise Art. 6(1)(f) GDPR — my legitimate interest in answering messages sent to me."
     },
     "recipients": {
       "title": "Recipients and international transfers",
@@ -354,13 +340,18 @@
         "purpose": "Generates the AI assistant's replies and the automation audit result.",
         "location": "United States."
       },
-      "calendly": {
-        "name": "Calendly LLC",
-        "purpose": "Appointment scheduling.",
+      "squarespace": {
+        "name": "Squarespace, Inc.",
+        "purpose": "Receives messages sent to the contact address and forwards them to my mailbox.",
         "location": "United States."
       },
+      "google": {
+        "name": "Google Ireland Limited (Gmail)",
+        "purpose": "Stores the forwarded messages in my mailbox so that I can read and answer them.",
+        "location": "Ireland; data may also be processed in the United States."
+      },
       "transfersTitle": "Transfers to third countries",
-      "transfersDescription": "These providers are established in the United States, so your data is transferred outside the EU/EEA. Each of them offers a data processing agreement incorporating the European Commission's Standard Contractual Clauses; where a provider additionally holds a certification under the EU-US Data Privacy Framework, that certification applies as well. Despite these safeguards, US authorities may have access rights that do not correspond to European standards, and enforcing your rights there can be harder than within the EU. If you would rather avoid this, simply do not use the assistant, the AI tools or the booking form — the rest of the site works without them."
+      "transfersDescription": "Vercel, OpenAI and Squarespace are established in the United States, and Google may also process data there, so your data can be transferred outside the EU/EEA. Vercel and OpenAI each offer a data processing agreement incorporating the European Commission's Standard Contractual Clauses; where a provider additionally holds a certification under the EU-US Data Privacy Framework, that certification applies as well. Squarespace and Google process emails sent to the contact address under their own terms and privacy policies. Despite these safeguards, US authorities may have access rights that do not correspond to European standards, and enforcing your rights there can be harder than within the EU. If you would rather avoid this, simply do not use the assistant or the AI tools — the rest of the site works without them — and write to me by post at the address given at the top of this page instead of by email."
     },
     "retention": {
       "title": "How long data is kept",
@@ -368,6 +359,7 @@
       "serverLogs": "Hosting and request logs are kept by Vercel for the period set out in its own retention policy; I do not maintain separate access logs.",
       "chatSessions": "My server keeps an assistant conversation only for as long as it takes to answer the message. Nothing about the exchange remains on the server once the reply has been sent, unless you consented to it being stored.",
       "chatRecords": "Conversations stored in the database with your consent are currently deleted manually during review rather than on a fixed automatic schedule. You can have yours removed at any time by writing to the address above; I will do so without undue delay.",
+      "emails": "Emails you send me are deleted once your enquiry has been fully dealt with, unless statutory retention duties for business correspondence (§ 257 HGB, § 147 AO) require them to be kept for longer.",
       "browser": "Entries in your own browser remain until they expire, until you clear your browser storage, or until you use the deletion button on this page."
     },
     "rights": {
@@ -456,7 +448,7 @@
     "credentials": "IHK-certified Fachinformatiker with EU AI Act training — relevant when the AI feature you want has to hold up under European regulation.",
     "cta": {
       "work": "See the work",
-      "call": "Book a free 15-min call"
+      "contact": "Contact"
     }
   },
   "PortfolioAbout": {
@@ -566,7 +558,7 @@
     },
     "packages": {
       "title": "Service Packages",
-      "cta": "Book a Free Call",
+      "cta": "Contact",
       "extras": {
         "seeAll": "Available extras",
         "dialogTitle": "{package} — extras",
@@ -852,8 +844,8 @@
     },
     "cta": {
       "title": "Ready to Start?",
-      "subtitle": "Book a free 15-minute discovery call. No commitment, just a conversation about your project.",
-      "button": "Book Your Free Call",
+      "subtitle": "Send me a short email about your project. No commitment — if it's a fit, we'll set up a free 15-minute discovery call.",
+      "button": "Contact",
       "viewAllLink": "View All Services, Packages & Pricing"
     },
     "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."

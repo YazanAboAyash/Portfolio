@@ -27,20 +27,9 @@
     "availableForCollaboration": "Verfügbar für Zusammenarbeit",
     "fullStackDeveloper": "Automatisierung & KI-gestützte Web-MVPs",
     "description": "Automatisierungslösungen, interne KI-Assistenten und MVP-Entwicklung. End-to-End-Webapplikationen, vom Konzept bis zur Bereitstellung—praktische Tools, die Zeit sparen und Effizienz steigern.",
-    "bookFreeCall": "Kostenloses 15-Min Gespräch buchen",
+    "contact": "Kontakt",
     "learnMoreAboutMe": "Mehr über mich erfahren",
     "moreAboutMe": "Mehr über mich auf"
-  },
-  "BookingConfirmed": {
-    "confirmed": "Buchung Bestätigt",
-    "title": "Alles erledigt!",
-    "description": "Vielen Dank für Ihre Terminbuchung. Ich freue mich darauf, mehr über Ihr Projekt zu erfahren und zu erkunden, wie ich helfen kann.",
-    "whatsNext": "Was passiert als Nächstes?",
-    "step1": "Sie erhalten eine Kalendereinladung mit dem Meeting-Link.",
-    "step2": "Ich werde alle geteilten Details vor dem Gespräch durchgehen.",
-    "step3": "Ich führe mit Ihnen ein fokussiertes 15-Minuten-Gespräch über Ihre Anforderungen.",
-    "backToHome": "Zurück zur Startseite",
-    "learnMore": "Mehr über mich erfahren"
   },
   "Navigation": {
     "home": "Startseite",
@@ -48,7 +37,6 @@
     "work": "Arbeiten",
     "about": "Über mich",
     "blog": "Blog",
-    "bookCall": "Gespräch buchen",
     "aboutSite": "Über die Seite",
     "projects": "Projekte",
     "mcp": "MCP",
@@ -65,9 +53,9 @@
   },
   "Contact": {
     "getInTouch": "Lassen Sie uns verbinden",
-    "description": "Bereit, Ihr Projekt zu besprechen? Vereinbaren Sie einen Termin oder verbinden Sie sich mit mir in den sozialen Medien.",
-    "schedule": "Terminplanung",
-    "bookMeeting": "Termin buchen",
+    "description": "Bereit, Ihr Projekt zu besprechen? Schreiben Sie mir eine E-Mail oder verbinden Sie sich mit mir in den sozialen Medien.",
+    "email": "E-Mail",
+    "sendEmail": "E-Mail schreiben",
     "socialMedia": "Soziale Medien",
     "info": "Info",
     "location": "Standort",
@@ -260,7 +248,7 @@
     },
     "overview": {
       "title": "Überblick",
-      "description": "Diese Website ist ein persönliches Portfolio. Sie können sie besuchen, ohne Angaben zu Ihrer Person zu machen. Einige Funktionen – der KI-Assistent, der Automatisierungs-Check und die Terminbuchung – übermitteln Daten an externe Dienstleister; die Reichweiten- und Leistungsmessung läuft nur, wenn Sie ihr zustimmen. Die folgenden Abschnitte beschreiben jeden Fall, den Zweck, die Rechtsgrundlage und die Speicherdauer.",
+      "description": "Diese Website ist ein persönliches Portfolio. Sie können sie besuchen, ohne Angaben zu Ihrer Person zu machen. Einige Funktionen – der KI-Assistent und der Automatisierungs-Check – übermitteln Daten an externe Dienstleister; die Reichweiten- und Leistungsmessung läuft nur, wenn Sie ihr zustimmen. Die folgenden Abschnitte beschreiben jeden Fall, den Zweck, die Rechtsgrundlage und die Speicherdauer.",
       "keyPoint": "Was das praktisch bedeutet",
       "keyPointDescription": "Sie können diese Website lesen, ohne sich zu identifizieren. Es gibt keine Werbung, kein seitenübergreifendes Tracking und kein Profiling. Zugleich sind Ihre IP-Adresse und alles, was Sie in den Assistenten oder die KI-Werkzeuge eingeben, personenbezogene Daten – die folgenden Abschnitte erläutern genau, was damit geschieht, auf welcher Rechtsgrundlage und wie lange etwas gespeichert wird."
     },
@@ -334,12 +322,10 @@
       "auditDescription": "Die von Ihnen im Check gegebenen Antworten werden zur Erstellung der Auswertung an OpenAI übermittelt.",
       "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – Erbringung einer von Ihnen aktiv angeforderten Leistung; Art. 6 Abs. 1 lit. f DSGVO für den sicheren Betrieb des Werkzeugs."
     },
-    "booking": {
-      "title": "Terminbuchung",
-      "description": "Termine werden über Calendly vereinbart.",
-      "calendlyTitle": "Calendly",
-      "calendlyDescription": "Wenn Sie ein Gespräch buchen, verarbeitet die Calendly LLC den Namen, die E-Mail-Adresse und alle weiteren Angaben, die Sie in das Buchungsformular eintragen, und setzt auf ihren Seiten eigene Cookies. Ich erhalte die zur Durchführung des Termins erforderlichen Informationen. Für den Buchungsvorgang gilt die Datenschutzerklärung von Calendly.",
-      "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – vorvertragliche Maßnahmen auf Ihre Anfrage."
+    "contact": {
+      "title": "Kontakt per E-Mail",
+      "description": "Die Kontakt-Schaltflächen auf dieser Website öffnen Ihr eigenes E-Mail-Programm mit meiner Adresse als Empfänger; durch das Anklicken wird weder an mich noch an Dritte etwas übermittelt. Wenn Sie mir anschließend schreiben, verarbeite ich Ihre E-Mail-Adresse, Ihren Namen, sofern Sie ihn angeben, und den Inhalt Ihrer Nachricht, um Ihre Anfrage zu beantworten.",
+      "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage einen Vertrag oder vorvertragliche Maßnahmen betrifft; im Übrigen Art. 6 Abs. 1 lit. f DSGVO – mein berechtigtes Interesse an der Beantwortung an mich gerichteter Nachrichten."
     },
     "recipients": {
       "title": "Empfänger und Drittlandübermittlungen",
@@ -354,13 +340,18 @@
         "purpose": "Erzeugt die Antworten des KI-Assistenten und das Ergebnis des Automatisierungs-Checks.",
         "location": "Vereinigte Staaten."
       },
-      "calendly": {
-        "name": "Calendly LLC",
-        "purpose": "Terminvereinbarung.",
+      "squarespace": {
+        "name": "Squarespace, Inc.",
+        "purpose": "Empfängt Nachrichten an die Kontaktadresse und leitet sie an mein Postfach weiter.",
         "location": "Vereinigte Staaten."
       },
+      "google": {
+        "name": "Google Ireland Limited (Gmail)",
+        "purpose": "Speichert die weitergeleiteten Nachrichten in meinem Postfach, damit ich sie lesen und beantworten kann.",
+        "location": "Irland; eine Verarbeitung kann auch in den Vereinigten Staaten erfolgen."
+      },
       "transfersTitle": "Übermittlung in Drittländer",
-      "transfersDescription": "Diese Anbieter sind in den Vereinigten Staaten ansässig; Ihre Daten werden daher außerhalb der EU/des EWR übermittelt. Jeder dieser Anbieter stellt einen Auftragsverarbeitungsvertrag mit den Standardvertragsklauseln der Europäischen Kommission bereit; soweit ein Anbieter zusätzlich nach dem EU-US Data Privacy Framework zertifiziert ist, gilt diese Zertifizierung ergänzend. Trotz dieser Garantien können US-Behörden Zugriffsrechte haben, die europäischen Standards nicht entsprechen, und die Durchsetzung Ihrer Rechte kann dort schwieriger sein als in der EU. Wenn Sie das vermeiden möchten, nutzen Sie den Assistenten, die KI-Werkzeuge und das Buchungsformular einfach nicht – die übrige Website funktioniert auch ohne sie."
+      "transfersDescription": "Vercel, OpenAI und Squarespace sind in den Vereinigten Staaten ansässig, und auch Google kann Daten dort verarbeiten; Ihre Daten können daher außerhalb der EU/des EWR übermittelt werden. Vercel und OpenAI stellen jeweils einen Auftragsverarbeitungsvertrag mit den Standardvertragsklauseln der Europäischen Kommission bereit; soweit ein Anbieter zusätzlich nach dem EU-US Data Privacy Framework zertifiziert ist, gilt diese Zertifizierung ergänzend. Squarespace und Google verarbeiten E-Mails an die Kontaktadresse nach ihren eigenen Bedingungen und Datenschutzhinweisen. Trotz dieser Garantien können US-Behörden Zugriffsrechte haben, die europäischen Standards nicht entsprechen, und die Durchsetzung Ihrer Rechte kann dort schwieriger sein als in der EU. Wenn Sie das vermeiden möchten, nutzen Sie den Assistenten und die KI-Werkzeuge einfach nicht – die übrige Website funktioniert auch ohne sie – und schreiben Sie mir statt per E-Mail per Post an die oben auf dieser Seite genannte Anschrift."
     },
     "retention": {
       "title": "Speicherdauer",
@@ -368,6 +359,7 @@
       "serverLogs": "Hosting- und Anfrageprotokolle werden von Vercel für den in dessen eigener Aufbewahrungsrichtlinie festgelegten Zeitraum gespeichert; eigene Zugriffsprotokolle führe ich nicht.",
       "chatSessions": "Mein Server hält eine Assistenten-Unterhaltung nur so lange vor, wie die Beantwortung der Nachricht dauert. Nach dem Versand der Antwort verbleibt nichts von dem Austausch auf dem Server, sofern Sie der Speicherung nicht zugestimmt haben.",
       "chatRecords": "Mit Ihrer Einwilligung in der Datenbank gespeicherte Unterhaltungen werden derzeit im Rahmen einer manuellen Durchsicht gelöscht und nicht nach einem festen automatischen Zeitplan. Sie können die Löschung jederzeit unter der oben genannten Adresse verlangen; ich komme dem unverzüglich nach.",
+      "emails": "E-Mails, die Sie mir senden, werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist, sofern keine gesetzlichen Aufbewahrungspflichten für Geschäftskorrespondenz (§ 257 HGB, § 147 AO) eine längere Speicherung erfordern.",
       "browser": "Einträge in Ihrem eigenen Browser bleiben bestehen, bis sie ablaufen, bis Sie Ihren Browserspeicher leeren oder bis Sie die Löschschaltfläche auf dieser Seite verwenden."
     },
     "rights": {
@@ -456,7 +448,7 @@
     "credentials": "IHK-geprüfter Fachinformatiker mit Schulung zum EU AI Act — relevant, wenn die gewünschte KI-Funktion europäischer Regulierung standhalten muss.",
     "cta": {
       "work": "Arbeiten ansehen",
-      "call": "Kostenloses 15-Min-Gespräch buchen"
+      "contact": "Kontakt"
     }
   },
   "PortfolioAbout": {
@@ -566,7 +558,7 @@
     },
     "packages": {
       "title": "Servicepakete",
-      "cta": "Kostenloses Erstgespräch buchen",
+      "cta": "Kontakt",
       "website": {
         "name": "Website",
         "headline": "Gefunden werden. Angerufen werden.",
@@ -813,8 +805,8 @@
     },
     "cta": {
       "title": "Bereit loszulegen?",
-      "subtitle": "Buchen Sie ein kostenloses 15-Minuten-Erstgespräch. Keine Verpflichtung, nur ein Gespräch über Ihr Projekt.",
-      "button": "Kostenloses Gespräch buchen",
+      "subtitle": "Schreiben Sie mir eine kurze E-Mail zu Ihrem Projekt. Unverbindlich – wenn es passt, vereinbaren wir ein kostenloses 15-minütiges Erstgespräch.",
+      "button": "Kontakt",
       "viewAllLink": "Alle Dienstleistungen, Pakete & Preise ansehen"
     },
     "stack": {

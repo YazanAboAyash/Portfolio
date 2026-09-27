@@ -75,7 +75,7 @@ export default function AboutPage() {
                         />
                       </Link>
                     </Button>
-                    <CTAButton label={t("cta.call")} />
+                    <CTAButton label={t("cta.contact")} />
                   </div>
                 </div>
                 <div className="relative">

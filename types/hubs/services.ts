@@ -93,5 +93,5 @@ export interface ProcessStep {
 export interface ServicesPageData {
   readonly packages: readonly ServicePackage[];
   readonly processSteps: readonly ProcessStep[];
-  readonly bookingLink: string;
+  readonly contactLink: string;
 }

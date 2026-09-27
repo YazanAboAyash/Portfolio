@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Calendar, ExternalLink } from "lucide-react";
+import { Mail, ExternalLink } from "lucide-react";
+import { servicesPageData } from "@/data/hubs/servicesData";
 
 function Hero() {
   const t = useTranslations("Hero");
@@ -66,13 +67,11 @@ function Hero() {
             <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">
               <Button asChild className="gap-2 cursor-pointer">
                 <a
-                  href="https://calendly.com/abo-ayash-yazan/intro-call"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={servicesPageData.contactLink}
                   className="flex items-center gap-2"
                 >
-                  <Calendar className="h-4 w-4" aria-hidden="true" />
-                  {t("bookFreeCall")}
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  {t("contact")}
                 </a>
               </Button>
               <Button asChild className="gap-2 cursor-pointer">

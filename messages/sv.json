@@ -27,20 +27,9 @@
     "availableForCollaboration": "Tillgänglig för samarbete",
     "fullStackDeveloper": "Automatisering & AI-drivna Webb-MVPs",
     "description": "Automatiseringslösningar, interna AI-assistenter och MVP-utveckling. Levererar webbapplikationer från början till slut, från koncept till lansering—bygger praktiska verktyg som sparar tid och driver effektivitet.",
-    "bookFreeCall": "Boka ett Gratis 15-Min Samtal",
+    "contact": "Kontakt",
     "learnMoreAboutMe": "Läs mer om mig",
     "moreAboutMe": "Mer om mig på"
-  },
-  "BookingConfirmed": {
-    "confirmed": "Bokning Bekräftad",
-    "title": "Allt är Klart!",
-    "description": "Tack för att du bokade ett samtal med mig. Jag ser fram emot att lära mig om ditt projekt och utforska hur jag kan hjälpa.",
-    "whatsNext": "Vad händer härnäst?",
-    "step1": "Du får en kalenderinbjudan med möteslänken.",
-    "step2": "Jag går igenom eventuella detaljer du delat inför samtalet.",
-    "step3": "Jag har ett fokuserat 15-minuters samtal med dig om dina behov.",
-    "backToHome": "Tillbaka till Startsidan",
-    "learnMore": "Läs Mer Om Mig"
   },
   "Navigation": {
     "home": "Hem",
@@ -48,7 +37,6 @@
     "work": "Arbeten",
     "about": "Om mig",
     "blog": "Blogg",
-    "bookCall": "Boka Samtal",
     "aboutSite": "Om sajten",
     "projects": "Projekt",
     "mcp": "MCP",
@@ -65,9 +53,9 @@
   },
   "Contact": {
     "getInTouch": "Låt oss koppla samman",
-    "description": "Redo att diskutera ditt projekt? Boka ett samtal eller anslut med mig på sociala medier.",
-    "schedule": "Schemalägg",
-    "bookMeeting": "Boka möte",
+    "description": "Redo att diskutera ditt projekt? Skicka ett mejl eller anslut med mig på sociala medier.",
+    "email": "E-post",
+    "sendEmail": "Skicka e-post",
     "socialMedia": "Sociala medier",
     "info": "Info",
     "location": "Plats",
@@ -260,7 +248,7 @@
     },
     "overview": {
       "title": "Översikt",
-      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. Vissa funktioner – AI-assistenten, automatiseringsgenomgången och tidsbokningen – överför uppgifter till externa tjänsteleverantörer, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
+      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. Vissa funktioner – AI-assistenten och automatiseringsgenomgången – överför uppgifter till externa tjänsteleverantörer, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
       "keyPoint": "Vad detta innebär i praktiken",
       "keyPointDescription": "Du kan läsa den här webbplatsen utan att identifiera dig. Det förekommer ingen reklam, ingen spårning mellan webbplatser och ingen profilering. Samtidigt är din IP-adress och allt du skriver in i assistenten eller AI-verktygen personuppgifter – avsnitten nedan förklarar exakt vad som händer med dem, på vilken rättslig grund och hur länge något sparas."
     },
@@ -334,12 +322,10 @@
       "auditDescription": "De svar du lämnar i genomgången överförs till OpenAI för att generera utvärderingen.",
       "legalBasis": "Rättslig grund: art. 6.1 b GDPR – utförande av en tjänst du aktivt begärt; art. 6.1 f GDPR för säker drift av verktyget."
     },
-    "booking": {
-      "title": "Tidsbokning",
-      "description": "Möten bokas via Calendly.",
-      "calendlyTitle": "Calendly",
-      "calendlyDescription": "Om du bokar ett samtal behandlar Calendly LLC namn, e-postadress och de uppgifter du fyller i bokningsformuläret, och sätter sina egna kakor på sina sidor. Jag får den information som behövs för att genomföra mötet. För bokningen gäller Calendlys egen integritetspolicy.",
-      "legalBasis": "Rättslig grund: art. 6.1 b GDPR – åtgärder före avtals ingående på din begäran."
+    "contact": {
+      "title": "Kontakt via e-post",
+      "description": "Kontaktknapparna på den här webbplatsen öppnar ditt eget e-postprogram med min adress ifylld; ett klick skickar ingenting till mig eller till någon tredje part. Om du sedan skriver till mig behandlar jag din e-postadress, ditt namn om du anger det och innehållet i ditt meddelande för att kunna besvara din förfrågan.",
+      "legalBasis": "Rättslig grund: art. 6.1 b GDPR när din förfrågan gäller ett avtal eller åtgärder före avtals ingående; i övriga fall art. 6.1 f GDPR – mitt berättigade intresse av att besvara meddelanden som skickas till mig."
     },
     "recipients": {
       "title": "Mottagare och överföringar till tredjeland",
@@ -354,13 +340,18 @@
         "purpose": "Genererar AI-assistentens svar och resultatet av automatiseringsgenomgången.",
         "location": "USA."
       },
-      "calendly": {
-        "name": "Calendly LLC",
-        "purpose": "Tidsbokning.",
+      "squarespace": {
+        "name": "Squarespace, Inc.",
+        "purpose": "Tar emot meddelanden som skickas till kontaktadressen och vidarebefordrar dem till min inkorg.",
         "location": "USA."
       },
+      "google": {
+        "name": "Google Ireland Limited (Gmail)",
+        "purpose": "Lagrar de vidarebefordrade meddelandena i min inkorg så att jag kan läsa och besvara dem.",
+        "location": "Irland; uppgifter kan även behandlas i USA."
+      },
       "transfersTitle": "Överföringar till tredjeland",
-      "transfersDescription": "Dessa leverantörer är etablerade i USA, vilket innebär att dina uppgifter överförs utanför EU/EES. Var och en av dem erbjuder ett personuppgiftsbiträdesavtal som innehåller Europeiska kommissionens standardavtalsklausuler; om en leverantör dessutom är certifierad enligt EU-US Data Privacy Framework gäller den certifieringen som komplement. Trots dessa skyddsåtgärder kan amerikanska myndigheter ha åtkomsträttigheter som inte motsvarar europeisk standard, och det kan vara svårare att hävda dina rättigheter där än inom EU. Vill du undvika detta är det bara att låta bli assistenten, AI-verktygen och bokningsformuläret – resten av webbplatsen fungerar utan dem."
+      "transfersDescription": "Vercel, OpenAI och Squarespace är etablerade i USA, och även Google kan behandla uppgifter där, vilket innebär att dina uppgifter kan överföras utanför EU/EES. Vercel och OpenAI erbjuder var och en ett personuppgiftsbiträdesavtal som innehåller Europeiska kommissionens standardavtalsklausuler; om en leverantör dessutom är certifierad enligt EU-US Data Privacy Framework gäller den certifieringen som komplement. Squarespace och Google behandlar e-post till kontaktadressen enligt sina egna villkor och integritetspolicyer. Trots dessa skyddsåtgärder kan amerikanska myndigheter ha åtkomsträttigheter som inte motsvarar europeisk standard, och det kan vara svårare att hävda dina rättigheter där än inom EU. Vill du undvika detta är det bara att låta bli assistenten och AI-verktygen – resten av webbplatsen fungerar utan dem – och skriva till mig per post till adressen högst upp på den här sidan i stället för via e-post."
     },
     "retention": {
       "title": "Lagringstid",
@@ -368,6 +359,7 @@
       "serverLogs": "Drift- och anropsloggar sparas av Vercel under den tid som anges i deras egen lagringspolicy; jag för inga separata åtkomstloggar.",
       "chatSessions": "Min server behåller en assistentkonversation endast så länge det tar att besvara meddelandet. När svaret har skickats finns ingenting av utbytet kvar på servern, såvida du inte har samtyckt till lagring.",
       "chatRecords": "Konversationer som med ditt samtycke sparats i databasen raderas för närvarande manuellt vid genomgång, inte enligt ett fast automatiskt schema. Du kan när som helst begära radering genom att skriva till adressen ovan; jag gör det utan onödigt dröjsmål.",
+      "emails": "E-post som du skickar till mig raderas när din förfrågan har hanterats färdigt, om inte lagstadgade skyldigheter att bevara affärskorrespondens (§ 257 HGB, § 147 AO i tysk rätt) kräver att den sparas längre.",
       "browser": "Poster i din egen webbläsare finns kvar tills de löper ut, tills du rensar din webbläsarlagring, eller tills du använder raderingsknappen på den här sidan."
     },
     "rights": {
@@ -456,7 +448,7 @@
     "credentials": "IHK-certifierad Fachinformatiker med utbildning i EU:s AI-förordning — relevant när AI-funktionen du vill ha måste hålla för europeisk reglering.",
     "cta": {
       "work": "Se arbetet",
-      "call": "Boka ett kostnadsfritt 15-minutersmöte"
+      "contact": "Kontakt"
     }
   },
   "PortfolioAbout": {
@@ -566,7 +558,7 @@
     },
     "packages": {
       "title": "Tjänstepaket",
-      "cta": "Boka ett gratis samtal",
+      "cta": "Kontakt",
       "website": {
         "name": "Webbplats",
         "headline": "Bli Hittad. Bli Uppringd.",
@@ -813,8 +805,8 @@
     },
     "cta": {
       "title": "Redo att Börja?",
-      "subtitle": "Boka ett gratis 15-minuters upptäcktssamtal. Inget åtagande, bara ett samtal om ditt projekt.",
-      "button": "Boka Gratis Konsultation",
+      "subtitle": "Skicka mig ett kort mejl om ditt projekt. Inget åtagande – om det passar bokar vi ett kostnadsfritt 15-minuters upptäcktssamtal.",
+      "button": "Kontakt",
       "viewAllLink": "Visa Alla Tjänster, Paket & Priser"
     },
     "stack": {
