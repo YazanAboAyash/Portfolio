@@ -40,9 +40,11 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get("featured") === "true" || undefined;
     const language = searchParams.get("language") || undefined;
 
+    // Public endpoint: drafts must never be listed here
     const query: BlogListQuery = {
       page,
       limit,
+      published: true,
     };
 
     if (search) query.search = search;

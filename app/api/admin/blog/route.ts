@@ -34,6 +34,12 @@ import { adminAuthLimiter, getClientIP } from "@/lib/security";
 
 // Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+// Scoped token for the scheduled blog-writing routine: list + create drafts only
+const BLOG_AGENT_TOKEN = process.env.BLOG_AGENT_TOKEN;
+
+type AdminRole = "admin" | "agent";
+
+const AGENT_GET_ACTIONS = new Set(["list", "categories", "tags"]);
 
 /**
  * Rejects an unauthenticated request, throttling repeated token guesses.
@@ -49,27 +55,14 @@ function rejectUnauthorized(clientIP: string): NextResponse<ApiErrorResponse> {
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }
 
-function isAuthorized(request: NextRequest): boolean {
-  if (!ADMIN_TOKEN) {
-    return false;
-  }
-
-  const authHeader = request.headers.get("authorization");
-  if (!authHeader) {
-    return false;
-  }
-
-  const token = authHeader.startsWith("Bearer ")
-    ? authHeader.substring(7)
-    : authHeader;
-
-  if (token.length !== ADMIN_TOKEN.length) {
+function tokenMatches(token: string, expected: string | undefined): boolean {
+  if (!expected || token.length !== expected.length) {
     return false;
   }
 
   let isEqual = true;
   for (let i = 0; i < token.length; i++) {
-    if (token[i] !== ADMIN_TOKEN[i]) {
+    if (token[i] !== expected[i]) {
       isEqual = false;
     }
   }
@@ -77,10 +70,34 @@ function isAuthorized(request: NextRequest): boolean {
   return isEqual;
 }
 
+function getRole(request: NextRequest): AdminRole | null {
+  const authHeader = request.headers.get("authorization");
+  if (!authHeader) {
+    return null;
+  }
+
+  const token = authHeader.startsWith("Bearer ")
+    ? authHeader.substring(7)
+    : authHeader;
+
+  if (tokenMatches(token, ADMIN_TOKEN)) {
+    return "admin";
+  }
+  if (tokenMatches(token, BLOG_AGENT_TOKEN)) {
+    return "agent";
+  }
+
+  return null;
+}
+
+function forbidden(): NextResponse<ApiErrorResponse> {
+  return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+}
+
 function createAdminContext(request: NextRequest): AdminContext {
   return {
     clientIP: getClientIP(request),
-    isAuthenticated: isAuthorized(request),
+    isAuthenticated: getRole(request) !== null,
     userAgent: request.headers.get("user-agent") || undefined,
   };
 }
@@ -201,7 +218,8 @@ export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   const clientIP = getClientIP(request);
-  if (!isAuthorized(request)) {
+  const role = getRole(request);
+  if (!role) {
     return rejectUnauthorized(clientIP);
   }
 
@@ -216,6 +234,10 @@ export async function GET(
   const { searchParams } = new URL(request.url);
   const action = searchParams.get("action");
   const blogId = searchParams.get("id");
+
+  if (role === "agent" && !AGENT_GET_ACTIONS.has(action ?? "")) {
+    return forbidden();
+  }
 
   try {
     switch (action) {
@@ -325,7 +347,8 @@ export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   const clientIP = getClientIP(request);
-  if (!isAuthorized(request)) {
+  const role = getRole(request);
+  if (!role) {
     return rejectUnauthorized(clientIP);
   }
 
@@ -358,6 +381,10 @@ export async function POST(
 
     const { action, blogId, data } = requestBody;
 
+    if (role === "agent" && action !== "create") {
+      return forbidden();
+    }
+
     switch (action) {
       case "create": {
         const parseResult = createBlogSchema.safeParse(data);
@@ -371,10 +398,13 @@ export async function POST(
           );
         }
 
-        const blog = await createBlog(
-          context,
-          parseResult.data as CreateBlogRequest,
-        );
+        // The agent can only ever leave drafts for review
+        const blogData =
+          role === "agent"
+            ? { ...parseResult.data, isPublished: false, isFeatured: false }
+            : parseResult.data;
+
+        const blog = await createBlog(context, blogData as CreateBlogRequest);
 
         return NextResponse.json({
           success: true,
