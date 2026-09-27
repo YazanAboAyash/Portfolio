@@ -348,6 +348,7 @@ export const routeStructure = {
     "api/blog/*",
     "api/chatbot/*",
     "api/github/*",
+    "api/mcp",
     "api/speed-insight/*",
   ],
 };

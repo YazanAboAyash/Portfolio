@@ -4,350 +4,210 @@
  * @version 6.x.x
  */
 
-export interface GitHubUser {
+// ---------------------------------------------------------------------------
+// Normalised data served by lib/github — shared by /api/github, the MCP server
+// and the showcase components.
+// ---------------------------------------------------------------------------
+
+export interface GitHubLanguage {
+  name: string;
+  /** Linguist colour as reported by GitHub; null for languages without one. */
+  color: string | null;
+}
+
+export interface GitHubProfile {
   login: string;
-  id: number;
-  node_id: string;
-  avatar_url: string;
-  gravatar_id: string | null;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  site_admin: boolean;
   name: string | null;
-  company: string | null;
-  blog: string | null;
-  location: string | null;
-  email: string | null;
-  hireable: boolean | null;
   bio: string | null;
-  twitter_username: string | null;
-  public_repos: number;
-  public_gists: number;
+  avatarUrl: string;
+  url: string;
+  createdAt: string;
+  location: string | null;
+  company: string | null;
+  websiteUrl: string | null;
+}
+
+export interface GitHubStats {
+  publicRepos: number;
+  totalStars: number;
+  totalForks: number;
   followers: number;
   following: number;
-  created_at: string;
-  updated_at: string;
+  contributionsLastYear: number;
+}
+
+export interface GitHubLanguageShare extends GitHubLanguage {
+  /** Fraction (0–1) of the average public, non-fork repository. */
+  share: number;
 }
 
 export interface GitHubRepo {
   name: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
+  description: string | null;
+  url: string;
+  homepageUrl: string | null;
+  stars: number;
+  forks: number;
+  pushedAt: string | null;
+  language: GitHubLanguage | null;
   topics: string[];
-  homepage: string;
-  pinned?: boolean;
 }
 
-export interface GitHubProfile {
-  name: string;
-  login: string;
-  avatar_url: string;
-  bio: string;
-  location: string;
-  blog: string;
-  html_url: string;
+/** `pinned` when the profile has pinned repositories, else the most recently pushed ones. */
+export type GitHubRepoSource = "pinned" | "recent";
+
+export interface GitHubRepoList {
+  source: GitHubRepoSource;
+  items: GitHubRepo[];
 }
 
-export interface GitHubStats {
-  public_repos: number;
-  followers: number;
-  following: number;
-  total_stars: number;
-  total_forks: number;
-  most_used_language: string;
-  languages: Record<string, number>;
+export interface GitHubOverview {
+  profile: GitHubProfile;
+  stats: GitHubStats;
+  languages: GitHubLanguageShare[];
+  repositories: GitHubRepoList;
 }
 
+export type GitHubActivityKind =
+  | "push"
+  | "create"
+  | "delete"
+  | "pullRequest"
+  | "review"
+  | "issue"
+  | "issueComment"
+  | "release"
+  | "star"
+  | "fork"
+  | "public"
+  | "other";
+
+/** Structured public event, served by the MCP server's `get_recent_activity` tool. */
 export interface GitHubActivity {
+  id: string;
+  kind: GitHubActivityKind;
+  /** Raw GitHub event type, kept for `other` and for MCP clients. */
   type: string;
   repo: string;
-  created_at: string;
-  action: string;
+  createdAt: string;
+  ref: string | null;
+  refType: string | null;
+  action: string | null;
+  number: number | null;
 }
 
-export interface GitHubData {
+/** One upstream request made to GitHub, as measured by the server. */
+export interface GitHubUpstreamCall {
+  api: "graphql" | "rest";
+  endpoint: string;
+  status: number;
+  durationMs: number;
+  rateLimitRemaining: number | null;
+}
+
+/** Where a piece of data came from — attached to every MCP tool result. */
+export interface GitHubFetchMeta {
+  source: "github" | "cache";
+  /** True when GitHub failed and an expired cache entry was served instead. */
+  stale: boolean;
+  fetchedAt: string;
+  ageSeconds: number;
+  calls: GitHubUpstreamCall[];
+}
+
+export interface GitHubFetchResult<T> {
+  data: T;
+  meta: GitHubFetchMeta;
+}
+
+/** Response body of `GET /api/github`. */
+export interface GitHubSnapshot {
+  overview: GitHubOverview;
+  fetchedAt: string;
+}
+
+/** A fact GitHub exposes no API for, declared in `data/` instead. */
+export interface GitHubDeclaredHighlight {
+  id: string;
+  label: string;
+  link: string;
+}
+
+// ---------------------------------------------------------------------------
+// Component props
+// ---------------------------------------------------------------------------
+
+export interface GitHubProfileProps {
   profile: GitHubProfile;
-  repositories: GitHubRepo[];
   stats: GitHubStats;
-  activity: GitHubActivity[];
-  highlights: GitHubHighlight[];
-  lastUpdated: string;
 }
 
-export interface GitHubApiResponse {
-  profile?: GitHubProfile;
-  repositories?: GitHubRepo[];
-  stats?: GitHubStats;
-  activity?: GitHubActivity[];
-  lastUpdated?: string;
-  error?: string;
+export interface GitHubLanguagesProps {
+  languages: GitHubLanguageShare[];
 }
 
 export interface GitHubRepositoriesProps {
-  repositories: GitHubRepo[];
+  repositories: GitHubRepoList;
 }
 
-export interface GitHubRepository {
-  id: number;
-  node_id: string;
+// ---------------------------------------------------------------------------
+// Raw upstream shapes — only the fields lib/github actually reads.
+// ---------------------------------------------------------------------------
+
+export interface GitHubGraphQLRepoNode {
   name: string;
-  full_name: string;
-  private: boolean;
-  owner: GitHubUser;
-  html_url: string;
+  isPrivate: boolean;
+  isFork: boolean;
   description: string | null;
-  fork: boolean;
   url: string;
-  archive_url: string;
-  assignees_url: string;
-  blobs_url: string;
-  branches_url: string;
-  collaborators_url: string;
-  comments_url: string;
-  commits_url: string;
-  compare_url: string;
-  contents_url: string;
-  contributors_url: string;
-  deployments_url: string;
-  downloads_url: string;
-  events_url: string;
-  forks_url: string;
-  git_commits_url: string;
-  git_refs_url: string;
-  git_tags_url: string;
-  git_url: string;
-  issue_comment_url: string;
-  issue_events_url: string;
-  issues_url: string;
-  keys_url: string;
-  labels_url: string;
-  languages_url: string;
-  merges_url: string;
-  milestones_url: string;
-  notifications_url: string;
-  pulls_url: string;
-  releases_url: string;
-  ssh_url: string;
-  stargazers_url: string;
-  statuses_url: string;
-  subscribers_url: string;
-  subscription_url: string;
-  tags_url: string;
-  teams_url: string;
-  trees_url: string;
-  clone_url: string;
-  mirror_url: string | null;
-  hooks_url: string;
-  svn_url: string;
-  homepage: string | null;
-  language: string | null;
-  forks_count: number;
-  stargazers_count: number;
-  watchers_count: number;
-  size: number;
-  default_branch: string;
-  open_issues_count: number;
-  is_template: boolean;
-  topics: string[];
-  has_issues: boolean;
-  has_projects: boolean;
-  has_wiki: boolean;
-  has_pages: boolean;
-  has_downloads: boolean;
-  archived: boolean;
-  disabled: boolean;
-  visibility: string;
-  pushed_at: string | null;
-  created_at: string;
-  updated_at: string;
-  permissions?: {
-    admin: boolean;
-    maintain: boolean;
-    push: boolean;
-    triage: boolean;
-    pull: boolean;
+  homepageUrl: string | null;
+  stargazerCount: number;
+  forkCount: number;
+  pushedAt: string | null;
+  primaryLanguage: GitHubLanguage | null;
+  repositoryTopics: { nodes: Array<{ topic: { name: string } }> };
+  languages: {
+    edges: Array<{ size: number; node: GitHubLanguage }>;
   };
-  allow_rebase_merge: boolean;
-  template_repository: GitHubRepository | null;
-  temp_clone_token: string;
-  allow_squash_merge: boolean;
-  allow_auto_merge: boolean;
-  delete_branch_on_merge: boolean;
-  allow_merge_commit: boolean;
-  subscribers_count: number;
-  network_count: number;
-  license: {
-    key: string;
-    name: string;
-    spdx_id: string;
-    url: string | null;
-    node_id: string;
-  } | null;
-  forks: number;
-  open_issues: number;
-  watchers: number;
 }
 
-export interface GitHubEvent {
+export interface GitHubGraphQLOverviewResponse {
+  data?: {
+    rateLimit: { remaining: number } | null;
+    user: {
+      login: string;
+      name: string | null;
+      bio: string | null;
+      avatarUrl: string;
+      url: string;
+      createdAt: string;
+      location: string | null;
+      company: string | null;
+      websiteUrl: string | null;
+      followers: { totalCount: number };
+      following: { totalCount: number };
+      contributionsCollection: {
+        contributionCalendar: { totalContributions: number };
+      };
+      pinnedItems: { nodes: Array<GitHubGraphQLRepoNode | Record<string, never>> };
+      repositories: { totalCount: number; nodes: GitHubGraphQLRepoNode[] };
+    } | null;
+  };
+  errors?: Array<{ message: string; type?: string }>;
+}
+
+export interface GitHubRestEvent {
   id: string;
-  type: GitHubEventType;
-  actor: GitHubUser;
-  repo: {
-    id: number;
-    name: string;
-    url: string;
-  };
-  payload: GitHubEventPayload;
-  public: boolean;
-  created_at: string;
-  org?: GitHubUser;
-}
-
-export type GitHubEventType =
-  | "PushEvent"
-  | "CreateEvent"
-  | "DeleteEvent"
-  | "ForkEvent"
-  | "WatchEvent"
-  | "IssuesEvent"
-  | "IssueCommentEvent"
-  | "PullRequestEvent"
-  | "PullRequestReviewEvent"
-  | "PullRequestReviewCommentEvent"
-  | "ReleaseEvent"
-  | "PublicEvent"
-  | "MemberEvent"
-  | "GollumEvent";
-
-export interface GitHubEventPayload {
-  action?: string;
-  ref_type?: string;
-  ref?: string;
-  master_branch?: string;
-  description?: string;
-  pusher_type?: string;
-  commits?: Array<{
-    sha: string;
-    author: {
-      email: string;
-      name: string;
-    };
-    message: string;
-    distinct: boolean;
-    url: string;
-  }>;
-  issue?: {
-    id: number;
-    number: number;
-    title: string;
-    body: string;
-    user: GitHubUser;
-    state: string;
-    created_at: string;
-    updated_at: string;
-  };
-  pull_request?: {
-    id: number;
-    number: number;
-    title: string;
-    body: string;
-    user: GitHubUser;
-    state: string;
-    created_at: string;
-    updated_at: string;
-  };
-  release?: {
-    id: number;
-    tag_name: string;
-    name: string;
-    body: string;
-    draft: boolean;
-    prerelease: boolean;
-    created_at: string;
-    published_at: string;
-  };
-  forkee?: GitHubRepository;
-}
-
-// Application-specific interfaces
-export interface GitHubProfile {
-  name: string;
-  login: string;
-  avatar_url: string;
-  bio: string;
-  location: string;
-  blog: string;
-  html_url: string;
-  public_repos: number;
-  followers: number;
-  following: number;
-  created_at: string;
-}
-
-export interface GitHubRepo {
-  name: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
-  topics: string[];
-  homepage: string;
-}
-
-export interface GitHubStats {
-  public_repos: number;
-  followers: number;
-  following: number;
-  total_stars: number;
-  total_forks: number;
-  most_used_language: string;
-  languages: Record<string, number>;
-}
-
-export interface GitHubActivity {
   type: string;
-  repo: string;
   created_at: string;
-  action: string;
-}
-
-/** Manual GitHub achievement badge (e.g. Pull Shark, YOLO) */
-export interface GitHubAchievement {
-  name: string;
-  icon: string;
-  description: string;
-  tier?: "bronze" | "silver" | "gold";
-}
-
-/** Auto-computed highlight derived from API stats */
-export interface GitHubHighlight {
-  label: string;
-  value: string;
-  icon: string;
-  link?: string;
-}
-
-export interface GitHubApiResponse {
-  profile?: GitHubProfile;
-  repositories?: GitHubRepo[];
-  stats?: GitHubStats;
-  activity?: GitHubActivity[];
-  highlights?: GitHubHighlight[];
-  lastUpdated?: string;
+  repo?: { name?: string };
+  payload?: {
+    action?: string;
+    ref?: string | null;
+    ref_type?: string;
+    number?: number;
+    issue?: { number?: number };
+    pull_request?: { number?: number };
+    release?: { tag_name?: string };
+  };
 }

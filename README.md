@@ -215,7 +215,6 @@ High‑level structure:
 * `prisma/` — Schema, migrations and seed (Blog, BlogCategory, BlogTag, BlogCredit, ChatSession, ChatMessage)
 * `tests/e2e/` — Playwright suites (accessibility, locale, public pages, live tools)
 * `types/` — Shared type surfaces mirrored per domain
-* `mcp-server/` — Auxiliary GitHub MCP server
 * `proxy.ts` — Next.js 16 middleware: locale detection, legacy redirects, admin session verification
 * `public/` — Static assets (images, logos, icons)
 
@@ -237,7 +236,8 @@ Comprehensive API endpoints with security-first design:
 | `/api/about`                    | Returns profile / about metadata                   | Static + typed                            |
 | `/api/blog`                     | Blog listing and management                        | Prisma + Zod                              |
 | `/api/blog/[slug]`              | Single post retrieval + read-count increment       | Optimized increment path                  |
-| `/api/github`                   | Fetches GitHub profile + repos (filtered)          | Tokenized (env)                           |
+| `/api/github`                   | GitHub profile, stats, languages, pinned repos           | GraphQL, token required, public data only        |
+| `/api/mcp`                      | Public GitHub MCP server (5 read-only tools)        | Streamable HTTP, MCP 2026-07-28 + 2025 fallback, rate limited |
 | `/api/speed-insight`            | Surfaces PageSpeed metrics                         | 1h revalidate, `stale-while-revalidate`   |
 | `/api/chatbot`                  | Interactive AI chatbot (Reem) for visitor queries  | Vercel AI SDK 7, SSE streamed              |
 | `/api/automation-audit`         | Scored automation audit generation                 | OpenAI Chat Completions + audit rate limit |
@@ -274,7 +274,7 @@ Security Posture Snapshot:
 **CodeQL Advanced Security Scanning:**
 
 * **Triggers**: Push to main, pull requests, scheduled weekly
-* **Languages**: Actions, JavaScript/TypeScript, Python
+* **Languages**: Actions, JavaScript/TypeScript
 * **Purpose**: Static analysis for security vulnerabilities, code quality issues, and potential attack vectors
 * **Advanced Features**: Multi-language matrix analysis, configurable query packs, integration with GitHub Security tab
 
@@ -296,7 +296,7 @@ Security Posture Snapshot:
 
 **Documentation Generation:**
 
-* `npm run docs` runs TypeDoc across components, app, types, hooks, data, i18n, lib, mcp-server, messages and styles, publishing to the documentation site linked at the top of this file.
+* `npm run docs` runs TypeDoc across components, app, types, hooks, data, i18n, lib, messages and styles, publishing to the documentation site linked at the top of this file.
 
 > **Retired:** the Lighthouse CI workflow and `.lighthouserc.cjs` budgets (v6.0.10), along with the Vercel CRON job that refreshed PageSpeed data every 12 hours. Performance is now tracked through Vercel Speed Insights and `/api/speed-insight`, whose responses are cached at the edge and refreshed on demand.
 
