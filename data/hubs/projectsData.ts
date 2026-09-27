@@ -137,7 +137,7 @@ export const projects: Project[] = [
     image: "/assets/projects/auth.png",
     technologies: ["Next.js", "TypeScript", "BetterAuth", "Customizable Auth"],
     githubUrl: "https://github.com/yazanaboayash/ready-to-use-auth",
-    liveUrl: "",
+    liveUrl: "https://ready-to-use-auth.vercel.app/",
     featured: false,
     category: "fullStack",
     license: {
