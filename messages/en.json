@@ -502,7 +502,6 @@
       "website": "I need a website",
       "automation": "I need automation",
       "projects": "I want to see projects",
-      "pricing": "I want pricing",
       "contact": "I want to contact Yazan"
     },
     "typing": {
@@ -563,13 +562,12 @@
         "seeAll": "Available extras",
         "dialogTitle": "{package} — extras",
         "dialogDescription": "Additional options available for this package.",
-        "finalPrice": "Get in touch and I'll quote these based on your project."
+        "contactNote": "Get in touch and we'll scope these for your project."
       },
       "website": {
         "name": "Website",
         "headline": "Get Found. Get Called.",
         "description": "A fast, modern site that works on every device and shows up in local search.",
-        "pricing": "890 €",
         "timeline": "1–2 weeks",
         "features": {
           "pages": "Up to 3 pages, or a single-page site with up to 5 sections",
@@ -581,36 +579,28 @@
         },
         "extras": {
           "page": {
-            "label": "Additional page",
-            "price": "190 €"
+            "label": "Additional page"
           },
           "section": {
-            "label": "Additional section (single-page site)",
-            "price": "120 €"
+            "label": "Additional section (single-page site)"
           },
           "secondLanguage": {
-            "label": "Second language (EN + DE), translation included",
-            "price": "390 €"
+            "label": "Second language (EN + DE), translation included"
           },
           "staticBlog": {
-            "label": "Static blog (no backend)",
-            "price": "490 €"
+            "label": "Static blog (no backend)"
           },
           "cmsBlog": {
-            "label": "Editable blog with CMS",
-            "price": "from 890 €"
+            "label": "Editable blog with CMS"
           },
           "consentBanner": {
-            "label": "Consent banner (only if you want tracking tools)",
-            "price": "290 €"
+            "label": "Consent banner (only if you want tracking tools)"
           },
           "textPrep": {
-            "label": "Text preparation from your existing material, per page",
-            "price": "90 €"
+            "label": "Text preparation from your existing material, per page"
           },
           "managedSetup": {
-            "label": "Managed Setup (per platform)",
-            "price": "150 €"
+            "label": "Managed Setup (per platform)"
           }
         }
       },
@@ -618,7 +608,6 @@
         "name": "Web Application",
         "headline": "Software That Runs Your Process.",
         "description": "Everything from Website, plus a database and real users.",
-        "pricing": "from 2.490 €",
         "timeline": "4–6 weeks",
         "features": {
           "website": "Everything in Website",
@@ -629,32 +618,25 @@
         },
         "extras": {
           "booking": {
-            "label": "Booking / appointment system",
-            "price": "from 1.490 €"
+            "label": "Booking / appointment system"
           },
           "roles": {
-            "label": "Roles and permissions",
-            "price": "from 490 €"
+            "label": "Roles and permissions"
           },
           "payments": {
-            "label": "Payments (Stripe)",
-            "price": "from 690 €"
+            "label": "Payments (Stripe)"
           },
           "fileUpload": {
-            "label": "File upload and management",
-            "price": "from 390 €"
+            "label": "File upload and management"
           },
           "adminView": {
-            "label": "Additional admin view",
-            "price": "from 390 €"
+            "label": "Additional admin view"
           },
           "notifications": {
-            "label": "Email notifications (via your mailbox, Brevo or Mailjet)",
-            "price": "from 290 €"
+            "label": "Email notifications (via your mailbox, Brevo or Mailjet)"
           },
           "page": {
-            "label": "Additional page or view",
-            "price": "190 €"
+            "label": "Additional page or view"
           }
         }
       },
@@ -662,7 +644,6 @@
         "name": "AI Integration",
         "headline": "Answers Without a Person Typing Them.",
         "description": "A chatbot or AI feature on a new site, or added to an existing one.",
-        "pricing": "from 890 €",
         "timeline": "1–3 weeks",
         "features": {
           "chatbot": "Chatbot trained on your business information (text injection, no RAG)",
@@ -673,32 +654,26 @@
         },
         "scopeNote": {
           "label": "Where I can add it",
-          "text": "Sites built with Next.js, React, Astro, or a plain static site — standard pricing applies. Anything else (WordPress, PHP, Shopify, .NET, Wix) is possible only as an embedded widget, quoted as Custom after a review."
+          "text": "Sites built with Next.js, React, Astro, or a plain static site are supported directly. Anything else (WordPress, PHP, Shopify, .NET, Wix) is possible only as an embedded widget, scoped as a Custom project after a review."
         },
         "extras": {
           "rag": {
-            "label": "RAG system — answers from your documents (PDF, Notion, Docs)",
-            "price": "from 1.690 €"
+            "label": "RAG system — answers from your documents (PDF, Notion, Docs)"
           },
           "existingApp": {
-            "label": "AI feature in an existing app (summarise, classify, generate)",
-            "price": "from 690 €"
+            "label": "AI feature in an existing app (summarise, classify, generate)"
           },
           "cloudSetup": {
-            "label": "Cloud provider setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)",
-            "price": "290 €"
+            "label": "Cloud provider setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)"
           },
           "localModel": {
-            "label": "Local model on your own server — nothing leaves your infrastructure",
-            "price": "690 €"
+            "label": "Local model on your own server — nothing leaves your infrastructure"
           },
           "knowledgeSource": {
-            "label": "Additional knowledge source",
-            "price": "from 290 €"
+            "label": "Additional knowledge source"
           },
           "retraining": {
-            "label": "Retraining after acceptance",
-            "price": "80 €/h"
+            "label": "Retraining after acceptance"
           }
         }
       },
@@ -706,7 +681,6 @@
         "name": "Automation & Integration",
         "headline": "Connect The Tools You Already Pay For.",
         "description": "I am the technical implementer. You provide the licences, accounts and admin access.",
-        "pricing": "from 690 €",
         "timeline": "3 days – 4 weeks",
         "features": {
           "review": "Process review of the workflow to be automated",
@@ -721,20 +695,16 @@
         },
         "extras": {
           "workflow": {
-            "label": "Each additional workflow",
-            "price": "290 €"
+            "label": "Each additional workflow"
           },
           "tool": {
-            "label": "Each additional tool connected",
-            "price": "from 390 €"
+            "label": "Each additional tool connected"
           },
           "n8n": {
-            "label": "n8n self-hosted setup on your server",
-            "price": "from 890 €"
+            "label": "n8n self-hosted setup on your server"
           },
           "customApi": {
-            "label": "Custom API integration (no ready-made connector)",
-            "price": "from 690 €"
+            "label": "Custom API integration (no ready-made connector)"
           }
         }
       },
@@ -742,7 +712,6 @@
         "name": "Custom",
         "headline": "Your Requirements, Scoped Properly.",
         "description": "For anything that does not fit the packages above.",
-        "pricing": "Custom Quote",
         "timeline": "Flexible",
         "features": {
           "workshop": "Requirements workshop",
@@ -755,14 +724,13 @@
       },
       "notes": {
         "title": "Good to know",
-        "vat": "All prices are final prices. No VAT is added — under the German small business regulation (§ 19 UStG) I do not charge VAT, so the price you see is the price you pay.",
         "included": "Every package includes responsive design, an SEO and performance build (Lighthouse 90+), 2 revision rounds, and full handover documentation.",
         "notIncluded": "Not included in any package: content — texts, images, logos — and third-party licences, stock media or paid fonts. You supply these.",
         "runningCosts": "Running costs — hosting, database, AI usage and domain — are billed to you directly by your chosen providers, on your own accounts.",
         "rights": "Full usage rights to the delivered work are transferred to you on final payment.",
         "warranty": "Two weeks of free bugfixing after launch are included. Your statutory warranty rights remain unaffected.",
-        "payment": "Payment: up to 1.000 € the full amount is invoiced after acceptance; above 1.000 € it's 40% on order and 60% after acceptance, 14 days net.",
-        "rates": "Additional work beyond the agreed scope is billed at 80 €/h, always quoted and approved first. An extra revision round is 190 €. Feedback within 5 working days, acceptance within 10."
+        "payment": "Payment terms are set out in your written proposal; invoices are due 14 days net.",
+        "rates": "Additional work beyond the agreed scope, including extra revision rounds, is always agreed with you before it starts. Feedback within 5 working days, acceptance within 10."
       }
     },
     "stack": {
@@ -796,10 +764,10 @@
       },
       "codeOnly": {
         "title": "Code Only (default)",
-        "description": "You get the full source code, build instructions and handover docs. You deploy. Included at no extra cost."
+        "description": "You get the full source code, build instructions and handover docs. You deploy."
       },
       "managedSetup": {
-        "title": "Managed Setup (+150 € per platform)",
+        "title": "Managed Setup (optional)",
         "description": "I create the account in your name, configure it, deploy, and hand over all credentials at acceptance. After handover I have no access and no ongoing responsibility."
       },
       "emailNote": "Contact forms and notification emails need a sending route — usually your existing business mailbox via SMTP at no extra cost. Brevo, Mailjet or Resend are available if you need something else."
@@ -827,7 +795,7 @@
       },
       "strategy": {
         "title": "Strategy & Scope",
-        "description": "You receive a clear proposal with scope, timeline, and fixed pricing. No surprises."
+        "description": "You receive a clear written proposal with scope and timeline. No surprises."
       },
       "development": {
         "title": "Development",
@@ -846,7 +814,7 @@
       "title": "Ready to Start?",
       "subtitle": "Send me a short email about your project. No commitment — if it's a fit, we'll set up a free 15-minute discovery call.",
       "button": "Contact",
-      "viewAllLink": "View All Services, Packages & Pricing"
+      "viewAllLink": "View All Services & Packages"
     },
     "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."
   },

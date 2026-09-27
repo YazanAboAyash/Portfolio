@@ -420,7 +420,7 @@ export const mediaSectionContent: MediaSectionContent = {
     en: {
       title: "Services - MVP Development, AI & Automation Solutions",
       description:
-        "Professional web development services including MVP launch packages, AI chatbot integration, RAG systems, and workflow automation. Clear pricing, reliable delivery.",
+        "Professional web development services including MVP launch packages, AI chatbot integration, RAG systems, and workflow automation. Clear scope, reliable delivery.",
       keywords: [
         "web development services",
         "MVP development",

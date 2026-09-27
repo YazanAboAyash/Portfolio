@@ -502,7 +502,6 @@
       "website": "Jag behöver en webbplats",
       "automation": "Jag behöver automatisering",
       "projects": "Jag vill se projekt",
-      "pricing": "Jag vill se priser",
       "contact": "Jag vill kontakta Yazan"
     },
     "typing": {
@@ -563,7 +562,6 @@
         "name": "Webbplats",
         "headline": "Bli Hittad. Bli Uppringd.",
         "description": "En snabb, modern webbplats som fungerar på alla enheter och syns i lokal sökning.",
-        "pricing": "890 €",
         "timeline": "1–2 veckor",
         "features": {
           "pages": "Upp till 3 sidor, eller en enkelsidig webbplats med upp till 5 sektioner",
@@ -575,36 +573,28 @@
         },
         "extras": {
           "page": {
-            "label": "Ytterligare sida",
-            "price": "190 €"
+            "label": "Ytterligare sida"
           },
           "section": {
-            "label": "Ytterligare sektion (enkelsidig webbplats)",
-            "price": "120 €"
+            "label": "Ytterligare sektion (enkelsidig webbplats)"
           },
           "secondLanguage": {
-            "label": "Andra språket (EN + DE), översättning ingår",
-            "price": "390 €"
+            "label": "Andra språket (EN + DE), översättning ingår"
           },
           "staticBlog": {
-            "label": "Statisk blogg (utan backend)",
-            "price": "490 €"
+            "label": "Statisk blogg (utan backend)"
           },
           "cmsBlog": {
-            "label": "Redigerbar blogg med CMS",
-            "price": "från 890 €"
+            "label": "Redigerbar blogg med CMS"
           },
           "consentBanner": {
-            "label": "Samtyckesbanner (endast om ni vill ha spårningsverktyg)",
-            "price": "290 €"
+            "label": "Samtyckesbanner (endast om ni vill ha spårningsverktyg)"
           },
           "textPrep": {
-            "label": "Textbearbetning från ert befintliga material, per sida",
-            "price": "90 €"
+            "label": "Textbearbetning från ert befintliga material, per sida"
           },
           "managedSetup": {
-            "label": "Managed Setup (per plattform)",
-            "price": "150 €"
+            "label": "Managed Setup (per plattform)"
           }
         }
       },
@@ -612,7 +602,6 @@
         "name": "Webbapplikation",
         "headline": "Mjukvara som Driver er Process.",
         "description": "Allt från Webbplats, plus en databas och riktiga användare.",
-        "pricing": "från 2 490 €",
         "timeline": "4–6 veckor",
         "features": {
           "website": "Allt som ingår i Webbplats",
@@ -623,32 +612,25 @@
         },
         "extras": {
           "booking": {
-            "label": "Boknings-/tidsbokningssystem",
-            "price": "från 1 490 €"
+            "label": "Boknings-/tidsbokningssystem"
           },
           "roles": {
-            "label": "Roller och behörigheter",
-            "price": "från 490 €"
+            "label": "Roller och behörigheter"
           },
           "payments": {
-            "label": "Betalningar (Stripe)",
-            "price": "från 690 €"
+            "label": "Betalningar (Stripe)"
           },
           "fileUpload": {
-            "label": "Filuppladdning och hantering",
-            "price": "från 390 €"
+            "label": "Filuppladdning och hantering"
           },
           "adminView": {
-            "label": "Ytterligare admin-vy",
-            "price": "från 390 €"
+            "label": "Ytterligare admin-vy"
           },
           "notifications": {
-            "label": "E-postaviseringar (via er brevlåda, Brevo eller Mailjet)",
-            "price": "från 290 €"
+            "label": "E-postaviseringar (via er brevlåda, Brevo eller Mailjet)"
           },
           "page": {
-            "label": "Ytterligare sida eller vy",
-            "price": "190 €"
+            "label": "Ytterligare sida eller vy"
           }
         }
       },
@@ -656,7 +638,6 @@
         "name": "AI-integration",
         "headline": "Svar utan att Någon Skriver dem.",
         "description": "En chatbot eller AI-funktion på en ny webbplats, eller tillagd på en befintlig.",
-        "pricing": "från 890 €",
         "timeline": "1–3 veckor",
         "features": {
           "chatbot": "Chatbot tränad på er företagsinformation (textinjektion, ingen RAG)",
@@ -667,40 +648,33 @@
         },
         "extras": {
           "rag": {
-            "label": "RAG-system — svar från era dokument (PDF, Notion, Docs)",
-            "price": "från 1 690 €"
+            "label": "RAG-system — svar från era dokument (PDF, Notion, Docs)"
           },
           "existingApp": {
-            "label": "AI-funktion i en befintlig app (sammanfatta, klassificera, generera)",
-            "price": "från 690 €"
+            "label": "AI-funktion i en befintlig app (sammanfatta, klassificera, generera)"
           },
           "cloudSetup": {
-            "label": "Konfiguration av molnleverantör (Azure OpenAI EU, OpenAI, Anthropic, Mistral)",
-            "price": "290 €"
+            "label": "Konfiguration av molnleverantör (Azure OpenAI EU, OpenAI, Anthropic, Mistral)"
           },
           "localModel": {
-            "label": "Lokal modell på er egen server — inget lämnar er infrastruktur",
-            "price": "690 €"
+            "label": "Lokal modell på er egen server — inget lämnar er infrastruktur"
           },
           "knowledgeSource": {
-            "label": "Ytterligare kunskapskälla",
-            "price": "från 290 €"
+            "label": "Ytterligare kunskapskälla"
           },
           "retraining": {
-            "label": "Omträning efter godkännande",
-            "price": "80 €/tim"
+            "label": "Omträning efter godkännande"
           }
         },
         "scopeNote": {
           "label": "Var jag kan lägga till det",
-          "text": "Webbplatser byggda med Next.js, React, Astro, eller en statisk webbplats — standardpris gäller. Allt annat (WordPress, PHP, Shopify, .NET, Wix) är endast möjligt som inbäddad widget, offererat som Skräddarsytt efter genomgång."
+          "text": "Webbplatser byggda med Next.js, React, Astro, eller en statisk webbplats — stöds direkt. Allt annat (WordPress, PHP, Shopify, .NET, Wix) är endast möjligt som inbäddad widget, som ett Skräddarsytt projekt efter genomgång."
         }
       },
       "automation": {
         "name": "Automatisering & Integration",
         "headline": "Koppla Ihop Verktygen ni Redan Betalar för.",
         "description": "Jag är den tekniska implementeraren. Ni tillhandahåller licenser, konton och adminåtkomst.",
-        "pricing": "från 690 €",
         "timeline": "3 dagar – 4 veckor",
         "features": {
           "review": "Processgenomgång av arbetsflödet som ska automatiseras",
@@ -711,20 +685,16 @@
         },
         "extras": {
           "workflow": {
-            "label": "Varje ytterligare arbetsflöde",
-            "price": "290 €"
+            "label": "Varje ytterligare arbetsflöde"
           },
           "tool": {
-            "label": "Varje ytterligare anslutet verktyg",
-            "price": "från 390 €"
+            "label": "Varje ytterligare anslutet verktyg"
           },
           "n8n": {
-            "label": "Självhostad n8n-uppsättning på er server",
-            "price": "från 890 €"
+            "label": "Självhostad n8n-uppsättning på er server"
           },
           "customApi": {
-            "label": "Anpassad API-integration (ingen färdig connector)",
-            "price": "från 690 €"
+            "label": "Anpassad API-integration (ingen färdig connector)"
           }
         },
         "scopeNote": {
@@ -736,7 +706,6 @@
         "name": "Skräddarsytt",
         "headline": "Era Krav, Ordentligt Definierade.",
         "description": "För allt som inte passar in i paketen ovan.",
-        "pricing": "Offert",
         "timeline": "Flexibel",
         "features": {
           "workshop": "Kravworkshop",
@@ -749,20 +718,19 @@
       },
       "notes": {
         "title": "Bra att veta",
-        "vat": "Alla priser är slutpriser. Ingen moms läggs till — enligt den tyska småföretagarregeln (§ 19 UStG) tar jag inte ut moms, så priset ni ser är priset ni betalar.",
         "included": "Varje paket inkluderar responsiv design, en SEO- och prestandabuild (Lighthouse 90+), 2 revideringsrundor och fullständig överlämningsdokumentation.",
         "runningCosts": "Löpande kostnader — hosting, databas, AI-användning och domän — faktureras er direkt av era valda leverantörer, på era egna konton.",
         "rights": "Fullständiga nyttjanderätter till det levererade arbetet överförs till er vid slutbetalning.",
         "warranty": "Två veckors kostnadsfri buggfixning efter lansering ingår. Era lagstadgade garantirättigheter påverkas inte.",
-        "payment": "Betalning: upp till 1 000 € faktureras hela beloppet efter godkännande; över 1 000 € gäller 40 % vid beställning och 60 % efter godkännande, 14 dagar netto.",
-        "rates": "Extra arbete utanför den överenskomna omfattningen debiteras 80 €/tim, alltid offererat och godkänt i förväg. En extra revideringsrunda kostar 190 €. Återkoppling inom 5 arbetsdagar, godkännande inom 10.",
+        "payment": "Betalningsvillkoren framgår av ert skriftliga förslag; fakturor förfaller 14 dagar netto.",
+        "rates": "Extra arbete utanför den överenskomna omfattningen, även extra revideringsrundor, stäms alltid av med er i förväg. Återkoppling inom 5 arbetsdagar, godkännande inom 10.",
         "notIncluded": "Ingår inte i något paket: innehåll — texter, bilder, logotyper — samt tredjepartslicenser, stockmaterial eller betalda typsnitt. Ni tillhandahåller dessa."
       },
       "extras": {
         "seeAll": "Tillgängliga tillval",
         "dialogTitle": "{package} — tillval",
         "dialogDescription": "Alla tillval som kan bokas till detta paket.",
-        "finalPrice": "Hör av er så offererar jag dessa utifrån ert projekt."
+        "contactNote": "Hör av er så går vi igenom dessa utifrån ert projekt."
       }
     },
     "serviceArea": {
@@ -788,7 +756,7 @@
       },
       "strategy": {
         "title": "Strategi och Omfattning",
-        "description": "Du får ett tydligt förslag med omfattning, tidplan och fast pris. Inga överraskningar."
+        "description": "Du får ett tydligt skriftligt förslag med omfattning och tidplan. Inga överraskningar."
       },
       "development": {
         "title": "Utveckling",
@@ -807,7 +775,7 @@
       "title": "Redo att Börja?",
       "subtitle": "Skicka mig ett kort mejl om ditt projekt. Inget åtagande – om det passar bokar vi ett kostnadsfritt 15-minuters upptäcktssamtal.",
       "button": "Kontakt",
-      "viewAllLink": "Visa Alla Tjänster, Paket & Priser"
+      "viewAllLink": "Visa Alla Tjänster & Paket"
     },
     "stack": {
       "title": "Er Stack, Era Konton",
@@ -840,10 +808,10 @@
       },
       "codeOnly": {
         "title": "Endast Kod (standard)",
-        "description": "Ni får hela källkoden, build-instruktioner och överlämningsdokumentation. Ni driftsätter själva. Ingår utan extra kostnad."
+        "description": "Ni får hela källkoden, build-instruktioner och överlämningsdokumentation. Ni driftsätter själva."
       },
       "managedSetup": {
-        "title": "Managed Setup (+150 € per plattform)",
+        "title": "Managed Setup (valfritt)",
         "description": "Jag skapar kontot i ert namn, konfigurerar det, driftsätter och överlämnar alla inloggningsuppgifter vid godkännande. Efter överlämningen har jag ingen åtkomst och inget löpande ansvar."
       },
       "emailNote": "Kontaktformulär och aviseringsmejl behöver en utskickskanal — oftast er befintliga företagsbrevlåda via SMTP, utan extra kostnad. Brevo, Mailjet eller Resend finns tillgängliga om ni behöver något annat."

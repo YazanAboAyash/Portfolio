@@ -502,7 +502,6 @@
       "website": "Necesito un sitio web",
       "automation": "Necesito automatización",
       "projects": "Quiero ver proyectos",
-      "pricing": "Quiero precios",
       "contact": "Quiero contactar a Yazan"
     },
     "typing": {
@@ -563,7 +562,6 @@
         "name": "Sitio Web",
         "headline": "Que le Encuentren. Que le Llamen.",
         "description": "Un sitio rápido y moderno que funciona en cualquier dispositivo y aparece en búsquedas locales.",
-        "pricing": "890 €",
         "timeline": "1–2 semanas",
         "features": {
           "pages": "Hasta 3 páginas, o un sitio de una sola página con hasta 5 secciones",
@@ -575,36 +573,28 @@
         },
         "extras": {
           "page": {
-            "label": "Página adicional",
-            "price": "190 €"
+            "label": "Página adicional"
           },
           "section": {
-            "label": "Sección adicional (sitio de una página)",
-            "price": "120 €"
+            "label": "Sección adicional (sitio de una página)"
           },
           "secondLanguage": {
-            "label": "Segundo idioma (EN + DE), traducción incluida",
-            "price": "390 €"
+            "label": "Segundo idioma (EN + DE), traducción incluida"
           },
           "staticBlog": {
-            "label": "Blog estático (sin backend)",
-            "price": "490 €"
+            "label": "Blog estático (sin backend)"
           },
           "cmsBlog": {
-            "label": "Blog editable con CMS",
-            "price": "desde 890 €"
+            "label": "Blog editable con CMS"
           },
           "consentBanner": {
-            "label": "Banner de consentimiento (solo si desea herramientas de seguimiento)",
-            "price": "290 €"
+            "label": "Banner de consentimiento (solo si desea herramientas de seguimiento)"
           },
           "textPrep": {
-            "label": "Preparación de textos a partir de su material existente, por página",
-            "price": "90 €"
+            "label": "Preparación de textos a partir de su material existente, por página"
           },
           "managedSetup": {
-            "label": "Configuración gestionada (por plataforma)",
-            "price": "150 €"
+            "label": "Configuración gestionada (por plataforma)"
           }
         }
       },
@@ -612,7 +602,6 @@
         "name": "Aplicación Web",
         "headline": "Software que Gestiona su Proceso.",
         "description": "Todo lo de Sitio Web, más una base de datos y usuarios reales.",
-        "pricing": "desde 2.490 €",
         "timeline": "4–6 semanas",
         "features": {
           "website": "Todo lo incluido en Sitio Web",
@@ -623,32 +612,25 @@
         },
         "extras": {
           "booking": {
-            "label": "Sistema de reservas/citas",
-            "price": "desde 1.490 €"
+            "label": "Sistema de reservas/citas"
           },
           "roles": {
-            "label": "Roles y permisos",
-            "price": "desde 490 €"
+            "label": "Roles y permisos"
           },
           "payments": {
-            "label": "Pagos (Stripe)",
-            "price": "desde 690 €"
+            "label": "Pagos (Stripe)"
           },
           "fileUpload": {
-            "label": "Carga y gestión de archivos",
-            "price": "desde 390 €"
+            "label": "Carga y gestión de archivos"
           },
           "adminView": {
-            "label": "Vista de administración adicional",
-            "price": "desde 390 €"
+            "label": "Vista de administración adicional"
           },
           "notifications": {
-            "label": "Notificaciones por correo (a través de su buzón, Brevo o Mailjet)",
-            "price": "desde 290 €"
+            "label": "Notificaciones por correo (a través de su buzón, Brevo o Mailjet)"
           },
           "page": {
-            "label": "Página o vista adicional",
-            "price": "190 €"
+            "label": "Página o vista adicional"
           }
         }
       },
@@ -656,7 +638,6 @@
         "name": "Integración de IA",
         "headline": "Respuestas sin que Nadie las Escriba.",
         "description": "Un chatbot o función de IA en un sitio nuevo, o añadido a uno existente.",
-        "pricing": "desde 890 €",
         "timeline": "1–3 semanas",
         "features": {
           "chatbot": "Chatbot entrenado con la información de su negocio (inyección de texto, sin RAG)",
@@ -667,40 +648,33 @@
         },
         "extras": {
           "rag": {
-            "label": "Sistema RAG — respuestas a partir de sus documentos (PDF, Notion, Docs)",
-            "price": "desde 1.690 €"
+            "label": "Sistema RAG — respuestas a partir de sus documentos (PDF, Notion, Docs)"
           },
           "existingApp": {
-            "label": "Función de IA en una app existente (resumir, clasificar, generar)",
-            "price": "desde 690 €"
+            "label": "Función de IA en una app existente (resumir, clasificar, generar)"
           },
           "cloudSetup": {
-            "label": "Configuración de proveedor cloud (Azure OpenAI UE, OpenAI, Anthropic, Mistral)",
-            "price": "290 €"
+            "label": "Configuración de proveedor cloud (Azure OpenAI UE, OpenAI, Anthropic, Mistral)"
           },
           "localModel": {
-            "label": "Modelo local en su propio servidor — nada sale de su infraestructura",
-            "price": "690 €"
+            "label": "Modelo local en su propio servidor — nada sale de su infraestructura"
           },
           "knowledgeSource": {
-            "label": "Fuente de conocimiento adicional",
-            "price": "desde 290 €"
+            "label": "Fuente de conocimiento adicional"
           },
           "retraining": {
-            "label": "Reentrenamiento tras la aceptación",
-            "price": "80 €/h"
+            "label": "Reentrenamiento tras la aceptación"
           }
         },
         "scopeNote": {
           "label": "Dónde puedo añadirlo",
-          "text": "Sitios construidos con Next.js, React, Astro, o un sitio estático — se aplica el precio estándar. Cualquier otra cosa (WordPress, PHP, Shopify, .NET, Wix) solo es posible como widget embebido, presupuestado como A Medida tras una revisión."
+          "text": "Sitios construidos con Next.js, React, Astro, o un sitio estático — compatibles directamente. Cualquier otra cosa (WordPress, PHP, Shopify, .NET, Wix) solo es posible como widget embebido, definido como proyecto A Medida tras una revisión."
         }
       },
       "automation": {
         "name": "Automatización e Integración",
         "headline": "Conecte las Herramientas que Ya Paga.",
         "description": "Yo soy el implementador técnico. Usted aporta las licencias, cuentas y acceso de administrador.",
-        "pricing": "desde 690 €",
         "timeline": "3 días – 4 semanas",
         "features": {
           "review": "Revisión del proceso a automatizar",
@@ -711,20 +685,16 @@
         },
         "extras": {
           "workflow": {
-            "label": "Cada flujo de trabajo adicional",
-            "price": "290 €"
+            "label": "Cada flujo de trabajo adicional"
           },
           "tool": {
-            "label": "Cada herramienta adicional conectada",
-            "price": "desde 390 €"
+            "label": "Cada herramienta adicional conectada"
           },
           "n8n": {
-            "label": "Configuración de n8n autoalojado en su servidor",
-            "price": "desde 890 €"
+            "label": "Configuración de n8n autoalojado en su servidor"
           },
           "customApi": {
-            "label": "Integración de API personalizada (sin conector prediseñado)",
-            "price": "desde 690 €"
+            "label": "Integración de API personalizada (sin conector prediseñado)"
           }
         },
         "scopeNote": {
@@ -736,7 +706,6 @@
         "name": "A Medida",
         "headline": "Sus Requisitos, Bien Definidos.",
         "description": "Para todo lo que no encaje en los paquetes anteriores.",
-        "pricing": "Presupuesto personalizado",
         "timeline": "Flexible",
         "features": {
           "workshop": "Taller de requisitos",
@@ -749,20 +718,19 @@
       },
       "notes": {
         "title": "Información importante",
-        "vat": "Todos los precios son precios finales. No se añade IVA — conforme al régimen alemán de pequeños empresarios (§ 19 UStG) no facturo IVA, así que el precio que ve es el precio que paga.",
         "included": "Todos los paquetes incluyen diseño responsivo, un build de SEO y rendimiento (Lighthouse 90+), 2 rondas de revisión y documentación de entrega completa.",
         "runningCosts": "Los costes recurrentes — hosting, base de datos, uso de IA y dominio — se los facturan directamente sus proveedores elegidos, en sus propias cuentas.",
         "rights": "Los derechos de uso completos sobre el trabajo entregado se le transfieren con el pago final.",
         "warranty": "Se incluyen dos semanas de corrección de errores gratuita tras el lanzamiento. Sus derechos legales de garantía no se ven afectados.",
-        "payment": "Pago: hasta 1.000 € se factura el importe completo tras la aceptación; por encima de 1.000 € es 40 % al encargo y 60 % tras la aceptación, 14 días neto.",
-        "rates": "El trabajo adicional fuera del alcance acordado se factura a 80 €/h, siempre presupuestado y aprobado antes. Una ronda de revisión extra cuesta 190 €. Respuesta en 5 días laborables, aceptación en 10.",
+        "payment": "Las condiciones de pago se recogen en su propuesta por escrito; las facturas vencen a 14 días neto.",
+        "rates": "El trabajo adicional fuera del alcance acordado, incluidas las rondas de revisión extra, siempre se acuerda con usted antes de empezar. Respuesta en 5 días laborables, aceptación en 10.",
         "notIncluded": "No incluido en ningún paquete: contenido — textos, imágenes, logotipos — y licencias de terceros, material de stock o fuentes de pago. Usted los aporta."
       },
       "extras": {
         "seeAll": "Extras disponibles",
         "dialogTitle": "{package} — extras",
         "dialogDescription": "Todos los complementos disponibles para este paquete.",
-        "finalPrice": "Contácteme y le daré un precio según su proyecto."
+        "contactNote": "Contácteme y definiremos estos complementos según su proyecto."
       }
     },
     "serviceArea": {
@@ -788,7 +756,7 @@
       },
       "strategy": {
         "title": "Estrategia y Alcance",
-        "description": "Recibes una propuesta clara con alcance, cronograma y precio fijo. Sin sorpresas."
+        "description": "Recibes una propuesta clara por escrito con alcance y cronograma. Sin sorpresas."
       },
       "development": {
         "title": "Desarrollo",
@@ -807,7 +775,7 @@
       "title": "¿Listo para Empezar?",
       "subtitle": "Envíame un correo breve sobre tu proyecto. Sin compromiso: si encaja, concertamos una llamada de descubrimiento gratuita de 15 minutos.",
       "button": "Contacto",
-      "viewAllLink": "Ver Todos los Servicios, Paquetes y Precios"
+      "viewAllLink": "Ver Todos los Servicios y Paquetes"
     },
     "stack": {
       "title": "Su Stack, Sus Cuentas",
@@ -840,10 +808,10 @@
       },
       "codeOnly": {
         "title": "Solo Código (por defecto)",
-        "description": "Recibe el código fuente completo, instrucciones de build y documentación de entrega. Usted despliega. Incluido sin coste adicional."
+        "description": "Recibe el código fuente completo, instrucciones de build y documentación de entrega. Usted despliega."
       },
       "managedSetup": {
-        "title": "Configuración Gestionada (+150 € por plataforma)",
+        "title": "Configuración Gestionada (opcional)",
         "description": "Creo la cuenta a su nombre, la configuro, despliego y entrego todas las credenciales en la aceptación. Tras la entrega no tengo acceso ni responsabilidad continua."
       },
       "emailNote": "Los formularios de contacto y correos de notificación necesitan una vía de envío — normalmente su buzón de negocio existente vía SMTP, sin coste adicional. Brevo, Mailjet o Resend están disponibles si necesita otra cosa."

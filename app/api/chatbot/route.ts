@@ -572,7 +572,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   // Only one user message means this is the opening turn of the conversation
   let systemPrompt = chatbotConfig.systemPrompt;
   if (conversation.length === 1) {
-    systemPrompt += `\n\nIMPORTANT: This is the user's first message in this conversation. Start warmly and briefly introduce yourself only if it helps. If the user picked a guided starter like website, automation, projects, pricing, or contact, route them directly and include the most relevant source links.`;
+    systemPrompt += `\n\nIMPORTANT: This is the user's first message in this conversation. Start warmly and briefly introduce yourself only if it helps. If the user picked a guided starter like website, automation, projects, or contact, route them directly and include the most relevant source links.`;
   }
 
   const result = streamText({
@@ -644,7 +644,7 @@ export async function POST(request: NextRequest): Promise<Response> {
 /**
  * Availability probe. Deliberately exposes nothing about the assistant itself:
  * the prompt's facts and policy stay server-side, so this cannot be used to
- * enumerate services, pricing or behaviour without talking to Reem.
+ * enumerate services or behaviour without talking to Reem.
  */
 export function GET(): NextResponse<{
   status: string;

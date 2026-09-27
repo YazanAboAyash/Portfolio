@@ -502,7 +502,6 @@
       "website": "Ich brauche eine Website",
       "automation": "Ich brauche Automatisierung",
       "projects": "Ich möchte Projekte sehen",
-      "pricing": "Ich möchte Preise sehen",
       "contact": "Ich möchte Yazan kontaktieren"
     },
     "typing": {
@@ -563,7 +562,6 @@
         "name": "Website",
         "headline": "Gefunden werden. Angerufen werden.",
         "description": "Eine schnelle, moderne Website, die auf jedem Gerät funktioniert und in der lokalen Suche auftaucht.",
-        "pricing": "890 €",
         "timeline": "1–2 Wochen",
         "features": {
           "pages": "Bis zu 3 Seiten, oder eine One-Page-Website mit bis zu 5 Abschnitten",
@@ -575,36 +573,28 @@
         },
         "extras": {
           "page": {
-            "label": "Zusätzliche Seite",
-            "price": "190 €"
+            "label": "Zusätzliche Seite"
           },
           "section": {
-            "label": "Zusätzlicher Abschnitt (One-Page-Website)",
-            "price": "120 €"
+            "label": "Zusätzlicher Abschnitt (One-Page-Website)"
           },
           "secondLanguage": {
-            "label": "Zweite Sprache (DE + EN), Übersetzung inklusive",
-            "price": "390 €"
+            "label": "Zweite Sprache (DE + EN), Übersetzung inklusive"
           },
           "staticBlog": {
-            "label": "Statischer Blog (ohne Backend)",
-            "price": "490 €"
+            "label": "Statischer Blog (ohne Backend)"
           },
           "cmsBlog": {
-            "label": "Editierbarer Blog mit CMS",
-            "price": "ab 890 €"
+            "label": "Editierbarer Blog mit CMS"
           },
           "consentBanner": {
-            "label": "Consent-Banner (nur bei Tracking-Tools nötig)",
-            "price": "290 €"
+            "label": "Consent-Banner (nur bei Tracking-Tools nötig)"
           },
           "textPrep": {
-            "label": "Textaufbereitung aus Ihrem Material, pro Seite",
-            "price": "90 €"
+            "label": "Textaufbereitung aus Ihrem Material, pro Seite"
           },
           "managedSetup": {
-            "label": "Managed Setup (pro Plattform)",
-            "price": "150 €"
+            "label": "Managed Setup (pro Plattform)"
           }
         }
       },
@@ -612,7 +602,6 @@
         "name": "Webanwendung",
         "headline": "Software, die Ihren Prozess trägt.",
         "description": "Alles aus Website, plus Datenbank und echte Nutzerkonten.",
-        "pricing": "ab 2.490 €",
         "timeline": "4–6 Wochen",
         "features": {
           "website": "Alles aus Website",
@@ -623,32 +612,25 @@
         },
         "extras": {
           "booking": {
-            "label": "Buchungs-/Terminsystem",
-            "price": "ab 1.490 €"
+            "label": "Buchungs-/Terminsystem"
           },
           "roles": {
-            "label": "Rollen und Berechtigungen",
-            "price": "ab 490 €"
+            "label": "Rollen und Berechtigungen"
           },
           "payments": {
-            "label": "Zahlungen (Stripe)",
-            "price": "ab 690 €"
+            "label": "Zahlungen (Stripe)"
           },
           "fileUpload": {
-            "label": "Datei-Upload und -Verwaltung",
-            "price": "ab 390 €"
+            "label": "Datei-Upload und -Verwaltung"
           },
           "adminView": {
-            "label": "Zusätzliche Admin-Ansicht",
-            "price": "ab 390 €"
+            "label": "Zusätzliche Admin-Ansicht"
           },
           "notifications": {
-            "label": "E-Mail-Benachrichtigungen (über Ihr Postfach, Brevo oder Mailjet)",
-            "price": "ab 290 €"
+            "label": "E-Mail-Benachrichtigungen (über Ihr Postfach, Brevo oder Mailjet)"
           },
           "page": {
-            "label": "Zusätzliche Seite oder Ansicht",
-            "price": "190 €"
+            "label": "Zusätzliche Seite oder Ansicht"
           }
         }
       },
@@ -656,7 +638,6 @@
         "name": "KI-Integration",
         "headline": "Antworten, ohne dass jemand tippt.",
         "description": "Ein Chatbot oder eine KI-Funktion auf einer neuen Website oder in einer bestehenden.",
-        "pricing": "ab 890 €",
         "timeline": "1–3 Wochen",
         "features": {
           "chatbot": "Chatbot, trainiert auf Ihre Unternehmensinformationen (Text-Injection, kein RAG)",
@@ -667,40 +648,33 @@
         },
         "extras": {
           "rag": {
-            "label": "RAG-System — Antworten aus Ihren Dokumenten (PDF, Notion, Docs)",
-            "price": "ab 1.690 €"
+            "label": "RAG-System — Antworten aus Ihren Dokumenten (PDF, Notion, Docs)"
           },
           "existingApp": {
-            "label": "KI-Funktion in einer bestehenden App (zusammenfassen, klassifizieren, generieren)",
-            "price": "ab 690 €"
+            "label": "KI-Funktion in einer bestehenden App (zusammenfassen, klassifizieren, generieren)"
           },
           "cloudSetup": {
-            "label": "Cloud-Anbieter-Setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)",
-            "price": "290 €"
+            "label": "Cloud-Anbieter-Setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)"
           },
           "localModel": {
-            "label": "Lokales Modell auf Ihrem eigenen Server — nichts verlässt Ihre Infrastruktur",
-            "price": "690 €"
+            "label": "Lokales Modell auf Ihrem eigenen Server — nichts verlässt Ihre Infrastruktur"
           },
           "knowledgeSource": {
-            "label": "Zusätzliche Wissensquelle",
-            "price": "ab 290 €"
+            "label": "Zusätzliche Wissensquelle"
           },
           "retraining": {
-            "label": "Nachtraining nach Abnahme",
-            "price": "80 €/Std."
+            "label": "Nachtraining nach Abnahme"
           }
         },
         "scopeNote": {
           "label": "Wo ich es einbauen kann",
-          "text": "Websites auf Basis von Next.js, React, Astro oder einer statischen Website — Standardpreis gilt. Alles andere (WordPress, PHP, Shopify, .NET, Wix) ist nur als eingebettetes Widget möglich, nach Prüfung als Individuell kalkuliert."
+          "text": "Websites auf Basis von Next.js, React, Astro oder einer statischen Website werden direkt unterstützt. Alles andere (WordPress, PHP, Shopify, .NET, Wix) ist nur als eingebettetes Widget möglich, nach Prüfung als individuelles Projekt."
         }
       },
       "automation": {
         "name": "Automatisierung & Integration",
         "headline": "Verbinden Sie die Tools, die Sie schon bezahlen.",
         "description": "Ich bin der technische Umsetzer. Sie stellen Lizenzen, Konten und Admin-Zugang.",
-        "pricing": "ab 690 €",
         "timeline": "3 Tage – 4 Wochen",
         "features": {
           "review": "Prozess-Review des zu automatisierenden Workflows",
@@ -711,20 +685,16 @@
         },
         "extras": {
           "workflow": {
-            "label": "Jeder weitere Workflow",
-            "price": "290 €"
+            "label": "Jeder weitere Workflow"
           },
           "tool": {
-            "label": "Jedes weitere angebundene Tool",
-            "price": "ab 390 €"
+            "label": "Jedes weitere angebundene Tool"
           },
           "n8n": {
-            "label": "Self-Hosted n8n-Setup auf Ihrem Server",
-            "price": "ab 890 €"
+            "label": "Self-Hosted n8n-Setup auf Ihrem Server"
           },
           "customApi": {
-            "label": "Individuelle API-Integration (kein fertiger Connector)",
-            "price": "ab 690 €"
+            "label": "Individuelle API-Integration (kein fertiger Connector)"
           }
         },
         "scopeNote": {
@@ -736,7 +706,6 @@
         "name": "Individuell",
         "headline": "Ihre Anforderungen, sauber skizziert.",
         "description": "Für alles, was nicht in die Pakete oben passt.",
-        "pricing": "Individuelles Angebot",
         "timeline": "Flexibel",
         "features": {
           "workshop": "Anforderungs-Workshop",
@@ -749,20 +718,19 @@
       },
       "notes": {
         "title": "Gut zu wissen",
-        "vat": "Alle Preise sind Endpreise. Es wird keine Umsatzsteuer ausgewiesen — nach der Kleinunternehmerregelung (§ 19 UStG) berechne ich keine Umsatzsteuer, der angezeigte Preis ist also der zu zahlende Preis.",
         "included": "Jedes Paket enthält responsives Design, einen SEO- und Performance-Build (Lighthouse 90+), 2 Korrekturschleifen und vollständige Übergabedokumentation.",
         "runningCosts": "Laufende Kosten — Hosting, Datenbank, KI-Nutzung und Domain — werden Ihnen direkt von Ihren gewählten Anbietern über Ihre eigenen Konten berechnet.",
         "rights": "Mit der Schlusszahlung erhalten Sie die vollständigen Nutzungsrechte am gelieferten Werk.",
         "warranty": "Zwei Wochen kostenlose Fehlerbehebung nach dem Launch sind enthalten. Die gesetzliche Gewährleistung bleibt hiervon unberührt.",
-        "payment": "Zahlung: bis 1.000 € wird der volle Betrag nach Abnahme in Rechnung gestellt; über 1.000 € gilt 40 % bei Auftrag und 60 % nach Abnahme, 14 Tage netto.",
-        "rates": "Mehraufwand außerhalb des vereinbarten Umfangs wird mit 80 €/Std. berechnet, immer vorab angeboten und freigegeben. Eine zusätzliche Korrekturschleife kostet 190 €. Feedback innerhalb von 5 Werktagen, Abnahme innerhalb von 10.",
+        "payment": "Die Zahlungsbedingungen stehen in Ihrem schriftlichen Angebot; Rechnungen sind innerhalb von 14 Tagen netto fällig.",
+        "rates": "Mehraufwand außerhalb des vereinbarten Umfangs, auch zusätzliche Korrekturschleifen, wird immer vorab mit Ihnen abgestimmt. Feedback innerhalb von 5 Werktagen, Abnahme innerhalb von 10.",
         "notIncluded": "Nicht in jedem Paket enthalten: Inhalte — Texte, Bilder, Logos — sowie Lizenzen von Drittanbietern, Stockmaterial oder kostenpflichtige Schriften. Diese stellen Sie bereit."
       },
       "extras": {
         "seeAll": "Verfügbare Extras",
         "dialogTitle": "{package} — Extras",
         "dialogDescription": "Alle buchbaren Zusatzleistungen für dieses Paket.",
-        "finalPrice": "Sprechen Sie mich an — ich kalkuliere diese individuell für Ihr Projekt."
+        "contactNote": "Sprechen Sie mich an — wir klären diese gemeinsam für Ihr Projekt."
       }
     },
     "serviceArea": {
@@ -788,7 +756,7 @@
       },
       "strategy": {
         "title": "Strategie & Umfang",
-        "description": "Sie erhalten ein klares Angebot mit Umfang, Zeitplan und Festpreis. Keine Überraschungen."
+        "description": "Sie erhalten ein klares schriftliches Angebot mit Umfang und Zeitplan. Keine Überraschungen."
       },
       "development": {
         "title": "Entwicklung",
@@ -807,7 +775,7 @@
       "title": "Bereit loszulegen?",
       "subtitle": "Schreiben Sie mir eine kurze E-Mail zu Ihrem Projekt. Unverbindlich – wenn es passt, vereinbaren wir ein kostenloses 15-minütiges Erstgespräch.",
       "button": "Kontakt",
-      "viewAllLink": "Alle Dienstleistungen, Pakete & Preise ansehen"
+      "viewAllLink": "Alle Dienstleistungen & Pakete ansehen"
     },
     "stack": {
       "title": "Ihr Stack, Ihre Konten",
@@ -840,10 +808,10 @@
       },
       "codeOnly": {
         "title": "Code Only (Standard)",
-        "description": "Sie erhalten den vollständigen Quellcode, Build-Anleitung und Übergabedokumentation. Sie deployen selbst. Ohne Aufpreis enthalten."
+        "description": "Sie erhalten den vollständigen Quellcode, Build-Anleitung und Übergabedokumentation. Sie deployen selbst."
       },
       "managedSetup": {
-        "title": "Managed Setup (+150 € pro Plattform)",
+        "title": "Managed Setup (optional)",
         "description": "Ich erstelle das Konto auf Ihren Namen, richte es ein, deploye und übergebe bei Abnahme alle Zugangsdaten. Nach der Übergabe habe ich keinen Zugriff und keine laufende Verantwortung."
       },
       "emailNote": "Kontaktformulare und Benachrichtigungs-E-Mails brauchen einen Versandweg — meist Ihr bestehendes Geschäftspostfach per SMTP, ohne Zusatzkosten. Brevo, Mailjet oder Resend sind verfügbar, falls Sie etwas anderes brauchen."

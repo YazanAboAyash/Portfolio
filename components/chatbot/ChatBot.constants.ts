@@ -165,7 +165,6 @@ export const CHATBOT_GUIDED_ACTION_KEYS = [
   "guidedActions.website",
   "guidedActions.automation",
   "guidedActions.projects",
-  "guidedActions.pricing",
   "guidedActions.contact",
 ] as const;
 

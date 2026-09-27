@@ -502,7 +502,6 @@
       "website": "J'ai besoin d'un site web",
       "automation": "J'ai besoin d'automatisation",
       "projects": "Je veux voir les projets",
-      "pricing": "Je veux les tarifs",
       "contact": "Je veux contacter Yazan"
     },
     "typing": {
@@ -563,7 +562,6 @@
         "name": "Site Web",
         "headline": "Être Trouvé. Être Appelé.",
         "description": "Un site rapide et moderne qui fonctionne sur tous les appareils et apparaît dans les recherches locales.",
-        "pricing": "890 €",
         "timeline": "1–2 semaines",
         "features": {
           "pages": "Jusqu'à 3 pages, ou un site une page avec jusqu'à 5 sections",
@@ -575,36 +573,28 @@
         },
         "extras": {
           "page": {
-            "label": "Page supplémentaire",
-            "price": "190 €"
+            "label": "Page supplémentaire"
           },
           "section": {
-            "label": "Section supplémentaire (site une page)",
-            "price": "120 €"
+            "label": "Section supplémentaire (site une page)"
           },
           "secondLanguage": {
-            "label": "Deuxième langue (EN + DE), traduction incluse",
-            "price": "390 €"
+            "label": "Deuxième langue (EN + DE), traduction incluse"
           },
           "staticBlog": {
-            "label": "Blog statique (sans backend)",
-            "price": "490 €"
+            "label": "Blog statique (sans backend)"
           },
           "cmsBlog": {
-            "label": "Blog éditable avec CMS",
-            "price": "à partir de 890 €"
+            "label": "Blog éditable avec CMS"
           },
           "consentBanner": {
-            "label": "Bandeau de consentement (uniquement si vous voulez des outils de tracking)",
-            "price": "290 €"
+            "label": "Bandeau de consentement (uniquement si vous voulez des outils de tracking)"
           },
           "textPrep": {
-            "label": "Préparation de textes à partir de votre contenu existant, par page",
-            "price": "90 €"
+            "label": "Préparation de textes à partir de votre contenu existant, par page"
           },
           "managedSetup": {
-            "label": "Managed Setup (par plateforme)",
-            "price": "150 €"
+            "label": "Managed Setup (par plateforme)"
           }
         }
       },
@@ -612,7 +602,6 @@
         "name": "Application Web",
         "headline": "Un Logiciel qui Fait Tourner votre Processus.",
         "description": "Tout ce qui est dans Site Web, plus une base de données et de vrais utilisateurs.",
-        "pricing": "à partir de 2 490 €",
         "timeline": "4–6 semaines",
         "features": {
           "website": "Tout ce qui est inclus dans Site Web",
@@ -623,32 +612,25 @@
         },
         "extras": {
           "booking": {
-            "label": "Système de réservation / rendez-vous",
-            "price": "à partir de 1 490 €"
+            "label": "Système de réservation / rendez-vous"
           },
           "roles": {
-            "label": "Rôles et permissions",
-            "price": "à partir de 490 €"
+            "label": "Rôles et permissions"
           },
           "payments": {
-            "label": "Paiements (Stripe)",
-            "price": "à partir de 690 €"
+            "label": "Paiements (Stripe)"
           },
           "fileUpload": {
-            "label": "Upload et gestion de fichiers",
-            "price": "à partir de 390 €"
+            "label": "Upload et gestion de fichiers"
           },
           "adminView": {
-            "label": "Vue admin supplémentaire",
-            "price": "à partir de 390 €"
+            "label": "Vue admin supplémentaire"
           },
           "notifications": {
-            "label": "Notifications par email (via votre messagerie, Brevo ou Mailjet)",
-            "price": "à partir de 290 €"
+            "label": "Notifications par email (via votre messagerie, Brevo ou Mailjet)"
           },
           "page": {
-            "label": "Page ou vue supplémentaire",
-            "price": "190 €"
+            "label": "Page ou vue supplémentaire"
           }
         }
       },
@@ -656,7 +638,6 @@
         "name": "Intégration IA",
         "headline": "Des Réponses sans que Personne ne les Tape.",
         "description": "Un chatbot ou une fonctionnalité IA sur un nouveau site, ou ajouté à un site existant.",
-        "pricing": "à partir de 890 €",
         "timeline": "1–3 semaines",
         "features": {
           "chatbot": "Chatbot entraîné sur les informations de votre entreprise (injection de texte, sans RAG)",
@@ -667,40 +648,33 @@
         },
         "extras": {
           "rag": {
-            "label": "Système RAG — réponses à partir de vos documents (PDF, Notion, Docs)",
-            "price": "à partir de 1 690 €"
+            "label": "Système RAG — réponses à partir de vos documents (PDF, Notion, Docs)"
           },
           "existingApp": {
-            "label": "Fonctionnalité IA dans une app existante (résumer, classifier, générer)",
-            "price": "à partir de 690 €"
+            "label": "Fonctionnalité IA dans une app existante (résumer, classifier, générer)"
           },
           "cloudSetup": {
-            "label": "Configuration fournisseur cloud (Azure OpenAI UE, OpenAI, Anthropic, Mistral)",
-            "price": "290 €"
+            "label": "Configuration fournisseur cloud (Azure OpenAI UE, OpenAI, Anthropic, Mistral)"
           },
           "localModel": {
-            "label": "Modèle local sur votre propre serveur — rien ne quitte votre infrastructure",
-            "price": "690 €"
+            "label": "Modèle local sur votre propre serveur — rien ne quitte votre infrastructure"
           },
           "knowledgeSource": {
-            "label": "Source de connaissances supplémentaire",
-            "price": "à partir de 290 €"
+            "label": "Source de connaissances supplémentaire"
           },
           "retraining": {
-            "label": "Réentraînement après réception",
-            "price": "80 €/h"
+            "label": "Réentraînement après réception"
           }
         },
         "scopeNote": {
           "label": "Où je peux l'ajouter",
-          "text": "Sites construits avec Next.js, React, Astro, ou un site statique — le tarif standard s'applique. Tout le reste (WordPress, PHP, Shopify, .NET, Wix) n'est possible qu'en widget intégré, chiffré en Sur Mesure après examen."
+          "text": "Sites construits avec Next.js, React, Astro, ou un site statique — pris en charge directement. Tout le reste (WordPress, PHP, Shopify, .NET, Wix) n'est possible qu'en widget intégré, traité en projet Sur Mesure après examen."
         }
       },
       "automation": {
         "name": "Automatisation & Intégration",
         "headline": "Connectez les Outils que Vous Payez Déjà.",
         "description": "Je suis l'implémenteur technique. Vous fournissez les licences, comptes et accès admin.",
-        "pricing": "à partir de 690 €",
         "timeline": "3 jours – 4 semaines",
         "features": {
           "review": "Revue du processus à automatiser",
@@ -711,20 +685,16 @@
         },
         "extras": {
           "workflow": {
-            "label": "Chaque workflow supplémentaire",
-            "price": "290 €"
+            "label": "Chaque workflow supplémentaire"
           },
           "tool": {
-            "label": "Chaque outil supplémentaire connecté",
-            "price": "à partir de 390 €"
+            "label": "Chaque outil supplémentaire connecté"
           },
           "n8n": {
-            "label": "Installation n8n autohébergée sur votre serveur",
-            "price": "à partir de 890 €"
+            "label": "Installation n8n autohébergée sur votre serveur"
           },
           "customApi": {
-            "label": "Intégration API personnalisée (sans connecteur prêt à l'emploi)",
-            "price": "à partir de 690 €"
+            "label": "Intégration API personnalisée (sans connecteur prêt à l'emploi)"
           }
         },
         "scopeNote": {
@@ -736,7 +706,6 @@
         "name": "Sur Mesure",
         "headline": "Vos Besoins, Cadrés Correctement.",
         "description": "Pour tout ce qui ne rentre pas dans les forfaits ci-dessus.",
-        "pricing": "Devis personnalisé",
         "timeline": "Flexible",
         "features": {
           "workshop": "Atelier de définition des besoins",
@@ -749,20 +718,19 @@
       },
       "notes": {
         "title": "Bon à savoir",
-        "vat": "Tous les prix sont des prix finaux. Aucune TVA n'est ajoutée — sous le régime allemand des petites entreprises (§ 19 UStG), je ne facture pas de TVA, donc le prix affiché est le prix payé.",
         "included": "Chaque forfait inclut un design responsive, un build SEO et performance (Lighthouse 90+), 2 tours de révision et une documentation de remise complète.",
         "runningCosts": "Les coûts récurrents — hébergement, base de données, usage de l'IA et domaine — vous sont facturés directement par vos fournisseurs choisis, sur vos propres comptes.",
         "rights": "Les droits d'usage complets sur le travail livré vous sont transférés au paiement final.",
         "warranty": "Deux semaines de correction de bugs offertes après le lancement sont incluses. Vos droits de garantie légale restent inchangés.",
-        "payment": "Paiement : jusqu'à 1 000 €, le montant total est facturé après réception ; au-delà de 1 000 €, c'est 40 % à la commande et 60 % après réception, 14 jours net.",
-        "rates": "Le travail supplémentaire hors périmètre convenu est facturé 80 €/h, toujours devisé et approuvé au préalable. Un tour de révision supplémentaire coûte 190 €. Retour sous 5 jours ouvrés, réception sous 10 jours.",
+        "payment": "Les conditions de paiement figurent dans votre proposition écrite ; les factures sont payables à 14 jours net.",
+        "rates": "Le travail supplémentaire hors périmètre convenu, y compris les tours de révision supplémentaires, est toujours convenu avec vous au préalable. Retour sous 5 jours ouvrés, réception sous 10 jours.",
         "notIncluded": "Non inclus dans aucun forfait : le contenu — textes, images, logos — ainsi que les licences tierces, banques d'images ou polices payantes. Vous les fournissez."
       },
       "extras": {
         "seeAll": "Extras disponibles",
         "dialogTitle": "{package} — options",
         "dialogDescription": "Toutes les options disponibles pour cette formule.",
-        "finalPrice": "Contactez-moi et je vous chiffrerai cela selon votre projet."
+        "contactNote": "Contactez-moi et nous définirons ces options selon votre projet."
       }
     },
     "serviceArea": {
@@ -788,7 +756,7 @@
       },
       "strategy": {
         "title": "Stratégie et Périmètre",
-        "description": "Vous recevez une proposition claire avec périmètre, calendrier et prix fixe. Pas de surprises."
+        "description": "Vous recevez une proposition écrite claire avec périmètre et calendrier. Pas de surprises."
       },
       "development": {
         "title": "Développement",
@@ -807,7 +775,7 @@
       "title": "Prêt à Commencer ?",
       "subtitle": "Envoyez-moi un court e-mail sur votre projet. Sans engagement — si cela correspond, nous planifierons un appel découverte gratuit de 15 minutes.",
       "button": "Contact",
-      "viewAllLink": "Voir Tous les Services, Forfaits & Tarifs"
+      "viewAllLink": "Voir Tous les Services & Forfaits"
     },
     "stack": {
       "title": "Votre Stack, Vos Comptes",
@@ -840,10 +808,10 @@
       },
       "codeOnly": {
         "title": "Code Only (par défaut)",
-        "description": "Vous recevez le code source complet, les instructions de build et la documentation de remise. Vous déployez. Inclus sans surcoût."
+        "description": "Vous recevez le code source complet, les instructions de build et la documentation de remise. Vous déployez."
       },
       "managedSetup": {
-        "title": "Managed Setup (+150 € par plateforme)",
+        "title": "Managed Setup (optionnel)",
         "description": "Je crée le compte à votre nom, le configure, déploie, et remets tous les identifiants à la réception. Après la remise, je n'ai plus aucun accès ni responsabilité continue."
       },
       "emailNote": "Les formulaires de contact et emails de notification ont besoin d'une route d'envoi — généralement votre messagerie professionnelle existante via SMTP, sans surcoût. Brevo, Mailjet ou Resend sont disponibles si besoin d'autre chose."
