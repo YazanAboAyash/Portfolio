@@ -11,7 +11,7 @@ import { useRef } from "react";
 import { Card, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import type { ProjectsShowcaseProps } from "@/types/hubs/projects";
-import { projects } from "@/data/hubs/projectsData";
+import { productProjects, projects } from "@/data/hubs/projectsData";
 import { ProjectCard } from "./ProjectCard";
 import { RevealGroup } from "@/components/visuals";
 
@@ -46,8 +46,12 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
 
         {/* Projects Grid */}
         <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+          {[...productProjects, ...projects].map((project, index) => (
+            <ProjectCard
+              key={`${project.commercial ? "product" : "project"}-${project.id}`}
+              project={project}
+              index={index}
+            />
           ))}
         </RevealGroup>
       </Card>

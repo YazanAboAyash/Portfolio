@@ -152,7 +152,8 @@
     "categories": {
       "webDevelopment": "Webbutveckling",
       "fullStack": "Fullstack",
-      "aiMl": "AI/ML"
+      "aiMl": "AI/ML",
+      "compliance": "HR & efterlevnad"
     },
     "descriptions": {
       "portfolioWebsite": "En modern, responsiv portfoliosajt byggd med Next.js 16, med växling mellan mörkt/ljust tema, mjuka animationer med Framer Motion och optimerad prestanda. Inkluderar TypeScript för typsäkerhet och Tailwind CSS för styling.",
@@ -171,12 +172,14 @@
     "npmPackage": "npm",
     "liveDemo": "Live-demo",
     "featuredProject": "Utvalt projekt",
+    "availableToBuy": "Går att köpa",
     "licenses": {
       "copyright": "Alla rättigheter förbehållna",
       "openSource": "Modifierad MIT-licens",
       "fullyOpen": "Helt öppen källkod",
       "mit": "MIT-licens",
-      "agpl": "AGPL-3.0-licens"
+      "agpl": "AGPL-3.0-licens",
+      "commercial": "Kommersiell licens"
     }
   },
   "Collaboration": {

@@ -152,7 +152,8 @@
     "categories": {
       "webDevelopment": "Développement Web",
       "fullStack": "Full Stack",
-      "aiMl": "IA/ML"
+      "aiMl": "IA/ML",
+      "compliance": "RH et conformité"
     },
     "descriptions": {
       "portfolioWebsite": "Un site portfolio moderne et réactif construit avec Next.js 16, incluant un mode sombre/clair, des animations fluides avec Framer Motion et une performance optimisée. Inclut TypeScript pour la sécurité des types et Tailwind CSS pour le style.",
@@ -171,12 +172,14 @@
     "npmPackage": "npm",
     "liveDemo": "Démo en direct",
     "featuredProject": "Projet vedette",
+    "availableToBuy": "Disponible à l'achat",
     "licenses": {
       "copyright": "Tous droits réservés",
       "openSource": "Licence MIT modifiée",
       "fullyOpen": "Entièrement open source",
       "mit": "Licence MIT",
-      "agpl": "Licence AGPL-3.0"
+      "agpl": "Licence AGPL-3.0",
+      "commercial": "Licence commerciale"
     }
   },
   "Collaboration": {

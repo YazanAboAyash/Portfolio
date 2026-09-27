@@ -20,6 +20,7 @@ import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { SiNpm } from "react-icons/si";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { CTAButton } from "@/components/ui/cta-button";
 import { cardSurface, RevealItem } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 import type { ProjectCardProps } from "@/types/hubs/projects";
@@ -35,6 +36,10 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
   const tCategories = useTranslations("Projects.categories");
   const tLicenses = useTranslations("Projects.licenses");
   const tDescriptions = useTranslations("Projects.descriptions");
+  const tProducts = useTranslations("Products");
+  const description = project.commercial
+    ? tProducts(`descriptions.${project.description}`)
+    : tDescriptions(project.description);
 
   // Business logic hooks
   const { isTruncated, descriptionRef } = useTruncationDetection(
@@ -49,7 +54,9 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
           className={`h-1 shrink-0 ${
             isFeaturedProject(project)
               ? "bg-linear-to-r from-sky-500 via-blue-500 to-violet-500"
-              : "bg-linear-to-r from-border via-muted-foreground/20 to-border"
+              : project.commercial
+                ? "bg-linear-to-r from-emerald-500 via-teal-500 to-sky-500"
+                : "bg-linear-to-r from-border via-muted-foreground/20 to-border"
           }`}
         />
 
@@ -65,6 +72,11 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
             {isFeaturedProject(project) && (
               <Badge className="rounded-md bg-primary px-2 py-0.5 text-[11px] font-semibold text-primary-foreground shadow-sm">
                 {t("featuredProject")}
+              </Badge>
+            )}
+            {project.commercial && (
+              <Badge className="rounded-md bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white shadow-sm dark:bg-emerald-500">
+                {t("availableToBuy")}
               </Badge>
             )}
           </div>
@@ -84,8 +96,8 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
               ref={descriptionRef}
               className="line-clamp-3 text-sm leading-relaxed text-muted-foreground"
             >
-              {tDescriptions(project.description)}
-              {isTruncated && (
+              {description}
+              {isTruncated && project.githubUrl && (
                 <Link
                   href={project.githubUrl}
                   target="_blank"
@@ -138,6 +150,14 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
 
         <CardFooter className="relative z-10 shrink-0 bg-muted/20 px-4 py-3">
           <div className="flex w-full flex-wrap gap-2">
+            {project.commercial && (
+              <CTAButton
+                label={tProducts("requestDemo")}
+                size="sm"
+                className="relative z-10 min-w-28 flex-1 cursor-pointer shadow-sm"
+              />
+            )}
+
             {project.githubUrl && (
               <Button
                 variant="outline"

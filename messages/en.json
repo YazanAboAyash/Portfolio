@@ -152,7 +152,8 @@
     "categories": {
       "webDevelopment": "Web Development",
       "fullStack": "Full Stack",
-      "aiMl": "AI/ML"
+      "aiMl": "AI/ML",
+      "compliance": "HR & Compliance"
     },
     "descriptions": {
       "portfolioWebsite": "A modern, responsive portfolio website built with Next.js 16, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
@@ -171,12 +172,14 @@
     "npmPackage": "npm",
     "liveDemo": "Live Demo",
     "featuredProject": "Featured Project",
+    "availableToBuy": "Available to Buy",
     "licenses": {
       "copyright": "All Rights Reserved",
       "openSource": "Modified MIT License",
       "fullyOpen": "Fully Open Source",
       "mit": "MIT License",
-      "agpl": "AGPL-3.0 License"
+      "agpl": "AGPL-3.0 License",
+      "commercial": "Commercial License"
     }
   },
   "Collaboration": {

@@ -4,6 +4,8 @@
  * @version 6.x.x
  */
 
+import { products } from "./productsData";
+
 export interface Project {
   id: number;
   title: string;
@@ -15,12 +17,40 @@ export interface Project {
   npmUrl?: string;
   featured: boolean;
   category: string;
+  /** Closed-source product for sale — description resolves from `Products.descriptions`. */
+  commercial?: boolean;
   license?: {
-    type: "copyright" | "open-source" | "fully-open" | "mit" | "agpl";
+    type:
+      | "copyright"
+      | "open-source"
+      | "fully-open"
+      | "mit"
+      | "agpl"
+      | "commercial";
     text: string;
     variant?: "default" | "secondary" | "destructive" | "outline";
   };
 }
+
+/**
+ * Products (see productsData) shaped as project cards for /projects.
+ * Kept out of `projects` because the home Projects section promises open source.
+ */
+export const productProjects: Project[] = products.map((product) => ({
+  id: product.id,
+  title: product.title,
+  description: product.description,
+  technologies: product.technologies,
+  githubUrl: "",
+  featured: false,
+  category: product.category,
+  commercial: true,
+  license: {
+    type: "commercial",
+    text: "commercial",
+    variant: "outline",
+  },
+}));
 
 export const projects: Project[] = [
   {
