@@ -432,7 +432,7 @@
     "currentFocusItems": [
       "Web-Apps mit Next.js & TypeScript",
       "Workflow-Automatisierung",
-      "KI-Assistenten & RAG",
+      "KI-Agenten, Assistenten & RAG",
       "Open-Source-Tools"
     ],
     "story": {
@@ -640,6 +640,9 @@
           "roles": {
             "label": "Rollen und Berechtigungen"
           },
+          "sso": {
+            "label": "Single Sign-on mit Microsoft Entra ID oder Google"
+          },
           "payments": {
             "label": "Zahlungen (Stripe)"
           },
@@ -671,13 +674,19 @@
         },
         "extras": {
           "rag": {
-            "label": "RAG-System — Antworten aus Ihren Dokumenten (PDF, Notion, Docs)"
+            "label": "RAG-System mit pgvector — Antworten aus Ihren Dokumenten (PDF, Notion, Docs)"
           },
           "existingApp": {
             "label": "KI-Funktion in einer bestehenden App (zusammenfassen, klassifizieren, generieren)"
           },
+          "agent": {
+            "label": "KI-Agent, der Aktionen in Ihren Tools ausführt (Tool Calling, MCP)"
+          },
+          "voice": {
+            "label": "Spracheingabe und -ausgabe — Speech-to-Text (STT) und Text-to-Speech (TTS)"
+          },
           "cloudSetup": {
-            "label": "Cloud-Anbieter-Setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)"
+            "label": "Cloud-Anbieter-Setup (Azure AI / Azure OpenAI EU, OpenAI, Anthropic Claude, Mistral)"
           },
           "localModel": {
             "label": "Lokales Modell auf Ihrem eigenen Server — nichts verlässt Ihre Infrastruktur"
@@ -691,7 +700,7 @@
         },
         "scopeNote": {
           "label": "Wo ich es einbauen kann",
-          "text": "Websites auf Basis von Next.js, React, Astro oder einer statischen Website werden direkt unterstützt. Alles andere (WordPress, PHP, Shopify, .NET, Wix) ist nur als eingebettetes Widget möglich, nach Prüfung als individuelles Projekt."
+          "text": "Websites auf Basis von Next.js, React oder einer statischen Website werden direkt unterstützt. Alles andere (WordPress, PHP, Shopify, .NET, Wix) ist nur als eingebettetes Widget möglich, nach Prüfung als individuelles Projekt."
         }
       },
       "automation": {
@@ -715,6 +724,12 @@
           },
           "n8n": {
             "label": "Self-Hosted n8n-Setup auf Ihrem Server"
+          },
+          "agentic": {
+            "label": "Agentischer Workflow — ein KI-Schritt, der innerhalb der Automatisierung entscheidet und handelt"
+          },
+          "devTools": {
+            "label": "Automatisierung von Entwickler-Tools — Jira, Confluence, Bitbucket, GitHub"
           },
           "customApi": {
             "label": "Individuelle API-Integration (kein fertiger Connector)"
@@ -806,19 +821,27 @@
       "categories": {
         "frontend": {
           "label": "Frontend",
-          "options": "Next.js · React · Astro · statischer Build"
+          "options": "Next.js · React · statischer Build"
         },
         "database": {
           "label": "Datenbank",
-          "options": "Supabase · Neon · PostgreSQL · MySQL"
+          "options": "Supabase · Neon · PostgreSQL (inkl. pgvector) mit Prisma oder Drizzle ORM"
         },
         "auth": {
           "label": "Auth",
-          "options": "Supabase Auth · Auth.js · Clerk"
+          "options": "Better Auth · Auth.js · Clerk"
         },
         "ai": {
           "label": "KI-Anbieter",
-          "options": "Azure OpenAI (EU-Region) · OpenAI · Anthropic · Mistral · lokales Modell auf Ihrem Server"
+          "options": "Azure AI (inkl. Azure OpenAI, EU-Region) · OpenAI · Anthropic Claude · Mistral · lokales Modell auf Ihrem Server"
+        },
+        "automation": {
+          "label": "Automatisierung & Agenten",
+          "options": "n8n (Cloud oder self-hosted) · individuelle Automatisierungen mit Node.js / Next.js · KI-Agenten mit Tool Calling · MCP-Server"
+        },
+        "integrations": {
+          "label": "Integrationen",
+          "options": "Google Workspace · Microsoft Entra ID · GitHub (Apps & MCP) · Stripe · Jira · Confluence · Bitbucket"
         },
         "hosting": {
           "label": "Hosting",

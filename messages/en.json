@@ -432,7 +432,7 @@
     "currentFocusItems": [
       "Web apps with Next.js & TypeScript",
       "Workflow automation",
-      "AI assistants & RAG",
+      "AI agents, assistants & RAG",
       "Open-source tooling"
     ],
     "story": {
@@ -646,6 +646,9 @@
           "roles": {
             "label": "Roles and permissions"
           },
+          "sso": {
+            "label": "Single sign-on with Microsoft Entra ID or Google"
+          },
           "payments": {
             "label": "Payments (Stripe)"
           },
@@ -677,17 +680,23 @@
         },
         "scopeNote": {
           "label": "Where I can add it",
-          "text": "Sites built with Next.js, React, Astro, or a plain static site are supported directly. Anything else (WordPress, PHP, Shopify, .NET, Wix) is possible only as an embedded widget, scoped as a Custom project after a review."
+          "text": "Sites built with Next.js, React, or a plain static site are supported directly. Anything else (WordPress, PHP, Shopify, .NET, Wix) is possible only as an embedded widget, scoped as a Custom project after a review."
         },
         "extras": {
           "rag": {
-            "label": "RAG system — answers from your documents (PDF, Notion, Docs)"
+            "label": "RAG system with pgvector — answers from your documents (PDF, Notion, Docs)"
           },
           "existingApp": {
             "label": "AI feature in an existing app (summarise, classify, generate)"
           },
+          "agent": {
+            "label": "AI agent that takes actions in your tools (tool calling, MCP)"
+          },
+          "voice": {
+            "label": "Voice input and output — speech-to-text (STT) and text-to-speech (TTS)"
+          },
           "cloudSetup": {
-            "label": "Cloud provider setup (Azure OpenAI EU, OpenAI, Anthropic, Mistral)"
+            "label": "Cloud provider setup (Azure AI / Azure OpenAI EU, OpenAI, Anthropic Claude, Mistral)"
           },
           "localModel": {
             "label": "Local model on your own server — nothing leaves your infrastructure"
@@ -726,6 +735,12 @@
           "n8n": {
             "label": "n8n self-hosted setup on your server"
           },
+          "agentic": {
+            "label": "Agentic workflow — an AI step that decides and acts inside the automation"
+          },
+          "devTools": {
+            "label": "Developer-tool automation — Jira, Confluence, Bitbucket, GitHub"
+          },
           "customApi": {
             "label": "Custom API integration (no ready-made connector)"
           }
@@ -762,19 +777,27 @@
       "categories": {
         "frontend": {
           "label": "Frontend",
-          "options": "Next.js · React · Astro · static build"
+          "options": "Next.js · React · static build"
         },
         "database": {
           "label": "Database",
-          "options": "Supabase · Neon · PostgreSQL · MySQL"
+          "options": "Supabase · Neon · PostgreSQL (incl. pgvector) with Prisma or Drizzle ORM"
         },
         "auth": {
           "label": "Auth",
-          "options": "Supabase Auth · Auth.js · Clerk"
+          "options": "Better Auth · Auth.js · Clerk"
         },
         "ai": {
           "label": "AI provider",
-          "options": "Azure OpenAI (EU region) · OpenAI · Anthropic · Mistral · local model on your server"
+          "options": "Azure AI (incl. Azure OpenAI, EU region) · OpenAI · Anthropic Claude · Mistral · local model on your server"
+        },
+        "automation": {
+          "label": "Automation & agents",
+          "options": "n8n (cloud or self-hosted) · custom Node.js / Next.js automations · AI agents with tool calling · MCP servers"
+        },
+        "integrations": {
+          "label": "Integrations",
+          "options": "Google Workspace · Microsoft Entra ID · GitHub (apps & MCP) · Stripe · Jira · Confluence · Bitbucket"
         },
         "hosting": {
           "label": "Hosting",

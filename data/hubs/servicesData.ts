@@ -68,6 +68,7 @@ export const servicePackages: readonly ServicePackage[] = [
     extras: [
       { labelKey: "packages.webApplication.extras.booking.label" },
       { labelKey: "packages.webApplication.extras.roles.label" },
+      { labelKey: "packages.webApplication.extras.sso.label" },
       { labelKey: "packages.webApplication.extras.payments.label" },
       { labelKey: "packages.webApplication.extras.fileUpload.label" },
       { labelKey: "packages.webApplication.extras.adminView.label" },
@@ -106,6 +107,8 @@ export const servicePackages: readonly ServicePackage[] = [
     extras: [
       { labelKey: "packages.aiIntegration.extras.rag.label" },
       { labelKey: "packages.aiIntegration.extras.existingApp.label" },
+      { labelKey: "packages.aiIntegration.extras.agent.label" },
+      { labelKey: "packages.aiIntegration.extras.voice.label" },
       { labelKey: "packages.aiIntegration.extras.cloudSetup.label" },
       { labelKey: "packages.aiIntegration.extras.localModel.label" },
       { labelKey: "packages.aiIntegration.extras.knowledgeSource.label" },
@@ -135,6 +138,8 @@ export const servicePackages: readonly ServicePackage[] = [
       { labelKey: "packages.automation.extras.workflow.label" },
       { labelKey: "packages.automation.extras.tool.label" },
       { labelKey: "packages.automation.extras.n8n.label" },
+      { labelKey: "packages.automation.extras.agentic.label" },
+      { labelKey: "packages.automation.extras.devTools.label" },
       { labelKey: "packages.automation.extras.customApi.label" },
     ],
   },

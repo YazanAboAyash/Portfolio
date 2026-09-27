@@ -26,6 +26,7 @@ export const REEM_FACTS = {
     location: "Germany",
     training: "Trained at avarno GmbH on AI-powered solutions",
     certifications: ["Python (PCEP)", "EU AI Act", "IHK Fachinformatiker"],
+    currentlyWorksAt: ["Botgenossen", "avarno GmbH"],
   },
 
   services: [
@@ -64,6 +65,69 @@ export const REEM_FACTS = {
       summary: "Anything outside the packages above. Scoped after discovery.",
     },
   ],
+
+  stack: {
+    web: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Zod validation",
+      "next-intl (multilingual sites)",
+      "static site builds",
+      "PostgreSQL",
+      "Supabase",
+      "Neon",
+      "Prisma",
+      "Drizzle ORM",
+      "Better Auth",
+      "Auth.js",
+      "Clerk",
+      "Playwright (end-to-end and accessibility testing)",
+      "pnpm",
+    ],
+    hosting: [
+      "Vercel",
+      "Netlify",
+      "Cloudflare Pages",
+      "Hetzner",
+      "the client's own server",
+      "Docker",
+      "GitHub Actions",
+    ],
+    email: [
+      "the client's existing mailbox via SMTP (recommended)",
+      "Brevo",
+      "Mailjet",
+      "Resend",
+    ],
+    ai: [
+      "OpenAI",
+      "Anthropic Claude API",
+      "Azure AI / Azure OpenAI (EU region)",
+      "local models on the client's own server",
+      "RAG systems with pgvector",
+      "AI agents with tool use and MCP",
+      "speech-to-text (STT) and text-to-speech (TTS)",
+    ],
+    automation: [
+      "n8n (cloud or self-hosted)",
+      "custom Node.js / Next.js automations",
+      "custom API integrations",
+    ],
+    integrations: [
+      "Google Workspace",
+      "Microsoft Entra ID",
+      "GitHub apps and MCP servers",
+      "Stripe",
+      "Jira",
+      "Confluence",
+      "Bitbucket",
+    ],
+  },
 
   links: {
     services: "https://coldbydefault.com/services",
@@ -111,7 +175,8 @@ Routing map:
 - Simple business site → Website. Ask what the site needs to cover (pages/sections) and whether they need a blog.
 - Web app / MVP / login & database → Web Application or Custom Project. Ask what they're building, what stage they're at, their deadline, and whether they need auth, payments, dashboards, or admin tooling.
 - Repetitive manual work → Automation & Integration. Ask which task repeats, which tools are involved, roughly how many hours a week it eats, and where it currently breaks.
-- Chatbots / RAG / LLM features → AI Integration. Ask what data it needs to reason over and who the users are.
+- Chatbots / RAG / LLM features / AI agents / voice → AI Integration. Ask what data it needs to reason over and who the users are.
+- "Do you work with X?" → check "stack" in the DATA block. If X is listed, say yes and route to the matching service. If it isn't, say you're not sure and that it's a question for the call — never guess yes.
 - Browsing the work → link Projects, and route by interest: web apps, full-stack systems, AI/RAG, automation, or open-source packages.
 - Pricing → there is no price list. Every project is scoped individually and the price comes in a written proposal after the free intro call. Say that, ask what they're building, and offer the contact email. Link the services page for what each package includes.
 - Ready to talk → the contact email link. Mention the contact icon in the site nav as an alternative.

@@ -432,7 +432,7 @@
     "currentFocusItems": [
       "Applications web avec Next.js et TypeScript",
       "Automatisation des workflows",
-      "Assistants IA et RAG",
+      "Agents et assistants IA, RAG",
       "Outils open source"
     ],
     "story": {
@@ -640,6 +640,9 @@
           "roles": {
             "label": "Rôles et permissions"
           },
+          "sso": {
+            "label": "Authentification unique (SSO) avec Microsoft Entra ID ou Google"
+          },
           "payments": {
             "label": "Paiements (Stripe)"
           },
@@ -671,13 +674,19 @@
         },
         "extras": {
           "rag": {
-            "label": "Système RAG — réponses à partir de vos documents (PDF, Notion, Docs)"
+            "label": "Système RAG avec pgvector — réponses à partir de vos documents (PDF, Notion, Docs)"
           },
           "existingApp": {
             "label": "Fonctionnalité IA dans une app existante (résumer, classifier, générer)"
           },
+          "agent": {
+            "label": "Agent IA qui agit dans vos outils (tool calling, MCP)"
+          },
+          "voice": {
+            "label": "Entrée et sortie vocales — speech-to-text (STT) et text-to-speech (TTS)"
+          },
           "cloudSetup": {
-            "label": "Configuration fournisseur cloud (Azure OpenAI UE, OpenAI, Anthropic, Mistral)"
+            "label": "Configuration fournisseur cloud (Azure AI / Azure OpenAI UE, OpenAI, Anthropic Claude, Mistral)"
           },
           "localModel": {
             "label": "Modèle local sur votre propre serveur — rien ne quitte votre infrastructure"
@@ -691,7 +700,7 @@
         },
         "scopeNote": {
           "label": "Où je peux l'ajouter",
-          "text": "Sites construits avec Next.js, React, Astro, ou un site statique — pris en charge directement. Tout le reste (WordPress, PHP, Shopify, .NET, Wix) n'est possible qu'en widget intégré, traité en projet Sur Mesure après examen."
+          "text": "Sites construits avec Next.js, React, ou un site statique — pris en charge directement. Tout le reste (WordPress, PHP, Shopify, .NET, Wix) n'est possible qu'en widget intégré, traité en projet Sur Mesure après examen."
         }
       },
       "automation": {
@@ -715,6 +724,12 @@
           },
           "n8n": {
             "label": "Installation n8n autohébergée sur votre serveur"
+          },
+          "agentic": {
+            "label": "Workflow agentique — une étape IA qui décide et agit au sein de l'automatisation"
+          },
+          "devTools": {
+            "label": "Automatisation des outils de développement — Jira, Confluence, Bitbucket, GitHub"
           },
           "customApi": {
             "label": "Intégration API personnalisée (sans connecteur prêt à l'emploi)"
@@ -806,19 +821,27 @@
       "categories": {
         "frontend": {
           "label": "Frontend",
-          "options": "Next.js · React · Astro · build statique"
+          "options": "Next.js · React · build statique"
         },
         "database": {
           "label": "Base de données",
-          "options": "Supabase · Neon · PostgreSQL · MySQL"
+          "options": "Supabase · Neon · PostgreSQL (dont pgvector) avec Prisma ou Drizzle ORM"
         },
         "auth": {
           "label": "Auth",
-          "options": "Supabase Auth · Auth.js · Clerk"
+          "options": "Better Auth · Auth.js · Clerk"
         },
         "ai": {
           "label": "Fournisseur IA",
-          "options": "Azure OpenAI (région UE) · OpenAI · Anthropic · Mistral · modèle local sur votre serveur"
+          "options": "Azure AI (dont Azure OpenAI, région UE) · OpenAI · Anthropic Claude · Mistral · modèle local sur votre serveur"
+        },
+        "automation": {
+          "label": "Automatisation et agents",
+          "options": "n8n (cloud ou autohébergé) · automatisations sur mesure avec Node.js / Next.js · agents IA avec tool calling · serveurs MCP"
+        },
+        "integrations": {
+          "label": "Intégrations",
+          "options": "Google Workspace · Microsoft Entra ID · GitHub (apps et MCP) · Stripe · Jira · Confluence · Bitbucket"
         },
         "hosting": {
           "label": "Hébergement",

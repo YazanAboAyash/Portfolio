@@ -432,7 +432,7 @@
     "currentFocusItems": [
       "Webbappar med Next.js och TypeScript",
       "Automatisering av arbetsflöden",
-      "AI-assistenter och RAG",
+      "AI-agenter, AI-assistenter och RAG",
       "Verktyg med öppen källkod"
     ],
     "story": {
@@ -640,6 +640,9 @@
           "roles": {
             "label": "Roller och behörigheter"
           },
+          "sso": {
+            "label": "Enkel inloggning (SSO) med Microsoft Entra ID eller Google"
+          },
           "payments": {
             "label": "Betalningar (Stripe)"
           },
@@ -671,13 +674,19 @@
         },
         "extras": {
           "rag": {
-            "label": "RAG-system — svar från era dokument (PDF, Notion, Docs)"
+            "label": "RAG-system med pgvector — svar från era dokument (PDF, Notion, Docs)"
           },
           "existingApp": {
             "label": "AI-funktion i en befintlig app (sammanfatta, klassificera, generera)"
           },
+          "agent": {
+            "label": "AI-agent som utför åtgärder i era verktyg (tool calling, MCP)"
+          },
+          "voice": {
+            "label": "Röstinmatning och uppläsning — tal till text (STT) och text till tal (TTS)"
+          },
           "cloudSetup": {
-            "label": "Konfiguration av molnleverantör (Azure OpenAI EU, OpenAI, Anthropic, Mistral)"
+            "label": "Konfiguration av molnleverantör (Azure AI / Azure OpenAI EU, OpenAI, Anthropic Claude, Mistral)"
           },
           "localModel": {
             "label": "Lokal modell på er egen server — inget lämnar er infrastruktur"
@@ -691,7 +700,7 @@
         },
         "scopeNote": {
           "label": "Var jag kan lägga till det",
-          "text": "Webbplatser byggda med Next.js, React, Astro, eller en statisk webbplats — stöds direkt. Allt annat (WordPress, PHP, Shopify, .NET, Wix) är endast möjligt som inbäddad widget, som ett Skräddarsytt projekt efter genomgång."
+          "text": "Webbplatser byggda med Next.js, React, eller en statisk webbplats — stöds direkt. Allt annat (WordPress, PHP, Shopify, .NET, Wix) är endast möjligt som inbäddad widget, som ett Skräddarsytt projekt efter genomgång."
         }
       },
       "automation": {
@@ -715,6 +724,12 @@
           },
           "n8n": {
             "label": "Självhostad n8n-uppsättning på er server"
+          },
+          "agentic": {
+            "label": "Agentiskt arbetsflöde — ett AI-steg som fattar beslut och agerar i automatiseringen"
+          },
+          "devTools": {
+            "label": "Automatisering av utvecklarverktyg — Jira, Confluence, Bitbucket, GitHub"
           },
           "customApi": {
             "label": "Anpassad API-integration (ingen färdig connector)"
@@ -806,19 +821,27 @@
       "categories": {
         "frontend": {
           "label": "Frontend",
-          "options": "Next.js · React · Astro · statisk build"
+          "options": "Next.js · React · statisk build"
         },
         "database": {
           "label": "Databas",
-          "options": "Supabase · Neon · PostgreSQL · MySQL"
+          "options": "Supabase · Neon · PostgreSQL (inkl. pgvector) med Prisma eller Drizzle ORM"
         },
         "auth": {
           "label": "Auth",
-          "options": "Supabase Auth · Auth.js · Clerk"
+          "options": "Better Auth · Auth.js · Clerk"
         },
         "ai": {
           "label": "AI-leverantör",
-          "options": "Azure OpenAI (EU-region) · OpenAI · Anthropic · Mistral · lokal modell på er server"
+          "options": "Azure AI (inkl. Azure OpenAI, EU-region) · OpenAI · Anthropic Claude · Mistral · lokal modell på er server"
+        },
+        "automation": {
+          "label": "Automatisering och agenter",
+          "options": "n8n (moln eller självhostad) · skräddarsydda automatiseringar med Node.js / Next.js · AI-agenter med tool calling · MCP-servrar"
+        },
+        "integrations": {
+          "label": "Integrationer",
+          "options": "Google Workspace · Microsoft Entra ID · GitHub (appar och MCP) · Stripe · Jira · Confluence · Bitbucket"
         },
         "hosting": {
           "label": "Hosting",

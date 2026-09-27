@@ -166,9 +166,15 @@ function StackAndDelivery({ t }: { t: ReturnType<typeof useTranslations> }) {
     "database",
     "auth",
     "ai",
+    "automation",
+    "integrations",
     "hosting",
     "email",
   ] as const;
+  const rowStarts = Array.from(
+    { length: Math.ceil(categories.length / 2) },
+    (_, i) => i * 2,
+  );
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -182,7 +188,7 @@ function StackAndDelivery({ t }: { t: ReturnType<typeof useTranslations> }) {
       </div>
       <Card className="bg-background/80 backdrop-blur-sm border-border/50">
         <CardContent className="py-6 space-y-6">
-          {[0, 2, 4].map((rowStart, rowIndex) => (
+          {rowStarts.map((rowStart, rowIndex) => (
             <div key={rowStart} className="grid sm:grid-cols-2 gap-6">
               {categories.slice(rowStart, rowStart + 2).map((category) => (
                 <div key={category} className="flex h-full flex-col">
@@ -192,7 +198,7 @@ function StackAndDelivery({ t }: { t: ReturnType<typeof useTranslations> }) {
                   <p className="text-sm text-muted-foreground">
                     {t(`stack.categories.${category}.options`)}
                   </p>
-                  {rowIndex < 2 && (
+                  {rowIndex < rowStarts.length - 1 && (
                     <Separator className="mt-auto bg-muted-foreground/30" />
                   )}
                 </div>
