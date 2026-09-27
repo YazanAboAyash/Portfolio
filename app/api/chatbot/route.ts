@@ -569,15 +569,9 @@ export async function POST(request: NextRequest): Promise<Response> {
   };
   const conversation = [...uiMessages.slice(0, -1), sanitizedLastMessage];
 
-  // Only one user message means this is the opening turn of the conversation
-  let systemPrompt = chatbotConfig.systemPrompt;
-  if (conversation.length === 1) {
-    systemPrompt += `\n\nIMPORTANT: This is the user's first message in this conversation. Start warmly and briefly introduce yourself only if it helps. If the user picked a guided starter like website, automation, projects, or contact, route them directly and include the most relevant source links.`;
-  }
-
   const result = streamText({
     model: openai(OPENAI_CHAT_MODEL),
-    system: systemPrompt,
+    system: chatbotConfig.systemPrompt,
     messages: await convertToModelMessages(conversation),
     maxOutputTokens: 1024,
     abortSignal: request.signal,

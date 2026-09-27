@@ -146,4 +146,24 @@ export const projects: Project[] = [
       variant: "secondary",
     },
   },
+  {
+    id: 7,
+    title: "JS Mastery Teacher",
+    description: "jsStudyAgentPlugin",
+    technologies: [
+      "GitHub Copilot CLI",
+      "Claude Code",
+      "AI Agents",
+      "Agent Skills",
+      "JavaScript",
+    ],
+    githubUrl: "https://github.com/yazanaboayash/js-study-agent-plugin",
+    featured: false,
+    category: "aiMl",
+    license: {
+      type: "mit",
+      text: "mit",
+      variant: "secondary",
+    },
+  },
 ];

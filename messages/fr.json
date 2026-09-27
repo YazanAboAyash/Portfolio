@@ -162,7 +162,8 @@
       "subsApi": "API pour gérer les abonnements utilisateurs, incluant la facturation, la gestion des factures et le traitement des paiements. Construit avec Next.js et intégré avec Stripe pour des paiements sécurisés.",
       "voiceToNotion": "Transforme les mémos vocaux et les enregistrements de réunions en pages Notion structurées avec transcriptions, résumés et points d'action. Automatise le travail administratif post-réunion en moins de 30 secondes.",
       "nextJsSeoOptimization": "Un assistant SEO léger et sans dépendances de runtime pour le App Router de Next.js. Convertit de simples props en un objet Metadata complet — OpenGraph, Twitter Cards, URLs canoniques, alternatives hreflang et données structurées JSON-LD. Publié sur npm sous @coldbydefault/next-seo-lite.",
-      "customizableBetterAuth": "Une solution d'authentification prête à l'emploi et entièrement personnalisable construite avec Better Auth et Next.js. Prend en charge plusieurs fournisseurs d'authentification et s'intègre facilement dans n'importe quel projet."
+      "customizableBetterAuth": "Une solution d'authentification prête à l'emploi et entièrement personnalisable construite avec Better Auth et Next.js. Prend en charge plusieurs fournisseurs d'authentification et s'intègre facilement dans n'importe quel projet.",
+      "jsStudyAgentPlugin": "Un plugin socratique d'apprentissage de JavaScript pour GitHub Copilot CLI et Claude Code. Cinq agents spécialisés, des skills à chargement automatique et une feuille de route en 8 étapes vous guident vers la réponse par des indices et des questions plutôt que de livrer la solution."
     },
     "openSourceNote": "Tous les projets ci-dessous sont open source.",
     "seeMoreOnGitHub": "voir plus sur GitHub...",
