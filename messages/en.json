@@ -422,36 +422,63 @@
     "comingSoonDescription": "Book recommendations and reviews will be available here soon."
   },
   "About": {
-    "badge": "Available for Projects",
-    "aboutMe": "About Me",
-    "getInTouch": "Get In Touch",
-    "downloadCV": "Download CV",
-    "philosophy": "My Approach",
-    "myApproach": "How I Work With Clients",
-    "whatIDeliver": "What You Get Working With Me",
-    "currentFocus": "Current Focus",
+    "badge": "Available on request",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Web apps, workflow automation, and AI integrations — built end to end by one developer.",
-      "currentPosition": "Freelance Developer",
-      "company": "",
-      "location": "Germany",
-      "experience": "3+ years"
+      "title": "Web developer based in Germany, focused on automation and AI."
     },
-    "mainStory": "I work with SMEs, agencies, and founders who need software shipped rather than managed. MVPs scoped for delivery in 4–8 weeks, automations that take repetitive work off your team, and AI assistants built on real retrieval architecture — not a chat window bolted onto a website.",
-    "sections": {
-      "philosophy": "I believe in clear communication, transparent timelines, and delivering exactly what was promised. No technical jargon, no scope creep — just reliable development with regular updates so you always know where your project stands. Every solution is built with your business goals in mind, not just technical requirements."
-    },
+    "intro": "Hi, I'm Yazan. I build software that saves you time and treats your data with care.",
+    "focusTitle": "Current focus",
     "currentFocusItems": [
-      "Web MVPs scoped for 4–8 week delivery",
-      "Automations designed to remove hours of manual work each week",
-      "AI assistants and RAG systems for internal processes"
+      "Web apps with Next.js & TypeScript",
+      "Workflow automation",
+      "AI assistants & RAG",
+      "Open-source tooling"
     ],
-    "workingWithMe": "You work with me directly. No account manager, no handoff to a junior developer. Next.js, TypeScript and React, with source code and documentation you own outright at the end.",
-    "credentials": "IHK-certified Fachinformatiker with EU AI Act training — relevant when the AI feature you want has to hold up under European regulation.",
+    "story": {
+      "title": "A bit about me",
+      "paragraphs": [
+        "I'm an IHK-certified Fachinformatiker for application development. Most of what I know, though, I learned by building: this website, open-source packages, and tools I use myself every day.",
+        "What draws me in most is where web development, automation and AI meet — taking a process that eats hours every week and turning it into something that simply runs. I prefer honest, well-documented software over clever tricks."
+      ]
+    },
+    "compliance": {
+      "title": "Privacy and regulation, from the start",
+      "subtitle": "Two things I take seriously on every project — especially when AI is involved.",
+      "dsgvo": {
+        "label": "GDPR (DSGVO)",
+        "title": "Privacy by design",
+        "description": "Only the data that's really needed, consent where it's required, and a clear record of which data goes where — so your privacy notice can describe what the software actually does."
+      },
+      "aiAct": {
+        "label": "EU AI Act",
+        "title": "Trained on the EU AI Act",
+        "description": "When a project includes AI, we look early at which obligations may apply — for example, telling people when they're talking to an AI — so they're part of the design, not a patch after launch."
+      },
+      "note": "I'm a developer, not a lawyer. I build with these rules in mind; the legal assessment stays with you or your advisor."
+    },
+    "workingWithMe": {
+      "title": "Working with me",
+      "items": [
+        "You work with me directly.",
+        "We agree the scope in writing before any work starts.",
+        "You get regular updates in plain language.",
+        "At the end, you receive the source code and documentation."
+      ]
+    },
+    "availability": {
+      "title": "Currently busy — available on request",
+      "description": "My calendar is full right now, so I only take on new work on request. If you have something in mind, write to me and I'll tell you honestly when I could start."
+    },
+    "explore": {
+      "title": "Take a look around",
+      "projects": "Projects",
+      "products": "Products",
+      "services": "Services",
+      "blog": "Blog"
+    },
     "cta": {
-      "work": "See the work",
-      "contact": "Contact"
+      "contact": "Get in touch"
     }
   },
   "PortfolioAbout": {

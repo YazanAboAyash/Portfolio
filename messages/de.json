@@ -422,36 +422,63 @@
     "comingSoonDescription": "Buchempfehlungen und Rezensionen werden hier bald verfügbar sein."
   },
   "About": {
-    "badge": "Verfügbar für Projekte",
-    "aboutMe": "Über mich",
-    "getInTouch": "Kontakt aufnehmen",
-    "downloadCV": "Lebenslauf herunterladen",
-    "philosophy": "Mein Ansatz",
-    "myApproach": "Wie ich mit Kunden arbeite",
-    "whatIDeliver": "Was Sie bekommen, wenn Sie mit mir arbeiten",
-    "currentFocus": "Aktueller Fokus",
+    "badge": "Auf Anfrage verfügbar",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Webanwendungen, Workflow-Automatisierung und KI-Integrationen — end-to-end umgesetzt von einem einzigen Entwickler.",
-      "currentPosition": "Freiberuflicher Entwickler",
-      "company": "",
-      "location": "Deutschland",
-      "experience": "3+ Jahre"
+      "title": "Webentwickler aus Deutschland mit Fokus auf Automatisierung und KI."
     },
-    "mainStory": "Ich arbeite mit KMU, Agenturen und Gründern, die Software ausgeliefert bekommen wollen, statt sie zu verwalten. MVPs mit geplanter Lieferung in 4–8 Wochen, Automatisierungen, die Ihrem Team wiederkehrende Arbeit abnehmen, und KI-Assistenten auf Basis echter Retrieval-Architektur — kein Chatfenster, das an eine Website geschraubt wird.",
-    "sections": {
-      "philosophy": "Ich glaube an klare Kommunikation, transparente Zeitpläne und die Lieferung dessen, was versprochen wurde. Kein Fachjargon, kein Scope Creep – nur zuverlässige Entwicklung mit regelmäßigen Updates, damit Sie immer wissen, wo Ihr Projekt steht. Jede Lösung wird mit Ihren Geschäftszielen im Blick entwickelt, nicht nur mit technischen Anforderungen."
-    },
+    "intro": "Hi, ich bin Yazan. Ich entwickle Software, die Ihnen Zeit spart und sorgsam mit Ihren Daten umgeht.",
+    "focusTitle": "Aktueller Fokus",
     "currentFocusItems": [
-      "Web-MVPs mit geplanter Lieferung in 4–8 Wochen",
-      "Automatisierungen, die jede Woche Stunden manueller Arbeit einsparen",
-      "KI-Assistenten und RAG-Systeme für interne Prozesse"
+      "Web-Apps mit Next.js & TypeScript",
+      "Workflow-Automatisierung",
+      "KI-Assistenten & RAG",
+      "Open-Source-Tools"
     ],
-    "workingWithMe": "Sie arbeiten direkt mit mir. Kein Account Manager, keine Übergabe an einen Junior-Entwickler. Next.js, TypeScript und React — mit Quellcode und Dokumentation, die am Ende vollständig Ihnen gehören.",
-    "credentials": "IHK-geprüfter Fachinformatiker mit Schulung zum EU AI Act — relevant, wenn die gewünschte KI-Funktion europäischer Regulierung standhalten muss.",
+    "story": {
+      "title": "Ein bisschen über mich",
+      "paragraphs": [
+        "Ich bin IHK-geprüfter Fachinformatiker für Anwendungsentwicklung. Das meiste habe ich aber beim Bauen gelernt: an dieser Website, an Open-Source-Paketen und an Tools, die ich selbst jeden Tag nutze.",
+        "Am meisten reizt mich die Schnittstelle von Webentwicklung, Automatisierung und KI — einen Prozess, der jede Woche Stunden frisst, in etwas zu verwandeln, das einfach läuft. Ehrliche, gut dokumentierte Software ist mir lieber als clevere Tricks."
+      ]
+    },
+    "compliance": {
+      "title": "Datenschutz und Regulierung — von Anfang an mitgedacht",
+      "subtitle": "Zwei Themen, die ich bei jedem Projekt ernst nehme — besonders, wenn KI im Spiel ist.",
+      "dsgvo": {
+        "label": "DSGVO",
+        "title": "Datenschutz by Design",
+        "description": "Nur die Daten, die wirklich gebraucht werden, Einwilligungen dort, wo sie nötig sind, und ein klarer Überblick, welche Daten wohin fließen — damit Ihre Datenschutzerklärung beschreiben kann, was die Software tatsächlich tut."
+      },
+      "aiAct": {
+        "label": "EU AI Act",
+        "title": "Geschult zum EU AI Act",
+        "description": "Wenn ein Projekt KI enthält, klären wir früh, welche Pflichten greifen könnten — zum Beispiel, Menschen darauf hinzuweisen, dass sie mit einer KI sprechen — damit sie Teil des Designs sind und kein Nachtrag nach dem Launch."
+      },
+      "note": "Ich bin Entwickler, kein Anwalt. Ich entwickle mit diesen Regeln im Blick; die rechtliche Bewertung liegt bei Ihnen oder Ihrer Beratung."
+    },
+    "workingWithMe": {
+      "title": "Zusammenarbeit",
+      "items": [
+        "Sie arbeiten direkt mit mir.",
+        "Den Umfang halten wir schriftlich fest, bevor die Arbeit beginnt.",
+        "Sie bekommen regelmäßige Updates in verständlicher Sprache.",
+        "Am Ende erhalten Sie Quellcode und Dokumentation."
+      ]
+    },
+    "availability": {
+      "title": "Gerade ausgelastet — auf Anfrage verfügbar",
+      "description": "Mein Kalender ist im Moment voll, deshalb nehme ich neue Projekte nur auf Anfrage an. Wenn Sie etwas im Kopf haben, schreiben Sie mir — ich sage Ihnen ehrlich, wann ich starten könnte."
+    },
+    "explore": {
+      "title": "Schauen Sie sich um",
+      "projects": "Projekte",
+      "products": "Produkte",
+      "services": "Leistungen",
+      "blog": "Blog"
+    },
     "cta": {
-      "work": "Arbeiten ansehen",
-      "contact": "Kontakt"
+      "contact": "Kontakt aufnehmen"
     }
   },
   "PortfolioAbout": {

@@ -422,36 +422,63 @@
     "comingSoonDescription": "Les recommandations et critiques de livres seront bientôt disponibles ici."
   },
   "About": {
-    "badge": "Disponible pour Projets",
-    "aboutMe": "À propos de moi",
-    "getInTouch": "Me Contacter",
-    "downloadCV": "Télécharger CV",
-    "philosophy": "Mon Approche",
-    "myApproach": "Comment je Travaille Avec les Clients",
-    "whatIDeliver": "Ce Que Vous Obtenez en Travaillant Avec Moi",
-    "currentFocus": "Focus Actuel",
+    "badge": "Disponible sur demande",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Applications web, automatisation des flux de travail et intégrations IA — développées de bout en bout par un seul développeur.",
-      "currentPosition": "Développeur Freelance",
-      "company": "",
-      "location": "Allemagne",
-      "experience": "3+ ans"
+      "title": "Développeur web basé en Allemagne, spécialisé en automatisation et IA."
     },
-    "mainStory": "Je travaille avec des PME, des agences et des fondateurs qui ont besoin que leur logiciel soit livré, pas géré. Des MVP planifiés pour une livraison en 4–8 semaines, des automatisations qui déchargent votre équipe des tâches répétitives, et des assistants IA bâtis sur une véritable architecture de recherche documentaire — pas une fenêtre de chat greffée sur un site web.",
-    "sections": {
-      "philosophy": "Je crois en une communication claire, des délais transparents et la livraison exacte de ce qui a été promis. Pas de jargon technique, pas de dérive du périmètre — juste un développement fiable avec des mises à jour régulières pour que vous sachiez toujours où en est votre projet. Chaque solution est construite avec vos objectifs commerciaux en tête, pas seulement les exigences techniques."
-    },
+    "intro": "Bonjour, je suis Yazan. Je développe des logiciels qui vous font gagner du temps et prennent soin de vos données.",
+    "focusTitle": "Focus actuel",
     "currentFocusItems": [
-      "MVP web planifiés pour une livraison en 4–8 semaines",
-      "Automatisations conçues pour supprimer des heures de travail manuel chaque semaine",
-      "Assistants IA et systèmes RAG pour les processus internes"
+      "Applications web avec Next.js et TypeScript",
+      "Automatisation des workflows",
+      "Assistants IA et RAG",
+      "Outils open source"
     ],
-    "workingWithMe": "Vous travaillez directement avec moi. Pas de chargé de compte, pas de transfert à un développeur junior. Next.js, TypeScript et React, avec un code source et une documentation qui vous appartiennent entièrement à la fin.",
-    "credentials": "Fachinformatiker certifié IHK, formé au règlement européen sur l'IA — un atout lorsque la fonctionnalité IA souhaitée doit résister à la réglementation européenne.",
+    "story": {
+      "title": "Un peu sur moi",
+      "paragraphs": [
+        "Je suis Fachinformatiker en développement d'applications, certifié IHK. Mais l'essentiel de ce que je sais, je l'ai appris en construisant : ce site, des paquets open source et des outils que j'utilise moi-même chaque jour.",
+        "Ce qui m'attire le plus, c'est la rencontre entre développement web, automatisation et IA : transformer un processus qui dévore des heures chaque semaine en quelque chose qui tourne tout seul. Je préfère un logiciel honnête et bien documenté aux astuces ingénieuses."
+      ]
+    },
+    "compliance": {
+      "title": "Protection des données et réglementation, dès le départ",
+      "subtitle": "Deux sujets que je prends au sérieux sur chaque projet — surtout quand l'IA est en jeu.",
+      "dsgvo": {
+        "label": "RGPD (DSGVO)",
+        "title": "Protection des données dès la conception",
+        "description": "Uniquement les données vraiment nécessaires, le consentement là où il est requis et une vue claire de quelles données vont où — pour que votre politique de confidentialité puisse décrire ce que le logiciel fait réellement."
+      },
+      "aiAct": {
+        "label": "EU AI Act",
+        "title": "Formé à l'AI Act européen",
+        "description": "Quand un projet inclut de l'IA, nous examinons tôt quelles obligations pourraient s'appliquer — par exemple informer les personnes qu'elles échangent avec une IA — pour qu'elles fassent partie de la conception et non d'un correctif après le lancement."
+      },
+      "note": "Je suis développeur, pas avocat. Je développe en tenant compte de ces règles ; l'évaluation juridique reste de votre ressort ou de celui de votre conseil."
+    },
+    "workingWithMe": {
+      "title": "Travailler avec moi",
+      "items": [
+        "Vous travaillez directement avec moi.",
+        "Nous fixons le périmètre par écrit avant de commencer.",
+        "Vous recevez des points réguliers, dans un langage clair.",
+        "À la fin, vous recevez le code source et la documentation."
+      ]
+    },
+    "availability": {
+      "title": "Actuellement occupé — disponible sur demande",
+      "description": "Mon agenda est plein en ce moment, je n'accepte donc de nouveaux projets que sur demande. Si vous avez une idée, écrivez-moi et je vous dirai honnêtement quand je pourrais commencer."
+    },
+    "explore": {
+      "title": "Découvrez le reste",
+      "projects": "Projets",
+      "products": "Produits",
+      "services": "Services",
+      "blog": "Blog"
+    },
     "cta": {
-      "work": "Voir les réalisations",
-      "contact": "Contact"
+      "contact": "Me contacter"
     }
   },
   "PortfolioAbout": {

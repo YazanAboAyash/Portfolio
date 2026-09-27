@@ -422,36 +422,63 @@
     "comingSoonDescription": "Bokrekommendationer och recensioner kommer att finnas tillgängliga här snart."
   },
   "About": {
-    "badge": "Tillgänglig för Projekt",
-    "aboutMe": "Om mig",
-    "getInTouch": "Kontakta mig",
-    "downloadCV": "Ladda ner CV",
-    "philosophy": "Mitt Tillvägagångssätt",
-    "myApproach": "Hur Jag Arbetar Med Kunder",
-    "whatIDeliver": "Vad Du Får När Du Arbetar Med Mig",
-    "currentFocus": "Nuvarande fokus",
+    "badge": "Tillgänglig på förfrågan",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Webbapplikationer, arbetsflödesautomation och AI-integrationer — byggda från början till slut av en enda utvecklare.",
-      "currentPosition": "Frilansutvecklare",
-      "company": "",
-      "location": "Tyskland",
-      "experience": "3+ år"
+      "title": "Webbutvecklare i Tyskland med fokus på automatisering och AI."
     },
-    "mainStory": "Jag arbetar med små och medelstora företag, byråer och grundare som behöver få mjukvara levererad, inte förvaltad. MVP:er planerade för leverans på 4–8 veckor, automationer som tar bort repetitivt arbete från ditt team, och AI-assistenter byggda på verklig retrieval-arkitektur — inte ett chattfönster fastskruvat på en webbplats.",
-    "sections": {
-      "philosophy": "Jag tror på tydlig kommunikation, transparenta tidsramar och att leverera exakt det som utlovats. Ingen teknisk jargong, ingen scope creep — bara pålitlig utveckling med regelbundna uppdateringar så att du alltid vet var ditt projekt står. Varje lösning byggs med dina affärsmål i åtanke, inte bara tekniska krav."
-    },
+    "intro": "Hej, jag heter Yazan. Jag bygger mjukvara som sparar dig tid och hanterar dina data varsamt.",
+    "focusTitle": "Aktuellt fokus",
     "currentFocusItems": [
-      "Webb-MVP:er planerade för leverans på 4–8 veckor",
-      "Automationer utformade för att ta bort timmar av manuellt arbete varje vecka",
-      "AI-assistenter och RAG-system för interna processer"
+      "Webbappar med Next.js och TypeScript",
+      "Automatisering av arbetsflöden",
+      "AI-assistenter och RAG",
+      "Verktyg med öppen källkod"
     ],
-    "workingWithMe": "Du arbetar direkt med mig. Ingen account manager, ingen överlämning till en juniorutvecklare. Next.js, TypeScript och React, med källkod och dokumentation som du äger fullt ut när projektet är klart.",
-    "credentials": "IHK-certifierad Fachinformatiker med utbildning i EU:s AI-förordning — relevant när AI-funktionen du vill ha måste hålla för europeisk reglering.",
+    "story": {
+      "title": "Lite om mig",
+      "paragraphs": [
+        "Jag är IHK-certifierad Fachinformatiker inom applikationsutveckling. Men det mesta jag kan har jag lärt mig genom att bygga: den här webbplatsen, paket med öppen källkod och verktyg som jag själv använder varje dag.",
+        "Det som lockar mig mest är där webbutveckling, automatisering och AI möts — att förvandla en process som äter upp timmar varje vecka till något som bara fungerar. Jag föredrar ärlig, väldokumenterad mjukvara framför smarta knep."
+      ]
+    },
+    "compliance": {
+      "title": "Integritet och regelverk, från början",
+      "subtitle": "Två saker jag tar på allvar i varje projekt — särskilt när AI är inblandat.",
+      "dsgvo": {
+        "label": "GDPR (DSGVO)",
+        "title": "Inbyggt dataskydd",
+        "description": "Bara de data som verkligen behövs, samtycke där det krävs och en tydlig bild av vilka data som går vart — så att din integritetspolicy kan beskriva vad mjukvaran faktiskt gör."
+      },
+      "aiAct": {
+        "label": "EU AI Act",
+        "title": "Utbildad i EU:s AI-förordning",
+        "description": "När ett projekt innehåller AI går vi tidigt igenom vilka skyldigheter som kan gälla — till exempel att tala om för människor att de pratar med en AI — så att de blir en del av designen och inte en efterhandslösning efter lanseringen."
+      },
+      "note": "Jag är utvecklare, inte jurist. Jag bygger med de här reglerna i åtanke; den juridiska bedömningen ligger hos dig eller din rådgivare."
+    },
+    "workingWithMe": {
+      "title": "Att arbeta med mig",
+      "items": [
+        "Du arbetar direkt med mig.",
+        "Vi kommer överens om omfattningen skriftligt innan arbetet börjar.",
+        "Du får regelbundna uppdateringar på ett begripligt språk.",
+        "I slutet får du källkoden och dokumentationen."
+      ]
+    },
+    "availability": {
+      "title": "Upptagen just nu — tillgänglig på förfrågan",
+      "description": "Min kalender är full just nu, så jag tar bara emot nya uppdrag på förfrågan. Om du har något i åtanke, skriv till mig så säger jag ärligt när jag skulle kunna börja."
+    },
+    "explore": {
+      "title": "Titta dig omkring",
+      "projects": "Projekt",
+      "products": "Produkter",
+      "services": "Tjänster",
+      "blog": "Blogg"
+    },
     "cta": {
-      "work": "Se arbetet",
-      "contact": "Kontakt"
+      "contact": "Kontakta mig"
     }
   },
   "PortfolioAbout": {

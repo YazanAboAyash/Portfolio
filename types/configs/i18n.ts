@@ -4,13 +4,6 @@
  * @version 6.x.x
  */
 
-export interface Achievement {
-  title: string;
-  description: string;
-  date: string;
-  category: "work" | "project" | "education" | "certification";
-}
-
 export interface SkillItem {
   id: string;
   name: string;
@@ -18,38 +11,50 @@ export interface SkillItem {
   category: "frontend" | "backend" | "fullstack" | "tools" | "soft-skills";
 }
 
+export interface AboutComplianceItem {
+  label: string;
+  title: string;
+  description: string;
+}
+
 export interface AboutTranslations {
-  aboutMe: string;
-  getInTouch: string;
-  downloadCV: string;
-  philosophy: string;
-  myDevelopmentPhilosophy: string;
-  currentFocus: string;
-  coreValues: string;
-  whatDrivesMe: string;
-  achievementsTitle: string;
-  milestonesRecognition: string;
+  badge: string;
   personalInfo: {
     name: string;
     title: string;
-    currentPosition: string;
-    company: string;
-    location: string;
-    experience: string;
   };
-  mainStory: string;
-  workingWithMe: string;
-  credentials: string;
-  sections: {
-    philosophy: string;
+  intro: string;
+  focusTitle: string;
+  currentFocusItems: string[];
+  story: {
+    title: string;
+    paragraphs: string[];
+  };
+  compliance: {
+    title: string;
+    subtitle: string;
+    dsgvo: AboutComplianceItem;
+    aiAct: AboutComplianceItem;
+    note: string;
+  };
+  workingWithMe: {
+    title: string;
+    items: string[];
+  };
+  availability: {
+    title: string;
+    description: string;
+  };
+  explore: {
+    title: string;
+    projects: string;
+    products: string;
+    services: string;
+    blog: string;
   };
   cta: {
-    work: string;
-    call: string;
+    contact: string;
   };
-  currentFocusItems: string[];
-  values: string[];
-  achievements: Achievement[];
 }
 
 export interface LocaleMessages {

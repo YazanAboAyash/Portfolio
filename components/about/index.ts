@@ -4,8 +4,4 @@
  * @version 6.x.x
  */
 
-import { AboutContent } from "@/components/about";
-
-export default function AboutPage() {
-  return <AboutContent />;
-}
+export { AboutContent } from "./AboutContent";
