@@ -134,7 +134,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
             </div>
           )}
 
-          {/* Available extras for this package, in a dialog — no prices shown */}
+          {/* Available extras for this package, in a dialog */}
           {variant === "detailed" && extras.length > 0 && (
             <div className="pt-4 border-t mt-auto">
               <Dialog>
@@ -163,7 +163,7 @@ export function PackageCard({ pkg, variant = "detailed" }: PackageCardProps) {
                     ))}
                   </ul>
                   <p className="text-xs text-muted-foreground/80 italic">
-                    {t("packages.extras.finalPrice")}
+                    {t("packages.extras.contactNote")}
                   </p>
                 </DialogContent>
               </Dialog>

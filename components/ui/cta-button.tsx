@@ -7,8 +7,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Calendar } from "lucide-react";
-import Link from "next/link";
+import { Mail } from "lucide-react";
 import { servicesPageData } from "@/data/hubs/servicesData";
 import type { VariantProps } from "class-variance-authority";
 import type { buttonVariants } from "@/components/ui/button";
@@ -24,17 +23,18 @@ interface CTAButtonProps {
   readonly size?: ButtonVariants["size"];
   /** Optional custom className */
   readonly className?: string;
-  /** Whether to show the Calendar icon */
+  /** Whether to show the Mail icon */
   readonly showIcon?: boolean;
   /** Optional onClick handler for when the link is clicked */
   readonly onClick?: () => void;
-  /** Optional custom booking link (defaults to servicesPageData.bookingLink) */
+  /** Optional custom link (defaults to servicesPageData.contactLink) */
   readonly href?: string;
 }
 
 /**
- * Dynamic CTA button component for booking calls
- * Uses the booking link from servicesData by default
+ * Dynamic CTA button component for getting in touch.
+ * Uses the mailto contact link from servicesData by default, which opens the
+ * visitor's own mail app — no third-party service is involved.
  */
 export function CTAButton({
   label,
@@ -43,20 +43,14 @@ export function CTAButton({
   className = "",
   showIcon = true,
   onClick,
-  href = servicesPageData.bookingLink,
+  href = servicesPageData.contactLink,
 }: CTAButtonProps) {
   return (
     <Button asChild variant={variant} size={size} className={className}>
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...(onClick && { onClick })}
-        aria-label="Book a free consultation call"
-      >
-        {showIcon && <Calendar className="h-4 w-4 mr-2" aria-hidden="true" />}
+      <a href={href} {...(onClick && { onClick })}>
+        {showIcon && <Mail className="h-4 w-4 mr-2" aria-hidden="true" />}
         {label}
-      </Link>
+      </a>
     </Button>
   );
 }

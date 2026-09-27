@@ -15,7 +15,7 @@ import {
   User,
   Library,
   Contact,
-  Calendar,
+  Mail,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
@@ -40,7 +40,7 @@ interface DesktopNavigationProps {
 
 interface MobileControlsProps {
   onMenuToggle?: () => void;
-  bookingCTA: {
+  contactCTA: {
     label: string;
     icon: React.ComponentType<{ className?: string }>;
   };
@@ -48,7 +48,7 @@ interface MobileControlsProps {
 }
 
 interface DesktopControlsProps {
-  bookingCTA: {
+  contactCTA: {
     label: string;
     icon: React.ComponentType<{ className?: string }>;
   };
@@ -86,11 +86,11 @@ export function useNavItems(): NavItem[] {
   ];
 }
 
-export function useBookingCTA() {
+export function useContactCTA() {
   const t = useTranslations("Navigation");
   return {
-    label: t("bookCall"),
-    icon: Calendar,
+    label: t("contact"),
+    icon: Mail,
   };
 }
 
@@ -145,7 +145,7 @@ export function DesktopNavigation({
   );
 }
 
-export function DesktopControls({ bookingCTA }: DesktopControlsProps) {
+export function DesktopControls({ contactCTA }: DesktopControlsProps) {
   return (
     <div className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm">
       <div className="border-r pr-1 xl:border-r-2 xl:pr-2">
@@ -168,14 +168,14 @@ export function DesktopControls({ bookingCTA }: DesktopControlsProps) {
       </div>
       <div className="hidden xl:block">
         <CTAButton
-          label={bookingCTA.label}
+          label={contactCTA.label}
           variant="default"
           className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
         />
       </div>
       <div className="xl:hidden">
         <CTAButton
-          label="Book"
+          label={contactCTA.label}
           variant="default"
           className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1.5 h-auto cursor-pointer transition-colors duration-300"
         />
@@ -186,13 +186,14 @@ export function DesktopControls({ bookingCTA }: DesktopControlsProps) {
 
 export function MobileControls({
   onMenuToggle: _onMenuToggle,
+  contactCTA,
 }: MobileControlsProps) {
   return (
     <div className="flex lg:hidden items-center space-x-1 sm:space-x-2 px-2 sm:px-4">
       <ModeToggle />
       <div className="hidden sm:block">
         <CTAButton
-          label="Book"
+          label={contactCTA.label}
           size="sm"
           variant="outline"
           className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1 h-8 cursor-pointer transition-colors duration-300"
@@ -200,7 +201,7 @@ export function MobileControls({
       </div>
       <div className="sm:hidden">
         <CTAButton
-          label="Book"
+          label={contactCTA.label}
           size="sm"
           variant="outline"
           showIcon={false}
@@ -214,7 +215,7 @@ export function MobileControls({
 interface MobileNavigationProps {
   navItems: NavItem[];
   onLinkClick: () => void;
-  bookingCTA: {
+  contactCTA: {
     label: string;
     icon: React.ComponentType<{ className?: string }>;
   };
@@ -223,7 +224,7 @@ interface MobileNavigationProps {
 export function MobileNavigation({
   navItems,
   onLinkClick,
-  bookingCTA,
+  contactCTA,
 }: MobileNavigationProps) {
   const t = useTranslations("Navigation");
 
@@ -269,7 +270,7 @@ export function MobileNavigation({
         {/* CTA Button */}
         <div className="pt-4 border-t">
           <CTAButton
-            label={bookingCTA.label}
+            label={contactCTA.label}
             variant="outline"
             className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 py-3 cursor-pointer transition-colors duration-300"
             onClick={onLinkClick}

@@ -25,7 +25,6 @@ import {
 
 import {
   CHATBOT_CONFIG,
-  CHATBOT_GUIDED_ACTION_KEYS,
   CHATBOT_STYLES,
   CHATBOT_TRANSLATION_KEYS,
 } from "./ChatBot.constants";
@@ -291,28 +290,6 @@ export function ChatBot({
                     >
                       {t(CHATBOT_TRANSLATION_KEYS.GREETING_DESCRIPTION)}
                     </p>
-                    <div
-                      className="mt-4 flex max-w-xs flex-wrap justify-center gap-2"
-                      aria-label={t("guidedActions.label")}
-                    >
-                      {CHATBOT_GUIDED_ACTION_KEYS.map((actionKey) => {
-                        const actionLabel = t(actionKey);
-
-                        return (
-                          <Button
-                            key={actionKey}
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            disabled={isLoading}
-                            onClick={() => void handleSendMessage(actionLabel)}
-                            className="h-auto rounded-full px-3 py-1.5 text-xs leading-snug whitespace-normal"
-                          >
-                            {actionLabel}
-                          </Button>
-                        );
-                      })}
-                    </div>
                   </div>
                 )}
 

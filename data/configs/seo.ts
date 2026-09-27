@@ -22,6 +22,8 @@ const COMMON_TECH_KEYWORDS = [
   "MVP development",
   "TypeScript",
   "JavaScript",
+  "n8n",
+  "AI Agent",
 ];
 
 const COMMON_ROLE_KEYWORDS_EN = [
@@ -115,6 +117,16 @@ export const BASE_CONFIG = {
       "Docker",
       "Git",
       "Tailwind CSS",
+      "n8n",
+      "AI Agents",
+      "Anthropic Claude API",
+      "Azure AI",
+      "pgvector",
+      "Drizzle ORM",
+      "Better Auth",
+      "Stripe",
+      "Model Context Protocol (MCP)",
+      "Speech-to-Text and Text-to-Speech",
     ],
     // City + postal code only — the exact street address stays confined to the
     // Impressum. Coordinates are Schwetzingen's town center, not the home address.
@@ -420,7 +432,7 @@ export const mediaSectionContent: MediaSectionContent = {
     en: {
       title: "Services - MVP Development, AI & Automation Solutions",
       description:
-        "Professional web development services including MVP launch packages, AI chatbot integration, RAG systems, and workflow automation. Clear pricing, reliable delivery.",
+        "Professional web development services including MVP launch packages, AI chatbot integration, RAG systems, and workflow automation. Clear scope, reliable delivery.",
       keywords: [
         "web development services",
         "MVP development",

@@ -27,20 +27,9 @@
     "availableForCollaboration": "Disponible para colaborar",
     "fullStackDeveloper": "Automatización & MVPs Web con IA",
     "description": "Soluciones de automatización, asistentes de IA internos y desarrollo de MVPs. Entregando aplicaciones web de principio a fin, desde el concepto hasta el despliegue—construyendo herramientas prácticas que ahorran tiempo e impulsan la eficiencia.",
-    "bookFreeCall": "Reserva una Llamada Gratis de 15 Min",
+    "contact": "Contacto",
     "learnMoreAboutMe": "Conoce más sobre mí",
     "moreAboutMe": "Más sobre mí en"
-  },
-  "BookingConfirmed": {
-    "confirmed": "Reserva Confirmada",
-    "title": "¡Todo Listo!",
-    "description": "Gracias por reservar una llamada conmigo. Espero conocer tu proyecto y explorar cómo puedo ayudarte.",
-    "whatsNext": "¿Qué sigue?",
-    "step1": "Recibirás una invitación de calendario con el enlace de la reunión.",
-    "step2": "Revisaré los detalles que compartiste antes de la llamada.",
-    "step3": "Tendré contigo una conversación enfocada de 15 minutos sobre tus necesidades.",
-    "backToHome": "Volver al Inicio",
-    "learnMore": "Conoce Más Sobre Mí"
   },
   "Navigation": {
     "home": "Inicio",
@@ -48,7 +37,6 @@
     "work": "Trabajos",
     "about": "Sobre mí",
     "blog": "Blog",
-    "bookCall": "Reservar Llamada",
     "aboutSite": "Sobre el Sitio",
     "projects": "Proyectos",
     "mcp": "MCP",
@@ -65,9 +53,9 @@
   },
   "Contact": {
     "getInTouch": "Conectemos",
-    "description": "¿Listo para discutir tu proyecto? Programa una llamada o conéctate conmigo en redes sociales.",
-    "schedule": "Programar",
-    "bookMeeting": "Reservar reunión",
+    "description": "¿Listo para discutir tu proyecto? Envíame un correo o conéctate conmigo en redes sociales.",
+    "email": "Correo electrónico",
+    "sendEmail": "Enviar un correo",
     "socialMedia": "Redes sociales",
     "info": "Info",
     "location": "Ubicación",
@@ -164,7 +152,8 @@
     "categories": {
       "webDevelopment": "Desarrollo web",
       "fullStack": "Full Stack",
-      "aiMl": "IA/ML"
+      "aiMl": "IA/ML",
+      "compliance": "RR. HH. y cumplimiento"
     },
     "descriptions": {
       "portfolioWebsite": "Un portafolio moderno y responsivo construido con Next.js 16, con alternancia de tema oscuro/claro, animaciones fluidas con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para estilos.",
@@ -183,12 +172,14 @@
     "npmPackage": "npm",
     "liveDemo": "Demo en vivo",
     "featuredProject": "Proyecto destacado",
+    "availableToBuy": "Disponible para compra",
     "licenses": {
       "copyright": "Todos los derechos reservados",
       "openSource": "Licencia MIT modificada",
       "fullyOpen": "Completamente de código abierto",
       "mit": "Licencia MIT",
-      "agpl": "Licencia AGPL-3.0"
+      "agpl": "Licencia AGPL-3.0",
+      "commercial": "Licencia comercial"
     }
   },
   "Collaboration": {
@@ -260,7 +251,7 @@
     },
     "overview": {
       "title": "Resumen",
-      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Algunas funciones —el asistente de IA, la auditoría de automatización y la reserva de citas— transmiten datos a proveedores externos, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
+      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Algunas funciones —el asistente de IA y la auditoría de automatización— transmiten datos a proveedores externos, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
       "keyPoint": "Qué significa esto en la práctica",
       "keyPointDescription": "Puede leer este sitio sin identificarse. No hay publicidad, ni seguimiento entre sitios, ni elaboración de perfiles. Al mismo tiempo, su dirección IP y todo lo que escriba en el asistente o en las herramientas de IA son datos personales: las secciones siguientes explican exactamente qué ocurre con ellos, sobre qué base jurídica y durante cuánto tiempo se conservan."
     },
@@ -334,12 +325,10 @@
       "auditDescription": "Las respuestas que facilite en la auditoría se transmiten a OpenAI para generar la evaluación.",
       "legalBasis": "Base jurídica: art. 6.1.b del RGPD — prestación de un servicio que usted ha solicitado activamente; art. 6.1.f del RGPD para el funcionamiento seguro de la herramienta."
     },
-    "booking": {
-      "title": "Reserva de citas",
-      "description": "Las citas se conciertan a través de Calendly.",
-      "calendlyTitle": "Calendly",
-      "calendlyDescription": "Si reserva una llamada, Calendly LLC trata el nombre, la dirección de correo electrónico y cualquier dato que introduzca en su formulario de reserva, e instala sus propias cookies en sus páginas. Yo recibo la información necesaria para celebrar la reunión. Al proceso de reserva se aplica la política de privacidad de Calendly.",
-      "legalBasis": "Base jurídica: art. 6.1.b del RGPD — medidas precontractuales adoptadas a petición suya."
+    "contact": {
+      "title": "Contacto por correo electrónico",
+      "description": "Los botones de contacto de este sitio abren su propio programa de correo con mi dirección ya indicada; al pulsarlos no se envía nada ni a mí ni a terceros. Si después me escribe, trato su dirección de correo electrónico, su nombre si lo facilita y el contenido de su mensaje para responder a su consulta.",
+      "legalBasis": "Base jurídica: art. 6.1.b del RGPD cuando su consulta se refiera a un contrato o a medidas precontractuales; en los demás casos, art. 6.1.f del RGPD — mi interés legítimo en responder a los mensajes que se me dirigen."
     },
     "recipients": {
       "title": "Destinatarios y transferencias internacionales",
@@ -354,13 +343,18 @@
         "purpose": "Genera las respuestas del asistente de IA y el resultado de la auditoría de automatización.",
         "location": "Estados Unidos."
       },
-      "calendly": {
-        "name": "Calendly LLC",
-        "purpose": "Concertación de citas.",
+      "squarespace": {
+        "name": "Squarespace, Inc.",
+        "purpose": "Recibe los mensajes enviados a la dirección de contacto y los reenvía a mi buzón.",
         "location": "Estados Unidos."
       },
+      "google": {
+        "name": "Google Ireland Limited (Gmail)",
+        "purpose": "Almacena los mensajes reenviados en mi buzón para que pueda leerlos y responderlos.",
+        "location": "Irlanda; los datos también pueden tratarse en Estados Unidos."
+      },
       "transfersTitle": "Transferencias a terceros países",
-      "transfersDescription": "Estos proveedores están establecidos en Estados Unidos, por lo que sus datos se transfieren fuera de la UE/EEE. Todos ellos ofrecen un contrato de encargo del tratamiento que incorpora las cláusulas contractuales tipo de la Comisión Europea; cuando un proveedor dispone además de certificación conforme al Marco de Privacidad de Datos UE-EE. UU., dicha certificación se aplica adicionalmente. Pese a estas garantías, las autoridades estadounidenses pueden tener facultades de acceso que no se corresponden con los estándares europeos, y hacer valer allí sus derechos puede resultar más difícil que en la UE. Si prefiere evitarlo, basta con que no utilice el asistente, las herramientas de IA ni el formulario de reserva: el resto del sitio funciona sin ellos."
+      "transfersDescription": "Vercel, OpenAI y Squarespace están establecidos en Estados Unidos, y Google también puede tratar datos allí, por lo que sus datos pueden transferirse fuera de la UE/EEE. Vercel y OpenAI ofrecen cada uno un contrato de encargo del tratamiento que incorpora las cláusulas contractuales tipo de la Comisión Europea; cuando un proveedor dispone además de certificación conforme al Marco de Privacidad de Datos UE-EE. UU., dicha certificación se aplica adicionalmente. Squarespace y Google tratan los correos enviados a la dirección de contacto conforme a sus propias condiciones y políticas de privacidad. Pese a estas garantías, las autoridades estadounidenses pueden tener facultades de acceso que no se corresponden con los estándares europeos, y hacer valer allí sus derechos puede resultar más difícil que en la UE. Si prefiere evitarlo, basta con que no utilice el asistente ni las herramientas de IA —el resto del sitio funciona sin ellos— y me escriba por correo postal a la dirección indicada al principio de esta página en lugar de por correo electrónico."
     },
     "retention": {
       "title": "Plazos de conservación",
@@ -368,6 +362,7 @@
       "serverLogs": "Los registros de alojamiento y de peticiones los conserva Vercel durante el plazo fijado en su propia política de conservación; yo no mantengo registros de acceso separados.",
       "chatSessions": "Mi servidor conserva una conversación del asistente únicamente durante el tiempo necesario para responder al mensaje. Una vez enviada la respuesta, no queda nada del intercambio en el servidor, salvo que usted haya consentido su almacenamiento.",
       "chatRecords": "Las conversaciones almacenadas en la base de datos con su consentimiento se eliminan actualmente de forma manual durante una revisión, y no según un calendario automático fijo. Puede solicitar su eliminación en cualquier momento escribiendo a la dirección indicada arriba; lo haré sin dilación indebida.",
+      "emails": "Los correos que me envíe se eliminan una vez atendida por completo su consulta, salvo que las obligaciones legales de conservación de la correspondencia comercial (§ 257 HGB, § 147 AO del Derecho alemán) exijan conservarlos durante más tiempo.",
       "browser": "Las entradas de su propio navegador permanecen hasta que caducan, hasta que borre el almacenamiento de su navegador o hasta que utilice el botón de eliminación de esta página."
     },
     "rights": {
@@ -427,36 +422,63 @@
     "comingSoonDescription": "Las recomendaciones y reseñas de libros estarán disponibles aquí pronto."
   },
   "About": {
-    "badge": "Disponible para Proyectos",
-    "aboutMe": "Sobre mí",
-    "getInTouch": "Contacto",
-    "downloadCV": "Descargar CV",
-    "philosophy": "Mi Enfoque",
-    "myApproach": "Cómo Trabajo Con Clientes",
-    "whatIDeliver": "Lo Que Obtiene al Trabajar Conmigo",
-    "currentFocus": "Enfoque actual",
+    "badge": "Disponible bajo solicitud",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Aplicaciones web, automatización de flujos de trabajo e integraciones de IA — desarrolladas de principio a fin por un solo desarrollador.",
-      "currentPosition": "Desarrollador Freelance",
-      "company": "",
-      "location": "Alemania",
-      "experience": "3+ años"
+      "title": "Desarrollador web en Alemania, centrado en automatización e IA."
     },
-    "mainStory": "Trabajo con pymes, agencias y fundadores que necesitan software entregado, no gestionado. MVPs planificados para entregarse en 4–8 semanas, automatizaciones que liberan a su equipo del trabajo repetitivo y asistentes de IA construidos sobre una arquitectura de recuperación real — no una ventana de chat añadida a un sitio web.",
-    "sections": {
-      "philosophy": "Creo en la comunicación clara, plazos transparentes y entregar exactamente lo prometido. Sin jerga técnica, sin alcance creep — solo desarrollo confiable con actualizaciones regulares para que siempre sepa dónde está su proyecto. Cada solución se construye con sus objetivos comerciales en mente, no solo requisitos técnicos."
-    },
+    "intro": "Hola, soy Yazan. Desarrollo software que le ahorra tiempo y trata sus datos con cuidado.",
+    "focusTitle": "Enfoque actual",
     "currentFocusItems": [
-      "MVPs web planificados para entrega en 4–8 semanas",
-      "Automatizaciones diseñadas para eliminar horas de trabajo manual cada semana",
-      "Asistentes de IA y sistemas RAG para procesos internos"
+      "Aplicaciones web con Next.js y TypeScript",
+      "Automatización de flujos de trabajo",
+      "Agentes y asistentes de IA y RAG",
+      "Herramientas de código abierto"
     ],
-    "workingWithMe": "Trabaja directamente conmigo. Sin gestor de cuentas, sin traspaso a un desarrollador júnior. Next.js, TypeScript y React, con código fuente y documentación que le pertenecen por completo al final.",
-    "credentials": "Fachinformatiker certificado por la IHK con formación en el Reglamento Europeo de IA — relevante cuando la función de IA que necesita debe resistir la regulación europea.",
+    "story": {
+      "title": "Un poco sobre mí",
+      "paragraphs": [
+        "Soy Fachinformatiker en desarrollo de aplicaciones con certificación IHK. Aun así, la mayor parte de lo que sé lo aprendí construyendo: este sitio web, paquetes de código abierto y herramientas que uso a diario.",
+        "Lo que más me atrae es el punto donde se cruzan el desarrollo web, la automatización y la IA: convertir un proceso que consume horas cada semana en algo que simplemente funciona. Prefiero el software honesto y bien documentado a los trucos ingeniosos."
+      ]
+    },
+    "compliance": {
+      "title": "Privacidad y regulación, desde el principio",
+      "subtitle": "Dos temas que tomo en serio en cada proyecto, sobre todo cuando hay IA de por medio.",
+      "dsgvo": {
+        "label": "RGPD (DSGVO)",
+        "title": "Privacidad desde el diseño",
+        "description": "Solo los datos realmente necesarios, consentimiento donde se requiere y un registro claro de qué datos van adónde, para que su política de privacidad pueda describir lo que el software hace de verdad."
+      },
+      "aiAct": {
+        "label": "EU AI Act",
+        "title": "Formación en el EU AI Act",
+        "description": "Cuando un proyecto incluye IA, revisamos pronto qué obligaciones podrían aplicarse — por ejemplo, avisar a las personas de que están hablando con una IA — para que formen parte del diseño y no sean un parche tras el lanzamiento."
+      },
+      "note": "Soy desarrollador, no abogado. Desarrollo teniendo en cuenta estas normas; la evaluación jurídica corresponde a usted o a su asesor."
+    },
+    "workingWithMe": {
+      "title": "Trabajar conmigo",
+      "items": [
+        "Trabaja directamente conmigo.",
+        "Acordamos el alcance por escrito antes de empezar.",
+        "Recibe actualizaciones periódicas en un lenguaje claro.",
+        "Al final, recibe el código fuente y la documentación."
+      ]
+    },
+    "availability": {
+      "title": "Ahora mismo ocupado — disponible bajo solicitud",
+      "description": "Mi agenda está llena en este momento, así que solo acepto nuevos proyectos bajo solicitud. Si tiene algo en mente, escríbame y le diré con sinceridad cuándo podría empezar."
+    },
+    "explore": {
+      "title": "Eche un vistazo",
+      "projects": "Proyectos",
+      "products": "Productos",
+      "services": "Servicios",
+      "blog": "Blog"
+    },
     "cta": {
-      "work": "Ver los proyectos",
-      "call": "Reservar llamada gratuita de 15 min"
+      "contact": "Contactar"
     }
   },
   "PortfolioAbout": {
@@ -504,14 +526,6 @@
     "greeting": {
       "title": "¡Hola! Soy Reem 👋",
       "description": "Soy tu asistente de IA, estoy aquí para ayudarte a explorar el portafolio de Yazan y responder preguntas sobre sus proyectos, habilidades y experiencia."
-    },
-    "guidedActions": {
-      "label": "Opciones guiadas del portafolio",
-      "website": "Necesito un sitio web",
-      "automation": "Necesito automatización",
-      "projects": "Quiero ver proyectos",
-      "pricing": "Quiero precios",
-      "contact": "Quiero contactar a Yazan"
     },
     "typing": {
       "status": "Reem está escribiendo...",
@@ -566,12 +580,11 @@
     },
     "packages": {
       "title": "Paquetes de Servicios",
-      "cta": "Reservar llamada gratuita",
+      "cta": "Contacto",
       "website": {
         "name": "Sitio Web",
         "headline": "Que le Encuentren. Que le Llamen.",
         "description": "Un sitio rápido y moderno que funciona en cualquier dispositivo y aparece en búsquedas locales.",
-        "pricing": "890 €",
         "timeline": "1–2 semanas",
         "features": {
           "pages": "Hasta 3 páginas, o un sitio de una sola página con hasta 5 secciones",
@@ -583,36 +596,28 @@
         },
         "extras": {
           "page": {
-            "label": "Página adicional",
-            "price": "190 €"
+            "label": "Página adicional"
           },
           "section": {
-            "label": "Sección adicional (sitio de una página)",
-            "price": "120 €"
+            "label": "Sección adicional (sitio de una página)"
           },
           "secondLanguage": {
-            "label": "Segundo idioma (EN + DE), traducción incluida",
-            "price": "390 €"
+            "label": "Segundo idioma (EN + DE), traducción incluida"
           },
           "staticBlog": {
-            "label": "Blog estático (sin backend)",
-            "price": "490 €"
+            "label": "Blog estático (sin backend)"
           },
           "cmsBlog": {
-            "label": "Blog editable con CMS",
-            "price": "desde 890 €"
+            "label": "Blog editable con CMS"
           },
           "consentBanner": {
-            "label": "Banner de consentimiento (solo si desea herramientas de seguimiento)",
-            "price": "290 €"
+            "label": "Banner de consentimiento (solo si desea herramientas de seguimiento)"
           },
           "textPrep": {
-            "label": "Preparación de textos a partir de su material existente, por página",
-            "price": "90 €"
+            "label": "Preparación de textos a partir de su material existente, por página"
           },
           "managedSetup": {
-            "label": "Configuración gestionada (por plataforma)",
-            "price": "150 €"
+            "label": "Configuración gestionada (por plataforma)"
           }
         }
       },
@@ -620,7 +625,6 @@
         "name": "Aplicación Web",
         "headline": "Software que Gestiona su Proceso.",
         "description": "Todo lo de Sitio Web, más una base de datos y usuarios reales.",
-        "pricing": "desde 2.490 €",
         "timeline": "4–6 semanas",
         "features": {
           "website": "Todo lo incluido en Sitio Web",
@@ -631,32 +635,28 @@
         },
         "extras": {
           "booking": {
-            "label": "Sistema de reservas/citas",
-            "price": "desde 1.490 €"
+            "label": "Sistema de reservas/citas"
           },
           "roles": {
-            "label": "Roles y permisos",
-            "price": "desde 490 €"
+            "label": "Roles y permisos"
+          },
+          "sso": {
+            "label": "Inicio de sesión único (SSO) con Microsoft Entra ID o Google"
           },
           "payments": {
-            "label": "Pagos (Stripe)",
-            "price": "desde 690 €"
+            "label": "Pagos (Stripe)"
           },
           "fileUpload": {
-            "label": "Carga y gestión de archivos",
-            "price": "desde 390 €"
+            "label": "Carga y gestión de archivos"
           },
           "adminView": {
-            "label": "Vista de administración adicional",
-            "price": "desde 390 €"
+            "label": "Vista de administración adicional"
           },
           "notifications": {
-            "label": "Notificaciones por correo (a través de su buzón, Brevo o Mailjet)",
-            "price": "desde 290 €"
+            "label": "Notificaciones por correo (a través de su buzón, Brevo o Mailjet)"
           },
           "page": {
-            "label": "Página o vista adicional",
-            "price": "190 €"
+            "label": "Página o vista adicional"
           }
         }
       },
@@ -664,7 +664,6 @@
         "name": "Integración de IA",
         "headline": "Respuestas sin que Nadie las Escriba.",
         "description": "Un chatbot o función de IA en un sitio nuevo, o añadido a uno existente.",
-        "pricing": "desde 890 €",
         "timeline": "1–3 semanas",
         "features": {
           "chatbot": "Chatbot entrenado con la información de su negocio (inyección de texto, sin RAG)",
@@ -675,40 +674,39 @@
         },
         "extras": {
           "rag": {
-            "label": "Sistema RAG — respuestas a partir de sus documentos (PDF, Notion, Docs)",
-            "price": "desde 1.690 €"
+            "label": "Sistema RAG con pgvector — respuestas a partir de sus documentos (PDF, Notion, Docs)"
           },
           "existingApp": {
-            "label": "Función de IA en una app existente (resumir, clasificar, generar)",
-            "price": "desde 690 €"
+            "label": "Función de IA en una app existente (resumir, clasificar, generar)"
+          },
+          "agent": {
+            "label": "Agente de IA que ejecuta acciones en sus herramientas (tool calling, MCP)"
+          },
+          "voice": {
+            "label": "Entrada y salida de voz — voz a texto (STT) y texto a voz (TTS)"
           },
           "cloudSetup": {
-            "label": "Configuración de proveedor cloud (Azure OpenAI UE, OpenAI, Anthropic, Mistral)",
-            "price": "290 €"
+            "label": "Configuración de proveedor cloud (Azure AI / Azure OpenAI UE, OpenAI, Anthropic Claude, Mistral)"
           },
           "localModel": {
-            "label": "Modelo local en su propio servidor — nada sale de su infraestructura",
-            "price": "690 €"
+            "label": "Modelo local en su propio servidor — nada sale de su infraestructura"
           },
           "knowledgeSource": {
-            "label": "Fuente de conocimiento adicional",
-            "price": "desde 290 €"
+            "label": "Fuente de conocimiento adicional"
           },
           "retraining": {
-            "label": "Reentrenamiento tras la aceptación",
-            "price": "80 €/h"
+            "label": "Reentrenamiento tras la aceptación"
           }
         },
         "scopeNote": {
           "label": "Dónde puedo añadirlo",
-          "text": "Sitios construidos con Next.js, React, Astro, o un sitio estático — se aplica el precio estándar. Cualquier otra cosa (WordPress, PHP, Shopify, .NET, Wix) solo es posible como widget embebido, presupuestado como A Medida tras una revisión."
+          "text": "Sitios construidos con Next.js, React, o un sitio estático — compatibles directamente. Cualquier otra cosa (WordPress, PHP, Shopify, .NET, Wix) solo es posible como widget embebido, definido como proyecto A Medida tras una revisión."
         }
       },
       "automation": {
         "name": "Automatización e Integración",
         "headline": "Conecte las Herramientas que Ya Paga.",
         "description": "Yo soy el implementador técnico. Usted aporta las licencias, cuentas y acceso de administrador.",
-        "pricing": "desde 690 €",
         "timeline": "3 días – 4 semanas",
         "features": {
           "review": "Revisión del proceso a automatizar",
@@ -719,20 +717,22 @@
         },
         "extras": {
           "workflow": {
-            "label": "Cada flujo de trabajo adicional",
-            "price": "290 €"
+            "label": "Cada flujo de trabajo adicional"
           },
           "tool": {
-            "label": "Cada herramienta adicional conectada",
-            "price": "desde 390 €"
+            "label": "Cada herramienta adicional conectada"
           },
           "n8n": {
-            "label": "Configuración de n8n autoalojado en su servidor",
-            "price": "desde 890 €"
+            "label": "Configuración de n8n autoalojado en su servidor"
+          },
+          "agentic": {
+            "label": "Flujo agéntico — un paso de IA que decide y actúa dentro de la automatización"
+          },
+          "devTools": {
+            "label": "Automatización de herramientas de desarrollo — Jira, Confluence, Bitbucket, GitHub"
           },
           "customApi": {
-            "label": "Integración de API personalizada (sin conector prediseñado)",
-            "price": "desde 690 €"
+            "label": "Integración de API personalizada (sin conector prediseñado)"
           }
         },
         "scopeNote": {
@@ -744,7 +744,6 @@
         "name": "A Medida",
         "headline": "Sus Requisitos, Bien Definidos.",
         "description": "Para todo lo que no encaje en los paquetes anteriores.",
-        "pricing": "Presupuesto personalizado",
         "timeline": "Flexible",
         "features": {
           "workshop": "Taller de requisitos",
@@ -757,20 +756,19 @@
       },
       "notes": {
         "title": "Información importante",
-        "vat": "Todos los precios son precios finales. No se añade IVA — conforme al régimen alemán de pequeños empresarios (§ 19 UStG) no facturo IVA, así que el precio que ve es el precio que paga.",
         "included": "Todos los paquetes incluyen diseño responsivo, un build de SEO y rendimiento (Lighthouse 90+), 2 rondas de revisión y documentación de entrega completa.",
         "runningCosts": "Los costes recurrentes — hosting, base de datos, uso de IA y dominio — se los facturan directamente sus proveedores elegidos, en sus propias cuentas.",
         "rights": "Los derechos de uso completos sobre el trabajo entregado se le transfieren con el pago final.",
         "warranty": "Se incluyen dos semanas de corrección de errores gratuita tras el lanzamiento. Sus derechos legales de garantía no se ven afectados.",
-        "payment": "Pago: hasta 1.000 € se factura el importe completo tras la aceptación; por encima de 1.000 € es 40 % al encargo y 60 % tras la aceptación, 14 días neto.",
-        "rates": "El trabajo adicional fuera del alcance acordado se factura a 80 €/h, siempre presupuestado y aprobado antes. Una ronda de revisión extra cuesta 190 €. Respuesta en 5 días laborables, aceptación en 10.",
+        "payment": "Las condiciones de pago se recogen en su propuesta por escrito; las facturas vencen a 14 días neto.",
+        "rates": "El trabajo adicional fuera del alcance acordado, incluidas las rondas de revisión extra, siempre se acuerda con usted antes de empezar. Respuesta en 5 días laborables, aceptación en 10.",
         "notIncluded": "No incluido en ningún paquete: contenido — textos, imágenes, logotipos — y licencias de terceros, material de stock o fuentes de pago. Usted los aporta."
       },
       "extras": {
         "seeAll": "Extras disponibles",
         "dialogTitle": "{package} — extras",
         "dialogDescription": "Todos los complementos disponibles para este paquete.",
-        "finalPrice": "Contácteme y le daré un precio según su proyecto."
+        "contactNote": "Contácteme y definiremos estos complementos según su proyecto."
       }
     },
     "serviceArea": {
@@ -796,7 +794,7 @@
       },
       "strategy": {
         "title": "Estrategia y Alcance",
-        "description": "Recibes una propuesta clara con alcance, cronograma y precio fijo. Sin sorpresas."
+        "description": "Recibes una propuesta clara por escrito con alcance y cronograma. Sin sorpresas."
       },
       "development": {
         "title": "Desarrollo",
@@ -813,9 +811,9 @@
     },
     "cta": {
       "title": "¿Listo para Empezar?",
-      "subtitle": "Reserva una llamada de descubrimiento gratuita de 15 minutos. Sin compromiso, solo una conversación sobre tu proyecto.",
-      "button": "Reservar Consulta Gratuita",
-      "viewAllLink": "Ver Todos los Servicios, Paquetes y Precios"
+      "subtitle": "Envíame un correo breve sobre tu proyecto. Sin compromiso: si encaja, concertamos una llamada de descubrimiento gratuita de 15 minutos.",
+      "button": "Contacto",
+      "viewAllLink": "Ver Todos los Servicios y Paquetes"
     },
     "stack": {
       "title": "Su Stack, Sus Cuentas",
@@ -823,19 +821,27 @@
       "categories": {
         "frontend": {
           "label": "Frontend",
-          "options": "Next.js · React · Astro · build estático"
+          "options": "Next.js · React · build estático"
         },
         "database": {
           "label": "Base de datos",
-          "options": "Supabase · Neon · PostgreSQL · MySQL"
+          "options": "Supabase · Neon · PostgreSQL (incl. pgvector) con Prisma o Drizzle ORM"
         },
         "auth": {
           "label": "Auth",
-          "options": "Supabase Auth · Auth.js · Clerk"
+          "options": "Better Auth · Auth.js · Clerk"
         },
         "ai": {
           "label": "Proveedor de IA",
-          "options": "Azure OpenAI (región UE) · OpenAI · Anthropic · Mistral · modelo local en su servidor"
+          "options": "Azure AI (incl. Azure OpenAI, región UE) · OpenAI · Anthropic Claude · Mistral · modelo local en su servidor"
+        },
+        "automation": {
+          "label": "Automatización y agentes",
+          "options": "n8n (cloud o autoalojado) · automatizaciones a medida con Node.js / Next.js · agentes de IA con tool calling · servidores MCP"
+        },
+        "integrations": {
+          "label": "Integraciones",
+          "options": "Google Workspace · Microsoft Entra ID · GitHub (apps y MCP) · Stripe · Jira · Confluence · Bitbucket"
         },
         "hosting": {
           "label": "Hosting",
@@ -848,10 +854,10 @@
       },
       "codeOnly": {
         "title": "Solo Código (por defecto)",
-        "description": "Recibe el código fuente completo, instrucciones de build y documentación de entrega. Usted despliega. Incluido sin coste adicional."
+        "description": "Recibe el código fuente completo, instrucciones de build y documentación de entrega. Usted despliega."
       },
       "managedSetup": {
-        "title": "Configuración Gestionada (+150 € por plataforma)",
+        "title": "Configuración Gestionada (opcional)",
         "description": "Creo la cuenta a su nombre, la configuro, despliego y entrego todas las credenciales en la aceptación. Tras la entrega no tengo acceso ni responsabilidad continua."
       },
       "emailNote": "Los formularios de contacto y correos de notificación necesitan una vía de envío — normalmente su buzón de negocio existente vía SMTP, sin coste adicional. Brevo, Mailjet o Resend están disponibles si necesita otra cosa."
@@ -866,8 +872,7 @@
     "liveDemoButton": "Demo en Vivo",
     "viewCodeButton": "Ver Código",
     "liveToolsShowcase": {
-      "description": "Pruebe estas herramientas interactivas para explorar el potencial de automatización de su negocio:",
-      "auditButton": "Auditoría de Automatización IA",
+      "description": "Descubra con la calculadora de ROI interactiva cuánto podría ahorrar su negocio automatizando un flujo de trabajo manual:",
       "rioButton": "Calculadora de ROI"
     },
     "projects": {

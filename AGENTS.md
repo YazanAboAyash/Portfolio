@@ -41,7 +41,6 @@ app/                        Next.js App Router
     chatbot/                AI chatbot endpoint
     github/                 GitHub stats
     speed-insight/          Vercel Speed Insights proxy
-  booking-confirmed/        Post-booking page
 
 components/                 All UI — one folder per feature, always has index.ts barrel
   ui/                       Shadcn UI primitives (DO NOT EDIT)

@@ -44,34 +44,19 @@ export function ShowcaseSection() {
           <p className="text-center text-muted-foreground max-w-md font-semibold">
             {tLive("description")}
           </p>
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-            <Link
-              href="/automation-audit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto"
+          <Link
+            href="/rio-calculator"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto"
+          >
+            <Button
+              variant="default"
+              className="gap-2 cursor-pointer hover:scale-105 transition-transform w-full sm:w-auto"
             >
-              <Button
-                variant="default"
-                className="gap-2 cursor-pointer hover:scale-105 transition-transform w-full sm:w-auto"
-              >
-                {tLive("auditButton")}
-              </Button>
-            </Link>
-            <Link
-              href="/rio-calculator"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto"
-            >
-              <Button
-                variant="default"
-                className="gap-2 cursor-pointer hover:scale-105 transition-transform w-full sm:w-auto"
-              >
-                {tLive("rioButton")}
-              </Button>
-            </Link>
-          </div>
+              {tLive("rioButton")}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

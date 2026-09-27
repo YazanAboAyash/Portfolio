@@ -18,6 +18,8 @@ export interface Product {
   description: string;
   media: ProductMedia;
   technologies: string[];
+  /** Key into `Projects.categories` — used when the product is listed on /projects. */
+  category: string;
 }
 
 export const products: Product[] = [
@@ -42,6 +44,7 @@ export const products: Product[] = [
       "Ollama",
       "Docker",
     ],
+    category: "aiMl",
   },
   {
     id: 2,
@@ -53,5 +56,6 @@ export const products: Product[] = [
       alt: "LogiX working-time recording screenshot",
     },
     technologies: ["TypeScript", "PostgreSQL", "Self-hosted", "Compliance Engine"],
+    category: "compliance",
   },
 ];

@@ -91,7 +91,9 @@ async function callOpenAI(userMessage: string): Promise<AuditResult> {
         { role: "user", content: userMessage },
       ],
       response_format: { type: "json_object" },
-      max_tokens: 1024,
+      // Reasoning-class models reject `max_tokens`, and this cap also covers
+      // their hidden reasoning tokens — 1024 left no room for the JSON answer.
+      max_completion_tokens: 4096,
     }),
   });
 

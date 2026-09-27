@@ -102,6 +102,8 @@ export function getLicenseBadgeClasses(licenseType?: string): string {
       return "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-800";
     case "apache":
       return "bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-800";
+    case "commercial":
+      return "bg-emerald-100 text-emerald-800 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800";
     case "proprietary":
     case "closed":
       return "bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/20 dark:text-gray-400 dark:border-gray-800";
@@ -128,6 +130,8 @@ export function getLicenseEmoji(licenseType?: string): string {
       return "🔒";
     case "apache":
       return "🦅";
+    case "commercial":
+      return "💼";
     case "proprietary":
     case "closed":
       return "🔐";

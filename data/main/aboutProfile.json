@@ -91,6 +91,14 @@
         "name": "Prisma ORM",
         "level": "Intermediate",
         "yearsOfExperience": 1.5
+      },
+      {
+        "name": "Drizzle ORM",
+        "description": "Type-safe SQL-first ORM for PostgreSQL"
+      },
+      {
+        "name": "Better Auth",
+        "description": "Self-hosted authentication, sessions and SSO for Next.js apps"
       }
     ],
     "ai": {
@@ -105,7 +113,11 @@
           "name": "LLM Integration",
           "level": "Intermediate",
           "yearsOfExperience": 1,
-          "description": "Integrating OpenAI, Anthropic, and other LLM APIs"
+          "description": "Integrating OpenAI, the Anthropic Claude API, Azure AI (Azure OpenAI), and other LLM APIs"
+        },
+        {
+          "name": "Speech (STT & TTS)",
+          "description": "Speech-to-text transcription and text-to-speech output for voice interfaces"
         }
       ],
       "rag": [
@@ -119,7 +131,7 @@
           "name": "Vector Databases",
           "level": "Basic",
           "yearsOfExperience": 0.5,
-          "description": "Working with embeddings and semantic search"
+          "description": "Working with embeddings and semantic search in PostgreSQL with pgvector"
         }
       ],
       "automation": [
@@ -127,22 +139,45 @@
           "name": "Workflow Automation",
           "level": "Intermediate",
           "yearsOfExperience": 1.5,
-          "description": "Automating repetitive business processes with AI-powered workflows"
+          "description": "Automating repetitive business processes with AI-powered workflows in n8n and custom code"
         },
         {
           "name": "AI Agents",
           "level": "Intermediate",
           "yearsOfExperience": 1,
-          "description": "Building autonomous AI agents for task automation and decision-making"
+          "description": "Building autonomous and agentic AI workflows with tool calling for task automation and decision-making"
         },
         {
           "name": "Model Context Protocol",
           "level": "Basic",
           "yearsOfExperience": 0.5,
-          "description": "Implementing MCP servers for AI tool integration"
+          "description": "Implementing MCP servers for AI tool integration, including GitHub MCP"
         }
       ]
     },
+    "integrations": [
+      {
+        "name": "Google Workspace"
+      },
+      {
+        "name": "Microsoft Entra ID"
+      },
+      {
+        "name": "GitHub Apps & MCP"
+      },
+      {
+        "name": "Stripe"
+      },
+      {
+        "name": "Jira"
+      },
+      {
+        "name": "Confluence"
+      },
+      {
+        "name": "Bitbucket"
+      }
+    ],
     "tools": [
       {
         "name": "Git",
@@ -168,6 +203,12 @@
         "name": "Docker",
         "level": "Basic",
         "yearsOfExperience": 1
+      },
+      {
+        "name": "pnpm"
+      },
+      {
+        "name": "n8n"
       }
     ]
   },

@@ -23,6 +23,15 @@ import {
 } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 
+const linkPill =
+  "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+const linkPillOutline =
+  "border-border bg-background/70 text-foreground hover:border-primary/50 hover:bg-primary/10";
+const linkPillPrimary =
+  "border-primary bg-primary text-primary-foreground shadow-sm hover:bg-primary/90";
+const linkPillNpm =
+  "border-red-300 bg-background/70 text-red-600 hover:border-red-500 hover:bg-red-500/10 dark:border-red-700 dark:text-red-400";
+
 interface ProjectsHomeShowcaseProps {
   readonly className?: string;
 }
@@ -111,16 +120,17 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                 </div>
 
                 {/* Links */}
-                <div className="flex items-center gap-3 mt-auto">
+                <div className="flex flex-wrap items-center gap-2 mt-auto">
                   {project.githubUrl && (
                     <Link
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${project.title} GitHub`}
-                      className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      className={cn(linkPill, linkPillOutline)}
                     >
-                      <FiGithub className="w-4 h-4" aria-hidden="true" />
+                      <FiGithub className="w-3.5 h-3.5" aria-hidden="true" />
+                      {t("code")}
+                      <span className="sr-only"> — {project.title}</span>
                     </Link>
                   )}
                   {project.liveUrl && (
@@ -128,10 +138,14 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${project.title} live demo`}
-                      className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      className={cn(linkPill, linkPillPrimary)}
                     >
-                      <FiExternalLink className="w-4 h-4" aria-hidden="true" />
+                      <FiExternalLink
+                        className="w-3.5 h-3.5"
+                        aria-hidden="true"
+                      />
+                      {t("liveDemo")}
+                      <span className="sr-only"> — {project.title}</span>
                     </Link>
                   )}
                   {project.npmUrl && (
@@ -139,10 +153,11 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                       href={project.npmUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${project.title} npm`}
-                      className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      className={cn(linkPill, linkPillNpm)}
                     >
-                      <SiNpm className="w-4 h-4" aria-hidden="true" />
+                      <SiNpm className="w-3.5 h-3.5" aria-hidden="true" />
+                      {t("npmPackage")}
+                      <span className="sr-only"> — {project.title}</span>
                     </Link>
                   )}
                 </div>

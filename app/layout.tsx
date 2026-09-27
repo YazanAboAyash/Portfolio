@@ -82,7 +82,7 @@ export default async function RootLayout({
   const localBusinessStructuredData =
     generateLocalBusinessStructuredData(seoConfig);
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -132,7 +132,9 @@ export default async function RootLayout({
           close the tag during SSR since it bypasses escaping. Children are
           HTML-escaped by React during serialization, so neither risk applies.
         */}
-        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
         <script type="application/ld+json">
           {JSON.stringify(localBusinessStructuredData)}
         </script>
