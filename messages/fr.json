@@ -826,8 +826,7 @@
     "liveDemoButton": "Démo en Direct",
     "viewCodeButton": "Voir le Code",
     "liveToolsShowcase": {
-      "description": "Essayez ces outils interactifs pour explorer le potentiel d'automatisation de votre entreprise:",
-      "auditButton": "Audit d'Automatisation IA",
+      "description": "Découvrez avec le calculateur de ROI interactif ce que l'automatisation d'un processus manuel pourrait faire économiser à votre entreprise :",
       "rioButton": "Calculateur de ROI"
     },
     "projects": {

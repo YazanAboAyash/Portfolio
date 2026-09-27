@@ -826,8 +826,7 @@
     "liveDemoButton": "Live Demo",
     "viewCodeButton": "Visa Kod",
     "liveToolsShowcase": {
-      "description": "Prova dessa interaktiva verktyg för att utforska automatiseringspotentialen för ditt företag:",
-      "auditButton": "AI-automatiseringsrevision",
+      "description": "Se med den interaktiva ROI-kalkylatorn vad automatisering av ett manuellt arbetsflöde kan spara ditt företag:",
       "rioButton": "ROI-kalkylator"
     },
     "projects": {

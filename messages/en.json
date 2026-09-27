@@ -826,8 +826,7 @@
     "liveDemoButton": "Live Demo",
     "viewCodeButton": "View Code",
     "liveToolsShowcase": {
-      "description": "Try these interactive tools to explore automation potential for your business:",
-      "auditButton": "AI Automation Audit",
+      "description": "See what automating a manual workflow could save your business with the interactive ROI calculator:",
       "rioButton": "ROI Calculator"
     },
     "projects": {

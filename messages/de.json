@@ -826,8 +826,7 @@
     "liveDemoButton": "Live-Demo",
     "viewCodeButton": "Code anzeigen",
     "liveToolsShowcase": {
-      "description": "Probieren Sie diese interaktiven Tools aus, um das Automatisierungspotenzial Ihres Unternehmens zu erkunden:",
-      "auditButton": "KI-Automatisierungs-Audit",
+      "description": "Berechnen Sie mit dem interaktiven ROI-Rechner, was die Automatisierung eines manuellen Workflows Ihrem Unternehmen einsparen könnte:",
       "rioButton": "ROI-Rechner"
     },
     "projects": {
