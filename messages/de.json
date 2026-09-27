@@ -497,13 +497,6 @@
       "title": "Hallo! Ich bin Reem 👋",
       "description": "Ich bin Ihr KI-Assistent und helfe Ihnen dabei, Yazans Portfolio zu erkunden und Fragen zu seinen Projekten, Fähigkeiten und Erfahrungen zu beantworten."
     },
-    "guidedActions": {
-      "label": "Geführte Portfolio-Optionen",
-      "website": "Ich brauche eine Website",
-      "automation": "Ich brauche Automatisierung",
-      "projects": "Ich möchte Projekte sehen",
-      "contact": "Ich möchte Yazan kontaktieren"
-    },
     "typing": {
       "status": "Reem schreibt...",
       "thinking": "Denkt",

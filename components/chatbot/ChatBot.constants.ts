@@ -161,13 +161,6 @@ export const CHATBOT_TRANSLATION_KEYS = {
   ACCESSIBILITY_MESSAGE_FAILED: "accessibility.messageFailed",
 };
 
-export const CHATBOT_GUIDED_ACTION_KEYS = [
-  "guidedActions.website",
-  "guidedActions.automation",
-  "guidedActions.projects",
-  "guidedActions.contact",
-] as const;
-
 /**
  * Maps the bare error codes the API returns onto `ChatBot` translation keys.
  * The API never sends prose, so every failure the user sees is localised.

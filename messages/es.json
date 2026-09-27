@@ -497,13 +497,6 @@
       "title": "¡Hola! Soy Reem 👋",
       "description": "Soy tu asistente de IA, estoy aquí para ayudarte a explorar el portafolio de Yazan y responder preguntas sobre sus proyectos, habilidades y experiencia."
     },
-    "guidedActions": {
-      "label": "Opciones guiadas del portafolio",
-      "website": "Necesito un sitio web",
-      "automation": "Necesito automatización",
-      "projects": "Quiero ver proyectos",
-      "contact": "Quiero contactar a Yazan"
-    },
     "typing": {
       "status": "Reem está escribiendo...",
       "thinking": "Pensando",

@@ -497,13 +497,6 @@
       "title": "Hej! Jag är Reem 👋",
       "description": "Jag är din AI-assistent, här för att hjälpa dig utforska Yazans portfölj och svara på frågor om hans projekt, färdigheter och erfarenhet."
     },
-    "guidedActions": {
-      "label": "Guidade portföljval",
-      "website": "Jag behöver en webbplats",
-      "automation": "Jag behöver automatisering",
-      "projects": "Jag vill se projekt",
-      "contact": "Jag vill kontakta Yazan"
-    },
     "typing": {
       "status": "Reem skriver...",
       "thinking": "Tänker",

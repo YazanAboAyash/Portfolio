@@ -497,13 +497,6 @@
       "title": "Hi! I'm Reem 👋",
       "description": "I'm your AI assistant, here to help you explore Yazan's portfolio and answer questions about his projects, skills, and experience."
     },
-    "guidedActions": {
-      "label": "Guided portfolio options",
-      "website": "I need a website",
-      "automation": "I need automation",
-      "projects": "I want to see projects",
-      "contact": "I want to contact Yazan"
-    },
     "typing": {
       "status": "Reem is typing...",
       "thinking": "Thinking",
