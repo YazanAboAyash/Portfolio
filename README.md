@@ -13,7 +13,7 @@ Modern, secure, high‑performance developer portfolio built with Next.js 16, Ty
 **Stack:**
 Next.js 16.2 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui 
 Embla Carousel · Framer Motion 12.x · next-intl 4.11 · Prisma ORM 7.8 
-Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · ESLint 9.x · Playwright + axe-core · Vercel
+Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · MCP TypeScript SDK 2 · ESLint 9.x · Playwright + axe-core · Vercel
 
 </div>
 
@@ -35,10 +35,9 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · ESLint 9.x · Playwright + axe-
 12. Security & Hardening
 13. GitHub Actions & Automation
 14. Privacy & Data Handling
-15. Development (Local Setup)
-16. License & Intellectual Property
-17. Contact
-18. Special Thanks
+15. License & Intellectual Property
+16. Contact
+17. Special Thanks
 
 ---
 
@@ -46,21 +45,28 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · ESLint 9.x · Playwright + axe-
 
 This portfolio serves as a professional showcase of engineering capability: performant UI, secure API integrations (GitHub, PageSpeed), accessibility‑focused design, production‑grade hardening, and multi‑language + deep structured SEO implementation.
 
-Beyond the portfolio surface, the project now hosts a small suite of **interactive live tools** (ROI calculator, automation audit) and a service/package offering — each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
+Beyond the portfolio surface, the project now hosts a small suite of **interactive live tools** (ROI calculator, automation audit), a **GitHub MCP server** behind a live in‑browser session console, and a service/package offering — each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
 
 ---
 
 ## 2. Recent Releases
 
-Condensed summary of what shipped since the previous README revision (v6.0.8).
+Condensed summary of what shipped since the last tagged GitHub release (v6.0.13 — SEIJAKU).
 
-**v6.1.1 — Navigation & motion polish**
+**v6.1.9 — GitHub MCP server & showcase rebuild**
+A read‑only GitHub MCP server in TypeScript, replacing the old Python prototype; the GitHub showcase rebuilt on a single GraphQL service with a real in‑browser MCP session console; About page rebuilt; commercial details on projects and products; service categories and Reem's knowledge refreshed.
 
-**v6.1.0 — Unified visual system**
+**v6.1.6 – v6.1.8 — Products, collaboration & chatbot visuals**
+Products (Princeps, LogiX) and Collaboration showcases on the home page; GitHub Foundations and Copilot certifications; Blobatar avatars, a `thinking-orbs` typing indicator and a shared `LoadingOrb`; cookie banner and contact layout tidy‑up.
 
-@latest release — v6.0.13 — SEIJAKU | **Privacy, compliance & maintenance**
+**v6.1.4 – v6.1.5 — SEO depth & scope trim**
+`ProfessionalService` JSON‑LD with service areas; richer metadata for About, Services, blog and media pages; the Polite Email Generator live tool and `/api/email-rewrite` retired.
 
-**v6.0.9 – v6.0.12 — Live tools, a11y testing & error handling**
+**v6.1.2 – v6.1.3 — Chatbot on the Vercel AI SDK**
+Reem migrated to AI SDK 7 with SSE streaming and browser‑held history; followed by a security and reliability hardening pass.
+
+**v6.1.0 – v6.1.1 — Unified visual system & navigation**
+Scroll‑reveal animations, one card design language, `ScrambleText` headings and the localized `SectionRail`.
 
 ---
 
@@ -78,6 +84,7 @@ Core:
 * Zod 4.x (runtime schema validation)
 * Prisma ORM 7.8 + Neon serverless PostgreSQL
 * Vercel AI SDK 7 (`ai` 7.0.47, `@ai-sdk/openai` 4.0.27, `@ai-sdk/react` 4.0.50) — streaming chatbot transport
+* MCP TypeScript SDK 2 (`@modelcontextprotocol/server` + `@modelcontextprotocol/client` 2.1) — GitHub MCP server and in‑browser client
 * Vercel Hosting & Edge Network
 
 Development & Quality:
@@ -108,7 +115,8 @@ User Experience & UI:
 Content & Data:
 
 * Dynamic project, technology, service package and certification data modules
-* Real‑time GitHub repository & profile fetch (sanitized & cached)
+* GitHub showcase: profile, stats, language breakdown and pinned repos from one cached GraphQL query, plus a "Live MCP session" drawer driven by a real MCP client
+* Products (Princeps, LogiX) and Collaboration showcases on the home page
 * Google PageSpeed Insights integration for performance transparency
 * Blog system with dynamic content management, filtering and per‑slug routes
 * CRUD admin dashboard for blog management and chatbot log review
@@ -118,7 +126,7 @@ Content & Data:
 
 ## 5. AI Integrations
 
-Three AI‑backed surfaces, each isolated behind its own validated, rate‑limited API route:
+Two AI‑backed surfaces, each isolated behind its own validated, rate‑limited API route:
 
 | Surface              | Route                        | Provider                   | Notes                                                     |
 | --- | --- | --- | --- |
@@ -178,7 +186,7 @@ Advanced multi‑locale SEO system delivering consistent structured metadata:
 
 * Config‑driven locale specific SEO objects
 * Open Graph & Twitter card variants per locale (images, titles, descriptions)
-* JSON-LD generation for Person + BreadcrumbList
+* JSON-LD generation for Person, BreadcrumbList, BlogPosting and a `ProfessionalService` entry with address, geo coordinates and served cities (local SEO)
 * Canonical + alternate `hreflang` tags
 * Keyword curation & skill taxonomy powering `knowsAbout`
 * Dynamic sitemap.xml generation with automatic locale & page discovery
@@ -206,13 +214,13 @@ Focus Areas:
 High‑level structure:
 
 * `app/` — Next.js routing (App Router, route groups: `(legals)`, `(live-tools)`, `(media)`, plus `admin` and `api`)
-* `components/` — Domain + UI abstraction layers (hero, github, projects, services, live-tools, nav, visuals, ui primitives)
-* `data/` — Structured static metadata (projects, certifications, tech, services, use-cases, live-tool configs)
-* `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, Prisma client)
-* `hooks/` — Custom React hooks (language, mobile detection, chatbot, client gating)
+* `components/` — Domain + UI abstraction layers (hero, about, github, projects, products, collaboration, services, live-tools, nav, visuals, ui primitives)
+* `data/` — Structured static metadata (projects, products, certifications, services, use-cases, live-tool and MCP configs)
+* `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, Prisma client, `github/` data service, `mcp/` server definition)
+* `hooks/` — Custom React hooks (language, mobile detection, chatbot, GitHub MCP session, client gating)
 * `i18n/` — next-intl request/runtime configuration
 * `messages/` — Locale message bundles (en, de, es, fr, sv)
-* `prisma/` — Schema, migrations and seed (Blog, BlogCategory, BlogTag, BlogCredit, ChatSession, ChatMessage)
+* `prisma/` — Schema and migrations (Blog, BlogCategory, BlogTag, BlogTagRelation, BlogCredit, ChatSession, ChatMessage)
 * `tests/e2e/` — Playwright suites (accessibility, locale, public pages, live tools)
 * `types/` — Shared type surfaces mirrored per domain
 * `proxy.ts` — Next.js 16 middleware: locale detection, legacy redirects, admin session verification
@@ -242,9 +250,11 @@ Comprehensive API endpoints with security-first design:
 | `/api/chatbot`                  | Interactive AI chatbot (Reem) for visitor queries  | Vercel AI SDK 7, SSE streamed              |
 | `/api/automation-audit`         | Scored automation audit generation                 | OpenAI Chat Completions + audit rate limit |
 | `/api/admin/blog`               | Administrative blog CRUD                           | HMAC session + rate limited               |
-| `/api/admin/chatbot/logs`       | Consent‑gated chat log review                      | HMAC session + rate limited               |
+| `/api/admin/chatbot/logs`       | Consent‑gated chat log review                      | Admin‑authenticated + rate limited        |
 
 Every route is Zod‑validated and returns standardized error envelopes with no internal leakage; abuse and transport controls are covered in §12.
+
+**GitHub MCP server:** a read‑only [Model Context Protocol](https://modelcontextprotocol.io) server that powers the homepage's "Live MCP session" drawer — a genuine protocol exchange rather than a scripted animation.
 
 ---
 
@@ -255,7 +265,7 @@ Last internal assessment: 2026‑07 (v6.0.13 maintenance pass) — no known unre
 Implemented Layers:
 
 1. **Transport & Headers**: HSTS, CSP, X-Content-Type-Options, X-Frame-Options (deny), Referrer-Policy, Permissions-Policy.
-2. **Abuse Mitigation**: per‑IP windowed rate limiting on all AI, admin and live‑tool endpoints; spam heuristics and input sanitation on chat input; session message caps.
+2. **Abuse Mitigation**: per‑IP windowed rate limiting on all AI, admin, MCP and live‑tool endpoints; spam heuristics and input sanitation on chat input; request body size caps; session message caps.
 3. **Admin Authentication**: HMAC‑SHA256 signed, expiring stateless session cookies verified in `proxy.ts` with `timingSafeEqual`; rate limiting and explicit IP resolution on admin requests.
 4. **Dependency Hygiene**: routine `npm audit`, plus explicit `overrides` pinning security‑relevant transitives (postcss, sharp, minimatch, brace-expansion, lodash).
 5. **Automated Scanning**: CodeQL static analysis and dependency review run in CI — see §13.
@@ -291,12 +301,12 @@ Security Posture Snapshot:
 
 **End-to-End & Accessibility Testing:**
 
-* Playwright suites (`npm run test:e2e`) covering public pages, locale behaviour and live tools
+* Playwright suites covering public pages, locale behaviour and live tools
 * `@axe-core/playwright` assertions catching accessibility regressions on key routes
 
 **Documentation Generation:**
 
-* `npm run docs` runs TypeDoc across components, app, types, hooks, data, i18n, lib, messages and styles, publishing to the documentation site linked at the top of this file.
+* TypeDoc‑generated reference, published to the documentation site linked at the top of this file.
 
 > **Retired:** the Lighthouse CI workflow and `.lighthouserc.cjs` budgets (v6.0.10), along with the Vercel CRON job that refreshed PageSpeed data every 12 hours. Performance is now tracked through Vercel Speed Insights and `/api/speed-insight`, whose responses are cached at the edge and refreshed on demand.
 
@@ -315,33 +325,7 @@ Security Posture Snapshot:
 
 ---
 
-## 15. Development (Local Setup)
-
-Prerequisites: Node 20+ (LTS recommended), npm, and a PostgreSQL connection string (Neon recommended).
-
-Install & Run:
-
-```bash
-npm install          # runs prisma generate via postinstall
-cp .env.example .env # then fill in required values
-npm run db:push      # sync schema to your database
-npm run dev          # Turbopack dev server
-```
-
-Useful scripts:
-
-```bash
-npm run build        # production build
-npm run typecheck    # tsc --noEmit
-npm run lint         # eslint .
-npm run test:e2e     # Playwright suites (add :ui for interactive mode)
-npm run db:seed      # seed blog data
-npm run docs         # generate TypeDoc output
-```
-
----
-
-## 16. License & Intellectual Property
+## 15. License & Intellectual Property
 
 Copyright © 2026 ColdByDefault. All rights reserved.
 
@@ -357,7 +341,7 @@ Refer to `LICENSE` file for formal wording.
 
 ---
 
-## 17. Contact
+## 16. Contact
 Portfolio: https://www.coldbydefault.com
 
 Documentation: https://docs.coldbydefault.com/ 
@@ -367,7 +351,7 @@ _P.S. If you find any bugs, they're not bugs - they're undocumented features!_
 
 ---
 
-## 18. Special Thanks
+## 17. Special Thanks
 
 <div align="center">
 
