@@ -27,7 +27,7 @@ export default function Navbar() {
 
   // CSS classes for navigation links
   const lightLink = "text-gray-500 hover:text-gray-900";
-  const darkLink = "dark:text-gray-600 dark:hover:text-gray-200";
+  const darkLink = "dark:text-gray-400 dark:hover:text-gray-100";
 
   // Event handlers
   const handleMobileMenuToggle = () => setIsOpen(!isOpen);

@@ -367,7 +367,7 @@ export default function ServicesPage() {
                     <CTAButton
                       label={t("cta.button")}
                       size="lg"
-                      className="bg-sky-600 hover:bg-sky-700 text-white"
+                      className="bg-sky-700 hover:bg-sky-800 text-white"
                     />
                   </m.div>
                 </CardContent>

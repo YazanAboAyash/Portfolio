@@ -57,7 +57,9 @@ export function CookiesBanner() {
       className={cn(
         "fixed bottom-4 left-4 right-4 md:left-6 md:right-6 z-10",
         "animate-in slide-in-from-bottom-5 duration-500",
-        "max-w-md md:max-w-lg lg:max-w-xl ml-auto",
+        // Kept to a narrow corner card: the section titles are centred, and a
+        // wider banner sat on top of them until the visitor chose.
+        "sm:max-w-sm ml-auto",
       )}
     >
       <Card className="border-2 shadow-lg">
@@ -94,7 +96,7 @@ export function CookiesBanner() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <div className="flex flex-col sm:flex-row gap-2">
+                <div className="flex flex-wrap gap-2">
                   <Button onClick={accept} size="sm" className="flex-1 text-xs">
                     {t("acceptAll")}
                   </Button>

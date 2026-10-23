@@ -139,7 +139,15 @@ export default async function RootLayout({
           {JSON.stringify(localBusinessStructuredData)}
         </script>
       </head>
-      <body className={`${urbanist.variable} flex flex-col min-h-screen`}>
+      {/*
+        Browser extensions (e.g. ColorZilla's cz-shortcut-listen) write
+        attributes onto <body> before hydration. This only silences attribute
+        mismatches on <body> itself; its children are still checked.
+      */}
+      <body
+        className={`${urbanist.variable} flex flex-col min-h-screen`}
+        suppressHydrationWarning
+      >
         {/* Skip to main content for accessibility */}
         <Link
           href="#main-content"

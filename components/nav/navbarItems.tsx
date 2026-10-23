@@ -170,14 +170,14 @@ export function DesktopControls({ contactCTA }: DesktopControlsProps) {
         <CTAButton
           label={contactCTA.label}
           variant="default"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-700 hover:text-white hover:border-sky-700 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
         />
       </div>
       <div className="xl:hidden">
         <CTAButton
           label={contactCTA.label}
           variant="default"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1.5 h-auto cursor-pointer transition-colors duration-300"
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-700 hover:text-white hover:border-sky-700 text-xs px-3 py-1.5 h-auto cursor-pointer transition-colors duration-300"
         />
       </div>
     </div>
@@ -196,7 +196,7 @@ export function MobileControls({
           label={contactCTA.label}
           size="sm"
           variant="outline"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1 h-8 cursor-pointer transition-colors duration-300"
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-700 hover:text-white hover:border-sky-700 text-xs px-3 py-1 h-8 cursor-pointer transition-colors duration-300"
         />
       </div>
       <div className="sm:hidden">
@@ -205,7 +205,7 @@ export function MobileControls({
           size="sm"
           variant="outline"
           showIcon={false}
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-2 py-1 h-7 cursor-pointer transition-colors duration-300"
+          className="border-gray-300 dark:border-gray-600 hover:bg-sky-700 hover:text-white hover:border-sky-700 text-xs px-2 py-1 h-7 cursor-pointer transition-colors duration-300"
         />
       </div>
     </div>
@@ -272,7 +272,7 @@ export function MobileNavigation({
           <CTAButton
             label={contactCTA.label}
             variant="outline"
-            className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 py-3 cursor-pointer transition-colors duration-300"
+            className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-700 hover:text-white hover:border-sky-700 py-3 cursor-pointer transition-colors duration-300"
             onClick={onLinkClick}
           />
         </div>

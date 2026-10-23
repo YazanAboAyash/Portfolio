@@ -8,7 +8,7 @@
 
 import { m, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import type { ProjectsShowcaseProps } from "@/types/hubs/projects";
 import { productProjects, projects } from "@/data/hubs/projectsData";
@@ -34,14 +34,13 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
           animate={isInView ? { opacity: 1, y: 0 } : { y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <CardTitle
+          {/* This component is the whole /projects page, so its title is the page's h1. */}
+          <h1
             id="projects-heading"
-            className="text-3xl font-light sm:text-4xl text-center mb-8 text-black dark:text-white"
-            role="heading"
-            aria-level={2}
+            className="text-3xl font-light leading-none sm:text-4xl text-center mb-8 text-black dark:text-white"
           >
             {t("title")}
-          </CardTitle>
+          </h1>
         </m.div>
 
         {/* Projects Grid */}
