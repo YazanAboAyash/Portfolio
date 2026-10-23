@@ -10,10 +10,8 @@ import { useEffect, useState, useCallback, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Languages, Globe, X } from "lucide-react";
-
-/** Locales supported by the portfolio */
-const supportedLocales = ["en", "de", "es", "fr", "sv"] as const;
-type SupportedLocale = (typeof supportedLocales)[number];
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/data/configs/i18n";
+import type { SupportedLocale } from "@/types/configs/i18n";
 
 /** Language display names */
 const languageNames: Record<string, string> = {
@@ -23,9 +21,6 @@ const languageNames: Record<string, string> = {
   fr: "Français",
   sv: "Svenska",
 };
-
-/** Default locale when browser language is unsupported */
-const DEFAULT_LOCALE: SupportedLocale = "de";
 
 /** Delay before showing the toast after page is ready (ms) */
 const TOAST_DELAY = 3000;
@@ -45,7 +40,7 @@ function setCookie(name: string, value: string): void {
 }
 
 function isSupportedLocale(lang: string): lang is SupportedLocale {
-  return supportedLocales.includes(lang as SupportedLocale);
+  return SUPPORTED_LOCALES.includes(lang as SupportedLocale);
 }
 
 /**

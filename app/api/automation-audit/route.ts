@@ -13,7 +13,7 @@ import {
   AUDIT_QUESTION_CONTEXT,
   QUESTION_IDS,
 } from "@/data/live-tools/automation-audit";
-import { sanitizeErrorMessage } from "@/lib/security";
+import { getClientIP, sanitizeErrorMessage } from "@/lib/security";
 import type {
   AuditApiResponse,
   AuditResult,
@@ -50,13 +50,6 @@ interface OpenAIChatResponse {
     type?: string;
     code?: string;
   };
-}
-
-function getClientIP(request: NextRequest): string {
-  const cfConnectingIp = request.headers.get("cf-connecting-ip");
-  const realIp = request.headers.get("x-real-ip");
-  const forwarded = request.headers.get("x-forwarded-for");
-  return cfConnectingIp ?? realIp ?? forwarded?.split(",")[0] ?? "127.0.0.1";
 }
 
 function buildUserMessage(answers: AuditAnswers): string {
@@ -139,6 +132,23 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     );
   }
 
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
+  }
+
+  const parsed = auditRequestSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: "Invalid request data.", details: parsed.error.flatten() },
+      { status: 400 },
+    );
+  }
+
+  // Validated first so a malformed request never consumes a daily audit.
+  // Callers without a trusted `x-forwarded-for` share the "unknown" bucket.
   const clientIP = getClientIP(request);
   const { allowed, remaining } = checkAuditRateLimit(clientIP);
 
@@ -152,21 +162,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         status: 429,
         headers: { "X-RateLimit-Remaining": "0", "Retry-After": "86400" },
       },
-    );
-  }
-
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
-  }
-
-  const parsed = auditRequestSchema.safeParse(body);
-  if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Invalid request data.", details: parsed.error.flatten() },
-      { status: 400 },
     );
   }
 

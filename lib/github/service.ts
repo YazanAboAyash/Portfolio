@@ -28,6 +28,8 @@ import type {
 
 const API_BASE = "https://api.github.com";
 const CACHE_TTL_MS = 10 * 60 * 1000;
+/** After a failed refresh, no upstream call is made for this long. */
+const FAILURE_COOLDOWN_MS = 2 * 60 * 1000;
 const REPO_CARD_LIMIT = 6;
 /** Largest page the events API serves; tools slice it down per call. */
 const EVENTS_PAGE_SIZE = 30;
@@ -106,6 +108,8 @@ interface CacheEntry<T> {
 interface CacheSlot<T> {
   entry: CacheEntry<T> | null;
   pending: Promise<CacheEntry<T>> | null;
+  /** Last failed refresh; while it is recent, callers get stale data or this error. */
+  failure: { at: number; error: unknown } | null;
 }
 
 function toMeta(
@@ -131,6 +135,15 @@ async function readThrough<T>(
     return { data: cached.value, meta: toMeta(cached, "cache", false) };
   }
 
+  // Back off after a failure so a rate-limited token is not hit on every request.
+  const failure = slot.failure;
+  if (failure && Date.now() - failure.at < FAILURE_COOLDOWN_MS) {
+    if (cached) {
+      return { data: cached.value, meta: toMeta(cached, "cache", true) };
+    }
+    throw failure.error;
+  }
+
   // Concurrent callers share one upstream request.
   slot.pending ??= load().finally(() => {
     slot.pending = null;
@@ -139,8 +152,10 @@ async function readThrough<T>(
   try {
     const entry = await slot.pending;
     slot.entry = entry;
+    slot.failure = null;
     return { data: entry.value, meta: toMeta(entry, "github", false) };
   } catch (error) {
+    slot.failure = { at: Date.now(), error };
     if (cached) {
       return { data: cached.value, meta: toMeta(cached, "cache", true) };
     }
@@ -148,10 +163,15 @@ async function readThrough<T>(
   }
 }
 
-const overviewSlot: CacheSlot<GitHubOverview> = { entry: null, pending: null };
+const overviewSlot: CacheSlot<GitHubOverview> = {
+  entry: null,
+  pending: null,
+  failure: null,
+};
 const activitySlot: CacheSlot<GitHubActivity[]> = {
   entry: null,
   pending: null,
+  failure: null,
 };
 
 // ---------------------------------------------------------------------------

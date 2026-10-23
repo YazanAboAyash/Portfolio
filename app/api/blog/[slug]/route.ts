@@ -8,11 +8,14 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getBlogBySlug } from "@/lib/hubs/blogs";
-import { RateLimiter } from "@/lib/security";
+import { getClientIP, RateLimiter } from "@/lib/security";
 import { generateBlogSEO } from "@/lib/configs/seo";
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/data/configs/i18n";
 
 // Rate limiter for blog slug endpoint
 const rateLimiter = new RateLimiter(60000, 30); // 30 requests per minute
+
+const localeSchema = z.enum(SUPPORTED_LOCALES);
 
 // Zod schema for blog slug validation
 const blogSlugSchema = z.object({
@@ -30,10 +33,9 @@ export async function GET(
 ) {
   try {
     // Rate limiting check
-    const clientIP =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
+    // getClientIP ignores spoofable fallback headers such as x-real-ip;
+    // requests without a usable IP share the single "unknown" bucket.
+    const clientIP = getClientIP(request);
     if (!rateLimiter.isAllowed(clientIP)) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },
@@ -81,10 +83,36 @@ export async function GET(
       );
     }
 
-    // Generate SEO metadata for the blog
-    const locale = request.headers.get("accept-language")?.includes("de")
-      ? "de"
-      : "en";
+    // SEO locale: an explicit ?locale= is preferred because it is part of the
+    // URL and therefore the cache key. Without it, fall back to the primary
+    // Accept-Language subtag and mark the response as varying on that header.
+    const localeParam = request.nextUrl.searchParams.get("locale");
+    let locale: string;
+    if (localeParam !== null) {
+      const localeResult = localeSchema.safeParse(localeParam);
+      if (!localeResult.success) {
+        return NextResponse.json(
+          { error: "Unsupported locale" },
+          {
+            status: 400,
+            headers: {
+              "X-Content-Type-Options": "nosniff",
+            },
+          },
+        );
+      }
+      locale = localeResult.data;
+    } else {
+      const primaryLanguage = request.headers
+        .get("accept-language")
+        ?.split(",")[0]
+        ?.split(";")[0]
+        ?.split("-")[0]
+        ?.trim()
+        .toLowerCase();
+      const headerResult = localeSchema.safeParse(primaryLanguage);
+      locale = headerResult.success ? headerResult.data : DEFAULT_LOCALE;
+    }
 
     let seoData;
     try {
@@ -103,6 +131,7 @@ export async function GET(
         headers: {
           "Cache-Control": "public, max-age=600, stale-while-revalidate=1200", // 10 min cache, 20 min stale
           "X-Content-Type-Options": "nosniff",
+          ...(localeParam === null && { Vary: "Accept-Language" }),
         },
       },
     );

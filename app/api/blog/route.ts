@@ -33,9 +33,16 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
 
-    // Very simple parameter parsing
-    const page = parseInt(searchParams.get("page") || "1", 10) || 1;
-    const limit = parseInt(searchParams.get("limit") || "12", 10) || 12;
+    // Clamp pagination: page >= 1, limit 1..50 (matches the admin cap).
+    // Non-numeric or zero values fall back to the defaults.
+    const page = Math.max(
+      1,
+      parseInt(searchParams.get("page") || "1", 10) || 1,
+    );
+    const limit = Math.min(
+      50,
+      Math.max(1, parseInt(searchParams.get("limit") || "12", 10) || 12),
+    );
     const search = searchParams.get("search") || undefined;
     const featured = searchParams.get("featured") === "true" || undefined;
     const language = searchParams.get("language") || undefined;

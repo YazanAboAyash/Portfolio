@@ -254,11 +254,12 @@ export async function GET(
       }
 
       case "list": {
-        const page = parseInt(searchParams.get("page") || "1", 10);
-        const limit = Math.min(
-          parseInt(searchParams.get("limit") || "20", 10),
-          50,
-        );
+        const parsedPage = parseInt(searchParams.get("page") || "1", 10);
+        const parsedLimit = parseInt(searchParams.get("limit") || "20", 10);
+        const page = Number.isNaN(parsedPage) ? 1 : Math.max(parsedPage, 1);
+        const limit = Number.isNaN(parsedLimit)
+          ? 20
+          : Math.min(Math.max(parsedLimit, 1), 50);
         const search = searchParams.get("search") || undefined;
         const language = searchParams.get("language") || undefined;
         const published =

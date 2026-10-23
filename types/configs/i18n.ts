@@ -4,6 +4,10 @@
  * @version 6.x.x
  */
 
+import type { SUPPORTED_LOCALES } from "@/data/configs/i18n";
+
+export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
+
 export interface SkillItem {
   id: string;
   name: string;

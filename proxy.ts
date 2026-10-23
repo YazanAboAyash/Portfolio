@@ -7,9 +7,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createHmac, timingSafeEqual } from "crypto";
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/data/configs/i18n";
 
-// Supported locales
-const supportedLocales = ["en", "de", "es", "fr", "sv"];
+const supportedLocales: readonly string[] = SUPPORTED_LOCALES;
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 const SESSION_DURATION = 8 * 60 * 60 * 1000; // 8 hours
@@ -89,10 +89,10 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
 
   if (!acceptLanguage) {
     // No Accept-Language header (privacy mode / stripped by browser)
-    // Fallback to default "de". Client-side LocaleAutoDetect component
+    // Fallback to the default locale. Client-side LocaleAutoDetect component
     // will correct this using navigator.language if needed.
     const response = NextResponse.next();
-    response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", "de", {
+    response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", DEFAULT_LOCALE, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365, // 1 year
       sameSite: "lax",
@@ -121,8 +121,8 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
     .sort((a, b) => b.quality - a.quality);
 
   // Find the best matching supported locale
-  let detectedLocale = "de"; // default
-  let browserLang = "de";
+  let detectedLocale: string = DEFAULT_LOCALE;
+  let browserLang: string = DEFAULT_LOCALE;
 
   for (const lang of languages) {
     const langCode = lang.code.split("-")[0]; // Extract main language code
