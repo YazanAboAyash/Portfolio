@@ -4,7 +4,7 @@
     "claude-code-setup@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "claude-security@claude-plugins-official": true,
+    "claude-security@claude-plugins-official": false,
     "claude-md-management@claude-plugins-official": true,
     "mcp-server-dev@claude-plugins-official": true
   },
