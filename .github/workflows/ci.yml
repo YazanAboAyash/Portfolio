@@ -1,0 +1,34 @@
+# Lint, typecheck and i18n key parity on every PR and push to main.
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    env:
+      # prisma.config.ts requires DATABASE_URL; `prisma generate` (postinstall) never connects.
+      DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run i18n:check
+      - run: npm run lint
+      # next-env.d.ts and route types are gitignored; generate them before tsc.
+      - run: npx next typegen
+      - run: npm run typecheck

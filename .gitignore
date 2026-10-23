@@ -47,4 +47,4 @@ portfolio.check.instructions.md
 desktop.ini
 TODO.md
 CLAUDE.md
-.claude
+.claude/settings.local.json

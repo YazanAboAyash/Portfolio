@@ -34,10 +34,9 @@ npm run typecheck    # tsc --noEmit
 npm run test:e2e     # playwright test (test:e2e:ui for the runner UI)
 npm run db:push      # prisma db push
 npm run db:migrate   # prisma migrate deploy
-npm run db:seed      # tsx prisma/seed.ts
 ```
 
-> `npm run test`, `npm run analyze`, `npm run type-check` do **not** exist.
+> `npm run test`, `npm run analyze`, `npm run type-check`, `npm run db:seed` do **not** exist.
 
 ## Folder Conventions
 

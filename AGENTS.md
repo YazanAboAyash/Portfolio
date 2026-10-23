@@ -102,11 +102,10 @@ npm run typecheck     # tsc --noEmit
 npm run test:e2e      # playwright test (test:e2e:ui for the runner UI)
 npm run db:push       # prisma db push
 npm run db:migrate    # prisma migrate deploy
-npm run db:seed       # tsx prisma/seed.ts
 npm run db:generate   # prisma generate
 ```
 
-**These do NOT exist:** `npm run test`, `npm run analyze`, `npm run type-check`
+**These do NOT exist:** `npm run test`, `npm run analyze`, `npm run type-check`, `npm run db:seed` (`prisma.config.ts` names `prisma/seed.ts`, but that file does not exist)
 
 ---
 
