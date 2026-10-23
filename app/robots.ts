@@ -8,6 +8,14 @@ import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = "https://www.coldbydefault.com";
+  // Named bots skip the "*" group entirely, so each one repeats this list
+  const disallow = [
+    "/admin/",
+    "/api/",
+    "/admin/blog",
+    "/admin/chatbot",
+    "/private/",
+  ];
 
   return {
     rules: [
@@ -25,33 +33,32 @@ export default function robots(): MetadataRoute.Robots {
           "/privacy",
           "/impressum",
         ],
-        disallow: [
-          "/admin/",
-          "/api/",
-          "/admin/blog",
-          "/admin/chatbot",
-          "/private/",
-        ],
+        disallow,
       },
       {
         userAgent: "Googlebot",
         allow: "/",
+        disallow,
       },
       {
         userAgent: "Bingbot",
         allow: "/",
+        disallow,
       },
       {
         userAgent: "facebookexternalhit",
         allow: "/",
+        disallow,
       },
       {
         userAgent: "Twitterbot",
         allow: "/",
+        disallow,
       },
       {
         userAgent: "LinkedInBot",
         allow: "/",
+        disallow,
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
