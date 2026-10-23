@@ -16,7 +16,7 @@ Unless told otherwise, review `git diff main...HEAD` plus uncommitted changes (`
 2. **i18n keys**: every key used via `t("...")` in changed code exists in `messages/en.json`, and all of `messages/{de,es,fr,sv}.json` have the same keys (run `node scripts/check-i18n-keys.mjs`).
 3. **File placement**: types belong in `types/`, hooks in `hooks/`, static data in `data/`, never inside `components/<Feature>/`.
 4. **Barrels**: every `components/<Feature>/` has an `index.ts` (`live-tools/` has one per tool; `theme/` is a known exception).
-5. **JSDoc header** on new source files: `@author © ColdByDefault`, `@license`, `@version 6.x.x`.
+5. **JSDoc header** on new source files: `@author © ColdByDefault`, `@license`, `@version 7.x.x`.
 6. **No leaf `loading.tsx`**: only `app/loading.tsx` and the group-level ones under `(legals)`, `(live-tools)`, `(media)`, `admin`.
 7. **Prisma**: no `$queryRaw`/`$executeRaw` with string interpolation or `Unsafe` variants; DB access goes through `lib/configs/prisma.ts`.
 8. **No `any`** (use `unknown`), **no NextAuth**, **no `middleware.ts`** (request hook is `proxy.ts`), **no edits under `components/ui/`**.
