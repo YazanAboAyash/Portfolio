@@ -127,7 +127,7 @@ export function createGitHubMcpServer(): McpServer {
     { name: mcpConfig.serverName, version: getPortfolioVersion() },
     {
       instructions:
-        "Read-only access to the public GitHub profile of the owner of coldbydefault.com: profile, statistics, language breakdown, pinned repositories and recent public activity. Results may be served from a cache of up to ten minutes; each result's _meta says whether it came live from GitHub or from cache.",
+        "Read-only access to the public GitHub profile of the owner of coldbydefault.com: profile, statistics, pinned repositories and recent public activity. Results may be served from a cache of up to ten minutes; each result's _meta says whether it came live from GitHub or from cache.",
     },
   );
 
@@ -153,20 +153,6 @@ export function createGitHubMcpServer(): McpServer {
       annotations: readOnly,
     },
     () => fromOverview((o) => ({ ...o.stats })),
-  );
-
-  server.registerTool(
-    "get_languages",
-    {
-      title: "Language breakdown",
-      description:
-        "Languages across owned public, non-fork repositories. Each repository counts equally and is split by its own byte ratio; share is a fraction between 0 and 1.",
-      outputSchema: z.object({
-        languages: z.array(languageSchema.extend({ share: z.number() })),
-      }),
-      annotations: readOnly,
-    },
-    () => fromOverview((o) => ({ languages: o.languages })),
   );
 
   server.registerTool(

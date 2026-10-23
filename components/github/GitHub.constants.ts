@@ -11,9 +11,6 @@
 
 export const GITHUB_LOCALE = "en-US";
 
-/** Languages shown individually before the rest collapse into "Other". */
-export const LANGUAGE_BAR_LIMIT = 6;
-
 export const githubCopy = {
   title: "GitHub Activity",
   loading: "Loading GitHub data…",
@@ -36,11 +33,6 @@ export const githubCopy = {
     followers: "Followers",
     forks: "Forks",
     contributions: "Contributions, last year",
-  },
-  languages: {
-    title: "Languages",
-    subtitle: "Share of an average public repository",
-    other: "Other",
   },
   repositories: {
     pinned: "Pinned repositories",

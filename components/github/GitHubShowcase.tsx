@@ -14,7 +14,6 @@ import { FaGithub } from "react-icons/fa";
 import { ScrambleText } from "@/components/visuals";
 import type { GitHubSnapshot } from "@/types/configs/github";
 import GitHubProfile from "./GitHubProfile";
-import GitHubLanguages from "./GitHubLanguages";
 import GitHubRepositories from "./GitHubRepositories";
 import GitHubMcpConsole from "./GitHubMcpConsole";
 import { githubCopy } from "./GitHub.constants";
@@ -117,9 +116,8 @@ export default function GitHubShowcase({ className }: { className?: string }) {
         <GitHubMcpConsole />
       </div>
 
-      <div className="w-full space-y-4">
+      <div className="w-full">
         <GitHubProfile profile={overview.profile} stats={overview.stats} />
-        <GitHubLanguages languages={overview.languages} />
       </div>
 
       <GitHubRepositories repositories={overview.repositories} />

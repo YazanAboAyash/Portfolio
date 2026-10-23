@@ -115,7 +115,7 @@ User Experience & UI:
 Content & Data:
 
 * Dynamic project, technology, service package and certification data modules
-* GitHub showcase: profile, stats, language breakdown and pinned repos from one cached GraphQL query, plus a "Live MCP session" drawer driven by a real MCP client
+* GitHub showcase: profile, stats and pinned repos from one cached GraphQL query, plus a "Live MCP session" drawer driven by a real MCP client
 * Products (Princeps, LogiX) and Collaboration showcases on the home page
 * Google PageSpeed Insights integration for performance transparency
 * Blog system with dynamic content management, filtering and per‑slug routes
@@ -244,8 +244,8 @@ Comprehensive API endpoints with security-first design:
 | `/api/about`                    | Returns profile / about metadata                   | Static + typed                            |
 | `/api/blog`                     | Blog listing and management                        | Prisma + Zod                              |
 | `/api/blog/[slug]`              | Single post retrieval + read-count increment       | Optimized increment path                  |
-| `/api/github`                   | GitHub profile, stats, languages, pinned repos           | GraphQL, token required, public data only        |
-| `/api/mcp`                      | Public GitHub MCP server (5 read-only tools)        | Streamable HTTP, MCP 2026-07-28 + 2025 fallback, rate limited |
+| `/api/github`                   | GitHub profile, stats, pinned repos                      | GraphQL, token required, public data only        |
+| `/api/mcp`                      | Public GitHub MCP server (4 read-only tools)        | Streamable HTTP, MCP 2026-07-28 + 2025 fallback, rate limited |
 | `/api/speed-insight`            | Surfaces PageSpeed metrics                         | 1h revalidate, `stale-while-revalidate`   |
 | `/api/chatbot`                  | Interactive AI chatbot (Reem) for visitor queries  | Vercel AI SDK 7, SSE streamed              |
 | `/api/automation-audit`         | Scored automation audit generation                 | OpenAI Chat Completions + audit rate limit |

@@ -36,11 +36,6 @@ export interface GitHubStats {
   contributionsLastYear: number;
 }
 
-export interface GitHubLanguageShare extends GitHubLanguage {
-  /** Fraction (0–1) of the average public, non-fork repository. */
-  share: number;
-}
-
 export interface GitHubRepo {
   name: string;
   description: string | null;
@@ -64,7 +59,6 @@ export interface GitHubRepoList {
 export interface GitHubOverview {
   profile: GitHubProfile;
   stats: GitHubStats;
-  languages: GitHubLanguageShare[];
   repositories: GitHubRepoList;
 }
 
@@ -142,10 +136,6 @@ export interface GitHubProfileProps {
   stats: GitHubStats;
 }
 
-export interface GitHubLanguagesProps {
-  languages: GitHubLanguageShare[];
-}
-
 export interface GitHubRepositoriesProps {
   repositories: GitHubRepoList;
 }
@@ -166,9 +156,6 @@ export interface GitHubGraphQLRepoNode {
   pushedAt: string | null;
   primaryLanguage: GitHubLanguage | null;
   repositoryTopics: { nodes: Array<{ topic: { name: string } }> };
-  languages: {
-    edges: Array<{ size: number; node: GitHubLanguage }>;
-  };
 }
 
 export interface GitHubGraphQLOverviewResponse {

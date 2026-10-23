@@ -11,7 +11,6 @@ import type {
   GitHubFetchResult,
   GitHubGraphQLOverviewResponse,
   GitHubGraphQLRepoNode,
-  GitHubLanguageShare,
   GitHubOverview,
   GitHubRepo,
   GitHubRestEvent,
@@ -172,9 +171,6 @@ fragment RepoCard on Repository {
   pushedAt
   primaryLanguage { name color }
   repositoryTopics(first: 5) { nodes { topic { name } } }
-  languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
-    edges { size node { name color } }
-  }
 }
 
 query Overview($login: String!, $pinned: Int!) {
@@ -223,38 +219,6 @@ function toRepoCard(node: GitHubGraphQLRepoNode): GitHubRepo {
     language: node.primaryLanguage,
     topics: node.repositoryTopics.nodes.map((n) => n.topic.name),
   };
-}
-
-/**
- * Each repository contributes equally, split by its own byte ratio. Summing raw
- * bytes instead lets one repo with generated HTML or vendored code drown out
- * everything else.
- */
-function computeLanguageShares(
-  repos: GitHubGraphQLRepoNode[],
-): GitHubLanguageShare[] {
-  const totals = new Map<string, GitHubLanguageShare>();
-  let counted = 0;
-
-  for (const repo of repos) {
-    if (repo.isFork) continue;
-    const repoBytes = repo.languages.edges.reduce((sum, e) => sum + e.size, 0);
-    if (repoBytes === 0) continue;
-    counted++;
-
-    for (const { size, node } of repo.languages.edges) {
-      const current = totals.get(node.name);
-      totals.set(node.name, {
-        name: node.name,
-        color: node.color,
-        share: (current?.share ?? 0) + size / repoBytes,
-      });
-    }
-  }
-
-  return [...totals.values()]
-    .map((lang) => ({ ...lang, share: lang.share / counted }))
-    .sort((a, b) => b.share - a.share);
 }
 
 async function loadOverview(): Promise<CacheEntry<GitHubOverview>> {
@@ -319,7 +283,6 @@ async function loadOverview(): Promise<CacheEntry<GitHubOverview>> {
       contributionsLastYear:
         user.contributionsCollection.contributionCalendar.totalContributions,
     },
-    languages: computeLanguageShares(publicRepos),
     repositories: repoCards,
   };
 
