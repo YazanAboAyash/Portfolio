@@ -100,26 +100,26 @@
   },
   "Capabilities": {
     "title": "What I Deliver",
-    "subtitle": "Practical tech that solves actual business problems.",
+    "subtitle": "Production software, from first commit to running in front of real users.",
+    "ai": {
+      "title": "AI in Production",
+      "headline": "LLM features that hold up beyond the demo",
+      "description": "Retrieval that answers from the right sources, agents that use tools within defined permissions, and MCP servers that connect models to real systems — built into the product, not bolted on as a chat window."
+    },
     "launch": {
-      "title": "Launch",
-      "headline": "Start meaningful work in weeks",
-      "description": "I focus on the essentials to get a working product in your hands. Validate your concept quickly without waiting months."
+      "title": "Ship",
+      "headline": "Working software early, then iterate",
+      "description": "I cut a feature down to what matters, get it running end to end, and improve it from real use instead of polishing slides."
     },
     "scale": {
       "title": "Scale",
-      "headline": "Built on a solid foundation",
-      "description": "I use reliable cloud systems that stay fast and stable, even as you gain more customers. No need to rebuild just because you grow."
+      "headline": "Foundations that hold as usage grows",
+      "description": "Typed data models, clean API boundaries and managed infrastructure, so growth means tuning, not a rewrite."
     },
     "security": {
       "title": "Security",
-      "headline": "Data security done right",
-      "description": "Standard encryption and secure logins to keep your (and your clients') data safe and private."
-    },
-    "performance": {
-      "title": "Performance",
-      "headline": "Fast & Search-Ready",
-      "description": "Your site loads instantly and is structured so Google understands it. High speed means happier users and better visibility."
+      "headline": "Safe by default",
+      "description": "Validated input, proper auth, parameterised queries and least-privilege access — and for AI features, clear limits on what a model can see and do."
     }
   },
   "Certifications": {

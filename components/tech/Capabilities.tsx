@@ -16,35 +16,41 @@ import {
 import { cn } from "@/lib/utils";
 import { capabilities } from "@/data/main/capabilitiesData";
 import type { Capability } from "@/types/main/capabilities";
-import { Rocket, TrendingUp, Shield, Globe } from "lucide-react";
+import { BrainCircuit, Rocket, TrendingUp, Shield } from "lucide-react";
 import {
-  SiNextdotjs,
-  SiReact,
-  SiVercel,
+  SiAnthropic,
   SiDocker,
+  SiModelcontextprotocol,
+  SiNextdotjs,
+  SiOllama,
   SiPostgresql,
-  SiTypescript,
   SiPrisma,
+  SiReact,
+  SiTypescript,
+  SiVercel,
 } from "react-icons/si";
 import { useTranslations } from "next-intl";
 
 // Icon mapping for dynamic rendering (lucide icons)
 const iconMap: Record<string, React.ElementType> = {
+  BrainCircuit,
   Rocket,
   TrendingUp,
   Shield,
-  Globe,
 };
 
 // Tech icon mapping (react-icons/si)
 const techIconMap: Record<string, React.ElementType> = {
-  SiNextdotjs,
-  SiReact,
-  SiVercel,
+  SiAnthropic,
   SiDocker,
+  SiModelcontextprotocol,
+  SiNextdotjs,
+  SiOllama,
   SiPostgresql,
-  SiTypescript,
   SiPrisma,
+  SiReact,
+  SiTypescript,
+  SiVercel,
 };
 
 /**

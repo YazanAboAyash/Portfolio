@@ -99,27 +99,27 @@
     }
   },
   "Capabilities": {
-    "title": "Lo que ofrezco",
-    "subtitle": "Tecnología práctica que resuelve problemas reales de negocio.",
+    "title": "Lo que entrego",
+    "subtitle": "Software en producción, desde el primer commit hasta funcionar ante usuarios reales.",
+    "ai": {
+      "title": "IA en producción",
+      "headline": "Funciones con LLM que van más allá de la demo",
+      "description": "Recuperación que responde desde las fuentes correctas, agentes que usan herramientas con permisos definidos y servidores MCP que conectan los modelos con sistemas reales — integrado en el producto, no añadido como una ventana de chat."
+    },
     "launch": {
-      "title": "Lanzamiento",
-      "headline": "Resultados tangibles en pocas semanas",
-      "description": "Me centro en lo esencial para que tengas un producto funcional cuanto antes. Valida tu idea rápidamente sin esperar meses."
+      "title": "Entrega",
+      "headline": "Software funcional pronto, y luego iterar",
+      "description": "Reduzco una funcionalidad a lo esencial, la pongo a funcionar de principio a fin y la mejoro con el uso real en lugar de pulir presentaciones."
     },
     "scale": {
       "title": "Escalabilidad",
-      "headline": "Construido sobre una base sólida",
-      "description": "Uso sistemas en la nube fiables que se mantienen rápidos y estables aunque ganes más clientes. No hace falta reconstruir solo porque creces."
+      "headline": "Bases que aguantan cuando crece el uso",
+      "description": "Modelos de datos tipados, límites de API claros e infraestructura gestionada, para que crecer signifique ajustar, no reescribir."
     },
     "security": {
       "title": "Seguridad",
-      "headline": "Seguridad de datos bien hecha",
-      "description": "Cifrado estándar e inicios de sesión seguros para mantener tus datos (y los de tus clientes) protegidos y privados."
-    },
-    "performance": {
-      "title": "Rendimiento",
-      "headline": "Rápido y listo para buscadores",
-      "description": "Tu sitio carga al instante y está estructurado para que Google lo entienda. La velocidad significa usuarios más felices y mejor visibilidad."
+      "headline": "Seguro por defecto",
+      "description": "Entradas validadas, autenticación correcta, consultas parametrizadas y acceso con privilegios mínimos — y en funciones de IA, límites claros sobre lo que un modelo puede ver y hacer."
     }
   },
   "Certifications": {

@@ -99,27 +99,27 @@
     }
   },
   "Capabilities": {
-    "title": "Ce que je propose",
-    "subtitle": "Une technologie pratique qui résout de vrais problèmes commerciaux.",
+    "title": "Ce que je livre",
+    "subtitle": "Des logiciels en production, du premier commit jusqu'aux vrais utilisateurs.",
+    "ai": {
+      "title": "IA en production",
+      "headline": "Des fonctionnalités LLM qui tiennent au-delà de la démo",
+      "description": "Une recherche qui répond à partir des bonnes sources, des agents qui utilisent des outils avec des permissions définies, et des serveurs MCP qui relient les modèles à de vrais systèmes — intégrés au produit, pas greffés comme une fenêtre de chat."
+    },
     "launch": {
-      "title": "Lancement",
-      "headline": "Des résultats concrets en quelques semaines",
-      "description": "Je me concentre sur l'essentiel pour mettre un produit fonctionnel entre vos mains. Validez votre concept rapidement sans attendre des mois."
+      "title": "Livraison",
+      "headline": "Un logiciel fonctionnel tôt, puis itérer",
+      "description": "Je réduis une fonctionnalité à l'essentiel, je la fais tourner de bout en bout et je l'améliore à partir de l'usage réel plutôt que de peaufiner des slides."
     },
     "scale": {
       "title": "Évolution",
-      "headline": "Construit sur une base solide",
-      "description": "J'utilise des systèmes cloud fiables qui restent rapides et stables, même avec plus de clients. Pas besoin de tout reconstruire quand vous grandissez."
+      "headline": "Des fondations qui tiennent quand l'usage grandit",
+      "description": "Modèles de données typés, frontières d'API claires et infrastructure managée : grandir veut dire ajuster, pas réécrire."
     },
     "security": {
       "title": "Sécurité",
-      "headline": "La sécurité des données bien faite",
-      "description": "Chiffrement standard et connexions sécurisées pour garder vos données (et celles de vos clients) privées et en sécurité."
-    },
-    "performance": {
-      "title": "Performance",
-      "headline": "Rapide et optimisé pour la recherche",
-      "description": "Votre site charge instantanément et est structuré pour Google. Une grande vitesse signifie des utilisateurs plus heureux et une meilleure visibilité."
+      "headline": "Sûr par défaut",
+      "description": "Entrées validées, authentification solide, requêtes paramétrées et moindre privilège — et pour les fonctionnalités IA, des garde-fous sur ce qu'un modèle peut voir et faire."
     }
   },
   "Certifications": {

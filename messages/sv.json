@@ -100,26 +100,26 @@
   },
   "Capabilities": {
     "title": "Vad jag levererar",
-    "subtitle": "Praktisk teknik som löser verkliga affärsproblem.",
+    "subtitle": "Mjukvara i produktion – från första commit till drift hos riktiga användare.",
+    "ai": {
+      "title": "AI i produktion",
+      "headline": "LLM-funktioner som håller längre än demon",
+      "description": "Sökning som svarar utifrån rätt källor, agenter som använder verktyg med definierade behörigheter och MCP-servrar som kopplar modeller till riktiga system – inbyggt i produkten, inte påklistrat som ett chattfönster."
+    },
     "launch": {
-      "title": "Lansering",
-      "headline": "Nå resultat inom några veckor",
-      "description": "Jag fokuserar på det viktigaste för att du ska få en fungerande produkt snabbt. Validera din idé direkt utan att vänta i månader."
+      "title": "Leverans",
+      "headline": "Fungerande mjukvara tidigt, sedan iterera",
+      "description": "Jag skalar ner en funktion till det viktigaste, får den att fungera hela vägen och förbättrar den utifrån verklig användning i stället för att putsa på presentationer."
     },
     "scale": {
       "title": "Skalning",
-      "headline": "Byggt på en stabil grund",
-      "description": "Jag använder pålitliga molnsystem som förblir snabba och stabila även när du växer. Du behöver inte bygga om bara för att du får fler kunder."
+      "headline": "En grund som håller när användningen växer",
+      "description": "Typade datamodeller, tydliga API-gränser och hanterad infrastruktur, så att tillväxt betyder finjustering, inte omskrivning."
     },
     "security": {
       "title": "Säkerhet",
-      "headline": "Datasäkerhet på riktigt",
-      "description": "Standardkryptering och säkra inloggningar för att hålla din (och dina kunders) data säker och privat."
-    },
-    "performance": {
-      "title": "Prestanda",
-      "headline": "Snabb och sökmotorvänlig",
-      "description": "Din sida laddar direkt och är byggd så att Google förstår den. Hög hastighet innebär nöjdare användare och bättre synlighet."
+      "headline": "Säkert från början",
+      "description": "Validerad indata, korrekt autentisering, parametriserade frågor och minsta möjliga behörighet – och för AI-funktioner tydliga gränser för vad en modell får se och göra."
     }
   },
   "Certifications": {

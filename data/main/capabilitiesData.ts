@@ -7,11 +7,24 @@
 import type { Capability, CapabilitiesData } from "@/types/main/capabilities";
 
 /**
- * Capabilities with business outcome focus
+ * How I build, framed as outcomes
  * Translation keys map to Capabilities section in messages/*.json
  * Tech icons are subtle indicators (react-icons/si identifiers)
  */
 export const capabilities: readonly Capability[] = [
+  {
+    id: "ai",
+    icon: "BrainCircuit",
+    titleKey: "ai.title",
+    headlineKey: "ai.headline",
+    descriptionKey: "ai.description",
+    techIcons: [
+      "SiAnthropic",
+      "SiOllama",
+      "SiModelcontextprotocol",
+      "SiPostgresql",
+    ],
+  },
   {
     id: "launch",
     icon: "Rocket",
@@ -35,14 +48,6 @@ export const capabilities: readonly Capability[] = [
     headlineKey: "security.headline",
     descriptionKey: "security.description",
     techIcons: ["SiTypescript", "SiPrisma", "SiPostgresql"],
-  },
-  {
-    id: "performance",
-    icon: "Globe",
-    titleKey: "performance.title",
-    headlineKey: "performance.headline",
-    descriptionKey: "performance.description",
-    techIcons: ["SiNextdotjs", "SiReact", "SiVercel"],
   },
 ] as const;
 

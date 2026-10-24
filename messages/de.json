@@ -100,26 +100,26 @@
   },
   "Capabilities": {
     "title": "Was ich liefere",
-    "subtitle": "Praktische Technologie, die echte Geschäftsprobleme löst.",
+    "subtitle": "Produktive Software — vom ersten Commit bis zum Einsatz bei echten Nutzern.",
+    "ai": {
+      "title": "KI in Produktion",
+      "headline": "LLM-Features, die über die Demo hinaus tragen",
+      "description": "Retrieval, das aus den richtigen Quellen antwortet, Agenten, die Tools mit klar definierten Rechten nutzen, und MCP-Server, die Modelle mit echten Systemen verbinden — ins Produkt integriert, nicht als Chatfenster angehängt."
+    },
     "launch": {
-      "title": "Launch",
-      "headline": "Erste Ergebnisse in wenigen Wochen",
-      "description": "Ich konzentriere mich auf das Wesentliche, damit Sie schnell ein funktionierendes Produkt haben. Testen Sie Ihre Idee sofort, ohne monatelanges Warten."
+      "title": "Umsetzung",
+      "headline": "Früh lauffähig, dann iterieren",
+      "description": "Ich reduziere ein Feature auf das Wesentliche, bringe es durchgängig zum Laufen und verbessere es anhand echter Nutzung statt an Folien."
     },
     "scale": {
       "title": "Skalierung",
-      "headline": "Auf einem soliden Fundament gebaut",
-      "description": "Ich nutze zuverlässige Cloud-Systeme, die stabil bleiben, auch wenn Sie wachsen. Kein Neubau nötig, nur weil Sie mehr Kunden gewinnen."
+      "headline": "Ein Fundament, das mit der Nutzung mitwächst",
+      "description": "Typisierte Datenmodelle, klare API-Grenzen und verwaltete Infrastruktur — Wachstum heißt dann Feinschliff, nicht Neubau."
     },
     "security": {
       "title": "Sicherheit",
-      "headline": "Datensicherheit richtig gemacht",
-      "description": "Standardverschlüsselung und sichere Logins, um Ihre Daten (und die Ihrer Kunden) sicher und privat zu halten."
-    },
-    "performance": {
-      "title": "Performance",
-      "headline": "Schnell & bereit für Suchmaschinen",
-      "description": "Ihre Seite lädt sofort und ist so aufgebaut, dass Google sie versteht. Hohe Geschwindigkeit bedeutet zufriedenere Nutzer und bessere Sichtbarkeit."
+      "headline": "Sicher von Grund auf",
+      "description": "Validierte Eingaben, sauberes Auth, parametrisierte Abfragen und minimale Rechte — und bei KI-Features klare Grenzen dafür, was ein Modell sehen und tun darf."
     }
   },
   "Certifications": {
