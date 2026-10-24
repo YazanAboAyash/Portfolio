@@ -15,6 +15,8 @@ interface SectionHeadingProps {
   readonly id?: string;
   /** One supporting sentence under the title. */
   readonly lead?: ReactNode;
+  /** Keep the lead on phones too; by default it starts at `sm`. */
+  readonly leadOnMobile?: boolean;
   /** Sits at the far end of the heading row: a filter, a link, an action. */
   readonly aside?: ReactNode;
   readonly className?: string;
@@ -29,6 +31,7 @@ export function SectionHeading({
   title,
   id,
   lead,
+  leadOnMobile = false,
   aside,
   className,
 }: SectionHeadingProps) {
@@ -47,7 +50,12 @@ export function SectionHeading({
           <ScrambleText text={title} />
         </h2>
         {lead && (
-          <p className="text-base leading-relaxed text-foreground/80 sm:text-lg">
+          <p
+            className={cn(
+              "text-base leading-relaxed text-foreground/80 sm:text-lg",
+              !leadOnMobile && "hidden sm:block",
+            )}
+          >
             {lead}
           </p>
         )}
