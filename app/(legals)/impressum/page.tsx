@@ -5,14 +5,7 @@
  */
 
 import type { Metadata } from "next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import {
-  Shield,
-  User,
-  Phone,
-  FileEdit,
-} from "lucide-react";
+import { User, Phone, FileEdit } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { generateLegalPageSEO } from "@/lib/configs/seo";
 import Link from "next/link";
@@ -34,98 +27,76 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 const LAST_REVIEWED = "2026-10-24";
 
+/** One flat field per block, the v7 card. */
+const block = "bg-surface p-6 lg:p-8";
+const blockTitle =
+  "mb-5 flex items-center gap-3 text-xl font-semibold tracking-[-0.01em]";
+
 export default async function Impressum() {
   const t = await getTranslations("Impressum");
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-20 max-w-4xl">
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="text-center space-y-4">
-          <div className="flex justify-center">
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-              <Shield className="w-6 h-6 text-primary" />
-            </div>
-          </div>
-          <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="text-muted-foreground text-lg">{t("subtitle")}</p>
-        </div>
+    <div className="frame pt-4 pb-16 sm:pt-6 md:pt-10 md:pb-24">
+      {/* Header */}
+      <div className="mb-10 max-w-2xl space-y-3">
+        <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+          {t("title")}
+        </h1>
+        <p className="text-lg leading-relaxed text-foreground/80">
+          {t("subtitle")}
+        </p>
+      </div>
 
-        <Separator />
-
+      <div className="grid gap-2 md:grid-cols-2">
         {/* Contact Information - § 5 DDG */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <User className="w-5 h-5" />
-              {t("provider.title")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="bg-muted/50 p-4 rounded-lg">
-              <p className="text-sm font-medium">{t("provider.name")}</p>
-              <p className="text-sm text-muted-foreground mt-1">
-                {t("provider.address")}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {t("provider.city")}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {t("provider.country")}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+        <section className={block}>
+          <h2 className={blockTitle}>
+            <User className="h-5 w-5" aria-hidden="true" />
+            {t("provider.title")}
+          </h2>
+          <address className="space-y-1 not-italic">
+            <p className="font-medium">{t("provider.name")}</p>
+            <p className="text-foreground/80">{t("provider.address")}</p>
+            <p className="text-foreground/80">{t("provider.city")}</p>
+            <p className="text-foreground/80">{t("provider.country")}</p>
+          </address>
+        </section>
 
         {/* Contact */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Phone className="w-5 h-5" />
-              {t("contact.title")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">{t("contact.email")}</span>
-              <Link
-                href={`mailto:${t("contact.emailValue")}`}
-                className="text-sm text-primary hover:underline"
-              >
-                {t("contact.emailValue")}
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+        <section className={block}>
+          <h2 className={blockTitle}>
+            <Phone className="h-5 w-5" aria-hidden="true" />
+            {t("contact.title")}
+          </h2>
+          <p className="flex flex-wrap items-center gap-2">
+            <span className="font-medium">{t("contact.email")}</span>
+            <Link
+              href={`mailto:${t("contact.emailValue")}`}
+              className="font-semibold underline decoration-surface-2 decoration-2 underline-offset-[6px] transition-colors hover:decoration-foreground"
+            >
+              {t("contact.emailValue")}
+            </Link>
+          </p>
+        </section>
 
         {/* Editorial Responsibility (for Blog) */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileEdit className="w-5 h-5" />
-              {t("editorial.title")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="bg-muted/50 p-4 rounded-lg">
-              <p className="text-sm font-medium">{t("editorial.name")}</p>
-              <p className="text-sm text-muted-foreground mt-1">
-                {t("editorial.address")}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {t("editorial.city")}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Last Updated */}
-        <div className="text-center pt-6">
-          <p className="text-xs text-muted-foreground">
-            {t("lastUpdated")} {LAST_REVIEWED}
-          </p>
-        </div>
+        <section className={`${block} md:col-span-2`}>
+          <h2 className={blockTitle}>
+            <FileEdit className="h-5 w-5" aria-hidden="true" />
+            {t("editorial.title")}
+          </h2>
+          <address className="space-y-1 not-italic">
+            <p className="font-medium">{t("editorial.name")}</p>
+            <p className="text-foreground/80">{t("editorial.address")}</p>
+            <p className="text-foreground/80">{t("editorial.city")}</p>
+          </address>
+        </section>
       </div>
+
+      {/* Last Updated */}
+      <p className="mt-6 text-sm text-muted-foreground">
+        {t("lastUpdated")} {LAST_REVIEWED}
+      </p>
     </div>
   );
 }

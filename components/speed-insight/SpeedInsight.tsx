@@ -40,6 +40,13 @@ function getRingColor(score: number): string {
   return "stroke-red-500";
 }
 
+/** Map score to the strip's status bar; the number itself stays in full ink for contrast */
+function getBarColor(score: number): string {
+  if (score >= SCORE_THRESHOLDS.good) return "bg-green-500";
+  if (score >= SCORE_THRESHOLDS.average) return "bg-yellow-500";
+  return "bg-red-500";
+}
+
 /** Single score ring gauge */
 function ScoreRing({ category }: { category: SpeedInsightScore }) {
   const offset = getOffset(category.score);
@@ -123,7 +130,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
           <div
             className={cn(
               cardSurface,
-              "grid grid-cols-12 gap-x-6 gap-y-8 p-6 hover:bg-surface sm:p-8 lg:p-10",
+              "grid grid-cols-12 gap-x-6 gap-y-5 p-6 hover:bg-surface sm:p-8 md:gap-y-8 lg:p-10",
             )}
           >
             {/* Heading column */}
@@ -143,17 +150,18 @@ export default function SpeedInsight({ className }: { className?: string }) {
                   </span>
                 )}
               </div>
-              <p className="text-base leading-relaxed text-foreground">
+              {/* Phones keep the title, the Live dot and the scores only */}
+              <p className="hidden text-base leading-relaxed text-foreground md:block">
                 {t("subtitle")}
               </p>
 
               {/* Portfolio URL indicator */}
-              <p className="flex items-center gap-2 text-sm text-muted-foreground">
+              <p className="hidden items-center gap-2 text-sm text-muted-foreground md:flex">
                 <Globe className="h-4 w-4" aria-hidden="true" />
                 <span>{t("analyzingPortfolio")}</span>
               </p>
 
-              <div className="mt-auto flex flex-col gap-1 pt-2 text-sm text-muted-foreground">
+              <div className="mt-auto hidden flex-col gap-1 pt-2 text-sm text-muted-foreground md:flex">
                 <span className="flex items-center gap-2">
                   <SiGoogle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {t("poweredBy")}
@@ -186,9 +194,45 @@ export default function SpeedInsight({ className }: { className?: string }) {
                 </div>
               )}
 
+              {/* Phones: one strip of the mobile scores, no tabs, rings or refresh */}
+              {!error && (
+                <div className="flex flex-col gap-2 md:hidden">
+                  <p className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] text-foreground">
+                    <Smartphone className="h-3.5 w-3.5" aria-hidden="true" />
+                    {t("mobile")}
+                  </p>
+                  {loading ? (
+                    <StrategyLoading label={t("loading")} />
+                  ) : mobile ? (
+                    <div className="grid grid-cols-4 gap-0.5">
+                      {mobile.categories.map((cat) => (
+                        <div
+                          key={cat.label}
+                          className="flex flex-col items-center gap-1 bg-background px-1 py-3 text-center"
+                        >
+                          <span className="text-2xl font-bold tabular-nums">
+                            {cat.score}
+                          </span>
+                          <span
+                            aria-hidden="true"
+                            className={cn(
+                              "h-1 w-8 rounded-full",
+                              getBarColor(cat.score),
+                            )}
+                          />
+                          <span className="text-xs leading-tight text-foreground">
+                            {cat.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              )}
+
               {/* Data / Loading */}
               {!error && (
-                <Tabs defaultValue="desktop" className="w-full gap-6">
+                <Tabs defaultValue="desktop" className="hidden w-full gap-6 md:flex">
                   <div className="flex items-center justify-between gap-4">
                     <TabsList className="h-10 rounded-none bg-background p-1">
                       <TabsTrigger value="desktop" className={tabTrigger}>

@@ -1,7 +1,7 @@
 {
   "Home": {
     "WebsitePerformance": "Website Performance",
-    "companiesContributing": "Companies I'm working at / Projects I'm contributing to:",
+    "companiesContributing": "Working with",
     "speedInsight": {
       "title": "Live PageSpeed Insights",
       "subtitle": "Real-time Google Lighthouse scores for this website",
@@ -23,8 +23,10 @@
   "Hero": {
     "fullStackDeveloper": "Full-Stack Developer & AI Engineer",
     "description": "I build production web applications end to end — and the AI inside them: LLM features, RAG systems, agents and MCP servers. Next.js and TypeScript, from the first commit to deployment.",
+    "summary": "Production web apps and the AI inside them.",
     "contact": "Contact",
     "learnMoreAboutMe": "Learn More About Me",
+    "aboutShort": "About me",
     "moreAboutMe": "More about me on",
     "askMcp": "Ask this site through MCP",
     "portraitAltLight": "Yazan Abo-Ayash in a dark jacket and turtleneck against a white wall",
@@ -188,6 +190,9 @@
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (German Chamber of Commerce and Industry)"
     },
+    "issuersShort": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar"
+    },
     "descriptions": {
       "pythonPcep": "Earned the PCEP (Python Certified Entry-Level Programmer) certification, demonstrating foundational knowledge of Python programming.",
       "udemyPythonBootcamp": "Completed the \"100 Days of Code - The Complete Python Pro Bootcamp,\" mastering Python from beginner to advanced levels.",
@@ -219,9 +224,19 @@
       "customizableBetterAuth": "A ready-to-use, fully customizable authentication solution built with Better Auth and Next.js. Supports multiple auth providers and can be easily integrated into any project.",
       "jsStudyAgentPlugin": "A Socratic JavaScript teaching plugin for GitHub Copilot CLI and Claude Code. Five specialist agents, auto-loading skills, and an 8-stage roadmap guide you to answers through hints and questions instead of handing out solutions."
     },
+    "summaries": {
+      "portfolioWebsite": "The portfolio you're on, built with Next.js and TypeScript.",
+      "berichHub": "Free learning platform in four languages.",
+      "voiceToNotion": "Meetings to Notion pages in 30 seconds.",
+      "nextJsSeoOptimization": "Zero-dependency SEO helper for Next.js, on npm.",
+      "customizableBetterAuth": "Drop-in Better Auth setup for Next.js.",
+      "jsStudyAgentPlugin": "Socratic JavaScript tutor for Copilot CLI and Claude Code."
+    },
     "openSourceNote": "All projects below are open source.",
     "seeMoreOnGitHub": "see more on GitHub...",
     "viewAllProjects": "View all projects",
+    "allCount": "All {count} projects",
+    "toggleDetails": "Details",
     "cloneRepository": "Clone Repository",
     "code": "Code",
     "npmPackage": "npm",
@@ -242,8 +257,10 @@
     "subtitle": "Cooperate. Collaborate. Deliver.",
     "badge": "Team Project",
     "project": {
-      "title": "Büttleborn City — AI Avatar for the Mayor",
-      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttleborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
+      "title": "Büttelborn City — AI Avatar for the Mayor",
+      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttelborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
+      "summary": "Multilingual AI avatar on the official city website.",
+      "visitSite": "Visit the Büttelborn city website",
       "role": "AI Avatar Development",
       "company": "Botgenossen",
       "live": "Live"
@@ -255,6 +272,10 @@
     "descriptions": {
       "princeps": "A private AI workspace that functions as a personal executive secretariat — the preparation, memory, coordination, and structured follow-through a chief of staff provides. Every feature writes to a single user-scoped PostgreSQL database, so the AI assistant stays context-aware across the entire workspace, not just the chat history.",
       "logix": "Self-hosted, single-tenant working-time recording built for the German market (ArbZG), with statutory compliance evaluated per day."
+    },
+    "summaries": {
+      "princeps": "A private AI workspace that works like a chief of staff.",
+      "logix": "Self-hosted working-time recording under German law (ArbZG)."
     }
   },
   "Impressum": {

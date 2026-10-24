@@ -6,13 +6,7 @@
 
 import { useTranslations } from "next-intl";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
-import {
-  cardSurface,
-  RevealGroup,
-  RevealItem,
-  SectionHeading,
-} from "@/components/visuals";
-import { cn } from "@/lib/utils";
+import { RevealGroup, RevealItem, SectionHeading } from "@/components/visuals";
 
 interface Certification {
   readonly id: number;
@@ -36,8 +30,7 @@ export function CertificationShowcaseMobile({
   className,
 }: CertificationShowcaseMobileProps) {
   const t = useTranslations("Certifications");
-  const tDescriptions = useTranslations("Certifications.descriptions");
-  const tIssuers = useTranslations("Certifications.issuers");
+  const tIssuers = useTranslations("Certifications.issuersShort");
 
   return (
     <section className={className} id="cert" aria-labelledby="cert-title">
@@ -49,27 +42,20 @@ export function CertificationShowcaseMobile({
             className="lg:sticky lg:top-24"
           />
         </div>
-        <RevealGroup className="col-span-12 flex flex-col gap-2 lg:col-span-8">
+        {/* A plain list on phones and tablets; descriptions stay on desktop */}
+        <RevealGroup className="col-span-12 flex flex-col lg:col-span-8">
           {certifications.map((cert) => (
             <RevealItem key={cert.id}>
-              <article
-                className={cn(
-                  cardSurface,
-                  "grid grid-cols-[4.5rem_1fr] gap-x-4 gap-y-2 p-5",
-                )}
-              >
-                <p className="text-lg font-semibold tabular-nums leading-snug">
+              <article className="grid grid-cols-[3rem_1fr] items-baseline gap-x-4 border-b border-surface-2 py-4">
+                <p className="text-sm font-semibold tabular-nums text-muted-foreground">
                   {cert.date}
                 </p>
-                <div className="flex flex-col gap-1">
-                  <h3 className="text-xl font-semibold leading-snug tracking-[-0.01em]">
+                <div className="flex flex-col gap-0.5">
+                  <h3 className="text-base font-semibold leading-snug">
                     {cert.title}
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
-                  </p>
-                  <p className="mt-2 text-base leading-relaxed text-foreground">
-                    {tDescriptions(cert.descriptionKey)}
                   </p>
                 </div>
               </article>

@@ -41,6 +41,7 @@ export const githubCopy = {
     title: "Ask this site",
     intro:
       "coldbydefault.com runs a public MCP server. AI clients such as Claude can read my projects, capabilities, certifications and GitHub through it. Run one of its tools and see exactly what an agent receives.",
+    introShort: "A public MCP server. Run a tool, see what an AI agent gets.",
     toolsLabel: "MCP tools",
     toolGroups: [
       {
@@ -82,6 +83,8 @@ export const githubCopy = {
     raw: "Raw JSON",
     calling: "Calling",
     idle: "Pick a tool on the left to call it live.",
+    /** Below lg the tools sit above the response panel. */
+    idleStacked: "Pick a tool above to call it live.",
     failed: "The call failed. Try again in a moment.",
     tookMs: "round trip",
     siteData: "↳ served from the site's own data, no upstream call",

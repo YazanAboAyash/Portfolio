@@ -1,7 +1,7 @@
 {
   "Home": {
     "WebsitePerformance": "Webbplatsens prestanda",
-    "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:",
+    "companiesContributing": "Arbetar med",
     "speedInsight": {
       "title": "Live PageSpeed-resultat",
       "subtitle": "Google Lighthouse-poäng i realtid för denna webbplats",
@@ -23,8 +23,10 @@
   "Hero": {
     "fullStackDeveloper": "Fullstack-utvecklare & AI-ingenjör",
     "description": "Jag bygger webbapplikationer för produktion från början till slut — och AI:n i dem: LLM-funktioner, RAG-system, agenter och MCP-servrar. Med Next.js och TypeScript, från första commit till driftsättning.",
+    "summary": "Webbapplikationer för produktion, och AI:n i dem.",
     "contact": "Kontakt",
     "learnMoreAboutMe": "Läs mer om mig",
+    "aboutShort": "Om mig",
     "moreAboutMe": "Mer om mig på",
     "askMcp": "Fråga den här webbplatsen via MCP",
     "portraitAltLight": "Yazan Abo-Ayash i mörk kavaj och polotröja mot en vit vägg",
@@ -188,6 +190,9 @@
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Tysk Handels- och Industrikammare)"
     },
+    "issuersShort": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar"
+    },
     "descriptions": {
       "pythonPcep": "Erhållit certifieringen PCEP (Python Certified Entry-Level Programmer), vilket visar grundläggande kunskaper i Python-programmering.",
       "udemyPythonBootcamp": "Genomfört \"100 Days of Code - The Complete Python Pro Bootcamp\" och behärskat Python från nybörjar- till avancerad nivå.",
@@ -219,9 +224,19 @@
       "customizableBetterAuth": "En färdig, fullt anpassningsbar autentiseringslösning byggd med Better Auth och Next.js. Stöder flera autentiseringsleverantörer och kan enkelt integreras i vilket projekt som helst.",
       "jsStudyAgentPlugin": "Ett sokratiskt JavaScript-plugin för lärande i GitHub Copilot CLI och Claude Code. Fem specialiserade agenter, automatiskt laddade skills och en färdplan i 8 steg leder dig till svaren med ledtrådar och frågor i stället för att ge dig lösningen direkt."
     },
+    "summaries": {
+      "portfolioWebsite": "Den här portfolion, byggd med Next.js och TypeScript.",
+      "berichHub": "Gratis lärplattform på fyra språk.",
+      "voiceToNotion": "Möten blir Notion-sidor på 30 sekunder.",
+      "nextJsSeoOptimization": "SEO-hjälpare för Next.js utan beroenden, på npm.",
+      "customizableBetterAuth": "Färdig Better Auth-inloggning för Next.js.",
+      "jsStudyAgentPlugin": "Sokratisk JS-lärare för Copilot CLI och Claude Code."
+    },
     "openSourceNote": "Alla projekt nedan är öppen källkod.",
     "seeMoreOnGitHub": "se mer på GitHub...",
     "viewAllProjects": "Visa alla projekt",
+    "allCount": "Alla {count} projekt",
+    "toggleDetails": "Detaljer",
     "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",
@@ -244,6 +259,8 @@
     "project": {
       "title": "Staden Büttelborn — AI-avatar för borgmästaren",
       "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
+      "summary": "Flerspråkig AI-avatar på stadens officiella webbplats.",
+      "visitSite": "Besök Büttelborns officiella webbplats",
       "role": "AI-avatarutveckling",
       "company": "Botgenossen",
       "live": "Live"
@@ -255,6 +272,10 @@
     "descriptions": {
       "princeps": "En privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat — med den förberedelse, det minne, den koordinering och den strukturerade uppföljning som en stabschef annars ger. Varje funktion skriver till en enda användarbunden PostgreSQL-databas, så AI-assistenten förblir kontextmedveten i hela arbetsytan, inte bara i chatthistoriken.",
       "logix": "Självhostad, single-tenant arbetstidsregistrering för den tyska marknaden (ArbZG), med lagstadgad efterlevnad som utvärderas dagligen."
+    },
+    "summaries": {
+      "princeps": "Privat AI-arbetsyta som fungerar som ett eget sekretariat.",
+      "logix": "Självhostad arbetstidsregistrering enligt tysk lag (ArbZG)."
     }
   },
   "Impressum": {

@@ -1,7 +1,7 @@
 {
   "Home": {
     "WebsitePerformance": "Website-Performance",
-    "companiesContributing": "Unternehmen, bei denen ich arbeite / Projekte, zu denen ich beitrage:",
+    "companiesContributing": "Zusammenarbeit mit",
     "speedInsight": {
       "title": "Live PageSpeed-Ergebnisse",
       "subtitle": "Echtzeit Google Lighthouse-Bewertungen für diese Website",
@@ -23,8 +23,10 @@
   "Hero": {
     "fullStackDeveloper": "Full-Stack-Entwickler & AI Engineer",
     "description": "Ich entwickle produktive Webanwendungen von Anfang bis Ende — und die KI darin: LLM-Features, RAG-Systeme, Agenten und MCP-Server. Mit Next.js und TypeScript, vom ersten Commit bis zum Deployment.",
+    "summary": "Produktive Webanwendungen und die KI darin.",
     "contact": "Kontakt",
     "learnMoreAboutMe": "Mehr über mich erfahren",
+    "aboutShort": "Über mich",
     "moreAboutMe": "Mehr über mich auf",
     "askMcp": "Diese Website per MCP fragen",
     "portraitAltLight": "Yazan Abo-Ayash in dunklem Sakko und Rollkragen vor einer weißen Wand",
@@ -188,6 +190,9 @@
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Industrie- und Handelskammer)"
     },
+    "issuersShort": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar"
+    },
     "descriptions": {
       "pythonPcep": "Die PCEP (Python Certified Entry-Level Programmer) Zertifizierung erhalten, die grundlegende Kenntnisse der Python-Programmierung nachweist.",
       "udemyPythonBootcamp": "Den Kurs \"100 Days of Code - The Complete Python Pro Bootcamp\" abgeschlossen und Python vom Anfänger- bis zum Fortgeschrittenenniveau gemeistert.",
@@ -219,9 +224,19 @@
       "customizableBetterAuth": "Eine sofort einsetzbare, vollständig anpassbare Authentifizierungslösung mit Better Auth und Next.js. Unterstützt mehrere Authentifizierungsanbieter und lässt sich einfach in jedes Projekt integrieren.",
       "jsStudyAgentPlugin": "Ein sokratisches JavaScript-Lern-Plugin für GitHub Copilot CLI und Claude Code. Fünf spezialisierte Agenten, automatisch ladende Skills und eine 8-stufige Roadmap führen dich mit Hinweisen und Fragen zur Lösung, statt sie direkt vorzugeben."
     },
+    "summaries": {
+      "portfolioWebsite": "Dieses Portfolio, gebaut mit Next.js und TypeScript.",
+      "berichHub": "Kostenlose Lernplattform in vier Sprachen.",
+      "voiceToNotion": "Meetings in 30 Sekunden als Notion-Seiten.",
+      "nextJsSeoOptimization": "SEO-Helfer für Next.js ohne Abhängigkeiten, auf npm.",
+      "customizableBetterAuth": "Einsatzbereites Better-Auth-Setup für Next.js.",
+      "jsStudyAgentPlugin": "Sokratischer JS-Tutor für Copilot CLI und Claude Code."
+    },
     "openSourceNote": "Alle unten aufgeführten Projekte sind Open Source.",
     "seeMoreOnGitHub": "Weitere Projekte auf GitHub...",
     "viewAllProjects": "Alle Projekte ansehen",
+    "allCount": "Alle {count} Projekte",
+    "toggleDetails": "Details",
     "cloneRepository": "Repository klonen",
     "code": "Code",
     "npmPackage": "npm",
@@ -242,8 +257,10 @@
     "subtitle": "Kooperieren. Kollaborieren. Liefern.",
     "badge": "Teamprojekt",
     "project": {
-      "title": "Stadt Büttleborn — KI-Avatar für den Bürgermeister",
-      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttleborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
+      "title": "Stadt Büttelborn — KI-Avatar für den Bürgermeister",
+      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttelborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
+      "summary": "Mehrsprachiger KI-Avatar auf der offiziellen Stadtwebsite.",
+      "visitSite": "Website der Stadt Büttelborn besuchen",
       "role": "KI-Avatar-Entwicklung",
       "company": "Botgenossen",
       "live": "Live"
@@ -255,6 +272,10 @@
     "descriptions": {
       "princeps": "Ein privater KI-Arbeitsbereich, der als persönliches Exekutivsekretariat fungiert — mit der Vorbereitung, dem Gedächtnis, der Koordination und der strukturierten Nachverfolgung, die sonst ein Chief of Staff liefert. Jede Funktion schreibt in eine einzige benutzerbezogene PostgreSQL-Datenbank, sodass der KI-Assistent über den gesamten Arbeitsbereich hinweg kontextbewusst bleibt — nicht nur innerhalb des Chatverlaufs.",
       "logix": "Selbst gehostete, single-tenant Arbeitszeiterfassung für den deutschen Markt mit täglich geprüfter gesetzlicher Compliance (ArbZG)."
+    },
+    "summaries": {
+      "princeps": "Privater KI-Arbeitsbereich als persönliches Sekretariat.",
+      "logix": "Selbst gehostete Arbeitszeiterfassung nach ArbZG."
     }
   },
   "Impressum": {

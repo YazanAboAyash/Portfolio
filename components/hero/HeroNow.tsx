@@ -12,6 +12,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import VersionDisplay from "@/components/VersionDisplay";
 import { useLatestPost } from "@/hooks/use-latest-post";
+import { cn } from "@/lib/utils";
 
 /** How long each focus item stays before the next one rotates in. */
 const FOCUS_INTERVAL_MS = 3000;
@@ -19,6 +20,8 @@ const FOCUS_INTERVAL_MS = 3000;
 const LABEL =
   "text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground";
 const CELL = "group flex min-w-0 flex-col gap-1.5 text-left";
+/** Latest post and This site: the blog and the site link stay in the nav and footer on phones. */
+const CELL_FROM_SM = cn(CELL, "hidden sm:flex");
 
 /** "Now" strip under the hero copy: current focus, latest post, this site. */
 export function HeroNow() {
@@ -85,7 +88,7 @@ export function HeroNow() {
         </span>
       </button>
 
-      <div className={CELL}>
+      <div className={CELL_FROM_SM}>
         <span className={LABEL}>{t("latestPost")}</span>
         {post === undefined ? (
           <span className="h-14 w-full animate-pulse bg-surface motion-reduce:animate-none" />
@@ -117,7 +120,7 @@ export function HeroNow() {
         )}
       </div>
 
-      <div className={CELL}>
+      <div className={CELL_FROM_SM}>
         <span className={LABEL}>{t("site")}</span>
         <Link
           href="/about-portfolio"

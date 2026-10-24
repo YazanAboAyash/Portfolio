@@ -63,22 +63,26 @@ function CapabilityCard({
 
   return (
     <RevealItem className="h-full">
-      <article className="flex h-full flex-col gap-4">
-        <h3 className="flex items-center gap-3 text-2xl font-bold leading-tight tracking-[-0.015em]">
+      {/* Phones: a tone-step tile with title and headline; from md the full card */}
+      <article className="flex h-full flex-col gap-2 bg-surface p-4 md:gap-4 md:bg-transparent md:p-0">
+        <h3 className="flex items-center gap-2 text-lg font-bold leading-tight tracking-[-0.015em] md:gap-3 md:text-2xl">
           {IconComponent && (
-            <IconComponent className="h-6 w-6 shrink-0" aria-hidden="true" />
+            <IconComponent
+              className="h-5 w-5 shrink-0 md:h-6 md:w-6"
+              aria-hidden="true"
+            />
           )}
           {t(capability.titleKey)}
         </h3>
-        <p className="text-lg font-semibold leading-snug">
+        <p className="text-sm leading-snug md:text-lg md:font-semibold">
           {t(capability.headlineKey)}
         </p>
-        <p className="text-base leading-relaxed text-foreground">
+        <p className="hidden text-base leading-relaxed text-foreground md:block">
           {t(capability.descriptionKey)}
         </p>
         {/* Tech Icons - subtle indicators */}
         {capability.techIcons && capability.techIcons.length > 0 && (
-          <div className="mt-auto flex items-center gap-4 pt-2">
+          <div className="mt-auto hidden items-center gap-4 pt-2 md:flex">
             {capability.techIcons.map((iconName) => {
               const TechIcon = techIconMap[iconName];
               return TechIcon ? (
@@ -119,9 +123,9 @@ export default function Capabilities() {
           />
         </div>
 
-        <div className="col-span-12 flex flex-col gap-16 lg:col-span-8">
+        <div className="col-span-12 flex flex-col gap-10 md:gap-16 lg:col-span-8">
           {/* Capabilities Grid */}
-          <RevealGroup className="grid gap-x-12 gap-y-16 sm:grid-cols-2">
+          <RevealGroup className="grid grid-cols-2 gap-0.5 md:gap-x-12 md:gap-y-16">
             {capabilities.map((capability) => (
               <CapabilityCard
                 key={capability.id}

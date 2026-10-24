@@ -1,7 +1,7 @@
 {
   "Home": {
     "WebsitePerformance": "Performance du site web",
-    "companiesContributing": "Entreprises où je travaille / Projets auxquels je contribue :",
+    "companiesContributing": "Je travaille avec",
     "speedInsight": {
       "title": "PageSpeed Insights en direct",
       "subtitle": "Scores Google Lighthouse en temps réel pour ce site web",
@@ -23,8 +23,10 @@
   "Hero": {
     "fullStackDeveloper": "Développeur Full-Stack & Ingénieur IA",
     "description": "Je développe des applications web en production de bout en bout — et l'IA qu'elles embarquent : fonctionnalités LLM, systèmes RAG, agents et serveurs MCP. Avec Next.js et TypeScript, du premier commit au déploiement.",
+    "summary": "Des applications web en production, et l'IA qu'elles embarquent.",
     "contact": "Contact",
     "learnMoreAboutMe": "En savoir plus sur moi",
+    "aboutShort": "À propos",
     "moreAboutMe": "Plus sur moi sur",
     "askMcp": "Interroger ce site via MCP",
     "portraitAltLight": "Yazan Abo-Ayash en veste sombre et col roulé devant un mur blanc",
@@ -188,6 +190,9 @@
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Chambre de Commerce et d'Industrie Allemande)"
     },
+    "issuersShort": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar"
+    },
     "descriptions": {
       "pythonPcep": "Obtention de la certification PCEP (Python Certified Entry-Level Programmer), démontrant des connaissances fondamentales en programmation Python.",
       "udemyPythonBootcamp": "Complété « 100 Days of Code - The Complete Python Pro Bootcamp », maîtrisant Python du niveau débutant à avancé.",
@@ -219,9 +224,19 @@
       "customizableBetterAuth": "Une solution d'authentification prête à l'emploi et entièrement personnalisable construite avec Better Auth et Next.js. Prend en charge plusieurs fournisseurs d'authentification et s'intègre facilement dans n'importe quel projet.",
       "jsStudyAgentPlugin": "Un plugin socratique d'apprentissage de JavaScript pour GitHub Copilot CLI et Claude Code. Cinq agents spécialisés, des skills à chargement automatique et une feuille de route en 8 étapes vous guident vers la réponse par des indices et des questions plutôt que de livrer la solution."
     },
+    "summaries": {
+      "portfolioWebsite": "Ce portfolio, construit avec Next.js et TypeScript.",
+      "berichHub": "Plateforme d'apprentissage gratuite en quatre langues.",
+      "voiceToNotion": "Des réunions en pages Notion en 30 secondes.",
+      "nextJsSeoOptimization": "Assistant SEO sans dépendance pour Next.js, sur npm.",
+      "customizableBetterAuth": "Authentification Better Auth prête à l'emploi pour Next.js.",
+      "jsStudyAgentPlugin": "Tuteur JS socratique pour Copilot CLI et Claude Code."
+    },
     "openSourceNote": "Tous les projets ci-dessous sont open source.",
     "seeMoreOnGitHub": "voir plus sur GitHub...",
     "viewAllProjects": "Voir tous les projets",
+    "allCount": "Les {count} projets",
+    "toggleDetails": "Détails",
     "cloneRepository": "Cloner le dépôt",
     "code": "Code",
     "npmPackage": "npm",
@@ -244,6 +259,8 @@
     "project": {
       "title": "Ville de Büttelborn — Avatar IA pour le maire",
       "description": "Membre de l'équipe Botgenossen ayant construit l'avatar IA interactif multilingue pour le Bürgermeister de Büttelborn, une ville en Allemagne. L'avatar s'entretient avec les citoyens dans plusieurs langues, répond aux questions sur les services municipaux et représente numériquement le maire sur le site officiel de la ville.",
+      "summary": "Avatar IA multilingue sur le site officiel de la ville.",
+      "visitSite": "Visiter le site de la ville de Büttelborn",
       "role": "Développement d'Avatar IA",
       "company": "Botgenossen",
       "live": "En direct"
@@ -255,6 +272,10 @@
     "descriptions": {
       "princeps": "Un espace de travail IA privé qui fonctionne comme un secrétariat exécutif personnel, apportant la préparation, la mémoire, la coordination et le suivi structuré qu'offrirait un chef de cabinet. Chaque fonctionnalité écrit dans une base PostgreSQL unique propre à l'utilisateur, de sorte que l'assistant IA reste contextuel sur l'ensemble de l'espace de travail, pas seulement sur l'historique de discussion.",
       "logix": "Enregistrement du temps de travail auto-hébergé et mono-locataire pour le marché allemand (ArbZG), avec conformité légale évaluée chaque jour."
+    },
+    "summaries": {
+      "princeps": "Un espace IA privé qui fait office de secrétariat exécutif.",
+      "logix": "Suivi du temps de travail auto-hébergé, conforme à l'ArbZG."
     }
   },
   "Impressum": {

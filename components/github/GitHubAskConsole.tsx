@@ -44,6 +44,10 @@ const STAT_KEYS = Object.keys(copy.statLabels) as Array<
   keyof typeof copy.statLabels
 >;
 
+/** Phones get a compact readable view; Raw JSON always has the full response. */
+const CLAMP_ON_PHONES = "line-clamp-2 md:line-clamp-none";
+const TECH_FROM_MD = "hidden text-sm text-muted-foreground md:block";
+
 /**
  * Readable rendering of a tool's structured output. The client SDK has
  * already validated it against the tool's output schema, so the casts below
@@ -74,8 +78,8 @@ function Readable({
             >
               {project.title}
             </a>
-            <span>{project.description}</span>
-            <span className="text-sm text-muted-foreground">
+            <span className={CLAMP_ON_PHONES}>{project.description}</span>
+            <span className={TECH_FROM_MD}>
               {[project.category, ...project.technologies].join(" · ")}
             </span>
           </RevealItem>
@@ -97,8 +101,10 @@ function Readable({
             <h4 className="text-lg font-semibold">
               {capability.title} · {capability.headline}
             </h4>
-            <p className="max-w-[60ch]">{capability.description}</p>
-            <span className="text-sm text-muted-foreground">
+            <p className={`max-w-[60ch] ${CLAMP_ON_PHONES}`}>
+              {capability.description}
+            </p>
+            <span className={TECH_FROM_MD}>
               {capability.technologies.join(" · ")}
             </span>
           </RevealItem>
@@ -121,7 +127,9 @@ function Readable({
             <span className="text-sm text-muted-foreground tabular-nums">
               {certification.issuer} · {certification.date}
             </span>
-            <span className="max-w-[60ch]">{certification.description}</span>
+            <span className={`max-w-[60ch] ${CLAMP_ON_PHONES}`}>
+              {certification.description}
+            </span>
           </RevealItem>
         ))}
       </RevealGroup>
@@ -238,7 +246,9 @@ function Readable({
             >
               {repo.name}
             </a>
-            <span>{repo.description ?? copy.noDescription}</span>
+            <span className={CLAMP_ON_PHONES}>
+              {repo.description ?? copy.noDescription}
+            </span>
             <span className="text-sm text-muted-foreground tabular-nums">
               {repo.language ? `${repo.language.name} · ` : ""}
               {formatNumber(repo.stars)} ★
@@ -291,25 +301,31 @@ export default function GitHubAskConsole() {
   return (
     <div
       id="mcp"
-      className="grid scroll-mt-20 grid-cols-12 gap-x-6 gap-y-10"
+      className="grid scroll-mt-20 grid-cols-12 gap-x-6 gap-y-7 lg:gap-y-10"
       aria-labelledby="mcp-title"
       role="region"
     >
-      <div className="col-span-12 flex min-w-0 flex-col gap-7 lg:col-span-5">
+      {/*
+        Below lg this column dissolves into the grid so the response panel can
+        sit straight under the tools (`order` puts the connect block and the
+        live session after it). From lg it is the left column again.
+      */}
+      <div className="contents lg:col-span-5 lg:flex lg:min-w-0 lg:flex-col lg:gap-7">
         <h2
           id="mcp-title"
-          className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
+          className="col-span-12 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
         >
           <ScrambleText text={copy.title} />
         </h2>
-        <p className="max-w-[44ch] text-base leading-relaxed sm:text-lg">
-          {copy.intro}
+        <p className="col-span-12 max-w-[44ch] text-base leading-relaxed sm:text-lg">
+          <span className="sm:hidden">{copy.introShort}</span>
+          <span className="hidden sm:inline">{copy.intro}</span>
         </p>
 
         <div
           aria-label={copy.toolsLabel}
           role="group"
-          className="flex flex-col gap-5"
+          className="col-span-12 flex flex-col gap-5"
         >
           {copy.toolGroups.map((group) => (
             <div
@@ -332,7 +348,7 @@ export default function GitHubAskConsole() {
                     type="button"
                     aria-pressed={pressed}
                     onClick={() => void call(name)}
-                    className={`grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 px-5 py-4 text-left transition-[background-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
+                    className={`grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 px-5 py-3 text-left md:py-4 transition-[background-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
                       pressed
                         ? "bg-primary text-primary-foreground"
                         : "bg-surface hover:translate-x-1 hover:bg-surface-2 motion-reduce:hover:translate-x-0"
@@ -342,7 +358,7 @@ export default function GitHubAskConsole() {
                       <b className="block text-lg font-semibold">
                         {copy.tools[name].label}
                       </b>
-                      <span className="block text-base">
+                      <span className="hidden text-base md:block">
                         {copy.tools[name].hint}
                       </span>
                     </span>
@@ -354,9 +370,9 @@ export default function GitHubAskConsole() {
           ))}
         </div>
 
-        <div className="flex min-w-0 flex-col gap-2.5">
+        <div className="order-1 col-span-12 flex min-w-0 flex-col gap-2.5 lg:order-none">
           <h3 className="text-base font-bold">{copy.addTitle}</h3>
-          <p className="text-sm">{copy.addHint}</p>
+          <p className="hidden text-sm md:block">{copy.addHint}</p>
           <div className="flex min-w-0 items-stretch bg-surface">
             <pre className="min-w-0 flex-1 overflow-x-auto px-4 py-3.5">
               <code className="font-mono text-sm">{mcpConfig.publicUrl}</code>
@@ -377,7 +393,7 @@ export default function GitHubAskConsole() {
         </div>
 
         {/* The full protocol log: initialize, tools/list, every call. */}
-        <div>
+        <div className="order-1 col-span-12 lg:order-none">
           <GitHubMcpConsole />
         </div>
       </div>
@@ -462,7 +478,10 @@ export default function GitHubAskConsole() {
                 {copy.calling} {toolName} …
               </p>
             ) : (
-              <p className="text-base">{copy.idle}</p>
+              <p className="text-base">
+                <span className="lg:hidden">{copy.idleStacked}</span>
+                <span className="hidden lg:inline">{copy.idle}</span>
+              </p>
             )}
           </div>
         </m.div>

@@ -72,6 +72,7 @@ function ProductMediaBlock({ media }: { media: ProductMediaType }) {
 export function ProductsHomeShowcase({ className }: ProductsHomeShowcaseProps) {
   const t = useTranslations("Products");
   const tDescriptions = useTranslations("Products.descriptions");
+  const tSummaries = useTranslations("Products.summaries");
   const [activeId, setActiveId] = useState(products[0]?.id);
   const tabIds = useId();
   const product = products.find((item) => item.id === activeId) ?? products[0];
@@ -107,11 +108,11 @@ export function ProductsHomeShowcase({ className }: ProductsHomeShowcaseProps) {
           </figure>
         </RevealItem>
 
-        <RevealItem className="order-first col-span-12 flex flex-col gap-8 lg:order-none lg:col-span-5 lg:pl-6">
+        <RevealItem className="order-first col-span-12 flex flex-col gap-8 lg:order-0 lg:col-span-5 lg:pl-6">
           <div className="flex flex-col gap-4">
             <h2
               id="products-title"
-              className="text-4xl font-bold leading-[1.05] tracking-[-0.025em] sm:text-5xl"
+              className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
             >
               <ScrambleText text={t("title")} />
             </h2>
@@ -133,7 +134,7 @@ export function ProductsHomeShowcase({ className }: ProductsHomeShowcaseProps) {
                     tabIndex={selected ? 0 : -1}
                     onClick={() => setActiveId(item.id)}
                     onKeyDown={onTabKeyDown}
-                    className={`relative cursor-pointer py-1 text-xl font-semibold transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:origin-left after:bg-foreground after:transition-transform after:duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground ${
+                    className={`relative cursor-pointer py-1 text-xl font-semibold transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-0.75 after:origin-left after:bg-foreground after:transition-transform after:duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground ${
                       selected
                         ? "text-foreground after:scale-x-100"
                         : "text-muted-foreground after:scale-x-0 hover:text-foreground"
@@ -155,8 +156,12 @@ export function ProductsHomeShowcase({ className }: ProductsHomeShowcaseProps) {
             <h3 className="text-3xl font-bold leading-tight tracking-[-0.02em]">
               {product.title}
             </h3>
+            {/* One line on phones, the full description from md */}
             <p className="max-w-[44ch] text-base leading-relaxed text-foreground md:text-lg">
-              {tDescriptions(product.description)}
+              <span className="md:hidden">{tSummaries(product.description)}</span>
+              <span className="hidden md:inline">
+                {tDescriptions(product.description)}
+              </span>
             </p>
             <p className="text-sm text-muted-foreground">
               {product.technologies.join(" · ")}

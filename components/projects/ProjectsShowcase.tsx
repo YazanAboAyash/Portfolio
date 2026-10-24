@@ -6,54 +6,45 @@
 
 "use client";
 
-import { m, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Card } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import type { ProjectsShowcaseProps } from "@/types/hubs/projects";
 import { productProjects, projects } from "@/data/hubs/projectsData";
 import { ProjectCard } from "./ProjectCard";
-import { RevealGroup } from "@/components/visuals";
+import { RevealGroup, SectionHeading } from "@/components/visuals";
 
 export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-
   const t = useTranslations("Projects");
+  const all = [...productProjects, ...projects];
 
   return (
     <section
       className={className}
       id="projects"
-      ref={sectionRef}
       aria-labelledby="projects-heading"
     >
-      <Card className="max-w-7xl mx-auto border-0! bg-transparent dark:bg-transparent shadow-none">
-        <m.div
-          initial={{ y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { y: 30 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* This component is the whole /projects page, so its title is the page's h1. */}
-          <h1
-            id="projects-heading"
-            className="text-3xl font-light leading-none sm:text-4xl text-center mb-8 text-black dark:text-white"
-          >
-            {t("title")}
-          </h1>
-        </m.div>
+      {/* This component is the whole /projects page, so its title is the page's h1. */}
+      <SectionHeading
+        as="h1"
+        id="projects-heading"
+        title={t("title")}
+        className="mb-10"
+        aside={
+          <p className="text-sm font-semibold text-muted-foreground">
+            {t("allCount", { count: all.length })}
+          </p>
+        }
+      />
 
-        {/* Projects Grid */}
-        <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {[...productProjects, ...projects].map((project, index) => (
-            <ProjectCard
-              key={`${project.commercial ? "product" : "project"}-${project.id}`}
-              project={project}
-              index={index}
-            />
-          ))}
-        </RevealGroup>
-      </Card>
+      {/* Projects Grid */}
+      <RevealGroup className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        {all.map((project, index) => (
+          <ProjectCard
+            key={`${project.commercial ? "product" : "project"}-${project.id}`}
+            project={project}
+            index={index}
+          />
+        ))}
+      </RevealGroup>
     </section>
   );
 }

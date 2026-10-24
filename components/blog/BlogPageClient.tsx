@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { BlogsList, LanguageFilter, BlogBreadcrumb } from "@/components/blog";
-import { LoadingSkeleton } from "@/components/visuals";
+import { LoadingSkeleton, SectionHeading } from "@/components/visuals";
 import type { Blog, BlogLanguage } from "@/types/hubs/blogs";
 
 interface BlogApiResponse {
@@ -74,40 +74,44 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
   };
 
   return (
-    <div className="flex flex-col mx-auto px-4 py-8 flex-1">
-      <div className="container mx-auto px-4 py-8 flex-1">
-        {/* Breadcrumb Navigation */}
-        <div className="mb-6">
-          <BlogBreadcrumb />
-        </div>
+    <div className="frame pt-4 pb-16 sm:pt-6 md:pt-10 md:pb-24">
+      {/* Breadcrumb Navigation */}
+      <BlogBreadcrumb className="mb-8" />
 
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Blogs
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Personal thoughts, tutorials, insights, and stories about various
-            topics.
-          </p>
-        </div>
-        {/* Language Filter */}
-        <div className="mb-6">
-          <h3 className="text-sm font-medium mb-3">Filter by Language:</h3>
-          <LanguageFilter
-            selectedLanguage={selectedLanguage}
-            onLanguageChange={handleLanguageChange}
-          />
-        </div>
-        {isLoading ? (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" aria-busy>
-            {Array.from({ length: 3 }, (_, i) => (
-              <LoadingSkeleton key={i} variant="blog" />
-            ))}
-          </div>
-        ) : (
-          <BlogsList blogs={blogs} />
-        )}
+      <SectionHeading
+        as="h1"
+        title="Blogs"
+        lead="Personal thoughts, tutorials, insights, and stories about various topics."
+        className="mb-10"
+      />
+
+      {/* Language Filter */}
+      <div
+        role="group"
+        aria-labelledby="blog-language-filter"
+        className="mb-8 flex flex-col gap-3"
+      >
+        <p
+          id="blog-language-filter"
+          className="text-sm font-semibold text-muted-foreground"
+        >
+          Filter by Language:
+        </p>
+        <LanguageFilter
+          selectedLanguage={selectedLanguage}
+          onLanguageChange={handleLanguageChange}
+        />
       </div>
+
+      {isLoading ? (
+        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3" aria-busy>
+          {Array.from({ length: 3 }, (_, i) => (
+            <LoadingSkeleton key={i} variant="blog" />
+          ))}
+        </div>
+      ) : (
+        <BlogsList blogs={blogs} />
+      )}
     </div>
   );
 }
