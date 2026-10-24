@@ -221,9 +221,19 @@
       "customizableBetterAuth": "En färdig, fullt anpassningsbar autentiseringslösning byggd med Better Auth och Next.js. Stöder flera autentiseringsleverantörer och kan enkelt integreras i vilket projekt som helst.",
       "jsStudyAgentPlugin": "Ett sokratiskt JavaScript-plugin för lärande i GitHub Copilot CLI och Claude Code. Fem specialiserade agenter, automatiskt laddade skills och en färdplan i 8 steg leder dig till svaren med ledtrådar och frågor i stället för att ge dig lösningen direkt."
     },
+    "summaries": {
+      "portfolioWebsite": "Den här portfolion, byggd med Next.js och TypeScript.",
+      "berichHub": "Gratis lärplattform på fyra språk.",
+      "voiceToNotion": "Möten blir Notion-sidor på 30 sekunder.",
+      "nextJsSeoOptimization": "SEO-hjälpare för Next.js utan beroenden, på npm.",
+      "customizableBetterAuth": "Färdig Better Auth-inloggning för Next.js.",
+      "jsStudyAgentPlugin": "Sokratisk JS-lärare för Copilot CLI och Claude Code."
+    },
     "openSourceNote": "Alla projekt nedan är öppen källkod.",
     "seeMoreOnGitHub": "se mer på GitHub...",
     "viewAllProjects": "Visa alla projekt",
+    "allCount": "Alla {count} projekt",
+    "toggleDetails": "Detaljer",
     "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",

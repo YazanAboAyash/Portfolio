@@ -96,7 +96,7 @@ function Hero() {
       </div>
 
       {/* Phones see the portrait first; from md it sits beside the copy */}
-      <figure className="relative order-first col-span-12 aspect-6/5 overflow-hidden bg-surface sm:aspect-4/3 md:order-none md:col-span-6 md:aspect-auto md:min-h-[min(68svh,46rem)]">
+      <figure className="relative order-first col-span-12 aspect-6/5 overflow-hidden bg-surface sm:aspect-4/3 md:order-0 md:col-span-6 md:aspect-auto md:min-h-[min(68svh,46rem)]">
         <Image
           src="/portrait-light.jpg"
           alt={t("portraitAltLight")}
