@@ -93,7 +93,7 @@ const SLOTS =
 export function StackExplorer() {
   const t = useTranslations("Capabilities.explorer");
   const [selectedId, setSelectedId] = useState(DEFAULT_TECH);
-  // Collapsed on phones only; from md the explorer is always open
+  // Collapsed by default at every size; the title toggles it
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const usage = usageById.get(selectedId) ?? [];
@@ -107,7 +107,7 @@ export function StackExplorer() {
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-controls={panelId}
-            className="flex min-h-11 w-full cursor-pointer items-center justify-between gap-4 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:hidden"
+            className="flex min-h-11 w-full cursor-pointer items-center justify-between gap-4 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:w-auto md:justify-start"
           >
             {t("title")}
             <ChevronDown
@@ -118,21 +118,17 @@ export function StackExplorer() {
               aria-hidden="true"
             />
           </button>
-          <span className="hidden md:inline">{t("title")}</span>
         </h3>
-        <p
-          className={cn(
-            "text-base leading-relaxed text-muted-foreground",
-            !open && "hidden md:block",
-          )}
-        >
-          {t("lead")}
-        </p>
+        {open && (
+          <p className="text-base leading-relaxed text-muted-foreground">
+            {t("lead")}
+          </p>
+        )}
       </div>
 
       <div
         id={panelId}
-        className={cn("flex-col gap-8", open ? "flex" : "hidden md:flex")}
+        className={cn("flex-col gap-8", open ? "flex" : "hidden")}
       >
         <div className="flex flex-col gap-5">
           {GROUPS.map((group) => (
