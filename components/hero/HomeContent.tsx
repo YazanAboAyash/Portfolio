@@ -19,7 +19,7 @@ const Capabilities = dynamic(
     import("@/components/tech").then((mod) => ({ default: mod.Capabilities })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-344 md:min-h-222 lg:min-h-180" />
+      <LoadingSkeleton className="frame min-h-142 md:min-h-430 lg:min-h-377" />
     ),
     ssr: false,
   },
@@ -32,7 +32,7 @@ const CertificationShowcase = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-436 md:min-h-312 lg:min-h-308" />
+      <LoadingSkeleton className="frame min-h-151 md:min-h-162 lg:min-h-284" />
     ),
     ssr: false,
   },
@@ -45,7 +45,7 @@ const GitHubAskConsole = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="min-h-694 md:min-h-514 lg:min-h-264" />
+      <LoadingSkeleton className="min-h-387 md:min-h-511 lg:min-h-264" />
     ),
     ssr: false,
   },
@@ -58,7 +58,7 @@ const CollaborationShowcase = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-176 md:min-h-180 lg:min-h-172" />
+      <LoadingSkeleton className="frame min-h-154 md:min-h-204 lg:min-h-198" />
     ),
     ssr: false,
   },
@@ -71,7 +71,7 @@ const ProjectsHomeShowcase = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-492 md:min-h-340 lg:min-h-334" />
+      <LoadingSkeleton className="frame min-h-178 md:min-h-340 lg:min-h-335" />
     ),
     ssr: false,
   },
@@ -84,7 +84,7 @@ const ProductsHomeShowcase = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-220 md:min-h-284 lg:min-h-170" />
+      <LoadingSkeleton className="frame min-h-182 md:min-h-284 lg:min-h-171" />
     ),
     ssr: false,
   },
@@ -97,7 +97,7 @@ const SpeedInsight = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-172 md:min-h-156 lg:min-h-110" />
+      <LoadingSkeleton className="frame min-h-76 md:min-h-133 lg:min-h-87" />
     ),
     ssr: false,
   },
