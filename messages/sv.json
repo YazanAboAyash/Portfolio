@@ -1,16 +1,11 @@
 {
   "Home": {
-    "WebsitePerformance": "Webbplatsens prestanda",
     "companiesContributing": "Arbetar med",
     "speedInsight": {
       "title": "Live PageSpeed-resultat",
       "subtitle": "Google Lighthouse-poäng i realtid för denna webbplats",
       "desktop": "Dator",
       "mobile": "Mobil",
-      "performance": "Prestanda",
-      "accessibility": "Tillgänglighet",
-      "bestPractices": "Bästa praxis",
-      "seo": "SEO",
       "loading": "Analyserar webbplatsens prestanda...",
       "error": "Kunde inte ladda PageSpeed-data",
       "retry": "Försök igen",
@@ -27,7 +22,6 @@
     "contact": "Kontakt",
     "learnMoreAboutMe": "Läs mer om mig",
     "aboutShort": "Om mig",
-    "moreAboutMe": "Mer om mig på",
     "askMcp": "Fråga den här webbplatsen via MCP",
     "portraitAltLight": "Yazan Abo-Ayash i mörk kavaj och polotröja mot en vit vägg",
     "portraitAltDark": "Yazan Abo-Ayash i mörk kavaj mot svart bakgrund",
@@ -79,7 +73,6 @@
     "location": "Plats",
     "status": "Status",
     "qualification": "Examen",
-    "quickLinks": "Snabblänkar",
     "employmentStatus": "Heltidsanställd",
     "position": "Position",
     "employer": "Arbetsgivare",
@@ -87,38 +80,6 @@
     "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Inriktning",
     "specializationValue": "Artificiell Intelligens"
-  },
-  "QuickActions": {
-    "title": "Snabbåtgärder",
-    "allMedia": "Alla Media",
-    "projects": "Projekt",
-    "latestPosts": "Senaste Inlägg",
-    "aboutMe": "Om Mig",
-    "portfolioDocs": "Portfolio Dokumentation",
-    "library": "Bibliotek",
-    "latestBlog": "Senaste Blogg"
-  },
-  "Technologies": {
-    "title": "Tjänster & Teknologier",
-    "manyMoreTechnologies": "...alltid lärande och växande",
-    "categories": {
-      "aiAutomation": "AI & Automatisering",
-      "webDevelopment": "Webb & Backend MVPs",
-      "enablingSkills": "Stödjande Färdigheter"
-    },
-    "descriptions": {
-      "aiAutomationDesc": "Interna AI-assistenter, RAG-system, Arbetsflödesautomatisering",
-      "webDevelopmentDesc": "Pragmatiska MVPs, APIs, Full-Stack Webbapplikationer",
-      "enablingSkillsDesc": "DevOps, Driftsättning, Dokumentation & Överlämning"
-    },
-    "subCategories": {
-      "aiAgents": "AI-assistenter",
-      "workflowAutomation": "Arbetsflödesautomatisering",
-      "frontend": "Frontend",
-      "backend": "Backend & Databas",
-      "devops": "DevOps & Driftsättning",
-      "docsDesign": "Dokumentation & Design"
-    }
   },
   "Capabilities": {
     "title": "Vad jag levererar",
@@ -185,8 +146,6 @@
   },
   "Certifications": {
     "title": "Mina certifieringar",
-    "issuedBy": "Utfärdat av:",
-    "date": "Datum:",
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Tysk Handels- och Industrikammare)"
     },
@@ -237,7 +196,6 @@
     "viewAllProjects": "Visa alla projekt",
     "allCount": "Alla {count} projekt",
     "toggleDetails": "Detaljer",
-    "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",
     "liveDemo": "Live-demo",
@@ -290,7 +248,6 @@
     },
     "contact": {
       "title": "Kontakt",
-      "phone": "Telefon:",
       "email": "E-post:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
@@ -449,39 +406,6 @@
     },
     "lastUpdated": "Senast granskad:"
   },
-  "MediaDashboard": {
-    "title": "Media Dashboard",
-    "subtitle": "En central hub för att navigera genom allt innehåll och resurser. Utforska bloggar, dokumentation, projekt och mer.",
-    "cards": {
-      "blogs": {
-        "title": "Bloggar",
-        "description": "Läs mina senaste artiklar och tekniska insikter"
-      },
-      "about": {
-        "title": "Om mig",
-        "description": "Lär dig mer om min bakgrund och erfarenhet"
-      },
-      "projects": {
-        "title": "Projekt",
-        "description": "Utforska mina utvecklingsprojekt och bidrag"
-      },
-      "library": {
-        "title": "Bibliotek",
-        "description": "En personlig samling av böcker, filmer och annan media"
-      },
-      "contact": {
-        "title": "Kontakt",
-        "description": "Hör av dig för samarbeten"
-      }
-    },
-    "comingSoon": "Snart"
-  },
-  "Library": {
-    "title": "Bibliotek",
-    "subtitle": "En personlig samling av böcker, filmer och annan media som har inspirerat och påverkat min resa.",
-    "comingSoon": "Kommer snart",
-    "comingSoonDescription": "Bokrekommendationer och recensioner kommer att finnas tillgängliga här snart."
-  },
   "About": {
     "badge": "Heltidsanställd",
     "personalInfo": {
@@ -533,40 +457,18 @@
       "contact": "Kontakta mig"
     }
   },
-  "PortfolioAbout": {
-    "title": "Om Denna Portfolio",
-    "description": "En modern, högpresterande utvecklarportfolio som visar full-stack-kapacitet med företagsarkitektur, tillgänglighetsstandarder och toppmoderna teknologier.",
-    "performanceBadge": "95+ Google Lighthouse Poäng",
-    "techHighlights": "Byggd Med Moderna Teknologier",
-    "readMore": "Lär dig om portfolions arkitektur",
-    "featuresTitle": "Portfolio-funktioner",
-    "actionsTitle": "Portfolio-åtgärder",
-    "features": {
-      "techStack": {
-        "title": "Next.js & React 19"
-      },
-      "cleanArchitecture": {
-        "title": "TypeScript Arkitektur"
-      },
-      "database": {
-        "title": "PostgreSQL Databas"
-      },
-      "aiChatbot": {
-        "title": "AI-Assistent"
-      },
-      "performance": {
-        "title": "95+ Lighthouse Score"
-      },
-      "mainFeatures": {
-        "title": "Blog & Media Galleri"
-      },
-      "techFeatures": {
-        "title": "GitHub Integration"
-      },
-      "localization": {
-        "title": "5 Språk Support"
-      }
-    }
+  "Blog": {
+    "title": "Blogg",
+    "lead": "Anteckningar från arbetet: AI-utveckling, webbproduktion och besluten däremellan.",
+    "count": "{count, plural, =0 {Inga inlägg ännu} one {# inlägg} other {# inlägg}}",
+    "filterLabel": "Bläddra efter språk",
+    "allLanguages": "Alla språk",
+    "loading": "Läser in inlägg",
+    "emptyTitle": "Inget här ännu",
+    "emptyDescription": "Prova ett annat språk eller kom tillbaka snart för nya texter.",
+    "draft": "Utkast",
+    "minutesToRead": "{count} min läsning",
+    "featured": "Utvalt"
   },
   "ChatBot": {
     "name": "Reem",
@@ -579,18 +481,31 @@
       "title": "Hej! Jag är Reem 👋",
       "description": "Jag är din AI-assistent, här för att hjälpa dig utforska Yazans portfölj och svara på frågor om hans projekt, färdigheter och erfarenhet."
     },
+    "suggestions": {
+      "label": "Testa att fråga",
+      "projects": "Vad har Yazan byggt nyligen?",
+      "stack": "Vilken teknikstack jobbar han med?",
+      "availability": "Är han öppen för nya projekt?",
+      "site": "Hur byggdes den här webbplatsen?"
+    },
     "typing": {
-      "status": "Reem skriver...",
-      "thinking": "Tänker",
-      "processing": "Bearbetar ditt meddelande..."
+      "thinking": "Tänker"
+    },
+    "tools": {
+      "label": "Slog upp",
+      "failed": "inte tillgängligt",
+      "fallback": "Portfoliodata",
+      "get_projects": "Projekt",
+      "get_capabilities": "Kompetenser",
+      "get_certifications": "Certifieringar",
+      "get_profile": "GitHub-profil",
+      "get_stats": "GitHub-statistik",
+      "get_repositories": "GitHub-repon"
     },
     "input": {
-      "placeholder": "ask Reem..",
+      "placeholder": "Fråga Reem…",
       "characterCount": "{count}/{max}",
       "limitReached": "Teckengränsen på {max} har nåtts"
-    },
-    "status": {
-      "generating": "Genererar"
     },
     "errors": {
       "generic": "Något gick fel. Vänligen försök igen.",
@@ -606,23 +521,19 @@
       "sendMessage": "Skicka meddelande",
       "stopGenerating": "Stoppa genereringen",
       "chatConversation": "Chattkonversation",
-      "welcomeIllustration": "Välkomstillustration",
       "pronunciation": "Uttal",
       "messageForm": "Skicka meddelande till assistenten",
       "typeMessage": "Skriv ditt meddelande",
-      "assistantAvatar": "Assistentens avatar",
-      "typingAnimation": "Skrivanimation",
       "yourMessageAt": "Ditt meddelande från {time}",
       "assistantMessageAt": "Assistentens meddelande från {time}",
-      "sentAt": "Skickat {time}",
-      "messageSent": "Meddelandet skickades",
       "messageFailed": "Meddelandet kunde inte skickas"
     },
     "consent": {
-      "title": "Integritet & Datainsamling",
+      "prompt": "Spara den här chatten för att hjälpa till att förbättra Reem?",
+      "details": "Detaljer",
       "description": "Om du godkänner sparar jag denna konversation för att mäta svarens kvalitet och förstå vad besökare söker. Den lagras utan ditt namn eller dina kontaktuppgifter och med din IP-adress förkortad – aldrig för reklam eller profilering. Om du avböjer sparas ingenting.",
-      "accept": "Acceptera & Fortsätt",
-      "decline": "Avböj"
+      "accept": "Spara",
+      "decline": "Spara inte"
     }
   },
   "localeDetect": {

@@ -8,7 +8,7 @@
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { useAnalyticsAllowed } from "./use-cookie-consent";
+import { useAnalyticsAllowed } from "@/hooks/use-cookie-consent";
 
 /**
  * Vercel Analytics and Speed Insights are cookie-less, but they still read from

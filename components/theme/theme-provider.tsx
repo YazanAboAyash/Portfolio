@@ -4,23 +4,27 @@
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-// Never emits a change: the value flips from the server snapshot to the client
-// snapshot exactly once, when hydration completes.
-const subscribeToNothing = () => () => {};
+/**
+ * next-themes renders an inline script that sets the theme class on <html>
+ * before first paint, so the provider has to be in the server HTML: gating it
+ * behind a mount check left the page painting light until hydration.
+ *
+ * The script only ever runs from the server HTML. On the client React never
+ * executes it, but React 19 logs a dev error for any executable <script> a
+ * component renders, so the client copy is typed as inert text. next-themes
+ * marks the tag `suppressHydrationWarning`, which covers the differing `type`.
+ */
+const scriptProps = {
+  type: typeof window === "undefined" ? "text/javascript" : "text/plain",
+};
 
 export function ThemeProvider({
   children,
   ...props
 }: React.ComponentProps<typeof NextThemesProvider>) {
-  const mounted = React.useSyncExternalStore(
-    subscribeToNothing,
-    () => true,
-    () => false,
+  return (
+    <NextThemesProvider scriptProps={scriptProps} {...props}>
+      {children}
+    </NextThemesProvider>
   );
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }

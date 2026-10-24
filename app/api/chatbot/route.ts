@@ -11,9 +11,12 @@ import { randomBytes } from "crypto";
 import { openai } from "@ai-sdk/openai";
 import {
   convertToModelMessages,
+  isStepCount,
   smoothStream,
   streamText,
+  tool,
   validateUIMessages,
+  type ToolSet,
 } from "ai";
 import type {
   ChatBotErrorCode,
@@ -31,6 +34,8 @@ import {
   shouldAnonymizeIP,
 } from "@/lib/chatbot-logging";
 import { prisma } from "@/lib/configs/prisma";
+import { toGitHubErrorCode } from "@/lib/github/service";
+import { portfolioTools } from "@/lib/mcp/portfolio-tools";
 
 // Streaming replies outlive the default function budget on slower models.
 export const maxDuration = 30;
@@ -45,7 +50,7 @@ const CHATBOT_ENABLED = process.env.CHATBOT_ENABLED === "true";
 const chatbotConfig: ChatBotConfig = {
   maxMessagesPerSession: positiveIntEnv("CHATBOT_MAX_MESSAGES_PER_SESSION", 20),
   // Mirrors CHATBOT_CONFIG.INPUT_MAX_LENGTH, the hard cap on the chat input
-  maxMessageLength: positiveIntEnv("CHATBOT_MAX_MESSAGE_LENGTH", 100),
+  maxMessageLength: positiveIntEnv("CHATBOT_MAX_MESSAGE_LENGTH", 500),
   rateLimitPerMinute: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_MINUTE", 10),
   rateLimitPerHour: positiveIntEnv("CHATBOT_RATE_LIMIT_PER_HOUR", 50),
   systemPrompt: REEM_SYSTEM_PROMPT,
@@ -317,14 +322,53 @@ function toErrorCode(error: unknown): ChatBotErrorCode {
   return "SERVICE_UNAVAILABLE";
 }
 
-/** Flattens a UI message's text parts into the plain string we store and moderate. */
+/**
+ * Flattens a UI message's text parts into the plain string we store and moderate.
+ * A reply that called tools carries one text part per step, hence the paragraph
+ * break between parts.
+ */
 function extractText(message: ReemUIMessage): string {
   return message.parts
     .filter((part) => part.type === "text")
     .map((part) => part.text)
-    .join("")
+    .join("\n\n")
     .trim();
 }
+
+/**
+ * Model calls per turn: up to two rounds of tool calls, then the answer. The
+ * last step has tools switched off (see `prepareStep`), so a turn always ends
+ * in text rather than in a tool call nobody reads.
+ */
+const MAX_STEPS = 3;
+
+/**
+ * The public MCP server's tools, run in-process rather than over HTTP: the
+ * chat route has already rate-limited this request, and going through
+ * `/api/mcp` would spend the visitor's budget there too. None take input, so
+ * the model can choose which tool to run but not what it does.
+ *
+ * A GitHub failure becomes a bare code in the tool result, the same one the
+ * MCP server returns, so Reem can say the data is unavailable instead of the
+ * whole turn failing.
+ */
+const reemTools: ToolSet = Object.fromEntries(
+  Object.entries(portfolioTools).map(([name, { description, load }]) => [
+    name,
+    tool({
+      description,
+      inputSchema: z.object({}),
+      execute: async () => {
+        try {
+          return (await load()).data;
+        } catch (error) {
+          diagnostic("warn", `tool ${name} failed`, error);
+          return { error: toGitHubErrorCode(error) };
+        }
+      },
+    }),
+  ]),
+);
 
 /**
  * Log chat session and messages to database (if logging is enabled AND user consented)
@@ -567,12 +611,28 @@ export async function POST(request: NextRequest): Promise<Response> {
     ...lastMessage,
     parts: [{ type: "text", text: sanitizedText }],
   };
-  const conversation = [...uiMessages.slice(0, -1), sanitizedLastMessage];
+  // Earlier turns are reduced to their text. Tool results from past turns
+  // would arrive from the client, so the model would be reading data it has
+  // no reason to trust as tool output; Reem re-runs a tool when a later
+  // question needs it. The client strips them too, to stay under the body cap.
+  const conversation = [
+    ...uiMessages.slice(0, -1).map((message) => ({
+      ...message,
+      parts: message.parts.filter((part) => part.type === "text"),
+    })),
+    sanitizedLastMessage,
+  ];
 
   const result = streamText({
     model: openai(OPENAI_CHAT_MODEL),
     system: chatbotConfig.systemPrompt,
     messages: await convertToModelMessages(conversation),
+    tools: reemTools,
+    stopWhen: isStepCount(MAX_STEPS),
+    prepareStep: ({ stepNumber }) =>
+      stepNumber === MAX_STEPS - 1 ? { toolChoice: "none" } : undefined,
+    // Per step, so a turn with tool calls can produce more than this in total;
+    // MAX_REQUEST_BODY_BYTES leaves room for that.
     maxOutputTokens: 1024,
     abortSignal: request.signal,
     experimental_transform: smoothStream({ chunking: "word" }),

@@ -10,8 +10,8 @@ Modern, secure, high‑performance developer portfolio built with Next.js 16, Ty
 **Live:** https://www.coldbydefault.com
 **Docs:** https://docs.coldbydefault.com/
 **Stack:**
-Next.js 16.2 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui
-Embla Carousel · Framer Motion 12.x · next-intl 4.11 · Prisma ORM 7.8
+Next.js 16.4 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui
+Framer Motion 12.x · next-intl 4.11 · Prisma ORM 7.8
 Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · MCP TypeScript SDK 2 · ESLint 9.x · Playwright + axe-core · Vercel
 
 **v > 5.x.x** 
@@ -62,13 +62,16 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · MCP TypeScript SDK 2 · ESLint 
 
 This portfolio serves as a professional showcase of engineering capability: performant UI, secure API integrations (GitHub, PageSpeed), accessibility‑focused design, production‑grade hardening, and multi‑language + deep structured SEO implementation.
 
-Beyond the portfolio surface, the project hosts an AI assistant and a public **GitHub MCP server** behind a live in‑browser session console, each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
+Beyond the portfolio surface, the project hosts an AI assistant and a public, read‑only **portfolio MCP server** (projects, capabilities, certifications and GitHub data) behind a live in‑browser "Ask this site" console, each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
 
 ---
 
 ## 2. Recent Releases
 
-Condensed summary of what shipped since the last tagged GitHub release (v6.0.13 — SEIJAKU).
+Condensed summary of recent releases.
+
+**v7.0.0 – v7.0.5 — v7 redesign**
+Home page rebuilt around left‑aligned section headings with static titles (the v6 scramble effect is retired); a Capabilities section with a Stack Explorer showing where each technology is used; a rotating "now" line in the hero; a search palette with blog search; footer and company banner restyled. The MCP server grew from GitHub‑only to the whole portfolio (projects, capabilities, certifications, GitHub), with the language‑stats and recent‑activity tools dropped. The Services section was removed. The admin blog API gained a scoped `agent` role for draft creation, and a CI workflow now checks lint, types and i18n key parity on every PR.
 
 **v6.1.9 — GitHub MCP server & showcase rebuild**
 A read‑only GitHub MCP server in TypeScript, replacing the old Python prototype; the GitHub showcase rebuilt on a single GraphQL service with a real in‑browser MCP session console; About page rebuilt; commercial details on projects and products; service categories and Reem's knowledge refreshed.
@@ -91,17 +94,16 @@ Scroll‑reveal animations, one card design language, `ScrambleText` headings an
 
 Core:
 
-- Next.js 16.2 (App Router, Server Components, Turbopack dev, Edge runtime where applicable)
+- Next.js 16.4 (App Router, Server Components, Turbopack dev, Webpack build)
 - React 19.2.3, TypeScript 5.x (strict mode)
 - Tailwind CSS 4.1.12 + PostCSS
 - shadcn/ui (Radix accessible primitives)
-- Embla Carousel 8.6.0
 - Framer Motion 12.23.12 (lazy‑loaded motion features)
 - next-intl 4.11 (server aware, cookie‑driven locale)
 - Zod 4.x (runtime schema validation)
 - Prisma ORM 7.8 + Neon serverless PostgreSQL
 - Vercel AI SDK 7 (`ai` 7.0.47, `@ai-sdk/openai` 4.0.27, `@ai-sdk/react` 4.0.50) — streaming chatbot transport
-- MCP TypeScript SDK 2 (`@modelcontextprotocol/server` + `@modelcontextprotocol/client` 2.1) — GitHub MCP server and in‑browser client
+- MCP TypeScript SDK 2 (`@modelcontextprotocol/server` + `@modelcontextprotocol/client` 2.3) — portfolio MCP server and in‑browser client
 - Vercel Hosting & Edge Network
 
 Development & Quality:
@@ -122,22 +124,22 @@ User Experience & UI:
 - Responsive, mobile‑first adaptive layout
 - Theme switching (light/dark) with persistence
 - Section rail navigation with localized labels and inline CTAs
+- Search palette for pages, sections and blog posts
 - Scroll‑reveal animation system and a unified card design language
-- Animated hero, project & certification showcases; `ScrambleText` headings
-- Carousel showcases with autoplay
+- Animated hero, project & certification showcases
 - Cookie consent banner with localized content (EN / DE / ES / SV / FR)
 - Accessibility: ARIA support, keyboard navigation, `aria-hidden` on decorative icons, Radix primitives
 - Globally localized error boundaries
 
 Content & Data:
 
-- Dynamic project, technology, service package and certification data modules
-- GitHub showcase: profile, stats and pinned repos from one cached GraphQL query, plus a "Live MCP session" drawer driven by a real MCP client
+- Typed, translatable project, product, capability and certification data modules
+- Capabilities section with a Stack Explorer: pick a technology, see every project and product that uses it
+- "Ask this site" console: a real in‑browser MCP client calling the site's own MCP server, with GitHub data from one cached GraphQL query
 - Products (Princeps, LogiX) and Collaboration showcases on the home page
 - Google PageSpeed Insights integration for performance transparency
 - Blog system with dynamic content management, filtering and per‑slug routes
 - CRUD admin dashboard for blog management and chatbot log review
-- Service packages and use‑case showcases with structured, translatable data
 
 ---
 
@@ -193,7 +195,6 @@ Advanced multi‑locale SEO system delivering consistent structured metadata:
 - Dynamic sitemap.xml generation with automatic locale & page discovery
 - Dynamic robots.txt with proper crawling directives
 - 301 redirect strategy for retired locale‑prefixed URLs
-- CSP‑compatible (no unsafe inline script proliferation)
 - Verified 100/100 Lighthouse SEO score (Sep 2025) & 100 PageSpeed Insights SEO metric
 
 ---
@@ -215,16 +216,17 @@ Focus Areas:
 High‑level structure:
 
 - `app/` — Next.js routing (App Router, route groups: `(legals)`, `(media)`, plus `admin` and `api`)
-- `components/` — Domain + UI abstraction layers (hero, about, github, projects, products, collaboration, nav, visuals, ui primitives)
-- `data/` — Structured static metadata (projects, products, certifications, chatbot persona and MCP configs)
-- `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, Prisma client, `github/` data service, `mcp/` server definition)
-- `hooks/` — Custom React hooks (language, mobile detection, chatbot, GitHub MCP session, client gating)
+- `components/` — Domain + UI abstraction layers (hero, about, tech, github, projects, products, collaboration, nav, visuals, ui primitives)
+- `data/` — Structured static metadata (projects, products, capabilities, certifications, chatbot persona and MCP configs)
+- `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, Prisma client, `blog-admin/` services, `github/` data service, `mcp/` server definition)
+- `hooks/` — Custom React hooks (chatbot, GitHub MCP session, search palette, latest post, locale preview, mobile detection, client gating)
 - `i18n/` — next-intl request/runtime configuration
 - `messages/` — Locale message bundles (en, de, es, fr, sv)
 - `prisma/` — Schema and migrations (Blog, BlogCategory, BlogTag, BlogTagRelation, BlogCredit, ChatSession, ChatMessage)
 - `tests/e2e/` — Playwright suites (accessibility, locale, public pages)
 - `types/` — Shared type surfaces mirrored per domain
-- `proxy.ts` — Next.js 16 middleware: locale detection, legacy redirects, admin session verification
+- `proxy.ts` — Next.js 16 request hook: locale detection and legacy redirects; also holds the admin session‑cookie helpers
+- `scripts/` — Repository checks (i18n key parity across locales)
 - `public/` — Static assets (images, logos, icons)
 
 Design Principles:
@@ -248,12 +250,12 @@ Comprehensive API endpoints with security-first design:
 | `/api/mcp`                | Public portfolio MCP server (6 read-only tools: projects, capabilities, certifications, GitHub) | Streamable HTTP, MCP 2026-07-28 + 2025 fallback, rate limited |
 | `/api/speed-insight`      | Surfaces PageSpeed metrics                                                                      | 1h revalidate, `stale-while-revalidate`                       |
 | `/api/chatbot`            | Interactive AI chatbot (Reem) for visitor queries                                               | Vercel AI SDK 7, SSE streamed                                 |
-| `/api/admin/blog`         | Administrative blog CRUD                                                                        | HMAC session + rate limited                                   |
-| `/api/admin/chatbot/logs` | Consent‑gated chat log review                                                                   | Admin‑authenticated + rate limited                            |
+| `/api/admin/blog`         | Administrative blog CRUD; scoped draft creation for the blog agent                              | Bearer token (`admin` / `agent` roles) + rate limited         |
+| `/api/admin/chatbot/logs` | Consent‑gated chat log review                                                                   | Admin Bearer token + rate limited                             |
 
 Every route is Zod‑validated and returns standardized error envelopes with no internal leakage; abuse and transport controls are covered in §11.
 
-**GitHub MCP server:** a read‑only [Model Context Protocol](https://modelcontextprotocol.io) server that powers the homepage's "Live MCP session" drawer — a genuine protocol exchange rather than a scripted animation.
+**Portfolio MCP server:** a public, read‑only [Model Context Protocol](https://modelcontextprotocol.io) server with six tools (`get_projects`, `get_capabilities`, `get_certifications`, `get_profile`, `get_stats`, `get_repositories`). It powers the homepage's "Ask this site" console — a genuine protocol exchange rather than a scripted animation — and is open to any outside MCP client.
 
 ---
 
@@ -265,7 +267,7 @@ Implemented Layers:
 
 1. **Transport & Headers**: HSTS, CSP, X-Content-Type-Options, X-Frame-Options (deny), Referrer-Policy, Permissions-Policy.
 2. **Abuse Mitigation**: per‑IP windowed rate limiting on all AI, admin and MCP endpoints; spam heuristics and input sanitation on chat input; request body size caps; session message caps.
-3. **Admin Authentication**: HMAC‑SHA256 signed, expiring stateless session cookies verified in `proxy.ts` with `timingSafeEqual`; rate limiting and explicit IP resolution on admin requests.
+3. **Admin Authentication**: every admin API request carries a Bearer token compared in constant time, with an `admin` role for full CRUD and a narrowly scoped `agent` role for draft creation; failed attempts are rate limited per IP. Login also issues an HMAC‑SHA256 signed, expiring stateless session cookie.
 4. **Dependency Hygiene**: routine `npm audit`, plus explicit `overrides` pinning security‑relevant transitives (postcss, sharp, minimatch, brace-expansion, lodash).
 5. **Automated Scanning**: CodeQL static analysis and dependency review run in CI — see §12.
 
@@ -279,6 +281,11 @@ Security Posture Snapshot:
 ---
 
 ## 12. GitHub Actions & Automation
+
+**CI:**
+
+- **Triggers**: Pull requests and pushes to main
+- **Checks**: i18n key parity across all five locales, ESLint, `next typegen` + TypeScript type check
 
 **CodeQL Advanced Security Scanning:**
 

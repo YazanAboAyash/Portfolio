@@ -7,6 +7,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import {
   BLOG_LANGUAGE_NAMES,
@@ -30,6 +31,7 @@ export function LanguageFilter({
   onLanguageChange,
   className = "",
 }: LanguageFilterProps) {
+  const t = useTranslations("Blog");
   const options: (BlogLanguage | "all")[] = ["all", ...SUPPORTED_BLOG_LANGUAGES];
 
   return (
@@ -45,7 +47,7 @@ export function LanguageFilter({
             selectedLanguage === lang ? optionActive : optionIdle,
           )}
         >
-          {lang === "all" ? "All Languages" : BLOG_LANGUAGE_NAMES[lang]}
+          {lang === "all" ? t("allLanguages") : BLOG_LANGUAGE_NAMES[lang]}
         </button>
       ))}
     </div>

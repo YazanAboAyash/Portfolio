@@ -9,52 +9,54 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { CircleAlert, Shield } from "lucide-react";
+import { CircleAlert } from "lucide-react";
 import { Blobatar } from "@blobatar/react";
 import "blobatar/motion.css";
-import { useChatBot } from "@/components/chatbot";
+import { useChatBot } from "@/hooks/use-chatbot";
+import { useCookieConsent } from "@/hooks/use-cookie-consent";
 import type { ChatBotUIProps } from "@/types/configs/chatbot";
-import {
-  ChatHeader,
-  ChatMessage as ChatMessageComponent,
-  ChatInput,
-  TypingIndicator,
-} from "@/components/chatbot";
+import { ChatHeader } from "./ChatHeader";
+import { ChatMessage as ChatMessageComponent } from "./ChatMessage";
+import { ChatInput } from "./ChatInput";
+import { ChatWelcome } from "./ChatWelcome";
+import { ChatConsent } from "./ChatConsent";
+import { TypingIndicator } from "./TypingIndicator";
+import { CHATBOT_CONFIG, CHATBOT_TRANSLATION_KEYS } from "./ChatBot.constants";
 
-import {
-  CHATBOT_CONFIG,
-  CHATBOT_STYLES,
-  CHATBOT_TRANSLATION_KEYS,
-} from "./ChatBot.constants";
+/**
+ * Mouse and keyboard users land in the input. On touch screens focusing it would
+ * raise the keyboard over the suggestions, so focus goes to the panel instead.
+ */
+function prefersInputFocus(): boolean {
+  return window.matchMedia("(pointer: fine)").matches;
+}
 
-export function ChatBot({
-  className = "",
-  position = "bottom-left",
-}: ChatBotUIProps) {
+export function ChatBot({ className = "" }: ChatBotUIProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [bottomOffset, setBottomOffset] = useState(
-    CHATBOT_CONFIG.DEFAULT_BOTTOM_OFFSET,
-  );
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const chatInputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const logRef = useRef<HTMLDivElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const chatInputRef = useRef<HTMLTextAreaElement>(null);
+  // Whether new content should keep the log scrolled to the end. Cleared when
+  // the visitor scrolls up to reread, so streaming does not yank them back down.
+  const stickToBottomRef = useRef(true);
+  const returnFocusRef = useRef(false);
   const t = useTranslations("ChatBot");
+  const cookieConsent = useCookieConsent();
 
   const {
     messages,
     status,
     isLoading,
     errorKey,
-    consentGiven,
+    consentAnswered,
     sendMessage,
     stop,
     clearError,
     clearMessages,
     setConsent,
   } = useChatBot();
-  const [consentDismissed, setConsentDismissed] = useState(false);
 
   const lastMessage = messages[messages.length - 1];
   // Covers both "submitted" and a stream that has opened but not yet sent text
@@ -65,100 +67,84 @@ export function ChatBot({
       lastMessage.parts.some((part) => part.type === "text" && part.text)
     );
 
-  // Derive consent banner visibility from state (no effect needed)
-  const showConsentBanner =
-    isOpen && !consentGiven && !consentDismissed && messages.length === 0;
+  const showConsent = !consentAnswered && messages.length === 0;
 
-  // Show ChatBot button after configured delay
+  // Hold the launcher back until the cookie choice is made, so a first visit
+  // does not stack three prompts at once; returning visitors see it quickly.
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, CHATBOT_CONFIG.VISIBILITY_DELAY);
+    if (isVisible) return;
+
+    const delay =
+      cookieConsent === null
+        ? CHATBOT_CONFIG.FIRST_VISIT_FALLBACK_DELAY
+        : CHATBOT_CONFIG.VISIBILITY_DELAY;
+    const timer = setTimeout(() => setIsVisible(true), delay);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [cookieConsent, isVisible]);
 
-  // Auto-scroll to bottom when new messages arrive
+  // Keep the newest message in view unless the visitor has scrolled away
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({
-      behavior: CHATBOT_CONFIG.SCROLL_BEHAVIOR,
-    });
-  }, [messages]);
+    const log = logRef.current;
+    if (!log || !stickToBottomRef.current) return;
 
-  // Clear error when opening chat
+    log.scrollTop = log.scrollHeight;
+  }, [messages, awaitingFirstToken, errorKey, isOpen]);
+
+  // Move focus into the panel on open and back to the launcher on close
   useEffect(() => {
-    if (isOpen && errorKey) {
-      clearError();
+    if (isOpen) {
+      (prefersInputFocus() ? chatInputRef.current : panelRef.current)?.focus();
+    } else if (returnFocusRef.current) {
+      returnFocusRef.current = false;
+      launcherRef.current?.focus();
     }
-  }, [isOpen, errorKey, clearError]);
+  }, [isOpen]);
 
-  // Detect footer visibility and adjust chatbot position dynamically
+  // Escape closes from anywhere: focus can fall back to <body> when the element
+  // holding it unmounts (a suggestion, once the conversation starts)
   useEffect(() => {
-    const handleScroll = () => {
-      if (!isVisible) return; // Only adjust position if chatbot is visible
+    if (!isOpen) return;
 
-      const footer = document.querySelector("footer");
-      if (!footer) {
-        setBottomOffset(CHATBOT_CONFIG.DEFAULT_BOTTOM_OFFSET);
-        return;
-      }
-
-      const footerRect = footer.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Calculate how much of the footer is visible
-      const footerVisibleHeight = Math.max(0, windowHeight - footerRect.top);
-
-      // If footer is visible, position chatbot above it with some padding
-      if (footerVisibleHeight > 0) {
-        setBottomOffset(footerVisibleHeight + CHATBOT_CONFIG.FOOTER_PADDING);
-      } else {
-        setBottomOffset(CHATBOT_CONFIG.DEFAULT_BOTTOM_OFFSET);
-      }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape" || e.defaultPrevented) return;
+      returnFocusRef.current = true;
+      setIsOpen(false);
     };
 
-    // Add scroll listener
-    window.addEventListener("scroll", handleScroll);
-    // Add resize listener for responsive behavior
-    window.addEventListener("resize", handleScroll);
-    // Check initial state
-    handleScroll();
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [isVisible]);
+  const handleOpenChat = () => {
+    // A stale error from an earlier visit should not greet the visitor
+    clearError();
+    stickToBottomRef.current = true;
+    setIsOpen(true);
+  };
 
   const handleCloseChat = () => {
+    returnFocusRef.current = true;
     setIsOpen(false);
   };
 
-  const handleOpenChat = () => {
-    setIsOpen(true);
-    // Focus the input when chat opens for better accessibility
-    setTimeout(() => {
-      chatInputRef.current?.focus();
-    }, 100);
-  };
-
-  const handleAcceptConsent = () => {
-    setConsent(true);
-    setConsentDismissed(true);
-  };
-
-  const handleDeclineConsent = () => {
-    setConsent(false);
-    setConsentDismissed(true);
+  const handleLogScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+    stickToBottomRef.current =
+      scrollHeight - scrollTop - clientHeight <
+      CHATBOT_CONFIG.STICK_TO_BOTTOM_THRESHOLD;
   };
 
   const handleNewChat = () => {
     clearMessages();
-    setConsentDismissed(false);
     clearError();
+    stickToBottomRef.current = true;
+    chatInputRef.current?.focus();
   };
 
   const handleSendMessage = async (message: string) => {
+    stickToBottomRef.current = true;
+
     try {
       await sendMessage(message);
     } catch {
@@ -166,182 +152,117 @@ export function ChatBot({
     }
   };
 
-  // Dynamic position classes based on calculated bottom offset
-  const getPositionClasses = () => {
-    return CHATBOT_CONFIG.POSITION_CLASSES[position];
-  };
+  if (!isVisible) return null;
 
-  return isVisible ? (
+  if (!isOpen) {
+    return (
+      <Button
+        ref={launcherRef}
+        onClick={handleOpenChat}
+        size="icon"
+        className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 size-14 cursor-pointer rounded-full border border-primary/20 shadow-lg transition-transform hover:scale-105 animate-in fade-in-0 zoom-in-75 duration-300 motion-reduce:animate-none motion-reduce:hover:scale-100 md:bottom-6 md:left-6 ${className}`}
+        title={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
+      >
+        {/* size-* class opts out of the Button's [&_svg]:size-4 override */}
+        <Blobatar
+          name={CHATBOT_CONFIG.AVATAR_SEED}
+          animate="always"
+          className="size-10"
+          aria-hidden="true"
+        />
+        <span className="sr-only">
+          {t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
+        </span>
+      </Button>
+    );
+  }
+
+  // Full screen on phones; a panel anchored where the launcher sits from `sm` up
+  return (
     <div
-      className={`fixed ${getPositionClasses()} z-50 transition-all duration-300 ease-in-out ${className}`}
-      style={{
-        bottom: position.startsWith("bottom") ? `${bottomOffset}px` : undefined,
-      }}
+      ref={panelRef}
+      className={`fixed inset-0 z-50 flex h-dvh flex-col bg-background outline-none animate-in fade-in-0 slide-in-from-bottom-4 duration-200 motion-reduce:animate-none sm:inset-auto sm:bottom-4 sm:left-4 sm:h-[min(40rem,calc(100dvh-6rem))] sm:w-100 sm:origin-bottom-left sm:rounded-2xl sm:border sm:border-border sm:shadow-2xl sm:zoom-in-95 md:bottom-6 md:left-6 ${className}`}
+      role="dialog"
+      aria-labelledby="chatbot-title"
+      aria-describedby="chatbot-subtitle"
+      aria-modal="false"
+      tabIndex={-1}
     >
-      {!isOpen ? (
-        <Button
-          onClick={handleOpenChat}
-          size="lg"
-          className={`relative ${CHATBOT_STYLES.BUTTON_ROUNDED} ${CHATBOT_STYLES.BUTTON_SHADOW} transition-all duration-300 ${CHATBOT_STYLES.BUTTON_GRADIENT} h-14 w-14 border-2 border-primary/20 group cursor-pointer`}
-          aria-label={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
-          title={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
-        >
-          {/* size-* class opts out of the Button's [&_svg]:size-4 override */}
-          <Blobatar
-            name={CHATBOT_CONFIG.AVATAR_SEED}
-            animate="always"
-            className="size-10 lg:size-11"
-            aria-hidden="true"
-          />
-          <span className="sr-only">
-            {t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
-          </span>
-        </Button>
-      ) : (
-        <Card
-          className={`${CHATBOT_CONFIG.RESPONSIVE_WIDTH_CLASSES} min-h-96 sm:min-h-112 max-h-112 sm:max-h-128 ${CHATBOT_STYLES.CARD_SHADOW} ${CHATBOT_STYLES.CARD_BORDER} flex flex-col`}
-          role="dialog"
-          aria-labelledby="chatbot-title"
-          aria-describedby="chatbot-subtitle"
-          aria-modal="false"
-        >
-          <ChatHeader onClose={handleCloseChat} onNewChat={handleNewChat} />
+      <ChatHeader
+        onClose={handleCloseChat}
+        onNewChat={handleNewChat}
+        hasMessages={messages.length > 0}
+        isThinking={isLoading}
+      />
 
-          {/* Consent Banner */}
-          {showConsentBanner && (
-            <div className="p-4 border-b border-border/50">
-              <div className="flex items-start space-x-3">
-                <div className="shrink-0">
-                  <Shield className="h-5 w-5 text-primary" aria-hidden="true" />
-                </div>
-                <div className="flex-1 space-y-3">
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      {t("consent.title")}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                      {t("consent.description")}
-                    </p>
-                  </div>
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <Button
-                      size="sm"
-                      onClick={handleAcceptConsent}
-                      className="flex-1 text-xs"
-                    >
-                      {t("consent.accept")}
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={handleDeclineConsent}
-                      className="flex-1 text-xs"
-                    >
-                      {t("consent.decline")}
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Focusable so keyboard users can scroll a transcript with no links in it */}
+      <div
+        ref={logRef}
+        onScroll={handleLogScroll}
+        tabIndex={0}
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset"
+        role="log"
+        aria-live="polite"
+        aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_CHAT_CONVERSATION)}
+      >
+        <div className="flex flex-col gap-5">
+          {messages.length === 0 && !isLoading && (
+            <ChatWelcome
+              onSuggestionSelect={(suggestion) => {
+                // The clicked button unmounts with the welcome screen
+                (prefersInputFocus()
+                  ? chatInputRef.current
+                  : panelRef.current
+                )?.focus();
+                void handleSendMessage(suggestion);
+              }}
+            />
           )}
 
-          <CardContent className="p-0 flex flex-col flex-1 min-h-0 relative">
-            {showConsentBanner && (
-              <div className="absolute inset-0 z-10 backdrop-blur-sm bg-background/30" />
-            )}
-            <div
-              className={`flex-1 p-3 sm:p-4 min-h-0 max-h-64 sm:max-h-80 ${showConsentBanner ? "overflow-hidden" : "overflow-y-auto"} ${CHATBOT_STYLES.SCROLLBAR}`}
-              role="log"
-              aria-live="polite"
-              aria-label={t(
-                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_CHAT_CONVERSATION,
-              )}
-            >
-              <div className="space-y-4">
-                {messages.length === 0 && !isLoading && (
-                  <div
-                    className="flex flex-col items-center justify-center pt-1 pb-4 sm:pt-2 sm:pb-6 text-center"
-                    role="region"
-                    aria-labelledby="welcome-title"
-                  >
-                    <div
-                      className="w-16 h-16 flex items-center justify-center mb-4"
-                      role="img"
-                      aria-label={t(
-                        CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_WELCOME_ILLUSTRATION,
-                      )}
-                    >
-                      <Blobatar
-                        name={CHATBOT_CONFIG.AVATAR_SEED}
-                        animate="always"
-                        className="size-16"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <h3
-                      className="font-semibold text-foreground mb-2"
-                      id="welcome-title"
-                    >
-                      {t(CHATBOT_TRANSLATION_KEYS.GREETING_TITLE)}
-                    </h3>
-                    <p
-                      className="text-sm text-muted-foreground max-w-xs leading-relaxed"
-                      id="welcome-description"
-                    >
-                      {t(CHATBOT_TRANSLATION_KEYS.GREETING_DESCRIPTION)}
-                    </p>
-                  </div>
-                )}
-
-                {messages.map((message) => {
-                  const isLast = message.id === lastMessage?.id;
-
-                  return (
-                    <ChatMessageComponent
-                      key={message.id}
-                      message={message}
-                      {...(isLast && message.role === "user"
-                        ? { status: status === "error" ? "error" : "sent" }
-                        : {})}
-                    />
-                  );
-                })}
-
-                {awaitingFirstToken && <TypingIndicator />}
-
-                {errorKey && (
-                  <div
-                    className="flex justify-center py-4"
-                    role="alert"
-                    aria-live="assertive"
-                  >
-                    <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg text-sm flex items-center gap-2 max-w-xs">
-                      <CircleAlert
-                        className="w-4 h-4 shrink-0"
-                        aria-hidden="true"
-                      />
-                      <span>{t(errorKey)}</span>
-                    </div>
-                  </div>
-                )}
-
-                <div ref={messagesEndRef} />
-              </div>
-            </div>
-
-            <Separator className="opacity-50" />
-
-            <ChatInput
-              onSendMessage={handleSendMessage}
-              status={status}
-              onStop={stop}
-              ref={chatInputRef}
+          {messages.map((message) => (
+            <ChatMessageComponent
+              key={message.id}
+              message={message}
+              failed={
+                message.id === lastMessage?.id &&
+                message.role === "user" &&
+                status === "error"
+              }
             />
-          </CardContent>
-        </Card>
+          ))}
+
+          {awaitingFirstToken && <TypingIndicator />}
+
+          {errorKey && (
+            <div
+              className="flex items-start gap-2 rounded-xl border border-destructive/20 bg-destructive/10 px-3 py-2.5 text-sm text-destructive"
+              role="alert"
+            >
+              <CircleAlert
+                className="mt-0.5 size-4 shrink-0"
+                aria-hidden="true"
+              />
+              <span>{t(errorKey)}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {showConsent && (
+        <ChatConsent
+          onAccept={() => setConsent(true)}
+          onDecline={() => setConsent(false)}
+        />
       )}
+
+      <ChatInput
+        onSendMessage={handleSendMessage}
+        status={status}
+        onStop={stop}
+        ref={chatInputRef}
+      />
     </div>
-  ) : null;
+  );
 }
 
 export default ChatBot;

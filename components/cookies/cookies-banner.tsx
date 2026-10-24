@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { X, Cookie } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { useCookieConsent, useConsentActions } from "./use-cookie-consent";
+import { useCookieConsent, useConsentActions } from "@/hooks/use-cookie-consent";
 
 export function CookiesBanner() {
   const [delayElapsed, setDelayElapsed] = useState(false);

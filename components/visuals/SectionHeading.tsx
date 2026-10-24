@@ -4,11 +4,8 @@
  * @version 7.x.x
  */
 
-"use client";
-
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { ScrambleText } from "./ScrambleText";
 
 interface SectionHeadingProps {
   readonly title: string;
@@ -23,7 +20,7 @@ interface SectionHeadingProps {
 }
 
 /**
- * The v7 section title: left-aligned, large, the scramble kept from v6. The
+ * The v7 section title: left-aligned, large, static text. The
  * lead stays in the full ink at reading size, and `aside` answers the title
  * on the right so the row never leaves half the width empty.
  */
@@ -47,7 +44,7 @@ export function SectionHeading({
           id={id}
           className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl"
         >
-          <ScrambleText text={title} />
+          {title}
         </Heading>
         {lead && (
           <p className="hidden text-base leading-relaxed text-foreground/80 sm:block sm:text-lg">

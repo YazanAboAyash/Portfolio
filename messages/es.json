@@ -1,16 +1,11 @@
 {
   "Home": {
-    "WebsitePerformance": "Rendimiento del sitio web",
     "companiesContributing": "Trabajando con",
     "speedInsight": {
       "title": "PageSpeed Insights en vivo",
       "subtitle": "Puntuaciones de Google Lighthouse en tiempo real para este sitio web",
       "desktop": "Escritorio",
       "mobile": "Móvil",
-      "performance": "Rendimiento",
-      "accessibility": "Accesibilidad",
-      "bestPractices": "Mejores prácticas",
-      "seo": "SEO",
       "loading": "Analizando el rendimiento del sitio web...",
       "error": "No se pudieron cargar los datos de PageSpeed",
       "retry": "Reintentar",
@@ -27,7 +22,6 @@
     "contact": "Contacto",
     "learnMoreAboutMe": "Conoce más sobre mí",
     "aboutShort": "Sobre mí",
-    "moreAboutMe": "Más sobre mí en",
     "askMcp": "Pregunta a este sitio por MCP",
     "portraitAltLight": "Yazan Abo-Ayash con chaqueta oscura y cuello alto ante una pared blanca",
     "portraitAltDark": "Yazan Abo-Ayash con chaqueta oscura sobre fondo negro",
@@ -79,7 +73,6 @@
     "location": "Ubicación",
     "status": "Estado",
     "qualification": "Titulación",
-    "quickLinks": "Enlaces rápidos",
     "employmentStatus": "Empleado a tiempo completo",
     "position": "Puesto",
     "employer": "Empleador",
@@ -87,38 +80,6 @@
     "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Especialización",
     "specializationValue": "Inteligencia Artificial"
-  },
-  "QuickActions": {
-    "title": "Acciones Rápidas",
-    "allMedia": "Todos los Medios",
-    "projects": "Proyectos",
-    "latestPosts": "Últimas Publicaciones",
-    "aboutMe": "Sobre Mí",
-    "portfolioDocs": "Documentación del Portfolio",
-    "library": "Biblioteca",
-    "latestBlog": "Último Blog"
-  },
-  "Technologies": {
-    "title": "Servicios & Tecnologías",
-    "manyMoreTechnologies": "...siempre aprendiendo y creciendo",
-    "categories": {
-      "aiAutomation": "IA & Automatización",
-      "webDevelopment": "Web & Backend MVPs",
-      "enablingSkills": "Habilidades de Apoyo"
-    },
-    "descriptions": {
-      "aiAutomationDesc": "Asistentes IA Internos, Sistemas RAG, Automatización de Flujos",
-      "webDevelopmentDesc": "MVPs Pragmáticos, APIs, Aplicaciones Web Full-Stack",
-      "enablingSkillsDesc": "DevOps, Despliegue, Documentación & Entrega"
-    },
-    "subCategories": {
-      "aiAgents": "Asistentes IA",
-      "workflowAutomation": "Automatización de Flujos",
-      "frontend": "Frontend",
-      "backend": "Backend & Base de Datos",
-      "devops": "DevOps & Despliegue",
-      "docsDesign": "Documentación & Diseño"
-    }
   },
   "Capabilities": {
     "title": "Lo que entrego",
@@ -185,8 +146,6 @@
   },
   "Certifications": {
     "title": "Mis certificaciones",
-    "issuedBy": "Emitido por:",
-    "date": "Fecha:",
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Cámara de Comercio e Industria Alemana)"
     },
@@ -237,7 +196,6 @@
     "viewAllProjects": "Ver todos los proyectos",
     "allCount": "Los {count} proyectos",
     "toggleDetails": "Detalles",
-    "cloneRepository": "Clonar repositorio",
     "code": "Código",
     "npmPackage": "npm",
     "liveDemo": "Demo en vivo",
@@ -290,7 +248,6 @@
     },
     "contact": {
       "title": "Contacto",
-      "phone": "Teléfono:",
       "email": "Correo electrónico:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
@@ -449,39 +406,6 @@
     },
     "lastUpdated": "Última revisión:"
   },
-  "MediaDashboard": {
-    "title": "Panel de Medios",
-    "subtitle": "Un centro central para navegar por todo el contenido y recursos. Explore blogs, documentación, proyectos y más.",
-    "cards": {
-      "blogs": {
-        "title": "Blogs",
-        "description": "Lea mis últimos artículos e ideas técnicas"
-      },
-      "about": {
-        "title": "Sobre mí",
-        "description": "Aprenda más sobre mi experiencia y antecedentes"
-      },
-      "projects": {
-        "title": "Proyectos",
-        "description": "Explore mis proyectos de desarrollo y contribuciones"
-      },
-      "library": {
-        "title": "Biblioteca",
-        "description": "Una colección personal de libros, películas y otros medios"
-      },
-      "contact": {
-        "title": "Contacto",
-        "description": "Póngase en contacto para colaboraciones"
-      }
-    },
-    "comingSoon": "Próximamente"
-  },
-  "Library": {
-    "title": "Biblioteca",
-    "subtitle": "Una colección personal de libros, películas y otros medios que han inspirado e influido en mi camino.",
-    "comingSoon": "Próximamente",
-    "comingSoonDescription": "Las recomendaciones y reseñas de libros estarán disponibles aquí pronto."
-  },
   "About": {
     "badge": "Empleado a tiempo completo",
     "personalInfo": {
@@ -533,40 +457,18 @@
       "contact": "Contactar"
     }
   },
-  "PortfolioAbout": {
-    "title": "Acerca de Este Portfolio",
-    "description": "Esto no es solo un portfolio - este es mi viaje como desarrollador visualizado en una aplicación full-stack. Está diseñado para estar 'terminado' pero en constante evolución, creciendo conmigo mientras avanzo en mi carrera. Construido con arquitectura empresarial y tecnologías de vanguardia, siempre se actualizará y siempre crecerá.",
-    "performanceBadge": "95+ Puntuación Google Lighthouse",
-    "techHighlights": "Construido Con Tecnologías Modernas",
-    "readMore": "Conocer la arquitectura del portfolio",
-    "featuresTitle": "Características del Portfolio",
-    "actionsTitle": "Acciones del Portfolio",
-    "features": {
-      "techStack": {
-        "title": "Next.js & React 19"
-      },
-      "cleanArchitecture": {
-        "title": "Arquitectura TypeScript"
-      },
-      "database": {
-        "title": "Base de Datos PostgreSQL"
-      },
-      "aiChatbot": {
-        "title": "Asistente IA"
-      },
-      "performance": {
-        "title": "95+ Lighthouse Score"
-      },
-      "mainFeatures": {
-        "title": "Blog & Galería Media"
-      },
-      "techFeatures": {
-        "title": "Integración GitHub"
-      },
-      "localization": {
-        "title": "Soporte 5 Idiomas"
-      }
-    }
+  "Blog": {
+    "title": "Blog",
+    "lead": "Notas del trabajo: ingeniería de IA, desarrollo web en producción y las decisiones entre ambos.",
+    "count": "{count, plural, =0 {Aún no hay publicaciones} one {# publicación} other {# publicaciones}}",
+    "filterLabel": "Explorar por idioma",
+    "allLanguages": "Todos los idiomas",
+    "loading": "Cargando publicaciones",
+    "emptyTitle": "Aún no hay nada aquí",
+    "emptyDescription": "Prueba otro idioma o vuelve pronto para leer nuevos artículos.",
+    "draft": "Borrador",
+    "minutesToRead": "{count} min de lectura",
+    "featured": "Destacado"
   },
   "ChatBot": {
     "name": "Reem",
@@ -579,18 +481,31 @@
       "title": "¡Hola! Soy Reem 👋",
       "description": "Soy tu asistente de IA, estoy aquí para ayudarte a explorar el portafolio de Yazan y responder preguntas sobre sus proyectos, habilidades y experiencia."
     },
+    "suggestions": {
+      "label": "Prueba a preguntar",
+      "projects": "¿Qué ha creado Yazan recientemente?",
+      "stack": "¿Con qué stack tecnológico trabaja?",
+      "availability": "¿Está disponible para nuevos proyectos?",
+      "site": "¿Cómo se creó este sitio web?"
+    },
     "typing": {
-      "status": "Reem está escribiendo...",
-      "thinking": "Pensando",
-      "processing": "Procesando tu mensaje..."
+      "thinking": "Pensando"
+    },
+    "tools": {
+      "label": "Consultado",
+      "failed": "no disponible",
+      "fallback": "Datos del portafolio",
+      "get_projects": "Proyectos",
+      "get_capabilities": "Capacidades",
+      "get_certifications": "Certificaciones",
+      "get_profile": "Perfil de GitHub",
+      "get_stats": "Estadísticas de GitHub",
+      "get_repositories": "Repositorios de GitHub"
     },
     "input": {
-      "placeholder": "ask Reem..",
+      "placeholder": "Pregúntale a Reem…",
       "characterCount": "{count}/{max}",
       "limitReached": "Límite de {max} caracteres alcanzado"
-    },
-    "status": {
-      "generating": "Generando"
     },
     "errors": {
       "generic": "Algo salió mal. Por favor, inténtalo de nuevo.",
@@ -606,23 +521,19 @@
       "sendMessage": "Enviar mensaje",
       "stopGenerating": "Detener la generación",
       "chatConversation": "Conversación del chat",
-      "welcomeIllustration": "Ilustración de bienvenida",
       "pronunciation": "Pronunciación",
       "messageForm": "Enviar mensaje al asistente",
       "typeMessage": "Escriba su mensaje",
-      "assistantAvatar": "Avatar del asistente",
-      "typingAnimation": "Animación de escritura",
       "yourMessageAt": "Su mensaje de las {time}",
       "assistantMessageAt": "Mensaje del asistente de las {time}",
-      "sentAt": "Enviado a las {time}",
-      "messageSent": "Mensaje enviado correctamente",
       "messageFailed": "No se pudo enviar el mensaje"
     },
     "consent": {
-      "title": "Privacidad y Recopilación de Datos",
+      "prompt": "¿Guardar este chat para ayudar a mejorar a Reem?",
+      "details": "Detalles",
       "description": "Si acepta, conservo esta conversación para medir la calidad de las respuestas y entender qué buscan los visitantes. Se guarda sin su nombre ni datos de contacto y con su dirección IP abreviada; nunca para publicidad ni elaboración de perfiles. Si la rechaza, no se guarda nada.",
-      "accept": "Aceptar y Continuar",
-      "decline": "Rechazar"
+      "accept": "Guardar",
+      "decline": "No guardar"
     }
   },
   "localeDetect": {

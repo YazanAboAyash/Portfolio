@@ -37,6 +37,32 @@ export interface ApiErrorResponse {
   details?: string[] | string;
 }
 
+export interface BlogFormData {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  featuredImage: string;
+  language: string;
+  categoryId: string;
+  metaTitle: string;
+  metaDescription: string;
+  isPublished: boolean;
+  isFeatured: boolean;
+  tags?: string[];
+  credits?:
+    | {
+        originalAuthor: string;
+        originalSource: string;
+        sourceUrl: string;
+        licenseType: string;
+        creditText: string;
+        translatedFrom: string;
+        adaptedFrom: string;
+      }
+    | undefined;
+}
+
 export interface AdminApiResponse extends ApiResponse {
   data?: AdminStats | SuspiciousSubmission[];
 }

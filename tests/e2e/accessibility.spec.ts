@@ -124,6 +124,13 @@ test.describe("accessibility", () => {
   });
 
   test("chatbot dialog has no detected WCAG violations", async ({ page }) => {
+    // Skip the panel's fade-in, which axe would otherwise sample mid-way and
+    // report as low contrast
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    // The launcher waits for a cookie choice on a first visit
+    await page.addInitScript(() => {
+      localStorage.setItem("cookie-consent", "declined");
+    });
     await page.goto("/");
     const openAssistantButton = page.getByRole("button", {
       name: enMessages.ChatBot.openAssistant,

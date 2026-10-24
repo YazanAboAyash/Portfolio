@@ -57,7 +57,7 @@ export default async function Footer() {
 
   return (
     <footer className="w-full bg-surface">
-      <div className="frame grid grid-cols-12 gap-x-6 gap-y-14 pt-20 pb-10 md:pt-28">
+      <div className="frame grid grid-cols-12 gap-x-6 gap-y-14 pt-20 pb-24 md:pt-28">
         {/* Name, role and the two places to reach me */}
         <div className="col-span-12 flex flex-col gap-5 lg:col-span-5">
           <div className="flex flex-col gap-1.5">

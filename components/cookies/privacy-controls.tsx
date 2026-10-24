@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Check, RotateCcw, Trash2 } from "lucide-react";
-import { useCookieConsent, useConsentActions } from "./use-cookie-consent";
+import { useCookieConsent, useConsentActions } from "@/hooks/use-cookie-consent";
 
 const CHATBOT_STORAGE_KEYS = [
   "chatbot_messages",
@@ -94,7 +94,12 @@ export function PrivacyControls() {
       <div className="space-y-3">
         <span className="text-sm font-medium">{t("chatLabel")}</span>
         <div className="flex flex-wrap items-center gap-2">
-          <Button onClick={handleClearChatData} size="sm" variant="outline">
+          <Button
+            onClick={handleClearChatData}
+            size="sm"
+            variant="outline"
+            className="h-auto min-h-8 whitespace-normal py-1.5 text-left"
+          >
             <Trash2 className="w-4 h-4 mr-1" aria-hidden="true" />
             {t("clearChatData")}
           </Button>

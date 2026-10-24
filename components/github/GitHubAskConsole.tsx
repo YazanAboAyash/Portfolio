@@ -11,7 +11,7 @@ import { m, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { Check, Copy, Cpu } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import { RevealGroup, RevealItem, ScrambleText } from "@/components/visuals";
+import { RevealGroup, RevealItem } from "@/components/visuals";
 import { mcpConfig } from "@/data/configs/mcp";
 import { useMcpToolCall } from "@/hooks/use-github-mcp-session";
 import { useMeasuredHeight } from "@/hooks/use-measured-height";
@@ -315,7 +315,7 @@ export default function GitHubAskConsole() {
           id="mcp-title"
           className="col-span-12 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
         >
-          <ScrambleText text={copy.title} />
+          {copy.title}
         </h2>
         <p className="col-span-12 max-w-[44ch] text-base leading-relaxed sm:text-lg">
           <span className="sm:hidden">{copy.introShort}</span>
@@ -370,7 +370,7 @@ export default function GitHubAskConsole() {
           ))}
         </div>
 
-        <div className="order-1 col-span-12 flex min-w-0 flex-col gap-2.5 lg:order-none">
+        <div className="order-1 col-span-12 flex min-w-0 flex-col gap-2.5 lg:order-0">
           <h3 className="text-base font-bold">{copy.addTitle}</h3>
           <p className="hidden text-sm md:block">{copy.addHint}</p>
           <div className="flex min-w-0 items-stretch bg-surface">
@@ -393,7 +393,7 @@ export default function GitHubAskConsole() {
         </div>
 
         {/* The full protocol log: initialize, tools/list, every call. */}
-        <div className="order-1 col-span-12 lg:order-none">
+        <div className="order-1 col-span-12 lg:order-0">
           <GitHubMcpConsole />
         </div>
       </div>

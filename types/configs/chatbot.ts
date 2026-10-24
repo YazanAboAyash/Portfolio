@@ -53,8 +53,6 @@ export interface ChatBotRequestContext {
 
 export interface ChatBotUIProps {
   className?: string;
-  position?: "bottom-right" | "bottom-left" | "top-right" | "top-left";
-  theme?: "light" | "dark" | "system";
 }
 
 export interface ChatInputProps {
@@ -67,15 +65,37 @@ export interface ChatInputProps {
 
 export interface ChatMessageProps {
   message: ReemUIMessage;
-  /** Delivery state, only meaningful for the most recent user message. */
-  status?: "sent" | "error";
+  /** Set only on the most recent user message, when its request failed. */
+  failed?: boolean;
   className?: string;
+}
+
+export interface ChatToolChipsProps {
+  message: ReemUIMessage;
 }
 
 export interface ChatHeaderProps {
   onClose: () => void;
   onNewChat: () => void;
+  /** Disables "New chat" while there is nothing to clear. */
+  hasMessages: boolean;
+  /** Animates the header avatar while Reem is working on a reply. */
+  isThinking: boolean;
   className?: string;
+}
+
+export interface ChatWelcomeProps {
+  onSuggestionSelect: (suggestion: string) => void;
+  disabled?: boolean;
+}
+
+export interface TypingIndicatorProps {
+  className?: string;
+}
+
+export interface ChatConsentProps {
+  onAccept: () => void;
+  onDecline: () => void;
 }
 
 // Rate Limiting Types

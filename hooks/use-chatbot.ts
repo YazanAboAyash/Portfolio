@@ -22,6 +22,8 @@ interface UseChatBotReturn {
   /** Translation key for the current error, or null. */
   errorKey: string | null;
   consentGiven: boolean;
+  /** Whether the visitor has answered the logging prompt for this conversation. */
+  consentAnswered: boolean;
   sendMessage: (content: string) => Promise<void>;
   stop: () => void;
   clearError: () => void;
@@ -40,6 +42,7 @@ interface PersistedChatState {
   messages: ReemUIMessage[];
   sessionId: string;
   consentGiven: boolean;
+  consentAnswered: boolean;
 }
 
 /** Mirrors the format the API validates and Prisma stores as the session key. */
@@ -61,7 +64,12 @@ function generateSessionId(): string {
  */
 function loadPersistedState(): PersistedChatState {
   if (typeof window === "undefined") {
-    return { messages: [], sessionId: "", consentGiven: false };
+    return {
+      messages: [],
+      sessionId: "",
+      consentGiven: false,
+      consentAnswered: false,
+    };
   }
 
   try {
@@ -78,13 +86,19 @@ function loadPersistedState(): PersistedChatState {
           ? savedSession
           : generateSessionId(),
       consentGiven: savedConsent === "true",
+      consentAnswered: savedConsent === "true" || savedConsent === "false",
     };
   } catch {
     // Clear corrupted data silently
     localStorage.removeItem(STORAGE_KEY_MESSAGES);
     localStorage.removeItem(STORAGE_KEY_SESSION);
     localStorage.removeItem(STORAGE_KEY_CONSENT);
-    return { messages: [], sessionId: generateSessionId(), consentGiven: false };
+    return {
+      messages: [],
+      sessionId: generateSessionId(),
+      consentGiven: false,
+      consentAnswered: false,
+    };
   }
 }
 
@@ -113,6 +127,9 @@ export function useChatBot(): UseChatBotReturn {
   const [persisted] = useState(loadPersistedState);
   const [sessionId, setSessionId] = useState(persisted.sessionId);
   const [consentGiven, setConsentGiven] = useState(persisted.consentGiven);
+  const [consentAnswered, setConsentAnswered] = useState(
+    persisted.consentAnswered,
+  );
 
   const {
     messages,
@@ -140,6 +157,21 @@ export function useChatBot(): UseChatBotReturn {
           language: navigator.language || undefined,
         },
       }),
+      // Tool results stay in the local transcript, where they render as chips,
+      // but are not sent back: the server ignores them, and they would count
+      // against the request body cap on every later turn.
+      prepareSendMessagesRequest: ({ id, body, messages, trigger, messageId }) => ({
+        body: {
+          ...body,
+          id,
+          trigger,
+          messageId,
+          messages: messages.map((message) => ({
+            ...message,
+            parts: message.parts.filter((part) => part.type === "text"),
+          })),
+        },
+      }),
     }),
   });
 
@@ -165,6 +197,9 @@ export function useChatBot(): UseChatBotReturn {
   const clearMessages = useCallback(() => {
     setMessages([]);
     setSessionId(generateSessionId());
+    // Consent is per conversation, so a new chat asks again
+    setConsentGiven(false);
+    setConsentAnswered(false);
 
     try {
       localStorage.removeItem(STORAGE_KEY_MESSAGES);
@@ -177,6 +212,7 @@ export function useChatBot(): UseChatBotReturn {
 
   const setConsent = useCallback((consent: boolean) => {
     setConsentGiven(consent);
+    setConsentAnswered(true);
 
     try {
       localStorage.setItem(STORAGE_KEY_CONSENT, String(consent));
@@ -204,6 +240,7 @@ export function useChatBot(): UseChatBotReturn {
     isLoading: status === "submitted" || status === "streaming",
     errorKey: toErrorTranslationKey(error),
     consentGiven,
+    consentAnswered,
     sendMessage,
     stop,
     clearError,
