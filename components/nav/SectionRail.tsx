@@ -44,6 +44,9 @@ const SCROLL_OFFSET = 80;
  */
 const BOTTOM_SLACK = 2;
 
+/** How long a jump keeps re-aiming at a section the layout keeps moving. */
+const AIM_WINDOW_MS = 3000;
+
 /**
  * A ruler pinned to the right edge, next to the scrollbar: fine graduations for
  * texture, one longer tick per section. The tick tracking the section you're
@@ -55,24 +58,46 @@ export default function SectionRail() {
   const t = useTranslations("SectionRail");
   const reduceMotion = useReducedMotion();
   const [activeId, setActiveId] = useState<string>(SECTION_IDS[0]);
-  // A jump asked for before its section mounted: a tick clicked early, or a
-  // `/#products` link landing on a fresh page. The probe makes it on mount.
-  const pendingRef = useRef<string | null>(null);
+  // The section a jump is heading for. Lazy sections mount and grow above it
+  // while the scroll is in flight, so it is re-aimed until it lands. A jump can
+  // also be asked for before its section exists: a tick clicked early, or a
+  // `/#products` link landing on a fresh page. `top` stays null until then.
+  const aimRef = useRef<{
+    id: string;
+    top: number | null;
+    until: number;
+  } | null>(null);
 
-  const jumpTo = useCallback(
-    (target: HTMLElement) => {
-      window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET,
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
-    },
-    [reduceMotion],
-  );
+  const steer = useCallback(() => {
+    const aim = aimRef.current;
+    const target = aim && document.getElementById(aim.id);
+    if (!aim || !target) return;
+
+    if (performance.now() > aim.until) {
+      aimRef.current = null;
+      return;
+    }
+
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const top = Math.min(
+      maxScroll,
+      target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET,
+    );
+
+    if (aim.top === null || Math.abs(top - aim.top) > BOTTOM_SLACK) {
+      if (aim.top === null) aim.until = performance.now() + AIM_WINDOW_MS;
+      aim.top = top;
+      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+    } else if (Math.abs(window.scrollY - top) <= BOTTOM_SLACK) {
+      aimRef.current = null;
+    }
+  }, [reduceMotion]);
 
   useEffect(() => {
     const hash = decodeURIComponent(window.location.hash.slice(1));
     if ((SECTION_IDS as readonly string[]).includes(hash)) {
-      pendingRef.current = hash;
+      aimRef.current = { id: hash, top: null, until: Infinity };
     }
   }, []);
 
@@ -81,13 +106,7 @@ export default function SectionRail() {
 
     const probe = () => {
       frame = 0;
-
-      const pending =
-        pendingRef.current && document.getElementById(pendingRef.current);
-      if (pending) {
-        pendingRef.current = null;
-        jumpTo(pending);
-      }
+      steer();
 
       const line = window.innerHeight * PROBE_RATIO;
 
@@ -114,6 +133,12 @@ export default function SectionRail() {
       if (!frame) frame = requestAnimationFrame(probe);
     };
 
+    // Scrolling by hand takes over from a jump that is still re-aiming.
+    const release = () => {
+      aimRef.current = null;
+    };
+    const inputs = ["wheel", "touchstart", "keydown"] as const;
+
     // Lazy sections mounting and images settling move every boundary without
     // a scroll event, so the page growing or shrinking re-probes too.
     const observer = new ResizeObserver(schedule);
@@ -122,26 +147,24 @@ export default function SectionRail() {
     probe();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule, { passive: true });
+    inputs.forEach((type) =>
+      window.addEventListener(type, release, { passive: true }),
+    );
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
+      inputs.forEach((type) => window.removeEventListener(type, release));
     };
-  }, [jumpTo]);
+  }, [steer]);
 
   const scrollToSection = useCallback(
     (id: string) => {
-      const target = document.getElementById(id);
-      if (!target) {
-        pendingRef.current = id;
-        return;
-      }
-
-      pendingRef.current = null;
-      jumpTo(target);
+      aimRef.current = { id, top: null, until: Infinity };
+      steer();
     },
-    [jumpTo],
+    [steer],
   );
 
   return (
