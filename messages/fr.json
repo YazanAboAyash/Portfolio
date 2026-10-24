@@ -190,6 +190,9 @@
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Chambre de Commerce et d'Industrie Allemande)"
     },
+    "issuersShort": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar"
+    },
     "descriptions": {
       "pythonPcep": "Obtention de la certification PCEP (Python Certified Entry-Level Programmer), démontrant des connaissances fondamentales en programmation Python.",
       "udemyPythonBootcamp": "Complété « 100 Days of Code - The Complete Python Pro Bootcamp », maîtrisant Python du niveau débutant à avancé.",

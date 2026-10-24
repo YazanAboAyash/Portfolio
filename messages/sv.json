@@ -190,6 +190,9 @@
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Tysk Handels- och Industrikammare)"
     },
+    "issuersShort": {
+      "ihkRheinNeckar": "IHK Rhein-Neckar"
+    },
     "descriptions": {
       "pythonPcep": "Erhållit certifieringen PCEP (Python Certified Entry-Level Programmer), vilket visar grundläggande kunskaper i Python-programmering.",
       "udemyPythonBootcamp": "Genomfört \"100 Days of Code - The Complete Python Pro Bootcamp\" och behärskat Python från nybörjar- till avancerad nivå.",
