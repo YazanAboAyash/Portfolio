@@ -8,7 +8,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
-import { servicesPageData } from "@/data/hubs/servicesData";
+import { contactEmailLink } from "@/data/main/contact";
 import type { VariantProps } from "class-variance-authority";
 import type { buttonVariants } from "@/components/ui/button";
 
@@ -27,14 +27,14 @@ interface CTAButtonProps {
   readonly showIcon?: boolean;
   /** Optional onClick handler for when the link is clicked */
   readonly onClick?: () => void;
-  /** Optional custom link (defaults to servicesPageData.contactLink) */
+  /** Optional custom link (defaults to the contact email link) */
   readonly href?: string;
 }
 
 /**
  * Dynamic CTA button component for getting in touch.
- * Uses the mailto contact link from servicesData by default, which opens the
- * visitor's own mail app — no third-party service is involved.
+ * Uses the mailto contact link by default, which opens the visitor's own mail
+ * app — no third-party service is involved.
  */
 export function CTAButton({
   label,
@@ -43,7 +43,7 @@ export function CTAButton({
   className = "",
   showIcon = true,
   onClick,
-  href = servicesPageData.contactLink,
+  href = contactEmailLink,
 }: CTAButtonProps) {
   return (
     <Button asChild variant={variant} size={size} className={className}>

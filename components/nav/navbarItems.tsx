@@ -1,29 +1,30 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { SheetContent, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import {
   Home,
-  Briefcase,
   FolderGit2,
   User,
   Library,
   Contact,
   Mail,
+  Search,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import LanguageSwitcher from "@/components/languages/language-switcher";
 import { ContactSheet } from "@/components/contact";
 import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/cta-button";
+import { useIsApplePlatform } from "@/hooks/use-search-palette";
 
 interface NavItem {
   name: string;
@@ -32,27 +33,18 @@ interface NavItem {
   external?: boolean;
 }
 
-interface DesktopNavigationProps {
-  navItems: NavItem[];
-  lightLink: string;
-  darkLink: string;
+interface ContactCTA {
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
-interface MobileControlsProps {
-  onMenuToggle?: () => void;
-  contactCTA: {
-    label: string;
-    icon: React.ComponentType<{ className?: string }>;
-  };
-  onLinkClick?: () => void;
-}
+/** Square, borderless control in the bar: icon, or icon and label. */
+export const NAV_TOOL =
+  "inline-flex h-10 min-w-10 cursor-pointer items-center justify-center gap-2 px-3 text-[0.9375rem] font-semibold transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 
-interface DesktopControlsProps {
-  contactCTA: {
-    label: string;
-    icon: React.ComponentType<{ className?: string }>;
-  };
-}
+/** The one filled action in the bar. Overrides the Shadcn button through tailwind-merge. */
+const NAV_ACTION =
+  "h-10 rounded-none px-4 text-[0.9375rem] font-semibold shadow-none transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
 
 export function useNavItems(): NavItem[] {
   const t = useTranslations("Navigation");
@@ -62,11 +54,6 @@ export function useNavItems(): NavItem[] {
       name: t("home"),
       href: "/",
       icon: Home,
-    },
-    {
-      name: t("services"),
-      href: "/services",
-      icon: Briefcase,
     },
     {
       name: t("work"),
@@ -86,7 +73,7 @@ export function useNavItems(): NavItem[] {
   ];
 }
 
-export function useContactCTA() {
+export function useContactCTA(): ContactCTA {
   const t = useTranslations("Navigation");
   return {
     label: t("contact"),
@@ -94,120 +81,92 @@ export function useContactCTA() {
   };
 }
 
-export function DesktopNavigation({
-  navItems,
-  lightLink,
-  darkLink,
-}: DesktopNavigationProps) {
+function isCurrent(pathname: string, href: string) {
+  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}
+
+export function DesktopNavigation({ navItems }: { navItems: NavItem[] }) {
+  const pathname = usePathname();
+
   return (
-    <div
-      className="hidden lg:flex items-center space-x-2 xl:space-x-6"
-      role="menubar"
-    >
-      {navItems.map((item) => {
-        const Icon = item.icon;
-        return (
+    <ul className="hidden items-center gap-6 lg:flex">
+      {navItems.map((item) => (
+        <li key={item.href}>
           <Link
-            key={item.name}
             href={item.href}
             target={item.external ? "_blank" : undefined}
             rel={item.external ? "noopener noreferrer" : undefined}
-            className={`
-              group flex items-center space-x-2 text-sm font-medium transition-colors
-              ${lightLink} ${darkLink}
-              focus:outline-none px-2 py-1
-            `}
-            role="menuitem"
-            aria-label={`Navigate to ${item.name} section`}
+            aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+            className="link-draw py-1.5 text-base font-medium text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
           >
-            <div className="flex items-center space-x-1 xl:space-x-2 min-w-0">
-              <Icon
-                className="h-4 w-4 transition-colors duration-300 group-hover:text-blue-100 shrink-0"
-                aria-hidden={true}
-              />
-              <div className="relative overflow-hidden max-w-20 xl:max-w-none">
-                <div className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                  <span className="block truncate xl:whitespace-nowrap text-xs xl:text-sm">
-                    {item.name}
-                  </span>
-                </div>
-                <div className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                  <span className="block truncate xl:whitespace-nowrap text-xs xl:text-sm">
-                    {item.name}
-                  </span>
-                </div>
-              </div>
-            </div>
+            {item.name}
           </Link>
-        );
-      })}
-    </div>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-export function DesktopControls({ contactCTA }: DesktopControlsProps) {
+/** Opens the Ctrl/⌘K palette; the label and shortcut hint show from `lg`. */
+export function SearchTrigger({ onOpen }: { onOpen: () => void }) {
+  const t = useTranslations("Search");
+  const isApple = useIsApplePlatform();
+  const shortcut = isApple ? "⌘K" : "Ctrl K";
+
   return (
-    <div className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm">
-      <div className="border-r pr-1 xl:border-r-2 xl:pr-2">
-        <ContactSheet>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Open contact information"
-            className="cursor-pointer hover:text-sky-600 transition-colors duration-300 h-8 w-8 xl:h-10 xl:w-10"
-          >
-            <Contact className="h-3 w-3 xl:h-4 xl:w-4" aria-hidden={true} />
-          </Button>
-        </ContactSheet>
-      </div>
-      <div className="border-r pr-1 xl:border-r-2 xl:pr-2">
-        <ModeToggle />
-      </div>
-      <div className="border-r pr-1 xl:border-r-2 xl:pr-2">
-        <LanguageSwitcher />
-      </div>
-      <div className="hidden xl:block">
-        <CTAButton
-          label={contactCTA.label}
-          variant="default"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
-        />
-      </div>
-      <div className="xl:hidden">
-        <CTAButton
-          label={contactCTA.label}
-          variant="default"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1.5 h-auto cursor-pointer transition-colors duration-300"
-        />
-      </div>
-    </div>
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={t("triggerLabel", { shortcut })}
+      aria-keyshortcuts={isApple ? "Meta+K" : "Control+K"}
+      className={NAV_TOOL}
+    >
+      <Search className="h-[1.1rem] w-[1.1rem]" aria-hidden="true" />
+      <span className="hidden xl:inline">{t("trigger")}</span>
+      <kbd className="hidden bg-surface px-1.5 py-0.5 font-sans text-[0.8125rem] font-medium lg:inline">
+        {shortcut}
+      </kbd>
+    </button>
   );
 }
 
-export function MobileControls({
-  onMenuToggle: _onMenuToggle,
-  contactCTA,
-}: MobileControlsProps) {
+export function DesktopControls({ contactCTA }: { contactCTA: ContactCTA }) {
+  const t = useTranslations("Navigation");
+
   return (
-    <div className="flex lg:hidden items-center space-x-1 sm:space-x-2 px-2 sm:px-4">
+    <div className="hidden items-center gap-1 lg:flex">
+      <LanguageSwitcher />
       <ModeToggle />
-      <div className="hidden sm:block">
-        <CTAButton
-          label={contactCTA.label}
-          size="sm"
-          variant="outline"
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-3 py-1 h-8 cursor-pointer transition-colors duration-300"
-        />
-      </div>
-      <div className="sm:hidden">
-        <CTAButton
-          label={contactCTA.label}
-          size="sm"
-          variant="outline"
-          showIcon={false}
-          className="border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-xs px-2 py-1 h-7 cursor-pointer transition-colors duration-300"
-        />
-      </div>
+      <ContactSheet>
+        <button
+          type="button"
+          aria-label={t("contactInfo")}
+          title={t("contactInfo")}
+          className={NAV_TOOL}
+        >
+          <Contact className="h-[1.1rem] w-[1.1rem]" aria-hidden={true} />
+        </button>
+      </ContactSheet>
+      <CTAButton
+        label={contactCTA.label}
+        variant="default"
+        showIcon={false}
+        className={`ml-2 ${NAV_ACTION}`}
+      />
+    </div>
+  );
+}
+
+export function MobileControls({ contactCTA }: { contactCTA: ContactCTA }) {
+  return (
+    <div className="flex items-center gap-1 lg:hidden">
+      <ModeToggle />
+      <CTAButton
+        label={contactCTA.label}
+        variant="default"
+        showIcon={false}
+        className={`ml-1 ${NAV_ACTION} px-3 sm:px-4`}
+      />
     </div>
   );
 }
@@ -215,10 +174,7 @@ export function MobileControls({
 interface MobileNavigationProps {
   navItems: NavItem[];
   onLinkClick: () => void;
-  contactCTA: {
-    label: string;
-    icon: React.ComponentType<{ className?: string }>;
-  };
+  contactCTA: ContactCTA;
 }
 
 export function MobileNavigation({
@@ -227,55 +183,49 @@ export function MobileNavigation({
   contactCTA,
 }: MobileNavigationProps) {
   const t = useTranslations("Navigation");
+  const pathname = usePathname();
 
   return (
     <SheetContent
       side="right"
-      className="w-75 sm:w-100"
+      className="w-75 gap-0 border-0 sm:w-100"
       id="mobile-menu"
       aria-label="Mobile navigation menu"
     >
-      <SheetHeader>
-        <SheetTitle className="text-lg font-semibold mb-4 pl-2">
-          {t("navigation")}
-        </SheetTitle>
+      <SheetHeader className="px-6 pt-6">
+        <SheetTitle className="text-lg font-bold">{t("navigation")}</SheetTitle>
       </SheetHeader>
-      <div className="flex flex-col space-y-4 mt-4">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <Link
-              key={item.name}
-              href={item.href}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
-              onClick={onLinkClick}
-              className="flex items-center space-x-3 text-sm font-medium p-3 rounded-lg hover:bg-accent transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
-              aria-label={`Navigate to ${item.name} section`}
-            >
-              <Icon className="h-5 w-5" aria-hidden={true} />
-              <span>{item.name}</span>
-            </Link>
-          );
-        })}
+      <div className="flex flex-col gap-8 px-6 pb-8">
+        <ul className="flex flex-col">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                onClick={onLinkClick}
+                aria-current={
+                  isCurrent(pathname, item.href) ? "page" : undefined
+                }
+                className="-mx-3 block px-3 py-3 text-2xl font-semibold tracking-[-0.01em] transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-foreground aria-[current=page]:underline aria-[current=page]:underline-offset-8"
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-        {/* Mobile-only controls */}
-        <div className="pt-4 border-t">
-          <div className="flex items-center justify-between p-3 rounded-lg hover:bg-accent transition-colors">
-            <span className="text-sm font-medium">{t("language")}</span>
-            <LanguageSwitcher />
-          </div>
+        <div className="flex items-center justify-between bg-surface px-4 py-2">
+          <span className="text-base font-medium">{t("language")}</span>
+          <LanguageSwitcher />
         </div>
 
-        {/* CTA Button */}
-        <div className="pt-4 border-t">
-          <CTAButton
-            label={contactCTA.label}
-            variant="outline"
-            className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 py-3 cursor-pointer transition-colors duration-300"
-            onClick={onLinkClick}
-          />
-        </div>
+        <CTAButton
+          label={contactCTA.label}
+          variant="default"
+          className={`w-full ${NAV_ACTION} h-12`}
+          onClick={onLinkClick}
+        />
       </div>
     </SheetContent>
   );
@@ -283,33 +233,35 @@ export function MobileNavigation({
 
 export function BrandLogo() {
   return (
-    <div className="flex items-center">
-      <Link
-        href="/"
-        className="pl-4 flex items-center"
-        aria-label="ColdByDefault - Home"
+    <Link
+      href="/"
+      className="flex shrink-0 items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
+      aria-label="ColdByDefault - Home"
+    >
+      <Image
+        src="/logoLight.png"
+        alt="ColdByDefault"
+        width={120}
+        height={40}
+        priority
+        unoptimized
+        className="h-6 w-auto object-contain dark:hidden"
+      />
+      <Image
+        src="/logoDark.png"
+        alt="ColdByDefault"
+        width={120}
+        height={40}
+        priority
+        unoptimized
+        className="hidden h-6 w-auto object-contain dark:block"
+      />
+      <span
+        className="hidden text-lg font-bold tracking-[-0.01em] min-[400px]:inline"
+        aria-hidden="true"
       >
-        <Image
-          src="/logoLight.png"
-          alt="ColdByDefault"
-          width={120}
-          height={40}
-          priority
-          unoptimized
-          className="h-8 w-auto dark:hidden object-contain"
-          style={{ mixBlendMode: "normal" }}
-        />
-        <Image
-          src="/logoDark.png"
-          alt="ColdByDefault"
-          width={120}
-          height={40}
-          priority
-          unoptimized
-          className="h-8 w-auto hidden dark:block object-contain"
-          style={{ mixBlendMode: "normal" }}
-        />
-      </Link>
-    </div>
+        ColdByDefault
+      </span>
+    </Link>
   );
 }

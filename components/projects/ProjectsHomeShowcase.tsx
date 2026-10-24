@@ -1,36 +1,32 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { SiNpm } from "react-icons/si";
-import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import { projects } from "@/data/hubs/projectsData";
 import { isFeaturedProject } from "./projects-showcase.utils";
-import { Button } from "../ui/button";
 import {
-  cardRail,
   cardSurface,
   RevealGroup,
   RevealItem,
-  ScrambleText,
+  SectionHeading,
 } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 
-const linkPill =
-  "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
-const linkPillOutline =
-  "border-border bg-background/70 text-foreground hover:border-primary/50 hover:bg-primary/10";
-const linkPillPrimary =
-  "border-primary bg-primary text-primary-foreground shadow-sm hover:bg-primary/90";
-const linkPillNpm =
-  "border-red-300 bg-background/70 text-red-600 hover:border-red-500 hover:bg-red-500/10 dark:border-red-700 dark:text-red-400";
+const linkBase =
+  "inline-flex min-h-10 items-center gap-1.5 px-3.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
+const linkQuiet = "bg-background hover:bg-surface-2";
+const linkPrimary =
+  "bg-primary text-primary-foreground hover:bg-primary/85";
 
 interface ProjectsHomeShowcaseProps {
   readonly className?: string;
@@ -40,144 +36,148 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
   const t = useTranslations("Projects");
   const tCategories = useTranslations("Projects.categories");
   const tDescriptions = useTranslations("Projects.descriptions");
+  const [activeId, setActiveId] = useState(projects[0]?.id);
+  const active = projects.find((project) => project.id === activeId);
 
   return (
-    <section className={className} id="projects">
-      <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-3 text-black dark:text-white">
-        <ScrambleText text={t("title")} />
-      </h2>
-      <p className="text-sm text-muted-foreground text-center mb-12">
-        {t("openSourceNote")}
-      </p>
+    <section
+      className={className}
+      id="projects"
+      aria-labelledby="projects-title"
+    >
+      <SectionHeading
+        id="projects-title"
+        title={t("title")}
+        lead={t("openSourceNote")}
+        className="mb-10"
+        aside={
+          <Link
+            href="/projects"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 items-center gap-2 bg-primary px-6 font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          >
+            {t("viewAllProjects")}
+            <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+          </Link>
+        }
+      />
 
-      <RevealGroup className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, index) => (
-          <RevealItem key={project.id} className="h-full">
-            <div
+      <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+      <RevealGroup className="col-span-12 flex flex-col gap-2 lg:col-span-8">
+        {projects.map((project) => (
+          <RevealItem key={project.id}>
+            {/* Pointing at or tabbing into a row shows it in the preview. */}
+            <article
+              onPointerEnter={() => setActiveId(project.id)}
+              onFocus={() => setActiveId(project.id)}
               className={cn(
                 cardSurface,
-                "h-full overflow-hidden flex flex-col",
+                "grid grid-cols-1 gap-x-6 gap-y-4 p-5 sm:p-6 md:grid-cols-12 md:items-baseline",
+                project.id === activeId && "lg:bg-surface-2",
               )}
             >
-              {/* Top accent line */}
-              <div
-                className={`h-1 shrink-0 ${
-                  isFeaturedProject(project)
-                    ? "bg-linear-to-r from-sky-500 via-blue-500 to-violet-500"
-                    : "bg-linear-to-r from-border via-muted-foreground/20 to-border"
-                }`}
-              />
-
-              <div className={cn(cardRail, "pl-4 p-5 flex flex-col flex-1")}>
-                {/* Number + category */}
-                <div className="flex items-center justify-between mb-3">
-                  <span
-                    className="text-3xl font-bold text-foreground/45 select-none leading-none"
-                    aria-hidden="true"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {isFeaturedProject(project) && (
-                      <Badge className="rounded-md bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground shadow-sm">
-                        {t("featuredProject")}
-                      </Badge>
-                    )}
-                    <Badge
-                      variant="secondary"
-                      className="rounded-md border border-border/50 bg-muted/70 px-2 py-0.5 text-[10px] font-medium"
-                    >
-                      {tCategories(project.category)}
-                    </Badge>
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-base font-semibold mb-2 text-foreground group-hover/card:text-primary transition-colors duration-200 line-clamp-1">
+              {/* Title, category, featured */}
+              <div className="flex flex-col gap-1.5 md:col-span-4">
+                <h3 className="text-xl font-semibold leading-tight tracking-[-0.01em] md:text-2xl">
                   {project.title}
                 </h3>
+                <p className="flex flex-wrap items-center gap-x-3 text-sm text-muted-foreground">
+                  <span>{tCategories(project.category)}</span>
+                  {isFeaturedProject(project) && (
+                    <span className="font-semibold text-foreground">
+                      {t("featuredProject")}
+                    </span>
+                  )}
+                </p>
+              </div>
 
-                {/* Description */}
-                <p className="text-sm text-foreground/70 leading-relaxed line-clamp-2 mb-4 flex-1">
+              {/* Description and tech, top 3 */}
+              <div className="flex flex-col gap-2 md:col-span-5">
+                <p className="line-clamp-3 text-base leading-relaxed text-foreground">
                   {tDescriptions(project.description)}
                 </p>
-
-                {/* Tech tags — top 3 */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.technologies.slice(0, 3).map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[11px] px-2 py-0.5 rounded-md bg-muted/60 text-muted-foreground border border-border/40"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-[11px] px-2 py-0.5 rounded-md bg-muted/60 text-muted-foreground border border-border/40">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
-
-                {/* Links */}
-                <div className="flex flex-wrap items-center gap-2 mt-auto">
-                  {project.githubUrl && (
-                    <Link
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(linkPill, linkPillOutline)}
-                    >
-                      <FiGithub className="w-3.5 h-3.5" aria-hidden="true" />
-                      {t("code")}
-                      <span className="sr-only"> — {project.title}</span>
-                    </Link>
-                  )}
-                  {project.liveUrl && (
-                    <Link
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(linkPill, linkPillPrimary)}
-                    >
-                      <FiExternalLink
-                        className="w-3.5 h-3.5"
-                        aria-hidden="true"
-                      />
-                      {t("liveDemo")}
-                      <span className="sr-only"> — {project.title}</span>
-                    </Link>
-                  )}
-                  {project.npmUrl && (
-                    <Link
-                      href={project.npmUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(linkPill, linkPillNpm)}
-                    >
-                      <SiNpm className="w-3.5 h-3.5" aria-hidden="true" />
-                      {t("npmPackage")}
-                      <span className="sr-only"> — {project.title}</span>
-                    </Link>
-                  )}
-                </div>
+                <p className="text-sm text-muted-foreground">
+                  {project.technologies.slice(0, 3).join(" · ")}
+                  {project.technologies.length > 3 &&
+                    ` · +${project.technologies.length - 3}`}
+                </p>
               </div>
-            </div>
+
+              {/* Links */}
+              <div className="flex flex-wrap items-center gap-2 md:col-span-3 md:justify-end">
+                {project.githubUrl && (
+                  <Link
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(linkBase, linkQuiet)}
+                  >
+                    <FiGithub className="h-3.5 w-3.5" aria-hidden="true" />
+                    {t("code")}
+                    <span className="sr-only"> — {project.title}</span>
+                  </Link>
+                )}
+                {project.liveUrl && (
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(linkBase, linkPrimary)}
+                  >
+                    <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    {t("liveDemo")}
+                    <span className="sr-only"> — {project.title}</span>
+                  </Link>
+                )}
+                {project.npmUrl && (
+                  <Link
+                    href={project.npmUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(linkBase, linkQuiet)}
+                  >
+                    <SiNpm
+                      className="h-3.5 w-3.5 text-red-600 dark:text-red-400"
+                      aria-hidden="true"
+                    />
+                    {t("npmPackage")}
+                    <span className="sr-only"> — {project.title}</span>
+                  </Link>
+                )}
+              </div>
+            </article>
           </RevealItem>
         ))}
       </RevealGroup>
 
-      {/* View all link */}
-      <div className="mt-10 text-center">
-        <Link href="/projects" target="_blank" rel="noopener noreferrer">
-          <Button
-            variant="default"
-            className="gap-2 cursor-pointer hover:scale-105 transition-transform"
-          >
-            {t("viewAllProjects")}
-            <FiExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-          </Button>
-        </Link>
+      {/* Preview of the row in focus: its title card, or its name set large. */}
+      {active && (
+        <aside aria-hidden="true" className="col-span-4 hidden lg:block">
+          <div className="sticky top-24 flex flex-col gap-4">
+            <div className="relative aspect-2/1 overflow-hidden bg-surface">
+              {active.image ? (
+                <Image
+                  key={active.id}
+                  src={active.image}
+                  alt=""
+                  fill
+                  sizes="33vw"
+                  className="object-cover motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
+                />
+              ) : (
+                <span className="absolute inset-x-5 bottom-4 text-4xl font-bold leading-none tracking-[-0.03em]">
+                  {active.title}
+                </span>
+              )}
+            </div>
+            <p className="text-lg font-semibold leading-snug">{active.title}</p>
+            <p className="text-sm text-muted-foreground">
+              {active.technologies.join(" · ")}
+            </p>
+          </div>
+        </aside>
+      )}
       </div>
     </section>
   );

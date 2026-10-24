@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type { TwitterCardType } from "@/types/configs/metadata";
@@ -37,11 +37,6 @@ export interface SEOConfig {
       region: string;
       country: string;
     };
-    geo: {
-      latitude: number;
-      longitude: number;
-    };
-    areaServed: string[];
     email: string;
     github: string;
     linkedIn?: string;
@@ -87,10 +82,6 @@ export interface MediaSectionContent {
     en: PageContent;
     de: PageContent;
   };
-  services: {
-    en: PageContent;
-    de: PageContent;
-  };
   aboutPortfolio: {
     en: PageContent;
     de: PageContent;
@@ -103,5 +94,4 @@ export type MediaSectionType =
   | "blog"
   | "projects"
   | "library"
-  | "services"
   | "aboutPortfolio";

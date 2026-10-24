@@ -18,7 +18,7 @@
 - **No `middleware.ts`** — the proxy file is `proxy.ts`
 - **No NextAuth / `getServerSession`** — auth is `createAdminSession()` / `hasValidAdminSession()` in `proxy.ts`
 - **No IP binding in sessions** — EU privacy compliance
-- **No leaf-level `loading.tsx`** — one per route group covers all children: `(legals)`, `(live-tools)`, `(media)`, `admin`
+- **No leaf-level `loading.tsx`** — one per route group covers all children: `(legals)`, `(media)`, `admin`
 - **No hardcoded user-facing text** — always use `useTranslations()` from next-intl
 - **No `any` types** — use `unknown` or proper types
 - **No overengineering** — don't add abstractions for single-use logic
@@ -34,10 +34,9 @@ npm run typecheck    # tsc --noEmit
 npm run test:e2e     # playwright test (test:e2e:ui for the runner UI)
 npm run db:push      # prisma db push
 npm run db:migrate   # prisma migrate deploy
-npm run db:seed      # tsx prisma/seed.ts
 ```
 
-> `npm run test`, `npm run analyze`, `npm run type-check` do **not** exist.
+> `npm run test`, `npm run analyze`, `npm run type-check`, `npm run db:seed` do **not** exist.
 
 ## Folder Conventions
 

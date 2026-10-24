@@ -1,8 +1,12 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
+
+import type { SUPPORTED_LOCALES } from "@/data/configs/i18n";
+
+export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
 export interface SkillItem {
   id: string;
@@ -37,10 +41,6 @@ export interface AboutTranslations {
     aiAct: AboutComplianceItem;
     note: string;
   };
-  workingWithMe: {
-    title: string;
-    items: string[];
-  };
   availability: {
     title: string;
     description: string;
@@ -49,7 +49,6 @@ export interface AboutTranslations {
     title: string;
     projects: string;
     products: string;
-    services: string;
     blog: string;
   };
   cta: {
@@ -67,7 +66,6 @@ export interface LocaleModule {
 
 export interface Translations {
   Hero: {
-    availableForCollaboration: string;
     fullStackDeveloper: string;
     description: string;
     learnMoreAboutMe: string;

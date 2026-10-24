@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 // Visual effects and loading components
@@ -12,9 +12,9 @@ export { default as CentralizedLoading } from "./CentralizedLoading";
 export {
   cardSurface,
   cardSurfaceFeatured,
-  cardSurfaceGitHub,
   cardRail,
   cardRailFeatured,
 } from "./card-system";
 export { RevealGroup, RevealItem } from "./Reveal";
 export { ScrambleText } from "./ScrambleText";
+export { SectionHeading } from "./SectionHeading";

@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Authentication } from "@/components/blog/dashboard";
+import { LoadingSkeleton } from "@/components/visuals";
 
 import {
   MessageSquare,
@@ -255,9 +256,7 @@ export default function AdminChatLogsPage() {
         {loading && (
           <Card>
             <CardContent className="pt-6">
-              <p className="text-center text-muted-foreground">
-                Loading chat logs...
-              </p>
+              <LoadingSkeleton variant="list" count={5} />
             </CardContent>
           </Card>
         )}

@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type { NextRequest } from "next/server";
@@ -120,6 +120,18 @@ export async function GET(
       where.isActive = filters.isActive;
     }
 
+    // Search message content in the DB so count and pagination see the same set
+    if (filters.searchQuery) {
+      where.messages = {
+        some: {
+          content: {
+            contains: filters.searchQuery,
+            mode: "insensitive",
+          },
+        },
+      };
+    }
+
     // Get total count
     const total = await prisma.chatSession.count({ where });
 
@@ -193,19 +205,8 @@ export async function GET(
       }),
     );
 
-    // Apply search filter on content (if provided)
-    const filteredSessions = filters.searchQuery
-      ? sessionsData.filter((session) =>
-          session.messages?.some((msg) =>
-            msg.content
-              .toLowerCase()
-              .includes(filters.searchQuery!.toLowerCase()),
-          ),
-        )
-      : sessionsData;
-
     return NextResponse.json({
-      sessions: filteredSessions,
+      sessions: sessionsData,
       total,
       hasMore: filters.offset + filters.limit < total,
     });

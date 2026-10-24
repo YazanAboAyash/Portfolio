@@ -47,5 +47,5 @@ portfolio.check.instructions.md
 desktop.ini
 TODO.md
 CLAUDE.md
-
-PLAN.md
+.claude/settings.local.json
+.taste-skill

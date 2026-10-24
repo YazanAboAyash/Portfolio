@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Edit, Trash2, Eye, EyeOff, Star, StarOff } from "lucide-react";
+import { LoadingSkeleton } from "@/components/visuals";
 import type { Blog, BlogListResponse } from "@/types/hubs/blogs";
 
 interface BlogsListProps {
@@ -59,7 +60,7 @@ export function BlogsList({
       </CardHeader>
       <CardContent>
         {loading ? (
-          <div className="text-center py-8">Loading blogs...</div>
+          <LoadingSkeleton variant="list" count={5} className="py-4" />
         ) : blogs.length === 0 ? (
           <div className="text-center py-8 text-gray-500">No blogs found</div>
         ) : (

@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -40,12 +40,18 @@ interface RevealProps {
 /**
  * Wraps a card grid so its children fade in and rise once, when scrolled into
  * view. Must contain {@link RevealItem} children for the stagger to apply.
+ * `as="ul"` keeps list semantics; pair it with `RevealItem as="li"`.
  */
-export function RevealGroup({ children, className }: RevealProps) {
+export function RevealGroup({
+  children,
+  className,
+  as = "div",
+}: RevealProps & { readonly as?: "div" | "ul" }) {
   const reduceMotion = useReducedMotion();
+  const Element = as === "ul" ? m.ul : m.div;
 
   return (
-    <m.div
+    <Element
       className={className}
       variants={reduceMotion ? staticVariants : containerVariants}
       initial="hidden"
@@ -53,20 +59,25 @@ export function RevealGroup({ children, className }: RevealProps) {
       viewport={{ once: true, margin: "-80px" }}
     >
       {children}
-    </m.div>
+    </Element>
   );
 }
 
 /** A single card slot inside a {@link RevealGroup}. */
-export function RevealItem({ children, className }: RevealProps) {
+export function RevealItem({
+  children,
+  className,
+  as = "div",
+}: RevealProps & { readonly as?: "div" | "li" }) {
   const reduceMotion = useReducedMotion();
+  const Element = as === "li" ? m.li : m.div;
 
   return (
-    <m.div
+    <Element
       className={className}
       variants={reduceMotion ? staticVariants : itemVariants}
     >
       {children}
-    </m.div>
+    </Element>
   );
 }

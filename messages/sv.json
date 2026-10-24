@@ -2,9 +2,6 @@
   "Home": {
     "WebsitePerformance": "Webbplatsens prestanda",
     "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:",
-    "services": {
-      "title": "Tjänster & Paket"
-    },
     "speedInsight": {
       "title": "Live PageSpeed-resultat",
       "subtitle": "Google Lighthouse-poäng i realtid för denna webbplats",
@@ -24,16 +21,31 @@
     }
   },
   "Hero": {
-    "availableForCollaboration": "Tillgänglig för samarbete",
-    "fullStackDeveloper": "Automatisering & AI-drivna Webb-MVPs",
-    "description": "Automatiseringslösningar, interna AI-assistenter och MVP-utveckling. Levererar webbapplikationer från början till slut, från koncept till lansering—bygger praktiska verktyg som sparar tid och driver effektivitet.",
+    "fullStackDeveloper": "Fullstack-utvecklare & AI-ingenjör",
+    "description": "Jag bygger webbapplikationer för produktion från början till slut — och AI:n i dem: LLM-funktioner, RAG-system, agenter och MCP-servrar. Med Next.js och TypeScript, från första commit till driftsättning.",
     "contact": "Kontakt",
     "learnMoreAboutMe": "Läs mer om mig",
-    "moreAboutMe": "Mer om mig på"
+    "moreAboutMe": "Mer om mig på",
+    "askMcp": "Fråga den här webbplatsen via MCP",
+    "portraitAltLight": "Yazan Abo-Ayash i mörk kavaj och polotröja mot en vit vägg",
+    "portraitAltDark": "Yazan Abo-Ayash i mörk kavaj mot svart bakgrund",
+    "now": {
+      "label": "Just nu",
+      "focus": "Fokus",
+      "nextFocus": "Visa nästa fokus",
+      "latestPost": "Senaste inlägg",
+      "allPosts": "Till bloggen",
+      "site": "Den här sidan",
+      "siteLink": "Så är den byggd",
+      "focusItems": [
+        "RAG-system med källhänvisningar",
+        "AI-agenter och MCP-servrar",
+        "Azure AI och Entra ID"
+      ]
+    }
   },
   "Navigation": {
     "home": "Hem",
-    "services": "Tjänster",
     "work": "Arbeten",
     "about": "Om mig",
     "blog": "Blogg",
@@ -49,27 +61,30 @@
     "legal": "Juridisk",
     "contact": "Kontakt",
     "open": "Öppna",
-    "language": "Språk"
+    "language": "Språk",
+    "languagePreviewHint": "Peka på ett språk för att se introduktionen på det.",
+    "toggleTheme": "Växla mellan ljust och mörkt läge",
+    "contactInfo": "Öppna kontaktinformation",
+    "openMenu": "Öppna navigeringsmenyn"
   },
   "Contact": {
     "getInTouch": "Låt oss koppla samman",
-    "description": "Redo att diskutera ditt projekt? Skicka ett mejl eller anslut med mig på sociala medier.",
+    "description": "Vill du prata om en tjänst, ett projekt eller en idé? Skicka ett mejl eller anslut med mig på sociala medier.",
     "email": "E-post",
     "sendEmail": "Skicka e-post",
     "socialMedia": "Sociala medier",
     "info": "Info",
     "location": "Plats",
     "status": "Status",
-    "training": "Utbildning",
+    "qualification": "Examen",
     "quickLinks": "Snabblänkar",
-    "limitedAvailability": "Begränsad tillgänglighet",
+    "employmentStatus": "Heltidsanställd",
     "position": "Position",
     "employer": "Arbetsgivare",
-    "freelancer": "Frilansare",
-    "trainingTitle": "IHK Fachinformatiker AE",
+    "role": "Fullstack-utvecklare & AI-ingenjör",
+    "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Inriktning",
-    "specializationValue": "Artificiell Intelligens",
-    "legalNotice": "Mina tjänster erbjuds uteslutande till näringsidkare enligt § 14 BGB."
+    "specializationValue": "Artificiell Intelligens"
   },
   "QuickActions": {
     "title": "Snabbåtgärder",
@@ -105,26 +120,65 @@
   },
   "Capabilities": {
     "title": "Vad jag levererar",
-    "subtitle": "Praktisk teknik som löser verkliga affärsproblem.",
+    "subtitle": "Mjukvara i produktion – från första commit till drift hos riktiga användare.",
+    "ai": {
+      "title": "AI i produktion",
+      "headline": "LLM-funktioner som håller längre än demon",
+      "description": "RAG och chattbottar som anger sina källor – text och video –, agenter som använder verktyg med definierade behörigheter, och kontext och promptar utformade så att modellen får exakt det den behöver. Inbyggt i produkten, inte påklistrat som ett chattfönster."
+    },
     "launch": {
-      "title": "Lansering",
-      "headline": "Nå resultat inom några veckor",
-      "description": "Jag fokuserar på det viktigaste för att du ska få en fungerande produkt snabbt. Validera din idé direkt utan att vänta i månader."
+      "title": "Leverans",
+      "headline": "Fungerande mjukvara tidigt, sedan iterera",
+      "description": "Jag skalar ner en funktion till det viktigaste, får den att fungera hela vägen och förbättrar den utifrån verklig användning i stället för att putsa på presentationer."
     },
     "scale": {
       "title": "Skalning",
-      "headline": "Byggt på en stabil grund",
-      "description": "Jag använder pålitliga molnsystem som förblir snabba och stabila även när du växer. Du behöver inte bygga om bara för att du får fler kunder."
+      "headline": "En grund som håller när användningen växer",
+      "description": "Typade datamodeller, tydliga API-gränser och hanterad infrastruktur, så att tillväxt betyder finjustering, inte omskrivning."
     },
     "security": {
       "title": "Säkerhet",
-      "headline": "Datasäkerhet på riktigt",
-      "description": "Standardkryptering och säkra inloggningar för att hålla din (och dina kunders) data säker och privat."
+      "headline": "Säkert från början",
+      "description": "Inloggning med Microsoft Entra ID, hemligheter i Azure Key Vault, validerad indata och minsta möjliga behörighet – och för AI-funktioner tydliga gränser för vad en modell får se och göra."
     },
-    "performance": {
-      "title": "Prestanda",
-      "headline": "Snabb och sökmotorvänlig",
-      "description": "Din sida laddar direkt och är byggd så att Google förstår den. Hög hastighet innebär nöjdare användare och bättre synlighet."
+    "explorer": {
+      "title": "Utforska stacken",
+      "lead": "Välj en teknik för att se var jag har använt den: projekt med öppen källkod, produkter och den här sidan.",
+      "groups": {
+        "ai": "AI",
+        "frontend": "Frontend",
+        "backend": "Backend & data",
+        "tooling": "Verktyg & leverans"
+      },
+      "usedIn": "{count, plural, one {använd på # ställe} other {använd på # ställen}}",
+      "kinds": {
+        "project": "Projekt med öppen källkod",
+        "product": "Produkt",
+        "site": "Den här sidan"
+      },
+      "tech": {
+        "llm": "LLMs",
+        "rag": "RAG & vektorsökning",
+        "agents": "AI-agenter",
+        "mcp": "MCP",
+        "ollama": "Ollama",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "motion": "Framer Motion",
+        "i18n": "i18n",
+        "postgres": "PostgreSQL",
+        "prisma": "Prisma",
+        "auth": "Autentisering",
+        "stripe": "Stripe",
+        "docker": "Docker",
+        "vercel": "Vercel",
+        "seo": "SEO & JSON-LD",
+        "npm": "npm-paket",
+        "notion": "Notion API",
+        "playwright": "Playwright"
+      }
     }
   },
   "Certifications": {
@@ -225,14 +279,6 @@
       "address": "Invalidengasse 4",
       "city": "68723 Schwetzingen"
     },
-    "dispute": {
-      "title": "Tvistlösning",
-      "euTitle": "EU Konsumenträttelse",
-      "euDescription": "Europeiska kommissionen tillhandahåller information om konsumenträttelse:",
-      "emailNote": "Du hittar min e-postadress i den juridiska informationen ovan.",
-      "arbitrationTitle": "Konsumenttvistlösning / Universell skiljenämnd",
-      "arbitrationDescription": "Jag är varken villig eller skyldig att delta i tvistlösningsförfaranden inför en konsumentskiljenämnd."
-    },
     "lastUpdated": "Senast uppdaterad:"
   },
   "Privacy": {
@@ -252,13 +298,13 @@
     },
     "overview": {
       "title": "Översikt",
-      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. Vissa funktioner – AI-assistenten och automatiseringsgenomgången – överför uppgifter till externa tjänsteleverantörer, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
+      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. En funktion – AI-assistenten – överför uppgifter till en extern tjänsteleverantör, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
       "keyPoint": "Vad detta innebär i praktiken",
-      "keyPointDescription": "Du kan läsa den här webbplatsen utan att identifiera dig. Det förekommer ingen reklam, ingen spårning mellan webbplatser och ingen profilering. Samtidigt är din IP-adress och allt du skriver in i assistenten eller AI-verktygen personuppgifter – avsnitten nedan förklarar exakt vad som händer med dem, på vilken rättslig grund och hur länge något sparas."
+      "keyPointDescription": "Du kan läsa den här webbplatsen utan att identifiera dig. Det förekommer ingen reklam, ingen spårning mellan webbplatser och ingen profilering. Samtidigt är din IP-adress och allt du skriver in i assistenten personuppgifter – avsnitten nedan förklarar exakt vad som händer med dem, på vilken rättslig grund och hur länge något sparas."
     },
     "hosting": {
       "title": "Drift och serverloggar",
-      "description": "Webbplatsen driftas av Vercel Inc. När du öppnar en sida överför din webbläsare med nödvändighet din IP-adress, den begärda adressen, hänvisande sida, din webbläsaridentifikation och tidpunkten för begäran. Vercel behandlar dessa uppgifter för att leverera webbplatsen och skydda den mot angrepp och överbelastning. Assistenten och AI-verktygen använder dessutom din IP-adress för att begränsa antalet anrop, så att en enskild besökare inte kan tömma tjänsten för alla andra.",
+      "description": "Webbplatsen driftas av Vercel Inc. När du öppnar en sida överför din webbläsare med nödvändighet din IP-adress, den begärda adressen, hänvisande sida, din webbläsaridentifikation och tidpunkten för begäran. Vercel behandlar dessa uppgifter för att leverera webbplatsen och skydda den mot angrepp och överbelastning. Assistenten använder dessutom din IP-adress för att begränsa antalet anrop, så att en enskild besökare inte kan tömma tjänsten för alla andra.",
       "legalBasis": "Rättslig grund: art. 6.1 f GDPR – mitt berättigade intresse av att tillhandahålla en fungerande, säker och missbruksbeständig webbplats."
     },
     "cookies": {
@@ -319,17 +365,10 @@
       "aiNoticeDescription": "Du interagerar med ett AI-system, inte med mig personligen. Ange inte lösenord, betaluppgifter, hälsouppgifter eller annat som du inte vill ska behandlas av en amerikansk AI-leverantör.",
       "legalBasis": "Rättslig grund: art. 6.1 b och f GDPR för att producera det svar du bett om; art. 6.1 a GDPR – ditt samtycke – för att lagra konversationen."
     },
-    "aiTools": {
-      "title": "AI-baserade verktyg",
-      "description": "Vissa verktyg på webbplatsen skickar den text du matar in till externa AI-leverantörer för att ta fram ett resultat. Texten behandlas för att besvara din begäran och lagras därefter inte av mig.",
-      "auditTitle": "Automatiseringsgenomgång",
-      "auditDescription": "De svar du lämnar i genomgången överförs till OpenAI för att generera utvärderingen.",
-      "legalBasis": "Rättslig grund: art. 6.1 b GDPR – utförande av en tjänst du aktivt begärt; art. 6.1 f GDPR för säker drift av verktyget."
-    },
     "contact": {
       "title": "Kontakt via e-post",
       "description": "Kontaktknapparna på den här webbplatsen öppnar ditt eget e-postprogram med min adress ifylld; ett klick skickar ingenting till mig eller till någon tredje part. Om du sedan skriver till mig behandlar jag din e-postadress, ditt namn om du anger det och innehållet i ditt meddelande för att kunna besvara din förfrågan.",
-      "legalBasis": "Rättslig grund: art. 6.1 b GDPR när din förfrågan gäller ett avtal eller åtgärder före avtals ingående; i övriga fall art. 6.1 f GDPR – mitt berättigade intresse av att besvara meddelanden som skickas till mig."
+      "legalBasis": "Rättslig grund: art. 6.1 f GDPR – mitt berättigade intresse av att besvara meddelanden som skickas till mig."
     },
     "recipients": {
       "title": "Mottagare och överföringar till tredjeland",
@@ -341,7 +380,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Genererar AI-assistentens svar och resultatet av automatiseringsgenomgången.",
+        "purpose": "Genererar AI-assistentens svar.",
         "location": "USA."
       },
       "squarespace": {
@@ -355,7 +394,7 @@
         "location": "Irland; uppgifter kan även behandlas i USA."
       },
       "transfersTitle": "Överföringar till tredjeland",
-      "transfersDescription": "Vercel, OpenAI och Squarespace är etablerade i USA, och även Google kan behandla uppgifter där, vilket innebär att dina uppgifter kan överföras utanför EU/EES. Vercel och OpenAI erbjuder var och en ett personuppgiftsbiträdesavtal som innehåller Europeiska kommissionens standardavtalsklausuler; om en leverantör dessutom är certifierad enligt EU-US Data Privacy Framework gäller den certifieringen som komplement. Squarespace och Google behandlar e-post till kontaktadressen enligt sina egna villkor och integritetspolicyer. Trots dessa skyddsåtgärder kan amerikanska myndigheter ha åtkomsträttigheter som inte motsvarar europeisk standard, och det kan vara svårare att hävda dina rättigheter där än inom EU. Vill du undvika detta är det bara att låta bli assistenten och AI-verktygen – resten av webbplatsen fungerar utan dem – och skriva till mig per post till adressen högst upp på den här sidan i stället för via e-post."
+      "transfersDescription": "Vercel, OpenAI och Squarespace är etablerade i USA, och även Google kan behandla uppgifter där, vilket innebär att dina uppgifter kan överföras utanför EU/EES. Vercel och OpenAI erbjuder var och en ett personuppgiftsbiträdesavtal som innehåller Europeiska kommissionens standardavtalsklausuler; om en leverantör dessutom är certifierad enligt EU-US Data Privacy Framework gäller den certifieringen som komplement. Squarespace och Google behandlar e-post till kontaktadressen enligt sina egna villkor och integritetspolicyer. Trots dessa skyddsåtgärder kan amerikanska myndigheter ha åtkomsträttigheter som inte motsvarar europeisk standard, och det kan vara svårare att hävda dina rättigheter där än inom EU. Vill du undvika detta är det bara att låta bli assistenten – resten av webbplatsen fungerar utan den – och skriva till mig per post till adressen högst upp på den här sidan i stället för via e-post."
     },
     "retention": {
       "title": "Lagringstid",
@@ -363,7 +402,7 @@
       "serverLogs": "Drift- och anropsloggar sparas av Vercel under den tid som anges i deras egen lagringspolicy; jag för inga separata åtkomstloggar.",
       "chatSessions": "Min server behåller en assistentkonversation endast så länge det tar att besvara meddelandet. När svaret har skickats finns ingenting av utbytet kvar på servern, såvida du inte har samtyckt till lagring.",
       "chatRecords": "Konversationer som med ditt samtycke sparats i databasen raderas för närvarande manuellt vid genomgång, inte enligt ett fast automatiskt schema. Du kan när som helst begära radering genom att skriva till adressen ovan; jag gör det utan onödigt dröjsmål.",
-      "emails": "E-post som du skickar till mig raderas när din förfrågan har hanterats färdigt, om inte lagstadgade skyldigheter att bevara affärskorrespondens (§ 257 HGB, § 147 AO i tysk rätt) kräver att den sparas längre.",
+      "emails": "E-post som du skickar till mig raderas när din förfrågan har hanterats färdigt.",
       "browser": "Poster i din egen webbläsare finns kvar tills de löper ut, tills du rensar din webbläsarlagring, eller tills du använder raderingsknappen på den här sidan."
     },
     "rights": {
@@ -423,24 +462,25 @@
     "comingSoonDescription": "Bokrekommendationer och recensioner kommer att finnas tillgängliga här snart."
   },
   "About": {
-    "badge": "Tillgänglig på förfrågan",
+    "badge": "Heltidsanställd",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Webbutvecklare i Tyskland med fokus på automatisering och AI."
+      "title": "Fullstack-utvecklare och AI-ingenjör i Tyskland."
     },
-    "intro": "Hej, jag heter Yazan. Jag bygger mjukvara som sparar dig tid och hanterar dina data varsamt.",
+    "intro": "Hej, jag heter Yazan. Jag bygger webbapplikationer från början till slut, och AI-systemen som körs i dem.",
     "focusTitle": "Aktuellt fokus",
     "currentFocusItems": [
-      "Webbappar med Next.js och TypeScript",
-      "Automatisering av arbetsflöden",
-      "AI-agenter, AI-assistenter och RAG",
+      "Fullstack-webbappar med Next.js och TypeScript",
+      "RAG och chattbottar med källhänvisningar – text och video",
+      "Kontext- och promptdesign, AI-agenter och MCP",
+      "Azure AI, Microsoft Entra ID och Azure Key Vault",
       "Verktyg med öppen källkod"
     ],
     "story": {
       "title": "Lite om mig",
       "paragraphs": [
         "Jag är IHK-certifierad Fachinformatiker inom applikationsutveckling. Men det mesta jag kan har jag lärt mig genom att bygga: den här webbplatsen, paket med öppen källkod och verktyg som jag själv använder varje dag.",
-        "Det som lockar mig mest är där webbutveckling, automatisering och AI möts — att förvandla en process som äter upp timmar varje vecka till något som bara fungerar. Jag föredrar ärlig, väldokumenterad mjukvara framför smarta knep."
+        "Det som lockar mig mest är AI-utveckling: att bygga in språkmodeller i riktiga produkter — sökning som svarar utifrån rätt källor, agenter som använder verktyg säkert och webbapplikationen runt omkring. Automatisering är en del av den verktygslådan, men inte allt. Jag föredrar ärlig, väldokumenterad mjukvara framför smarta knep."
       ]
     },
     "compliance": {
@@ -458,24 +498,14 @@
       },
       "note": "Jag är utvecklare, inte jurist. Jag bygger med de här reglerna i åtanke; den juridiska bedömningen ligger hos dig eller din rådgivare."
     },
-    "workingWithMe": {
-      "title": "Att arbeta med mig",
-      "items": [
-        "Du arbetar direkt med mig.",
-        "Vi kommer överens om omfattningen skriftligt innan arbetet börjar.",
-        "Du får regelbundna uppdateringar på ett begripligt språk.",
-        "I slutet får du källkoden och dokumentationen."
-      ]
-    },
     "availability": {
-      "title": "Upptagen just nu — tillgänglig på förfrågan",
-      "description": "Min kalender är full just nu, så jag tar bara emot nya uppdrag på förfrågan. Om du har något i åtanke, skriv till mig så säger jag ärligt när jag skulle kunna börja."
+      "title": "Heltidsanställd — tar inte emot externa uppdrag",
+      "description": "Jag arbetar heltid som utvecklare och är fullbokad det kommande året, så jag tar inte emot frilans- eller kunduppdrag. För allt annat – en tjänst, en fråga om mitt arbete eller bara för att säga hej – är min inkorg öppen."
     },
     "explore": {
       "title": "Titta dig omkring",
       "projects": "Projekt",
       "products": "Produkter",
-      "services": "Tjänster",
       "blog": "Blogg"
     },
     "cta": {
@@ -574,440 +604,6 @@
       "decline": "Avböj"
     }
   },
-  "Services": {
-    "hero": {
-      "title": "Tjänster som Levererar Resultat",
-      "subtitle": "Från idé till lansering — webbappar, automatisering och AI-lösningar för verklig affärsnytta."
-    },
-    "packages": {
-      "title": "Tjänstepaket",
-      "cta": "Kontakt",
-      "website": {
-        "name": "Webbplats",
-        "headline": "Bli Hittad. Bli Uppringd.",
-        "description": "En snabb, modern webbplats som fungerar på alla enheter och syns i lokal sökning.",
-        "timeline": "1–2 veckor",
-        "features": {
-          "pages": "Upp till 3 sidor, eller en enkelsidig webbplats med upp till 5 sektioner",
-          "businessInfo": "Central företagsinfo: om mig, tjänster, öppettider, frågor och svar, kontakt",
-          "contact": "Kontaktformulär",
-          "gbp": "Uppsättning och optimering av Google-företagsprofil",
-          "legal": "Grundläggande juridiska sidor (teknisk implementering)",
-          "seo": "SEO- och prestandaoptimering, Lighthouse 90+"
-        },
-        "extras": {
-          "page": {
-            "label": "Ytterligare sida"
-          },
-          "section": {
-            "label": "Ytterligare sektion (enkelsidig webbplats)"
-          },
-          "secondLanguage": {
-            "label": "Andra språket (EN + DE), översättning ingår"
-          },
-          "staticBlog": {
-            "label": "Statisk blogg (utan backend)"
-          },
-          "cmsBlog": {
-            "label": "Redigerbar blogg med CMS"
-          },
-          "consentBanner": {
-            "label": "Samtyckesbanner (endast om ni vill ha spårningsverktyg)"
-          },
-          "textPrep": {
-            "label": "Textbearbetning från ert befintliga material, per sida"
-          },
-          "managedSetup": {
-            "label": "Managed Setup (per plattform)"
-          }
-        }
-      },
-      "webApplication": {
-        "name": "Webbapplikation",
-        "headline": "Mjukvara som Driver er Process.",
-        "description": "Allt från Webbplats, plus en databas och riktiga användare.",
-        "timeline": "4–6 veckor",
-        "features": {
-          "website": "Allt som ingår i Webbplats",
-          "database": "Databasdesign och uppsättning (leverantör ni väljer)",
-          "auth": "Användarregistrering och inloggning",
-          "adminView": "En admin-vy (skapa, läsa, uppdatera, radera)",
-          "production": "Produktionsklar build"
-        },
-        "extras": {
-          "booking": {
-            "label": "Boknings-/tidsbokningssystem"
-          },
-          "roles": {
-            "label": "Roller och behörigheter"
-          },
-          "sso": {
-            "label": "Enkel inloggning (SSO) med Microsoft Entra ID eller Google"
-          },
-          "payments": {
-            "label": "Betalningar (Stripe)"
-          },
-          "fileUpload": {
-            "label": "Filuppladdning och hantering"
-          },
-          "adminView": {
-            "label": "Ytterligare admin-vy"
-          },
-          "notifications": {
-            "label": "E-postaviseringar (via er brevlåda, Brevo eller Mailjet)"
-          },
-          "page": {
-            "label": "Ytterligare sida eller vy"
-          }
-        }
-      },
-      "aiIntegration": {
-        "name": "AI-integration",
-        "headline": "Svar utan att Någon Skriver dem.",
-        "description": "En chatbot eller AI-funktion på en ny webbplats, eller tillagd på en befintlig.",
-        "timeline": "1–3 veckor",
-        "features": {
-          "chatbot": "Chatbot tränad på er företagsinformation (textinjektion, ingen RAG)",
-          "knowledgeBase": "Kunskapsbas byggd tillsammans med er",
-          "transparency": "Synlig AI-notis i gränssnittet — transparens enligt EU:s AI-förordning",
-          "avv": "Personuppgiftsbiträdesavtal (AVV) när personuppgifter behandlas",
-          "integration": "Integration i en befintlig webbplats eller ett paket ovan"
-        },
-        "extras": {
-          "rag": {
-            "label": "RAG-system med pgvector — svar från era dokument (PDF, Notion, Docs)"
-          },
-          "existingApp": {
-            "label": "AI-funktion i en befintlig app (sammanfatta, klassificera, generera)"
-          },
-          "agent": {
-            "label": "AI-agent som utför åtgärder i era verktyg (tool calling, MCP)"
-          },
-          "voice": {
-            "label": "Röstinmatning och uppläsning — tal till text (STT) och text till tal (TTS)"
-          },
-          "cloudSetup": {
-            "label": "Konfiguration av molnleverantör (Azure AI / Azure OpenAI EU, OpenAI, Anthropic Claude, Mistral)"
-          },
-          "localModel": {
-            "label": "Lokal modell på er egen server — inget lämnar er infrastruktur"
-          },
-          "knowledgeSource": {
-            "label": "Ytterligare kunskapskälla"
-          },
-          "retraining": {
-            "label": "Omträning efter godkännande"
-          }
-        },
-        "scopeNote": {
-          "label": "Var jag kan lägga till det",
-          "text": "Webbplatser byggda med Next.js, React, eller en statisk webbplats — stöds direkt. Allt annat (WordPress, PHP, Shopify, .NET, Wix) är endast möjligt som inbäddad widget, som ett Skräddarsytt projekt efter genomgång."
-        }
-      },
-      "automation": {
-        "name": "Automatisering & Integration",
-        "headline": "Koppla Ihop Verktygen ni Redan Betalar för.",
-        "description": "Jag är den tekniska implementeraren. Ni tillhandahåller licenser, konton och adminåtkomst.",
-        "timeline": "3 dagar – 4 veckor",
-        "features": {
-          "review": "Processgenomgång av arbetsflödet som ska automatiseras",
-          "connection": "Anslutning av 2 verktyg (e-post, kalender, formulär, kalkylark, CRM)",
-          "triggers": "Trigger- och logikuppsättning",
-          "handover": "Testning och överlämning",
-          "avv": "AVV när personuppgifter behandlas"
-        },
-        "extras": {
-          "workflow": {
-            "label": "Varje ytterligare arbetsflöde"
-          },
-          "tool": {
-            "label": "Varje ytterligare anslutet verktyg"
-          },
-          "n8n": {
-            "label": "Självhostad n8n-uppsättning på er server"
-          },
-          "agentic": {
-            "label": "Agentiskt arbetsflöde — ett AI-steg som fattar beslut och agerar i automatiseringen"
-          },
-          "devTools": {
-            "label": "Automatisering av utvecklarverktyg — Jira, Confluence, Bitbucket, GitHub"
-          },
-          "customApi": {
-            "label": "Anpassad API-integration (ingen färdig connector)"
-          }
-        },
-        "scopeNote": {
-          "label": "Vad jag inte gör",
-          "text": "Företagsövergripande administration av Microsoft 365 eller Google Workspace — tenant-uppsättning, organisationsövergripande Teams-/SharePoint-arkitektur, licenshantering. Ta med er IT-administratör; jag bygger automationen ovanpå."
-        }
-      },
-      "custom": {
-        "name": "Skräddarsytt",
-        "headline": "Era Krav, Ordentligt Definierade.",
-        "description": "För allt som inte passar in i paketen ovan.",
-        "timeline": "Flexibel",
-        "features": {
-          "workshop": "Kravworkshop",
-          "roadmap": "Skräddarsydd projektplan med milstolpar",
-          "milestones": "Milstolpebaserad leverans och fakturering",
-          "agnostic": "Teknikoberoende — er stack, era leverantörer",
-          "handover": "Fullständig överlämning av källkod",
-          "support": "2 veckors kostnadsfri buggfixning efter lansering"
-        }
-      },
-      "notes": {
-        "title": "Bra att veta",
-        "included": "Varje paket inkluderar responsiv design, en SEO- och prestandabuild (Lighthouse 90+), 2 revideringsrundor och fullständig överlämningsdokumentation.",
-        "runningCosts": "Löpande kostnader — hosting, databas, AI-användning och domän — faktureras er direkt av era valda leverantörer, på era egna konton.",
-        "rights": "Fullständiga nyttjanderätter till det levererade arbetet överförs till er vid slutbetalning.",
-        "warranty": "Två veckors kostnadsfri buggfixning efter lansering ingår. Era lagstadgade garantirättigheter påverkas inte.",
-        "payment": "Betalningsvillkoren framgår av ert skriftliga förslag; fakturor förfaller 14 dagar netto.",
-        "rates": "Extra arbete utanför den överenskomna omfattningen, även extra revideringsrundor, stäms alltid av med er i förväg. Återkoppling inom 5 arbetsdagar, godkännande inom 10.",
-        "notIncluded": "Ingår inte i något paket: innehåll — texter, bilder, logotyper — samt tredjepartslicenser, stockmaterial eller betalda typsnitt. Ni tillhandahåller dessa."
-      },
-      "extras": {
-        "seeAll": "Tillgängliga tillval",
-        "dialogTitle": "{package} — tillval",
-        "dialogDescription": "Alla tillval som kan bokas till detta paket.",
-        "contactNote": "Hör av er så går vi igenom dessa utifrån ert projekt."
-      }
-    },
-    "serviceArea": {
-      "title": "Din Full-Stack-utvecklare i storstadsregionen Rhein-Neckar",
-      "subtitle": "Baserad i Schwetzingen, Tyskland — jag arbetar på plats med kunder i Mannheim, Heidelberg, Ludwigshafen och regionen, och på distans med kunder var som helst.",
-      "citiesLabel": "Täcker på plats bland annat:",
-      "cities": [
-        "Schwetzingen",
-        "Mannheim",
-        "Heidelberg",
-        "Ludwigshafen am Rhein",
-        "Speyer",
-        "Walldorf"
-      ],
-      "note": "Personliga möten går att boka på förfrågan — det dagliga samarbetet sker på distans och asynkront, för snabb respons utan restid."
-    },
-    "process": {
-      "title": "Så Fungerar Det",
-      "subtitle": "En tydlig, förutsägbar process från första samtalet till lansering.",
-      "discovery": {
-        "title": "Upptäcktssamtal",
-        "description": "Jag diskuterar dina mål, utmaningar och tidsramar med dig. Inget åtagande, bara klarhet."
-      },
-      "strategy": {
-        "title": "Strategi och Omfattning",
-        "description": "Du får ett tydligt skriftligt förslag med omfattning och tidplan. Inga överraskningar."
-      },
-      "development": {
-        "title": "Utveckling",
-        "description": "Regelbundna uppdateringar och demos. Du vet alltid var saker står."
-      },
-      "support": {
-        "title": "Lansering och Support",
-        "description": "Smidig överlämning med dokumentation och utbildning. Löpande support och underhåll avtalas separat."
-      },
-      "acceptance": {
-        "title": "Godkännande & Överlämning",
-        "description": "Ni granskar resultatet mot den överenskomna omfattningen och jag utfärdar det undertecknade godkännandeprotokollet. Godkännandet startar garantitiden och gör slutbetalningen förfallen."
-      }
-    },
-    "cta": {
-      "title": "Redo att Börja?",
-      "subtitle": "Skicka mig ett kort mejl om ditt projekt. Inget åtagande – om det passar bokar vi ett kostnadsfritt 15-minuters upptäcktssamtal.",
-      "button": "Kontakt",
-      "viewAllLink": "Visa Alla Tjänster & Paket"
-    },
-    "stack": {
-      "title": "Er Stack, Era Konton",
-      "subtitle": "Ni väljer leverantörerna och äger varje konto — jag arbetar med ett fokuserat urval plattformar jag kan supporta ordentligt.",
-      "categories": {
-        "frontend": {
-          "label": "Frontend",
-          "options": "Next.js · React · statisk build"
-        },
-        "database": {
-          "label": "Databas",
-          "options": "Supabase · Neon · PostgreSQL (inkl. pgvector) med Prisma eller Drizzle ORM"
-        },
-        "auth": {
-          "label": "Auth",
-          "options": "Better Auth · Auth.js · Clerk"
-        },
-        "ai": {
-          "label": "AI-leverantör",
-          "options": "Azure AI (inkl. Azure OpenAI, EU-region) · OpenAI · Anthropic Claude · Mistral · lokal modell på er server"
-        },
-        "automation": {
-          "label": "Automatisering och agenter",
-          "options": "n8n (moln eller självhostad) · skräddarsydda automatiseringar med Node.js / Next.js · AI-agenter med tool calling · MCP-servrar"
-        },
-        "integrations": {
-          "label": "Integrationer",
-          "options": "Google Workspace · Microsoft Entra ID · GitHub (appar och MCP) · Stripe · Jira · Confluence · Bitbucket"
-        },
-        "hosting": {
-          "label": "Hosting",
-          "options": "Vercel · Netlify · Cloudflare Pages · Hetzner · egen server"
-        },
-        "email": {
-          "label": "E-postutskick",
-          "options": "Er befintliga brevlåda via SMTP (rekommenderas) · Brevo · Mailjet · Resend"
-        }
-      },
-      "codeOnly": {
-        "title": "Endast Kod (standard)",
-        "description": "Ni får hela källkoden, build-instruktioner och överlämningsdokumentation. Ni driftsätter själva."
-      },
-      "managedSetup": {
-        "title": "Managed Setup (valfritt)",
-        "description": "Jag skapar kontot i ert namn, konfigurerar det, driftsätter och överlämnar alla inloggningsuppgifter vid godkännande. Efter överlämningen har jag ingen åtkomst och inget löpande ansvar."
-      },
-      "emailNote": "Kontaktformulär och aviseringsmejl behöver en utskickskanal — oftast er befintliga företagsbrevlåda via SMTP, utan extra kostnad. Brevo, Mailjet eller Resend finns tillgängliga om ni behöver något annat."
-    },
-    "legalNotice": "Mina tjänster erbjuds uteslutande till näringsidkare enligt § 14 BGB (tysk civillag)."
-  },
-  "Usecases": {
-    "title": "Användningsfall",
-    "subtitle": "Utforska min samling av produktionsklara projekt. Varje projekt visar moderna utvecklingsmetoder och verkliga tillämpningar.",
-    "techStackLabel": "Teknisk Stack",
-    "useCasesLabel": "Användningsfall",
-    "liveDemoButton": "Live Demo",
-    "viewCodeButton": "Visa Kod",
-    "liveToolsShowcase": {
-      "description": "Se med den interaktiva ROI-kalkylatorn vad automatisering av ett manuellt arbetsflöde kan spara ditt företag:",
-      "rioButton": "ROI-kalkylator"
-    },
-    "projects": {
-      "project-1": {
-        "title": "Voice-to-Notion Automation",
-        "description": "Omvandlar röstmemon och mötesinspelningar till strukturerade Notion-sidor med transkriptioner, sammanfattningar och uppgifter. Automatiserar administration efter mötet på under 30 sekunder.",
-        "techStack": "AI-röstbehandling, Attitydanalys, Notion API, Next.js",
-        "implementationAreas": "Byråverksamhet, Kundhantering, Ledningsstöd"
-      },
-      "project-2": {
-        "title": "ROI-kalkylator för automatisering",
-        "description": "Ett interaktivt verktyg utformat för att hjälpa företag att kvantifiera den ekonomiska effekten av att automatisera manuella arbetsflöden. Det beräknar årliga kostnader, beräknade besparingar och återbetalningstiden i veckor, vilket ger en tydlig visualisering av kostnads-nyttoanalysen.",
-        "description2": "Beräkna automatiseringsbesparingar och ROI.",
-        "techStack": "React, TypeScript, Tailwind CSS",
-        "implementationAreas": "Finansiell analys, Affärsprocessautomatisering, Kostnadsoptimering"
-      },
-      "project-4": {
-        "title": "AI-automationsmognadsaudit",
-        "description": "Svara på 8 frågor om ditt företag och få ett personligt automatiseringsbetyg med AI-genererade rekommendationer för de 3 arbetsflöden du bör automatisera först.",
-        "techStack": "Next.js, OpenAI, TypeScript",
-        "implementationAreas": "Affärsprocessautomatisering, Leadgenerering, Konsulting"
-      }
-    },
-    "comingSoon": "Fler användningsfall kommer snart..."
-  },
-  "LiveTools": {
-    "rio": {
-      "title": "ROI-kalkylator för automatisering",
-      "description": "Se exakt hur mycket pengar manuella uppgifter kostar ditt företag.",
-      "auditPromo": "Vet du inte vad du ska automatisera först? Gör den gratis automationsauditen →",
-      "inputs": {
-        "hoursPerWeek": "Tid spenderad på uppgiften (Timmar/Vecka)",
-        "hourlyRate": "Anställds timkostnad",
-        "hourlyRateHint": "Inkludera lön + omkostnader (programvara, kontor, etc.)",
-        "automationCost": "Beräknad investering i automatisering"
-      },
-      "results": {
-        "burnRateLabel": "Årlig \"Burn Rate\"",
-        "burnRateDesc": "Du förlorar detta varje år genom att göra det manuellt.",
-        "savingsLabel": "Beräknad besparing år 1",
-        "roiTimelineLabel": "ROI-tidslinje:",
-        "roiTimelineText": "Automatiseringen betalar sig själv på bara <bold>{{weeks}} veckor</bold>.",
-        "notProfitableTitle": "Inte lönsamt än",
-        "notProfitableDesc": "Baserat på dessa siffror kan manuellt arbete vara billigare just nu om du inte skalar upp."
-      }
-    },
-    "audit": {
-      "title": "AI-automationsmognadsaudit",
-      "description": "Svara på 8 snabba frågor och få ett personligt automatiseringsbetyg med skräddarsydda rekommendationer.",
-      "step": "Steg {current} av {total}",
-      "question": "Fråga",
-      "next": "Nästa",
-      "back": "Tillbaka",
-      "submit": "Hämta mitt betyg",
-      "loading": "Analyserar dina svar...",
-      "scoreLabel": "Ditt automatiseringsmognadbetyg",
-      "scoreBucket": {
-        "high": "Hög mognad",
-        "medium": "God grund",
-        "low": "Tidig fas"
-      },
-      "scoreBucketDesc": {
-        "high": "Snabba vinster finns tillgängliga — du är redo att automatisera.",
-        "medium": "Fokuserade automatiseringar ger stark ROI för ditt företag.",
-        "low": "Börja med 1–2 riktade automatiseringar för bästa initiala effekt."
-      },
-      "topAutomations": "Rekommenderade automatiseringar",
-      "timeSaved": "Sparad tid:",
-      "tool": "Verktyg:",
-      "retake": "Gör om audit",
-      "remaining": "{remaining} analyser kvar idag",
-      "limitReached": "Du har använt alla dina gratis analyser för idag. Kom tillbaka imorgon!",
-      "errorGeneric": "Något gick fel. Försök igen.",
-      "errorDisabled": "Auditverktyget är tillfälligt otillgängligt.",
-      "questions": {
-        "q1": {
-          "label": "Hur många timmar per vecka spenderar ditt team på repetitiva manuella uppgifter?",
-          "a": "Mindre än 2 timmar",
-          "b": "2–5 timmar",
-          "c": "5–10 timmar",
-          "d": "Mer än 10 timmar"
-        },
-        "q2": {
-          "label": "Hur stort är ditt team?",
-          "a": "Solo",
-          "b": "2–5 personer",
-          "c": "6–20 personer",
-          "d": "Mer än 20 personer"
-        },
-        "q3": {
-          "label": "Vad är din största operativa flaskhals?",
-          "a": "Datainmatning och rapportering",
-          "b": "E-post och kommunikation",
-          "c": "Godkännanden och arbetsflöden",
-          "d": "Schemaläggning och koordinering"
-        },
-        "q4": {
-          "label": "Vilka verktyg använder ditt team för närvarande?",
-          "a": "Mest kalkylblad och e-post",
-          "b": "Några SaaS-appar",
-          "c": "Flera anslutna SaaS-appar",
-          "d": "Vi har redan viss automatisering"
-        },
-        "q5": {
-          "label": "Hur ofta uppstår fel från manuellt arbete?",
-          "a": "Sällan",
-          "b": "Ibland",
-          "c": "Ofta",
-          "d": "Mycket ofta — det är ett verkligt problem"
-        },
-        "q6": {
-          "label": "Vilken bransch är du verksam i?",
-          "a": "Konsulting och byråer",
-          "b": "E-handel och detaljhandel",
-          "c": "Tech och mjukvara",
-          "d": "Annat"
-        },
-        "q7": {
-          "label": "Vad är din månadsbudget för automatiseringsverktyg?",
-          "a": "Inte säker än",
-          "b": "Under 500 €/månad",
-          "c": "500–2 000 €/månad",
-          "d": "2 000 €+/månad"
-        },
-        "q8": {
-          "label": "Vad är ditt primära mål med automatisering?",
-          "a": "Spara tid",
-          "b": "Minska fel",
-          "c": "Växa utan att anställa",
-          "d": "Sänka driftskostnader"
-        }
-      }
-    }
-  },
   "localeDetect": {
     "title": "Språk identifierat",
     "browserLanguage": "Webbläsarspråk",
@@ -1043,11 +639,62 @@
       "speed-insight": "Prestanda",
       "collaboration": "Samarbete",
       "projects": "Projekt",
+      "products": "Produkter",
       "cert": "Certifieringar",
-      "services": "Tjänster",
-      "use-cases": "Användningsfall",
       "github": "GitHub",
       "capabilities": "Förmågor"
+    }
+  },
+  "Search": {
+    "title": "Sök på webbplatsen",
+    "description": "Gå till en sida, en del av startsidan, ett projekt, ett blogginlägg eller en inställning.",
+    "placeholder": "Gå till en sida, ett projekt eller en inställning",
+    "trigger": "Sök",
+    "triggerLabel": "Sök och gå ({shortcut})",
+    "groups": {
+      "pages": "Sidor",
+      "sections": "Delar av startsidan",
+      "work": "Projekt och produkter",
+      "blog": "Blogginlägg",
+      "settings": "Inställningar"
+    },
+    "product": "Produkt",
+    "themeLight": "Byt till ljust läge",
+    "themeDark": "Byt till mörkt läge",
+    "language": "Språk",
+    "current": "Aktuell",
+    "empty": "Inget matchar ”{query}”.",
+    "searchingBlog": "Söker i bloggen …",
+    "hintMove": "Flytta",
+    "hintOpen": "Öppna",
+    "hintClose": "Stäng"
+  },
+  "Footer": {
+    "label": "Sidfot",
+    "navigation": "Navigering",
+    "developers": "För utvecklare",
+    "elsewhere": "På andra ställen",
+    "legal": "Juridiskt",
+    "poweredBy": "Drivs av",
+    "rights": "Alla rättigheter förbehållna.",
+    "backToTop": "Till toppen"
+  },
+  "Loading": {
+    "root": {
+      "title": "Laddar portfolio…",
+      "description": "Vänta medan sidan förbereds"
+    },
+    "legals": {
+      "title": "Laddar juridiska sidor…",
+      "description": "Förbereder juridiskt innehåll"
+    },
+    "media": {
+      "title": "Laddar innehåll…",
+      "description": "Förbereder sidan"
+    },
+    "admin": {
+      "title": "Laddar adminpanelen…",
+      "description": "Förbereder administrationsgränssnittet"
     }
   }
 }

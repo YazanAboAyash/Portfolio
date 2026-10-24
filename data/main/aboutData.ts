@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 export interface AboutSection {
@@ -48,91 +48,80 @@ export const aboutData: AboutData = {
   personalInfo: {
     name: "Yazan Abo-Ayash",
     title:
-      "Web apps, workflow automation, and AI integrations — built end to end by one developer",
-    currentPosition: "Freelance Developer",
-    company: "",
+      "Full-stack web applications and the AI inside them — LLM features, RAG systems, AI agents and MCP servers",
+    currentPosition: "Full-Stack Developer & AI Engineer",
+    company: "Botgenossen GmbH, Avarno GmbH",
     location: "Germany",
     experience: "3+ years",
   },
   mainStory:
-    "I work with SMEs, agencies, and founders who need software shipped rather than managed. MVPs scoped for delivery in 4-8 weeks, automations that take repetitive work off your team, and AI assistants built on real retrieval architecture — not a chat window bolted onto a website. You work with me directly. No account manager, no handoff to a junior developer. Next.js, TypeScript and React, with source code and documentation you own outright at the end. IHK-certified Fachinformatiker with EU AI Act training — relevant when the AI feature you want has to hold up under European regulation.",
+    "I'm a full-stack developer and AI engineer, employed full-time at Botgenossen GmbH and Avarno GmbH. I build web applications end to end in Next.js, TypeScript and React — and the AI inside them: LLM features, retrieval (RAG) that answers from the right sources, agents that use tools safely, and MCP servers. IHK-certified Fachinformatiker for application development, with EU AI Act training.",
   sections: [
     {
       id: "journey",
       title: "My Journey",
       content:
-        "From self-taught developer to delivering production applications for businesses across Europe. Every project taught me what clients really need: not just code, but reliable solutions that solve real problems and drive measurable results.",
+        "Self-taught first, then IHK-certified. Most of what I know I learned by building: this website, open-source packages, and tools I use myself every day.",
       order: 1,
     },
     {
       id: "philosophy",
       title: "How I Work",
       content:
-        "Clear communication, transparent timelines, and delivering exactly what was promised. No technical jargon, no scope creep — just reliable development with regular updates so you always know where your project stands.",
+        "Honest, well-documented software over clever tricks. Strict TypeScript, tests where they matter, and privacy and regulation considered from the start — especially when AI is involved.",
       order: 2,
     },
     {
       id: "current-work",
-      title: "What I Deliver",
+      title: "What I Work On",
       content:
-        "Web MVPs in 4-8 weeks, workflow automation that saves hours weekly, AI assistants for internal processes, and long-term support to keep your systems running smoothly.",
+        "Full-stack web applications and the AI systems inside them: LLM integrations, RAG pipelines, AI agents with tool use, and MCP servers.",
       order: 3,
-    },
-    {
-      id: "results",
-      title: "Business Results",
-      content:
-        "Guaranteed 90+ performance scores for better SEO, scalable applications ready for international markets, and enterprise-grade security to protect your business data.",
-      order: 4,
     },
   ],
   achievements: [
     {
-      id: "mvp-delivery",
-      title: "Fast MVP Delivery",
-      description:
-        "Consistently delivering production-ready web applications in 4-8 weeks",
-      date: "Ongoing",
-      category: "work",
-      icon: "🚀",
+      id: "ihk",
+      title: "IHK Fachinformatiker",
+      description: "Certified application developer (Anwendungsentwicklung)",
+      date: "Completed",
+      category: "certification",
+      icon: "🎓",
     },
     {
-      id: "automation",
-      title: "Workflow Automation",
-      description:
-        "Building AI-powered automation solutions that save clients hours of manual work weekly",
-      date: "2024-Present",
-      category: "project",
-      icon: "⚡",
+      id: "eu-ai-act",
+      title: "EU AI Act",
+      description: "Trained on the obligations the EU AI Act places on AI systems",
+      date: "Completed",
+      category: "certification",
+      icon: "⚖️",
     },
     {
-      id: "performance",
-      title: "Performance Excellence",
+      id: "mcp",
+      title: "Public MCP Server",
       description:
-        "Achieving 90+ Lighthouse scores for all client projects, boosting SEO rankings",
+        "A read-only Model Context Protocol server over my GitHub account, open to any MCP client",
       date: "Ongoing",
       category: "project",
-      icon: "📈",
+      icon: "🔌",
     },
   ],
   currentFocus: [
-    "Web MVPs scoped for 4-8 week delivery",
-    "Automations designed to remove hours of manual work each week",
-    "AI assistants and RAG systems for internal processes",
+    "RAG systems and chatbots with source citations — text and video",
+    "Context engineering and prompt engineering",
+    "Azure AI, Microsoft Entra ID and Azure Key Vault",
+    "Full-stack web applications with Next.js and TypeScript",
+    "AI agents and MCP servers",
   ],
   goals: [
-    "Help businesses launch faster with reliable web applications",
-    "Automate repetitive processes to free up team capacity",
-    "Deliver measurable ROI through performance optimization",
-    "Build long-term partnerships with growing companies",
-    "Enable international expansion with multi-language support",
+    "Build AI features that hold up in production, not just in demos",
+    "Go deeper on retrieval, agents and evaluation",
+    "Keep contributing open-source tooling",
   ],
   values: [
-    "Clear communication and transparent timelines",
-    "Delivering exactly what was promised",
-    "Business goals drive technical decisions",
+    "Honest, well-documented software",
+    "Privacy by design",
     "Long-term reliability over quick fixes",
-    "Regular updates so you always know project status",
-    "Solutions that scale with your business",
+    "Strict types and clear boundaries",
   ],
 };

@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 /**
@@ -11,46 +11,16 @@
 
 export const GITHUB_LOCALE = "en-US";
 
-/** Languages shown individually before the rest collapse into "Other". */
-export const LANGUAGE_BAR_LIMIT = 6;
-
 export const githubCopy = {
-  title: "GitHub Activity",
-  loading: "Loading GitHub data…",
-  retry: "Try again",
   errors: {
     RATE_LIMIT_EXCEEDED:
       "GitHub is rate-limiting requests right now. Please try again in a minute.",
     SERVICE_UNAVAILABLE: "GitHub data is unavailable right now.",
   },
-  liveBadge: "Live from GitHub · updated",
-  profile: {
-    viewProfile: "View profile",
-    highlights: "Highlights",
-    memberSince: "Member since",
-    avatarAlt: "GitHub profile picture of",
-  },
-  stats: {
-    repos: "Repos",
-    stars: "Stars",
-    followers: "Followers",
-    forks: "Forks",
-    contributions: "Contributions, last year",
-  },
-  languages: {
-    title: "Languages",
-    subtitle: "Share of an average public repository",
-    other: "Other",
-  },
-  repositories: {
-    pinned: "Pinned repositories",
-    recent: "Recently pushed repositories",
-    pushed: "Pushed",
-  },
   mcp: {
     trigger: "Live MCP session",
-    triggerHint: "Query this profile through the site's own MCP server",
-    title: "GitHub MCP server",
+    triggerHint: "Call every tool of the site's own MCP server",
+    title: "This site's MCP server",
     description:
       "Your browser opens a real Model Context Protocol session with this site's MCP server. Every line below is an actual request and its response.",
     start: "Start MCP session",
@@ -66,5 +36,72 @@ export const githubCopy = {
     request: "Request",
     response: "Response",
     failed: "Session failed. The last exchange above shows where.",
+  },
+  ask: {
+    title: "Ask this site",
+    intro:
+      "coldbydefault.com runs a public MCP server. AI clients such as Claude can read my projects, capabilities, certifications and GitHub through it. Run one of its tools and see exactly what an agent receives.",
+    toolsLabel: "MCP tools",
+    toolGroups: [
+      {
+        label: "Portfolio",
+        tools: ["get_projects", "get_capabilities", "get_certifications"],
+      },
+      {
+        label: "GitHub",
+        tools: ["get_profile", "get_stats", "get_repositories"],
+      },
+    ],
+    tools: {
+      get_projects: {
+        label: "Projects",
+        hint: "Open-source work and the stack behind it",
+      },
+      get_capabilities: {
+        label: "Capabilities",
+        hint: "What I deliver, and with which tools",
+      },
+      get_certifications: {
+        label: "Certifications",
+        hint: "Certificates, issuers and years",
+      },
+      get_profile: { label: "Profile", hint: "Who is behind the account" },
+      get_stats: { label: "Stats", hint: "Repositories, stars, contributions" },
+      get_repositories: {
+        label: "Featured repositories",
+        hint: "Pinned, or the most recently pushed",
+      },
+    },
+    addTitle: "Connect your own MCP client",
+    addHint:
+      "Add this URL as a remote MCP server in Claude, ChatGPT, Cursor or VS Code. Streamable HTTP, no sign-in, read-only.",
+    copy: "Copy",
+    copied: "Copied",
+    viewLabel: "Response view",
+    readable: "Readable",
+    raw: "Raw JSON",
+    calling: "Calling",
+    idle: "Pick a tool on the left to call it live.",
+    failed: "The call failed. Try again in a moment.",
+    tookMs: "round trip",
+    siteData: "↳ served from the site's own data, no upstream call",
+    statLabels: {
+      publicRepos: "public repositories",
+      totalStars: "stars",
+      totalForks: "forks",
+      followers: "followers",
+      contributionsLastYear: "contributions, last year",
+    },
+    profile: {
+      company: "Company",
+      location: "Location",
+      website: "Website",
+      since: "On GitHub since",
+      highlights: "Highlights",
+      viewProfile: "View profile on GitHub",
+      avatarAlt: "GitHub profile picture of",
+    },
+    noDescription: "No description",
+    lastPush: "last push",
   },
 } as const;

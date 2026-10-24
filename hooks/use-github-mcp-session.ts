@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -15,6 +15,7 @@ import type {
   McpExchangeEntry,
   McpLogEntry,
   McpSessionStatus,
+  McpToolCallState,
 } from "@/types/configs/mcp";
 
 function describeRpc(
@@ -114,7 +115,10 @@ export function useGitHubMcpSession() {
 
       for (const tool of tools) {
         if ((tool.inputSchema.required ?? []).length > 0) continue;
-        const result = await client.callTool({ name: tool.name, arguments: {} });
+        const result = await client.callTool({
+          name: tool.name,
+          arguments: {},
+        });
         const firstContent = result.content[0];
         append({
           kind: "result",
@@ -144,4 +148,76 @@ export function useGitHubMcpSession() {
   }, []);
 
   return { entries, status, run };
+}
+
+/**
+ * Calls a single tool on `/api/mcp` and keeps its result, for the "Ask this
+ * site" console. Each call opens its own short session (initialize, call,
+ * close), exactly what an outside MCP client does. A newer call supersedes one
+ * still in flight.
+ */
+export function useMcpToolCall() {
+  const [state, setState] = useState<McpToolCallState>({
+    status: "idle",
+    toolName: null,
+    result: null,
+    durationMs: null,
+  });
+  const latest = useRef(0);
+
+  const call = useCallback(async (toolName: string): Promise<void> => {
+    const id = ++latest.current;
+    setState((prev) => ({ ...prev, status: "running", toolName }));
+    const started = performance.now();
+
+    const { Client, StreamableHTTPClientTransport } =
+      await import("@modelcontextprotocol/client");
+    const client = new Client(
+      { name: mcpConfig.clientName, version: getPortfolioVersion() },
+      { versionNegotiation: { mode: "auto" } },
+    );
+    const transport = new StreamableHTTPClientTransport(
+      new URL(mcpConfig.endpointPath, window.location.origin),
+    );
+
+    try {
+      await client.connect(transport);
+      const result = await client.callTool({ name: toolName, arguments: {} });
+      if (id !== latest.current) return;
+      const firstContent = result.content[0];
+      const errorCode =
+        result.isError === true && firstContent?.type === "text"
+          ? firstContent.text
+          : null;
+      setState({
+        status: errorCode ? "error" : "done",
+        toolName,
+        durationMs: Math.round(performance.now() - started),
+        result: {
+          toolName,
+          structuredContent:
+            typeof result.structuredContent === "object" &&
+            result.structuredContent !== null
+              ? (result.structuredContent as Record<string, unknown>)
+              : null,
+          upstream: readUpstream(result._meta),
+          errorCode,
+          raw: result,
+        },
+      });
+    } catch (error) {
+      console.error("MCP tool call failed:", error);
+      if (id !== latest.current) return;
+      setState({
+        status: "error",
+        toolName,
+        durationMs: null,
+        result: null,
+      });
+    } finally {
+      await client.close().catch(() => undefined);
+    }
+  }, []);
+
+  return { ...state, call };
 }

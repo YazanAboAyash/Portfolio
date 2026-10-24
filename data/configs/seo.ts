@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type { TwitterCardType } from "@/types/configs/metadata";
@@ -28,20 +28,22 @@ const COMMON_TECH_KEYWORDS = [
 
 const COMMON_ROLE_KEYWORDS_EN = [
   "Full Stack Developer",
+  "AI Engineer",
   "Web Developer",
   "Frontend Developer",
   "Backend Developer",
-  "AI Automation Developer",
+  "LLM Application Developer",
   "RAG Systems Developer",
-  "MVP development",
 ];
 
 const COMMON_ROLE_KEYWORDS_DE = [
   "Full Stack Entwickler",
+  "AI Engineer",
+  "KI-Entwickler",
   "Web Entwickler",
   "Frontend Entwickler",
   "Backend Entwickler",
-  "AI Automatisierungsentwickler",
+  "LLM-Anwendungsentwickler",
   "RAG Systementwickler",
 ];
 
@@ -52,9 +54,13 @@ const COMMON_CONCEPTS_EN = [
   "API Development",
   "Responsive Design",
   "Modern Web Technologies",
-  "AI and Automation",
+  "AI Engineering",
+  "LLM Applications",
   "RAG Systems",
-  "MVP Development",
+  "AI Agents",
+  "Prompt Engineering",
+  "Context Engineering",
+  "Microsoft Azure",
 ];
 
 const COMMON_CONCEPTS_DE = [
@@ -64,18 +70,20 @@ const COMMON_CONCEPTS_DE = [
   "API Entwicklung",
   "Responsive Design",
   "Moderne Webtechnologien",
-  "AI und Automatisierung",
+  "AI Engineering",
+  "LLM-Anwendungen",
   "RAG Systeme",
-  "MVP Entwicklung",
+  "KI-Agenten",
+  "Prompt Engineering",
+  "Context Engineering",
+  "Microsoft Azure",
 ];
 
-// Regional keywords for local SEO around Schwetzingen / the Rhein-Neckar metro
-// area. German set is the primary target; English set is a lighter subset for
+// Regional keywords so people searching for developers around Schwetzingen /
+// the Rhein-Neckar metro area find the portfolio. German set is the primary target; English set is a lighter subset for
 // non-German searchers who still search by region name.
 const REGIONAL_KEYWORDS_DE = [
-  "Webdesign Schwetzingen",
   "Webentwickler Mannheim",
-  "Webagentur Heidelberg",
   "Full Stack Entwickler Rhein-Neckar",
   "Webentwicklung Ludwigshafen",
   "Softwareentwicklung Metropolregion Rhein-Neckar",
@@ -110,10 +118,10 @@ export const BASE_CONFIG = {
       "JavaScript",
       "Express.js",
       "PostgreSQL",
-      "AI",
-      "Automation",
+      "AI Engineering",
+      "Large Language Models (LLM)",
       "RAG Systems",
-      "MVP development",
+      "Workflow Automation",
       "Docker",
       "Git",
       "Tailwind CSS",
@@ -121,6 +129,11 @@ export const BASE_CONFIG = {
       "AI Agents",
       "Anthropic Claude API",
       "Azure AI",
+      "Microsoft Entra ID",
+      "Azure Key Vault",
+      "Context Engineering",
+      "Prompt Engineering",
+      "RAG with Source Citations",
       "pgvector",
       "Drizzle ORM",
       "Better Auth",
@@ -129,33 +142,22 @@ export const BASE_CONFIG = {
       "Speech-to-Text and Text-to-Speech",
     ],
     // City + postal code only — the exact street address stays confined to the
-    // Impressum. Coordinates are Schwetzingen's town center, not the home address.
+    // Impressum.
     address: {
       locality: "Schwetzingen",
       postalCode: "68723",
       region: "Baden-Württemberg",
       country: "DE",
     },
-    geo: {
-      latitude: 49.3838,
-      longitude: 8.5686,
-    },
-    areaServed: [
-      "Schwetzingen",
-      "Mannheim",
-      "Heidelberg",
-      "Ludwigshafen am Rhein",
-      "Speyer",
-      "Walldorf",
-    ],
   },
 };
 
 // English SEO Configuration
 export const seoConfigEN: SEOConfig = {
-  title: "Yazan Abo-Ayash | Full Stack Developer Portfolio - ColdByDefault™",
+  title:
+    "Yazan Abo-Ayash | Full-Stack Developer & AI Engineer - ColdByDefault™",
   description:
-    "Full Stack Developer. Specialized in Next.js and modern web technologies, AI and automations, RAG Systems, MVP development.",
+    "Full-Stack Developer & AI Engineer. Production web applications with Next.js and TypeScript, and the AI inside them: LLM features, RAG systems, AI agents and MCP servers.",
   keywords: [
     ...COMMON_ROLE_KEYWORDS_EN,
     ...COMMON_TECH_KEYWORDS.map((tech) => `${tech} Developer`),
@@ -167,26 +169,27 @@ export const seoConfigEN: SEOConfig = {
   locale: "en_US",
   alternateLocales: ["de_DE"],
   openGraph: {
-    title: "Yazan Abo-Ayash | Full Stack Developer Portfolio",
+    title: "Yazan Abo-Ayash | Full-Stack Developer & AI Engineer",
     description:
-      "Full Stack Developer specializing in modern web technologies, AI and automations, RAG Systems, MVP development.",
+      "Full-Stack Developer & AI Engineer building production web applications and LLM features: RAG systems, AI agents and MCP servers.",
     type: "website",
     image: "/og-image-en.jpg",
-    imageAlt: "ColdByDefault™ Portfolio - Full Stack Developer",
+    imageAlt: "ColdByDefault™ Portfolio - Full-Stack Developer & AI Engineer",
   },
   structured: {
     ...BASE_CONFIG.structured,
-    jobTitle: "Full Stack Developer",
+    jobTitle: "Full-Stack Developer & AI Engineer",
     description:
-      "Full Stack Developer specializing in Next.js, AI and automations, RAG Systems, MVP development.",
+      "Full-Stack Developer & AI Engineer specializing in Next.js, TypeScript, LLM applications, RAG systems, AI agents and MCP servers.",
   },
 };
 
 // German SEO Configuration
 export const seoConfigDE: SEOConfig = {
-  title: "Yazan Abo-Ayash | Full Stack Entwickler Portfolio - ColdByDefault™",
+  title:
+    "Yazan Abo-Ayash | Full-Stack-Entwickler & AI Engineer - ColdByDefault™",
   description:
-    "Full Stack Entwickler, spezialisiert auf Next.js und moderne Webtechnologien, AI und Automatisierungen, RAG Systeme, MVP Entwicklung.",
+    "Full-Stack-Entwickler & AI Engineer. Produktive Webanwendungen mit Next.js und TypeScript – und die KI darin: LLM-Features, RAG-Systeme, KI-Agenten und MCP-Server.",
   keywords: [
     ...COMMON_ROLE_KEYWORDS_DE,
     ...COMMON_TECH_KEYWORDS.map((tech) => `${tech} Entwickler`),
@@ -204,18 +207,18 @@ export const seoConfigDE: SEOConfig = {
   locale: "de_DE",
   alternateLocales: ["en_US"],
   openGraph: {
-    title: "Yazan Abo-Ayash | Full Stack Entwickler Portfolio",
+    title: "Yazan Abo-Ayash | Full-Stack-Entwickler & AI Engineer",
     description:
-      "Full Stack Entwickler, spezialisiert auf Next.js und moderne Webtechnologien, AI und Automatisierungen, RAG Systeme, MVP Entwicklung.",
+      "Full-Stack-Entwickler & AI Engineer: produktive Webanwendungen und LLM-Features – RAG-Systeme, KI-Agenten und MCP-Server.",
     type: "website",
     image: "/og-image-de.jpg",
-    imageAlt: "ColdByDefault™ Portfolio - Full Stack Entwickler",
+    imageAlt: "ColdByDefault™ Portfolio - Full-Stack-Entwickler & AI Engineer",
   },
   structured: {
     ...BASE_CONFIG.structured,
-    jobTitle: "Full Stack Entwickler",
+    jobTitle: "Full-Stack-Entwickler & AI Engineer",
     description:
-      "Full Stack Entwickler, spezialisiert auf Next.js und moderne Webtechnologien, AI und Automatisierungen, RAG Systeme, MVP Entwicklung.",
+      "Full-Stack-Entwickler & AI Engineer, spezialisiert auf Next.js, TypeScript, LLM-Anwendungen, RAG-Systeme, KI-Agenten und MCP-Server.",
   },
 };
 
@@ -426,42 +429,6 @@ export const mediaSectionContent: MediaSectionContent = {
         "Webentwicklung",
       ],
       path: "/library",
-    },
-  },
-  services: {
-    en: {
-      title: "Services - MVP Development, AI & Automation Solutions",
-      description:
-        "Professional web development services including MVP launch packages, AI chatbot integration, RAG systems, and workflow automation. Clear scope, reliable delivery.",
-      keywords: [
-        "web development services",
-        "MVP development",
-        "AI integration",
-        "chatbot development",
-        "RAG systems",
-        "workflow automation",
-        "full stack developer for hire",
-        "freelance developer",
-        "startup development",
-      ],
-      path: "/services",
-    },
-    de: {
-      title: "Dienstleistungen - MVP Entwicklung, AI & Automatisierung",
-      description:
-        "Professionelle Webentwicklungs-Dienstleistungen einschließlich MVP-Pakete, AI-Chatbot-Integration, RAG-Systeme und Workflow-Automatisierung. Klare Preise, zuverlässige Lieferung.",
-      keywords: [
-        "Webentwicklung Dienstleistungen",
-        "MVP Entwicklung",
-        "AI Integration",
-        "Chatbot Entwicklung",
-        "RAG Systeme",
-        "Workflow Automatisierung",
-        "Full Stack Entwickler beauftragen",
-        "Freelance Entwickler",
-        "Startup Entwicklung",
-      ],
-      path: "/services",
     },
   },
   aboutPortfolio: {

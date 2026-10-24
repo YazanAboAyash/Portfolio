@@ -6,10 +6,8 @@ const publicRoutes = [
   "/",
   "/about",
   "/about-portfolio",
-  "/services",
   "/projects",
   "/blog",
-  "/rio-calculator",
   "/impressum",
   "/privacy",
 ] as const;

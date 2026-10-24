@@ -1,0 +1,46 @@
+{
+  "enabledPlugins": {
+    "taste-skill@taste-skill": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "claude-security@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": true,
+    "mcp-server-dev@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "taste-skill": {
+      "source": {
+        "source": "github",
+        "repo": "Leonxlnx/taste-skill"
+      }
+    }
+  },
+  "enabledMcpjsonServers": ["context7", "neon", "vercel"],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-paths.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/post-edit.mjs\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

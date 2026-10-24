@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -91,7 +91,7 @@ export default function ContactSheet({
               label={t("sendEmail")}
               variant="default"
               href={`mailto:${contactInfo.email}`}
-              className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-600 hover:text-white hover:border-sky-600 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
+              className="w-full border-gray-300 dark:border-gray-600 hover:bg-sky-700 hover:text-white hover:border-sky-700 text-sm px-4 py-2 h-auto cursor-pointer transition-colors duration-300"
             />
             {/* Visible fallback for visitors without a configured mail app */}
             <p className="text-xs text-muted-foreground text-center select-all">
@@ -170,13 +170,13 @@ export default function ContactSheet({
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("status")}:</span>
                 <Badge variant="secondary" className="text-xs">
-                  {t("limitedAvailability")}
+                  {t("employmentStatus")}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("position")}:</span>
                 <Badge variant="outline" className="text-xs">
-                  {t("freelancer")}
+                  {t("role")}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
@@ -192,9 +192,9 @@ export default function ContactSheet({
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">{t("training")}:</span>
+                <span className="text-muted-foreground">{t("qualification")}:</span>
                 <Badge variant="secondary" className="text-xs">
-                  {t("trainingTitle")}
+                  {t("qualificationTitle")}
                 </Badge>
               </div>
               <div className="flex items-center justify-end">
@@ -204,10 +204,6 @@ export default function ContactSheet({
               </div>
             </div>
           </div>
-          <Separator />
-          <p className="text-xs text-muted-foreground text-center">
-            {t("legalNotice")}
-          </p>
         </div>
       </SheetContent>
     </Sheet>

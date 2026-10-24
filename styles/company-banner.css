@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 /* Company banner scroll animations - Seamless infinite loop */
@@ -180,11 +180,16 @@
   width: 2.5rem; /* 40px */
   height: 2.5rem; /* 40px */
   opacity: 0.6;
-  filter: grayscale(100%);
+  /* Logos are drawn in the page ink: black in light mode, white in dark */
+  filter: grayscale(100%) brightness(0);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.dark .company-logo-item .logo-container {
+  filter: grayscale(100%) brightness(0) invert(1);
 }
 
 /* Ensure consistent image alignment */
@@ -199,8 +204,12 @@
 @media (hover: hover) {
   .company-logo-item:hover .logo-container {
     opacity: 1;
-    filter: grayscale(0%);
     transform: scale(1.1);
+  }
+
+  /* Brand colours only in dark mode: the Avarno mark is white and vanishes on light */
+  .dark .company-logo-item:hover .logo-container {
+    filter: none;
   }
 
   .company-logo-item:hover .company-name {
@@ -209,7 +218,6 @@
 
   .company-logo-item:hover .text-logo {
     opacity: 1;
-    background: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
   }
 }
@@ -217,14 +225,9 @@
 .company-logo-item .company-name {
   font-size: 0.875rem; /* 14px */
   font-weight: 500;
-  color: rgb(255, 255, 255);
+  color: var(--foreground);
   opacity: 0.7;
   transition: opacity 0.3s ease;
-}
-
-/* Dark mode adjustments */
-.dark .company-logo-item .company-name {
-  color: rgb(229, 231, 235); /* gray-200 */
 }
 
 /* Text fallback for companies without logos */
@@ -234,11 +237,10 @@
   justify-content: center;
   width: 2.5rem; /* 40px */
   height: 2.5rem; /* 40px */
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.375rem; /* 6px */
+  background: var(--surface-2);
   font-size: 0.75rem; /* 12px */
   font-weight: 600;
-  color: rgb(255, 255, 255);
+  color: var(--foreground);
   opacity: 0.6;
   transition: all 0.3s ease;
 }
@@ -248,7 +250,6 @@
   .company-logo-item .logo-container {
     /* Keep logos slightly more visible on mobile */
     opacity: 0.8;
-    filter: grayscale(50%);
   }
 
   .company-logo-item .company-name {
@@ -257,6 +258,5 @@
 
   .company-logo-item .text-logo {
     opacity: 0.8;
-    background: rgba(255, 255, 255, 0.15);
   }
 }
