@@ -5,7 +5,6 @@
  */
 
 import {
-  Briefcase,
   FolderGit2,
   Newspaper,
   Package,
@@ -23,6 +22,5 @@ export const ABOUT_COMPLIANCE_ITEMS = [
 export const ABOUT_EXPLORE_LINKS = [
   { key: "projects", href: "/projects", icon: FolderGit2 },
   { key: "products", href: "/#products", icon: Package },
-  { key: "services", href: "/services", icon: Briefcase },
   { key: "blog", href: "/blog", icon: Newspaper },
 ] as const;

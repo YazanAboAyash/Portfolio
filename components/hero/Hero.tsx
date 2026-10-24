@@ -11,7 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Mail, ExternalLink } from "lucide-react";
-import { servicesPageData } from "@/data/hubs/servicesData";
+import { contactEmailLink } from "@/data/main/contact";
 
 function Hero() {
   const t = useTranslations("Hero");
@@ -30,7 +30,7 @@ function Hero() {
             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-4 border-border shadow-2xl aspect-square">
               <Image
                 src="/profileDark.jpg"
-                alt="Yazan Abo-Ayash - Full Stack Developer profile picture"
+                alt="Yazan Abo-Ayash - Full-Stack Developer & AI Engineer profile picture"
                 width={400}
                 height={400}
                 className="w-full h-full object-cover"
@@ -67,7 +67,7 @@ function Hero() {
             <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">
               <Button asChild className="gap-2 cursor-pointer">
                 <a
-                  href={servicesPageData.contactLink}
+                  href={contactEmailLink}
                   className="flex items-center gap-2"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />

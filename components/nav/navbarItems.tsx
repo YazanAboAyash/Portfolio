@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { SheetContent, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import {
   Home,
-  Briefcase,
   FolderGit2,
   User,
   Library,
@@ -62,11 +61,6 @@ export function useNavItems(): NavItem[] {
       name: t("home"),
       href: "/",
       icon: Home,
-    },
-    {
-      name: t("services"),
-      href: "/services",
-      icon: Briefcase,
     },
     {
       name: t("work"),

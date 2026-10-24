@@ -59,7 +59,7 @@ export const applicationNodes: ArchitectureNode[] = [
   {
     icon: Layers,
     title: "Route Groups & Layouts",
-    subtitle: "(media) + (legals) + (live-tools) + admin + Shared Layouts",
+    subtitle: "(media) + (legals) + admin + Shared Layouts",
     color: "bg-purple-500/10 text-purple-600",
   },
   {
@@ -319,14 +319,8 @@ export const routeStructure = {
     {
       name: "(media)",
       description: "Public content routes",
-      routes: ["about", "about-portfolio", "blog", "projects", "services"],
+      routes: ["about", "about-portfolio", "blog", "projects"],
       layout: "Specialized media layout with enhanced SEO",
-    },
-    {
-      name: "(live-tools)",
-      description: "Interactive tool pages",
-      routes: ["automation-audit", "rio-calculator"],
-      layout: "Tool-focused layout with shared loading state",
     },
     {
       name: "(legals)",
@@ -344,7 +338,6 @@ export const routeStructure = {
   apiRoutes: [
     "api/about/*",
     "api/admin/*",
-    "api/automation-audit/*",
     "api/blog/*",
     "api/chatbot/*",
     "api/github/*",

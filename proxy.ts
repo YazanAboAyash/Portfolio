@@ -161,10 +161,7 @@ export function proxy(request: NextRequest) {
   const validRoutes = [
     "/",
     "/about",
-    "/services",
     "/projects",
-    "/rio-calculator",
-    "/automation-audit",
     "/blog",
     "/library",
     "/media",

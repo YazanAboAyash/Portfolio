@@ -15,7 +15,7 @@ import { m } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  cardSurfaceGitHub,
+  cardSurface,
   RevealGroup,
   RevealItem,
 } from "@/components/visuals";
@@ -63,7 +63,7 @@ export default function GitHubRepositories({
           {repositories.items.map((repo) => (
             <RevealItem key={repo.name} className="h-full">
               <Card
-                className={cn(cardSurfaceGitHub, "h-full relative overflow-hidden")}
+                className={cn(cardSurface, "h-full relative overflow-hidden")}
               >
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start gap-2 mb-2">
@@ -71,7 +71,7 @@ export default function GitHubRepositories({
                       href={repo.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors break-all"
+                      className="font-medium text-slate-900 dark:text-slate-100 hover:text-foreground hover:underline underline-offset-4 transition-colors break-all"
                     >
                       {repo.name}
                     </Link>

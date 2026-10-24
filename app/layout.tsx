@@ -27,7 +27,6 @@ import {
   seoConfigEN,
   seoConfigDE,
   generateStructuredData,
-  generateLocalBusinessStructuredData,
 } from "@/lib/configs/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
@@ -79,8 +78,6 @@ export default async function RootLayout({
   const locale = await getLocale();
   const seoConfig = locale === "de" ? seoConfigDE : seoConfigEN;
   const structuredData = generateStructuredData(seoConfig);
-  const localBusinessStructuredData =
-    generateLocalBusinessStructuredData(seoConfig);
   return (
     <html lang={locale} data-scroll-behavior="smooth">
       <head>
@@ -134,9 +131,6 @@ export default async function RootLayout({
         */}
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessStructuredData)}
         </script>
       </head>
       {/*

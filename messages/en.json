@@ -2,9 +2,6 @@
   "Home": {
     "WebsitePerformance": "Website Performance",
     "companiesContributing": "Companies I'm working at / Projects I'm contributing to:",
-    "services": {
-      "title": "Services & Packages"
-    },
     "speedInsight": {
       "title": "Live PageSpeed Insights",
       "subtitle": "Real-time Google Lighthouse scores for this website",
@@ -25,15 +22,14 @@
   },
   "Hero": {
     "availableForCollaboration": "Available for collaboration",
-    "fullStackDeveloper": "Automation & AI-Powered Web MVPs",
-    "description": "Automation solutions, internal AI assistants, and MVP development. Delivering end-to-end web applications, From concept to deployment—building practical tools that save time and drive efficiency.",
+    "fullStackDeveloper": "Full-Stack Developer & AI Engineer",
+    "description": "I build production web applications end to end — and the AI inside them: LLM features, RAG systems, agents and MCP servers. Next.js and TypeScript, from the first commit to deployment.",
     "contact": "Contact",
     "learnMoreAboutMe": "Learn More About Me",
     "moreAboutMe": "More about me on"
   },
   "Navigation": {
     "home": "Home",
-    "services": "Services",
     "work": "Work",
     "about": "About",
     "blog": "Blog",
@@ -53,7 +49,7 @@
   },
   "Contact": {
     "getInTouch": "Let's Connect",
-    "description": "Ready to discuss your project? Send me an email or connect with me on social media.",
+    "description": "Want to talk about a role, a project or an idea? Send me an email or connect with me on social media.",
     "email": "Email",
     "sendEmail": "Send an Email",
     "socialMedia": "Social Media",
@@ -62,14 +58,13 @@
     "status": "Status",
     "training": "Training",
     "quickLinks": "Quick Links",
-    "limitedAvailability": "Limited Availability",
+    "employmentStatus": "Employed full-time",
     "position": "Position",
     "employer": "Employer",
-    "freelancer": "Freelancer",
+    "role": "Full-Stack Developer & AI Engineer",
     "trainingTitle": "IHK Fachinformatiker AE",
     "specialization": "Specialization",
-    "specializationValue": "Artificial Intelligence",
-    "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."
+    "specializationValue": "Artificial Intelligence"
   },
   "QuickActions": {
     "title": "Quick Actions",
@@ -225,14 +220,6 @@
       "address": "Invalidengasse 4",
       "city": "68723 Schwetzingen"
     },
-    "dispute": {
-      "title": "Dispute Resolution",
-      "euTitle": "EU Consumer Redress",
-      "euDescription": "The European Commission provides information on consumer redress:",
-      "emailNote": "You can find my email address in the legal notice above.",
-      "arbitrationTitle": "Consumer Dispute Resolution / Universal Arbitration Board",
-      "arbitrationDescription": "I am neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board."
-    },
     "lastUpdated": "Last updated:"
   },
   "Privacy": {
@@ -252,13 +239,13 @@
     },
     "overview": {
       "title": "Overview",
-      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. Some features — the AI assistant and the automation audit — transmit data to external service providers, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
+      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. One feature — the AI assistant — transmits data to an external service provider, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
       "keyPoint": "What this means in practice",
-      "keyPointDescription": "You can read this site without identifying yourself. There is no advertising, no cross-site tracking and no profiling. At the same time, your IP address and anything you type into the assistant or the AI tools are personal data — the sections below explain exactly what happens to them, on what legal basis, and how long anything is kept."
+      "keyPointDescription": "You can read this site without identifying yourself. There is no advertising, no cross-site tracking and no profiling. At the same time, your IP address and anything you type into the assistant are personal data — the sections below explain exactly what happens to them, on what legal basis, and how long anything is kept."
     },
     "hosting": {
       "title": "Hosting and server logs",
-      "description": "This website is hosted by Vercel Inc. When you open a page, your browser necessarily transmits your IP address, the requested address, the referring page, your browser identification and the time of the request. Vercel processes this data to deliver the site and to protect it against attacks and overload. The assistant and the AI tools additionally use your IP address for rate limiting, so that a single visitor cannot exhaust the service for everyone else.",
+      "description": "This website is hosted by Vercel Inc. When you open a page, your browser necessarily transmits your IP address, the requested address, the referring page, your browser identification and the time of the request. Vercel processes this data to deliver the site and to protect it against attacks and overload. The assistant additionally uses your IP address for rate limiting, so that a single visitor cannot exhaust the service for everyone else.",
       "legalBasis": "Legal basis: Art. 6(1)(f) GDPR — my legitimate interest in delivering a functioning, secure and abuse-resistant website."
     },
     "cookies": {
@@ -319,17 +306,10 @@
       "aiNoticeDescription": "You are interacting with an AI system, not with me personally. Please do not enter passwords, payment details, health information or anything else you would not want processed by a US-based AI provider.",
       "legalBasis": "Legal basis: Art. 6(1)(b) and (f) GDPR for producing the answer you asked for; Art. 6(1)(a) GDPR — your consent — for storing the conversation."
     },
-    "aiTools": {
-      "title": "AI-backed tools",
-      "description": "Some tools on this site send the text you enter to external AI providers in order to produce a result. That text is processed to answer your request and is not stored by me afterwards.",
-      "auditTitle": "Automation audit",
-      "auditDescription": "The answers you give in the audit are transmitted to OpenAI in order to generate the evaluation.",
-      "legalBasis": "Legal basis: Art. 6(1)(b) GDPR — performing a service you actively requested; Art. 6(1)(f) GDPR for operating the tool securely."
-    },
     "contact": {
       "title": "Contact by email",
       "description": "The contact buttons on this site open your own email program with my address filled in; clicking them sends nothing to me or to any third party. If you then write to me, I process your email address, your name if you give it, and the content of your message in order to answer your enquiry.",
-      "legalBasis": "Legal basis: Art. 6(1)(b) GDPR where your enquiry concerns a contract or steps prior to entering into one; otherwise Art. 6(1)(f) GDPR — my legitimate interest in answering messages sent to me."
+      "legalBasis": "Legal basis: Art. 6(1)(f) GDPR — my legitimate interest in answering messages sent to me."
     },
     "recipients": {
       "title": "Recipients and international transfers",
@@ -341,7 +321,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Generates the AI assistant's replies and the automation audit result.",
+        "purpose": "Generates the AI assistant's replies.",
         "location": "United States."
       },
       "squarespace": {
@@ -355,7 +335,7 @@
         "location": "Ireland; data may also be processed in the United States."
       },
       "transfersTitle": "Transfers to third countries",
-      "transfersDescription": "Vercel, OpenAI and Squarespace are established in the United States, and Google may also process data there, so your data can be transferred outside the EU/EEA. Vercel and OpenAI each offer a data processing agreement incorporating the European Commission's Standard Contractual Clauses; where a provider additionally holds a certification under the EU-US Data Privacy Framework, that certification applies as well. Squarespace and Google process emails sent to the contact address under their own terms and privacy policies. Despite these safeguards, US authorities may have access rights that do not correspond to European standards, and enforcing your rights there can be harder than within the EU. If you would rather avoid this, simply do not use the assistant or the AI tools — the rest of the site works without them — and write to me by post at the address given at the top of this page instead of by email."
+      "transfersDescription": "Vercel, OpenAI and Squarespace are established in the United States, and Google may also process data there, so your data can be transferred outside the EU/EEA. Vercel and OpenAI each offer a data processing agreement incorporating the European Commission's Standard Contractual Clauses; where a provider additionally holds a certification under the EU-US Data Privacy Framework, that certification applies as well. Squarespace and Google process emails sent to the contact address under their own terms and privacy policies. Despite these safeguards, US authorities may have access rights that do not correspond to European standards, and enforcing your rights there can be harder than within the EU. If you would rather avoid this, simply do not use the assistant — the rest of the site works without it — and write to me by post at the address given at the top of this page instead of by email."
     },
     "retention": {
       "title": "How long data is kept",
@@ -363,7 +343,7 @@
       "serverLogs": "Hosting and request logs are kept by Vercel for the period set out in its own retention policy; I do not maintain separate access logs.",
       "chatSessions": "My server keeps an assistant conversation only for as long as it takes to answer the message. Nothing about the exchange remains on the server once the reply has been sent, unless you consented to it being stored.",
       "chatRecords": "Conversations stored in the database with your consent are currently deleted manually during review rather than on a fixed automatic schedule. You can have yours removed at any time by writing to the address above; I will do so without undue delay.",
-      "emails": "Emails you send me are deleted once your enquiry has been fully dealt with, unless statutory retention duties for business correspondence (§ 257 HGB, § 147 AO) require them to be kept for longer.",
+      "emails": "Emails you send me are deleted once your enquiry has been fully dealt with.",
       "browser": "Entries in your own browser remain until they expire, until you clear your browser storage, or until you use the deletion button on this page."
     },
     "rights": {
@@ -423,24 +403,24 @@
     "comingSoonDescription": "Book recommendations and reviews will be available here soon."
   },
   "About": {
-    "badge": "Available on request",
+    "badge": "Employed full-time",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Web developer based in Germany, focused on automation and AI."
+      "title": "Full-stack developer and AI engineer based in Germany."
     },
-    "intro": "Hi, I'm Yazan. I build software that saves you time and treats your data with care.",
+    "intro": "Hi, I'm Yazan. I build web applications end to end, and the AI systems that run inside them.",
     "focusTitle": "Current focus",
     "currentFocusItems": [
-      "Web apps with Next.js & TypeScript",
-      "Workflow automation",
-      "AI agents, assistants & RAG",
+      "Full-stack web apps with Next.js & TypeScript",
+      "LLM applications, RAG & AI agents",
+      "MCP servers and AI tooling",
       "Open-source tooling"
     ],
     "story": {
       "title": "A bit about me",
       "paragraphs": [
         "I'm an IHK-certified Fachinformatiker for application development. Most of what I know, though, I learned by building: this website, open-source packages, and tools I use myself every day.",
-        "What draws me in most is where web development, automation and AI meet — taking a process that eats hours every week and turning it into something that simply runs. I prefer honest, well-documented software over clever tricks."
+        "What draws me in most is AI engineering: building language models into real products — retrieval that answers from the right sources, agents that use tools safely, and the web application around them. Automation is part of that toolbox, not the whole of it. I prefer honest, well-documented software over clever tricks."
       ]
     },
     "compliance": {
@@ -458,24 +438,14 @@
       },
       "note": "I'm a developer, not a lawyer. I build with these rules in mind; the legal assessment stays with you or your advisor."
     },
-    "workingWithMe": {
-      "title": "Working with me",
-      "items": [
-        "You work with me directly.",
-        "We agree the scope in writing before any work starts.",
-        "You get regular updates in plain language.",
-        "At the end, you receive the source code and documentation."
-      ]
-    },
     "availability": {
-      "title": "Currently busy — available on request",
-      "description": "My calendar is full right now, so I only take on new work on request. If you have something in mind, write to me and I'll tell you honestly when I could start."
+      "title": "Employed full-time — not taking on outside work",
+      "description": "I work full-time as a developer and I'm booked for the next year, so I'm not taking on freelance or client projects. For anything else — a role, a question about my work, or just to say hello — my inbox is open."
     },
     "explore": {
       "title": "Take a look around",
       "projects": "Projects",
       "products": "Products",
-      "services": "Services",
       "blog": "Blog"
     },
     "cta": {
@@ -574,440 +544,6 @@
       "decline": "Decline"
     }
   },
-  "Services": {
-    "hero": {
-      "title": "Services That Deliver Results",
-      "subtitle": "From idea to launch — web applications, automation, and AI solutions built for business impact."
-    },
-    "packages": {
-      "title": "Service Packages",
-      "cta": "Contact",
-      "extras": {
-        "seeAll": "Available extras",
-        "dialogTitle": "{package} — extras",
-        "dialogDescription": "Additional options available for this package.",
-        "contactNote": "Get in touch and we'll scope these for your project."
-      },
-      "website": {
-        "name": "Website",
-        "headline": "Get Found. Get Called.",
-        "description": "A fast, modern site that works on every device and shows up in local search.",
-        "timeline": "1–2 weeks",
-        "features": {
-          "pages": "Up to 3 pages, or a single-page site with up to 5 sections",
-          "businessInfo": "Core business info: about, services, opening hours, Q&A, contact",
-          "contact": "Contact form",
-          "gbp": "Google Business Profile setup and optimisation",
-          "legal": "Basic legal pages (technical implementation)",
-          "seo": "SEO and performance optimisation, Lighthouse 90+"
-        },
-        "extras": {
-          "page": {
-            "label": "Additional page"
-          },
-          "section": {
-            "label": "Additional section (single-page site)"
-          },
-          "secondLanguage": {
-            "label": "Second language (EN + DE), translation included"
-          },
-          "staticBlog": {
-            "label": "Static blog (no backend)"
-          },
-          "cmsBlog": {
-            "label": "Editable blog with CMS"
-          },
-          "consentBanner": {
-            "label": "Consent banner (only if you want tracking tools)"
-          },
-          "textPrep": {
-            "label": "Text preparation from your existing material, per page"
-          },
-          "managedSetup": {
-            "label": "Managed Setup (per platform)"
-          }
-        }
-      },
-      "webApplication": {
-        "name": "Web Application",
-        "headline": "Software That Runs Your Process.",
-        "description": "Everything from Website, plus a database and real users.",
-        "timeline": "4–6 weeks",
-        "features": {
-          "website": "Everything in Website",
-          "database": "Database design and setup (your choice of provider)",
-          "auth": "User registration and login",
-          "adminView": "One admin view (create, read, update, delete)",
-          "production": "Production-ready build"
-        },
-        "extras": {
-          "booking": {
-            "label": "Booking / appointment system"
-          },
-          "roles": {
-            "label": "Roles and permissions"
-          },
-          "sso": {
-            "label": "Single sign-on with Microsoft Entra ID or Google"
-          },
-          "payments": {
-            "label": "Payments (Stripe)"
-          },
-          "fileUpload": {
-            "label": "File upload and management"
-          },
-          "adminView": {
-            "label": "Additional admin view"
-          },
-          "notifications": {
-            "label": "Email notifications (via your mailbox, Brevo or Mailjet)"
-          },
-          "page": {
-            "label": "Additional page or view"
-          }
-        }
-      },
-      "aiIntegration": {
-        "name": "AI Integration",
-        "headline": "Answers Without a Person Typing Them.",
-        "description": "A chatbot or AI feature on a new site, or added to an existing one.",
-        "timeline": "1–3 weeks",
-        "features": {
-          "chatbot": "Chatbot trained on your business information (text injection, no RAG)",
-          "knowledgeBase": "Knowledge base built together with you",
-          "transparency": "Visible AI notice in the interface — EU AI Act transparency",
-          "avv": "Data processing agreement (AVV) where personal data is processed",
-          "integration": "Integration into an existing site or a package above"
-        },
-        "scopeNote": {
-          "label": "Where I can add it",
-          "text": "Sites built with Next.js, React, or a plain static site are supported directly. Anything else (WordPress, PHP, Shopify, .NET, Wix) is possible only as an embedded widget, scoped as a Custom project after a review."
-        },
-        "extras": {
-          "rag": {
-            "label": "RAG system with pgvector — answers from your documents (PDF, Notion, Docs)"
-          },
-          "existingApp": {
-            "label": "AI feature in an existing app (summarise, classify, generate)"
-          },
-          "agent": {
-            "label": "AI agent that takes actions in your tools (tool calling, MCP)"
-          },
-          "voice": {
-            "label": "Voice input and output — speech-to-text (STT) and text-to-speech (TTS)"
-          },
-          "cloudSetup": {
-            "label": "Cloud provider setup (Azure AI / Azure OpenAI EU, OpenAI, Anthropic Claude, Mistral)"
-          },
-          "localModel": {
-            "label": "Local model on your own server — nothing leaves your infrastructure"
-          },
-          "knowledgeSource": {
-            "label": "Additional knowledge source"
-          },
-          "retraining": {
-            "label": "Retraining after acceptance"
-          }
-        }
-      },
-      "automation": {
-        "name": "Automation & Integration",
-        "headline": "Connect The Tools You Already Pay For.",
-        "description": "I am the technical implementer. You provide the licences, accounts and admin access.",
-        "timeline": "3 days – 4 weeks",
-        "features": {
-          "review": "Process review of the workflow to be automated",
-          "connection": "Connection of 2 tools (email, calendar, forms, sheets, CRM)",
-          "triggers": "Trigger and logic setup",
-          "handover": "Testing and handover walkthrough",
-          "avv": "AVV where personal data is processed"
-        },
-        "scopeNote": {
-          "label": "What I don't do",
-          "text": "Company-wide Microsoft 365 or Google Workspace administration — tenant setup, org-wide Teams/SharePoint architecture, licence management. Bring your IT admin; I build the automation layer on top."
-        },
-        "extras": {
-          "workflow": {
-            "label": "Each additional workflow"
-          },
-          "tool": {
-            "label": "Each additional tool connected"
-          },
-          "n8n": {
-            "label": "n8n self-hosted setup on your server"
-          },
-          "agentic": {
-            "label": "Agentic workflow — an AI step that decides and acts inside the automation"
-          },
-          "devTools": {
-            "label": "Developer-tool automation — Jira, Confluence, Bitbucket, GitHub"
-          },
-          "customApi": {
-            "label": "Custom API integration (no ready-made connector)"
-          }
-        }
-      },
-      "custom": {
-        "name": "Custom",
-        "headline": "Your Requirements, Scoped Properly.",
-        "description": "For anything that does not fit the packages above.",
-        "timeline": "Flexible",
-        "features": {
-          "workshop": "Requirements workshop",
-          "roadmap": "Tailored project roadmap with milestones",
-          "milestones": "Milestone-based delivery and invoicing",
-          "agnostic": "Technology agnostic — your stack, your providers",
-          "handover": "Full source code handover",
-          "support": "2 weeks of free bugfixing after launch"
-        }
-      },
-      "notes": {
-        "title": "Good to know",
-        "included": "Every package includes responsive design, an SEO and performance build (Lighthouse 90+), 2 revision rounds, and full handover documentation.",
-        "notIncluded": "Not included in any package: content — texts, images, logos — and third-party licences, stock media or paid fonts. You supply these.",
-        "runningCosts": "Running costs — hosting, database, AI usage and domain — are billed to you directly by your chosen providers, on your own accounts.",
-        "rights": "Full usage rights to the delivered work are transferred to you on final payment.",
-        "warranty": "Two weeks of free bugfixing after launch are included. Your statutory warranty rights remain unaffected.",
-        "payment": "Payment terms are set out in your written proposal; invoices are due 14 days net.",
-        "rates": "Additional work beyond the agreed scope, including extra revision rounds, is always agreed with you before it starts. Feedback within 5 working days, acceptance within 10."
-      }
-    },
-    "stack": {
-      "title": "Your Stack, Your Accounts",
-      "subtitle": "You choose the providers and own every account — I work with a focused set of platforms I can support properly.",
-      "categories": {
-        "frontend": {
-          "label": "Frontend",
-          "options": "Next.js · React · static build"
-        },
-        "database": {
-          "label": "Database",
-          "options": "Supabase · Neon · PostgreSQL (incl. pgvector) with Prisma or Drizzle ORM"
-        },
-        "auth": {
-          "label": "Auth",
-          "options": "Better Auth · Auth.js · Clerk"
-        },
-        "ai": {
-          "label": "AI provider",
-          "options": "Azure AI (incl. Azure OpenAI, EU region) · OpenAI · Anthropic Claude · Mistral · local model on your server"
-        },
-        "automation": {
-          "label": "Automation & agents",
-          "options": "n8n (cloud or self-hosted) · custom Node.js / Next.js automations · AI agents with tool calling · MCP servers"
-        },
-        "integrations": {
-          "label": "Integrations",
-          "options": "Google Workspace · Microsoft Entra ID · GitHub (apps & MCP) · Stripe · Jira · Confluence · Bitbucket"
-        },
-        "hosting": {
-          "label": "Hosting",
-          "options": "Vercel · Netlify · Cloudflare Pages · Hetzner · your own server"
-        },
-        "email": {
-          "label": "Email sending",
-          "options": "Your existing mailbox via SMTP (recommended) · Brevo · Mailjet · Resend"
-        }
-      },
-      "codeOnly": {
-        "title": "Code Only (default)",
-        "description": "You get the full source code, build instructions and handover docs. You deploy."
-      },
-      "managedSetup": {
-        "title": "Managed Setup (optional)",
-        "description": "I create the account in your name, configure it, deploy, and hand over all credentials at acceptance. After handover I have no access and no ongoing responsibility."
-      },
-      "emailNote": "Contact forms and notification emails need a sending route — usually your existing business mailbox via SMTP at no extra cost. Brevo, Mailjet or Resend are available if you need something else."
-    },
-    "serviceArea": {
-      "title": "Your Full-Stack Developer in the Rhine-Neckar Metro Area",
-      "subtitle": "Based in Schwetzingen, Germany — working on-site with clients in Mannheim, Heidelberg, Ludwigshafen and the wider region, and remotely with clients anywhere.",
-      "citiesLabel": "On-site coverage includes:",
-      "cities": [
-        "Schwetzingen",
-        "Mannheim",
-        "Heidelberg",
-        "Ludwigshafen am Rhein",
-        "Speyer",
-        "Walldorf"
-      ],
-      "note": "In-person meetings are available on request — day-to-day collaboration runs remote and asynchronous, for fast turnaround without travel time."
-    },
-    "process": {
-      "title": "How It Works",
-      "subtitle": "A clear, predictable process from first call to launch.",
-      "discovery": {
-        "title": "Discovery Call",
-        "description": "I discuss your goals, challenges, and timeline with you. No commitment, just clarity."
-      },
-      "strategy": {
-        "title": "Strategy & Scope",
-        "description": "You receive a clear written proposal with scope and timeline. No surprises."
-      },
-      "development": {
-        "title": "Development",
-        "description": "Regular updates and demos. You always know where things stand."
-      },
-      "support": {
-        "title": "Launch & Support",
-        "description": "Smooth handover with documentation and training. Ongoing support and maintenance are available under a separate agreement."
-      },
-      "acceptance": {
-        "title": "Acceptance & Handover",
-        "description": "You check the result against the agreed scope and I issue the signed acceptance protocol. Acceptance starts the warranty period and makes the final payment due."
-      }
-    },
-    "cta": {
-      "title": "Ready to Start?",
-      "subtitle": "Send me a short email about your project. No commitment — if it's a fit, we'll set up a free 15-minute discovery call.",
-      "button": "Contact",
-      "viewAllLink": "View All Services & Packages"
-    },
-    "legalNotice": "My services are offered exclusively to entrepreneurs as defined in § 14 BGB."
-  },
-  "Usecases": {
-    "title": "Use-Cases",
-    "subtitle": "Explore my collection of production-ready projects. Each showcases modern development practices and real-world applications.",
-    "techStackLabel": "Tech Stack",
-    "useCasesLabel": "Use Cases",
-    "liveDemoButton": "Live Demo",
-    "viewCodeButton": "View Code",
-    "liveToolsShowcase": {
-      "description": "See what automating a manual workflow could save your business with the interactive ROI calculator:",
-      "rioButton": "ROI Calculator"
-    },
-    "projects": {
-      "project-1": {
-        "title": "Voice-to-Notion Automation",
-        "description": "Transforms voice memos and meeting recordings into structured Notion pages with transcripts, summaries, and action items. Automates post-meeting admin work in under 30 seconds.",
-        "techStack": "AI Voice Processing, Sentiment Analysis, Notion API, Next.js",
-        "implementationAreas": "Agency Operations, Client Management, Executive Support"
-      },
-      "project-2": {
-        "title": "Automation ROI Calculator",
-        "description": "An interactive tool designed to help businesses quantify the financial impact of automating manual workflows. It calculates annual burn rates, projected savings, and the break-even timeline in weeks, providing a clear visualization of cost-benefit analysis.",
-        "description2": "Calculate automation savings and ROI.",
-        "techStack": "React, TypeScript, Tailwind CSS",
-        "implementationAreas": "Financial Analysis, Business Process Automation, Cost Optimization"
-      },
-      "project-4": {
-        "title": "AI Automation Readiness Audit",
-        "description": "Answer 8 questions about your business and receive a personalised automation readiness score with AI-generated recommendations for the top 3 workflows to automate first.",
-        "techStack": "Next.js, OpenAI, TypeScript",
-        "implementationAreas": "Business Process Automation, Lead Generation, Consulting"
-      }
-    },
-    "comingSoon": "More use-cases coming soon..."
-  },
-  "LiveTools": {
-    "rio": {
-      "title": "Automation ROI Calculator",
-      "description": "See exactly how much money manual tasks are costing your business.",
-      "auditPromo": "Unsure what to automate first? Take the free Automation Readiness Audit →",
-      "inputs": {
-        "hoursPerWeek": "Time spent on task (Hours/Week)",
-        "hourlyRate": "Employee Hourly Cost",
-        "hourlyRateHint": "Include salary + overhead (software, office, etc.)",
-        "automationCost": "Estimated Automation Investment"
-      },
-      "results": {
-        "burnRateLabel": "Annual \"Burn Rate\"",
-        "burnRateDesc": "You lose this every year doing it manually.",
-        "savingsLabel": "Projected 1st Year Savings",
-        "roiTimelineLabel": "ROI Timeline:",
-        "roiTimelineText": "The automation pays for itself in just {weeks} weeks.",
-        "notProfitableTitle": "Not profitable yet",
-        "notProfitableDesc": "Based on these numbers, manual work might be cheaper for now unless you scale up."
-      }
-    },
-    "audit": {
-      "title": "AI Automation Readiness Audit",
-      "description": "Answer 8 quick questions and receive a personalised automation score with tailored recommendations.",
-      "step": "Step {current} of {total}",
-      "question": "Question",
-      "next": "Next",
-      "back": "Back",
-      "submit": "Get My Score",
-      "loading": "Analysing your answers...",
-      "scoreLabel": "Your Automation Readiness Score",
-      "scoreBucket": {
-        "high": "High Readiness",
-        "medium": "Good Foundation",
-        "low": "Early Stage"
-      },
-      "scoreBucketDesc": {
-        "high": "Quick wins are available — you are ready to automate.",
-        "medium": "Focused automations will deliver strong ROI for your business.",
-        "low": "Start with 1–2 targeted automations for the best initial impact."
-      },
-      "topAutomations": "Recommended Automations",
-      "timeSaved": "Time saved:",
-      "tool": "Tool:",
-      "retake": "Retake Audit",
-      "remaining": "{remaining} analyses remaining today",
-      "limitReached": "You have used all your free analyses for today. Come back tomorrow!",
-      "errorGeneric": "Something went wrong. Please try again.",
-      "errorDisabled": "The audit tool is temporarily unavailable.",
-      "questions": {
-        "q1": {
-          "label": "How many hours per week does your team spend on repetitive manual tasks?",
-          "a": "Less than 2 hours",
-          "b": "2–5 hours",
-          "c": "5–10 hours",
-          "d": "More than 10 hours"
-        },
-        "q2": {
-          "label": "What is your team size?",
-          "a": "Solo",
-          "b": "2–5 people",
-          "c": "6–20 people",
-          "d": "More than 20 people"
-        },
-        "q3": {
-          "label": "What is your biggest operational bottleneck?",
-          "a": "Data entry & reporting",
-          "b": "Email & communications",
-          "c": "Approvals & workflows",
-          "d": "Scheduling & coordination"
-        },
-        "q4": {
-          "label": "What tools does your team currently use?",
-          "a": "Mostly spreadsheets & email",
-          "b": "A few SaaS apps",
-          "c": "Multiple connected SaaS apps",
-          "d": "We already have some automation"
-        },
-        "q5": {
-          "label": "How often do errors occur from manual work?",
-          "a": "Rarely",
-          "b": "Occasionally",
-          "c": "Frequently",
-          "d": "Very often — it is a real problem"
-        },
-        "q6": {
-          "label": "Which industry are you in?",
-          "a": "Consulting & agencies",
-          "b": "E-commerce & retail",
-          "c": "Tech & software",
-          "d": "Other"
-        },
-        "q7": {
-          "label": "What is your monthly budget comfort for automation tooling?",
-          "a": "Not sure yet",
-          "b": "Under €500 per month",
-          "c": "€500–€2,000 per month",
-          "d": "€2,000+ per month"
-        },
-        "q8": {
-          "label": "What is your primary goal with automation?",
-          "a": "Save time",
-          "b": "Reduce errors",
-          "c": "Scale without hiring",
-          "d": "Cut operational costs"
-        }
-      }
-    }
-  },
   "localeDetect": {
     "title": "Language Detected",
     "browserLanguage": "Browser language",
@@ -1044,8 +580,6 @@
       "collaboration": "Collaboration",
       "projects": "Projects",
       "cert": "Certifications",
-      "services": "Services",
-      "use-cases": "Use Cases",
       "github": "GitHub",
       "capabilities": "Capabilities"
     }

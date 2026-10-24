@@ -41,10 +41,6 @@ export interface AboutTranslations {
     aiAct: AboutComplianceItem;
     note: string;
   };
-  workingWithMe: {
-    title: string;
-    items: string[];
-  };
   availability: {
     title: string;
     description: string;
@@ -53,7 +49,6 @@ export interface AboutTranslations {
     title: string;
     projects: string;
     products: string;
-    services: string;
     blog: string;
   };
   cta: {

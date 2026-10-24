@@ -28,9 +28,6 @@ export const cardSurface = `${cardBase} border-border/50 hover:border-muted-fore
 /** Featured card (e.g. the Botgenossen collaboration) — amber accent. */
 export const cardSurfaceFeatured = `${cardBase} border-amber-400/40 hover:border-amber-400/70 hover:shadow-amber-400/20`;
 
-/** GitHub cards — blue accent, matching the GitHub section's identity. */
-export const cardSurfaceGitHub = `${cardBase} border-blue-500/25 hover:border-blue-500/50 hover:shadow-blue-500/15`;
-
 /** Left rail accent rendered inside a card. Pairs with {@link cardSurface}. */
 export const cardRail =
   "border-l-2 border-foreground/20 group-hover/card:border-foreground/60 transition-colors duration-300";

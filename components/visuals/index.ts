@@ -12,7 +12,6 @@ export { default as CentralizedLoading } from "./CentralizedLoading";
 export {
   cardSurface,
   cardSurfaceFeatured,
-  cardSurfaceGitHub,
   cardRail,
   cardRailFeatured,
 } from "./card-system";

@@ -23,8 +23,6 @@ const SECTION_IDS = [
   "collaboration",
   "projects",
   "cert",
-  "services",
-  "use-cases",
   "github",
   "capabilities",
 ] as const;

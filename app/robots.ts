@@ -24,12 +24,9 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           "/",
           "/about",
-          "/services",
           "/projects",
           "/blog",
           "/about-portfolio",
-          "/rio-calculator",
-          "/automation-audit",
           "/privacy",
           "/impressum",
         ],

@@ -15,9 +15,9 @@ Unless told otherwise, review `git diff main...HEAD` plus uncommitted changes (`
 1. **No hardcoded user-facing strings** in `.tsx` under `app/` and `components/`. Text must come from `useTranslations()` / `getTranslations()`. Exceptions: `components/github/` (English-only, copy lives in `GitHub.constants.ts`), `components/ui/`, aria/test ids that are not shown, and admin-only pages under `app/admin` only if the surrounding admin code already hardcodes.
 2. **i18n keys**: every key used via `t("...")` in changed code exists in `messages/en.json`, and all of `messages/{de,es,fr,sv}.json` have the same keys (run `node scripts/check-i18n-keys.mjs`).
 3. **File placement**: types belong in `types/`, hooks in `hooks/`, static data in `data/`, never inside `components/<Feature>/`.
-4. **Barrels**: every `components/<Feature>/` has an `index.ts` (`live-tools/` has one per tool; `theme/` is a known exception).
+4. **Barrels**: every `components/<Feature>/` has an `index.ts` (`theme/` is a known exception).
 5. **JSDoc header** on new source files: `@author © ColdByDefault`, `@license`, `@version 7.x.x`.
-6. **No leaf `loading.tsx`**: only `app/loading.tsx` and the group-level ones under `(legals)`, `(live-tools)`, `(media)`, `admin`.
+6. **No leaf `loading.tsx`**: only `app/loading.tsx` and the group-level ones under `(legals)`, `(media)`, `admin`.
 7. **Prisma**: no `$queryRaw`/`$executeRaw` with string interpolation or `Unsafe` variants; DB access goes through `lib/configs/prisma.ts`.
 8. **No `any`** (use `unknown`), **no NextAuth**, **no `middleware.ts`** (request hook is `proxy.ts`), **no edits under `components/ui/`**.
 9. **Admin API routes** re-check auth themselves; `proxy.ts` is not an auth gate.

@@ -14,7 +14,7 @@ import { Cpu, CalendarDays, Activity } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  cardSurfaceGitHub,
+  cardSurface,
   RevealGroup,
   RevealItem,
 } from "@/components/visuals";
@@ -54,7 +54,7 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
   return (
     <RevealGroup>
       <RevealItem>
-        <Card className={cn(cardSurfaceGitHub, "relative overflow-hidden")}>
+        <Card className={cn(cardSurface, "relative overflow-hidden")}>
           <CardContent className="p-3 relative z-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Left Side - Profile Info */}
@@ -117,7 +117,7 @@ export default function GitHubProfile({ profile, stats }: GitHubProfileProps) {
                       href={highlight.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative z-10 flex items-center gap-1.5 text-xs text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="relative z-10 flex items-center gap-1.5 text-xs text-slate-700 dark:text-slate-300 hover:text-foreground hover:underline underline-offset-4 transition-colors"
                     >
                       <Cpu className="h-3.5 w-3.5 text-slate-500 dark:text-slate-400 shrink-0" />
                       {highlight.label}

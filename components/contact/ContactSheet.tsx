@@ -170,13 +170,13 @@ export default function ContactSheet({
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("status")}:</span>
                 <Badge variant="secondary" className="text-xs">
-                  {t("limitedAvailability")}
+                  {t("employmentStatus")}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">{t("position")}:</span>
                 <Badge variant="outline" className="text-xs">
-                  {t("freelancer")}
+                  {t("role")}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
@@ -204,10 +204,6 @@ export default function ContactSheet({
               </div>
             </div>
           </div>
-          <Separator />
-          <p className="text-xs text-muted-foreground text-center">
-            {t("legalNotice")}
-          </p>
         </div>
       </SheetContent>
     </Sheet>

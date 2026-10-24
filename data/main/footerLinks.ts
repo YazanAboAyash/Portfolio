@@ -20,7 +20,6 @@ export const legalLinks: LinkItem[] = [
 
 export const footerNavLinks: LinkItem[][] = [
   [
-    { href: "/services", label: "Services" },
     { href: "/projects", label: "Work" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },

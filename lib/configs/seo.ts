@@ -47,53 +47,9 @@ export function generateStructuredData(config: SEOConfig) {
       addressRegion: config.structured.address.region,
       addressCountry: config.structured.address.country,
     },
-    worksFor: {
-      "@type": "Organization",
-      name: "Freelance",
-    },
-  };
-}
-
-/**
- * Generate LocalBusiness (ProfessionalService) structured data so Google has a
- * real local-relevance signal for "web design near me" style queries, distinct
- * from the Person schema above. Uses city + postal code only — the exact street
- * address is intentionally confined to the Impressum page.
- *
- * TODO: once the Google Business Profile is claimed/verified, append its URL to
- * `sameAs` below.
- */
-export function generateLocalBusinessStructuredData(config: SEOConfig) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: config.siteName,
-    url: config.siteUrl,
-    image: `${config.siteUrl}${config.openGraph.image}`,
-    email: config.structured.email,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: config.structured.address.locality,
-      postalCode: config.structured.address.postalCode,
-      addressRegion: config.structured.address.region,
-      addressCountry: config.structured.address.country,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: config.structured.geo.latitude,
-      longitude: config.structured.geo.longitude,
-    },
-    areaServed: config.structured.areaServed.map((city) => ({
-      "@type": "City",
-      name: city,
-    })),
-    founder: {
-      "@type": "Person",
-      name: config.structured.name,
-    },
-    sameAs: [
-      config.structured.github,
-      ...(config.structured.linkedIn ? [config.structured.linkedIn] : []),
+    worksFor: [
+      { "@type": "Organization", name: "Botgenossen GmbH" },
+      { "@type": "Organization", name: "Avarno GmbH" },
     ],
   };
 }

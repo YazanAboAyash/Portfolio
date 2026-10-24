@@ -9,7 +9,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, Clock } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTAButton } from "@/components/ui/cta-button";
@@ -37,9 +37,6 @@ export function AboutContent() {
   const storyParagraphs = t.raw(
     "story.paragraphs",
   ) as AboutTranslations["story"]["paragraphs"];
-  const workingItems = t.raw(
-    "workingWithMe.items",
-  ) as AboutTranslations["workingWithMe"]["items"];
 
   return (
     <div className="min-h-screen px-4 pt-12 pb-24 lg:px-8">
@@ -158,28 +155,8 @@ export function AboutContent() {
           </p>
         </section>
 
-        {/* Working with me + availability */}
-        <section className="grid gap-6 lg:grid-cols-2">
-          <div className={cn(cardSurface, "p-6 lg:p-8")}>
-            <div className={cn(cardRail, "space-y-5 pl-5")}>
-              <h2 className={sectionHeading}>{t("workingWithMe.title")}</h2>
-              <ul className="space-y-3">
-                {workingItems.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 leading-relaxed text-muted-foreground"
-                  >
-                    <Check
-                      className="mt-1 h-4 w-4 shrink-0 text-primary"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
+        {/* Availability */}
+        <section>
           <div
             className={cn(
               cardSurface,
@@ -208,7 +185,7 @@ export function AboutContent() {
           <h2 id="about-explore" className={sectionHeading}>
             {t("explore.title")}
           </h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {ABOUT_EXPLORE_LINKS.map(({ key, href, icon: Icon }) => (
               <Button
                 key={key}
