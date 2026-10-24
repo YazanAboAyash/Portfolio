@@ -7,11 +7,10 @@
 import { useTranslations } from "next-intl";
 import type { CertificationShowcaseLogic } from "@/components/cer/CertificationShowcase.logic";
 import {
-  cardRail,
   cardSurface,
   RevealGroup,
   RevealItem,
-  ScrambleText,
+  SectionHeading,
 } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 
@@ -41,35 +40,43 @@ export function CertificationShowcaseDesktop({
   const tIssuers = useTranslations("Certifications.issuers");
 
   return (
-    <section className={className} id="cert">
-      <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-12 text-black dark:text-white">
-        <ScrambleText text={t("title")} />
-      </h2>
-      <RevealGroup className="max-w-6xl mx-auto grid grid-cols-2 gap-x-16 gap-y-12">
-        {certifications.map((cert, index) => (
-          <RevealItem key={cert.id} className="h-full">
-            <div className={cn(cardSurface, "h-full overflow-hidden")}>
-              <div className={cn(cardRail, "pl-5 p-6")}>
-                <span className="text-5xl font-bold text-foreground/8 select-none leading-none block mb-3">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-xl font-semibold mb-1 text-foreground">
-                  {cert.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-1">
-                  {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
-                </p>
-                <p className="text-xs text-muted-foreground/60 mb-3 font-mono">
+    <section className={className} id="cert" aria-labelledby="cert-title">
+      <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+        <div className="col-span-12 lg:col-span-4">
+          <SectionHeading
+            id="cert-title"
+            title={t("title")}
+            className="lg:sticky lg:top-24"
+          />
+        </div>
+        <RevealGroup className="col-span-12 flex flex-col gap-2 lg:col-span-8">
+          {certifications.map((cert) => (
+            <RevealItem key={cert.id}>
+              <article
+                className={cn(
+                  cardSurface,
+                  "grid grid-cols-[4.5rem_1fr] gap-x-4 gap-y-2 p-5 sm:grid-cols-[6rem_1fr] sm:p-7",
+                )}
+              >
+                <p className="text-lg font-semibold tabular-nums leading-snug">
                   {cert.date}
                 </p>
-                <p className="text-sm text-foreground/75 leading-relaxed">
-                  {tDescriptions(cert.descriptionKey)}
-                </p>
-              </div>
-            </div>
-          </RevealItem>
-        ))}
-      </RevealGroup>
+                <div className="flex flex-col gap-1">
+                  <h3 className="text-xl font-semibold leading-snug tracking-[-0.01em]">
+                    {cert.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {cert.issuerKey ? tIssuers(cert.issuerKey) : cert.issuer}
+                  </p>
+                  <p className="mt-2 text-base leading-relaxed text-foreground">
+                    {tDescriptions(cert.descriptionKey)}
+                  </p>
+                </div>
+              </article>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </div>
     </section>
   );
 }
