@@ -29,6 +29,9 @@ export const CHATBOT_CONFIG = {
     SIZE: 20 as OrbSize,
   },
 
+  // Reem's own release number, shown beside her name. Not translated: it is a label, not copy
+  VERSION: "5.0.0",
+
   // Blobatar seed for every Reem avatar — hashed, never shown; changing it changes the face
   AVATAR_SEED: "Reem",
 };

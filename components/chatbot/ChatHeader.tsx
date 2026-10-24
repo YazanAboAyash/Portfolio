@@ -41,7 +41,7 @@ export const ChatHeader = React.memo(function ChatHeader({
         />
         <div className="flex min-w-0 flex-col">
           <h2
-            className="text-base leading-tight font-semibold text-foreground"
+            className="flex items-baseline gap-2 text-base leading-tight font-semibold text-foreground"
             id="chatbot-title"
           >
             <Tooltip>
@@ -58,6 +58,9 @@ export const ChatHeader = React.memo(function ChatHeader({
                 {t(CHATBOT_TRANSLATION_KEYS.PRONUNCIATION)}
               </TooltipContent>
             </Tooltip>
+            <span className="text-xs font-medium text-muted-foreground tabular-nums">
+              v{CHATBOT_CONFIG.VERSION}
+            </span>
           </h2>
           <p
             className="truncate text-xs text-muted-foreground"
