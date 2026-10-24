@@ -33,11 +33,10 @@ const CertificationShowcase = dynamic(
   },
 );
 
-
-const GitHubShowcase = dynamic(
+const GitHubAskConsole = dynamic(
   () =>
     import("@/components/github").then((mod) => ({
-      default: mod.GitHubShowcase,
+      default: mod.GitHubAskConsole,
     })),
   {
     loading: () => <LoadingSkeleton />,
@@ -89,21 +88,21 @@ const SpeedInsight = dynamic(
   },
 );
 
+/** Space between home sections: clearly larger than any gap inside one. */
+const SECTION = "py-16 md:py-24";
+
 export default function HomeContent() {
   return (
     <div>
       {/* Section ruler pinned beside the scrollbar */}
       <SectionRail />
 
-      {/* Scroll Indicator */}
-      <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 xl:left-1/5 xl:bottom-40 2xl:left-1/4 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
-        </div>
-      </div>
-
-      <div className="min-h-screen flex flex-col justify-evenly" id="home">
+      <div
+        className="flex min-h-[calc(100svh-4rem)] flex-col justify-between gap-12 pb-8"
+        id="home"
+      >
         <Hero />
+
         {/* Company Banner */}
         <HeroBannerSection />
       </div>
@@ -120,7 +119,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <SpeedInsight className="pb-32 pt-8 px-4 sm:px-6 lg:px-8" />
+            <SpeedInsight className={`frame ${SECTION}`} />
           </Suspense>
 
           {/* Collaboration Showcase Section */}
@@ -131,7 +130,9 @@ export default function HomeContent() {
               </div>
             }
           >
-            <CollaborationShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
+            <CollaborationShowcase
+              className={`frame ${SECTION} pt-0 md:pt-0`}
+            />
           </Suspense>
 
           {/* Project Showcase Section */}
@@ -142,7 +143,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <ProjectsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
+            <ProjectsHomeShowcase className={`frame ${SECTION}`} />
           </Suspense>
 
           {/* Products Showcase Section */}
@@ -153,7 +154,7 @@ export default function HomeContent() {
               </div>
             }
           >
-            <ProductsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
+            <ProductsHomeShowcase className={SECTION} />
           </Suspense>
 
           <Suspense
@@ -163,10 +164,10 @@ export default function HomeContent() {
               </div>
             }
           >
-            <CertificationShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
+            <CertificationShowcase className={`frame ${SECTION}`} />
           </Suspense>
 
-          {/* GitHub Showcase Section */}
+          {/* "Ask this site": the portfolio and GitHub over the site's MCP server */}
           <Suspense
             fallback={
               <div className="min-h-100">
@@ -174,10 +175,8 @@ export default function HomeContent() {
               </div>
             }
           >
-            <section className="py-24 px-4 sm:px-6 lg:px-8" id="github">
-              <div className="max-w-6xl mx-auto">
-                <GitHubShowcase />
-              </div>
+            <section className={`frame ${SECTION} pt-0 md:pt-0`} id="github">
+              <GitHubAskConsole />
             </section>
           </Suspense>
 
@@ -190,8 +189,6 @@ export default function HomeContent() {
           >
             <Capabilities />
           </Suspense>
-
-          <Suspense fallback={<LoadingSkeleton />}></Suspense>
         </div>
       </div>
     </div>

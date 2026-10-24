@@ -6,84 +6,103 @@
 
 "use client";
 
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { Mail, ExternalLink } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { ArrowRight, Mail } from "lucide-react";
 import { contactEmailLink } from "@/data/main/contact";
+import { usePreviewDescription } from "@/hooks/use-locale-preview";
+
+/** Both portraits stay in the DOM; the `dark` class picks one, so there is no flash on load. */
+const PORTRAIT_SIZES = "(min-width: 768px) 50vw, 100vw";
 
 function Hero() {
   const t = useTranslations("Hero");
-  const light = "from-black/90 to-gray-500";
+  const locale = useLocale();
+  const preview = usePreviewDescription(locale);
 
   return (
     <section
       id="home2"
-      className="w-full flex items-center justify-center scroll-mt-16"
-      aria-label="Hero section"
+      className="frame grid scroll-mt-16 grid-cols-12 gap-x-6 gap-y-10 pt-6 md:pt-10"
+      aria-labelledby="hero-title"
     >
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-8 text-center">
-          {/* Profile Picture */}
-          <div className="relative">
-            <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-4 border-border shadow-2xl aspect-square">
-              <Image
-                src="/profileDark.jpg"
-                alt="Yazan Abo-Ayash - Full-Stack Developer & AI Engineer profile picture"
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
-                priority
-                fetchPriority="high"
-                quality={75}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
-                loading="eager"
-              />
-            </div>
+      <div className="col-span-12 flex flex-col md:col-span-6 md:pr-6 lg:pr-12">
+        {/* Copy stays centred against the portrait; the scroll cue sits at its bottom edge */}
+        <div className="my-auto flex flex-col gap-7">
+          <div className="flex flex-col gap-4">
+            <h1
+              id="hero-title"
+              className="text-[clamp(2.5rem,1.4rem+3.6vw,4.75rem)] font-bold leading-[0.98] tracking-[-0.035em] text-balance"
+            >
+              Yazan Abo-Ayash
+            </h1>
+            <h2 className="max-w-[26ch] text-[clamp(1.25rem,1.05rem+0.8vw,1.75rem)] font-semibold leading-tight">
+              {t("fullStackDeveloper")}
+            </h2>
           </div>
 
-          {/* Content */}
-          <div className="space-y-6 max-w-4xl">
-            <div className="space-y-4">
-              <h1
-                className={`bg-linear-to-r text-transparent flex justify-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl
-                            ${light} bg-clip-text font-extrabold
-                          dark:from-gray-900 dark:to-gray-200`}
-              >
-                Yazan Abo-Ayash
-              </h1>
-              <div className="space-y-2">
-                <h2 className="text-xl md:text-2xl lg:text-2xl font-medium text-muted-foreground">
-                  {t("fullStackDeveloper")}
-                </h2>
-              </div>
-            </div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed bg-background/80 backdrop-blur-sm rounded-lg px-4 py-3">
-              {t("description")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2 items-center justify-center">
-              <Button asChild className="gap-2 cursor-pointer">
-                <a
-                  href={contactEmailLink}
-                  className="flex items-center gap-2"
-                >
-                  <Mail className="h-4 w-4" aria-hidden="true" />
-                  {t("contact")}
-                </a>
-              </Button>
-              <Button asChild className="gap-2 cursor-pointer">
-                <Link href="/about" className="flex items-center gap-2">
-                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                  {t("learnMoreAboutMe")}
-                </Link>
-              </Button>
-            </div>
+          <p
+            lang={preview?.locale ?? locale}
+            aria-live="polite"
+            className="max-w-[46ch] text-lg leading-relaxed text-foreground transition-opacity duration-200 motion-reduce:transition-none"
+          >
+            {preview?.text ?? t("description")}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a
+              href={contactEmailLink}
+              className="inline-flex min-h-12 items-center gap-2.5 bg-primary px-6 font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              {t("contact")}
+            </a>
+            <Link
+              href="/about"
+              className="inline-flex min-h-12 items-center gap-2 bg-surface px-6 font-semibold transition-colors hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            >
+              {t("learnMoreAboutMe")}
+            </Link>
+            <a
+              href="#mcp"
+              className="group inline-flex items-center gap-1.5 font-semibold underline decoration-surface-2 decoration-2 underline-offset-[6px] transition-colors hover:decoration-foreground"
+            >
+              {t("askMcp")}
+              <ArrowRight
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="mt-10 hidden lg:block" aria-hidden="true">
+          <div className="flex h-10 w-6 animate-bounce justify-center rounded-full border-2 border-muted-foreground motion-reduce:animate-none">
+            <div className="mt-2 h-3 w-1 rounded-full bg-muted-foreground"></div>
           </div>
         </div>
       </div>
+
+      <figure className="relative col-span-12 aspect-4/5 overflow-hidden bg-surface sm:aspect-4/3 md:col-span-6 md:aspect-auto md:min-h-[min(68svh,46rem)]">
+        <Image
+          src="/portrait-light.jpg"
+          alt={t("portraitAltLight")}
+          fill
+          priority
+          sizes={PORTRAIT_SIZES}
+          className="portrait-drift object-cover object-[50%_22%] dark:hidden"
+        />
+        <Image
+          src="/portrait-dark.jpg"
+          alt={t("portraitAltDark")}
+          fill
+          priority
+          sizes={PORTRAIT_SIZES}
+          className="portrait-drift hidden object-cover object-[50%_30%] dark:block"
+        />
+      </figure>
     </section>
   );
 }

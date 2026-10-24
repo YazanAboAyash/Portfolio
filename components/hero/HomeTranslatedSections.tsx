@@ -13,12 +13,11 @@ import { CompanyBanner } from "@/components/companies";
 export function HeroBannerSection() {
   const t = useTranslations("Home");
   return (
-    <div className="flex flex-col gap-2">
-      <span className="text-sm pb-4 font-medium text-center text-black dark:text-white">
+    <div className="frame flex flex-col gap-4">
+      <p className="text-base font-medium text-foreground">
         {t("companiesContributing")}
-      </span>
+      </p>
       <CompanyBanner />
     </div>
   );
 }
-
