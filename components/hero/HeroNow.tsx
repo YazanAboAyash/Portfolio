@@ -63,11 +63,20 @@ export function HeroNow() {
           </span>
         </span>
         <span className="flex items-start gap-1.5 text-sm font-semibold leading-snug">
-          <span
-            key={focusIndex}
-            className="animate-in fade-in duration-300 motion-reduce:animate-none"
-          >
-            {focusItems[focusIndex]}
+          {/* All items share one grid cell so the tallest sets the height
+              and rotating never shifts the page */}
+          <span className="grid">
+            {focusItems.map((item, i) => (
+              <span
+                key={item}
+                aria-hidden="true"
+                className={`col-start-1 row-start-1 transition-opacity duration-300 motion-reduce:transition-none ${
+                  i === focusIndex ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {item}
+              </span>
+            ))}
           </span>
           <ArrowRight
             className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none"
@@ -79,11 +88,11 @@ export function HeroNow() {
       <div className={CELL}>
         <span className={LABEL}>{t("latestPost")}</span>
         {post === undefined ? (
-          <span className="h-10 w-full animate-pulse bg-surface motion-reduce:animate-none" />
+          <span className="h-14 w-full animate-pulse bg-surface motion-reduce:animate-none" />
         ) : post ? (
           <Link
             href={`/blog/${post.slug}`}
-            className="group/post text-sm font-semibold leading-snug"
+            className="group/post min-h-14 text-sm font-semibold leading-snug"
           >
             <span className="line-clamp-3 underline decoration-surface-2 decoration-2 underline-offset-4 transition-colors group-hover/post:decoration-foreground">
               {post.title}

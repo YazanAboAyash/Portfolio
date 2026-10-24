@@ -140,6 +140,45 @@
       "title": "Sicherheit",
       "headline": "Sicher von Grund auf",
       "description": "Anmeldung über Microsoft Entra ID, Secrets in Azure Key Vault, validierte Eingaben und minimale Rechte — und bei KI-Features klare Grenzen dafür, was ein Modell sehen und tun darf."
+    },
+    "explorer": {
+      "title": "Den Stack erkunden",
+      "lead": "Wähle eine Technologie und sieh, wo ich sie eingesetzt habe: Open-Source-Projekte, Produkte und diese Seite.",
+      "groups": {
+        "ai": "KI",
+        "frontend": "Frontend",
+        "backend": "Backend & Daten",
+        "tooling": "Tooling & Auslieferung"
+      },
+      "usedIn": "{count, plural, one {an # Stelle eingesetzt} other {an # Stellen eingesetzt}}",
+      "kinds": {
+        "project": "Open-Source-Projekt",
+        "product": "Produkt",
+        "site": "Diese Seite"
+      },
+      "tech": {
+        "llm": "LLMs",
+        "rag": "RAG & Vektorsuche",
+        "agents": "KI-Agenten",
+        "mcp": "MCP",
+        "ollama": "Ollama",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "motion": "Framer Motion",
+        "i18n": "i18n",
+        "postgres": "PostgreSQL",
+        "prisma": "Prisma",
+        "auth": "Authentifizierung",
+        "stripe": "Stripe",
+        "docker": "Docker",
+        "vercel": "Vercel",
+        "seo": "SEO & JSON-LD",
+        "npm": "npm-Pakete",
+        "notion": "Notion API",
+        "playwright": "Playwright"
+      }
     }
   },
   "Certifications": {

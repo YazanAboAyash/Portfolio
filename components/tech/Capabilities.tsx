@@ -24,6 +24,7 @@ import {
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import { useTranslations } from "next-intl";
+import { StackExplorer } from "./StackExplorer";
 
 // Icon mapping for dynamic rendering (lucide icons)
 const iconMap: Record<string, React.ElementType> = {
@@ -118,12 +119,20 @@ export default function Capabilities() {
           />
         </div>
 
-        {/* Capabilities Grid */}
-        <RevealGroup className="col-span-12 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:col-span-8">
-          {capabilities.map((capability) => (
-            <CapabilityCard key={capability.id} capability={capability} t={t} />
-          ))}
-        </RevealGroup>
+        <div className="col-span-12 flex flex-col gap-16 lg:col-span-8">
+          {/* Capabilities Grid */}
+          <RevealGroup className="grid gap-x-12 gap-y-16 sm:grid-cols-2">
+            {capabilities.map((capability) => (
+              <CapabilityCard
+                key={capability.id}
+                capability={capability}
+                t={t}
+              />
+            ))}
+          </RevealGroup>
+
+          <StackExplorer />
+        </div>
       </div>
     </section>
   );

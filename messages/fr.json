@@ -140,6 +140,45 @@
       "title": "Sécurité",
       "headline": "Sûr par défaut",
       "description": "Connexion via Microsoft Entra ID, secrets dans Azure Key Vault, entrées validées et moindre privilège — et pour les fonctionnalités IA, des garde-fous sur ce qu'un modèle peut voir et faire."
+    },
+    "explorer": {
+      "title": "Explorer la stack",
+      "lead": "Choisissez une technologie pour voir où je l'ai utilisée : projets open source, produits et ce site.",
+      "groups": {
+        "ai": "IA",
+        "frontend": "Frontend",
+        "backend": "Backend et données",
+        "tooling": "Outillage et livraison"
+      },
+      "usedIn": "{count, plural, one {utilisée à # endroit} other {utilisée à # endroits}}",
+      "kinds": {
+        "project": "Projet open source",
+        "product": "Produit",
+        "site": "Ce site"
+      },
+      "tech": {
+        "llm": "LLMs",
+        "rag": "RAG et recherche vectorielle",
+        "agents": "Agents IA",
+        "mcp": "MCP",
+        "ollama": "Ollama",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "motion": "Framer Motion",
+        "i18n": "i18n",
+        "postgres": "PostgreSQL",
+        "prisma": "Prisma",
+        "auth": "Authentification",
+        "stripe": "Stripe",
+        "docker": "Docker",
+        "vercel": "Vercel",
+        "seo": "SEO & JSON-LD",
+        "npm": "Paquets npm",
+        "notion": "Notion API",
+        "playwright": "Playwright"
+      }
     }
   },
   "Certifications": {

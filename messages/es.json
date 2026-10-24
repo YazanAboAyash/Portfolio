@@ -140,6 +140,45 @@
       "title": "Seguridad",
       "headline": "Seguro por defecto",
       "description": "Inicio de sesión con Microsoft Entra ID, secretos en Azure Key Vault, entradas validadas y acceso con privilegios mínimos — y en funciones de IA, límites claros sobre lo que un modelo puede ver y hacer."
+    },
+    "explorer": {
+      "title": "Explora el stack",
+      "lead": "Elige una tecnología para ver dónde la he usado: proyectos de código abierto, productos y este sitio.",
+      "groups": {
+        "ai": "IA",
+        "frontend": "Frontend",
+        "backend": "Backend y datos",
+        "tooling": "Herramientas y despliegue"
+      },
+      "usedIn": "{count, plural, one {usada en # lugar} other {usada en # lugares}}",
+      "kinds": {
+        "project": "Proyecto de código abierto",
+        "product": "Producto",
+        "site": "Este sitio"
+      },
+      "tech": {
+        "llm": "LLMs",
+        "rag": "RAG y búsqueda vectorial",
+        "agents": "Agentes de IA",
+        "mcp": "MCP",
+        "ollama": "Ollama",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "motion": "Framer Motion",
+        "i18n": "i18n",
+        "postgres": "PostgreSQL",
+        "prisma": "Prisma",
+        "auth": "Autenticación",
+        "stripe": "Stripe",
+        "docker": "Docker",
+        "vercel": "Vercel",
+        "seo": "SEO & JSON-LD",
+        "npm": "Paquetes npm",
+        "notion": "Notion API",
+        "playwright": "Playwright"
+      }
     }
   },
   "Certifications": {

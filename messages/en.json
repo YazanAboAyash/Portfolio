@@ -140,6 +140,45 @@
       "title": "Security",
       "headline": "Safe by default",
       "description": "Sign-in with Microsoft Entra ID, secrets in Azure Key Vault, validated input and least-privilege access — and for AI features, clear limits on what a model can see and do."
+    },
+    "explorer": {
+      "title": "Explore the stack",
+      "lead": "Pick a technology to see where I've used it: open-source projects, products and this site.",
+      "groups": {
+        "ai": "AI",
+        "frontend": "Frontend",
+        "backend": "Backend & data",
+        "tooling": "Tooling & delivery"
+      },
+      "usedIn": "{count, plural, one {used in # place} other {used in # places}}",
+      "kinds": {
+        "project": "Open-source project",
+        "product": "Product",
+        "site": "This site"
+      },
+      "tech": {
+        "llm": "LLMs",
+        "rag": "RAG & vector search",
+        "agents": "AI agents",
+        "mcp": "MCP",
+        "ollama": "Ollama",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "motion": "Framer Motion",
+        "i18n": "i18n",
+        "postgres": "PostgreSQL",
+        "prisma": "Prisma",
+        "auth": "Auth",
+        "stripe": "Stripe",
+        "docker": "Docker",
+        "vercel": "Vercel",
+        "seo": "SEO & JSON-LD",
+        "npm": "npm packages",
+        "notion": "Notion API",
+        "playwright": "Playwright"
+      }
     }
   },
   "Certifications": {

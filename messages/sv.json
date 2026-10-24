@@ -140,6 +140,45 @@
       "title": "Säkerhet",
       "headline": "Säkert från början",
       "description": "Inloggning med Microsoft Entra ID, hemligheter i Azure Key Vault, validerad indata och minsta möjliga behörighet – och för AI-funktioner tydliga gränser för vad en modell får se och göra."
+    },
+    "explorer": {
+      "title": "Utforska stacken",
+      "lead": "Välj en teknik för att se var jag har använt den: projekt med öppen källkod, produkter och den här sidan.",
+      "groups": {
+        "ai": "AI",
+        "frontend": "Frontend",
+        "backend": "Backend & data",
+        "tooling": "Verktyg & leverans"
+      },
+      "usedIn": "{count, plural, one {använd på # ställe} other {använd på # ställen}}",
+      "kinds": {
+        "project": "Projekt med öppen källkod",
+        "product": "Produkt",
+        "site": "Den här sidan"
+      },
+      "tech": {
+        "llm": "LLMs",
+        "rag": "RAG & vektorsökning",
+        "agents": "AI-agenter",
+        "mcp": "MCP",
+        "ollama": "Ollama",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "motion": "Framer Motion",
+        "i18n": "i18n",
+        "postgres": "PostgreSQL",
+        "prisma": "Prisma",
+        "auth": "Autentisering",
+        "stripe": "Stripe",
+        "docker": "Docker",
+        "vercel": "Vercel",
+        "seo": "SEO & JSON-LD",
+        "npm": "npm-paket",
+        "notion": "Notion API",
+        "playwright": "Playwright"
+      }
     }
   },
   "Certifications": {
