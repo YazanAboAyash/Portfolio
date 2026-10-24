@@ -19,13 +19,13 @@ import { Button } from "@/components/ui/button";
  */
 const SECTION_IDS = [
   "home",
-  "speed-insight",
   "collaboration",
   "projects",
   "products",
-  "cert",
-  "github",
   "capabilities",
+  "github",
+  "cert",
+  "speed-insight",
 ] as const;
 
 /**

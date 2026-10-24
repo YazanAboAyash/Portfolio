@@ -27,13 +27,13 @@ export const SEARCH_PAGES: readonly SearchPage[] = [
 /** Home page anchor ids in document order; labels come from `SectionRail.sections`. */
 export const HOME_SECTION_IDS = [
   "home",
-  "speed-insight",
   "collaboration",
   "projects",
   "products",
-  "cert",
-  "github",
   "capabilities",
+  "github",
+  "cert",
+  "speed-insight",
 ] as const;
 
 /** Queries shorter than this don't hit the blog API. */

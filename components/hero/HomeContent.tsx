@@ -126,11 +126,8 @@ export default function HomeContent() {
       <div className="relative" id="home-content">
         {/* Content Container */}
         <div className="relative z-10">
-          {/* PageSpeed Insights Section */}
-          <SpeedInsight className={`frame ${SECTION}`} />
-
           {/* Collaboration Showcase Section */}
-          <CollaborationShowcase className={`frame ${SECTION} pt-0 md:pt-0`} />
+          <CollaborationShowcase className={`frame ${SECTION}`} />
 
           {/* Project Showcase Section */}
           <ProjectsHomeShowcase className={`frame ${SECTION}`} />
@@ -138,14 +135,17 @@ export default function HomeContent() {
           {/* Products Showcase Section */}
           <ProductsHomeShowcase className={SECTION} />
 
-          <CertificationShowcase className={`frame ${SECTION}`} />
+          <Capabilities />
 
           {/* "Ask this site": the portfolio and GitHub over the site's MCP server */}
           <section className={`frame ${SECTION} pt-0 md:pt-0`} id="github">
             <GitHubAskConsole />
           </section>
 
-          <Capabilities />
+          <CertificationShowcase className={`frame ${SECTION} pt-0 md:pt-0`} />
+
+          {/* PageSpeed Insights Section: supporting proof, so it closes the page */}
+          <SpeedInsight className={`frame ${SECTION} pt-0 md:pt-0`} />
         </div>
       </div>
     </div>
