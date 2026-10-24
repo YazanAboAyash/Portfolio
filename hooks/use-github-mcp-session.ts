@@ -115,7 +115,10 @@ export function useGitHubMcpSession() {
 
       for (const tool of tools) {
         if ((tool.inputSchema.required ?? []).length > 0) continue;
-        const result = await client.callTool({ name: tool.name, arguments: {} });
+        const result = await client.callTool({
+          name: tool.name,
+          arguments: {},
+        });
         const firstContent = result.content[0];
         append({
           kind: "result",

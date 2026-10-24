@@ -25,7 +25,10 @@
     "description": "Jag bygger webbapplikationer för produktion från början till slut — och AI:n i dem: LLM-funktioner, RAG-system, agenter och MCP-servrar. Med Next.js och TypeScript, från första commit till driftsättning.",
     "contact": "Kontakt",
     "learnMoreAboutMe": "Läs mer om mig",
-    "moreAboutMe": "Mer om mig på"
+    "moreAboutMe": "Mer om mig på",
+    "askMcp": "Fråga den här webbplatsen via MCP",
+    "portraitAltLight": "Yazan Abo-Ayash i mörk kavaj och polotröja mot en vit vägg",
+    "portraitAltDark": "Yazan Abo-Ayash i mörk kavaj mot svart bakgrund"
   },
   "Navigation": {
     "home": "Hem",
@@ -44,7 +47,11 @@
     "legal": "Juridisk",
     "contact": "Kontakt",
     "open": "Öppna",
-    "language": "Språk"
+    "language": "Språk",
+    "languagePreviewHint": "Peka på ett språk för att se introduktionen på det.",
+    "toggleTheme": "Växla mellan ljust och mörkt läge",
+    "contactInfo": "Öppna kontaktinformation",
+    "openMenu": "Öppna navigeringsmenyn"
   },
   "Contact": {
     "getInTouch": "Låt oss koppla samman",
@@ -579,9 +586,44 @@
       "speed-insight": "Prestanda",
       "collaboration": "Samarbete",
       "projects": "Projekt",
+      "products": "Produkter",
       "cert": "Certifieringar",
       "github": "GitHub",
       "capabilities": "Förmågor"
     }
+  },
+  "Search": {
+    "title": "Sök på webbplatsen",
+    "description": "Gå till en sida, en del av startsidan, ett projekt, ett blogginlägg eller en inställning.",
+    "placeholder": "Gå till en sida, ett projekt eller en inställning",
+    "trigger": "Sök",
+    "triggerLabel": "Sök och gå ({shortcut})",
+    "groups": {
+      "pages": "Sidor",
+      "sections": "Delar av startsidan",
+      "work": "Projekt och produkter",
+      "blog": "Blogginlägg",
+      "settings": "Inställningar"
+    },
+    "product": "Produkt",
+    "themeLight": "Byt till ljust läge",
+    "themeDark": "Byt till mörkt läge",
+    "language": "Språk",
+    "current": "Aktuell",
+    "empty": "Inget matchar ”{query}”.",
+    "searchingBlog": "Söker i bloggen …",
+    "hintMove": "Flytta",
+    "hintOpen": "Öppna",
+    "hintClose": "Stäng"
+  },
+  "Footer": {
+    "label": "Sidfot",
+    "navigation": "Navigering",
+    "developers": "För utvecklare",
+    "elsewhere": "På andra ställen",
+    "legal": "Juridiskt",
+    "poweredBy": "Drivs av",
+    "rights": "Alla rättigheter förbehållna.",
+    "backToTop": "Till toppen"
   }
 }

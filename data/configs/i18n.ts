@@ -9,3 +9,12 @@ export const SUPPORTED_LOCALES = ["en", "de", "es", "fr", "sv"] as const;
 
 /** Locale used when the cookie or browser language is missing or unsupported. */
 export const DEFAULT_LOCALE = "de";
+
+/** Each language's own name for itself, as the language menu and search list it. */
+export const LOCALE_NAMES: Record<(typeof SUPPORTED_LOCALES)[number], string> = {
+  en: "English",
+  de: "Deutsch",
+  es: "Español",
+  fr: "Français",
+  sv: "Svenska",
+};

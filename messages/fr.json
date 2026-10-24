@@ -25,7 +25,10 @@
     "description": "Je développe des applications web en production de bout en bout — et l'IA qu'elles embarquent : fonctionnalités LLM, systèmes RAG, agents et serveurs MCP. Avec Next.js et TypeScript, du premier commit au déploiement.",
     "contact": "Contact",
     "learnMoreAboutMe": "En savoir plus sur moi",
-    "moreAboutMe": "Plus sur moi sur"
+    "moreAboutMe": "Plus sur moi sur",
+    "askMcp": "Interroger ce site via MCP",
+    "portraitAltLight": "Yazan Abo-Ayash en veste sombre et col roulé devant un mur blanc",
+    "portraitAltDark": "Yazan Abo-Ayash en veste sombre sur fond noir"
   },
   "Navigation": {
     "home": "Accueil",
@@ -44,7 +47,11 @@
     "legal": "Juridique",
     "contact": "Contact",
     "open": "Ouvrir",
-    "language": "Langue"
+    "language": "Langue",
+    "languagePreviewHint": "Pointez une langue pour y voir l'introduction.",
+    "toggleTheme": "Basculer entre mode clair et sombre",
+    "contactInfo": "Ouvrir les informations de contact",
+    "openMenu": "Ouvrir le menu de navigation"
   },
   "Contact": {
     "getInTouch": "Connectons-nous",
@@ -579,9 +586,44 @@
       "speed-insight": "Performance",
       "collaboration": "Collaboration",
       "projects": "Projets",
+      "products": "Produits",
       "cert": "Certifications",
       "github": "GitHub",
       "capabilities": "Compétences"
     }
+  },
+  "Search": {
+    "title": "Rechercher sur le site",
+    "description": "Allez à une page, une section de l'accueil, un projet, un article de blog ou un réglage.",
+    "placeholder": "Aller à une page, un projet ou un réglage",
+    "trigger": "Rechercher",
+    "triggerLabel": "Rechercher et aller ({shortcut})",
+    "groups": {
+      "pages": "Pages",
+      "sections": "Sections de l'accueil",
+      "work": "Projets et produits",
+      "blog": "Articles de blog",
+      "settings": "Réglages"
+    },
+    "product": "Produit",
+    "themeLight": "Passer en mode clair",
+    "themeDark": "Passer en mode sombre",
+    "language": "Langue",
+    "current": "Actuel",
+    "empty": "Rien ne correspond à « {query} ».",
+    "searchingBlog": "Recherche dans le blog…",
+    "hintMove": "Déplacer",
+    "hintOpen": "Ouvrir",
+    "hintClose": "Fermer"
+  },
+  "Footer": {
+    "label": "Pied de page",
+    "navigation": "Navigation",
+    "developers": "Pour les développeurs",
+    "elsewhere": "Ailleurs",
+    "legal": "Mentions légales",
+    "poweredBy": "Propulsé par",
+    "rights": "Tous droits réservés.",
+    "backToTop": "Retour en haut"
   }
 }

@@ -25,7 +25,10 @@
     "description": "Ich entwickle produktive Webanwendungen von Anfang bis Ende — und die KI darin: LLM-Features, RAG-Systeme, Agenten und MCP-Server. Mit Next.js und TypeScript, vom ersten Commit bis zum Deployment.",
     "contact": "Kontakt",
     "learnMoreAboutMe": "Mehr über mich erfahren",
-    "moreAboutMe": "Mehr über mich auf"
+    "moreAboutMe": "Mehr über mich auf",
+    "askMcp": "Diese Website per MCP fragen",
+    "portraitAltLight": "Yazan Abo-Ayash in dunklem Sakko und Rollkragen vor einer weißen Wand",
+    "portraitAltDark": "Yazan Abo-Ayash in dunklem Sakko vor schwarzem Hintergrund"
   },
   "Navigation": {
     "home": "Startseite",
@@ -44,7 +47,11 @@
     "legal": "Rechtliches",
     "contact": "Kontakt",
     "open": "Öffnen",
-    "language": "Sprache"
+    "language": "Sprache",
+    "languagePreviewHint": "Zeig auf eine Sprache, um die Einleitung darin zu sehen.",
+    "toggleTheme": "Zwischen hellem und dunklem Modus wechseln",
+    "contactInfo": "Kontaktinformationen öffnen",
+    "openMenu": "Navigationsmenü öffnen"
   },
   "Contact": {
     "getInTouch": "Lassen Sie uns verbinden",
@@ -579,9 +586,44 @@
       "speed-insight": "Performance",
       "collaboration": "Zusammenarbeit",
       "projects": "Projekte",
+      "products": "Produkte",
       "cert": "Zertifikate",
       "github": "GitHub",
       "capabilities": "Fähigkeiten"
     }
+  },
+  "Search": {
+    "title": "Website durchsuchen",
+    "description": "Springe zu einer Seite, einem Abschnitt der Startseite, einem Projekt, einem Blogbeitrag oder einer Einstellung.",
+    "placeholder": "Zu Seite, Projekt oder Einstellung springen",
+    "trigger": "Suche",
+    "triggerLabel": "Suchen und springen ({shortcut})",
+    "groups": {
+      "pages": "Seiten",
+      "sections": "Abschnitte der Startseite",
+      "work": "Projekte und Produkte",
+      "blog": "Blogbeiträge",
+      "settings": "Einstellungen"
+    },
+    "product": "Produkt",
+    "themeLight": "Zum hellen Modus wechseln",
+    "themeDark": "Zum dunklen Modus wechseln",
+    "language": "Sprache",
+    "current": "Aktuell",
+    "empty": "Nichts passt zu „{query}“.",
+    "searchingBlog": "Blog wird durchsucht …",
+    "hintMove": "Bewegen",
+    "hintOpen": "Öffnen",
+    "hintClose": "Schließen"
+  },
+  "Footer": {
+    "label": "Fußzeile",
+    "navigation": "Navigation",
+    "developers": "Für Entwickler",
+    "elsewhere": "Anderswo",
+    "legal": "Rechtliches",
+    "poweredBy": "Betrieben mit",
+    "rights": "Alle Rechte vorbehalten.",
+    "backToTop": "Nach oben"
   }
 }

@@ -25,7 +25,10 @@
     "description": "Desarrollo aplicaciones web en producción de principio a fin — y la IA que llevan dentro: funciones con LLM, sistemas RAG, agentes y servidores MCP. Con Next.js y TypeScript, desde el primer commit hasta el despliegue.",
     "contact": "Contacto",
     "learnMoreAboutMe": "Conoce más sobre mí",
-    "moreAboutMe": "Más sobre mí en"
+    "moreAboutMe": "Más sobre mí en",
+    "askMcp": "Pregunta a este sitio por MCP",
+    "portraitAltLight": "Yazan Abo-Ayash con chaqueta oscura y cuello alto ante una pared blanca",
+    "portraitAltDark": "Yazan Abo-Ayash con chaqueta oscura sobre fondo negro"
   },
   "Navigation": {
     "home": "Inicio",
@@ -44,7 +47,11 @@
     "legal": "Legal",
     "contact": "Contacto",
     "open": "Abrir",
-    "language": "Idioma"
+    "language": "Idioma",
+    "languagePreviewHint": "Señala un idioma para ver la introducción en él.",
+    "toggleTheme": "Cambiar entre modo claro y oscuro",
+    "contactInfo": "Abrir información de contacto",
+    "openMenu": "Abrir menú de navegación"
   },
   "Contact": {
     "getInTouch": "Conectemos",
@@ -579,9 +586,44 @@
       "speed-insight": "Rendimiento",
       "collaboration": "Colaboración",
       "projects": "Proyectos",
+      "products": "Productos",
       "cert": "Certificaciones",
       "github": "GitHub",
       "capabilities": "Capacidades"
     }
+  },
+  "Search": {
+    "title": "Buscar en el sitio",
+    "description": "Ve a una página, una sección de la página de inicio, un proyecto, una entrada del blog o un ajuste.",
+    "placeholder": "Ir a una página, proyecto o ajuste",
+    "trigger": "Buscar",
+    "triggerLabel": "Buscar e ir ({shortcut})",
+    "groups": {
+      "pages": "Páginas",
+      "sections": "Secciones de inicio",
+      "work": "Proyectos y productos",
+      "blog": "Entradas del blog",
+      "settings": "Ajustes"
+    },
+    "product": "Producto",
+    "themeLight": "Cambiar a modo claro",
+    "themeDark": "Cambiar a modo oscuro",
+    "language": "Idioma",
+    "current": "Actual",
+    "empty": "Nada coincide con «{query}».",
+    "searchingBlog": "Buscando en el blog…",
+    "hintMove": "Mover",
+    "hintOpen": "Abrir",
+    "hintClose": "Cerrar"
+  },
+  "Footer": {
+    "label": "Pie de página",
+    "navigation": "Navegación",
+    "developers": "Para desarrolladores",
+    "elsewhere": "En otros sitios",
+    "legal": "Legal",
+    "poweredBy": "Funciona con",
+    "rights": "Todos los derechos reservados.",
+    "backToTop": "Volver arriba"
   }
 }

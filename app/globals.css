@@ -49,6 +49,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
 }
 
 :root {
@@ -84,6 +86,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* v7 layout: one tone step per raised surface, taken from the values above */
+  --surface: oklch(0.97 0 0);
+  --surface-2: oklch(0.922 0 0);
 }
 
 .dark {
@@ -118,6 +123,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --surface: oklch(0.205 0 0);
+  --surface-2: oklch(0.269 0 0);
 }
 
 @layer base {
@@ -132,6 +139,66 @@
   /* Ensure proper scroll offset for sticky navbar */
   [id] {
     scroll-margin-top: 4rem; /* 64px - navbar height */
+  }
+
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+}
+
+@layer components {
+  /* One pair of outer margins for every v7 section: 16px on phones, 32px from 900px. */
+  .frame {
+    width: 100%;
+    max-width: 100rem;
+    margin-inline: auto;
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 900px) {
+    .frame {
+      padding-left: max(2rem, env(safe-area-inset-left, 0px));
+      padding-right: max(2rem, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  /* Underline that draws in from the left on hover and keyboard focus. */
+  .link-draw {
+    position: relative;
+    text-decoration: none;
+  }
+  .link-draw::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.1, 1);
+  }
+  .link-draw:hover::after,
+  .link-draw:focus-visible::after,
+  .link-draw[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Slow scale on the hero portrait; the picture stays still for reduced motion. */
+@keyframes portrait-drift {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.08) translateY(-1.5%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .portrait-drift {
+    animation: portrait-drift 24s ease-in-out infinite alternate;
   }
 }
 

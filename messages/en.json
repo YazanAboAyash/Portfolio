@@ -25,7 +25,10 @@
     "description": "I build production web applications end to end — and the AI inside them: LLM features, RAG systems, agents and MCP servers. Next.js and TypeScript, from the first commit to deployment.",
     "contact": "Contact",
     "learnMoreAboutMe": "Learn More About Me",
-    "moreAboutMe": "More about me on"
+    "moreAboutMe": "More about me on",
+    "askMcp": "Ask this site through MCP",
+    "portraitAltLight": "Yazan Abo-Ayash in a dark jacket and turtleneck against a white wall",
+    "portraitAltDark": "Yazan Abo-Ayash in a dark jacket against a black background"
   },
   "Navigation": {
     "home": "Home",
@@ -44,7 +47,11 @@
     "legal": "Legal",
     "contact": "Contact",
     "open": "Open",
-    "language": "Language"
+    "language": "Language",
+    "languagePreviewHint": "Point at a language to preview the intro.",
+    "toggleTheme": "Switch between light and dark mode",
+    "contactInfo": "Open contact information",
+    "openMenu": "Open navigation menu"
   },
   "Contact": {
     "getInTouch": "Let's Connect",
@@ -579,9 +586,44 @@
       "speed-insight": "Performance",
       "collaboration": "Collaboration",
       "projects": "Projects",
+      "products": "Products",
       "cert": "Certifications",
       "github": "GitHub",
       "capabilities": "Capabilities"
     }
+  },
+  "Search": {
+    "title": "Search the site",
+    "description": "Jump to a page, a section of the home page, a project, a blog post or a setting.",
+    "placeholder": "Jump to a page, project or setting",
+    "trigger": "Search",
+    "triggerLabel": "Search and jump ({shortcut})",
+    "groups": {
+      "pages": "Pages",
+      "sections": "Home page sections",
+      "work": "Projects and products",
+      "blog": "Blog posts",
+      "settings": "Settings"
+    },
+    "product": "Product",
+    "themeLight": "Switch to light mode",
+    "themeDark": "Switch to dark mode",
+    "language": "Language",
+    "current": "Current",
+    "empty": "Nothing matches “{query}”.",
+    "searchingBlog": "Searching the blog…",
+    "hintMove": "Move",
+    "hintOpen": "Open",
+    "hintClose": "Close"
+  },
+  "Footer": {
+    "label": "Footer",
+    "navigation": "Navigation",
+    "developers": "For developers",
+    "elsewhere": "Elsewhere",
+    "legal": "Legal",
+    "poweredBy": "Powered by",
+    "rights": "All rights reserved.",
+    "backToTop": "Back to top"
   }
 }
