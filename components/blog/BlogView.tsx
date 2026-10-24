@@ -22,6 +22,9 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import "highlight.js/styles/github-dark.css";
 
+/** Square tags; `rounded-none` overrides the Shadcn badge corners. */
+const tag = "rounded-none border-0 bg-surface";
+
 interface BlogViewProps {
   blog: Blog;
   className?: string;
@@ -40,10 +43,12 @@ export function BlogView({ blog, className }: BlogViewProps) {
     }
   };
   return (
-    <article className={`max-w-4xl mx-auto ${className}`}>
+    <article className={className}>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
+        <h1 className="mb-6 text-[clamp(2.25rem,1.5rem+2.4vw,3.75rem)] font-bold leading-[1.02] tracking-[-0.03em] text-balance">
+          {blog.title}
+        </h1>
 
         {/* Meta Information */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
@@ -76,18 +81,27 @@ export function BlogView({ blog, className }: BlogViewProps) {
         {/* Tags and Category */}
         <div className="flex flex-wrap gap-2 mb-6">
           {blog.isFeatured && (
-            <Badge style={{ backgroundColor: "#15803d", color: "white" }}>
+            <Badge
+              className="rounded-none"
+              style={{ backgroundColor: "#15803d", color: "white" }}
+            >
               Featured
             </Badge>
           )}
           {blog.language && blog.language !== "en" && (
-            <LanguageBadge language={blog.language} showIcon={true} />
+            <LanguageBadge
+              language={blog.language}
+              showIcon={true}
+              className={tag}
+            />
           )}
           {blog.category && (
-            <Badge variant="outline">{blog.category.name}</Badge>
+            <Badge variant="outline" className={tag}>
+              {blog.category.name}
+            </Badge>
           )}
           {blog.tags?.map((tagRelation) => (
-            <Badge key={tagRelation.id} variant="outline">
+            <Badge key={tagRelation.id} variant="outline" className={tag}>
               {tagRelation.tag?.name}
             </Badge>
           ))}
@@ -95,7 +109,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
 
         {/* Featured Image */}
         {(blog.featuredImage || imageSrc) && (
-          <div className="w-full h-64 md:h-80 bg-muted rounded-lg overflow-hidden mb-6">
+          <div className="mb-6 h-64 w-full overflow-hidden bg-surface md:h-96">
             <Image
               src={imageSrc}
               alt={blog.title}
@@ -162,11 +176,11 @@ export function BlogView({ blog, className }: BlogViewProps) {
               return isCodeBlock ? (
                 <div className="relative mb-4">
                   {match && (
-                    <div className="absolute top-0 right-0 bg-muted px-2 py-1 rounded-bl text-xs text-muted-foreground">
+                    <div className="absolute top-0 right-0 bg-surface-2 px-2 py-1 text-xs text-muted-foreground">
                       {match[1]}
                     </div>
                   )}
-                  <pre className="bg-muted rounded-lg p-4 overflow-x-auto">
+                  <pre className="overflow-x-auto bg-surface p-4">
                     <code {...props}>
                       <span>{children}</span>
                     </code>
@@ -174,7 +188,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
                 </div>
               ) : (
                 <code
-                  className="bg-muted border px-2 py-1 rounded text-sm font-mono text-foreground"
+                  className="bg-surface px-1.5 py-0.5 text-sm font-mono text-foreground"
                   {...props}
                 >
                   {children}
@@ -202,7 +216,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
 
             // Blockquotes
             blockquote: ({ children }) => (
-              <blockquote className="border-l-4 border-primary bg-muted/50 pl-4 py-2 my-4 italic rounded-r">
+              <blockquote className="my-4 border-l-4 border-primary bg-surface py-2 pl-4 italic">
                 {children}
               </blockquote>
             ),
@@ -222,13 +236,13 @@ export function BlogView({ blog, className }: BlogViewProps) {
             // Tables
             table: ({ children }) => (
               <div className="overflow-x-auto mb-4">
-                <table className="min-w-full border border-border rounded-lg">
+                <table className="min-w-full border border-border">
                   {children}
                 </table>
               </div>
             ),
             th: ({ children }) => (
-              <th className="border border-border bg-muted px-3 py-2 text-left font-semibold">
+              <th className="border border-border bg-surface px-3 py-2 text-left font-semibold">
                 {children}
               </th>
             ),
@@ -250,7 +264,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
                     alt={alt || ""}
                     width={800}
                     height={400}
-                    className="rounded-lg border border-border w-full h-auto"
+                    className="h-auto w-full bg-surface"
                   />
                   {alt && (
                     <p className="text-sm text-muted-foreground text-center mt-2 italic">
@@ -280,7 +294,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
       {blog.credits && (
         <>
           <Separator className="mb-6" />
-          <Card>
+          <Card className="gap-4 rounded-none border-0 bg-surface py-6 shadow-none">
             <CardHeader>
               <CardTitle className="text-lg">Credits</CardTitle>
             </CardHeader>
@@ -303,7 +317,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
                     href={blog.credits.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
+                    className="break-all font-semibold underline underline-offset-4"
                   >
                     {blog.credits.sourceUrl}
                   </a>

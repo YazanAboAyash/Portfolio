@@ -33,13 +33,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Breadcrumb Navigation */}
-      <div className="mb-6">
-        <BlogBreadcrumb blog={blog} />
-      </div>
+    <div className="frame pt-4 pb-16 sm:pt-6 md:pt-10 md:pb-24">
+      {/* One reading column; the breadcrumb sits on its edge */}
+      <div className="mx-auto max-w-4xl">
+        <BlogBreadcrumb blog={blog} className="mb-8" />
 
-      <BlogView blog={blog} />
+        <BlogView blog={blog} />
+      </div>
     </div>
   );
 }

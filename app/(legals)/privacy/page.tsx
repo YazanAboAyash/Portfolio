@@ -4,8 +4,6 @@
  * @version 7.x.x
  */
 
-import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import {
   Shield,
   Cookie,
@@ -75,10 +73,10 @@ function Section({
   return (
     <section
       id={id}
-      className="scroll-mt-28 border-t px-6 py-9 first:border-t-0 sm:px-10"
+      className="scroll-mt-28 border-t-2 border-background px-6 py-9 first:border-t-0 sm:px-10"
     >
       <h2 className="mb-5 flex items-center gap-3">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted/60 text-foreground/70">
+        <span className="flex size-9 shrink-0 items-center justify-center bg-background text-foreground/70">
           <Icon className="size-4" aria-hidden={true} />
         </span>
         <span className="flex-1 text-lg font-semibold tracking-tight text-foreground">
@@ -113,7 +111,7 @@ function LegalBasis({ children }: { children: string }) {
   const rest = colon === -1 ? children : children.slice(colon + 1).trim();
 
   return (
-    <div className="border-l-2 border-foreground/25 bg-muted/40 py-3 pl-4 pr-4">
+    <div className="border-l-2 border-foreground/25 bg-background py-3 pl-4 pr-4">
       {label && (
         <p className="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-foreground/70">
           {label}
@@ -133,7 +131,7 @@ function Callout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-1.5 rounded-lg border bg-muted/60 p-5">
+    <div className="space-y-1.5 bg-background p-5">
       <p className="text-sm font-semibold text-foreground">{title}</p>
       <div className="text-sm leading-relaxed text-muted-foreground">
         {children}
@@ -155,7 +153,7 @@ function Item({
   as?: "p" | "h3";
 }) {
   return (
-    <div className="space-y-1 rounded-lg border p-4">
+    <div className="space-y-1 bg-background p-4">
       <Heading className="text-sm font-medium text-foreground">{title}</Heading>
       <p className="text-sm leading-relaxed text-muted-foreground">
         {children}
@@ -172,24 +170,21 @@ export default async function Privacy() {
   const t = await getTranslations("Privacy");
 
   return (
-    <div className="container mx-auto mt-20 max-w-6xl px-4 py-8">
-      <div className="mx-auto max-w-4xl space-y-4 text-center">
-        <div className="flex justify-center">
-          <div className="flex size-12 items-center justify-center rounded-full border bg-muted/60">
-            <Shield className="size-6 text-foreground/70" aria-hidden={true} />
-          </div>
-        </div>
-        <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
-        <p className="text-lg text-muted-foreground">{t("subtitle")}</p>
+    <div className="frame pt-4 pb-16 sm:pt-6 md:pt-10 md:pb-24">
+      <div className="mb-10 max-w-2xl space-y-3">
+        <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+          {t("title")}
+        </h1>
+        <p className="text-lg leading-relaxed text-foreground/80">
+          {t("subtitle")}
+        </p>
       </div>
 
-      <Separator className="my-6" />
-
-      <div className="lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:items-start lg:gap-10">
+      <div className="max-w-7xl lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:items-start lg:gap-10">
         {/* Contents — the ids below are the anchor targets */}
         <nav
           aria-label={t("title")}
-          className="sticky top-24 hidden self-start rounded-xl border bg-card/60 p-4 backdrop-blur-md lg:block"
+          className="sticky top-24 hidden self-start bg-surface p-4 lg:block"
         >
           <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
             {t("title")}
@@ -211,11 +206,11 @@ export default async function Privacy() {
           </ol>
         </nav>
 
-        <Card className="gap-0 overflow-hidden py-0">
+        <div className="bg-surface">
           {/* Art. 13(1)(a) DSGVO — identity and contact details of the controller */}
           <Section id="controller" title={t("controller.title")}>
             <Prose>{t("controller.intro")}</Prose>
-            <address className="not-italic space-y-1 rounded-lg border bg-muted/40 p-4 text-sm">
+            <address className="not-italic space-y-1 bg-background p-4 text-sm">
               <p className="font-medium text-foreground">
                 {t("controller.name")}
               </p>
@@ -393,10 +388,10 @@ export default async function Privacy() {
           <Section id="changes" title={t("changes.title")}>
             <Prose>{t("changes.description")}</Prose>
           </Section>
-        </Card>
+        </div>
       </div>
 
-      <div className="mt-6 text-center">
+      <div className="mt-6">
         <p className="text-xs text-muted-foreground">
           {t("lastUpdated")} {LAST_REVIEWED}
         </p>

@@ -9,6 +9,13 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { UseProjectLogicReturn, Project } from "@/types/hubs/projects";
 
+/** Square v7 link buttons on project rows and cards. */
+export const projectLinkBase =
+  "inline-flex min-h-10 items-center gap-1.5 px-3.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
+export const projectLinkQuiet = "bg-background hover:bg-surface-2";
+export const projectLinkPrimary =
+  "bg-primary text-primary-foreground hover:bg-primary/85";
+
 /**
  * Derives the GitHub social preview (OG) image URL from a repo URL.
  * Returns null when githubUrl is empty.

@@ -17,8 +17,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function LibraryPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <ProjectsShowcase className="py-8 px-4 sm:px-6 lg:px-8" />
-    </div>
+    <ProjectsShowcase className="frame pt-4 pb-16 sm:pt-6 md:pt-10 md:pb-24" />
   );
 }

@@ -13,7 +13,12 @@ import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { SiNpm } from "react-icons/si";
 import { useTranslations } from "next-intl";
 import { projects } from "@/data/hubs/projectsData";
-import { isFeaturedProject } from "./projects-showcase.utils";
+import {
+  isFeaturedProject,
+  projectLinkBase as linkBase,
+  projectLinkPrimary as linkPrimary,
+  projectLinkQuiet as linkQuiet,
+} from "./projects-showcase.utils";
 import {
   cardSurface,
   RevealGroup,
@@ -21,12 +26,6 @@ import {
   SectionHeading,
 } from "@/components/visuals";
 import { cn } from "@/lib/utils";
-
-const linkBase =
-  "inline-flex min-h-10 items-center gap-1.5 px-3.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
-const linkQuiet = "bg-background hover:bg-surface-2";
-const linkPrimary =
-  "bg-primary text-primary-foreground hover:bg-primary/85";
 
 /** Rows shown on phones; the rest wait behind the "All projects" link. */
 const MOBILE_ROWS = 4;

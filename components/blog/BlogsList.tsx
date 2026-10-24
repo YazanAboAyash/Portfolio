@@ -20,7 +20,12 @@ import { Calendar, Clock, Languages } from "lucide-react";
 import type { Blog } from "@/types/hubs/blogs";
 import { BLOG_LANGUAGE_NAMES } from "@/types/hubs/blogs";
 import { LanguageBadge } from "@/components/blog";
+import { cardSurface } from "@/components/visuals";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
+
+/** Square tags; `rounded-none` overrides the Shadcn badge corners. */
+const tag = "rounded-none border-0 bg-background";
 
 interface BlogCardProps {
   blog: Blog;
@@ -41,10 +46,13 @@ function BlogCard({ blog, index }: BlogCardProps) {
   };
 
   return (
-    <Link href={`/blog/${blog.slug}`}>
-      <Card className="h-full hover:shadow-lg transition-shadow">
+    <Link
+      href={`/blog/${blog.slug}`}
+      className="block h-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+    >
+      <Card className={cn(cardSurface, "h-full gap-0 overflow-hidden py-0")}>
         {(blog.featuredImage || imageSrc) && (
-          <div className="w-full h-48 bg-muted rounded-t-lg overflow-hidden">
+          <div className="h-48 w-full overflow-hidden bg-surface-2">
             <Image
               src={imageSrc}
               alt={blog.title}
@@ -61,7 +69,7 @@ function BlogCard({ blog, index }: BlogCardProps) {
             />
           </div>
         )}
-        <CardHeader>
+        <CardHeader className="px-5 pt-5 pb-3">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
             <Calendar className="h-4 w-4" aria-hidden="true" />
             {blog.publishedAt
@@ -84,36 +92,49 @@ function BlogCard({ blog, index }: BlogCardProps) {
               </>
             )}
           </div>
-          <CardTitle className="line-clamp-2">{blog.title}</CardTitle>
+          <CardTitle className="line-clamp-2 text-xl font-semibold leading-tight tracking-[-0.01em]">
+            {blog.title}
+          </CardTitle>
           {blog.excerpt && (
-            <CardDescription className="line-clamp-3">
+            <CardDescription className="line-clamp-3 text-foreground/80">
               {blog.excerpt}
             </CardDescription>
           )}
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-5 pb-5">
           <div className="flex flex-wrap gap-2">
             {blog.isFeatured && (
-              <Badge style={{ backgroundColor: "#15803d", color: "white" }}>
+              <Badge
+                className="rounded-none"
+                style={{ backgroundColor: "#15803d", color: "white" }}
+              >
                 Featured
               </Badge>
             )}
             {blog.language && blog.language !== "en" && (
-              <LanguageBadge language={blog.language} size="sm" />
+              <LanguageBadge
+                language={blog.language}
+                size="sm"
+                className={tag}
+              />
             )}
             {blog.category && (
-              <Badge variant="outline">{blog.category.name}</Badge>
+              <Badge variant="outline" className={tag}>
+                {blog.category.name}
+              </Badge>
             )}
             {blog.tags?.slice(0, 2).map((tagRelation) => (
-              <Badge key={tagRelation.id} variant="outline">
+              <Badge key={tagRelation.id} variant="outline" className={tag}>
                 {tagRelation.tag?.name}
               </Badge>
             ))}
             {blog.tags && blog.tags.length > 2 && (
-              <Badge variant="outline">+{blog.tags.length - 2}</Badge>
+              <Badge variant="outline" className={tag}>
+                +{blog.tags.length - 2}
+              </Badge>
             )}
             {blog.credits?.licenseType && (
-              <Badge variant="secondary" className="text-xs">
+              <Badge variant="secondary" className={cn(tag, "text-xs")}>
                 {blog.credits.licenseType}
               </Badge>
             )}
@@ -132,8 +153,8 @@ interface BlogsListProps {
 export function BlogsList({ blogs, className }: BlogsListProps) {
   if (blogs.length === 0) {
     return (
-      <div className="flex-1 flex items-center justify-center py-16">
-        <div className="text-center">
+      <div className="bg-surface px-6 py-16">
+        <div>
           <p className="text-muted-foreground text-lg mb-4">No blogs found.</p>
           <p className="text-sm text-muted-foreground">
             Check back soon for new articles and insights.
@@ -144,7 +165,7 @@ export function BlogsList({ blogs, className }: BlogsListProps) {
   }
 
   return (
-    <div className={`grid gap-6 md:grid-cols-2 lg:grid-cols-3 ${className}`}>
+    <div className={cn("grid gap-2 md:grid-cols-2 lg:grid-cols-3", className)}>
       {blogs.map((blog, index) => (
         <BlogCard key={blog.id} blog={blog} index={index} />
       ))}
