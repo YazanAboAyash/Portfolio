@@ -94,7 +94,12 @@ export function PrivacyControls() {
       <div className="space-y-3">
         <span className="text-sm font-medium">{t("chatLabel")}</span>
         <div className="flex flex-wrap items-center gap-2">
-          <Button onClick={handleClearChatData} size="sm" variant="outline">
+          <Button
+            onClick={handleClearChatData}
+            size="sm"
+            variant="outline"
+            className="h-auto min-h-8 whitespace-normal py-1.5 text-left"
+          >
             <Trash2 className="w-4 h-4 mr-1" aria-hidden="true" />
             {t("clearChatData")}
           </Button>

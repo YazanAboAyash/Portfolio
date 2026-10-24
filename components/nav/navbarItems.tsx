@@ -257,7 +257,7 @@ export function BrandLogo() {
         className="hidden h-6 w-auto object-contain dark:block"
       />
       <span
-        className="hidden text-lg font-bold tracking-[-0.01em] min-[400px]:inline"
+        className="hidden text-lg font-bold tracking-[-0.01em] sm:inline"
         aria-hidden="true"
       >
         ColdByDefault

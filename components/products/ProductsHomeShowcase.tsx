@@ -13,7 +13,7 @@ import { useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { products } from "@/data/hubs/productsData";
 import { CTAButton } from "@/components/ui/cta-button";
-import { RevealGroup, RevealItem, ScrambleText } from "@/components/visuals";
+import { RevealGroup, RevealItem } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 import type {
   ProductMedia as ProductMediaType,
@@ -114,7 +114,7 @@ export function ProductsHomeShowcase({ className }: ProductsHomeShowcaseProps) {
               id="products-title"
               className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
             >
-              <ScrambleText text={t("title")} />
+              {t("title")}
             </h2>
             <div
               role="tablist"
