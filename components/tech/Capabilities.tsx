@@ -6,14 +6,7 @@
 
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  cardSurface,
-  RevealGroup,
-  RevealItem,
-  ScrambleText,
-} from "@/components/visuals";
-import { cn } from "@/lib/utils";
+import { RevealGroup, RevealItem, SectionHeading } from "@/components/visuals";
 import { capabilities } from "@/data/main/capabilitiesData";
 import type { Capability } from "@/types/main/capabilities";
 import { BrainCircuit, Rocket, TrendingUp, Shield } from "lucide-react";
@@ -69,43 +62,35 @@ function CapabilityCard({
 
   return (
     <RevealItem className="h-full">
-      <Card className={cn(cardSurface, "h-full")}>
-        <CardContent className="pt-6 space-y-4">
-          <div className="flex items-start gap-4">
-            {IconComponent && (
-              <div className="p-3 rounded-xl bg-muted text-foreground">
-                <IconComponent className="h-6 w-6" aria-hidden="true" />
-              </div>
-            )}
-            <div className="flex-1 min-w-0">
-              <h3 className="text-lg font-semibold mb-1">
-                {t(capability.titleKey)}
-              </h3>
-              <p className="text-sm font-medium text-muted-foreground">
-                {t(capability.headlineKey)}
-              </p>
-            </div>
-          </div>
-          <p className="text-sm text-foreground/80 dark:text-white/90 leading-relaxed">
-            {t(capability.descriptionKey)}
-          </p>
-          {/* Tech Icons - subtle indicators */}
-          {capability.techIcons && capability.techIcons.length > 0 && (
-            <div className="flex items-center gap-3 pt-2 border-t border-border/50">
-              {capability.techIcons.map((iconName) => {
-                const TechIcon = techIconMap[iconName];
-                return TechIcon ? (
-                  <TechIcon
-                    key={iconName}
-                    className="h-4 w-4 text-foreground/50 dark:text-white/70 hover:text-foreground dark:hover:text-white transition-colors"
-                    aria-hidden="true"
-                  />
-                ) : null;
-              })}
-            </div>
+      <article className="flex h-full flex-col gap-4">
+        <h3 className="flex items-center gap-3 text-2xl font-bold leading-tight tracking-[-0.015em]">
+          {IconComponent && (
+            <IconComponent className="h-6 w-6 shrink-0" aria-hidden="true" />
           )}
-        </CardContent>
-      </Card>
+          {t(capability.titleKey)}
+        </h3>
+        <p className="text-lg font-semibold leading-snug">
+          {t(capability.headlineKey)}
+        </p>
+        <p className="text-base leading-relaxed text-foreground">
+          {t(capability.descriptionKey)}
+        </p>
+        {/* Tech Icons - subtle indicators */}
+        {capability.techIcons && capability.techIcons.length > 0 && (
+          <div className="mt-auto flex items-center gap-4 pt-2">
+            {capability.techIcons.map((iconName) => {
+              const TechIcon = techIconMap[iconName];
+              return TechIcon ? (
+                <TechIcon
+                  key={iconName}
+                  className="h-5 w-5 text-muted-foreground transition-colors hover:text-foreground"
+                  aria-hidden="true"
+                />
+              ) : null;
+            })}
+          </div>
+        )}
+      </article>
     </RevealItem>
   );
 }
@@ -118,27 +103,23 @@ export default function Capabilities() {
 
   return (
     <section
-      className="px-4 max-w-6xl mx-auto py-16"
+      className="frame py-16 md:py-24"
       id="capabilities"
       aria-labelledby="capabilities-section-title"
       role="region"
     >
-      <div className="space-y-12">
-        {/* Section Header */}
-        <div className="text-center space-y-4">
-          <h2
+      <div className="grid grid-cols-12 gap-x-6 gap-y-12">
+        <div className="col-span-12 lg:col-span-4">
+          <SectionHeading
             id="capabilities-section-title"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold"
-          >
-            <ScrambleText text={t("title")} />
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
+            title={t("title")}
+            lead={t("subtitle")}
+            className="lg:sticky lg:top-24"
+          />
         </div>
 
         {/* Capabilities Grid */}
-        <RevealGroup className="grid sm:grid-cols-2 gap-6">
+        <RevealGroup className="col-span-12 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:col-span-8">
           {capabilities.map((capability) => (
             <CapabilityCard key={capability.id} capability={capability} t={t} />
           ))}

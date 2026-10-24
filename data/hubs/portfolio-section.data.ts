@@ -340,7 +340,6 @@ export const routeStructure = {
     "api/admin/*",
     "api/blog/*",
     "api/chatbot/*",
-    "api/github/*",
     "api/mcp",
     "api/speed-insight/*",
   ],

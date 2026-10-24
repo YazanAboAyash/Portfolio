@@ -22,6 +22,7 @@ const SECTION_IDS = [
   "speed-insight",
   "collaboration",
   "projects",
+  "products",
   "cert",
   "github",
   "capabilities",
@@ -148,7 +149,7 @@ export default function SectionRail() {
               tick currently has, and inert to the pointer so the invisible chip
               never swallows a click meant for the page behind it.
             */}
-            <span className="pointer-events-none absolute right-full mr-2 rounded-sm border border-border bg-background/90 px-2 py-1 text-xs font-medium leading-none tracking-wide text-foreground opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none">
+            <span className="pointer-events-none absolute right-full mr-2 whitespace-nowrap bg-foreground px-2.5 py-1.5 text-sm font-semibold leading-none text-background opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none">
               {title}
             </span>
             <span

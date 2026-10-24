@@ -52,6 +52,21 @@ export const capabilities: readonly Capability[] = [
   },
 ] as const;
 
+/** Readable names for `techIcons`, for the MCP server's `get_capabilities`. */
+export const techIconLabels: Readonly<Record<string, string>> = {
+  SiAnthropic: "Anthropic Claude",
+  SiDocker: "Docker",
+  SiModelcontextprotocol: "Model Context Protocol",
+  SiNextdotjs: "Next.js",
+  SiOllama: "Ollama",
+  SiPostgresql: "PostgreSQL",
+  SiPrisma: "Prisma",
+  SiReact: "React",
+  SiTypescript: "TypeScript",
+  SiVercel: "Vercel",
+  VscAzure: "Microsoft Azure",
+};
+
 /**
  * Complete capabilities data
  */
