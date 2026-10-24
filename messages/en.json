@@ -625,5 +625,23 @@
     "poweredBy": "Powered by",
     "rights": "All rights reserved.",
     "backToTop": "Back to top"
+  },
+  "Loading": {
+    "root": {
+      "title": "Loading portfolio…",
+      "description": "Please wait while the page is prepared"
+    },
+    "legals": {
+      "title": "Loading legal pages…",
+      "description": "Preparing legal content"
+    },
+    "media": {
+      "title": "Loading content…",
+      "description": "Preparing the page"
+    },
+    "admin": {
+      "title": "Loading admin dashboard…",
+      "description": "Preparing the admin interface"
+    }
   }
 }

@@ -8,6 +8,7 @@
 
 import { useState } from "react";
 import { BlogsList, LanguageFilter, BlogBreadcrumb } from "@/components/blog";
+import { LoadingSkeleton } from "@/components/visuals";
 import type { Blog, BlogLanguage } from "@/types/hubs/blogs";
 
 interface BlogApiResponse {
@@ -98,11 +99,10 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
           />
         </div>
         {isLoading ? (
-          <div className="flex items-center justify-center py-16">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="text-muted-foreground">Loading blogs...</p>
-            </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" aria-busy>
+            {Array.from({ length: 3 }, (_, i) => (
+              <LoadingSkeleton key={i} variant="blog" />
+            ))}
           </div>
         ) : (
           <BlogsList blogs={blogs} />

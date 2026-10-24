@@ -187,7 +187,7 @@ function Readable({
               .map(([label, value]) => (
                 <div key={label} className="contents">
                   <dt className="font-semibold">{label}</dt>
-                  <dd className="min-w-0 break-words">{value}</dd>
+                  <dd className="min-w-0 wrap-break-word">{value}</dd>
                 </div>
               ))}
           </dl>
@@ -298,7 +298,7 @@ export default function GitHubAskConsole() {
       <div className="col-span-12 flex min-w-0 flex-col gap-7 lg:col-span-5">
         <h2
           id="mcp-title"
-          className="text-4xl font-bold leading-[1.05] tracking-[-0.025em] sm:text-5xl"
+          className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
         >
           <ScrambleText text={copy.title} />
         </h2>
@@ -441,7 +441,7 @@ export default function GitHubAskConsole() {
                 }`}
               >
                 {view === "raw" ? (
-                  <pre className="max-h-[40rem] overflow-auto font-mono text-[0.8125rem] leading-relaxed">
+                  <pre className="max-h-160 overflow-auto font-mono text-[0.8125rem] leading-relaxed">
                     <code>{JSON.stringify(result.raw, null, 2)}</code>
                   </pre>
                 ) : (

@@ -625,5 +625,23 @@
     "poweredBy": "Propulsé par",
     "rights": "Tous droits réservés.",
     "backToTop": "Retour en haut"
+  },
+  "Loading": {
+    "root": {
+      "title": "Chargement du portfolio…",
+      "description": "Veuillez patienter pendant la préparation de la page"
+    },
+    "legals": {
+      "title": "Chargement des pages légales…",
+      "description": "Préparation du contenu juridique"
+    },
+    "media": {
+      "title": "Chargement du contenu…",
+      "description": "Préparation de la page"
+    },
+    "admin": {
+      "title": "Chargement du tableau de bord admin…",
+      "description": "Préparation de l’interface d’administration"
+    }
   }
 }

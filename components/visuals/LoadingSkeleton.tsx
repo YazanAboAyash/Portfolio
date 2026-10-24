@@ -28,7 +28,7 @@ const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
     switch (variant) {
       case "page":
         return (
-          <div className="space-y-4 p-4">
+          <div className={cn("space-y-4 p-4", className)}>
             {/* Simplified hero section skeleton */}
             <div className="space-y-3">
               <Skeleton className="h-8 w-2/3" />

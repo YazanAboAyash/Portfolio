@@ -625,5 +625,23 @@
     "poweredBy": "Funciona con",
     "rights": "Todos los derechos reservados.",
     "backToTop": "Volver arriba"
+  },
+  "Loading": {
+    "root": {
+      "title": "Cargando portafolio…",
+      "description": "Espera mientras se prepara la página"
+    },
+    "legals": {
+      "title": "Cargando páginas legales…",
+      "description": "Preparando el contenido legal"
+    },
+    "media": {
+      "title": "Cargando contenido…",
+      "description": "Preparando la página"
+    },
+    "admin": {
+      "title": "Cargando panel de administración…",
+      "description": "Preparando la interfaz de administración"
+    }
   }
 }

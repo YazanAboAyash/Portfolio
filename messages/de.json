@@ -625,5 +625,23 @@
     "poweredBy": "Betrieben mit",
     "rights": "Alle Rechte vorbehalten.",
     "backToTop": "Nach oben"
+  },
+  "Loading": {
+    "root": {
+      "title": "Portfolio wird geladen…",
+      "description": "Bitte warten, die Seite wird vorbereitet"
+    },
+    "legals": {
+      "title": "Rechtliches wird geladen…",
+      "description": "Rechtliche Inhalte werden vorbereitet"
+    },
+    "media": {
+      "title": "Inhalte werden geladen…",
+      "description": "Die Seite wird vorbereitet"
+    },
+    "admin": {
+      "title": "Admin-Dashboard wird geladen…",
+      "description": "Die Admin-Oberfläche wird vorbereitet"
+    }
   }
 }

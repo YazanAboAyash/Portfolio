@@ -625,5 +625,23 @@
     "poweredBy": "Drivs av",
     "rights": "Alla rättigheter förbehållna.",
     "backToTop": "Till toppen"
+  },
+  "Loading": {
+    "root": {
+      "title": "Laddar portfolio…",
+      "description": "Vänta medan sidan förbereds"
+    },
+    "legals": {
+      "title": "Laddar juridiska sidor…",
+      "description": "Förbereder juridiskt innehåll"
+    },
+    "media": {
+      "title": "Laddar innehåll…",
+      "description": "Förbereder sidan"
+    },
+    "admin": {
+      "title": "Laddar adminpanelen…",
+      "description": "Förbereder administrationsgränssnittet"
+    }
   }
 }

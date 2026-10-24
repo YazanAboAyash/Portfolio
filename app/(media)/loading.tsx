@@ -4,15 +4,17 @@
  * @version 7.x.x
  */
 
+import { getTranslations } from "next-intl/server";
 import { CentralizedLoading } from "@/components/visuals";
 
+export default async function MediaLoading() {
+  const t = await getTranslations("Loading.media");
 
-export default function MediaLoading() {
   return (
     <CentralizedLoading
       variant="page"
-      title="Loading Content..."
-      description="Preparing media content for you"
+      title={t("title")}
+      description={t("description")}
     />
   );
 }
