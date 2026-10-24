@@ -370,7 +370,7 @@ export default function GitHubAskConsole() {
           ))}
         </div>
 
-        <div className="order-1 col-span-12 flex min-w-0 flex-col gap-2.5 lg:order-none">
+        <div className="order-1 col-span-12 flex min-w-0 flex-col gap-2.5 lg:order-0">
           <h3 className="text-base font-bold">{copy.addTitle}</h3>
           <p className="hidden text-sm md:block">{copy.addHint}</p>
           <div className="flex min-w-0 items-stretch bg-surface">
@@ -393,7 +393,7 @@ export default function GitHubAskConsole() {
         </div>
 
         {/* The full protocol log: initialize, tools/list, every call. */}
-        <div className="order-1 col-span-12 lg:order-none">
+        <div className="order-1 col-span-12 lg:order-0">
           <GitHubMcpConsole />
         </div>
       </div>

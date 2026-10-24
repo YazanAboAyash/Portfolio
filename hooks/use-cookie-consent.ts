@@ -7,8 +7,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
-
-export type CookieConsent = "accepted" | "declined" | null;
+import type { CookieConsent } from "@/types/main/cookies";
 
 const STORAGE_KEY = "cookie-consent";
 

@@ -17,32 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import type { Blog } from "@/types/hubs/blogs";
-
-export interface BlogFormData {
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  featuredImage: string;
-  language: string;
-  categoryId: string;
-  metaTitle: string;
-  metaDescription: string;
-  isPublished: boolean;
-  isFeatured: boolean;
-  tags?: string[];
-  credits?:
-    | {
-        originalAuthor: string;
-        originalSource: string;
-        sourceUrl: string;
-        licenseType: string;
-        creditText: string;
-        translatedFrom: string;
-        adaptedFrom: string;
-      }
-    | undefined;
-}
+import type { BlogFormData } from "@/types/main/admin";
 
 interface BlogFormDialogProps {
   isOpen: boolean;

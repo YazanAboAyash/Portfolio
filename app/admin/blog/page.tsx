@@ -15,8 +15,8 @@ import {
   BlogFilters,
   BlogsList,
   BlogFormDialog,
-  useBlogAdmin,
 } from "@/components/blog/dashboard";
+import { useBlogAdmin } from "@/hooks/use-blog-admin";
 
 export default function AdminBlogPage() {
   const {

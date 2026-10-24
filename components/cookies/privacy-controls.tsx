@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Check, RotateCcw, Trash2 } from "lucide-react";
-import { useCookieConsent, useConsentActions } from "./use-cookie-consent";
+import { useCookieConsent, useConsentActions } from "@/hooks/use-cookie-consent";
 
 const CHATBOT_STORAGE_KEYS = [
   "chatbot_messages",

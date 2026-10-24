@@ -79,7 +79,9 @@ export default async function RootLayout({
   const seoConfig = locale === "de" ? seoConfigDE : seoConfigEN;
   const structuredData = generateStructuredData(seoConfig);
   return (
-    <html lang={locale} data-scroll-behavior="smooth">
+    // next-themes sets the theme class and color-scheme on <html> before
+    // hydration, so its attributes legitimately differ from the server render.
+    <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -155,7 +157,6 @@ export default async function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-            scriptProps={{ type: "application/json" }}
           >
             <MotionProvider>
               <Navbar />
