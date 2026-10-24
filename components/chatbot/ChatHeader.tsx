@@ -9,90 +9,89 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { CardHeader, CardTitle } from "@/components/ui/card";
-import { X } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { RotateCcw, X } from "lucide-react";
 import { Blobatar } from "@blobatar/react";
 import type { ChatHeaderProps } from "@/types/configs/chatbot";
-import {
-  CHATBOT_CONFIG,
-  CHATBOT_STYLES,
-  CHATBOT_TRANSLATION_KEYS,
-} from "@/components/chatbot";
+import { CHATBOT_CONFIG, CHATBOT_TRANSLATION_KEYS } from "./ChatBot.constants";
 
 export const ChatHeader = React.memo(function ChatHeader({
   onClose,
   onNewChat,
+  hasMessages,
+  isThinking,
   className = "",
 }: ChatHeaderProps) {
   const t = useTranslations("ChatBot");
 
   return (
-    <CardHeader
-      className={`flex flex-row items-center justify-between space-y-0 pb-2 px-4 ${CHATBOT_STYLES.HEADER_BORDER} shrink-0 ${className}`}
-      role="banner"
+    <div
+      className={`flex shrink-0 items-center justify-between gap-3 border-b border-border/60 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-3 ${className}`}
     >
-      <div className="flex items-center gap-3">
-        <div
-          className="w-10 h-10 flex items-center justify-center"
-          role="img"
-          aria-label={t(CHATBOT_TRANSLATION_KEYS.NAME)}
-        >
-          <Blobatar
-            name={CHATBOT_CONFIG.AVATAR_SEED}
-            animate="always"
-            className="size-10"
-            aria-hidden="true"
-          />
-        </div>
-        <div className="flex flex-col">
-          <CardTitle
-            className="text-base font-semibold text-foreground gap-2 flex items-center"
+      <div className="flex min-w-0 items-center gap-3">
+        <Blobatar
+          name={CHATBOT_CONFIG.AVATAR_SEED}
+          animate={isThinking ? "always" : "hover"}
+          className="size-9 shrink-0"
+          aria-hidden="true"
+        />
+        <div className="flex min-w-0 flex-col">
+          <h2
+            className="text-base leading-tight font-semibold text-foreground"
             id="chatbot-title"
           >
-            {t(CHATBOT_TRANSLATION_KEYS.NAME)}{" "}
-            <span
-              className="text-xs text-muted-foreground font-normal"
-              aria-label={t(
-                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_PRONUNCIATION,
-              )}
-            >
-              {t(CHATBOT_TRANSLATION_KEYS.PRONUNCIATION)}
-            </span>
-            <span className="font-bold text-muted-foreground">v4.2</span>
-          </CardTitle>
-          <span
-            className="text-xs text-muted-foreground font-medium"
+            <Tooltip>
+              <TooltipTrigger asChild>
+                {/* Focusable so keyboard users can reach the pronunciation too */}
+                <span tabIndex={0} className="rounded-sm cursor-help">
+                  {t(CHATBOT_TRANSLATION_KEYS.NAME)}
+                </span>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                <span className="sr-only">
+                  {t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_PRONUNCIATION)}:{" "}
+                </span>
+                {t(CHATBOT_TRANSLATION_KEYS.PRONUNCIATION)}
+              </TooltipContent>
+            </Tooltip>
+          </h2>
+          <p
+            className="truncate text-xs text-muted-foreground"
             id="chatbot-subtitle"
           >
             {t(CHATBOT_TRANSLATION_KEYS.SUBTITLE)}
-          </span>
+          </p>
         </div>
       </div>
-      <div className="flex items-center gap-1">
+      <div className="flex shrink-0 items-center gap-1">
         <Button
           variant="ghost"
-          size="sm"
+          size="icon"
           onClick={onNewChat}
-          className={`h-8 px-2 text-xs ${CHATBOT_STYLES.BUTTON_ROUNDED} transition-colors`}
-          aria-label={t(CHATBOT_TRANSLATION_KEYS.NEW_CHAT)}
+          disabled={!hasMessages}
+          className="size-9 rounded-full"
           title={t(CHATBOT_TRANSLATION_KEYS.NEW_CHAT)}
         >
-          {t(CHATBOT_TRANSLATION_KEYS.NEW_CHAT)}
+          <RotateCcw aria-hidden="true" />
+          <span className="sr-only">{t(CHATBOT_TRANSLATION_KEYS.NEW_CHAT)}</span>
         </Button>
         <Button
           variant="ghost"
-          size="sm"
+          size="icon"
           onClick={onClose}
-          className={`h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive ${CHATBOT_STYLES.BUTTON_ROUNDED} transition-colors`}
-          aria-label={t(CHATBOT_TRANSLATION_KEYS.CLOSE_CHAT)}
+          className="size-9 rounded-full"
           title={t(CHATBOT_TRANSLATION_KEYS.CLOSE_CHAT)}
         >
-          <X className="h-4 w-4" aria-hidden="true" />
+          <X aria-hidden="true" />
           <span className="sr-only">
             {t(CHATBOT_TRANSLATION_KEYS.CLOSE_CHAT)}
           </span>
         </Button>
       </div>
-    </CardHeader>
+    </div>
   );
 });

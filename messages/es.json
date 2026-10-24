@@ -579,18 +579,20 @@
       "title": "¡Hola! Soy Reem 👋",
       "description": "Soy tu asistente de IA, estoy aquí para ayudarte a explorar el portafolio de Yazan y responder preguntas sobre sus proyectos, habilidades y experiencia."
     },
+    "suggestions": {
+      "label": "Prueba a preguntar",
+      "projects": "¿Qué ha creado Yazan recientemente?",
+      "stack": "¿Con qué stack tecnológico trabaja?",
+      "availability": "¿Está disponible para nuevos proyectos?",
+      "site": "¿Cómo se creó este sitio web?"
+    },
     "typing": {
-      "status": "Reem está escribiendo...",
-      "thinking": "Pensando",
-      "processing": "Procesando tu mensaje..."
+      "thinking": "Pensando"
     },
     "input": {
-      "placeholder": "ask Reem..",
+      "placeholder": "Pregúntale a Reem…",
       "characterCount": "{count}/{max}",
       "limitReached": "Límite de {max} caracteres alcanzado"
-    },
-    "status": {
-      "generating": "Generando"
     },
     "errors": {
       "generic": "Algo salió mal. Por favor, inténtalo de nuevo.",
@@ -606,23 +608,19 @@
       "sendMessage": "Enviar mensaje",
       "stopGenerating": "Detener la generación",
       "chatConversation": "Conversación del chat",
-      "welcomeIllustration": "Ilustración de bienvenida",
       "pronunciation": "Pronunciación",
       "messageForm": "Enviar mensaje al asistente",
       "typeMessage": "Escriba su mensaje",
-      "assistantAvatar": "Avatar del asistente",
-      "typingAnimation": "Animación de escritura",
       "yourMessageAt": "Su mensaje de las {time}",
       "assistantMessageAt": "Mensaje del asistente de las {time}",
-      "sentAt": "Enviado a las {time}",
-      "messageSent": "Mensaje enviado correctamente",
       "messageFailed": "No se pudo enviar el mensaje"
     },
     "consent": {
-      "title": "Privacidad y Recopilación de Datos",
+      "prompt": "¿Guardar este chat para ayudar a mejorar a Reem?",
+      "details": "Detalles",
       "description": "Si acepta, conservo esta conversación para medir la calidad de las respuestas y entender qué buscan los visitantes. Se guarda sin su nombre ni datos de contacto y con su dirección IP abreviada; nunca para publicidad ni elaboración de perfiles. Si la rechaza, no se guarda nada.",
-      "accept": "Aceptar y Continuar",
-      "decline": "Rechazar"
+      "accept": "Guardar",
+      "decline": "No guardar"
     }
   },
   "localeDetect": {

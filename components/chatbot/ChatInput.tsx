@@ -9,17 +9,17 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Send, Square } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { ArrowUp, Square } from "lucide-react";
 import type { ChatInputProps } from "@/types/configs/chatbot";
-import {
-  CHATBOT_CONFIG,
-  CHATBOT_STYLES,
-  CHATBOT_TRANSLATION_KEYS,
-} from "./ChatBot.constants";
+import { CHATBOT_CONFIG, CHATBOT_TRANSLATION_KEYS } from "./ChatBot.constants";
+
+const COUNTER_FROM = Math.floor(
+  CHATBOT_CONFIG.INPUT_MAX_LENGTH * CHATBOT_CONFIG.INPUT_COUNTER_THRESHOLD,
+);
 
 export const ChatInput = React.memo(
-  React.forwardRef<HTMLInputElement, ChatInputProps>(function ChatInput(
+  React.forwardRef<HTMLTextAreaElement, ChatInputProps>(function ChatInput(
     { onSendMessage, status, onStop, disabled = false, className = "" },
     ref,
   ) {
@@ -27,20 +27,21 @@ export const ChatInput = React.memo(
     const t = useTranslations("ChatBot");
 
     const isLoading = status === "submitted" || status === "streaming";
-    // maxLength stops typing/pasting past the cap; the counter only appears once it is hit
+    // maxLength stops typing/pasting past the cap; the counter shows near it
+    const showCounter = inputValue.length >= COUNTER_FROM;
     const isAtLimit = inputValue.length >= CHATBOT_CONFIG.INPUT_MAX_LENGTH;
+    const canSend =
+      inputValue.trim().length >= CHATBOT_CONFIG.INPUT_MIN_LENGTH && !disabled;
 
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-      if (!inputValue.trim() || isLoading || disabled) return;
+    const submit = async () => {
+      // The field stays editable while Reem replies (disabling it would drop
+      // focus and close the keyboard on phones); only sending waits.
+      if (!canSend || isLoading) return;
 
       // Basic client-side input sanitization
       const sanitizedMessage = inputValue
         .trim()
         .substring(0, CHATBOT_CONFIG.INPUT_MAX_LENGTH);
-
-      // Simple spam detection
-      if (sanitizedMessage.length < CHATBOT_CONFIG.INPUT_MIN_LENGTH) return;
 
       setInputValue("");
 
@@ -51,73 +52,46 @@ export const ChatInput = React.memo(
       }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-      // Allow Shift+Enter for new lines, but Enter alone submits
-      if (e.key === "Enter" && !e.shiftKey) {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      // Enter sends, Shift+Enter adds a line; never send mid IME composition
+      if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
         e.preventDefault();
-        void handleSubmit(e as React.FormEvent);
+        void submit();
       }
     };
 
     return (
-      <div
-        className={`p-2 sm:p-3 bg-muted/20 shrink-0 ${className}`}
-        role="form"
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          void submit();
+        }}
+        className={`shrink-0 px-3 pt-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-3 ${className}`}
+        aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_MESSAGE_FORM)}
       >
-        <form
-          onSubmit={(e) => {
-            void handleSubmit(e);
-          }}
-          className="flex gap-2 sm:gap-3"
-          aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_MESSAGE_FORM)}
-        >
-          <div className="flex-1 relative">
-            <Input
-              ref={ref}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder={t(CHATBOT_TRANSLATION_KEYS.INPUT_PLACEHOLDER)}
-              disabled={isLoading || disabled}
-              className={`${isAtLimit ? "pr-16 text-muted-foreground" : ""} ${CHATBOT_STYLES.INPUT_BORDER} ${CHATBOT_STYLES.INPUT_ROUNDED} transition-all duration-200 placeholder:text-muted-foreground/60`}
-              maxLength={CHATBOT_CONFIG.INPUT_MAX_LENGTH}
-              aria-describedby="character-limit"
-              aria-label={t(
-                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_TYPE_MESSAGE,
-              )}
-            />
-            <span id="character-limit" aria-live="polite" className="sr-only">
-              {isAtLimit
-                ? t(CHATBOT_TRANSLATION_KEYS.INPUT_LIMIT_REACHED, {
-                    max: CHATBOT_CONFIG.INPUT_MAX_LENGTH,
-                  })
-                : ""}
-            </span>
-            {isAtLimit && (
-              <span
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground"
-                aria-hidden="true"
-              >
-                {t(CHATBOT_TRANSLATION_KEYS.INPUT_CHARACTER_COUNT, {
-                  count: inputValue.length,
-                  max: CHATBOT_CONFIG.INPUT_MAX_LENGTH,
-                })}
-              </span>
-            )}
-          </div>
+        <div className="flex items-end gap-2 rounded-3xl border border-border bg-background py-1.5 pr-1.5 pl-4 transition-colors focus-within:border-ring">
+          <Textarea
+            ref={ref}
+            rows={1}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder={t(CHATBOT_TRANSLATION_KEYS.INPUT_PLACEHOLDER)}
+            disabled={disabled}
+            className="max-h-32 min-h-0 flex-1 resize-none overflow-y-auto rounded-none border-0 bg-transparent px-0 py-1.5 shadow-none focus-visible:ring-0 dark:bg-transparent"
+            maxLength={CHATBOT_CONFIG.INPUT_MAX_LENGTH}
+            aria-describedby="chatbot-character-limit"
+            aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_TYPE_MESSAGE)}
+          />
           {isLoading ? (
             <Button
               type="button"
+              size="icon"
               onClick={onStop}
-              className={`px-4 ${CHATBOT_STYLES.BUTTON_GRADIENT} ${CHATBOT_STYLES.INPUT_ROUNDED} ${CHATBOT_STYLES.INPUT_SHADOW} transition-all duration-200`}
-              aria-label={t(
-                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_STOP_GENERATING,
-              )}
-              title={t(
-                CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_STOP_GENERATING,
-              )}
+              className="size-8 shrink-0 rounded-full"
+              title={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_STOP_GENERATING)}
             >
-              <Square className="h-4 w-4 fill-current" aria-hidden="true" />
+              <Square className="size-3 fill-current" aria-hidden="true" />
               <span className="sr-only">
                 {t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_STOP_GENERATING)}
               </span>
@@ -125,19 +99,41 @@ export const ChatInput = React.memo(
           ) : (
             <Button
               type="submit"
-              disabled={!inputValue.trim() || disabled}
-              className={`px-4 ${CHATBOT_STYLES.BUTTON_GRADIENT} ${CHATBOT_STYLES.INPUT_ROUNDED} ${CHATBOT_STYLES.INPUT_SHADOW} transition-all duration-200`}
-              aria-label={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
+              size="icon"
+              disabled={!canSend}
+              className="size-8 shrink-0 rounded-full"
               title={t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
             >
-              <Send className="h-4 w-4" aria-hidden="true" />
+              <ArrowUp aria-hidden="true" />
               <span className="sr-only">
                 {t(CHATBOT_TRANSLATION_KEYS.ACCESSIBILITY_SEND_MESSAGE)}
               </span>
             </Button>
           )}
-        </form>
-      </div>
+        </div>
+        {showCounter && (
+          <p
+            className={`mt-1 pr-3 text-right text-xs tabular-nums ${isAtLimit ? "text-destructive" : "text-muted-foreground"}`}
+            aria-hidden="true"
+          >
+            {t(CHATBOT_TRANSLATION_KEYS.INPUT_CHARACTER_COUNT, {
+              count: inputValue.length,
+              max: CHATBOT_CONFIG.INPUT_MAX_LENGTH,
+            })}
+          </p>
+        )}
+        <span
+          id="chatbot-character-limit"
+          aria-live="polite"
+          className="sr-only"
+        >
+          {isAtLimit
+            ? t(CHATBOT_TRANSLATION_KEYS.INPUT_LIMIT_REACHED, {
+                max: CHATBOT_CONFIG.INPUT_MAX_LENGTH,
+              })
+            : ""}
+        </span>
+      </form>
     );
   }),
 );

@@ -579,18 +579,20 @@
       "title": "Hallo! Ich bin Reem 👋",
       "description": "Ich bin Ihr KI-Assistent und helfe Ihnen dabei, Yazans Portfolio zu erkunden und Fragen zu seinen Projekten, Fähigkeiten und Erfahrungen zu beantworten."
     },
+    "suggestions": {
+      "label": "Fragen Sie zum Beispiel",
+      "projects": "Was hat Yazan zuletzt gebaut?",
+      "stack": "Mit welchem Tech-Stack arbeitet er?",
+      "availability": "Ist er offen für neue Projekte?",
+      "site": "Wie wurde diese Website gebaut?"
+    },
     "typing": {
-      "status": "Reem schreibt...",
-      "thinking": "Denkt",
-      "processing": "Verarbeite Ihre Nachricht..."
+      "thinking": "Denkt"
     },
     "input": {
-      "placeholder": "ask Reem..",
+      "placeholder": "Fragen Sie Reem…",
       "characterCount": "{count}/{max}",
       "limitReached": "Zeichenlimit von {max} erreicht"
-    },
-    "status": {
-      "generating": "Generiert"
     },
     "errors": {
       "generic": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
@@ -606,23 +608,19 @@
       "sendMessage": "Nachricht senden",
       "stopGenerating": "Generierung stoppen",
       "chatConversation": "Chat-Unterhaltung",
-      "welcomeIllustration": "Willkommensgrafik",
       "pronunciation": "Aussprache",
       "messageForm": "Nachricht an den Assistenten senden",
       "typeMessage": "Geben Sie Ihre Nachricht ein",
-      "assistantAvatar": "Avatar des Assistenten",
-      "typingAnimation": "Schreibanimation",
       "yourMessageAt": "Ihre Nachricht von {time}",
       "assistantMessageAt": "Nachricht des Assistenten von {time}",
-      "sentAt": "Gesendet um {time}",
-      "messageSent": "Nachricht erfolgreich gesendet",
       "messageFailed": "Nachricht konnte nicht gesendet werden"
     },
     "consent": {
-      "title": "Datenschutz & Datenerfassung",
+      "prompt": "Diesen Chat speichern, um Reem zu verbessern?",
+      "details": "Details",
       "description": "Wenn Sie zustimmen, bewahre ich diese Unterhaltung auf, um die Antwortqualität zu messen und zu verstehen, wonach Besucher suchen. Sie wird ohne Ihren Namen und ohne Kontaktdaten sowie mit gekürzter IP-Adresse gespeichert – niemals für Werbung oder Profiling. Bei Ablehnung wird nichts gespeichert.",
-      "accept": "Akzeptieren & Fortfahren",
-      "decline": "Ablehnen"
+      "accept": "Speichern",
+      "decline": "Nicht speichern"
     }
   },
   "localeDetect": {

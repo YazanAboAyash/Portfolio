@@ -579,18 +579,20 @@
       "title": "Salut ! Je suis Reem 👋",
       "description": "Je suis votre assistant IA, ici pour vous aider à explorer le portfolio de Yazan et répondre aux questions sur ses projets, compétences et expérience."
     },
+    "suggestions": {
+      "label": "Essayez de demander",
+      "projects": "Qu'est-ce que Yazan a créé récemment ?",
+      "stack": "Avec quelle stack technique travaille-t-il ?",
+      "availability": "Est-il ouvert à de nouveaux projets ?",
+      "site": "Comment ce site a-t-il été conçu ?"
+    },
     "typing": {
-      "status": "Reem tape...",
-      "thinking": "Réflexion",
-      "processing": "Traitement de votre message..."
+      "thinking": "Réflexion"
     },
     "input": {
-      "placeholder": "ask Reem..",
+      "placeholder": "Demandez à Reem…",
       "characterCount": "{count}/{max}",
       "limitReached": "Limite de {max} caractères atteinte"
-    },
-    "status": {
-      "generating": "Génération"
     },
     "errors": {
       "generic": "Quelque chose s'est mal passé. Veuillez réessayer.",
@@ -606,23 +608,19 @@
       "sendMessage": "Envoyer le message",
       "stopGenerating": "Arrêter la génération",
       "chatConversation": "Conversation du chat",
-      "welcomeIllustration": "Illustration de bienvenue",
       "pronunciation": "Prononciation",
       "messageForm": "Envoyer un message à l'assistant",
       "typeMessage": "Saisissez votre message",
-      "assistantAvatar": "Avatar de l'assistant",
-      "typingAnimation": "Animation de saisie",
       "yourMessageAt": "Votre message de {time}",
       "assistantMessageAt": "Message de l'assistant de {time}",
-      "sentAt": "Envoyé à {time}",
-      "messageSent": "Message envoyé avec succès",
       "messageFailed": "Échec de l'envoi du message"
     },
     "consent": {
-      "title": "Confidentialité et Collecte de Données",
+      "prompt": "Enregistrer cette conversation pour aider à améliorer Reem ?",
+      "details": "Détails",
       "description": "Si vous acceptez, je conserve cette conversation pour mesurer la qualité des réponses et comprendre ce que recherchent les visiteurs. Elle est enregistrée sans votre nom ni vos coordonnées et avec votre adresse IP tronquée — jamais à des fins publicitaires ou de profilage. Si vous refusez, rien n'est enregistré.",
-      "accept": "Accepter et Continuer",
-      "decline": "Refuser"
+      "accept": "Enregistrer",
+      "decline": "Ne pas enregistrer"
     }
   },
   "localeDetect": {

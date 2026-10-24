@@ -579,18 +579,20 @@
       "title": "Hi! I'm Reem 👋",
       "description": "I'm your AI assistant, here to help you explore Yazan's portfolio and answer questions about his projects, skills, and experience."
     },
+    "suggestions": {
+      "label": "Try asking",
+      "projects": "What has Yazan built recently?",
+      "stack": "Which tech stack does he work with?",
+      "availability": "Is he open to new projects?",
+      "site": "How was this website built?"
+    },
     "typing": {
-      "status": "Reem is typing...",
-      "thinking": "Thinking",
-      "processing": "Processing your message..."
+      "thinking": "Thinking"
     },
     "input": {
-      "placeholder": "ask Reem..",
+      "placeholder": "Ask Reem anything…",
       "characterCount": "{count}/{max}",
       "limitReached": "Character limit of {max} reached"
-    },
-    "status": {
-      "generating": "Generating"
     },
     "errors": {
       "generic": "Something went wrong. Please try again.",
@@ -606,23 +608,19 @@
       "sendMessage": "Send message",
       "stopGenerating": "Stop generating",
       "chatConversation": "Chat conversation",
-      "welcomeIllustration": "Welcome illustration",
       "pronunciation": "Pronunciation",
       "messageForm": "Send message to assistant",
       "typeMessage": "Type your message",
-      "assistantAvatar": "Assistant avatar",
-      "typingAnimation": "Typing animation",
       "yourMessageAt": "Your message from {time}",
       "assistantMessageAt": "Assistant message from {time}",
-      "sentAt": "Sent at {time}",
-      "messageSent": "Message sent successfully",
       "messageFailed": "Message failed to send"
     },
     "consent": {
-      "title": "Privacy & Data Collection",
+      "prompt": "Save this chat to help improve Reem?",
+      "details": "Details",
       "description": "If you accept, I keep this conversation to measure answer quality and to understand what visitors are looking for. It is stored without your name or contact details and with your IP address shortened — never for advertising or profiling. Decline and nothing is saved.",
-      "accept": "Accept & Continue",
-      "decline": "Decline"
+      "accept": "Save",
+      "decline": "Don't save"
     }
   },
   "localeDetect": {

@@ -579,18 +579,20 @@
       "title": "Hej! Jag är Reem 👋",
       "description": "Jag är din AI-assistent, här för att hjälpa dig utforska Yazans portfölj och svara på frågor om hans projekt, färdigheter och erfarenhet."
     },
+    "suggestions": {
+      "label": "Testa att fråga",
+      "projects": "Vad har Yazan byggt nyligen?",
+      "stack": "Vilken teknikstack jobbar han med?",
+      "availability": "Är han öppen för nya projekt?",
+      "site": "Hur byggdes den här webbplatsen?"
+    },
     "typing": {
-      "status": "Reem skriver...",
-      "thinking": "Tänker",
-      "processing": "Bearbetar ditt meddelande..."
+      "thinking": "Tänker"
     },
     "input": {
-      "placeholder": "ask Reem..",
+      "placeholder": "Fråga Reem…",
       "characterCount": "{count}/{max}",
       "limitReached": "Teckengränsen på {max} har nåtts"
-    },
-    "status": {
-      "generating": "Genererar"
     },
     "errors": {
       "generic": "Något gick fel. Vänligen försök igen.",
@@ -606,23 +608,19 @@
       "sendMessage": "Skicka meddelande",
       "stopGenerating": "Stoppa genereringen",
       "chatConversation": "Chattkonversation",
-      "welcomeIllustration": "Välkomstillustration",
       "pronunciation": "Uttal",
       "messageForm": "Skicka meddelande till assistenten",
       "typeMessage": "Skriv ditt meddelande",
-      "assistantAvatar": "Assistentens avatar",
-      "typingAnimation": "Skrivanimation",
       "yourMessageAt": "Ditt meddelande från {time}",
       "assistantMessageAt": "Assistentens meddelande från {time}",
-      "sentAt": "Skickat {time}",
-      "messageSent": "Meddelandet skickades",
       "messageFailed": "Meddelandet kunde inte skickas"
     },
     "consent": {
-      "title": "Integritet & Datainsamling",
+      "prompt": "Spara den här chatten för att hjälpa till att förbättra Reem?",
+      "details": "Detaljer",
       "description": "Om du godkänner sparar jag denna konversation för att mäta svarens kvalitet och förstå vad besökare söker. Den lagras utan ditt namn eller dina kontaktuppgifter och med din IP-adress förkortad – aldrig för reklam eller profilering. Om du avböjer sparas ingenting.",
-      "accept": "Acceptera & Fortsätt",
-      "decline": "Avböj"
+      "accept": "Spara",
+      "decline": "Spara inte"
     }
   },
   "localeDetect": {

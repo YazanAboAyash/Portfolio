@@ -167,7 +167,7 @@ export default async function RootLayout({
               <CookiesBanner />
               <LocaleAutoDetect />
               <NoSSR>
-                <ChatBot position="bottom-left" />
+                <ChatBot />
               </NoSSR>
               <ThemeConfigInitializer />
               <ViewportRenderer />
