@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type { Metadata } from "next";
@@ -12,8 +12,6 @@ import {
   User,
   Phone,
   FileEdit,
-  Scale,
-  ExternalLink,
 } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { generateLegalPageSEO } from "@/lib/configs/seo";
@@ -34,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * to have been updated today tells the reader nothing about when its contents
  * were actually checked. Bump this by hand whenever the legal notice changes.
  */
-const LAST_REVIEWED = "2026-07-28";
+const LAST_REVIEWED = "2026-10-24";
 
 export default async function Impressum() {
   const t = await getTranslations("Impressum");
@@ -116,47 +114,6 @@ export default async function Impressum() {
               </p>
               <p className="text-sm text-muted-foreground">
                 {t("editorial.city")}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* EU Dispute Resolution */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Scale className="w-5 h-5" />
-              {t("dispute.title")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-2">
-                {t("dispute.euTitle")}
-              </p>
-              <p className="text-sm text-blue-800 dark:text-blue-200 mb-3">
-                {t("dispute.euDescription")}
-              </p>
-              <Link
-                href="https://consumer-redress.ec.europa.eu/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
-              >
-                https://consumer-redress.ec.europa.eu/
-                <ExternalLink className="w-3 h-3" />
-              </Link>
-              <p className="text-sm text-blue-800 dark:text-blue-200 mt-2">
-                {t("dispute.emailNote")}
-              </p>
-            </div>
-
-            <div className="bg-muted/50 p-4 rounded-lg">
-              <p className="text-sm font-medium mb-2">
-                {t("dispute.arbitrationTitle")}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {t("dispute.arbitrationDescription")}
               </p>
             </div>
           </CardContent>

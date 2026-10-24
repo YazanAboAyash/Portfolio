@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type { GitHubFetchMeta } from "@/types/configs/github";
@@ -11,9 +11,8 @@ const numberFormat = new Intl.NumberFormat(GITHUB_LOCALE);
 const relativeFormat = new Intl.RelativeTimeFormat(GITHUB_LOCALE, {
   numeric: "auto",
 });
-const dateTimeFormat = new Intl.DateTimeFormat(GITHUB_LOCALE, {
+const dateFormat = new Intl.DateTimeFormat(GITHUB_LOCALE, {
   dateStyle: "medium",
-  timeStyle: "short",
 });
 
 const RELATIVE_UNITS: Array<[Intl.RelativeTimeFormatUnit, number]> = [
@@ -29,8 +28,8 @@ export function formatNumber(value: number): string {
   return numberFormat.format(value);
 }
 
-export function formatDateTime(iso: string): string {
-  return dateTimeFormat.format(new Date(iso));
+export function formatDate(iso: string): string {
+  return dateFormat.format(new Date(iso));
 }
 
 export function formatRelative(iso: string): string {

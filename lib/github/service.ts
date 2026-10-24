@@ -1,25 +1,21 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type {
-  GitHubActivity,
-  GitHubActivityKind,
   GitHubFetchMeta,
   GitHubFetchResult,
   GitHubGraphQLOverviewResponse,
   GitHubGraphQLRepoNode,
-  GitHubLanguageShare,
   GitHubOverview,
   GitHubRepo,
-  GitHubRestEvent,
   GitHubUpstreamCall,
 } from "@/types/configs/github";
 
 /**
- * Single source of GitHub data for `/api/github` and the `/api/mcp` server.
+ * Single source of GitHub data for the `/api/mcp` server.
  *
  * Results are cached in memory per instance so a public MCP endpoint cannot
  * spend the token's rate limit: every caller inside the TTL is served the same
@@ -29,9 +25,9 @@ import type {
 
 const API_BASE = "https://api.github.com";
 const CACHE_TTL_MS = 10 * 60 * 1000;
+/** After a failed refresh, no upstream call is made for this long. */
+const FAILURE_COOLDOWN_MS = 2 * 60 * 1000;
 const REPO_CARD_LIMIT = 6;
-/** Largest page the events API serves; tools slice it down per call. */
-const EVENTS_PAGE_SIZE = 30;
 
 export class GitHubConfigError extends Error {}
 
@@ -107,6 +103,8 @@ interface CacheEntry<T> {
 interface CacheSlot<T> {
   entry: CacheEntry<T> | null;
   pending: Promise<CacheEntry<T>> | null;
+  /** Last failed refresh; while it is recent, callers get stale data or this error. */
+  failure: { at: number; error: unknown } | null;
 }
 
 function toMeta(
@@ -132,6 +130,15 @@ async function readThrough<T>(
     return { data: cached.value, meta: toMeta(cached, "cache", false) };
   }
 
+  // Back off after a failure so a rate-limited token is not hit on every request.
+  const failure = slot.failure;
+  if (failure && Date.now() - failure.at < FAILURE_COOLDOWN_MS) {
+    if (cached) {
+      return { data: cached.value, meta: toMeta(cached, "cache", true) };
+    }
+    throw failure.error;
+  }
+
   // Concurrent callers share one upstream request.
   slot.pending ??= load().finally(() => {
     slot.pending = null;
@@ -140,8 +147,10 @@ async function readThrough<T>(
   try {
     const entry = await slot.pending;
     slot.entry = entry;
+    slot.failure = null;
     return { data: entry.value, meta: toMeta(entry, "github", false) };
   } catch (error) {
+    slot.failure = { at: Date.now(), error };
     if (cached) {
       return { data: cached.value, meta: toMeta(cached, "cache", true) };
     }
@@ -149,10 +158,10 @@ async function readThrough<T>(
   }
 }
 
-const overviewSlot: CacheSlot<GitHubOverview> = { entry: null, pending: null };
-const activitySlot: CacheSlot<GitHubActivity[]> = {
+const overviewSlot: CacheSlot<GitHubOverview> = {
   entry: null,
   pending: null,
+  failure: null,
 };
 
 // ---------------------------------------------------------------------------
@@ -172,9 +181,6 @@ fragment RepoCard on Repository {
   pushedAt
   primaryLanguage { name color }
   repositoryTopics(first: 5) { nodes { topic { name } } }
-  languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
-    edges { size node { name color } }
-  }
 }
 
 query Overview($login: String!, $pinned: Int!) {
@@ -223,38 +229,6 @@ function toRepoCard(node: GitHubGraphQLRepoNode): GitHubRepo {
     language: node.primaryLanguage,
     topics: node.repositoryTopics.nodes.map((n) => n.topic.name),
   };
-}
-
-/**
- * Each repository contributes equally, split by its own byte ratio. Summing raw
- * bytes instead lets one repo with generated HTML or vendored code drown out
- * everything else.
- */
-function computeLanguageShares(
-  repos: GitHubGraphQLRepoNode[],
-): GitHubLanguageShare[] {
-  const totals = new Map<string, GitHubLanguageShare>();
-  let counted = 0;
-
-  for (const repo of repos) {
-    if (repo.isFork) continue;
-    const repoBytes = repo.languages.edges.reduce((sum, e) => sum + e.size, 0);
-    if (repoBytes === 0) continue;
-    counted++;
-
-    for (const { size, node } of repo.languages.edges) {
-      const current = totals.get(node.name);
-      totals.set(node.name, {
-        name: node.name,
-        color: node.color,
-        share: (current?.share ?? 0) + size / repoBytes,
-      });
-    }
-  }
-
-  return [...totals.values()]
-    .map((lang) => ({ ...lang, share: lang.share / counted }))
-    .sort((a, b) => b.share - a.share);
 }
 
 async function loadOverview(): Promise<CacheEntry<GitHubOverview>> {
@@ -319,7 +293,6 @@ async function loadOverview(): Promise<CacheEntry<GitHubOverview>> {
       contributionsLastYear:
         user.contributionsCollection.contributionCalendar.totalContributions,
     },
-    languages: computeLanguageShares(publicRepos),
     repositories: repoCards,
   };
 
@@ -331,76 +304,6 @@ export function getGitHubOverview(): Promise<
 > {
   return readThrough(overviewSlot, loadOverview);
 }
-
-// ---------------------------------------------------------------------------
-// Activity (REST — GraphQL has no public events feed)
-// ---------------------------------------------------------------------------
-
-const EVENT_KINDS: Record<string, GitHubActivityKind> = {
-  PushEvent: "push",
-  CreateEvent: "create",
-  DeleteEvent: "delete",
-  PullRequestEvent: "pullRequest",
-  PullRequestReviewEvent: "review",
-  IssuesEvent: "issue",
-  IssueCommentEvent: "issueComment",
-  ReleaseEvent: "release",
-  WatchEvent: "star",
-  ForkEvent: "fork",
-  PublicEvent: "public",
-};
-
-function toActivity(event: GitHubRestEvent): GitHubActivity {
-  const payload = event.payload ?? {};
-  const kind = EVENT_KINDS[event.type] ?? "other";
-
-  // Push payloads no longer carry commits, only the ref that moved.
-  const ref =
-    kind === "release"
-      ? (payload.release?.tag_name ?? null)
-      : (payload.ref?.replace(/^refs\/(heads|tags)\//, "") ?? null);
-
-  return {
-    id: event.id,
-    kind,
-    type: event.type,
-    repo: event.repo?.name ?? "",
-    createdAt: event.created_at,
-    ref,
-    refType: payload.ref_type ?? null,
-    action: payload.action ?? null,
-    number:
-      payload.number ??
-      payload.pull_request?.number ??
-      payload.issue?.number ??
-      null,
-  };
-}
-
-async function loadActivity(): Promise<CacheEntry<GitHubActivity[]>> {
-  const { username, token } = getConfig();
-  const { response, call } = await timedFetch(
-    "rest",
-    `/users/${encodeURIComponent(username)}/events/public?per_page=${EVENTS_PAGE_SIZE}`,
-    { headers: headers(token) },
-  );
-
-  if (!response.ok) {
-    throw new GitHubUpstreamError("Events request failed", response.status);
-  }
-
-  const events = (await response.json()) as GitHubRestEvent[];
-  return { value: events.map(toActivity), fetchedAt: Date.now(), calls: [call] };
-}
-
-export async function getGitHubActivity(
-  limit: number,
-): Promise<GitHubFetchResult<GitHubActivity[]>> {
-  const result = await readThrough(activitySlot, loadActivity);
-  return { data: result.data.slice(0, limit), meta: result.meta };
-}
-
-export const GITHUB_ACTIVITY_MAX = EVENTS_PAGE_SIZE;
 
 /** Maps a service failure to one of the bare error codes the UI translates. */
 export function toGitHubErrorCode(

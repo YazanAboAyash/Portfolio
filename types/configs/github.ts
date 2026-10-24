@@ -1,12 +1,11 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 // ---------------------------------------------------------------------------
-// Normalised data served by lib/github — shared by /api/github, the MCP server
-// and the showcase components.
+// Normalised data served by lib/github to the MCP server and its console.
 // ---------------------------------------------------------------------------
 
 export interface GitHubLanguage {
@@ -36,11 +35,6 @@ export interface GitHubStats {
   contributionsLastYear: number;
 }
 
-export interface GitHubLanguageShare extends GitHubLanguage {
-  /** Fraction (0–1) of the average public, non-fork repository. */
-  share: number;
-}
-
 export interface GitHubRepo {
   name: string;
   description: string | null;
@@ -64,36 +58,7 @@ export interface GitHubRepoList {
 export interface GitHubOverview {
   profile: GitHubProfile;
   stats: GitHubStats;
-  languages: GitHubLanguageShare[];
   repositories: GitHubRepoList;
-}
-
-export type GitHubActivityKind =
-  | "push"
-  | "create"
-  | "delete"
-  | "pullRequest"
-  | "review"
-  | "issue"
-  | "issueComment"
-  | "release"
-  | "star"
-  | "fork"
-  | "public"
-  | "other";
-
-/** Structured public event, served by the MCP server's `get_recent_activity` tool. */
-export interface GitHubActivity {
-  id: string;
-  kind: GitHubActivityKind;
-  /** Raw GitHub event type, kept for `other` and for MCP clients. */
-  type: string;
-  repo: string;
-  createdAt: string;
-  ref: string | null;
-  refType: string | null;
-  action: string | null;
-  number: number | null;
 }
 
 /** One upstream request made to GitHub, as measured by the server. */
@@ -120,34 +85,11 @@ export interface GitHubFetchResult<T> {
   meta: GitHubFetchMeta;
 }
 
-/** Response body of `GET /api/github`. */
-export interface GitHubSnapshot {
-  overview: GitHubOverview;
-  fetchedAt: string;
-}
-
 /** A fact GitHub exposes no API for, declared in `data/` instead. */
 export interface GitHubDeclaredHighlight {
   id: string;
   label: string;
   link: string;
-}
-
-// ---------------------------------------------------------------------------
-// Component props
-// ---------------------------------------------------------------------------
-
-export interface GitHubProfileProps {
-  profile: GitHubProfile;
-  stats: GitHubStats;
-}
-
-export interface GitHubLanguagesProps {
-  languages: GitHubLanguageShare[];
-}
-
-export interface GitHubRepositoriesProps {
-  repositories: GitHubRepoList;
 }
 
 // ---------------------------------------------------------------------------
@@ -166,9 +108,6 @@ export interface GitHubGraphQLRepoNode {
   pushedAt: string | null;
   primaryLanguage: GitHubLanguage | null;
   repositoryTopics: { nodes: Array<{ topic: { name: string } }> };
-  languages: {
-    edges: Array<{ size: number; node: GitHubLanguage }>;
-  };
 }
 
 export interface GitHubGraphQLOverviewResponse {
@@ -189,25 +128,11 @@ export interface GitHubGraphQLOverviewResponse {
       contributionsCollection: {
         contributionCalendar: { totalContributions: number };
       };
-      pinnedItems: { nodes: Array<GitHubGraphQLRepoNode | Record<string, never>> };
+      pinnedItems: {
+        nodes: Array<GitHubGraphQLRepoNode | Record<string, never>>;
+      };
       repositories: { totalCount: number; nodes: GitHubGraphQLRepoNode[] };
     } | null;
   };
   errors?: Array<{ message: string; type?: string }>;
-}
-
-export interface GitHubRestEvent {
-  id: string;
-  type: string;
-  created_at: string;
-  repo?: { name?: string };
-  payload?: {
-    action?: string;
-    ref?: string | null;
-    ref_type?: string;
-    number?: number;
-    issue?: { number?: number };
-    pull_request?: { number?: number };
-    release?: { tag_name?: string };
-  };
 }

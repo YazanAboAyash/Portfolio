@@ -1,18 +1,18 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V6.1.10
+# ColdByDefault Portfolio · V7.0.1
+
 ---
 
 Modern, secure, high‑performance developer portfolio built with Next.js 16, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
 <img width="400" height="175" alt="Portfolio screenshot" src="public/assets/image.png" />
 
-
-**Live:** https://www.coldbydefault.com 
-**Docs:** https://docs.coldbydefault.com/ 
+**Live:** https://www.coldbydefault.com
+**Docs:** https://docs.coldbydefault.com/
 **Stack:**
-Next.js 16.2 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui 
-Embla Carousel · Framer Motion 12.x · next-intl 4.11 · Prisma ORM 7.8 
+Next.js 16.2 · React 19.2.3 · TypeScript 5.x · Tailwind 4.1.12 · shadcn/ui
+Embla Carousel · Framer Motion 12.x · next-intl 4.11 · Prisma ORM 7.8
 Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · MCP TypeScript SDK 2 · ESLint 9.x · Playwright + axe-core · Vercel
 
 </div>
@@ -26,18 +26,17 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · MCP TypeScript SDK 2 · ESLint 
 3. Technology Stack
 4. Key Features
 5. AI Integrations
-6. Live Tools
-7. Internationalization (i18n)
-8. SEO & Discoverability
-9. Performance & Accessibility
-10. Architecture Overview
-11. API Surface
-12. Security & Hardening
-13. GitHub Actions & Automation
-14. Privacy & Data Handling
-15. License & Intellectual Property
-16. Contact
-17. Special Thanks
+6. Internationalization (i18n)
+7. SEO & Discoverability
+8. Performance & Accessibility
+9. Architecture Overview
+10. API Surface
+11. Security & Hardening
+12. GitHub Actions & Automation
+13. Privacy & Data Handling
+14. License & Intellectual Property
+15. Contact
+16. Special Thanks
 
 ---
 
@@ -45,7 +44,7 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · MCP TypeScript SDK 2 · ESLint 
 
 This portfolio serves as a professional showcase of engineering capability: performant UI, secure API integrations (GitHub, PageSpeed), accessibility‑focused design, production‑grade hardening, and multi‑language + deep structured SEO implementation.
 
-Beyond the portfolio surface, the project now hosts a small suite of **interactive live tools** (ROI calculator, automation audit), a **GitHub MCP server** behind a live in‑browser session console, and a service/package offering — each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
+Beyond the portfolio surface, the project hosts an AI assistant and a public **GitHub MCP server** behind a live in‑browser session console, each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
 
 ---
 
@@ -74,27 +73,27 @@ Scroll‑reveal animations, one card design language, `ScrambleText` headings an
 
 Core:
 
-* Next.js 16.2 (App Router, Server Components, Turbopack dev, Edge runtime where applicable)
-* React 19.2.3, TypeScript 5.x (strict mode)
-* Tailwind CSS 4.1.12 + PostCSS
-* shadcn/ui (Radix accessible primitives)
-* Embla Carousel 8.6.0
-* Framer Motion 12.23.12 (lazy‑loaded motion features)
-* next-intl 4.11 (server aware, cookie‑driven locale)
-* Zod 4.x (runtime schema validation)
-* Prisma ORM 7.8 + Neon serverless PostgreSQL
-* Vercel AI SDK 7 (`ai` 7.0.47, `@ai-sdk/openai` 4.0.27, `@ai-sdk/react` 4.0.50) — streaming chatbot transport
-* MCP TypeScript SDK 2 (`@modelcontextprotocol/server` + `@modelcontextprotocol/client` 2.1) — GitHub MCP server and in‑browser client
-* Vercel Hosting & Edge Network
+- Next.js 16.2 (App Router, Server Components, Turbopack dev, Edge runtime where applicable)
+- React 19.2.3, TypeScript 5.x (strict mode)
+- Tailwind CSS 4.1.12 + PostCSS
+- shadcn/ui (Radix accessible primitives)
+- Embla Carousel 8.6.0
+- Framer Motion 12.23.12 (lazy‑loaded motion features)
+- next-intl 4.11 (server aware, cookie‑driven locale)
+- Zod 4.x (runtime schema validation)
+- Prisma ORM 7.8 + Neon serverless PostgreSQL
+- Vercel AI SDK 7 (`ai` 7.0.47, `@ai-sdk/openai` 4.0.27, `@ai-sdk/react` 4.0.50) — streaming chatbot transport
+- MCP TypeScript SDK 2 (`@modelcontextprotocol/server` + `@modelcontextprotocol/client` 2.1) — GitHub MCP server and in‑browser client
+- Vercel Hosting & Edge Network
 
 Development & Quality:
 
-* ESLint 9.x (flat config, TypeScript-ESLint 8.41 integration)
-* Playwright 1.59 for end‑to‑end tests, `@axe-core/playwright` for automated accessibility assertions
-* Strict type checking with zero `any` tolerance
-* Comprehensive type coverage for all API interfaces (`AuditResult`, `GitHubData`, `ChatBotConfig`, service/use‑case models)
-* Discriminated unions for locale handling and error states
-* Inlang project configuration (`project.inlang/`) for message tooling
+- ESLint 9.x (flat config, TypeScript-ESLint 8.41 integration)
+- Playwright 1.59 for end‑to‑end tests, `@axe-core/playwright` for automated accessibility assertions
+- Strict type checking with zero `any` tolerance
+- Comprehensive type coverage for all API interfaces (`GitHubData`, `ChatBotConfig`, blog and project models)
+- Discriminated unions for locale handling and error states
+- Inlang project configuration (`project.inlang/`) for message tooling
 
 ---
 
@@ -102,230 +101,212 @@ Development & Quality:
 
 User Experience & UI:
 
-* Responsive, mobile‑first adaptive layout
-* Theme switching (light/dark) with persistence
-* Section rail navigation with localized labels and inline CTAs
-* Scroll‑reveal animation system and a unified card design language
-* Animated hero, project & certification showcases; `ScrambleText` headings
-* Carousel showcases with autoplay
-* Cookie consent banner with localized content (EN / DE / ES / SV / FR)
-* Accessibility: ARIA support, keyboard navigation, `aria-hidden` on decorative icons, Radix primitives
-* Globally localized error boundaries
+- Responsive, mobile‑first adaptive layout
+- Theme switching (light/dark) with persistence
+- Section rail navigation with localized labels and inline CTAs
+- Scroll‑reveal animation system and a unified card design language
+- Animated hero, project & certification showcases; `ScrambleText` headings
+- Carousel showcases with autoplay
+- Cookie consent banner with localized content (EN / DE / ES / SV / FR)
+- Accessibility: ARIA support, keyboard navigation, `aria-hidden` on decorative icons, Radix primitives
+- Globally localized error boundaries
 
 Content & Data:
 
-* Dynamic project, technology, service package and certification data modules
-* GitHub showcase: profile, stats, language breakdown and pinned repos from one cached GraphQL query, plus a "Live MCP session" drawer driven by a real MCP client
-* Products (Princeps, LogiX) and Collaboration showcases on the home page
-* Google PageSpeed Insights integration for performance transparency
-* Blog system with dynamic content management, filtering and per‑slug routes
-* CRUD admin dashboard for blog management and chatbot log review
-* Service packages and use‑case showcases with structured, translatable data
+- Dynamic project, technology, service package and certification data modules
+- GitHub showcase: profile, stats and pinned repos from one cached GraphQL query, plus a "Live MCP session" drawer driven by a real MCP client
+- Products (Princeps, LogiX) and Collaboration showcases on the home page
+- Google PageSpeed Insights integration for performance transparency
+- Blog system with dynamic content management, filtering and per‑slug routes
+- CRUD admin dashboard for blog management and chatbot log review
+- Service packages and use‑case showcases with structured, translatable data
 
 ---
 
 ## 5. AI Integrations
 
-Two AI‑backed surfaces, each isolated behind its own validated, rate‑limited API route:
+One AI‑backed surface, isolated behind its own validated, rate‑limited API route:
 
-| Surface              | Route                        | Provider                   | Notes                                                     |
-| --- | --- | --- | --- |
-| Chatbot ("Reem")     | `/api/chatbot`               | Vercel AI SDK 7 → `@ai-sdk/openai` (Responses API) | Streamed replies, client‑held history, spam/prompt sanitation, consent‑gated logging |
-| Automation Audit     | `/api/automation-audit`      | OpenAI Chat Completions    | Structured JSON audit result, dedicated rate limiter      |
+| Surface          | Route          | Provider                                           | Notes                                                                                |
+| ---------------- | -------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Chatbot ("Reem") | `/api/chatbot` | Vercel AI SDK 7 → `@ai-sdk/openai` (Responses API) | Streamed replies, client‑held history, spam/prompt sanitation, consent‑gated logging |
 
-Shared controls across all AI routes:
+Controls on the AI route:
 
-* Zod request validation with length caps and spam heuristics
-* Per‑IP windowed rate limiting (minute + hour windows) with `Retry-After` on quota exhaustion
-* Model IDs and API keys supplied exclusively via environment variables — never hard‑coded
-* Provider errors normalized into standardized error envelopes; no upstream detail leakage
-* Feature flags (`CHATBOT_ENABLED`) allowing runtime disablement
-* Chat requests set `store: false`, opting out of OpenAI‑side response retention
+- Zod request validation with length caps and spam heuristics
+- Per‑IP windowed rate limiting (minute + hour windows) with `Retry-After` on quota exhaustion
+- Model IDs and API keys supplied exclusively via environment variables — never hard‑coded
+- Provider errors normalized into standardized error envelopes; no upstream detail leakage
+- Feature flags (`CHATBOT_ENABLED`) allowing runtime disablement
+- Chat requests set `store: false`, opting out of OpenAI‑side response retention
 
 Chatbot specifics since the AI SDK migration:
 
-* `streamText` on the server, `useChat` + `DefaultChatTransport` on the client; replies stream as SSE with a stop control
-* Conversation history is owned by the browser and replayed with each message, so context no longer depends on which serverless instance answers. It is validated server‑side with `validateUIMessages`, capped by message count, and any client‑supplied `system` turn is rejected
-* Failures cross the wire as bare codes (`RATE_LIMIT_EXCEEDED`, `QUOTA_EXCEEDED`, …) that the client maps onto translated strings — no provider text ever reaches the UI
-* Consent‑gated persistence runs in the stream's `onFinish`, skipped when the visitor aborts
-
-> **Not yet migrated:** `/api/automation-audit` still calls its provider through a hand‑rolled `fetch` wrapper with bespoke response‑shape parsing.
+- `streamText` on the server, `useChat` + `DefaultChatTransport` on the client; replies stream as SSE with a stop control
+- Conversation history is owned by the browser and replayed with each message, so context no longer depends on which serverless instance answers. It is validated server‑side with `validateUIMessages`, capped by message count, and any client‑supplied `system` turn is rejected
+- Failures cross the wire as bare codes (`RATE_LIMIT_EXCEEDED`, `QUOTA_EXCEEDED`, …) that the client maps onto translated strings — no provider text ever reaches the UI
+- Consent‑gated persistence runs in the stream's `onFinish`, skipped when the visitor aborts
 
 ---
 
-## 6. Live Tools
-
-Self‑contained interactive tools that demonstrate applied automation and AI work:
-
-| Tool                | Route                | Description                                                                 |
-| --- | --- | --- |
-| ROI Calculator      | `/rio-calculator`    | Client‑side calculator estimating automation return on investment           |
-| Automation Audit    | `/automation-audit`  | Guided multi‑step questionnaire producing a scored audit + recommendations   |
-
-Each tool ships with typed data/config modules under `data/live-tools/`, dedicated types under `types/live-tools/`, and Playwright coverage in `tests/e2e/live-tools.spec.ts`.
-
----
-
-## 7. Internationalization (i18n)
+## 6. Internationalization (i18n)
 
 Runtime locale negotiation with graceful fallbacks — cookie‑driven rather than path‑prefixed:
 
-* Framework: `next-intl` (server aware, streaming compatible)
-* Supported locales: `en`, `de`, `es`, `fr`, `sv`
-* Detection: `Accept-Language` parsed in `proxy.ts`, persisted to a long‑lived `PORTFOLIOVERSIONLATEST_LOCALE` cookie
-* Fallback: `de` when no `Accept-Language` header is present (privacy‑mode browsers); client‑side `LocaleAutoDetect` corrects using `navigator.language`
-* Cross‑tab synchronization of the selected locale
-* Legacy path‑prefixed locale routes (`/de/...` and other two‑letter prefixes) are 301‑redirected to the unprefixed equivalents
-* Message Bundles: JSON under `messages/`, with Inlang project configuration for tooling
+- Framework: `next-intl` (server aware, streaming compatible)
+- Supported locales: `en`, `de`, `es`, `fr`, `sv`
+- Detection: `Accept-Language` parsed in `proxy.ts`, persisted to a long‑lived `PORTFOLIOVERSIONLATEST_LOCALE` cookie
+- Fallback: `de` when no `Accept-Language` header is present (privacy‑mode browsers); client‑side `LocaleAutoDetect` corrects using `navigator.language`
+- Cross‑tab synchronization of the selected locale
+- Legacy path‑prefixed locale routes (`/de/...` and other two‑letter prefixes) are 301‑redirected to the unprefixed equivalents
+- Message Bundles: JSON under `messages/`, with Inlang project configuration for tooling
 
 ---
 
-## 8. SEO & Discoverability
+## 7. SEO & Discoverability
 
 Advanced multi‑locale SEO system delivering consistent structured metadata:
 
-* Config‑driven locale specific SEO objects
-* Open Graph & Twitter card variants per locale (images, titles, descriptions)
-* JSON-LD generation for Person, BreadcrumbList, BlogPosting and a `ProfessionalService` entry with address, geo coordinates and served cities (local SEO)
-* Canonical + alternate `hreflang` tags
-* Keyword curation & skill taxonomy powering `knowsAbout`
-* Dynamic sitemap.xml generation with automatic locale & page discovery
-* Dynamic robots.txt with proper crawling directives
-* 301 redirect strategy for retired locale‑prefixed URLs
-* CSP‑compatible (no unsafe inline script proliferation)
-* Verified 100/100 Lighthouse SEO score (Sep 2025) & 100 PageSpeed Insights SEO metric
+- Config‑driven locale specific SEO objects
+- Open Graph & Twitter card variants per locale (images, titles, descriptions)
+- JSON-LD generation for Person (with employers), BreadcrumbList and BlogPosting
+- Canonical + alternate `hreflang` tags
+- Keyword curation & skill taxonomy powering `knowsAbout`
+- Dynamic sitemap.xml generation with automatic locale & page discovery
+- Dynamic robots.txt with proper crawling directives
+- 301 redirect strategy for retired locale‑prefixed URLs
+- CSP‑compatible (no unsafe inline script proliferation)
+- Verified 100/100 Lighthouse SEO score (Sep 2025) & 100 PageSpeed Insights SEO metric
 
 ---
 
-## 9. Performance & Accessibility
+## 8. Performance & Accessibility
 
 Focus Areas:
 
-* First Meaningful Paint minimization via streaming & selective client components
-* Dynamic imports for motion providers, backgrounds and other heavy client modules
-* Efficient image delivery (static assets + modern formats where suitable)
-* Reduced JavaScript footprint (edge/server rendering bias)
-* Accessible semantic structure (landmarks, labels, focus states)
+- First Meaningful Paint minimization via streaming & selective client components
+- Dynamic imports for motion providers, backgrounds and other heavy client modules
+- Efficient image delivery (static assets + modern formats where suitable)
+- Reduced JavaScript footprint (edge/server rendering bias)
+- Accessible semantic structure (landmarks, labels, focus states)
 
 ---
 
-## 10. Architecture Overview
+## 9. Architecture Overview
 
 High‑level structure:
 
-* `app/` — Next.js routing (App Router, route groups: `(legals)`, `(live-tools)`, `(media)`, plus `admin` and `api`)
-* `components/` — Domain + UI abstraction layers (hero, about, github, projects, products, collaboration, services, live-tools, nav, visuals, ui primitives)
-* `data/` — Structured static metadata (projects, products, certifications, services, use-cases, live-tool and MCP configs)
-* `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, Prisma client, `github/` data service, `mcp/` server definition)
-* `hooks/` — Custom React hooks (language, mobile detection, chatbot, GitHub MCP session, client gating)
-* `i18n/` — next-intl request/runtime configuration
-* `messages/` — Locale message bundles (en, de, es, fr, sv)
-* `prisma/` — Schema and migrations (Blog, BlogCategory, BlogTag, BlogTagRelation, BlogCredit, ChatSession, ChatMessage)
-* `tests/e2e/` — Playwright suites (accessibility, locale, public pages, live tools)
-* `types/` — Shared type surfaces mirrored per domain
-* `proxy.ts` — Next.js 16 middleware: locale detection, legacy redirects, admin session verification
-* `public/` — Static assets (images, logos, icons)
+- `app/` — Next.js routing (App Router, route groups: `(legals)`, `(media)`, plus `admin` and `api`)
+- `components/` — Domain + UI abstraction layers (hero, about, github, projects, products, collaboration, nav, visuals, ui primitives)
+- `data/` — Structured static metadata (projects, products, certifications, chatbot persona and MCP configs)
+- `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, Prisma client, `github/` data service, `mcp/` server definition)
+- `hooks/` — Custom React hooks (language, mobile detection, chatbot, GitHub MCP session, client gating)
+- `i18n/` — next-intl request/runtime configuration
+- `messages/` — Locale message bundles (en, de, es, fr, sv)
+- `prisma/` — Schema and migrations (Blog, BlogCategory, BlogTag, BlogTagRelation, BlogCredit, ChatSession, ChatMessage)
+- `tests/e2e/` — Playwright suites (accessibility, locale, public pages)
+- `types/` — Shared type surfaces mirrored per domain
+- `proxy.ts` — Next.js 16 middleware: locale detection, legacy redirects, admin session verification
+- `public/` — Static assets (images, logos, icons)
 
 Design Principles:
 
-* Separation of concerns (data vs presentation)
-* Minimal surface area for API routes
-* Immutable, typed content modules
-* Translation keys in data modules, never inline copy
+- Separation of concerns (data vs presentation)
+- Minimal surface area for API routes
+- Immutable, typed content modules
+- Translation keys in data modules, never inline copy
 
 ---
 
-## 11. API Surface
+## 10. API Surface
 
 Comprehensive API endpoints with security-first design:
 
-| Endpoint                        | Purpose                                            | Notes                                     |
-| --- | --- | --- |
-| `/api/about`                    | Returns profile / about metadata                   | Static + typed                            |
-| `/api/blog`                     | Blog listing and management                        | Prisma + Zod                              |
-| `/api/blog/[slug]`              | Single post retrieval + read-count increment       | Optimized increment path                  |
-| `/api/github`                   | GitHub profile, stats, languages, pinned repos           | GraphQL, token required, public data only        |
-| `/api/mcp`                      | Public GitHub MCP server (5 read-only tools)        | Streamable HTTP, MCP 2026-07-28 + 2025 fallback, rate limited |
-| `/api/speed-insight`            | Surfaces PageSpeed metrics                         | 1h revalidate, `stale-while-revalidate`   |
-| `/api/chatbot`                  | Interactive AI chatbot (Reem) for visitor queries  | Vercel AI SDK 7, SSE streamed              |
-| `/api/automation-audit`         | Scored automation audit generation                 | OpenAI Chat Completions + audit rate limit |
-| `/api/admin/blog`               | Administrative blog CRUD                           | HMAC session + rate limited               |
-| `/api/admin/chatbot/logs`       | Consent‑gated chat log review                      | Admin‑authenticated + rate limited        |
+| Endpoint                  | Purpose                                                                                         | Notes                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `/api/about`              | Returns profile / about metadata                                                                | Static + typed                                                |
+| `/api/blog`               | Blog listing and management                                                                     | Prisma + Zod                                                  |
+| `/api/blog/[slug]`        | Single post retrieval + read-count increment                                                    | Optimized increment path                                      |
+| `/api/mcp`                | Public portfolio MCP server (6 read-only tools: projects, capabilities, certifications, GitHub) | Streamable HTTP, MCP 2026-07-28 + 2025 fallback, rate limited |
+| `/api/speed-insight`      | Surfaces PageSpeed metrics                                                                      | 1h revalidate, `stale-while-revalidate`                       |
+| `/api/chatbot`            | Interactive AI chatbot (Reem) for visitor queries                                               | Vercel AI SDK 7, SSE streamed                                 |
+| `/api/admin/blog`         | Administrative blog CRUD                                                                        | HMAC session + rate limited                                   |
+| `/api/admin/chatbot/logs` | Consent‑gated chat log review                                                                   | Admin‑authenticated + rate limited                            |
 
-Every route is Zod‑validated and returns standardized error envelopes with no internal leakage; abuse and transport controls are covered in §12.
+Every route is Zod‑validated and returns standardized error envelopes with no internal leakage; abuse and transport controls are covered in §11.
 
 **GitHub MCP server:** a read‑only [Model Context Protocol](https://modelcontextprotocol.io) server that powers the homepage's "Live MCP session" drawer — a genuine protocol exchange rather than a scripted animation.
 
 ---
 
-## 12. Security & Hardening
+## 11. Security & Hardening
 
 Last internal assessment: 2026‑07 (v6.0.13 maintenance pass) — no known unresolved critical/high issues.
 
 Implemented Layers:
 
 1. **Transport & Headers**: HSTS, CSP, X-Content-Type-Options, X-Frame-Options (deny), Referrer-Policy, Permissions-Policy.
-2. **Abuse Mitigation**: per‑IP windowed rate limiting on all AI, admin, MCP and live‑tool endpoints; spam heuristics and input sanitation on chat input; request body size caps; session message caps.
+2. **Abuse Mitigation**: per‑IP windowed rate limiting on all AI, admin and MCP endpoints; spam heuristics and input sanitation on chat input; request body size caps; session message caps.
 3. **Admin Authentication**: HMAC‑SHA256 signed, expiring stateless session cookies verified in `proxy.ts` with `timingSafeEqual`; rate limiting and explicit IP resolution on admin requests.
 4. **Dependency Hygiene**: routine `npm audit`, plus explicit `overrides` pinning security‑relevant transitives (postcss, sharp, minimatch, brace-expansion, lodash).
-5. **Automated Scanning**: CodeQL static analysis and dependency review run in CI — see §13.
+5. **Automated Scanning**: CodeQL static analysis and dependency review run in CI — see §12.
 
 Security Posture Snapshot:
 
-* Critical: 0
-* High: 0
-* Medium: 0
-* Low/Informational: Monitored
+- Critical: 0
+- High: 0
+- Medium: 0
+- Low/Informational: Monitored
 
 ---
 
-## 13. GitHub Actions & Automation
+## 12. GitHub Actions & Automation
 
 **CodeQL Advanced Security Scanning:**
 
-* **Triggers**: Push to main, pull requests, scheduled weekly
-* **Languages**: Actions, JavaScript/TypeScript
-* **Purpose**: Static analysis for security vulnerabilities, code quality issues, and potential attack vectors
-* **Advanced Features**: Multi-language matrix analysis, configurable query packs, integration with GitHub Security tab
+- **Triggers**: Push to main, pull requests, scheduled weekly
+- **Languages**: Actions, JavaScript/TypeScript
+- **Purpose**: Static analysis for security vulnerabilities, code quality issues, and potential attack vectors
+- **Advanced Features**: Multi-language matrix analysis, configurable query packs, integration with GitHub Security tab
 
 **Dependency Review:**
 
-* **Triggers**: Pull requests to main branch
-* **Purpose**: Scans dependency changes for known vulnerabilities and license compliance
-* **Features**: Blocks PRs with vulnerable dependencies, provides detailed security reports in PR comments
+- **Triggers**: Pull requests to main branch
+- **Purpose**: Scans dependency changes for known vulnerabilities and license compliance
+- **Features**: Blocks PRs with vulnerable dependencies, provides detailed security reports in PR comments
 
 **Version Bump:**
 
-* **Triggers**: Merge to main
-* **Purpose**: Automatically increments the package version and commits with `[skip ci]`
+- **Triggers**: Merge to main
+- **Purpose**: Automatically increments the package version and commits with `[skip ci]`
 
 **End-to-End & Accessibility Testing:**
 
-* Playwright suites covering public pages, locale behaviour and live tools
-* `@axe-core/playwright` assertions catching accessibility regressions on key routes
+- Playwright suites covering public pages and locale behaviour
+- `@axe-core/playwright` assertions catching accessibility regressions on key routes
 
 **Documentation Generation:**
 
-* TypeDoc‑generated reference, published to the documentation site linked at the top of this file.
+- TypeDoc‑generated reference, published to the documentation site linked at the top of this file.
 
 > **Retired:** the Lighthouse CI workflow and `.lighthouserc.cjs` budgets (v6.0.10), along with the Vercel CRON job that refreshed PageSpeed data every 12 hours. Performance is now tracked through Vercel Speed Insights and `/api/speed-insight`, whose responses are cached at the edge and refreshed on demand.
 
 ---
 
-## 14. Privacy & Data Handling
+## 13. Privacy & Data Handling
 
-* No invasive tracking; minimal analytical surface (Vercel Analytics & Speed Insights only).
-* Cookie consent banner gating non‑essential storage, synchronized across browser tabs.
-* **Chat logging is consent‑gated**: with no consent, nothing is persisted — the conversation exists only in the visitor's own browser, and the server keeps nothing once it has answered.
-* Chat requests are sent to OpenAI with `store: false`, so replies are not retained on the provider side.
-* **No geolocation**: IP‑to‑country/city lookup was removed entirely in v6.0.13; `ipCountry` and `ipCity` are never populated.
-* IP addresses are anonymized before storage when anonymization is enabled.
-* No third‑party ad or profiling scripts.
-* Privacy policy and Impressum maintained under `app/(legals)/` with tracked last‑reviewed dates, localized across all five locales.
+- No invasive tracking; minimal analytical surface (Vercel Analytics & Speed Insights only).
+- Cookie consent banner gating non‑essential storage, synchronized across browser tabs.
+- **Chat logging is consent‑gated**: with no consent, nothing is persisted — the conversation exists only in the visitor's own browser, and the server keeps nothing once it has answered.
+- Chat requests are sent to OpenAI with `store: false`, so replies are not retained on the provider side.
+- **No geolocation**: IP‑to‑country/city lookup was removed entirely in v6.0.13; `ipCountry` and `ipCity` are never populated.
+- IP addresses are anonymized before storage when anonymization is enabled.
+- No third‑party ad or profiling scripts.
+- Privacy policy and Impressum maintained under `app/(legals)/` with tracked last‑reviewed dates, localized across all five locales.
 
 ---
 
-## 15. License & Intellectual Property
+## 14. License & Intellectual Property
 
 Copyright © 2026 ColdByDefault. All rights reserved.
 
@@ -341,17 +322,18 @@ Refer to `LICENSE` file for formal wording.
 
 ---
 
-## 16. Contact
+## 15. Contact
+
 Portfolio: https://www.coldbydefault.com
 
-Documentation: https://docs.coldbydefault.com/ 
+Documentation: https://docs.coldbydefault.com/
 
 For professional or security inquiries, reach out via the official channels listed above.
 _P.S. If you find any bugs, they're not bugs - they're undocumented features!_
 
 ---
 
-## 17. Special Thanks
+## 16. Special Thanks
 
 <div align="center">
 

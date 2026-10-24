@@ -1,17 +1,17 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createMcpHandler } from "@modelcontextprotocol/server";
 import { getClientIP, RateLimiter } from "@/lib/security";
-import { createGitHubMcpServer } from "@/lib/mcp/github-server";
+import { createPortfolioMcpServer } from "@/lib/mcp/portfolio-server";
 
 /**
- * Public Streamable HTTP endpoint for the GitHub MCP server. Serves the
+ * Public Streamable HTTP endpoint for the portfolio MCP server. Serves the
  * 2026-07-28 protocol revision and falls back to stateless 2025-era serving,
  * so both current and older MCP clients can connect.
  *
@@ -21,7 +21,7 @@ import { createGitHubMcpServer } from "@/lib/mcp/github-server";
 
 export const dynamic = "force-dynamic";
 
-const handler = createMcpHandler(createGitHubMcpServer, {
+const handler = createMcpHandler(createPortfolioMcpServer, {
   // Tools return in one step and emit nothing mid-call, so plain JSON
   // responses lose nothing and keep every exchange a single round trip.
   responseMode: "json",

@@ -11,10 +11,8 @@ const accessibilityRoutes = [
   { label: "home page", path: "/" },
   { label: "about page", path: "/about" },
   { label: "about portfolio page", path: "/about-portfolio" },
-  { label: "services page", path: "/services" },
   { label: "project cards", path: "/projects" },
   { label: "blog list", path: "/blog" },
-  { label: "ROI calculator", path: "/rio-calculator" },
   { label: "impressum page", path: "/impressum" },
   { label: "privacy page", path: "/privacy" },
 ] as const;

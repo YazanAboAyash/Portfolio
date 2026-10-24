@@ -1,11 +1,12 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
+import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/security";
+import { getClientIP, RateLimiter, sanitizeErrorMessage } from "@/lib/security";
 import type {
   RawPageSpeedResponse,
   SpeedInsightResult,
@@ -18,6 +19,25 @@ const PAGESPEED_API_URL =
 const TARGET_URL =
   process.env.PAGESPEED_TARGET_URL || "https://coldbydefault.com";
 const API_KEY = process.env.GOOGLE_PAGESPEED_API_KEY;
+
+// `?refresh` bypasses the 1h cache, so it is honoured at most once per window
+// for everyone (per instance), whatever IP callers claim. Matches the refresh
+// button's own 2-minute cooldown in the SpeedInsight component.
+const LIVE_REFRESH_COOLDOWN_MS = 120_000;
+
+// The button allows one refresh per 2 minutes; this leaves slack for a few tabs
+// or users behind one address while stopping a script looping on `?refresh`.
+const refreshLimiter = new RateLimiter(60_000, 5);
+
+let lastLiveAttemptAt = 0;
+/** Result of the most recent live attempt; null while none succeeded in it. */
+let lastLiveBody: SpeedInsightApiResponse | null = null;
+
+/** Upstream loads in progress, shared so concurrent requests make one pair of calls. */
+const inFlight: Record<
+  "live" | "cached",
+  Promise<SpeedInsightApiResponse> | null
+> = { live: null, cached: null };
 
 /** Map a 0–1 score to a Tailwind color class */
 function getScoreColor(score: number): string {
@@ -90,17 +110,55 @@ async function fetchPageSpeed(
   return parseResult(data, strategy);
 }
 
-export async function GET(request: Request): Promise<NextResponse> {
-  const { searchParams } = new URL(request.url);
-  const forceRefresh = searchParams.has("refresh");
-
-  try {
-    const [desktop, mobile] = await Promise.all([
+/** Fetch both strategies, joining a load of the same kind already in flight */
+function loadBoth(forceRefresh: boolean): Promise<SpeedInsightApiResponse> {
+  const key = forceRefresh ? "live" : "cached";
+  const pending =
+    inFlight[key] ??
+    Promise.all([
       fetchPageSpeed("desktop", forceRefresh),
       fetchPageSpeed("mobile", forceRefresh),
-    ]);
+    ])
+      .then(([desktop, mobile]) => ({ desktop, mobile }))
+      .finally(() => {
+        inFlight[key] = null;
+      });
+  inFlight[key] = pending;
+  return pending;
+}
 
-    const body: SpeedInsightApiResponse = { desktop, mobile };
+export async function GET(request: NextRequest): Promise<NextResponse> {
+  const wantsRefresh = request.nextUrl.searchParams.has("refresh");
+
+  if (wantsRefresh && !refreshLimiter.isAllowed(getClientIP(request))) {
+    return NextResponse.json(
+      { error: "RATE_LIMIT_EXCEEDED", desktop: null, mobile: null },
+      { status: 429, headers: { "Retry-After": "60" } },
+    );
+  }
+
+  // A refresh inside the cooldown joins the live load still running, or gets
+  // its result, or falls back to the cached data. Google is never called twice.
+  const now = Date.now();
+  const goLive =
+    wantsRefresh &&
+    (inFlight.live !== null ||
+      now - lastLiveAttemptAt >= LIVE_REFRESH_COOLDOWN_MS);
+
+  try {
+    let body: SpeedInsightApiResponse;
+    if (goLive) {
+      if (!inFlight.live) {
+        lastLiveAttemptAt = now;
+        lastLiveBody = null;
+      }
+      body = await loadBoth(true);
+      lastLiveBody = body;
+    } else if (wantsRefresh && lastLiveBody) {
+      body = lastLiveBody;
+    } else {
+      body = await loadBoth(false);
+    }
 
     return NextResponse.json(body, {
       headers: {

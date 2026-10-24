@@ -1,24 +1,26 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
 
-import { Hero, HeroBannerSection, ServicesSection } from "@/components/hero";
+import { Hero, HeroBannerSection } from "@/components/hero";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/visuals";
-import { ShowcaseSection } from "@/components/use-cases";
 import { SectionRail } from "@/components/nav";
 
-// Dynamically import heavy components with loading states
+// Heavy sections load client-side. Each skeleton reserves roughly the
+// section's rendered height (measured at 390 / 800 / 1440px) so the page
+// does not jump as sections arrive.
 const Capabilities = dynamic(
   () =>
     import("@/components/tech").then((mod) => ({ default: mod.Capabilities })),
   {
-    loading: () => <LoadingSkeleton />,
+    loading: () => (
+      <LoadingSkeleton className="frame min-h-344 md:min-h-222 lg:min-h-180" />
+    ),
     ssr: false,
   },
 );
@@ -29,19 +31,22 @@ const CertificationShowcase = dynamic(
       default: mod.CertificationShowcase,
     })),
   {
-    loading: () => <LoadingSkeleton />,
+    loading: () => (
+      <LoadingSkeleton className="frame min-h-436 md:min-h-312 lg:min-h-308" />
+    ),
     ssr: false,
   },
 );
 
-
-const GitHubShowcase = dynamic(
+const GitHubAskConsole = dynamic(
   () =>
     import("@/components/github").then((mod) => ({
-      default: mod.GitHubShowcase,
+      default: mod.GitHubAskConsole,
     })),
   {
-    loading: () => <LoadingSkeleton />,
+    loading: () => (
+      <LoadingSkeleton className="min-h-694 md:min-h-514 lg:min-h-264" />
+    ),
     ssr: false,
   },
 );
@@ -52,7 +57,9 @@ const CollaborationShowcase = dynamic(
       default: mod.CollaborationShowcase,
     })),
   {
-    loading: () => <LoadingSkeleton />,
+    loading: () => (
+      <LoadingSkeleton className="frame min-h-176 md:min-h-180 lg:min-h-172" />
+    ),
     ssr: false,
   },
 );
@@ -63,7 +70,9 @@ const ProjectsHomeShowcase = dynamic(
       default: mod.ProjectsHomeShowcase,
     })),
   {
-    loading: () => <LoadingSkeleton />,
+    loading: () => (
+      <LoadingSkeleton className="frame min-h-492 md:min-h-340 lg:min-h-334" />
+    ),
     ssr: false,
   },
 );
@@ -74,7 +83,9 @@ const ProductsHomeShowcase = dynamic(
       default: mod.ProductsHomeShowcase,
     })),
   {
-    loading: () => <LoadingSkeleton />,
+    loading: () => (
+      <LoadingSkeleton className="frame min-h-220 md:min-h-284 lg:min-h-170" />
+    ),
     ssr: false,
   },
 );
@@ -85,10 +96,15 @@ const SpeedInsight = dynamic(
       default: mod.SpeedInsight,
     })),
   {
-    loading: () => <LoadingSkeleton />,
+    loading: () => (
+      <LoadingSkeleton className="frame min-h-172 md:min-h-156 lg:min-h-110" />
+    ),
     ssr: false,
   },
 );
+
+/** Space between home sections: clearly larger than any gap inside one. */
+const SECTION = "py-16 md:py-24";
 
 export default function HomeContent() {
   return (
@@ -96,15 +112,12 @@ export default function HomeContent() {
       {/* Section ruler pinned beside the scrollbar */}
       <SectionRail />
 
-      {/* Scroll Indicator */}
-      <div className="hidden lg:block lg:absolute lg:bottom-24 lg:left-1/6 xl:left-1/5 xl:bottom-40 2xl:left-1/4 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
-        </div>
-      </div>
-
-      <div className="min-h-screen flex flex-col justify-evenly" id="home">
+      <div
+        className="flex min-h-[calc(100svh-4rem)] flex-col justify-between gap-12 pb-8"
+        id="home"
+      >
         <Hero />
+
         {/* Company Banner */}
         <HeroBannerSection />
       </div>
@@ -114,110 +127,25 @@ export default function HomeContent() {
         {/* Content Container */}
         <div className="relative z-10">
           {/* PageSpeed Insights Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-80">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <SpeedInsight className="pb-32 pt-8 px-4 sm:px-6 lg:px-8" />
-          </Suspense>
+          <SpeedInsight className={`frame ${SECTION}`} />
 
           {/* Collaboration Showcase Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-80">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <CollaborationShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
-          </Suspense>
+          <CollaborationShowcase className={`frame ${SECTION} pt-0 md:pt-0`} />
 
           {/* Project Showcase Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-100">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <ProjectsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
-          </Suspense>
+          <ProjectsHomeShowcase className={`frame ${SECTION}`} />
 
           {/* Products Showcase Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-100">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <ProductsHomeShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
-          </Suspense>
+          <ProductsHomeShowcase className={SECTION} />
 
-          <Suspense
-            fallback={
-              <div className="min-h-100">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <CertificationShowcase className="py-24 px-4 sm:px-6 lg:px-8" />
-          </Suspense>
+          <CertificationShowcase className={`frame ${SECTION}`} />
 
-          {/* Service Packages Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-150">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <ServicesSection />
-          </Suspense>
+          {/* "Ask this site": the portfolio and GitHub over the site's MCP server */}
+          <section className={`frame ${SECTION} pt-0 md:pt-0`} id="github">
+            <GitHubAskConsole />
+          </section>
 
-          <Suspense
-            fallback={
-              <div className="min-h-125">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <section className="py-24 px-4 sm:px-6 lg:px-8" id="use-cases">
-              <div className="max-w-7xl mx-auto">
-                <ShowcaseSection />
-              </div>
-            </section>
-          </Suspense>
-
-          {/* GitHub Showcase Section */}
-          <Suspense
-            fallback={
-              <div className="min-h-100">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <section className="py-24 px-4 sm:px-6 lg:px-8" id="github">
-              <div className="max-w-6xl mx-auto">
-                <GitHubShowcase />
-              </div>
-            </section>
-          </Suspense>
-
-          <Suspense
-            fallback={
-              <div className="min-h-100">
-                <LoadingSkeleton />
-              </div>
-            }
-          >
-            <Capabilities />
-          </Suspense>
-
-          <Suspense fallback={<LoadingSkeleton />}></Suspense>
+          <Capabilities />
         </div>
       </div>
     </div>

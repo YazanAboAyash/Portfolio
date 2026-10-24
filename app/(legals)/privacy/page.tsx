@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import { Card } from "@/components/ui/card";
@@ -17,7 +17,6 @@ import {
   Timer,
   Scale,
   SlidersHorizontal,
-  Wrench,
   Check,
   Mail,
 } from "lucide-react";
@@ -30,7 +29,7 @@ import Link from "next/link";
  * to have been updated today tells the reader nothing about when its contents
  * were actually checked. Bump this by hand whenever the policy text changes.
  */
-const LAST_REVIEWED = "2026-09-27";
+const LAST_REVIEWED = "2026-10-24";
 
 /**
  * Section order for the whole notice. The table of contents, the numbering and
@@ -45,7 +44,6 @@ const SECTIONS = [
   { id: "analytics", icon: Globe, titleKey: "analytics.title" },
   { id: "controls", icon: SlidersHorizontal, titleKey: "controls.title" },
   { id: "chatbot", icon: Bot, titleKey: "chatbot.title" },
-  { id: "ai-tools", icon: Wrench, titleKey: "aiTools.title" },
   { id: "contact", icon: Mail, titleKey: "contact.title" },
   { id: "recipients", icon: Users, titleKey: "recipients.title" },
   { id: "retention", icon: Timer, titleKey: "retention.title" },
@@ -299,15 +297,6 @@ export default async function Privacy() {
               {t("chatbot.aiNoticeDescription")}
             </Callout>
             <LegalBasis>{t("chatbot.legalBasis")}</LegalBasis>
-          </Section>
-
-          {/* Other AI-backed tools */}
-          <Section id="ai-tools" title={t("aiTools.title")}>
-            <Prose>{t("aiTools.description")}</Prose>
-            <Item title={t("aiTools.auditTitle")}>
-              {t("aiTools.auditDescription")}
-            </Item>
-            <LegalBasis>{t("aiTools.legalBasis")}</LegalBasis>
           </Section>
 
           {/* Contact by email */}

@@ -8,7 +8,7 @@
  * @created 2024-12-31 23:00:00
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  *
  * @see @link https://www.coldbydefault.com for the live website.
  */
@@ -27,7 +27,6 @@ import {
   seoConfigEN,
   seoConfigDE,
   generateStructuredData,
-  generateLocalBusinessStructuredData,
 } from "@/lib/configs/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
@@ -79,8 +78,6 @@ export default async function RootLayout({
   const locale = await getLocale();
   const seoConfig = locale === "de" ? seoConfigDE : seoConfigEN;
   const structuredData = generateStructuredData(seoConfig);
-  const localBusinessStructuredData =
-    generateLocalBusinessStructuredData(seoConfig);
   return (
     <html lang={locale} data-scroll-behavior="smooth">
       <head>
@@ -135,11 +132,16 @@ export default async function RootLayout({
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessStructuredData)}
-        </script>
       </head>
-      <body className={`${urbanist.variable} flex flex-col min-h-screen`}>
+      {/*
+        Browser extensions (e.g. ColorZilla's cz-shortcut-listen) write
+        attributes onto <body> before hydration. This only silences attribute
+        mismatches on <body> itself; its children are still checked.
+      */}
+      <body
+        className={`${urbanist.variable} flex flex-col min-h-screen`}
+        suppressHydrationWarning
+      >
         {/* Skip to main content for accessibility */}
         <Link
           href="#main-content"
@@ -150,7 +152,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
             scriptProps={{ type: "application/json" }}

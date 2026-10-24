@@ -1,14 +1,14 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -16,14 +16,13 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { Languages } from "lucide-react";
+import { LOCALE_NAMES, SUPPORTED_LOCALES } from "@/data/configs/i18n";
+import { setLocalePreview } from "@/hooks/use-locale-preview";
+import type { SupportedLocale } from "@/types/configs/i18n";
 
-const languages: Record<string, { name: string }> = {
-  en: { name: "English" },
-  de: { name: "Deutsch" },
-  es: { name: "Español" },
-  fr: { name: "Français" },
-  sv: { name: "Svenska" },
-};
+const languages: Record<string, { name: string }> = Object.fromEntries(
+  SUPPORTED_LOCALES.map((code) => [code, { name: LOCALE_NAMES[code] }]),
+);
 
 const emptySubscribe = () => () => {};
 
@@ -58,8 +57,15 @@ function getInitialBrowserLang(): string {
   return cookieBrowserLang ?? "en";
 }
 
-const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  /** Classes for the trigger, so the navbar and the mobile sheet can size it. */
+  readonly className?: string;
+}
+
+const LanguageSwitcher = ({ className = "" }: LanguageSwitcherProps) => {
   const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations("Navigation");
 
   // Use useSyncExternalStore for initial values from cookies/browser
   const initialLocale = useSyncExternalStore(
@@ -82,22 +88,25 @@ const LanguageSwitcher = () => {
   const currentLocale = locale ?? initialLocale;
   const browserLang = initialBrowserLang;
   const isUnsupportedLang = !manuallySelected && !languages[browserLang];
+  // Only the home page has the intro the preview rewrites.
+  const canPreview = pathname === "/";
 
   const changeLocale = (newLocale: string) => {
     if (!languages[newLocale]) return;
     setLocale(newLocale);
     setManuallySelected(true);
+    setLocalePreview(null);
     // Update cookie using a function to avoid direct mutation warning
     const setCookie = (value: string) => {
       document.cookie = value;
     };
     setCookie(`PORTFOLIOVERSIONLATEST_LOCALE=${newLocale}; path=/;`);
-    // 4. Refresh current route to re-render server components with new locale
-    router.refresh(); // useRouter only works in Client Components :contentReference[oaicite:0]{index=0}
+    // Refresh current route to re-render server components with new locale
+    router.refresh();
   };
 
-  const getCurrentFlag = () => {
-    return "🌐"; // Always show globe emoji
+  const preview = (code: SupportedLocale) => {
+    if (canPreview) setLocalePreview(code);
   };
 
   const getCurrentName = () => {
@@ -108,39 +117,67 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <DropdownMenu modal={false}>
+    <DropdownMenu
+      modal={false}
+      onOpenChange={(open) => {
+        if (!open) setLocalePreview(null);
+      }}
+    >
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="flex items-center w-12 h-10 cursor-pointer hover:text-sky-600 transition-colors duration-300"
+        <button
+          type="button"
+          className={`inline-flex h-10 min-w-10 cursor-pointer items-center justify-center gap-1.5 px-3 text-[0.9375rem] font-semibold transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${className}`}
           aria-label={`Current language: ${getCurrentName()}. Click to change language`}
         >
-          <Languages aria-hidden="true" />
-          <span className="ml-1" aria-hidden="true">
-            {getCurrentFlag()}
-          </span>
+          <Languages className="h-4 w-4" aria-hidden="true" />
+          <span aria-hidden="true">{currentLocale.toUpperCase()}</span>
           <span className="sr-only">Change language</span>
-        </Button>
+        </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" aria-label="Language selection menu">
+      <DropdownMenuContent
+        align="end"
+        sideOffset={6}
+        aria-label="Language selection menu"
+        className="min-w-56 rounded-none border-0 p-1.5 shadow-[0_12px_40px_oklch(0_0_0/0.18),0_0_0_1px_var(--surface-2)]"
+        onPointerLeave={() => setLocalePreview(null)}
+      >
+        {canPreview && (
+          <p className="px-3 pb-1.5 pt-2 text-sm text-muted-foreground">
+            {t("languagePreviewHint")}
+          </p>
+        )}
         {isUnsupportedLang && browserLang !== currentLocale && (
-          <DropdownMenuItem disabled className="text-muted-foreground text-xs">
+          <DropdownMenuItem
+            disabled
+            className="rounded-none text-xs text-muted-foreground"
+          >
             Browser: {browserLang.toUpperCase()} (Unsupported)
           </DropdownMenuItem>
         )}
-        {Object.entries(languages).map(([key, { name }]) => (
+        {SUPPORTED_LOCALES.map((key) => (
           <DropdownMenuItem
             key={key}
+            lang={key}
             onClick={() => changeLocale(key)}
-            aria-label={`Switch to ${name}`}
-            className={currentLocale === key ? "bg-accent" : ""}
+            onFocus={() => preview(key)}
+            onPointerEnter={() => preview(key)}
+            aria-label={`Switch to ${LOCALE_NAMES[key]}`}
+            aria-current={currentLocale === key ? "true" : undefined}
+            className={`flex cursor-pointer justify-between gap-4 rounded-none px-3 py-2.5 text-base focus:bg-surface ${
+              currentLocale === key ? "font-bold" : ""
+            }`}
           >
-            {name}
-            {locale === key && isUnsupportedLang && (
-              <span className="ml-auto text-xs text-muted-foreground">
-                (Auto)
-              </span>
-            )}
+            <span>
+              {LOCALE_NAMES[key]}
+              {locale === key && isUnsupportedLang && (
+                <span className="ml-2 text-xs font-normal text-muted-foreground">
+                  (Auto)
+                </span>
+              )}
+            </span>
+            <span className="text-sm text-muted-foreground">
+              {key.toUpperCase()}
+            </span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -1,17 +1,20 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
+import { getTranslations } from "next-intl/server";
 import { CentralizedLoading } from "@/components/visuals";
 
-export default function Loading() {
+export default async function Loading() {
+  const t = await getTranslations("Loading.root");
+
   return (
     <CentralizedLoading
       variant="page"
-      title="Loading Portfolio..."
-      description="Please wait while we prepare your experience"
+      title={t("title")}
+      description={t("description")}
     />
   );
 }

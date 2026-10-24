@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 export interface LinkItem {
@@ -20,7 +20,6 @@ export const legalLinks: LinkItem[] = [
 
 export const footerNavLinks: LinkItem[][] = [
   [
-    { href: "/services", label: "Services" },
     { href: "/projects", label: "Work" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },

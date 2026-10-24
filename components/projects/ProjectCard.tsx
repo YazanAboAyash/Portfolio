@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -75,7 +75,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
               </Badge>
             )}
             {project.commercial && (
-              <Badge className="rounded-md bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white shadow-sm dark:bg-emerald-500">
+              <Badge className="rounded-md bg-emerald-700 px-2 py-0.5 text-[11px] font-semibold text-white shadow-sm">
                 {t("availableToBuy")}
               </Badge>
             )}

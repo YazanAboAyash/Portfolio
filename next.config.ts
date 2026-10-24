@@ -117,17 +117,22 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        // Static assets cache optimization
-        source:
-          "/((?!api/).*).(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp|avif|mp4|webm)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
+      // Static assets cache optimization. Production only: dev chunk URLs are
+      // not content-hashed, so `immutable` pins stale modules in the browser.
+      ...(process.env.NODE_ENV === "production"
+        ? [
+            {
+              source:
+                "/((?!api/).*).(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp|avif|mp4|webm)",
+              headers: [
+                {
+                  key: "Cache-Control",
+                  value: "public, max-age=31536000, immutable",
+                },
+              ],
+            },
+          ]
+        : []),
       {
         // API routes cache and security
         source: "/api/(.*)",

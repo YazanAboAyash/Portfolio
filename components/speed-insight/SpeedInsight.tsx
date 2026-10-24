@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -15,16 +15,8 @@ import {
   Globe,
 } from "lucide-react";
 import { SiGoogle } from "react-icons/si";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ThinkingOrb } from "thinking-orbs";
 import type { SpeedInsightScore } from "@/types/configs/speed-insight";
 import { useSpeedInsight } from "./SpeedInsight.logic";
@@ -53,8 +45,8 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
   const offset = getOffset(category.score);
 
   return (
-    <div className="flex flex-col items-center gap-1">
-      <div className="relative w-9 h-9">
+    <div className="flex flex-col items-center gap-2">
+      <div className="relative h-16 w-16 sm:h-20 sm:w-20">
         <svg
           viewBox="0 0 60 60"
           className="w-full h-full -rotate-90"
@@ -85,13 +77,13 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
         </svg>
         {/* Score number */}
         <span
-          className={`absolute inset-0 flex items-center justify-center text-[10px] font-bold ${category.color}`}
+          className={`absolute inset-0 flex items-center justify-center text-lg font-bold tabular-nums sm:text-xl ${category.color}`}
           aria-hidden="true"
         >
           {category.score}
         </span>
       </div>
-      <span className="text-[10px] sm:text-xs text-muted-foreground text-center font-medium max-w-18 leading-tight">
+      <span className="max-w-28 text-center text-sm font-medium leading-tight text-foreground">
         {category.label}
       </span>
     </div>
@@ -102,7 +94,7 @@ function ScoreRing({ category }: { category: SpeedInsightScore }) {
 function StrategyLoading({ label }: { label: string }) {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-2 py-3"
+      className="flex min-h-36 flex-col items-center justify-center gap-3 py-3"
       role="status"
       aria-live="polite"
     >
@@ -111,7 +103,7 @@ function StrategyLoading({ label }: { label: string }) {
         size={LOADING_ORB.size}
         aria-hidden="true"
       />
-      <span className="text-xs text-muted-foreground">{label}</span>
+      <span className="text-sm text-foreground">{label}</span>
     </div>
   );
 }
@@ -121,65 +113,74 @@ export default function SpeedInsight({ className }: { className?: string }) {
   const { desktop, mobile, loading, error, refetch, cooldownRemaining } =
     useSpeedInsight();
 
+  const tabTrigger =
+    "cursor-pointer gap-1.5 rounded-none border-0 px-3 text-sm font-semibold shadow-none data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none dark:data-[state=active]:border-0 dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground";
+
   return (
     <section className={className} id="speed-insight" aria-label={t("title")}>
       <RevealGroup>
         <RevealItem>
-          <Card className={cn(cardSurface, "max-w-3xl mx-auto")}>
-            <CardHeader className="pb-3">
-              {/* Header row */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-                    <SiGoogle
-                      className="h-4 w-4 sm:h-5 sm:w-5 text-primary"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div>
-                    <CardTitle className="text-base sm:text-lg md:text-xl">
-                      {t("title")}
-                    </CardTitle>
-                    <CardDescription className="text-[11px] sm:text-sm">
-                      {t("subtitle")}
-                    </CardDescription>
-                  </div>
-                </div>
-
+          <div
+            className={cn(
+              cardSurface,
+              "grid grid-cols-12 gap-x-6 gap-y-8 p-6 hover:bg-surface sm:p-8 lg:p-10",
+            )}
+          >
+            {/* Heading column */}
+            <div className="col-span-12 flex flex-col gap-3 lg:col-span-4">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <h2 className="text-2xl font-bold leading-tight tracking-[-0.015em] sm:text-3xl">
+                  {t("title")}
+                </h2>
                 {/* Live indicator */}
                 {!error && !loading && (
-                  <Badge
-                    variant="outline"
-                    className="gap-1 sm:gap-1.5 text-[10px] sm:text-xs px-1.5 sm:px-2.5 border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-400 shrink-0"
-                  >
-                    <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                      <span className="relative inline-flex h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-green-500" />
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-green-700 dark:text-green-400">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 motion-reduce:animate-none" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
                     </span>
                     {t("liveLabel")}
-                  </Badge>
+                  </span>
                 )}
               </div>
+              <p className="text-base leading-relaxed text-foreground">
+                {t("subtitle")}
+              </p>
 
               {/* Portfolio URL indicator */}
-              <div className="flex items-center gap-1.5 mt-2 text-xs text-muted-foreground">
-                <Globe className="h-3 w-3" />
+              <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Globe className="h-4 w-4" aria-hidden="true" />
                 <span>{t("analyzingPortfolio")}</span>
-              </div>
-            </CardHeader>
+              </p>
 
-            <CardContent>
+              <div className="mt-auto flex flex-col gap-1 pt-2 text-sm text-muted-foreground">
+                <span className="flex items-center gap-2">
+                  <SiGoogle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                  {t("poweredBy")}
+                </span>
+                {desktop?.fetchedAt && (
+                  <span>
+                    {t("lastUpdated")}:{" "}
+                    {new Date(desktop.fetchedAt).toLocaleTimeString()}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Scores column */}
+            <div className="col-span-12 lg:col-span-8">
               {/* Error state */}
               {error && !loading && (
-                <div className="flex flex-col items-center gap-3 py-8 text-center">
-                  <AlertCircle className="w-8 h-8 text-destructive" />
-                  <p className="text-sm text-muted-foreground">{t("error")}</p>
+                <div className="flex min-h-36 flex-col items-center justify-center gap-3 text-center">
+                  <AlertCircle className="h-8 w-8 text-destructive" />
+                  <p className="text-base">{t("error")}</p>
                   <Button
                     variant="outline"
                     size="sm"
+                    className="cursor-pointer rounded-none"
                     onClick={() => void refetch()}
                   >
-                    <RefreshCw className="w-4 h-4 mr-1" />
+                    <RefreshCw className="mr-1 h-4 w-4" />
                     {t("retry")}
                   </Button>
                 </div>
@@ -187,21 +188,15 @@ export default function SpeedInsight({ className }: { className?: string }) {
 
               {/* Data / Loading */}
               {!error && (
-                <Tabs defaultValue="desktop" className="w-full">
-                  <div className="flex items-center justify-between mb-2">
-                    <TabsList className="h-8 sm:h-10">
-                      <TabsTrigger
-                        value="desktop"
-                        className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
-                      >
-                        <Monitor className="w-3 h-3 sm:w-4 sm:h-4" />
+                <Tabs defaultValue="desktop" className="w-full gap-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <TabsList className="h-10 rounded-none bg-background p-1">
+                      <TabsTrigger value="desktop" className={tabTrigger}>
+                        <Monitor className="h-4 w-4" aria-hidden="true" />
                         {t("desktop")}
                       </TabsTrigger>
-                      <TabsTrigger
-                        value="mobile"
-                        className="gap-1 sm:gap-1.5 text-xs sm:text-sm px-2 sm:px-3 cursor-pointer"
-                      >
-                        <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <TabsTrigger value="mobile" className={tabTrigger}>
+                        <Smartphone className="h-4 w-4" aria-hidden="true" />
                         {t("mobile")}
                       </TabsTrigger>
                     </TabsList>
@@ -221,10 +216,10 @@ export default function SpeedInsight({ className }: { className?: string }) {
                           ? `${cooldownRemaining}s`
                           : undefined
                       }
-                      className="h-8 w-8"
+                      className="h-10 w-10 cursor-pointer rounded-none hover:bg-background"
                     >
                       <RefreshCw
-                        className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
+                        className={`h-4 w-4 ${loading ? "animate-spin" : ""}`}
                       />
                     </Button>
                   </div>
@@ -233,7 +228,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
                     {loading ? (
                       <StrategyLoading label={t("loading")} />
                     ) : desktop ? (
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
+                      <div className="grid grid-cols-2 justify-items-center gap-6 sm:grid-cols-4">
                         {desktop.categories.map((cat) => (
                           <ScoreRing key={cat.label} category={cat} />
                         ))}
@@ -245,7 +240,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
                     {loading ? (
                       <StrategyLoading label={t("loading")} />
                     ) : mobile ? (
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 justify-items-center py-3">
+                      <div className="grid grid-cols-2 justify-items-center gap-6 sm:grid-cols-4">
                         {mobile.categories.map((cat) => (
                           <ScoreRing key={cat.label} category={cat} />
                         ))}
@@ -254,27 +249,8 @@ export default function SpeedInsight({ className }: { className?: string }) {
                   </TabsContent>
                 </Tabs>
               )}
-
-              {/* Footer */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-1 pt-3 border-t mt-2">
-                <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground">
-                  <SiGoogle
-                    className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="truncate">{t("poweredBy")}</span>
-                </div>
-                {desktop?.fetchedAt && (
-                  <span className="text-[10px] sm:text-xs text-muted-foreground whitespace-nowrap">
-                    <span className="hidden sm:inline">
-                      {t("lastUpdated")}:{" "}
-                    </span>
-                    {new Date(desktop.fetchedAt).toLocaleTimeString()}
-                  </span>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </RevealItem>
       </RevealGroup>
     </section>

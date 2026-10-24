@@ -1,7 +1,7 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 "use client";
@@ -127,19 +127,14 @@ function LogLine({ entry }: { entry: McpLogEntry }) {
         </div>
       );
     case "failed":
-      return (
-        <div className="mt-2 text-red-400">✗ {githubCopy.mcp.failed}</div>
-      );
+      return <div className="mt-2 text-red-400">✗ {githubCopy.mcp.failed}</div>;
   }
 }
 
 export default function GitHubMcpConsole() {
   const { entries, status, run } = useGitHubMcpSession();
   const [copied, setCopied] = useState(false);
-  const endpointUrl =
-    typeof window === "undefined"
-      ? mcpConfig.endpointPath
-      : new URL(mcpConfig.endpointPath, window.location.origin).toString();
+  const endpointUrl = mcpConfig.publicUrl;
 
   const copyEndpoint = async (): Promise<void> => {
     try {
@@ -164,8 +159,11 @@ export default function GitHubMcpConsole() {
         <Tooltip>
           <TooltipTrigger asChild>
             <DrawerTrigger asChild>
-              <Button variant="default" size="sm" className="cursor-pointer">
-                <FaTerminal className="mr-2 h-4 w-4" />
+              <Button
+                variant="ghost"
+                className="h-11 cursor-pointer rounded-none bg-surface px-5 text-base font-semibold hover:bg-surface-2"
+              >
+                <FaTerminal className="mr-1 h-4 w-4" aria-hidden="true" />
                 {githubCopy.mcp.trigger}
               </Button>
             </DrawerTrigger>
@@ -186,19 +184,19 @@ export default function GitHubMcpConsole() {
             <Button
               onClick={() => void run()}
               disabled={status === "running"}
-              className="w-full cursor-pointer"
+              className="h-11 w-full cursor-pointer rounded-none font-semibold"
             >
               {buttonLabel}
             </Button>
 
             <div
-              className="bg-black rounded-lg p-4 h-72 overflow-y-auto font-mono text-xs"
+              className="h-72 overflow-y-auto bg-black p-4 font-mono text-xs"
               aria-live="polite"
             >
               {entries.length === 0 && status !== "running" && (
                 <div className="text-green-400">
-                  <span className="text-gray-500">$</span>{" "}
-                  {githubCopy.mcp.idle} {endpointUrl}
+                  <span className="text-gray-500">$</span> {githubCopy.mcp.idle}{" "}
+                  {endpointUrl}
                 </div>
               )}
               {entries.map((entry, index) => (
@@ -211,7 +209,7 @@ export default function GitHubMcpConsole() {
               )}
             </div>
 
-            <div className="rounded-lg border p-3 space-y-2">
+            <div className="space-y-2 bg-surface p-3">
               <div className="flex flex-wrap items-baseline justify-between gap-x-3">
                 <span className="text-sm font-medium">
                   {githubCopy.mcp.connectTitle}
@@ -221,13 +219,13 @@ export default function GitHubMcpConsole() {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <code className="flex-1 truncate rounded bg-muted px-2 py-1 text-xs">
+                <code className="flex-1 truncate bg-background px-2 py-1 text-xs">
                   {endpointUrl}
                 </code>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="cursor-pointer shrink-0"
+                  className="shrink-0 cursor-pointer rounded-none"
                   onClick={() => void copyEndpoint()}
                 >
                   {copied ? (
@@ -243,7 +241,7 @@ export default function GitHubMcpConsole() {
 
           <DrawerFooter>
             <DrawerClose asChild>
-              <Button variant="outline" className="cursor-pointer">
+              <Button variant="outline" className="cursor-pointer rounded-none">
                 {githubCopy.mcp.close}
               </Button>
             </DrawerClose>

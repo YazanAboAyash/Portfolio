@@ -1,23 +1,10 @@
 /**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
- * @version 6.x.x
+ * @version 7.x.x
  */
 
 import type { NextRequest } from "next/server";
-
-/**
- * Validates GitHub API data type parameter
- */
-export function validateDataType(type: string | null): string {
-  const allowedTypes = ["profile", "repos", "stats", "activity", "all"];
-
-  if (!type || !allowedTypes.includes(type)) {
-    return "all";
-  }
-
-  return type;
-}
 
 /**
  * Rate limiting check
@@ -62,7 +49,7 @@ export class RateLimiter {
     const now = Date.now();
     for (const [identifier, requests] of this.requests.entries()) {
       const validRequests = requests.filter(
-        (time) => now - time < this.windowMs
+        (time) => now - time < this.windowMs,
       );
       if (validRequests.length === 0) {
         this.requests.delete(identifier);

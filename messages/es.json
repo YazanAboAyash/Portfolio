@@ -2,9 +2,6 @@
   "Home": {
     "WebsitePerformance": "Rendimiento del sitio web",
     "companiesContributing": "Empresas donde trabajo / Proyectos a los que contribuyo:",
-    "services": {
-      "title": "Servicios y Paquetes"
-    },
     "speedInsight": {
       "title": "PageSpeed Insights en vivo",
       "subtitle": "Puntuaciones de Google Lighthouse en tiempo real para este sitio web",
@@ -24,16 +21,31 @@
     }
   },
   "Hero": {
-    "availableForCollaboration": "Disponible para colaborar",
-    "fullStackDeveloper": "Automatización & MVPs Web con IA",
-    "description": "Soluciones de automatización, asistentes de IA internos y desarrollo de MVPs. Entregando aplicaciones web de principio a fin, desde el concepto hasta el despliegue—construyendo herramientas prácticas que ahorran tiempo e impulsan la eficiencia.",
+    "fullStackDeveloper": "Desarrollador Full-Stack e Ingeniero de IA",
+    "description": "Desarrollo aplicaciones web en producción de principio a fin — y la IA que llevan dentro: funciones con LLM, sistemas RAG, agentes y servidores MCP. Con Next.js y TypeScript, desde el primer commit hasta el despliegue.",
     "contact": "Contacto",
     "learnMoreAboutMe": "Conoce más sobre mí",
-    "moreAboutMe": "Más sobre mí en"
+    "moreAboutMe": "Más sobre mí en",
+    "askMcp": "Pregunta a este sitio por MCP",
+    "portraitAltLight": "Yazan Abo-Ayash con chaqueta oscura y cuello alto ante una pared blanca",
+    "portraitAltDark": "Yazan Abo-Ayash con chaqueta oscura sobre fondo negro",
+    "now": {
+      "label": "Ahora",
+      "focus": "Enfoque actual",
+      "nextFocus": "Mostrar el siguiente enfoque",
+      "latestPost": "Última entrada",
+      "allPosts": "Ir al blog",
+      "site": "Este sitio",
+      "siteLink": "Cómo está hecho",
+      "focusItems": [
+        "Sistemas RAG con citas de fuentes",
+        "Agentes de IA y servidores MCP",
+        "Azure AI y Entra ID"
+      ]
+    }
   },
   "Navigation": {
     "home": "Inicio",
-    "services": "Servicios",
     "work": "Trabajos",
     "about": "Sobre mí",
     "blog": "Blog",
@@ -49,27 +61,30 @@
     "legal": "Legal",
     "contact": "Contacto",
     "open": "Abrir",
-    "language": "Idioma"
+    "language": "Idioma",
+    "languagePreviewHint": "Señala un idioma para ver la introducción en él.",
+    "toggleTheme": "Cambiar entre modo claro y oscuro",
+    "contactInfo": "Abrir información de contacto",
+    "openMenu": "Abrir menú de navegación"
   },
   "Contact": {
     "getInTouch": "Conectemos",
-    "description": "¿Listo para discutir tu proyecto? Envíame un correo o conéctate conmigo en redes sociales.",
+    "description": "¿Quieres hablar de un puesto, un proyecto o una idea? Envíame un correo o conéctate conmigo en redes sociales.",
     "email": "Correo electrónico",
     "sendEmail": "Enviar un correo",
     "socialMedia": "Redes sociales",
     "info": "Info",
     "location": "Ubicación",
     "status": "Estado",
-    "training": "Formación",
+    "qualification": "Titulación",
     "quickLinks": "Enlaces rápidos",
-    "limitedAvailability": "Disponibilidad limitada",
+    "employmentStatus": "Empleado a tiempo completo",
     "position": "Puesto",
     "employer": "Empleador",
-    "freelancer": "Freelancer",
-    "trainingTitle": "IHK Fachinformatiker AE",
+    "role": "Desarrollador Full-Stack e Ingeniero de IA",
+    "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Especialización",
-    "specializationValue": "Inteligencia Artificial",
-    "legalNotice": "Mis servicios se ofrecen exclusivamente a empresarios según lo definido en el § 14 BGB."
+    "specializationValue": "Inteligencia Artificial"
   },
   "QuickActions": {
     "title": "Acciones Rápidas",
@@ -104,27 +119,66 @@
     }
   },
   "Capabilities": {
-    "title": "Lo que ofrezco",
-    "subtitle": "Tecnología práctica que resuelve problemas reales de negocio.",
+    "title": "Lo que entrego",
+    "subtitle": "Software en producción, desde el primer commit hasta funcionar ante usuarios reales.",
+    "ai": {
+      "title": "IA en producción",
+      "headline": "Funciones con LLM que van más allá de la demo",
+      "description": "RAG y chatbots que citan sus fuentes —texto y vídeo—, agentes que usan herramientas con permisos definidos, y contexto y prompts diseñados para que el modelo reciba exactamente lo que necesita. Integrado en el producto, no añadido como una ventana de chat."
+    },
     "launch": {
-      "title": "Lanzamiento",
-      "headline": "Resultados tangibles en pocas semanas",
-      "description": "Me centro en lo esencial para que tengas un producto funcional cuanto antes. Valida tu idea rápidamente sin esperar meses."
+      "title": "Entrega",
+      "headline": "Software funcional pronto, y luego iterar",
+      "description": "Reduzco una funcionalidad a lo esencial, la pongo a funcionar de principio a fin y la mejoro con el uso real en lugar de pulir presentaciones."
     },
     "scale": {
       "title": "Escalabilidad",
-      "headline": "Construido sobre una base sólida",
-      "description": "Uso sistemas en la nube fiables que se mantienen rápidos y estables aunque ganes más clientes. No hace falta reconstruir solo porque creces."
+      "headline": "Bases que aguantan cuando crece el uso",
+      "description": "Modelos de datos tipados, límites de API claros e infraestructura gestionada, para que crecer signifique ajustar, no reescribir."
     },
     "security": {
       "title": "Seguridad",
-      "headline": "Seguridad de datos bien hecha",
-      "description": "Cifrado estándar e inicios de sesión seguros para mantener tus datos (y los de tus clientes) protegidos y privados."
+      "headline": "Seguro por defecto",
+      "description": "Inicio de sesión con Microsoft Entra ID, secretos en Azure Key Vault, entradas validadas y acceso con privilegios mínimos — y en funciones de IA, límites claros sobre lo que un modelo puede ver y hacer."
     },
-    "performance": {
-      "title": "Rendimiento",
-      "headline": "Rápido y listo para buscadores",
-      "description": "Tu sitio carga al instante y está estructurado para que Google lo entienda. La velocidad significa usuarios más felices y mejor visibilidad."
+    "explorer": {
+      "title": "Explora el stack",
+      "lead": "Elige una tecnología para ver dónde la he usado: proyectos de código abierto, productos y este sitio.",
+      "groups": {
+        "ai": "IA",
+        "frontend": "Frontend",
+        "backend": "Backend y datos",
+        "tooling": "Herramientas y despliegue"
+      },
+      "usedIn": "{count, plural, one {usada en # lugar} other {usada en # lugares}}",
+      "kinds": {
+        "project": "Proyecto de código abierto",
+        "product": "Producto",
+        "site": "Este sitio"
+      },
+      "tech": {
+        "llm": "LLMs",
+        "rag": "RAG y búsqueda vectorial",
+        "agents": "Agentes de IA",
+        "mcp": "MCP",
+        "ollama": "Ollama",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "motion": "Framer Motion",
+        "i18n": "i18n",
+        "postgres": "PostgreSQL",
+        "prisma": "Prisma",
+        "auth": "Autenticación",
+        "stripe": "Stripe",
+        "docker": "Docker",
+        "vercel": "Vercel",
+        "seo": "SEO & JSON-LD",
+        "npm": "Paquetes npm",
+        "notion": "Notion API",
+        "playwright": "Playwright"
+      }
     }
   },
   "Certifications": {
@@ -225,14 +279,6 @@
       "address": "Invalidengasse 4",
       "city": "68723 Schwetzingen"
     },
-    "dispute": {
-      "title": "Resolución de disputas",
-      "euTitle": "Reparación al consumidor de la UE",
-      "euDescription": "La Comisión Europea proporciona información sobre la reparación al consumidor:",
-      "emailNote": "Puede encontrar mi dirección de correo electrónico en el aviso legal anterior.",
-      "arbitrationTitle": "Resolución de disputas del consumidor / Junta de arbitraje universal",
-      "arbitrationDescription": "No estoy dispuesto ni obligado a participar en procedimientos de resolución de disputas ante una junta de arbitraje del consumidor."
-    },
     "lastUpdated": "Última actualización:"
   },
   "Privacy": {
@@ -252,13 +298,13 @@
     },
     "overview": {
       "title": "Resumen",
-      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Algunas funciones —el asistente de IA y la auditoría de automatización— transmiten datos a proveedores externos, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
+      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Una función —el asistente de IA— transmite datos a un proveedor externo, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
       "keyPoint": "Qué significa esto en la práctica",
-      "keyPointDescription": "Puede leer este sitio sin identificarse. No hay publicidad, ni seguimiento entre sitios, ni elaboración de perfiles. Al mismo tiempo, su dirección IP y todo lo que escriba en el asistente o en las herramientas de IA son datos personales: las secciones siguientes explican exactamente qué ocurre con ellos, sobre qué base jurídica y durante cuánto tiempo se conservan."
+      "keyPointDescription": "Puede leer este sitio sin identificarse. No hay publicidad, ni seguimiento entre sitios, ni elaboración de perfiles. Al mismo tiempo, su dirección IP y todo lo que escriba en el asistente son datos personales: las secciones siguientes explican exactamente qué ocurre con ellos, sobre qué base jurídica y durante cuánto tiempo se conservan."
     },
     "hosting": {
       "title": "Alojamiento y registros del servidor",
-      "description": "Este sitio web está alojado por Vercel Inc. Al abrir una página, su navegador transmite necesariamente su dirección IP, la dirección solicitada, la página de origen, la identificación de su navegador y la hora de la solicitud. Vercel trata estos datos para servir el sitio y protegerlo frente a ataques y sobrecargas. El asistente y las herramientas de IA utilizan además su dirección IP para limitar la frecuencia de peticiones, de modo que un solo visitante no pueda agotar el servicio para los demás.",
+      "description": "Este sitio web está alojado por Vercel Inc. Al abrir una página, su navegador transmite necesariamente su dirección IP, la dirección solicitada, la página de origen, la identificación de su navegador y la hora de la solicitud. Vercel trata estos datos para servir el sitio y protegerlo frente a ataques y sobrecargas. El asistente utiliza además su dirección IP para limitar la frecuencia de peticiones, de modo que un solo visitante no pueda agotar el servicio para los demás.",
       "legalBasis": "Base jurídica: art. 6.1.f del RGPD — mi interés legítimo en ofrecer un sitio web funcional, seguro y resistente al abuso."
     },
     "cookies": {
@@ -319,17 +365,10 @@
       "aiNoticeDescription": "Está interactuando con un sistema de IA, no conmigo personalmente. Por favor, no introduzca contraseñas, datos de pago, información de salud ni ningún otro dato cuyo tratamiento por un proveedor de IA estadounidense no desee.",
       "legalBasis": "Base jurídica: art. 6.1.b y 6.1.f del RGPD para generar la respuesta que usted ha solicitado; art. 6.1.a del RGPD — su consentimiento — para almacenar la conversación."
     },
-    "aiTools": {
-      "title": "Herramientas basadas en IA",
-      "description": "Algunas herramientas de este sitio envían el texto que usted introduce a proveedores externos de IA para producir un resultado. Ese texto se trata para atender su solicitud y después no lo almaceno.",
-      "auditTitle": "Auditoría de automatización",
-      "auditDescription": "Las respuestas que facilite en la auditoría se transmiten a OpenAI para generar la evaluación.",
-      "legalBasis": "Base jurídica: art. 6.1.b del RGPD — prestación de un servicio que usted ha solicitado activamente; art. 6.1.f del RGPD para el funcionamiento seguro de la herramienta."
-    },
     "contact": {
       "title": "Contacto por correo electrónico",
       "description": "Los botones de contacto de este sitio abren su propio programa de correo con mi dirección ya indicada; al pulsarlos no se envía nada ni a mí ni a terceros. Si después me escribe, trato su dirección de correo electrónico, su nombre si lo facilita y el contenido de su mensaje para responder a su consulta.",
-      "legalBasis": "Base jurídica: art. 6.1.b del RGPD cuando su consulta se refiera a un contrato o a medidas precontractuales; en los demás casos, art. 6.1.f del RGPD — mi interés legítimo en responder a los mensajes que se me dirigen."
+      "legalBasis": "Base jurídica: art. 6.1.f del RGPD — mi interés legítimo en responder a los mensajes que se me dirigen."
     },
     "recipients": {
       "title": "Destinatarios y transferencias internacionales",
@@ -341,7 +380,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Genera las respuestas del asistente de IA y el resultado de la auditoría de automatización.",
+        "purpose": "Genera las respuestas del asistente de IA.",
         "location": "Estados Unidos."
       },
       "squarespace": {
@@ -355,7 +394,7 @@
         "location": "Irlanda; los datos también pueden tratarse en Estados Unidos."
       },
       "transfersTitle": "Transferencias a terceros países",
-      "transfersDescription": "Vercel, OpenAI y Squarespace están establecidos en Estados Unidos, y Google también puede tratar datos allí, por lo que sus datos pueden transferirse fuera de la UE/EEE. Vercel y OpenAI ofrecen cada uno un contrato de encargo del tratamiento que incorpora las cláusulas contractuales tipo de la Comisión Europea; cuando un proveedor dispone además de certificación conforme al Marco de Privacidad de Datos UE-EE. UU., dicha certificación se aplica adicionalmente. Squarespace y Google tratan los correos enviados a la dirección de contacto conforme a sus propias condiciones y políticas de privacidad. Pese a estas garantías, las autoridades estadounidenses pueden tener facultades de acceso que no se corresponden con los estándares europeos, y hacer valer allí sus derechos puede resultar más difícil que en la UE. Si prefiere evitarlo, basta con que no utilice el asistente ni las herramientas de IA —el resto del sitio funciona sin ellos— y me escriba por correo postal a la dirección indicada al principio de esta página en lugar de por correo electrónico."
+      "transfersDescription": "Vercel, OpenAI y Squarespace están establecidos en Estados Unidos, y Google también puede tratar datos allí, por lo que sus datos pueden transferirse fuera de la UE/EEE. Vercel y OpenAI ofrecen cada uno un contrato de encargo del tratamiento que incorpora las cláusulas contractuales tipo de la Comisión Europea; cuando un proveedor dispone además de certificación conforme al Marco de Privacidad de Datos UE-EE. UU., dicha certificación se aplica adicionalmente. Squarespace y Google tratan los correos enviados a la dirección de contacto conforme a sus propias condiciones y políticas de privacidad. Pese a estas garantías, las autoridades estadounidenses pueden tener facultades de acceso que no se corresponden con los estándares europeos, y hacer valer allí sus derechos puede resultar más difícil que en la UE. Si prefiere evitarlo, basta con que no utilice el asistente —el resto del sitio funciona sin él— y me escriba por correo postal a la dirección indicada al principio de esta página en lugar de por correo electrónico."
     },
     "retention": {
       "title": "Plazos de conservación",
@@ -363,7 +402,7 @@
       "serverLogs": "Los registros de alojamiento y de peticiones los conserva Vercel durante el plazo fijado en su propia política de conservación; yo no mantengo registros de acceso separados.",
       "chatSessions": "Mi servidor conserva una conversación del asistente únicamente durante el tiempo necesario para responder al mensaje. Una vez enviada la respuesta, no queda nada del intercambio en el servidor, salvo que usted haya consentido su almacenamiento.",
       "chatRecords": "Las conversaciones almacenadas en la base de datos con su consentimiento se eliminan actualmente de forma manual durante una revisión, y no según un calendario automático fijo. Puede solicitar su eliminación en cualquier momento escribiendo a la dirección indicada arriba; lo haré sin dilación indebida.",
-      "emails": "Los correos que me envíe se eliminan una vez atendida por completo su consulta, salvo que las obligaciones legales de conservación de la correspondencia comercial (§ 257 HGB, § 147 AO del Derecho alemán) exijan conservarlos durante más tiempo.",
+      "emails": "Los correos que me envíe se eliminan una vez atendida por completo su consulta.",
       "browser": "Las entradas de su propio navegador permanecen hasta que caducan, hasta que borre el almacenamiento de su navegador o hasta que utilice el botón de eliminación de esta página."
     },
     "rights": {
@@ -423,24 +462,25 @@
     "comingSoonDescription": "Las recomendaciones y reseñas de libros estarán disponibles aquí pronto."
   },
   "About": {
-    "badge": "Disponible bajo solicitud",
+    "badge": "Empleado a tiempo completo",
     "personalInfo": {
       "name": "Yazan Abo-Ayash",
-      "title": "Desarrollador web en Alemania, centrado en automatización e IA."
+      "title": "Desarrollador full-stack e ingeniero de IA en Alemania."
     },
-    "intro": "Hola, soy Yazan. Desarrollo software que le ahorra tiempo y trata sus datos con cuidado.",
+    "intro": "Hola, soy Yazan. Desarrollo aplicaciones web de principio a fin y los sistemas de IA que funcionan dentro de ellas.",
     "focusTitle": "Enfoque actual",
     "currentFocusItems": [
-      "Aplicaciones web con Next.js y TypeScript",
-      "Automatización de flujos de trabajo",
-      "Agentes y asistentes de IA y RAG",
+      "Aplicaciones web full-stack con Next.js y TypeScript",
+      "RAG y chatbots con citas de fuentes — texto y vídeo",
+      "Ingeniería de contexto y de prompts, agentes de IA y MCP",
+      "Azure AI, Microsoft Entra ID y Azure Key Vault",
       "Herramientas de código abierto"
     ],
     "story": {
       "title": "Un poco sobre mí",
       "paragraphs": [
         "Soy Fachinformatiker en desarrollo de aplicaciones con certificación IHK. Aun así, la mayor parte de lo que sé lo aprendí construyendo: este sitio web, paquetes de código abierto y herramientas que uso a diario.",
-        "Lo que más me atrae es el punto donde se cruzan el desarrollo web, la automatización y la IA: convertir un proceso que consume horas cada semana en algo que simplemente funciona. Prefiero el software honesto y bien documentado a los trucos ingeniosos."
+        "Lo que más me atrae es la ingeniería de IA: integrar modelos de lenguaje en productos reales — recuperación que responde desde las fuentes correctas, agentes que usan herramientas de forma segura y la aplicación web que los rodea. La automatización forma parte de esa caja de herramientas, pero no lo es todo. Prefiero el software honesto y bien documentado a los trucos ingeniosos."
       ]
     },
     "compliance": {
@@ -458,24 +498,14 @@
       },
       "note": "Soy desarrollador, no abogado. Desarrollo teniendo en cuenta estas normas; la evaluación jurídica corresponde a usted o a su asesor."
     },
-    "workingWithMe": {
-      "title": "Trabajar conmigo",
-      "items": [
-        "Trabaja directamente conmigo.",
-        "Acordamos el alcance por escrito antes de empezar.",
-        "Recibe actualizaciones periódicas en un lenguaje claro.",
-        "Al final, recibe el código fuente y la documentación."
-      ]
-    },
     "availability": {
-      "title": "Ahora mismo ocupado — disponible bajo solicitud",
-      "description": "Mi agenda está llena en este momento, así que solo acepto nuevos proyectos bajo solicitud. Si tiene algo en mente, escríbame y le diré con sinceridad cuándo podría empezar."
+      "title": "Empleado a tiempo completo — sin proyectos externos",
+      "description": "Trabajo a tiempo completo como desarrollador y tengo la agenda completa para el próximo año, así que no acepto proyectos freelance ni de clientes. Para cualquier otra cosa —un puesto, una pregunta sobre mi trabajo o simplemente saludar—, mi bandeja de entrada está abierta."
     },
     "explore": {
       "title": "Eche un vistazo",
       "projects": "Proyectos",
       "products": "Productos",
-      "services": "Servicios",
       "blog": "Blog"
     },
     "cta": {
@@ -574,440 +604,6 @@
       "decline": "Rechazar"
     }
   },
-  "Services": {
-    "hero": {
-      "title": "Servicios que Entregan Resultados",
-      "subtitle": "De la idea al lanzamiento — aplicaciones web, automatización y soluciones de IA para impacto empresarial real."
-    },
-    "packages": {
-      "title": "Paquetes de Servicios",
-      "cta": "Contacto",
-      "website": {
-        "name": "Sitio Web",
-        "headline": "Que le Encuentren. Que le Llamen.",
-        "description": "Un sitio rápido y moderno que funciona en cualquier dispositivo y aparece en búsquedas locales.",
-        "timeline": "1–2 semanas",
-        "features": {
-          "pages": "Hasta 3 páginas, o un sitio de una sola página con hasta 5 secciones",
-          "businessInfo": "Información esencial del negocio: sobre mí, servicios, horarios, preguntas frecuentes, contacto",
-          "contact": "Formulario de contacto",
-          "gbp": "Configuración y optimización del Perfil de Empresa en Google",
-          "legal": "Páginas legales básicas (implementación técnica)",
-          "seo": "Optimización SEO y de rendimiento, Lighthouse 90+"
-        },
-        "extras": {
-          "page": {
-            "label": "Página adicional"
-          },
-          "section": {
-            "label": "Sección adicional (sitio de una página)"
-          },
-          "secondLanguage": {
-            "label": "Segundo idioma (EN + DE), traducción incluida"
-          },
-          "staticBlog": {
-            "label": "Blog estático (sin backend)"
-          },
-          "cmsBlog": {
-            "label": "Blog editable con CMS"
-          },
-          "consentBanner": {
-            "label": "Banner de consentimiento (solo si desea herramientas de seguimiento)"
-          },
-          "textPrep": {
-            "label": "Preparación de textos a partir de su material existente, por página"
-          },
-          "managedSetup": {
-            "label": "Configuración gestionada (por plataforma)"
-          }
-        }
-      },
-      "webApplication": {
-        "name": "Aplicación Web",
-        "headline": "Software que Gestiona su Proceso.",
-        "description": "Todo lo de Sitio Web, más una base de datos y usuarios reales.",
-        "timeline": "4–6 semanas",
-        "features": {
-          "website": "Todo lo incluido en Sitio Web",
-          "database": "Diseño y configuración de base de datos (proveedor de su elección)",
-          "auth": "Registro e inicio de sesión de usuarios",
-          "adminView": "Una vista de administración (crear, leer, actualizar, eliminar)",
-          "production": "Build listo para producción"
-        },
-        "extras": {
-          "booking": {
-            "label": "Sistema de reservas/citas"
-          },
-          "roles": {
-            "label": "Roles y permisos"
-          },
-          "sso": {
-            "label": "Inicio de sesión único (SSO) con Microsoft Entra ID o Google"
-          },
-          "payments": {
-            "label": "Pagos (Stripe)"
-          },
-          "fileUpload": {
-            "label": "Carga y gestión de archivos"
-          },
-          "adminView": {
-            "label": "Vista de administración adicional"
-          },
-          "notifications": {
-            "label": "Notificaciones por correo (a través de su buzón, Brevo o Mailjet)"
-          },
-          "page": {
-            "label": "Página o vista adicional"
-          }
-        }
-      },
-      "aiIntegration": {
-        "name": "Integración de IA",
-        "headline": "Respuestas sin que Nadie las Escriba.",
-        "description": "Un chatbot o función de IA en un sitio nuevo, o añadido a uno existente.",
-        "timeline": "1–3 semanas",
-        "features": {
-          "chatbot": "Chatbot entrenado con la información de su negocio (inyección de texto, sin RAG)",
-          "knowledgeBase": "Base de conocimiento creada junto con usted",
-          "transparency": "Aviso de IA visible en la interfaz — transparencia según el Reglamento de IA de la UE",
-          "avv": "Acuerdo de tratamiento de datos (AVV) cuando se procesan datos personales",
-          "integration": "Integración en un sitio existente o en un paquete de los anteriores"
-        },
-        "extras": {
-          "rag": {
-            "label": "Sistema RAG con pgvector — respuestas a partir de sus documentos (PDF, Notion, Docs)"
-          },
-          "existingApp": {
-            "label": "Función de IA en una app existente (resumir, clasificar, generar)"
-          },
-          "agent": {
-            "label": "Agente de IA que ejecuta acciones en sus herramientas (tool calling, MCP)"
-          },
-          "voice": {
-            "label": "Entrada y salida de voz — voz a texto (STT) y texto a voz (TTS)"
-          },
-          "cloudSetup": {
-            "label": "Configuración de proveedor cloud (Azure AI / Azure OpenAI UE, OpenAI, Anthropic Claude, Mistral)"
-          },
-          "localModel": {
-            "label": "Modelo local en su propio servidor — nada sale de su infraestructura"
-          },
-          "knowledgeSource": {
-            "label": "Fuente de conocimiento adicional"
-          },
-          "retraining": {
-            "label": "Reentrenamiento tras la aceptación"
-          }
-        },
-        "scopeNote": {
-          "label": "Dónde puedo añadirlo",
-          "text": "Sitios construidos con Next.js, React, o un sitio estático — compatibles directamente. Cualquier otra cosa (WordPress, PHP, Shopify, .NET, Wix) solo es posible como widget embebido, definido como proyecto A Medida tras una revisión."
-        }
-      },
-      "automation": {
-        "name": "Automatización e Integración",
-        "headline": "Conecte las Herramientas que Ya Paga.",
-        "description": "Yo soy el implementador técnico. Usted aporta las licencias, cuentas y acceso de administrador.",
-        "timeline": "3 días – 4 semanas",
-        "features": {
-          "review": "Revisión del proceso a automatizar",
-          "connection": "Conexión de 2 herramientas (correo, calendario, formularios, hojas de cálculo, CRM)",
-          "triggers": "Configuración de disparadores y lógica",
-          "handover": "Pruebas y sesión de entrega",
-          "avv": "AVV cuando se procesan datos personales"
-        },
-        "extras": {
-          "workflow": {
-            "label": "Cada flujo de trabajo adicional"
-          },
-          "tool": {
-            "label": "Cada herramienta adicional conectada"
-          },
-          "n8n": {
-            "label": "Configuración de n8n autoalojado en su servidor"
-          },
-          "agentic": {
-            "label": "Flujo agéntico — un paso de IA que decide y actúa dentro de la automatización"
-          },
-          "devTools": {
-            "label": "Automatización de herramientas de desarrollo — Jira, Confluence, Bitbucket, GitHub"
-          },
-          "customApi": {
-            "label": "Integración de API personalizada (sin conector prediseñado)"
-          }
-        },
-        "scopeNote": {
-          "label": "Lo que no hago",
-          "text": "Administración corporativa de Microsoft 365 o Google Workspace — configuración de tenant, arquitectura de Teams/SharePoint a nivel de empresa, gestión de licencias. Traiga a su administrador de TI; yo construyo la automatización sobre esa base."
-        }
-      },
-      "custom": {
-        "name": "A Medida",
-        "headline": "Sus Requisitos, Bien Definidos.",
-        "description": "Para todo lo que no encaje en los paquetes anteriores.",
-        "timeline": "Flexible",
-        "features": {
-          "workshop": "Taller de requisitos",
-          "roadmap": "Hoja de ruta del proyecto a medida con hitos",
-          "milestones": "Entrega y facturación por hitos",
-          "agnostic": "Agnóstico a la tecnología — su stack, sus proveedores",
-          "handover": "Entrega completa del código fuente",
-          "support": "2 semanas de corrección de errores gratuita tras el lanzamiento"
-        }
-      },
-      "notes": {
-        "title": "Información importante",
-        "included": "Todos los paquetes incluyen diseño responsivo, un build de SEO y rendimiento (Lighthouse 90+), 2 rondas de revisión y documentación de entrega completa.",
-        "runningCosts": "Los costes recurrentes — hosting, base de datos, uso de IA y dominio — se los facturan directamente sus proveedores elegidos, en sus propias cuentas.",
-        "rights": "Los derechos de uso completos sobre el trabajo entregado se le transfieren con el pago final.",
-        "warranty": "Se incluyen dos semanas de corrección de errores gratuita tras el lanzamiento. Sus derechos legales de garantía no se ven afectados.",
-        "payment": "Las condiciones de pago se recogen en su propuesta por escrito; las facturas vencen a 14 días neto.",
-        "rates": "El trabajo adicional fuera del alcance acordado, incluidas las rondas de revisión extra, siempre se acuerda con usted antes de empezar. Respuesta en 5 días laborables, aceptación en 10.",
-        "notIncluded": "No incluido en ningún paquete: contenido — textos, imágenes, logotipos — y licencias de terceros, material de stock o fuentes de pago. Usted los aporta."
-      },
-      "extras": {
-        "seeAll": "Extras disponibles",
-        "dialogTitle": "{package} — extras",
-        "dialogDescription": "Todos los complementos disponibles para este paquete.",
-        "contactNote": "Contácteme y definiremos estos complementos según su proyecto."
-      }
-    },
-    "serviceArea": {
-      "title": "Tu desarrollador Full-Stack en la región metropolitana de Rhein-Neckar",
-      "subtitle": "Con sede en Schwetzingen, Alemania — trabajo presencialmente con clientes en Mannheim, Heidelberg, Ludwigshafen y la región, y de forma remota con clientes de cualquier lugar.",
-      "citiesLabel": "Cobertura presencial en:",
-      "cities": [
-        "Schwetzingen",
-        "Mannheim",
-        "Heidelberg",
-        "Ludwigshafen am Rhein",
-        "Speyer",
-        "Walldorf"
-      ],
-      "note": "Las reuniones presenciales están disponibles bajo petición — la colaboración diaria es remota y asíncrona, para una respuesta rápida sin tiempos de viaje."
-    },
-    "process": {
-      "title": "Cómo Funciona",
-      "subtitle": "Un proceso claro y predecible desde la primera llamada hasta el lanzamiento.",
-      "discovery": {
-        "title": "Llamada de Descubrimiento",
-        "description": "Hablo contigo de tus objetivos, desafíos y plazos. Sin compromiso, solo claridad."
-      },
-      "strategy": {
-        "title": "Estrategia y Alcance",
-        "description": "Recibes una propuesta clara por escrito con alcance y cronograma. Sin sorpresas."
-      },
-      "development": {
-        "title": "Desarrollo",
-        "description": "Actualizaciones regulares y demos. Siempre sabrás cómo van las cosas."
-      },
-      "support": {
-        "title": "Lanzamiento y Soporte",
-        "description": "Entrega sin problemas con documentación y capacitación. El soporte y el mantenimiento continuos se contratan por separado."
-      },
-      "acceptance": {
-        "title": "Aceptación y Entrega",
-        "description": "Usted revisa el resultado frente al alcance acordado y yo emito el acta de aceptación firmada. Con la aceptación comienza el plazo de garantía y vence el pago final."
-      }
-    },
-    "cta": {
-      "title": "¿Listo para Empezar?",
-      "subtitle": "Envíame un correo breve sobre tu proyecto. Sin compromiso: si encaja, concertamos una llamada de descubrimiento gratuita de 15 minutos.",
-      "button": "Contacto",
-      "viewAllLink": "Ver Todos los Servicios y Paquetes"
-    },
-    "stack": {
-      "title": "Su Stack, Sus Cuentas",
-      "subtitle": "Usted elige los proveedores y es dueño de cada cuenta — trabajo con un conjunto reducido de plataformas que puedo respaldar correctamente.",
-      "categories": {
-        "frontend": {
-          "label": "Frontend",
-          "options": "Next.js · React · build estático"
-        },
-        "database": {
-          "label": "Base de datos",
-          "options": "Supabase · Neon · PostgreSQL (incl. pgvector) con Prisma o Drizzle ORM"
-        },
-        "auth": {
-          "label": "Auth",
-          "options": "Better Auth · Auth.js · Clerk"
-        },
-        "ai": {
-          "label": "Proveedor de IA",
-          "options": "Azure AI (incl. Azure OpenAI, región UE) · OpenAI · Anthropic Claude · Mistral · modelo local en su servidor"
-        },
-        "automation": {
-          "label": "Automatización y agentes",
-          "options": "n8n (cloud o autoalojado) · automatizaciones a medida con Node.js / Next.js · agentes de IA con tool calling · servidores MCP"
-        },
-        "integrations": {
-          "label": "Integraciones",
-          "options": "Google Workspace · Microsoft Entra ID · GitHub (apps y MCP) · Stripe · Jira · Confluence · Bitbucket"
-        },
-        "hosting": {
-          "label": "Hosting",
-          "options": "Vercel · Netlify · Cloudflare Pages · Hetzner · su propio servidor"
-        },
-        "email": {
-          "label": "Envío de correo",
-          "options": "Su buzón existente vía SMTP (recomendado) · Brevo · Mailjet · Resend"
-        }
-      },
-      "codeOnly": {
-        "title": "Solo Código (por defecto)",
-        "description": "Recibe el código fuente completo, instrucciones de build y documentación de entrega. Usted despliega."
-      },
-      "managedSetup": {
-        "title": "Configuración Gestionada (opcional)",
-        "description": "Creo la cuenta a su nombre, la configuro, despliego y entrego todas las credenciales en la aceptación. Tras la entrega no tengo acceso ni responsabilidad continua."
-      },
-      "emailNote": "Los formularios de contacto y correos de notificación necesitan una vía de envío — normalmente su buzón de negocio existente vía SMTP, sin coste adicional. Brevo, Mailjet o Resend están disponibles si necesita otra cosa."
-    },
-    "legalNotice": "Mis servicios se ofrecen exclusivamente a empresarios según lo definido en el § 14 BGB (código civil alemán)."
-  },
-  "Usecases": {
-    "title": "Casos de Uso",
-    "subtitle": "Explora mi colección de proyectos listos para producción. Cada uno muestra prácticas de desarrollo modernas y aplicaciones del mundo real.",
-    "techStackLabel": "Stack Tecnológico",
-    "useCasesLabel": "Casos de Uso",
-    "liveDemoButton": "Demo en Vivo",
-    "viewCodeButton": "Ver Código",
-    "liveToolsShowcase": {
-      "description": "Descubra con la calculadora de ROI interactiva cuánto podría ahorrar su negocio automatizando un flujo de trabajo manual:",
-      "rioButton": "Calculadora de ROI"
-    },
-    "projects": {
-      "project-1": {
-        "title": "Automatización de Voz a Notion",
-        "description": "Transforma notas de voz y grabaciones de reuniones en páginas de Notion estructuradas con transcripciones, resúmenes y tareas. Automatiza el trabajo post-reunión en menos de 30 segundos.",
-        "techStack": "Procesamiento de voz IA, Análisis de sentimiento, API de Notion, Next.js",
-        "implementationAreas": "Operaciones de agencia, Gestión de clientes, Soporte ejecutivo"
-      },
-      "project-2": {
-        "title": "Calculadora de ROI de Automatización",
-        "description": "Una herramienta interactiva diseñada para ayudar a las empresas a cuantificar el impacto financiero de automatizar flujos de trabajo manuales. Calcula los costes anuales, los ahorros proyectados y el plazo de amortización en semanas, proporcionando una visualización clara del análisis coste-beneficio.",
-        "description2": "Calcule ahorros y ROI de automatización.",
-        "techStack": "React, TypeScript, Tailwind CSS",
-        "implementationAreas": "Análisis financiero, Automatización de procesos de negocio, Optimización de costes"
-      },
-      "project-4": {
-        "title": "Auditoría de Preparación para la Automatización con IA",
-        "description": "Responde 8 preguntas sobre tu negocio y recibe una puntuación de preparación personalizada con recomendaciones generadas por IA para los 3 flujos de trabajo que deberías automatizar primero.",
-        "techStack": "Next.js, OpenAI, TypeScript",
-        "implementationAreas": "Automatización de procesos, Generación de leads, Consultoría"
-      }
-    },
-    "comingSoon": "Más casos de uso próximamente..."
-  },
-  "LiveTools": {
-    "rio": {
-      "title": "Calculadora de ROI de Automatización",
-      "description": "Vea exactamente cuánto dinero le cuestan las tareas manuales a su negocio.",
-      "auditPromo": "¿No sabes qué automatizar primero? Haz la auditoría de preparación gratuita →",
-      "inputs": {
-        "hoursPerWeek": "Tiempo dedicado a la tarea (Horas/Semana)",
-        "hourlyRate": "Coste por hora del empleado",
-        "hourlyRateHint": "Incluye salario + gastos generales (software, oficina, etc.)",
-        "automationCost": "Inversión estimada en automatización"
-      },
-      "results": {
-        "burnRateLabel": "\"Tasa de quema\" anual",
-        "burnRateDesc": "Pierde esta cantidad cada año haciéndolo manualmente.",
-        "savingsLabel": "Ahorro proyectado del 1er año",
-        "roiTimelineLabel": "Cronograma del ROI:",
-        "roiTimelineText": "La automatización se amortiza en solo <bold>{{weeks}} semanas</bold>.",
-        "notProfitableTitle": "Aún no es rentable",
-        "notProfitableDesc": "Según estos números, el trabajo manual podría ser más barato por ahora a menos que escale."
-      }
-    },
-    "audit": {
-      "title": "Auditoría de Preparación para la Automatización con IA",
-      "description": "Responde 8 preguntas rápidas y recibe una puntuación personalizada con recomendaciones a medida.",
-      "step": "Paso {current} de {total}",
-      "question": "Pregunta",
-      "next": "Siguiente",
-      "back": "Atrás",
-      "submit": "Obtener mi puntuación",
-      "loading": "Analizando tus respuestas...",
-      "scoreLabel": "Tu puntuación de preparación para la automatización",
-      "scoreBucket": {
-        "high": "Alta preparación",
-        "medium": "Buena base",
-        "low": "Fase inicial"
-      },
-      "scoreBucketDesc": {
-        "high": "Hay victorias rápidas disponibles — estás listo para automatizar.",
-        "medium": "Las automatizaciones enfocadas generarán un fuerte ROI para tu negocio.",
-        "low": "Empieza con 1–2 automatizaciones específicas para el mejor impacto inicial."
-      },
-      "topAutomations": "Automatizaciones recomendadas",
-      "timeSaved": "Tiempo ahorrado:",
-      "tool": "Herramienta:",
-      "retake": "Repetir auditoría",
-      "remaining": "{remaining} análisis disponibles hoy",
-      "limitReached": "Has usado todos tus análisis gratuitos por hoy. ¡Vuelve mañana!",
-      "errorGeneric": "Algo salió mal. Por favor, inténtalo de nuevo.",
-      "errorDisabled": "La herramienta de auditoría no está disponible temporalmente.",
-      "questions": {
-        "q1": {
-          "label": "¿Cuántas horas por semana dedica tu equipo a tareas manuales repetitivas?",
-          "a": "Menos de 2 horas",
-          "b": "2–5 horas",
-          "c": "5–10 horas",
-          "d": "Más de 10 horas"
-        },
-        "q2": {
-          "label": "¿Cuál es el tamaño de tu equipo?",
-          "a": "Solo",
-          "b": "2–5 personas",
-          "c": "6–20 personas",
-          "d": "Más de 20 personas"
-        },
-        "q3": {
-          "label": "¿Cuál es tu mayor cuello de botella operativo?",
-          "a": "Entrada de datos e informes",
-          "b": "Correo electrónico y comunicaciones",
-          "c": "Aprobaciones y flujos de trabajo",
-          "d": "Programación y coordinación"
-        },
-        "q4": {
-          "label": "¿Qué herramientas usa actualmente tu equipo?",
-          "a": "Principalmente hojas de cálculo y correo electrónico",
-          "b": "Algunas aplicaciones SaaS",
-          "c": "Múltiples aplicaciones SaaS conectadas",
-          "d": "Ya tenemos algo de automatización"
-        },
-        "q5": {
-          "label": "¿Con qué frecuencia ocurren errores por trabajo manual?",
-          "a": "Raramente",
-          "b": "Ocasionalmente",
-          "c": "Con frecuencia",
-          "d": "Muy a menudo — es un problema real"
-        },
-        "q6": {
-          "label": "¿En qué sector trabajas?",
-          "a": "Consultoría y agencias",
-          "b": "E-commerce y retail",
-          "c": "Tecnología y software",
-          "d": "Otro"
-        },
-        "q7": {
-          "label": "¿Cuál es tu presupuesto mensual para herramientas de automatización?",
-          "a": "Aún no estoy seguro",
-          "b": "Menos de 500 €/mes",
-          "c": "500–2.000 €/mes",
-          "d": "2.000 €+/mes"
-        },
-        "q8": {
-          "label": "¿Cuál es tu objetivo principal con la automatización?",
-          "a": "Ahorrar tiempo",
-          "b": "Reducir errores",
-          "c": "Escalar sin contratar",
-          "d": "Reducir costos operativos"
-        }
-      }
-    }
-  },
   "localeDetect": {
     "title": "Idioma detectado",
     "browserLanguage": "Idioma del navegador",
@@ -1043,11 +639,62 @@
       "speed-insight": "Rendimiento",
       "collaboration": "Colaboración",
       "projects": "Proyectos",
+      "products": "Productos",
       "cert": "Certificaciones",
-      "services": "Servicios",
-      "use-cases": "Casos de Uso",
       "github": "GitHub",
       "capabilities": "Capacidades"
+    }
+  },
+  "Search": {
+    "title": "Buscar en el sitio",
+    "description": "Ve a una página, una sección de la página de inicio, un proyecto, una entrada del blog o un ajuste.",
+    "placeholder": "Ir a una página, proyecto o ajuste",
+    "trigger": "Buscar",
+    "triggerLabel": "Buscar e ir ({shortcut})",
+    "groups": {
+      "pages": "Páginas",
+      "sections": "Secciones de inicio",
+      "work": "Proyectos y productos",
+      "blog": "Entradas del blog",
+      "settings": "Ajustes"
+    },
+    "product": "Producto",
+    "themeLight": "Cambiar a modo claro",
+    "themeDark": "Cambiar a modo oscuro",
+    "language": "Idioma",
+    "current": "Actual",
+    "empty": "Nada coincide con «{query}».",
+    "searchingBlog": "Buscando en el blog…",
+    "hintMove": "Mover",
+    "hintOpen": "Abrir",
+    "hintClose": "Cerrar"
+  },
+  "Footer": {
+    "label": "Pie de página",
+    "navigation": "Navegación",
+    "developers": "Para desarrolladores",
+    "elsewhere": "En otros sitios",
+    "legal": "Legal",
+    "poweredBy": "Funciona con",
+    "rights": "Todos los derechos reservados.",
+    "backToTop": "Volver arriba"
+  },
+  "Loading": {
+    "root": {
+      "title": "Cargando portafolio…",
+      "description": "Espera mientras se prepara la página"
+    },
+    "legals": {
+      "title": "Cargando páginas legales…",
+      "description": "Preparando el contenido legal"
+    },
+    "media": {
+      "title": "Cargando contenido…",
+      "description": "Preparando la página"
+    },
+    "admin": {
+      "title": "Cargando panel de administración…",
+      "description": "Preparando la interfaz de administración"
     }
   }
 }
