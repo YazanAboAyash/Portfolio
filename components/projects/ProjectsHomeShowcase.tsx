@@ -93,7 +93,6 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                   cardSurface,
                   "grid grid-cols-1 gap-x-6 gap-y-4 p-5 sm:p-6 md:grid-cols-12 md:items-baseline",
                   project.id === activeId && "lg:bg-surface-2",
-                  open && "bg-surface-2",
                 )}
               >
                 {/* Title, category, featured; on phones a summary and the toggle */}

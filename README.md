@@ -6,7 +6,9 @@
 
 Modern, secure, high‑performance developer portfolio built with Next.js 16, TypeScript, a strongly hardened edge-first architecture & multi‑locale SEO‑optimized delivery.
 
-<img width="400" height="175" alt="Portfolio screenshot" src="public/assets/image.png" />
+<img width="1400" height="250" alt="Portfolio screenshot" src="public/assets/image.png" />
+
+
 
 **Live:** https://www.coldbydefault.com
 **Docs:** https://docs.coldbydefault.com/

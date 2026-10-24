@@ -97,7 +97,7 @@ const SpeedInsight = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-76 md:min-h-133 lg:min-h-87" />
+      <LoadingSkeleton className="frame min-h-78 md:min-h-133 lg:min-h-87" />
     ),
     ssr: false,
   },

@@ -40,6 +40,13 @@ function getRingColor(score: number): string {
   return "stroke-red-500";
 }
 
+/** Map score to the strip's status bar; the number itself stays in full ink for contrast */
+function getBarColor(score: number): string {
+  if (score >= SCORE_THRESHOLDS.good) return "bg-green-500";
+  if (score >= SCORE_THRESHOLDS.average) return "bg-yellow-500";
+  return "bg-red-500";
+}
+
 /** Single score ring gauge */
 function ScoreRing({ category }: { category: SpeedInsightScore }) {
   const offset = getOffset(category.score);
@@ -190,7 +197,7 @@ export default function SpeedInsight({ className }: { className?: string }) {
               {/* Phones: one strip of the mobile scores, no tabs, rings or refresh */}
               {!error && (
                 <div className="flex flex-col gap-2 md:hidden">
-                  <p className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                  <p className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] text-foreground">
                     <Smartphone className="h-3.5 w-3.5" aria-hidden="true" />
                     {t("mobile")}
                   </p>
@@ -203,14 +210,16 @@ export default function SpeedInsight({ className }: { className?: string }) {
                           key={cat.label}
                           className="flex flex-col items-center gap-1 bg-background px-1 py-3 text-center"
                         >
-                          <span
-                            className={cn(
-                              "text-2xl font-bold tabular-nums",
-                              cat.color,
-                            )}
-                          >
+                          <span className="text-2xl font-bold tabular-nums">
                             {cat.score}
                           </span>
+                          <span
+                            aria-hidden="true"
+                            className={cn(
+                              "h-1 w-8 rounded-full",
+                              getBarColor(cat.score),
+                            )}
+                          />
                           <span className="text-xs leading-tight text-foreground">
                             {cat.label}
                           </span>
