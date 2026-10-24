@@ -1,6 +1,6 @@
 <div align="center">
 
-# ColdByDefault Portfolio · V7.0.2
+# ColdByDefault Portfolio · V7.0.3
 
 ---
 
