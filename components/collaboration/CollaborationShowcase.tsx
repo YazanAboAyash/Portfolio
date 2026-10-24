@@ -70,9 +70,12 @@ export function CollaborationShowcase({
                 {tProject("title")}
               </h3>
 
-              {/* Description */}
+              {/* Description: one line on phones, the full story from sm */}
               <p className="max-w-2xl text-base leading-relaxed text-foreground md:text-lg">
-                {tProject("description")}
+                <span className="sm:hidden">{tProject("summary")}</span>
+                <span className="hidden sm:inline">
+                  {tProject("description")}
+                </span>
               </p>
 
               {/* Tech */}

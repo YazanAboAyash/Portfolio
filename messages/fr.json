@@ -256,6 +256,7 @@
     "project": {
       "title": "Ville de Büttelborn — Avatar IA pour le maire",
       "description": "Membre de l'équipe Botgenossen ayant construit l'avatar IA interactif multilingue pour le Bürgermeister de Büttelborn, une ville en Allemagne. L'avatar s'entretient avec les citoyens dans plusieurs langues, répond aux questions sur les services municipaux et représente numériquement le maire sur le site officiel de la ville.",
+      "summary": "Avatar IA multilingue sur le site officiel de la ville.",
       "role": "Développement d'Avatar IA",
       "company": "Botgenossen",
       "live": "En direct"
