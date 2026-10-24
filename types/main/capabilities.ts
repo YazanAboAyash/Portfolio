@@ -18,7 +18,7 @@ export interface Capability {
   readonly headlineKey: string;
   /** Translation key for description */
   readonly descriptionKey: string;
-  /** Tech stack icon identifiers (react-icons/si) - subtle indicators */
+  /** Tech stack icon identifiers (react-icons/si or VscAzure) - subtle indicators */
   readonly techIcons?: readonly string[];
 }
 

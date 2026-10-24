@@ -56,13 +56,13 @@
     "info": "Info",
     "location": "Localisation",
     "status": "Statut",
-    "training": "Formation",
+    "qualification": "Diplôme",
     "quickLinks": "Liens rapides",
     "employmentStatus": "Salarié à temps plein",
     "position": "Poste",
     "employer": "Employeur",
     "role": "Développeur Full-Stack & Ingénieur IA",
-    "trainingTitle": "IHK Fachinformatiker AE",
+    "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Spécialisation",
     "specializationValue": "Intelligence Artificielle"
   },
@@ -104,7 +104,7 @@
     "ai": {
       "title": "IA en production",
       "headline": "Des fonctionnalités LLM qui tiennent au-delà de la démo",
-      "description": "Une recherche qui répond à partir des bonnes sources, des agents qui utilisent des outils avec des permissions définies, et des serveurs MCP qui relient les modèles à de vrais systèmes — intégrés au produit, pas greffés comme une fenêtre de chat."
+      "description": "Du RAG et des chatbots qui citent leurs sources — texte et vidéo —, des agents qui utilisent des outils avec des permissions définies, et un contexte et des prompts conçus pour que le modèle reçoive exactement ce dont il a besoin. Intégrés au produit, pas greffés comme une fenêtre de chat."
     },
     "launch": {
       "title": "Livraison",
@@ -119,7 +119,7 @@
     "security": {
       "title": "Sécurité",
       "headline": "Sûr par défaut",
-      "description": "Entrées validées, authentification solide, requêtes paramétrées et moindre privilège — et pour les fonctionnalités IA, des garde-fous sur ce qu'un modèle peut voir et faire."
+      "description": "Connexion via Microsoft Entra ID, secrets dans Azure Key Vault, entrées validées et moindre privilège — et pour les fonctionnalités IA, des garde-fous sur ce qu'un modèle peut voir et faire."
     }
   },
   "Certifications": {
@@ -412,8 +412,9 @@
     "focusTitle": "Focus actuel",
     "currentFocusItems": [
       "Applications web full-stack avec Next.js et TypeScript",
-      "Applications LLM, RAG et agents IA",
-      "Serveurs MCP et outils IA",
+      "RAG et chatbots avec citation des sources — texte et vidéo",
+      "Ingénierie du contexte et des prompts, agents IA et MCP",
+      "Azure AI, Microsoft Entra ID et Azure Key Vault",
       "Outils open source"
     ],
     "story": {

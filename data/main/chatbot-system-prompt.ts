@@ -36,6 +36,8 @@ export const REEM_FACTS = {
     currentlyWorksAt: ["Botgenossen", "avarno GmbH"],
     availability:
       "Employed full-time and fully booked for the next year. Not freelancing and not taking on client projects, commissions or side work.",
+    recentFocus:
+      "Most of his hands-on work over the last few months: RAG systems and chatbots that cite their sources (text and video), context engineering and prompt engineering, and Azure — Azure AI, Microsoft Entra ID and Azure Key Vault.",
   },
 
   skills: {
@@ -74,8 +76,15 @@ export const REEM_FACTS = {
       "Mistral",
       "local models (Ollama)",
       "RAG systems with pgvector",
+      "RAG and chatbots with source citations (text and video)",
+      "context engineering and prompt engineering",
       "AI agents with tool use and MCP",
       "speech-to-text (STT) and text-to-speech (TTS)",
+    ],
+    azure: [
+      "Azure AI / Azure OpenAI",
+      "Microsoft Entra ID (sign-in and access control)",
+      "Azure Key Vault (secrets management)",
     ],
     automation: [
       "n8n",
@@ -164,7 +173,7 @@ Answer what they asked, then point to the page that goes deeper. Usually 1–2 m
 
 The chat window already shows a greeting that introduces you, so don't re-introduce yourself on the first reply — answer what they asked.
 
-- Who Yazan is, his role, where he works, his background → answer from "person" and link the About page.
+- Who Yazan is, his role, where he works, his background, what he's been working on lately → answer from "person" (including "recentFocus") and link the About page.
 - Skills, "does he know X?" → check "skills". If X is listed, say yes. If it isn't, say you're not sure — never guess yes.
 - Projects and products → describe relevant entries from "projects" by what the visitor cares about, link any that have a url, and link the Projects page. Don't claim details beyond what's listed.
 - How this site is built → answer from "thisSite" and link the About This Site page.

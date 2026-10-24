@@ -56,13 +56,13 @@
     "info": "Info",
     "location": "Location",
     "status": "Status",
-    "training": "Training",
+    "qualification": "Qualification",
     "quickLinks": "Quick Links",
     "employmentStatus": "Employed full-time",
     "position": "Position",
     "employer": "Employer",
     "role": "Full-Stack Developer & AI Engineer",
-    "trainingTitle": "IHK Fachinformatiker AE",
+    "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Specialization",
     "specializationValue": "Artificial Intelligence"
   },
@@ -104,7 +104,7 @@
     "ai": {
       "title": "AI in Production",
       "headline": "LLM features that hold up beyond the demo",
-      "description": "Retrieval that answers from the right sources, agents that use tools within defined permissions, and MCP servers that connect models to real systems — built into the product, not bolted on as a chat window."
+      "description": "RAG and chatbots that cite their sources — text and video — agents that use tools within defined permissions, and engineered context and prompts so the model sees exactly what it needs. Built into the product, not bolted on as a chat window."
     },
     "launch": {
       "title": "Ship",
@@ -119,7 +119,7 @@
     "security": {
       "title": "Security",
       "headline": "Safe by default",
-      "description": "Validated input, proper auth, parameterised queries and least-privilege access — and for AI features, clear limits on what a model can see and do."
+      "description": "Sign-in with Microsoft Entra ID, secrets in Azure Key Vault, validated input and least-privilege access — and for AI features, clear limits on what a model can see and do."
     }
   },
   "Certifications": {
@@ -412,8 +412,9 @@
     "focusTitle": "Current focus",
     "currentFocusItems": [
       "Full-stack web apps with Next.js & TypeScript",
-      "LLM applications, RAG & AI agents",
-      "MCP servers and AI tooling",
+      "RAG & chatbots with source citations — text and video",
+      "Context & prompt engineering, AI agents & MCP",
+      "Azure AI, Microsoft Entra ID & Azure Key Vault",
       "Open-source tooling"
     ],
     "story": {

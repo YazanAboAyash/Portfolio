@@ -192,9 +192,9 @@ export default function ContactSheet({
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">{t("training")}:</span>
+                <span className="text-muted-foreground">{t("qualification")}:</span>
                 <Badge variant="secondary" className="text-xs">
-                  {t("trainingTitle")}
+                  {t("qualificationTitle")}
                 </Badge>
               </div>
               <div className="flex items-center justify-end">

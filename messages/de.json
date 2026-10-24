@@ -56,13 +56,13 @@
     "info": "Info",
     "location": "Standort",
     "status": "Status",
-    "training": "Ausbildung",
+    "qualification": "Abschluss",
     "quickLinks": "Schnelllinks",
     "employmentStatus": "In Vollzeit angestellt",
     "position": "Position",
     "employer": "Arbeitgeber",
     "role": "Full-Stack-Entwickler & AI Engineer",
-    "trainingTitle": "IHK Fachinformatiker AE",
+    "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Einsatzgebiet",
     "specializationValue": "Künstliche Intelligenz"
   },
@@ -104,7 +104,7 @@
     "ai": {
       "title": "KI in Produktion",
       "headline": "LLM-Features, die über die Demo hinaus tragen",
-      "description": "Retrieval, das aus den richtigen Quellen antwortet, Agenten, die Tools mit klar definierten Rechten nutzen, und MCP-Server, die Modelle mit echten Systemen verbinden — ins Produkt integriert, nicht als Chatfenster angehängt."
+      "description": "RAG und Chatbots, die ihre Quellen belegen — Text und Video —, Agenten, die Tools mit klar definierten Rechten nutzen, und gezielt gestalteter Kontext und Prompts, damit das Modell genau das bekommt, was es braucht. Ins Produkt integriert, nicht als Chatfenster angehängt."
     },
     "launch": {
       "title": "Umsetzung",
@@ -119,7 +119,7 @@
     "security": {
       "title": "Sicherheit",
       "headline": "Sicher von Grund auf",
-      "description": "Validierte Eingaben, sauberes Auth, parametrisierte Abfragen und minimale Rechte — und bei KI-Features klare Grenzen dafür, was ein Modell sehen und tun darf."
+      "description": "Anmeldung über Microsoft Entra ID, Secrets in Azure Key Vault, validierte Eingaben und minimale Rechte — und bei KI-Features klare Grenzen dafür, was ein Modell sehen und tun darf."
     }
   },
   "Certifications": {
@@ -412,8 +412,9 @@
     "focusTitle": "Aktueller Fokus",
     "currentFocusItems": [
       "Full-Stack-Web-Apps mit Next.js & TypeScript",
-      "LLM-Anwendungen, RAG & KI-Agenten",
-      "MCP-Server und KI-Tools",
+      "RAG & Chatbots mit Quellenangaben — Text und Video",
+      "Context- & Prompt-Engineering, KI-Agenten & MCP",
+      "Azure AI, Microsoft Entra ID & Azure Key Vault",
       "Open-Source-Tools"
     ],
     "story": {

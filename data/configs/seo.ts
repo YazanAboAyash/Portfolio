@@ -58,6 +58,9 @@ const COMMON_CONCEPTS_EN = [
   "LLM Applications",
   "RAG Systems",
   "AI Agents",
+  "Prompt Engineering",
+  "Context Engineering",
+  "Microsoft Azure",
 ];
 
 const COMMON_CONCEPTS_DE = [
@@ -71,6 +74,9 @@ const COMMON_CONCEPTS_DE = [
   "LLM-Anwendungen",
   "RAG Systeme",
   "KI-Agenten",
+  "Prompt Engineering",
+  "Context Engineering",
+  "Microsoft Azure",
 ];
 
 // Regional keywords so people searching for developers around Schwetzingen /
@@ -123,6 +129,11 @@ export const BASE_CONFIG = {
       "AI Agents",
       "Anthropic Claude API",
       "Azure AI",
+      "Microsoft Entra ID",
+      "Azure Key Vault",
+      "Context Engineering",
+      "Prompt Engineering",
+      "RAG with Source Citations",
       "pgvector",
       "Drizzle ORM",
       "Better Auth",

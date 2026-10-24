@@ -107,10 +107,11 @@ export const aboutData: AboutData = {
     },
   ],
   currentFocus: [
+    "RAG systems and chatbots with source citations — text and video",
+    "Context engineering and prompt engineering",
+    "Azure AI, Microsoft Entra ID and Azure Key Vault",
     "Full-stack web applications with Next.js and TypeScript",
-    "LLM applications, RAG systems and AI agents",
-    "MCP servers and AI developer tooling",
-    "Workflow automation where it removes real manual work",
+    "AI agents and MCP servers",
   ],
   goals: [
     "Build AI features that hold up in production, not just in demos",

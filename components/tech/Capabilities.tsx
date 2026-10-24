@@ -29,6 +29,7 @@ import {
   SiTypescript,
   SiVercel,
 } from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
 import { useTranslations } from "next-intl";
 
 // Icon mapping for dynamic rendering (lucide icons)
@@ -39,7 +40,7 @@ const iconMap: Record<string, React.ElementType> = {
   Shield,
 };
 
-// Tech icon mapping (react-icons/si)
+// Tech icon mapping (react-icons/si, plus VscAzure — simple-icons has no Azure mark)
 const techIconMap: Record<string, React.ElementType> = {
   SiAnthropic,
   SiDocker,
@@ -51,6 +52,7 @@ const techIconMap: Record<string, React.ElementType> = {
   SiReact,
   SiTypescript,
   SiVercel,
+  VscAzure,
 };
 
 /**

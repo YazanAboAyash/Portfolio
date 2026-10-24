@@ -56,13 +56,13 @@
     "info": "Info",
     "location": "Plats",
     "status": "Status",
-    "training": "Utbildning",
+    "qualification": "Examen",
     "quickLinks": "Snabblänkar",
     "employmentStatus": "Heltidsanställd",
     "position": "Position",
     "employer": "Arbetsgivare",
     "role": "Fullstack-utvecklare & AI-ingenjör",
-    "trainingTitle": "IHK Fachinformatiker AE",
+    "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Inriktning",
     "specializationValue": "Artificiell Intelligens"
   },
@@ -104,7 +104,7 @@
     "ai": {
       "title": "AI i produktion",
       "headline": "LLM-funktioner som håller längre än demon",
-      "description": "Sökning som svarar utifrån rätt källor, agenter som använder verktyg med definierade behörigheter och MCP-servrar som kopplar modeller till riktiga system – inbyggt i produkten, inte påklistrat som ett chattfönster."
+      "description": "RAG och chattbottar som anger sina källor – text och video –, agenter som använder verktyg med definierade behörigheter, och kontext och promptar utformade så att modellen får exakt det den behöver. Inbyggt i produkten, inte påklistrat som ett chattfönster."
     },
     "launch": {
       "title": "Leverans",
@@ -119,7 +119,7 @@
     "security": {
       "title": "Säkerhet",
       "headline": "Säkert från början",
-      "description": "Validerad indata, korrekt autentisering, parametriserade frågor och minsta möjliga behörighet – och för AI-funktioner tydliga gränser för vad en modell får se och göra."
+      "description": "Inloggning med Microsoft Entra ID, hemligheter i Azure Key Vault, validerad indata och minsta möjliga behörighet – och för AI-funktioner tydliga gränser för vad en modell får se och göra."
     }
   },
   "Certifications": {
@@ -412,8 +412,9 @@
     "focusTitle": "Aktuellt fokus",
     "currentFocusItems": [
       "Fullstack-webbappar med Next.js och TypeScript",
-      "LLM-applikationer, RAG och AI-agenter",
-      "MCP-servrar och AI-verktyg",
+      "RAG och chattbottar med källhänvisningar – text och video",
+      "Kontext- och promptdesign, AI-agenter och MCP",
+      "Azure AI, Microsoft Entra ID och Azure Key Vault",
       "Verktyg med öppen källkod"
     ],
     "story": {

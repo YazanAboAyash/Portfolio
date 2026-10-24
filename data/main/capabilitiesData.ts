@@ -20,6 +20,7 @@ export const capabilities: readonly Capability[] = [
     descriptionKey: "ai.description",
     techIcons: [
       "SiAnthropic",
+      "VscAzure",
       "SiOllama",
       "SiModelcontextprotocol",
       "SiPostgresql",
@@ -47,7 +48,7 @@ export const capabilities: readonly Capability[] = [
     titleKey: "security.title",
     headlineKey: "security.headline",
     descriptionKey: "security.description",
-    techIcons: ["SiTypescript", "SiPrisma", "SiPostgresql"],
+    techIcons: ["VscAzure", "SiTypescript", "SiPrisma", "SiPostgresql"],
   },
 ] as const;
 

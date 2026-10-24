@@ -1,32 +1,31 @@
 {
   "meta": {
     "version": "5.3.8",
-    "lastUpdated": "2026-01-07",
+    "lastUpdated": "2026-10-24",
     "author": "Yazan Abo-Ayash",
     "description": "Comprehensive about data structure for portfolio website"
   },
   "profile": {
     "name": "Yazan Abo-Ayash",
-    "title": "Web apps, workflow automation, and AI integrations — built end to end by one developer",
+    "title": "Full-Stack Developer & AI Engineer — web applications and the AI inside them",
     "currentRole": {
-      "position": "Freelance Developer",
-      "company": "",
-      "duration": "2024 - Present",
+      "position": "Full-Stack Developer & AI Engineer",
+      "company": "Botgenossen GmbH, Avarno GmbH",
       "responsibilities": [
-        "Web MVPs scoped for 4-8 week delivery",
-        "Automations designed to remove hours of manual work each week",
-        "AI assistants and RAG systems built on real retrieval architecture",
-        "Direct collaboration — no account manager, no handoff to a junior developer",
-        "Source code and documentation handed over to the client outright"
+        "RAG systems and chatbots that cite their sources — text and video",
+        "Context engineering and prompt engineering for LLM features",
+        "Azure AI, Microsoft Entra ID and Azure Key Vault",
+        "Full-stack web applications with Next.js and TypeScript",
+        "AI agents with tool calling and MCP servers"
       ]
     },
     "experience": "3+ years",
     "location": "Germany",
-    "availability": "Available for projects",
+    "availability": "Employed full-time — not taking on freelance or client work",
     "education": {
       "degree": "Fachinformatiker Anwendungsentwicklung",
-      "type": "Ausbildung",
-      "status": "In Progress",
+      "type": "IHK certification",
+      "status": "Completed",
       "focus": "Application Development"
     },
     "previousExperience": [
@@ -128,6 +127,10 @@
           "description": "Retrieval-Augmented Generation systems for knowledge bases and documentation"
         },
         {
+          "name": "Source Citations",
+          "description": "RAG answers and chatbot replies that cite their sources, for both text and video content"
+        },
+        {
           "name": "Vector Databases",
           "level": "Basic",
           "yearsOfExperience": 0.5,
@@ -153,14 +156,21 @@
           "yearsOfExperience": 0.5,
           "description": "Implementing MCP servers for AI tool integration, including GitHub MCP"
         }
+      ],
+      "engineering": [
+        {
+          "name": "Context Engineering",
+          "description": "Deciding what goes into the model context — retrieval, history, tools and instructions — so answers stay grounded"
+        },
+        {
+          "name": "Prompt Engineering",
+          "description": "Designing and iterating system and task prompts for reliable, testable model behaviour"
+        }
       ]
     },
     "integrations": [
       {
         "name": "Google Workspace"
-      },
-      {
-        "name": "Microsoft Entra ID"
       },
       {
         "name": "GitHub Apps & MCP"
@@ -210,38 +220,47 @@
       {
         "name": "n8n"
       }
+    ],
+    "azure": [
+      {
+        "name": "Azure AI / Azure OpenAI",
+        "description": "LLM deployments in the EU region"
+      },
+      {
+        "name": "Microsoft Entra ID",
+        "description": "Sign-in and access control for internal applications"
+      },
+      {
+        "name": "Azure Key Vault",
+        "description": "Central secrets management for applications and AI keys"
+      }
     ]
   },
   "philosophy": {
     "coreBeliefs": [
-      "Clear communication and transparent timelines",
-      "Deliver exactly what was promised - no technical jargon, no scope creep",
-      "Code should be clean, maintainable, and built to scale",
-      "Every solution is built with business goals in mind, not just technical requirements"
+      "Honest, well-documented software over clever tricks",
+      "Code should be clean, maintainable, and built to last",
+      "Privacy and regulation considered from the start, especially for AI",
+      "AI features belong in the product, not bolted on as a chat window"
     ],
-    "approach": "Reliable development with regular updates so you always know where your project stands",
-    "focus": "Fast delivery, workflow automation, and AI integration that saves time"
+    "approach": "Ship working software early, then improve it from real use",
+    "focus": "Full-stack web applications and production AI: cited RAG, context engineering, agents and MCP"
   },
   "currentFocus": [
-    "Web MVPs delivered in 4-8 weeks",
-    "Workflow automation that saves hours weekly",
-    "AI assistants for internal processes (conversational AI, RAG systems)",
-    "AI workflow automations and autonomous agents",
-    "Guaranteed 90+ performance scores",
-    "Clear communication & transparent process",
-    "Long-term support & maintenance"
+    "RAG systems and chatbots with source citations (text and video)",
+    "Context engineering and prompt engineering",
+    "Azure AI, Microsoft Entra ID and Azure Key Vault",
+    "Full-stack web applications with Next.js and TypeScript",
+    "AI agents and MCP servers"
   ],
   "goals": {
     "shortTerm": [
-      "Master AI conversational systems and RAG implementations",
-      "Build more workflow automation solutions",
-      "Complete Fachinformatiker Anwendungsentwicklung Ausbildung"
+      "Go deeper on retrieval quality, citations and evaluation",
+      "Grow Azure experience across AI, identity and secrets"
     ],
     "longTerm": [
       "Become a full-stack expert specializing in AI-powered web applications",
-      "Help 100+ businesses automate their workflows and save time",
-      "Build a sustainable freelance business focused on quality and client success",
-      "Contribute significantly to open-source AI and automation tools"
+      "Contribute significantly to open-source AI tooling"
     ]
   },
   "interests": [
