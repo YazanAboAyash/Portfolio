@@ -1,16 +1,11 @@
 {
   "Home": {
-    "WebsitePerformance": "Website Performance",
     "companiesContributing": "Working with",
     "speedInsight": {
       "title": "Live PageSpeed Insights",
       "subtitle": "Real-time Google Lighthouse scores for this website",
       "desktop": "Desktop",
       "mobile": "Mobile",
-      "performance": "Performance",
-      "accessibility": "Accessibility",
-      "bestPractices": "Best Practices",
-      "seo": "SEO",
       "loading": "Analyzing website performance...",
       "error": "Unable to load PageSpeed data",
       "retry": "Retry",
@@ -27,7 +22,6 @@
     "contact": "Contact",
     "learnMoreAboutMe": "Learn More About Me",
     "aboutShort": "About me",
-    "moreAboutMe": "More about me on",
     "askMcp": "Ask this site through MCP",
     "portraitAltLight": "Yazan Abo-Ayash in a dark jacket and turtleneck against a white wall",
     "portraitAltDark": "Yazan Abo-Ayash in a dark jacket against a black background",
@@ -79,7 +73,6 @@
     "location": "Location",
     "status": "Status",
     "qualification": "Qualification",
-    "quickLinks": "Quick Links",
     "employmentStatus": "Employed full-time",
     "position": "Position",
     "employer": "Employer",
@@ -87,38 +80,6 @@
     "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Specialization",
     "specializationValue": "Artificial Intelligence"
-  },
-  "QuickActions": {
-    "title": "Quick Actions",
-    "allMedia": "All Media",
-    "projects": "Projects",
-    "latestPosts": "Latest Posts",
-    "aboutMe": "About Me",
-    "portfolioDocs": "Portfolio Docs",
-    "library": "Library",
-    "latestBlog": "Latest Blog"
-  },
-  "Technologies": {
-    "title": "Services & Technologies",
-    "manyMoreTechnologies": "...always learning and growing",
-    "categories": {
-      "aiAutomation": "AI & Automation",
-      "webDevelopment": "Web & Backend MVPs",
-      "enablingSkills": "Enabling Skills"
-    },
-    "descriptions": {
-      "aiAutomationDesc": "Internal AI Assistants, RAG Systems, Workflow Automation",
-      "webDevelopmentDesc": "Pragmatic MVPs, APIs, Full-Stack Web Applications",
-      "enablingSkillsDesc": "DevOps, Deployment, Documentation & Handover"
-    },
-    "subCategories": {
-      "aiAgents": "AI Assistants",
-      "workflowAutomation": "Workflow Automation",
-      "frontend": "Frontend",
-      "backend": "Backend & Database",
-      "devops": "DevOps & Deployment",
-      "docsDesign": "Documentation & Design"
-    }
   },
   "Capabilities": {
     "title": "What I Deliver",
@@ -185,8 +146,6 @@
   },
   "Certifications": {
     "title": "My Certifications",
-    "issuedBy": "Issued by:",
-    "date": "Date:",
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (German Chamber of Commerce and Industry)"
     },
@@ -237,7 +196,6 @@
     "viewAllProjects": "View all projects",
     "allCount": "All {count} projects",
     "toggleDetails": "Details",
-    "cloneRepository": "Clone Repository",
     "code": "Code",
     "npmPackage": "npm",
     "liveDemo": "Live Demo",
@@ -290,7 +248,6 @@
     },
     "contact": {
       "title": "Contact",
-      "phone": "Phone:",
       "email": "Email:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
@@ -449,39 +406,6 @@
     },
     "lastUpdated": "Last reviewed:"
   },
-  "MediaDashboard": {
-    "title": "Media Dashboard",
-    "subtitle": "A central hub for navigating all content and resources. Explore blogs, documentation, projects, and more.",
-    "cards": {
-      "blogs": {
-        "title": "Blogs",
-        "description": "Read my latest articles and technical insights"
-      },
-      "about": {
-        "title": "About Me",
-        "description": "Learn more about my background and experience"
-      },
-      "projects": {
-        "title": "Projects",
-        "description": "Explore my development projects and contributions"
-      },
-      "library": {
-        "title": "Library",
-        "description": "A personal collection of books, movies, and other media"
-      },
-      "contact": {
-        "title": "Contact",
-        "description": "Get in touch for collaborations"
-      }
-    },
-    "comingSoon": "Soon"
-  },
-  "Library": {
-    "title": "Library",
-    "subtitle": "A personal collection of books, movies, and other media that have inspired and influenced my journey.",
-    "comingSoon": "Coming Soon",
-    "comingSoonDescription": "Book recommendations and reviews will be available here soon."
-  },
   "About": {
     "badge": "Employed full-time",
     "personalInfo": {
@@ -545,41 +469,6 @@
     "draft": "Draft",
     "minutesToRead": "{count} min read",
     "featured": "Featured"
-  },
-  "PortfolioAbout": {
-    "title": "About This Portfolio",
-    "description": "This is not just a portfolio - this is my developer journey visualized into a full-stack application. It's not meant to be 'finished' because it evolves with me, growing and changing as I advance in my career. Built with enterprise-grade architecture and cutting-edge technologies, it will always be updated and will always grow.",
-    "performanceBadge": "95+ Google Lighthouse Score",
-    "techHighlights": "Built With Modern Technologies",
-    "readMore": "Learn About Portfolio Architecture",
-    "featuresTitle": "Portfolio Features",
-    "actionsTitle": "Portfolio Actions",
-    "features": {
-      "techStack": {
-        "title": "Next.js & React 19"
-      },
-      "cleanArchitecture": {
-        "title": "TypeScript Architecture"
-      },
-      "database": {
-        "title": "PostgreSQL Database"
-      },
-      "aiChatbot": {
-        "title": "AI Assistant"
-      },
-      "performance": {
-        "title": "95+ Lighthouse Score"
-      },
-      "mainFeatures": {
-        "title": "Blog & Media Gallery"
-      },
-      "techFeatures": {
-        "title": "GitHub Integration"
-      },
-      "localization": {
-        "title": "5 Languages Support"
-      }
-    }
   },
   "ChatBot": {
     "name": "Reem",

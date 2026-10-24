@@ -1,16 +1,11 @@
 {
   "Home": {
-    "WebsitePerformance": "Performance du site web",
     "companiesContributing": "Je travaille avec",
     "speedInsight": {
       "title": "PageSpeed Insights en direct",
       "subtitle": "Scores Google Lighthouse en temps réel pour ce site web",
       "desktop": "Bureau",
       "mobile": "Mobile",
-      "performance": "Performance",
-      "accessibility": "Accessibilité",
-      "bestPractices": "Bonnes pratiques",
-      "seo": "SEO",
       "loading": "Analyse des performances du site web...",
       "error": "Impossible de charger les données PageSpeed",
       "retry": "Réessayer",
@@ -27,7 +22,6 @@
     "contact": "Contact",
     "learnMoreAboutMe": "En savoir plus sur moi",
     "aboutShort": "À propos",
-    "moreAboutMe": "Plus sur moi sur",
     "askMcp": "Interroger ce site via MCP",
     "portraitAltLight": "Yazan Abo-Ayash en veste sombre et col roulé devant un mur blanc",
     "portraitAltDark": "Yazan Abo-Ayash en veste sombre sur fond noir",
@@ -79,7 +73,6 @@
     "location": "Localisation",
     "status": "Statut",
     "qualification": "Diplôme",
-    "quickLinks": "Liens rapides",
     "employmentStatus": "Salarié à temps plein",
     "position": "Poste",
     "employer": "Employeur",
@@ -87,38 +80,6 @@
     "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Spécialisation",
     "specializationValue": "Intelligence Artificielle"
-  },
-  "QuickActions": {
-    "title": "Actions Rapides",
-    "allMedia": "Tous les Médias",
-    "projects": "Projets",
-    "latestPosts": "Derniers Articles",
-    "aboutMe": "À Propos de Moi",
-    "portfolioDocs": "Documentation Portfolio",
-    "library": "Bibliothèque",
-    "latestBlog": "Dernier Blog"
-  },
-  "Technologies": {
-    "title": "Services & Technologies",
-    "manyMoreTechnologies": "...toujours en apprentissage et en croissance",
-    "categories": {
-      "aiAutomation": "IA & Automatisation",
-      "webDevelopment": "Web & Backend MVPs",
-      "enablingSkills": "Compétences de Support"
-    },
-    "descriptions": {
-      "aiAutomationDesc": "Assistants IA Internes, Systèmes RAG, Automatisation de Flux",
-      "webDevelopmentDesc": "MVPs Pragmatiques, APIs, Applications Web Full-Stack",
-      "enablingSkillsDesc": "DevOps, Déploiement, Documentation & Transfert"
-    },
-    "subCategories": {
-      "aiAgents": "Assistants IA",
-      "workflowAutomation": "Automatisation de Flux",
-      "frontend": "Frontend",
-      "backend": "Backend & Base de Données",
-      "devops": "DevOps & Déploiement",
-      "docsDesign": "Documentation & Design"
-    }
   },
   "Capabilities": {
     "title": "Ce que je livre",
@@ -185,8 +146,6 @@
   },
   "Certifications": {
     "title": "Mes Certifications",
-    "issuedBy": "Délivré par :",
-    "date": "Date :",
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Chambre de Commerce et d'Industrie Allemande)"
     },
@@ -237,7 +196,6 @@
     "viewAllProjects": "Voir tous les projets",
     "allCount": "Les {count} projets",
     "toggleDetails": "Détails",
-    "cloneRepository": "Cloner le dépôt",
     "code": "Code",
     "npmPackage": "npm",
     "liveDemo": "Démo en direct",
@@ -290,7 +248,6 @@
     },
     "contact": {
       "title": "Contact",
-      "phone": "Téléphone :",
       "email": "E-mail :",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
@@ -449,39 +406,6 @@
     },
     "lastUpdated": "Dernière vérification :"
   },
-  "MediaDashboard": {
-    "title": "Tableau de Bord Média",
-    "subtitle": "Un hub central pour naviguer dans tous les contenus et ressources. Explorez les blogs, la documentation, les projets et plus encore.",
-    "cards": {
-      "blogs": {
-        "title": "Blogs",
-        "description": "Lisez mes derniers articles et perspectives techniques"
-      },
-      "about": {
-        "title": "À propos de moi",
-        "description": "Apprenez-en plus sur mon parcours et mon expérience"
-      },
-      "projects": {
-        "title": "Projets",
-        "description": "Explorez mes projets de développement et contributions"
-      },
-      "library": {
-        "title": "Bibliothèque",
-        "description": "Une collection personnelle de livres, de films et d'autres médias"
-      },
-      "contact": {
-        "title": "Contact",
-        "description": "Contactez-moi pour des collaborations"
-      }
-    },
-    "comingSoon": "Bientôt"
-  },
-  "Library": {
-    "title": "Bibliothèque",
-    "subtitle": "Une collection personnelle de livres, de films et d'autres médias qui ont inspiré et influencé mon parcours.",
-    "comingSoon": "Bientôt disponible",
-    "comingSoonDescription": "Les recommandations et critiques de livres seront bientôt disponibles ici."
-  },
   "About": {
     "badge": "Salarié à temps plein",
     "personalInfo": {
@@ -545,41 +469,6 @@
     "draft": "Brouillon",
     "minutesToRead": "{count} min de lecture",
     "featured": "À la une"
-  },
-  "PortfolioAbout": {
-    "title": "À Propos de Ce Portfolio",
-    "description": "Un portfolio de développeur moderne et haute performance présentant des capacités full-stack avec une architecture de niveau entreprise, des standards d'accessibilité et des technologies de pointe.",
-    "performanceBadge": "95+ Score Google Lighthouse",
-    "techHighlights": "Construit Avec Des Technologies Modernes",
-    "readMore": "Découvrir l'architecture du portfolio",
-    "featuresTitle": "Fonctionnalités du Portfolio",
-    "actionsTitle": "Actions du Portfolio",
-    "features": {
-      "techStack": {
-        "title": "Next.js & React 19"
-      },
-      "cleanArchitecture": {
-        "title": "Architecture TypeScript"
-      },
-      "database": {
-        "title": "Base de Données PostgreSQL"
-      },
-      "aiChatbot": {
-        "title": "Assistant IA"
-      },
-      "performance": {
-        "title": "95+ Lighthouse Score"
-      },
-      "mainFeatures": {
-        "title": "Blog & Galerie Média"
-      },
-      "techFeatures": {
-        "title": "Intégration GitHub"
-      },
-      "localization": {
-        "title": "Support 5 Langues"
-      }
-    }
   },
   "ChatBot": {
     "name": "Reem",

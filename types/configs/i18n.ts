@@ -69,7 +69,6 @@ export interface Translations {
     fullStackDeveloper: string;
     description: string;
     learnMoreAboutMe: string;
-    moreAboutMe: string;
   };
   Navigation: {
     home: string;

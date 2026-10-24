@@ -1,16 +1,11 @@
 {
   "Home": {
-    "WebsitePerformance": "Webbplatsens prestanda",
     "companiesContributing": "Arbetar med",
     "speedInsight": {
       "title": "Live PageSpeed-resultat",
       "subtitle": "Google Lighthouse-poäng i realtid för denna webbplats",
       "desktop": "Dator",
       "mobile": "Mobil",
-      "performance": "Prestanda",
-      "accessibility": "Tillgänglighet",
-      "bestPractices": "Bästa praxis",
-      "seo": "SEO",
       "loading": "Analyserar webbplatsens prestanda...",
       "error": "Kunde inte ladda PageSpeed-data",
       "retry": "Försök igen",
@@ -27,7 +22,6 @@
     "contact": "Kontakt",
     "learnMoreAboutMe": "Läs mer om mig",
     "aboutShort": "Om mig",
-    "moreAboutMe": "Mer om mig på",
     "askMcp": "Fråga den här webbplatsen via MCP",
     "portraitAltLight": "Yazan Abo-Ayash i mörk kavaj och polotröja mot en vit vägg",
     "portraitAltDark": "Yazan Abo-Ayash i mörk kavaj mot svart bakgrund",
@@ -79,7 +73,6 @@
     "location": "Plats",
     "status": "Status",
     "qualification": "Examen",
-    "quickLinks": "Snabblänkar",
     "employmentStatus": "Heltidsanställd",
     "position": "Position",
     "employer": "Arbetsgivare",
@@ -87,38 +80,6 @@
     "qualificationTitle": "IHK Fachinformatiker AE",
     "specialization": "Inriktning",
     "specializationValue": "Artificiell Intelligens"
-  },
-  "QuickActions": {
-    "title": "Snabbåtgärder",
-    "allMedia": "Alla Media",
-    "projects": "Projekt",
-    "latestPosts": "Senaste Inlägg",
-    "aboutMe": "Om Mig",
-    "portfolioDocs": "Portfolio Dokumentation",
-    "library": "Bibliotek",
-    "latestBlog": "Senaste Blogg"
-  },
-  "Technologies": {
-    "title": "Tjänster & Teknologier",
-    "manyMoreTechnologies": "...alltid lärande och växande",
-    "categories": {
-      "aiAutomation": "AI & Automatisering",
-      "webDevelopment": "Webb & Backend MVPs",
-      "enablingSkills": "Stödjande Färdigheter"
-    },
-    "descriptions": {
-      "aiAutomationDesc": "Interna AI-assistenter, RAG-system, Arbetsflödesautomatisering",
-      "webDevelopmentDesc": "Pragmatiska MVPs, APIs, Full-Stack Webbapplikationer",
-      "enablingSkillsDesc": "DevOps, Driftsättning, Dokumentation & Överlämning"
-    },
-    "subCategories": {
-      "aiAgents": "AI-assistenter",
-      "workflowAutomation": "Arbetsflödesautomatisering",
-      "frontend": "Frontend",
-      "backend": "Backend & Databas",
-      "devops": "DevOps & Driftsättning",
-      "docsDesign": "Dokumentation & Design"
-    }
   },
   "Capabilities": {
     "title": "Vad jag levererar",
@@ -185,8 +146,6 @@
   },
   "Certifications": {
     "title": "Mina certifieringar",
-    "issuedBy": "Utfärdat av:",
-    "date": "Datum:",
     "issuers": {
       "ihkRheinNeckar": "IHK Rhein-Neckar (Tysk Handels- och Industrikammare)"
     },
@@ -237,7 +196,6 @@
     "viewAllProjects": "Visa alla projekt",
     "allCount": "Alla {count} projekt",
     "toggleDetails": "Detaljer",
-    "cloneRepository": "Klona repository",
     "code": "Kod",
     "npmPackage": "npm",
     "liveDemo": "Live-demo",
@@ -290,7 +248,6 @@
     },
     "contact": {
       "title": "Kontakt",
-      "phone": "Telefon:",
       "email": "E-post:",
       "emailValue": "contact@yazan-abo-ayash.de"
     },
@@ -449,39 +406,6 @@
     },
     "lastUpdated": "Senast granskad:"
   },
-  "MediaDashboard": {
-    "title": "Media Dashboard",
-    "subtitle": "En central hub för att navigera genom allt innehåll och resurser. Utforska bloggar, dokumentation, projekt och mer.",
-    "cards": {
-      "blogs": {
-        "title": "Bloggar",
-        "description": "Läs mina senaste artiklar och tekniska insikter"
-      },
-      "about": {
-        "title": "Om mig",
-        "description": "Lär dig mer om min bakgrund och erfarenhet"
-      },
-      "projects": {
-        "title": "Projekt",
-        "description": "Utforska mina utvecklingsprojekt och bidrag"
-      },
-      "library": {
-        "title": "Bibliotek",
-        "description": "En personlig samling av böcker, filmer och annan media"
-      },
-      "contact": {
-        "title": "Kontakt",
-        "description": "Hör av dig för samarbeten"
-      }
-    },
-    "comingSoon": "Snart"
-  },
-  "Library": {
-    "title": "Bibliotek",
-    "subtitle": "En personlig samling av böcker, filmer och annan media som har inspirerat och påverkat min resa.",
-    "comingSoon": "Kommer snart",
-    "comingSoonDescription": "Bokrekommendationer och recensioner kommer att finnas tillgängliga här snart."
-  },
   "About": {
     "badge": "Heltidsanställd",
     "personalInfo": {
@@ -545,41 +469,6 @@
     "draft": "Utkast",
     "minutesToRead": "{count} min läsning",
     "featured": "Utvalt"
-  },
-  "PortfolioAbout": {
-    "title": "Om Denna Portfolio",
-    "description": "En modern, högpresterande utvecklarportfolio som visar full-stack-kapacitet med företagsarkitektur, tillgänglighetsstandarder och toppmoderna teknologier.",
-    "performanceBadge": "95+ Google Lighthouse Poäng",
-    "techHighlights": "Byggd Med Moderna Teknologier",
-    "readMore": "Lär dig om portfolions arkitektur",
-    "featuresTitle": "Portfolio-funktioner",
-    "actionsTitle": "Portfolio-åtgärder",
-    "features": {
-      "techStack": {
-        "title": "Next.js & React 19"
-      },
-      "cleanArchitecture": {
-        "title": "TypeScript Arkitektur"
-      },
-      "database": {
-        "title": "PostgreSQL Databas"
-      },
-      "aiChatbot": {
-        "title": "AI-Assistent"
-      },
-      "performance": {
-        "title": "95+ Lighthouse Score"
-      },
-      "mainFeatures": {
-        "title": "Blog & Media Galleri"
-      },
-      "techFeatures": {
-        "title": "GitHub Integration"
-      },
-      "localization": {
-        "title": "5 Språk Support"
-      }
-    }
   },
   "ChatBot": {
     "name": "Reem",
