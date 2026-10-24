@@ -6,7 +6,7 @@
 
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -55,12 +55,40 @@ export default function SectionRail() {
   const t = useTranslations("SectionRail");
   const reduceMotion = useReducedMotion();
   const [activeId, setActiveId] = useState<string>(SECTION_IDS[0]);
+  // A jump asked for before its section mounted: a tick clicked early, or a
+  // `/#products` link landing on a fresh page. The probe makes it on mount.
+  const pendingRef = useRef<string | null>(null);
+
+  const jumpTo = useCallback(
+    (target: HTMLElement) => {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    },
+    [reduceMotion],
+  );
+
+  useEffect(() => {
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    if ((SECTION_IDS as readonly string[]).includes(hash)) {
+      pendingRef.current = hash;
+    }
+  }, []);
 
   useEffect(() => {
     let frame = 0;
 
     const probe = () => {
       frame = 0;
+
+      const pending =
+        pendingRef.current && document.getElementById(pendingRef.current);
+      if (pending) {
+        pendingRef.current = null;
+        jumpTo(pending);
+      }
+
       const line = window.innerHeight * PROBE_RATIO;
 
       // Last section past the probe line wins, so overlapping sections resolve
@@ -86,27 +114,34 @@ export default function SectionRail() {
       if (!frame) frame = requestAnimationFrame(probe);
     };
 
+    // Lazy sections mounting and images settling move every boundary without
+    // a scroll event, so the page growing or shrinking re-probes too.
+    const observer = new ResizeObserver(schedule);
+    observer.observe(document.body);
+
     probe();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
+      observer.disconnect();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
     };
-  }, []);
+  }, [jumpTo]);
 
   const scrollToSection = useCallback(
     (id: string) => {
       const target = document.getElementById(id);
-      if (!target) return;
+      if (!target) {
+        pendingRef.current = id;
+        return;
+      }
 
-      window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET,
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
+      pendingRef.current = null;
+      jumpTo(target);
     },
-    [reduceMotion],
+    [jumpTo],
   );
 
   return (

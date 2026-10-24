@@ -416,10 +416,15 @@ export default function GitHubAskConsole() {
           </div>
         </div>
 
-        {/* The panel takes the height of its result and glides between them. */}
+        {/*
+          The panel takes the height of its result and glides between them.
+          Nothing animates until the first measurement: going from "auto" to
+          px makes framer-motion measure the layout, and it restores the scroll
+          position afterwards, which cancels any smooth scroll in progress.
+        */}
         <m.div
           initial={false}
-          animate={{ height: bodyHeight ?? "auto" }}
+          {...(bodyHeight !== null && { animate: { height: bodyHeight } })}
           transition={
             reduceMotion ? { duration: 0 } : { duration: 0.35, ease: "easeOut" }
           }
