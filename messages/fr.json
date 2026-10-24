@@ -257,6 +257,7 @@
       "title": "Ville de Büttelborn — Avatar IA pour le maire",
       "description": "Membre de l'équipe Botgenossen ayant construit l'avatar IA interactif multilingue pour le Bürgermeister de Büttelborn, une ville en Allemagne. L'avatar s'entretient avec les citoyens dans plusieurs langues, répond aux questions sur les services municipaux et représente numériquement le maire sur le site officiel de la ville.",
       "summary": "Avatar IA multilingue sur le site officiel de la ville.",
+      "visitSite": "Visiter le site de la ville de Büttelborn",
       "role": "Développement d'Avatar IA",
       "company": "Botgenossen",
       "live": "En direct"
@@ -268,6 +269,10 @@
     "descriptions": {
       "princeps": "Un espace de travail IA privé qui fonctionne comme un secrétariat exécutif personnel, apportant la préparation, la mémoire, la coordination et le suivi structuré qu'offrirait un chef de cabinet. Chaque fonctionnalité écrit dans une base PostgreSQL unique propre à l'utilisateur, de sorte que l'assistant IA reste contextuel sur l'ensemble de l'espace de travail, pas seulement sur l'historique de discussion.",
       "logix": "Enregistrement du temps de travail auto-hébergé et mono-locataire pour le marché allemand (ArbZG), avec conformité légale évaluée chaque jour."
+    },
+    "summaries": {
+      "princeps": "Un espace IA privé qui fait office de secrétariat exécutif.",
+      "logix": "Suivi du temps de travail auto-hébergé, conforme à l'ArbZG."
     }
   },
   "Impressum": {

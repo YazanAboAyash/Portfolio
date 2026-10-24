@@ -116,7 +116,7 @@ export function CollaborationShowcase({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-11 items-center gap-2 bg-primary px-5 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-                  aria-label="Visit Büttleborn city website"
+                  aria-label={tProject("visitSite")}
                 >
                   buettelborn.de
                   <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />

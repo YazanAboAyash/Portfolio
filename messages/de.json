@@ -254,9 +254,10 @@
     "subtitle": "Kooperieren. Kollaborieren. Liefern.",
     "badge": "Teamprojekt",
     "project": {
-      "title": "Stadt Büttleborn — KI-Avatar für den Bürgermeister",
-      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttleborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
+      "title": "Stadt Büttelborn — KI-Avatar für den Bürgermeister",
+      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttelborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
       "summary": "Mehrsprachiger KI-Avatar auf der offiziellen Stadtwebsite.",
+      "visitSite": "Website der Stadt Büttelborn besuchen",
       "role": "KI-Avatar-Entwicklung",
       "company": "Botgenossen",
       "live": "Live"
@@ -268,6 +269,10 @@
     "descriptions": {
       "princeps": "Ein privater KI-Arbeitsbereich, der als persönliches Exekutivsekretariat fungiert — mit der Vorbereitung, dem Gedächtnis, der Koordination und der strukturierten Nachverfolgung, die sonst ein Chief of Staff liefert. Jede Funktion schreibt in eine einzige benutzerbezogene PostgreSQL-Datenbank, sodass der KI-Assistent über den gesamten Arbeitsbereich hinweg kontextbewusst bleibt — nicht nur innerhalb des Chatverlaufs.",
       "logix": "Selbst gehostete, single-tenant Arbeitszeiterfassung für den deutschen Markt mit täglich geprüfter gesetzlicher Compliance (ArbZG)."
+    },
+    "summaries": {
+      "princeps": "Privater KI-Arbeitsbereich als persönliches Sekretariat.",
+      "logix": "Selbst gehostete Arbeitszeiterfassung nach ArbZG."
     }
   },
   "Impressum": {

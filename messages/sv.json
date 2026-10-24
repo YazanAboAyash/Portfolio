@@ -257,6 +257,7 @@
       "title": "Staden Büttelborn — AI-avatar för borgmästaren",
       "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
       "summary": "Flerspråkig AI-avatar på stadens officiella webbplats.",
+      "visitSite": "Besök Büttelborns officiella webbplats",
       "role": "AI-avatarutveckling",
       "company": "Botgenossen",
       "live": "Live"
@@ -268,6 +269,10 @@
     "descriptions": {
       "princeps": "En privat AI-arbetsyta som fungerar som ett personligt exekutivt sekretariat — med den förberedelse, det minne, den koordinering och den strukturerade uppföljning som en stabschef annars ger. Varje funktion skriver till en enda användarbunden PostgreSQL-databas, så AI-assistenten förblir kontextmedveten i hela arbetsytan, inte bara i chatthistoriken.",
       "logix": "Självhostad, single-tenant arbetstidsregistrering för den tyska marknaden (ArbZG), med lagstadgad efterlevnad som utvärderas dagligen."
+    },
+    "summaries": {
+      "princeps": "Privat AI-arbetsyta som fungerar som ett eget sekretariat.",
+      "logix": "Självhostad arbetstidsregistrering enligt tysk lag (ArbZG)."
     }
   },
   "Impressum": {
