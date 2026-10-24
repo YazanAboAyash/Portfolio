@@ -12,6 +12,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Mail } from "lucide-react";
 import { contactEmailLink } from "@/data/main/contact";
 import { usePreviewDescription } from "@/hooks/use-locale-preview";
+import { HeroNow } from "./HeroNow";
 
 /** Both portraits stay in the DOM; the `dark` class picks one, so there is no flash on load. */
 const PORTRAIT_SIZES = "(min-width: 768px) 50vw, 100vw";
@@ -75,6 +76,10 @@ function Hero() {
               />
             </a>
           </div>
+        </div>
+
+        <div className="mt-10">
+          <HeroNow />
         </div>
 
         {/* Scroll Indicator */}

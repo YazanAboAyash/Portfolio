@@ -28,7 +28,21 @@
     "moreAboutMe": "Mer om mig på",
     "askMcp": "Fråga den här webbplatsen via MCP",
     "portraitAltLight": "Yazan Abo-Ayash i mörk kavaj och polotröja mot en vit vägg",
-    "portraitAltDark": "Yazan Abo-Ayash i mörk kavaj mot svart bakgrund"
+    "portraitAltDark": "Yazan Abo-Ayash i mörk kavaj mot svart bakgrund",
+    "now": {
+      "label": "Just nu",
+      "focus": "Fokus",
+      "nextFocus": "Visa nästa fokus",
+      "latestPost": "Senaste inlägg",
+      "allPosts": "Till bloggen",
+      "site": "Den här sidan",
+      "siteLink": "Så är den byggd",
+      "focusItems": [
+        "RAG-system med källhänvisningar",
+        "AI-agenter och MCP-servrar",
+        "Azure AI och Entra ID"
+      ]
+    }
   },
   "Navigation": {
     "home": "Hem",

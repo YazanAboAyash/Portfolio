@@ -28,7 +28,21 @@
     "moreAboutMe": "More about me on",
     "askMcp": "Ask this site through MCP",
     "portraitAltLight": "Yazan Abo-Ayash in a dark jacket and turtleneck against a white wall",
-    "portraitAltDark": "Yazan Abo-Ayash in a dark jacket against a black background"
+    "portraitAltDark": "Yazan Abo-Ayash in a dark jacket against a black background",
+    "now": {
+      "label": "Now",
+      "focus": "Focused on",
+      "nextFocus": "Show next focus",
+      "latestPost": "Latest post",
+      "allPosts": "Read the blog",
+      "site": "This site",
+      "siteLink": "How it's built",
+      "focusItems": [
+        "RAG systems with source citations",
+        "AI agents and MCP servers",
+        "Azure AI and Entra ID"
+      ]
+    }
   },
   "Navigation": {
     "home": "Home",

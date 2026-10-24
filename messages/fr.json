@@ -28,7 +28,21 @@
     "moreAboutMe": "Plus sur moi sur",
     "askMcp": "Interroger ce site via MCP",
     "portraitAltLight": "Yazan Abo-Ayash en veste sombre et col roulé devant un mur blanc",
-    "portraitAltDark": "Yazan Abo-Ayash en veste sombre sur fond noir"
+    "portraitAltDark": "Yazan Abo-Ayash en veste sombre sur fond noir",
+    "now": {
+      "label": "En ce moment",
+      "focus": "Focus actuel",
+      "nextFocus": "Afficher le sujet suivant",
+      "latestPost": "Dernier article",
+      "allPosts": "Lire le blog",
+      "site": "Ce site",
+      "siteLink": "Comment il est construit",
+      "focusItems": [
+        "Systèmes RAG avec citation des sources",
+        "Agents IA et serveurs MCP",
+        "Azure AI et Entra ID"
+      ]
+    }
   },
   "Navigation": {
     "home": "Accueil",

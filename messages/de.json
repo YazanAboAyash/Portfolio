@@ -28,7 +28,21 @@
     "moreAboutMe": "Mehr über mich auf",
     "askMcp": "Diese Website per MCP fragen",
     "portraitAltLight": "Yazan Abo-Ayash in dunklem Sakko und Rollkragen vor einer weißen Wand",
-    "portraitAltDark": "Yazan Abo-Ayash in dunklem Sakko vor schwarzem Hintergrund"
+    "portraitAltDark": "Yazan Abo-Ayash in dunklem Sakko vor schwarzem Hintergrund",
+    "now": {
+      "label": "Aktuell",
+      "focus": "Fokus",
+      "nextFocus": "Nächsten Schwerpunkt zeigen",
+      "latestPost": "Neuester Beitrag",
+      "allPosts": "Zum Blog",
+      "site": "Diese Seite",
+      "siteLink": "So ist sie gebaut",
+      "focusItems": [
+        "RAG-Systeme mit Quellenangaben",
+        "KI-Agenten und MCP-Server",
+        "Azure AI und Entra ID"
+      ]
+    }
   },
   "Navigation": {
     "home": "Startseite",
