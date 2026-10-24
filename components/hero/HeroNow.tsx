@@ -14,7 +14,7 @@ import VersionDisplay from "@/components/VersionDisplay";
 import { useLatestPost } from "@/hooks/use-latest-post";
 
 /** How long each focus item stays before the next one rotates in. */
-const FOCUS_INTERVAL_MS = 2000;
+const FOCUS_INTERVAL_MS = 3000;
 
 const LABEL =
   "text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground";
