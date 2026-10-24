@@ -157,6 +157,21 @@ export function useChatBot(): UseChatBotReturn {
           language: navigator.language || undefined,
         },
       }),
+      // Tool results stay in the local transcript, where they render as chips,
+      // but are not sent back: the server ignores them, and they would count
+      // against the request body cap on every later turn.
+      prepareSendMessagesRequest: ({ id, body, messages, trigger, messageId }) => ({
+        body: {
+          ...body,
+          id,
+          trigger,
+          messageId,
+          messages: messages.map((message) => ({
+            ...message,
+            parts: message.parts.filter((part) => part.type === "text"),
+          })),
+        },
+      }),
     }),
   });
 

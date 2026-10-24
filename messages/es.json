@@ -491,6 +491,17 @@
     "typing": {
       "thinking": "Pensando"
     },
+    "tools": {
+      "label": "Consultado",
+      "failed": "no disponible",
+      "fallback": "Datos del portafolio",
+      "get_projects": "Proyectos",
+      "get_capabilities": "Capacidades",
+      "get_certifications": "Certificaciones",
+      "get_profile": "Perfil de GitHub",
+      "get_stats": "Estadísticas de GitHub",
+      "get_repositories": "Repositorios de GitHub"
+    },
     "input": {
       "placeholder": "Pregúntale a Reem…",
       "characterCount": "{count}/{max}",

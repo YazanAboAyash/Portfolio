@@ -491,6 +491,17 @@
     "typing": {
       "thinking": "Denkt"
     },
+    "tools": {
+      "label": "Nachgeschlagen",
+      "failed": "nicht verfügbar",
+      "fallback": "Portfolio-Daten",
+      "get_projects": "Projekte",
+      "get_capabilities": "Kompetenzen",
+      "get_certifications": "Zertifikate",
+      "get_profile": "GitHub-Profil",
+      "get_stats": "GitHub-Statistiken",
+      "get_repositories": "GitHub-Repositories"
+    },
     "input": {
       "placeholder": "Fragen Sie Reem…",
       "characterCount": "{count}/{max}",

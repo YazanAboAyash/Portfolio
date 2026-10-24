@@ -4,11 +4,32 @@
  * @version 7.x.x
  */
 
+import type { ToolAnnotations } from "@modelcontextprotocol/server";
+import type { z } from "zod";
 import type {
   GitHubDeclaredHighlight,
   GitHubFetchMeta,
   GitHubProfile,
 } from "@/types/configs/github";
+
+/** What a portfolio tool produced; `meta` is set on GitHub-backed tools only. */
+export interface PortfolioToolOutput {
+  data: Record<string, unknown>;
+  meta?: GitHubFetchMeta;
+}
+
+/**
+ * One read-only portfolio tool, independent of the surface that exposes it:
+ * the public MCP server and Reem's chat route both run these.
+ */
+export interface PortfolioTool {
+  title: string;
+  description: string;
+  outputSchema: z.ZodObject;
+  annotations: ToolAnnotations;
+  /** Throws when GitHub fails; each surface maps the error on its own terms. */
+  load: () => Promise<PortfolioToolOutput>;
+}
 
 export type McpSessionStatus = "idle" | "running" | "done" | "error";
 

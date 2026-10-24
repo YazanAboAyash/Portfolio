@@ -10,22 +10,27 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { AlertCircle } from "lucide-react";
 import { Blobatar } from "@blobatar/react";
+import { isToolUIPart } from "ai";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { ChatMessageProps, ReemUIMessage } from "@/types/configs/chatbot";
 import { CHATBOT_CONFIG, CHATBOT_TRANSLATION_KEYS } from "./ChatBot.constants";
+import { ChatToolChips } from "./ChatToolChips";
 
 // Security helper to limit message content length for display
 function sanitizeMessageForDisplay(content: string): string {
   return content.substring(0, CHATBOT_CONFIG.MESSAGE_DISPLAY_LIMIT);
 }
 
-/** A UI message carries its text across one or more parts; the transcript shows them joined. */
+/**
+ * A UI message carries its text across one or more parts; the transcript shows
+ * them joined. A reply that called tools has one text part per step.
+ */
 function joinTextParts(message: ReemUIMessage): string {
   return message.parts
     .filter((part) => part.type === "text")
     .map((part) => part.text)
-    .join("");
+    .join("\n\n");
 }
 
 function isSafeMarkdownHref(href: string | undefined): href is string {
@@ -65,8 +70,11 @@ export const ChatMessage = React.memo(function ChatMessage({
     [message.metadata?.createdAt],
   );
 
-  // The assistant turn exists before its first token; render nothing until text arrives
-  if (!isUser && !sanitizedContent) return null;
+  // The assistant turn exists before its first token; render nothing until there
+  // is text or a tool chip to show
+  if (!isUser && !sanitizedContent && !message.parts.some(isToolUIPart)) {
+    return null;
+  }
 
   const label = t(
     isUser
@@ -114,6 +122,7 @@ export const ChatMessage = React.memo(function ChatMessage({
         className="min-w-0 flex-1 text-sm leading-relaxed text-foreground select-text"
         title={formattedTime}
       >
+        <ChatToolChips message={message} />
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{

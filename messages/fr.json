@@ -491,6 +491,17 @@
     "typing": {
       "thinking": "Réflexion"
     },
+    "tools": {
+      "label": "Consulté",
+      "failed": "indisponible",
+      "fallback": "Données du portfolio",
+      "get_projects": "Projets",
+      "get_capabilities": "Compétences",
+      "get_certifications": "Certifications",
+      "get_profile": "Profil GitHub",
+      "get_stats": "Statistiques GitHub",
+      "get_repositories": "Dépôts GitHub"
+    },
     "input": {
       "placeholder": "Demandez à Reem…",
       "characterCount": "{count}/{max}",

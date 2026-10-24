@@ -7,6 +7,7 @@
 export { default as ChatBot } from "./ChatBot";
 export { ChatHeader } from "./ChatHeader";
 export { ChatMessage } from "./ChatMessage";
+export { ChatToolChips } from "./ChatToolChips";
 export { ChatInput } from "./ChatInput";
 export { ChatWelcome } from "./ChatWelcome";
 export { ChatConsent } from "./ChatConsent";

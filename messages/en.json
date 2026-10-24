@@ -491,6 +491,17 @@
     "typing": {
       "thinking": "Thinking"
     },
+    "tools": {
+      "label": "Looked up",
+      "failed": "unavailable",
+      "fallback": "Portfolio data",
+      "get_projects": "Projects",
+      "get_capabilities": "Capabilities",
+      "get_certifications": "Certifications",
+      "get_profile": "GitHub profile",
+      "get_stats": "GitHub stats",
+      "get_repositories": "GitHub repositories"
+    },
     "input": {
       "placeholder": "Ask Reem anything…",
       "characterCount": "{count}/{max}",

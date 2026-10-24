@@ -8,11 +8,14 @@ import type { OrbSize, OrbState } from "thinking-orbs";
 import type { ChatBotErrorCode } from "@/types/configs/chatbot";
 
 export const CHATBOT_CONFIG = {
-  // Launcher timing. A first-time visitor already gets the cookie banner and the
-  // language toast, so the launcher waits for the cookie choice instead of
-  // joining them; FIRST_VISIT_FALLBACK_DELAY covers a banner closed without one.
-  VISIBILITY_DELAY: 2000,
-  FIRST_VISIT_FALLBACK_DELAY: 15000,
+  // Launcher timing. A visitor without a cookie choice gets the cookie banner
+  // and the language toast, so the launcher waits for the choice instead of
+  // joining them. FIRST_VISIT_FALLBACK_DELAY covers a banner that is ignored
+  // or closed with the X, which records nothing — so it applies on every page
+  // load until a choice is made, and must stay short. It only has to land
+  // after the banner, which appears 3 s in (cookies-banner.tsx).
+  VISIBILITY_DELAY: 800,
+  FIRST_VISIT_FALLBACK_DELAY: 5000,
 
   // Message Limits
   MESSAGE_DISPLAY_LIMIT: 2000, // Max characters to display per message
@@ -30,7 +33,7 @@ export const CHATBOT_CONFIG = {
   },
 
   // Reem's own release number, shown beside her name. Not translated: it is a label, not copy
-  VERSION: "5.0.0",
+  VERSION: "5.1.0",
 
   // Blobatar seed for every Reem avatar — hashed, never shown; changing it changes the face
   AVATAR_SEED: "Reem",
@@ -69,6 +72,12 @@ export const CHATBOT_TRANSLATION_KEYS = {
 
   // Typing Indicator
   TYPING_THINKING: "typing.thinking",
+
+  // Tool chips above a reply. Each tool's own label is `tools.<tool name>`;
+  // a tool without one falls back to TOOLS_FALLBACK.
+  TOOLS_LABEL: "tools.label",
+  TOOLS_FAILED: "tools.failed",
+  TOOLS_FALLBACK: "tools.fallback",
 
   // Input
   INPUT_PLACEHOLDER: "input.placeholder",

@@ -491,6 +491,17 @@
     "typing": {
       "thinking": "Tänker"
     },
+    "tools": {
+      "label": "Slog upp",
+      "failed": "inte tillgängligt",
+      "fallback": "Portfoliodata",
+      "get_projects": "Projekt",
+      "get_capabilities": "Kompetenser",
+      "get_certifications": "Certifieringar",
+      "get_profile": "GitHub-profil",
+      "get_stats": "GitHub-statistik",
+      "get_repositories": "GitHub-repon"
+    },
     "input": {
       "placeholder": "Fråga Reem…",
       "characterCount": "{count}/{max}",

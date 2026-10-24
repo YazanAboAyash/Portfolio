@@ -70,6 +70,10 @@ export interface ChatMessageProps {
   className?: string;
 }
 
+export interface ChatToolChipsProps {
+  message: ReemUIMessage;
+}
+
 export interface ChatHeaderProps {
   onClose: () => void;
   onNewChat: () => void;
