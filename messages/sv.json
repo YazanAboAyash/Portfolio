@@ -1,7 +1,7 @@
 {
   "Home": {
     "WebsitePerformance": "Webbplatsens prestanda",
-    "companiesContributing": "Företag där jag arbetar / Projekt jag bidrar till:",
+    "companiesContributing": "Arbetar med",
     "speedInsight": {
       "title": "Live PageSpeed-resultat",
       "subtitle": "Google Lighthouse-poäng i realtid för denna webbplats",
@@ -23,8 +23,10 @@
   "Hero": {
     "fullStackDeveloper": "Fullstack-utvecklare & AI-ingenjör",
     "description": "Jag bygger webbapplikationer för produktion från början till slut — och AI:n i dem: LLM-funktioner, RAG-system, agenter och MCP-servrar. Med Next.js och TypeScript, från första commit till driftsättning.",
+    "summary": "Webbapplikationer för produktion, och AI:n i dem.",
     "contact": "Kontakt",
     "learnMoreAboutMe": "Läs mer om mig",
+    "aboutShort": "Om mig",
     "moreAboutMe": "Mer om mig på",
     "askMcp": "Fråga den här webbplatsen via MCP",
     "portraitAltLight": "Yazan Abo-Ayash i mörk kavaj och polotröja mot en vit vägg",

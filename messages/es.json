@@ -1,7 +1,7 @@
 {
   "Home": {
     "WebsitePerformance": "Rendimiento del sitio web",
-    "companiesContributing": "Empresas donde trabajo / Proyectos a los que contribuyo:",
+    "companiesContributing": "Trabajando con",
     "speedInsight": {
       "title": "PageSpeed Insights en vivo",
       "subtitle": "Puntuaciones de Google Lighthouse en tiempo real para este sitio web",
@@ -23,8 +23,10 @@
   "Hero": {
     "fullStackDeveloper": "Desarrollador Full-Stack e Ingeniero de IA",
     "description": "Desarrollo aplicaciones web en producción de principio a fin — y la IA que llevan dentro: funciones con LLM, sistemas RAG, agentes y servidores MCP. Con Next.js y TypeScript, desde el primer commit hasta el despliegue.",
+    "summary": "Aplicaciones web en producción y la IA que llevan dentro.",
     "contact": "Contacto",
     "learnMoreAboutMe": "Conoce más sobre mí",
+    "aboutShort": "Sobre mí",
     "moreAboutMe": "Más sobre mí en",
     "askMcp": "Pregunta a este sitio por MCP",
     "portraitAltLight": "Yazan Abo-Ayash con chaqueta oscura y cuello alto ante una pared blanca",
