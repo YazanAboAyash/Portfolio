@@ -533,6 +533,19 @@
       "contact": "Kontakt aufnehmen"
     }
   },
+  "Blog": {
+    "title": "Blog",
+    "lead": "Notizen aus der Praxis: KI-Engineering, produktive Webentwicklung und die Entscheidungen dazwischen.",
+    "count": "{count, plural, =0 {Noch keine Beiträge} one {# Beitrag} other {# Beiträge}}",
+    "filterLabel": "Nach Sprache filtern",
+    "allLanguages": "Alle Sprachen",
+    "loading": "Beiträge werden geladen",
+    "emptyTitle": "Noch keine Beiträge",
+    "emptyDescription": "Wähle eine andere Sprache oder schau bald wieder vorbei.",
+    "draft": "Entwurf",
+    "minutesToRead": "{count} Min. Lesezeit",
+    "featured": "Empfohlen"
+  },
   "PortfolioAbout": {
     "title": "Über Dieses Portfolio",
     "description": "Das ist nicht nur ein Portfolio - das ist meine Entwicklerreise, visualisiert in eine Full-Stack-Anwendung. Es ist NICHT darauf ausgelegt, 'fertig' zu sein, weil es mit mir evolviert, wächst und sich verändert, während ich in meiner Karriere voranschreite. Gebaut mit unternehmenstauglicher Architektur und modernsten Technologien, wird es immer aktualisiert und wird immer wachsen.",

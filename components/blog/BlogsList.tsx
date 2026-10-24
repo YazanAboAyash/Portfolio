@@ -6,26 +6,15 @@
 
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useLocale, useTranslations } from "next-intl";
 import { Calendar, Clock, Languages } from "lucide-react";
 import type { Blog } from "@/types/hubs/blogs";
 import { BLOG_LANGUAGE_NAMES } from "@/types/hubs/blogs";
-import { LanguageBadge } from "@/components/blog";
 import { cardSurface } from "@/components/visuals";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-
-/** Square tags; `rounded-none` overrides the Shadcn badge corners. */
-const tag = "rounded-none border-0 bg-background";
 
 interface BlogCardProps {
   blog: Blog;
@@ -33,6 +22,8 @@ interface BlogCardProps {
 }
 
 function BlogCard({ blog, index }: BlogCardProps) {
+  const t = useTranslations("Blog");
+  const locale = useLocale();
   const [imageSrc, setImageSrc] = useState(
     blog.featuredImage || "/assets/blogs/blogsFallback.png",
   );
@@ -46,11 +37,11 @@ function BlogCard({ blog, index }: BlogCardProps) {
   };
 
   return (
-    <Link
-      href={`/blog/${blog.slug}`}
-      className="block h-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-    >
-      <Card className={cn(cardSurface, "h-full gap-0 overflow-hidden py-0")}>
+    <article className={cn(cardSurface, "h-full overflow-hidden")}>
+      <Link
+        href={`/blog/${blog.slug}`}
+        className="flex h-full flex-col focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+      >
         {(blog.featuredImage || imageSrc) && (
           <div className="h-48 w-full overflow-hidden bg-surface-2">
             <Image
@@ -58,7 +49,7 @@ function BlogCard({ blog, index }: BlogCardProps) {
               alt={blog.title}
               width={500}
               height={300}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-[1.02] motion-reduce:transition-none"
               onError={handleImageError}
               priority={index === 0}
               loading={index === 0 ? "eager" : "lazy"}
@@ -69,21 +60,25 @@ function BlogCard({ blog, index }: BlogCardProps) {
             />
           </div>
         )}
-        <CardHeader className="px-5 pt-5 pb-3">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+        <div className="flex flex-1 flex-col p-6">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-foreground/80">
             <Calendar className="h-4 w-4" aria-hidden="true" />
             {blog.publishedAt
-              ? new Date(blog.publishedAt).toLocaleDateString()
-              : "Draft"}
+              ? new Date(blog.publishedAt).toLocaleDateString(locale, {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })
+              : t("draft")}
             {blog.readingTime && (
               <>
-                <Clock className="h-4 w-4 ml-2" aria-hidden="true" />
-                {blog.readingTime} min read
+                <Clock className="ml-2 h-4 w-4" aria-hidden="true" />
+                {t("minutesToRead", { count: blog.readingTime })}
               </>
             )}
             {blog.language && (
               <>
-                <Languages className="h-4 w-4 ml-2" aria-hidden="true" />
+                <Languages className="ml-2 h-4 w-4" aria-hidden="true" />
                 <span className="text-xs font-medium">
                   {BLOG_LANGUAGE_NAMES[
                     blog.language as keyof typeof BLOG_LANGUAGE_NAMES
@@ -92,56 +87,44 @@ function BlogCard({ blog, index }: BlogCardProps) {
               </>
             )}
           </div>
-          <CardTitle className="line-clamp-2 text-xl font-semibold leading-tight tracking-[-0.01em]">
+          <h2 className="mt-8 line-clamp-2 text-2xl font-semibold leading-tight tracking-[-0.01em]">
             {blog.title}
-          </CardTitle>
+          </h2>
           {blog.excerpt && (
-            <CardDescription className="line-clamp-3 text-foreground/80">
+            <p className="mt-4 line-clamp-3 leading-relaxed text-foreground/80">
               {blog.excerpt}
-            </CardDescription>
+            </p>
           )}
-        </CardHeader>
-        <CardContent className="px-5 pb-5">
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-auto flex flex-wrap gap-2 pt-8 text-xs font-semibold">
             {blog.isFeatured && (
-              <Badge
-                className="rounded-none"
-                style={{ backgroundColor: "#15803d", color: "white" }}
-              >
-                Featured
-              </Badge>
-            )}
-            {blog.language && blog.language !== "en" && (
-              <LanguageBadge
-                language={blog.language}
-                size="sm"
-                className={tag}
-              />
+              <span className="bg-foreground px-2 py-1 text-background">
+                {t("featured")}
+              </span>
             )}
             {blog.category && (
-              <Badge variant="outline" className={tag}>
+              <span className="bg-background px-2 py-1">
                 {blog.category.name}
-              </Badge>
+              </span>
             )}
             {blog.tags?.slice(0, 2).map((tagRelation) => (
-              <Badge key={tagRelation.id} variant="outline" className={tag}>
+              <span key={tagRelation.id} className="bg-background px-2 py-1">
                 {tagRelation.tag?.name}
-              </Badge>
+              </span>
             ))}
             {blog.tags && blog.tags.length > 2 && (
-              <Badge variant="outline" className={tag}>
+              <span className="bg-background px-2 py-1">
                 +{blog.tags.length - 2}
-              </Badge>
+              </span>
             )}
             {blog.credits?.licenseType && (
-              <Badge variant="secondary" className={cn(tag, "text-xs")}>
+              <span className="bg-background px-2 py-1">
                 {blog.credits.licenseType}
-              </Badge>
+              </span>
             )}
           </div>
-        </CardContent>
-      </Card>
-    </Link>
+        </div>
+      </Link>
+    </article>
   );
 }
 
@@ -151,13 +134,17 @@ interface BlogsListProps {
 }
 
 export function BlogsList({ blogs, className }: BlogsListProps) {
+  const t = useTranslations("Blog");
+
   if (blogs.length === 0) {
     return (
       <div className="bg-surface px-6 py-16">
         <div>
-          <p className="text-muted-foreground text-lg mb-4">No blogs found.</p>
-          <p className="text-sm text-muted-foreground">
-            Check back soon for new articles and insights.
+          <p className="text-xl font-semibold tracking-[-0.01em]">
+            {t("emptyTitle")}
+          </p>
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-foreground/80">
+            {t("emptyDescription")}
           </p>
         </div>
       </div>

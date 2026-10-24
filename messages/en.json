@@ -533,6 +533,19 @@
       "contact": "Get in touch"
     }
   },
+  "Blog": {
+    "title": "Blog",
+    "lead": "Notes from the work: AI engineering, production web development, and the decisions in between.",
+    "count": "{count, plural, =0 {No posts yet} one {# post} other {# posts}}",
+    "filterLabel": "Browse by language",
+    "allLanguages": "All languages",
+    "loading": "Loading posts",
+    "emptyTitle": "Nothing here yet",
+    "emptyDescription": "Try another language or check back soon for new writing.",
+    "draft": "Draft",
+    "minutesToRead": "{count} min read",
+    "featured": "Featured"
+  },
   "PortfolioAbout": {
     "title": "About This Portfolio",
     "description": "This is not just a portfolio - this is my developer journey visualized into a full-stack application. It's not meant to be 'finished' because it evolves with me, growing and changing as I advance in my career. Built with enterprise-grade architecture and cutting-edge technologies, it will always be updated and will always grow.",

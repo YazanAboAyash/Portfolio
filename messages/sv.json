@@ -533,6 +533,19 @@
       "contact": "Kontakta mig"
     }
   },
+  "Blog": {
+    "title": "Blogg",
+    "lead": "Anteckningar från arbetet: AI-utveckling, webbproduktion och besluten däremellan.",
+    "count": "{count, plural, =0 {Inga inlägg ännu} one {# inlägg} other {# inlägg}}",
+    "filterLabel": "Bläddra efter språk",
+    "allLanguages": "Alla språk",
+    "loading": "Läser in inlägg",
+    "emptyTitle": "Inget här ännu",
+    "emptyDescription": "Prova ett annat språk eller kom tillbaka snart för nya texter.",
+    "draft": "Utkast",
+    "minutesToRead": "{count} min läsning",
+    "featured": "Utvalt"
+  },
   "PortfolioAbout": {
     "title": "Om Denna Portfolio",
     "description": "En modern, högpresterande utvecklarportfolio som visar full-stack-kapacitet med företagsarkitektur, tillgänglighetsstandarder och toppmoderna teknologier.",

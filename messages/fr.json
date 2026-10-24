@@ -533,6 +533,19 @@
       "contact": "Me contacter"
     }
   },
+  "Blog": {
+    "title": "Blog",
+    "lead": "Notes issues du travail : ingénierie IA, développement web en production et les choix entre les deux.",
+    "count": "{count, plural, =0 {Aucun article pour le moment} one {# article} other {# articles}}",
+    "filterLabel": "Parcourir par langue",
+    "allLanguages": "Toutes les langues",
+    "loading": "Chargement des articles",
+    "emptyTitle": "Rien ici pour le moment",
+    "emptyDescription": "Essayez une autre langue ou revenez bientôt pour de nouveaux articles.",
+    "draft": "Brouillon",
+    "minutesToRead": "{count} min de lecture",
+    "featured": "À la une"
+  },
   "PortfolioAbout": {
     "title": "À Propos de Ce Portfolio",
     "description": "Un portfolio de développeur moderne et haute performance présentant des capacités full-stack avec une architecture de niveau entreprise, des standards d'accessibilité et des technologies de pointe.",

@@ -7,7 +7,8 @@
 "use client";
 
 import { useState } from "react";
-import { BlogsList, LanguageFilter, BlogBreadcrumb } from "@/components/blog";
+import { useTranslations } from "next-intl";
+import { BlogsList, LanguageFilter } from "@/components/blog";
 import { LoadingSkeleton, SectionHeading } from "@/components/visuals";
 import type { Blog, BlogLanguage } from "@/types/hubs/blogs";
 
@@ -20,6 +21,7 @@ interface BlogPageClientProps {
 }
 
 export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
+  const t = useTranslations("Blog");
   const [blogs, setBlogs] = useState<Blog[]>(initialBlogs);
   const [selectedLanguage, setSelectedLanguage] = useState<
     BlogLanguage | "all"
@@ -74,28 +76,30 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
   };
 
   return (
-    <div className="frame pt-4 pb-16 sm:pt-6 md:pt-10 md:pb-24">
-      {/* Breadcrumb Navigation */}
-      <BlogBreadcrumb className="mb-8" />
-
+    <div className="frame py-16 md:py-24">
       <SectionHeading
         as="h1"
-        title="Blogs"
-        lead="Personal thoughts, tutorials, insights, and stories about various topics."
+        id="blog-title"
+        title={t("title")}
+        lead={t("lead")}
         className="mb-10"
+        aside={
+          <p className="text-sm font-semibold text-muted-foreground">
+            {t("count", { count: blogs.length })}
+          </p>
+        }
       />
 
-      {/* Language Filter */}
       <div
         role="group"
         aria-labelledby="blog-language-filter"
-        className="mb-8 flex flex-col gap-3"
+        className="mb-10 flex flex-col gap-4 border-y border-foreground/10 py-6 sm:flex-row sm:items-center sm:justify-between"
       >
         <p
           id="blog-language-filter"
-          className="text-sm font-semibold text-muted-foreground"
+          className="text-sm font-semibold text-foreground"
         >
-          Filter by Language:
+          {t("filterLabel")}
         </p>
         <LanguageFilter
           selectedLanguage={selectedLanguage}
@@ -104,7 +108,11 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
       </div>
 
       {isLoading ? (
-        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3" aria-busy>
+        <div
+          className="grid gap-2 md:grid-cols-2 lg:grid-cols-3"
+          aria-busy="true"
+          aria-label={t("loading")}
+        >
           {Array.from({ length: 3 }, (_, i) => (
             <LoadingSkeleton key={i} variant="blog" />
           ))}

@@ -533,6 +533,19 @@
       "contact": "Contactar"
     }
   },
+  "Blog": {
+    "title": "Blog",
+    "lead": "Notas del trabajo: ingeniería de IA, desarrollo web en producción y las decisiones entre ambos.",
+    "count": "{count, plural, =0 {Aún no hay publicaciones} one {# publicación} other {# publicaciones}}",
+    "filterLabel": "Explorar por idioma",
+    "allLanguages": "Todos los idiomas",
+    "loading": "Cargando publicaciones",
+    "emptyTitle": "Aún no hay nada aquí",
+    "emptyDescription": "Prueba otro idioma o vuelve pronto para leer nuevos artículos.",
+    "draft": "Borrador",
+    "minutesToRead": "{count} min de lectura",
+    "featured": "Destacado"
+  },
   "PortfolioAbout": {
     "title": "Acerca de Este Portfolio",
     "description": "Esto no es solo un portfolio - este es mi viaje como desarrollador visualizado en una aplicación full-stack. Está diseñado para estar 'terminado' pero en constante evolución, creciendo conmigo mientras avanzo en mi carrera. Construido con arquitectura empresarial y tecnologías de vanguardia, siempre se actualizará y siempre crecerá.",
