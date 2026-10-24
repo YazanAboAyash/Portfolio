@@ -50,21 +50,19 @@ export function CompanyBanner({
   );
 
   return (
-    <div
-      className={cn(
-        "company-banner-container bg-black/60 dark:bg-black/80",
-        className,
-      )}
-    >
-      <div className={cn("flex", animationClass)}>
-        {tripleLogos.map((company, index) => (
-          <CompanyLogoItem
-            key={`${company.id}-${index}`}
-            company={company}
-            showTooltip={showTooltip}
-            showCompanyName={showCompanyNames}
-          />
-        ))}
+    // The surface sits outside the masked strip so only the logos fade at the edges
+    <div className={cn("bg-surface py-5", className)}>
+      <div className="company-banner-container">
+        <div className={cn("flex", animationClass)}>
+          {tripleLogos.map((company, index) => (
+            <CompanyLogoItem
+              key={`${company.id}-${index}`}
+              company={company}
+              showTooltip={showTooltip}
+              showCompanyName={showCompanyNames}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -109,10 +107,10 @@ function CompanyLogoItem({
 
       {showTooltip && (
         <div className="absolute -top-12 left-1/2 z-10 -translate-x-1/2 transform opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <div className="rounded-lg bg-popover px-3 py-2 text-sm text-popover-foreground shadow-lg">
+          <div className="bg-popover px-3 py-2 text-sm text-popover-foreground">
             <div className="font-medium">{company.name}</div>
             {company.period && (
-              <div className="text-xs text-muted-foreground">
+              <div className="text-sm text-muted-foreground">
                 {company.period}
               </div>
             )}
