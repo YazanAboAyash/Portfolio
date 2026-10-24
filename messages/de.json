@@ -21,7 +21,6 @@
     }
   },
   "Hero": {
-    "availableForCollaboration": "Verfügbar für Zusammenarbeit",
     "fullStackDeveloper": "Full-Stack-Entwickler & AI Engineer",
     "description": "Ich entwickle produktive Webanwendungen von Anfang bis Ende — und die KI darin: LLM-Features, RAG-Systeme, Agenten und MCP-Server. Mit Next.js und TypeScript, vom ersten Commit bis zum Deployment.",
     "contact": "Kontakt",

@@ -21,7 +21,6 @@
     }
   },
   "Hero": {
-    "availableForCollaboration": "Tillgänglig för samarbete",
     "fullStackDeveloper": "Fullstack-utvecklare & AI-ingenjör",
     "description": "Jag bygger webbapplikationer för produktion från början till slut — och AI:n i dem: LLM-funktioner, RAG-system, agenter och MCP-servrar. Med Next.js och TypeScript, från första commit till driftsättning.",
     "contact": "Kontakt",

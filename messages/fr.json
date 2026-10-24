@@ -21,7 +21,6 @@
     }
   },
   "Hero": {
-    "availableForCollaboration": "Disponible pour collaboration",
     "fullStackDeveloper": "Développeur Full-Stack & Ingénieur IA",
     "description": "Je développe des applications web en production de bout en bout — et l'IA qu'elles embarquent : fonctionnalités LLM, systèmes RAG, agents et serveurs MCP. Avec Next.js et TypeScript, du premier commit au déploiement.",
     "contact": "Contact",

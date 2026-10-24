@@ -66,7 +66,6 @@ export interface LocaleModule {
 
 export interface Translations {
   Hero: {
-    availableForCollaboration: string;
     fullStackDeveloper: string;
     description: string;
     learnMoreAboutMe: string;

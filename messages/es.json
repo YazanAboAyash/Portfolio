@@ -21,7 +21,6 @@
     }
   },
   "Hero": {
-    "availableForCollaboration": "Disponible para colaborar",
     "fullStackDeveloper": "Desarrollador Full-Stack e Ingeniero de IA",
     "description": "Desarrollo aplicaciones web en producción de principio a fin — y la IA que llevan dentro: funciones con LLM, sistemas RAG, agentes y servidores MCP. Con Next.js y TypeScript, desde el primer commit hasta el despliegue.",
     "contact": "Contacto",

@@ -21,7 +21,6 @@
     }
   },
   "Hero": {
-    "availableForCollaboration": "Available for collaboration",
     "fullStackDeveloper": "Full-Stack Developer & AI Engineer",
     "description": "I build production web applications end to end — and the AI inside them: LLM features, RAG systems, agents and MCP servers. Next.js and TypeScript, from the first commit to deployment.",
     "contact": "Contact",
