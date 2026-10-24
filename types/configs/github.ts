@@ -5,8 +5,7 @@
  */
 
 // ---------------------------------------------------------------------------
-// Normalised data served by lib/github — shared by /api/github, the MCP server
-// and the showcase components.
+// Normalised data served by lib/github to the MCP server and its console.
 // ---------------------------------------------------------------------------
 
 export interface GitHubLanguage {
@@ -62,34 +61,6 @@ export interface GitHubOverview {
   repositories: GitHubRepoList;
 }
 
-export type GitHubActivityKind =
-  | "push"
-  | "create"
-  | "delete"
-  | "pullRequest"
-  | "review"
-  | "issue"
-  | "issueComment"
-  | "release"
-  | "star"
-  | "fork"
-  | "public"
-  | "other";
-
-/** Structured public event, served by the MCP server's `get_recent_activity` tool. */
-export interface GitHubActivity {
-  id: string;
-  kind: GitHubActivityKind;
-  /** Raw GitHub event type, kept for `other` and for MCP clients. */
-  type: string;
-  repo: string;
-  createdAt: string;
-  ref: string | null;
-  refType: string | null;
-  action: string | null;
-  number: number | null;
-}
-
 /** One upstream request made to GitHub, as measured by the server. */
 export interface GitHubUpstreamCall {
   api: "graphql" | "rest";
@@ -114,30 +85,11 @@ export interface GitHubFetchResult<T> {
   meta: GitHubFetchMeta;
 }
 
-/** Response body of `GET /api/github`. */
-export interface GitHubSnapshot {
-  overview: GitHubOverview;
-  fetchedAt: string;
-}
-
 /** A fact GitHub exposes no API for, declared in `data/` instead. */
 export interface GitHubDeclaredHighlight {
   id: string;
   label: string;
   link: string;
-}
-
-// ---------------------------------------------------------------------------
-// Component props
-// ---------------------------------------------------------------------------
-
-export interface GitHubProfileProps {
-  profile: GitHubProfile;
-  stats: GitHubStats;
-}
-
-export interface GitHubRepositoriesProps {
-  repositories: GitHubRepoList;
 }
 
 // ---------------------------------------------------------------------------
@@ -176,25 +128,11 @@ export interface GitHubGraphQLOverviewResponse {
       contributionsCollection: {
         contributionCalendar: { totalContributions: number };
       };
-      pinnedItems: { nodes: Array<GitHubGraphQLRepoNode | Record<string, never>> };
+      pinnedItems: {
+        nodes: Array<GitHubGraphQLRepoNode | Record<string, never>>;
+      };
       repositories: { totalCount: number; nodes: GitHubGraphQLRepoNode[] };
     } | null;
   };
   errors?: Array<{ message: string; type?: string }>;
-}
-
-export interface GitHubRestEvent {
-  id: string;
-  type: string;
-  created_at: string;
-  repo?: { name?: string };
-  payload?: {
-    action?: string;
-    ref?: string | null;
-    ref_type?: string;
-    number?: number;
-    issue?: { number?: number };
-    pull_request?: { number?: number };
-    release?: { tag_name?: string };
-  };
 }

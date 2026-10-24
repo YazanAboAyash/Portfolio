@@ -4,4 +4,4 @@
  * @version 7.x.x
  */
 
-export { default as GitHubShowcase } from "./GitHubShowcase";
+export { default as GitHubAskConsole } from "./GitHubAskConsole";
