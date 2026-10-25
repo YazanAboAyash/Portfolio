@@ -10,7 +10,6 @@ import {
   Children,
   isValidElement,
   useMemo,
-  useState,
   type ReactNode,
 } from "react";
 import Image from "next/image";
@@ -27,6 +26,7 @@ import { getBlogHeadings, slugifyHeading } from "@/lib/blog-headings";
 import { cn } from "@/lib/utils";
 import type { Blog } from "@/types/hubs/blogs";
 import { BLOG_LANGUAGE_NAMES } from "@/types/hubs/blogs";
+import { BlogAbstractHeader } from "./BlogAbstractHeader";
 import { BlogCopyLinkButton, BlogPostActions } from "./BlogPostActions";
 import {
   BLOG_BODY_ID,
@@ -34,8 +34,6 @@ import {
   BlogSectionRail,
 } from "./BlogSectionRail";
 import { BlogTaskList } from "./BlogTaskList";
-
-const FALLBACK_IMAGE = "/assets/blogs/blogsFallback.png";
 
 /** Mono, square chip used for language, category and tags. */
 const chip = "border border-border px-2.5 py-1 font-mono text-xs";
@@ -68,7 +66,6 @@ interface BlogViewProps {
 export function BlogView({ blog, className }: BlogViewProps) {
   const t = useTranslations("Blog");
   const locale = useLocale();
-  const [imageSrc, setImageSrc] = useState(blog.featuredImage || FALLBACK_IMAGE);
   const headings = useMemo(() => getBlogHeadings(blog.content), [blog.content]);
 
   const readingTime =
@@ -148,17 +145,10 @@ export function BlogView({ blog, className }: BlogViewProps) {
             </ul>
           )}
 
-          <div className="relative mt-10 aspect-21/9 overflow-hidden border border-border bg-surface">
-            <Image
-              src={imageSrc}
-              alt={blog.title}
-              fill
-              priority
-              sizes="(min-width: 1152px) 72rem, 100vw"
-              className="object-cover"
-              onError={() => setImageSrc(FALLBACK_IMAGE)}
-            />
-          </div>
+          <BlogAbstractHeader
+            seed={blog.slug}
+            className="mt-10 aspect-video sm:aspect-21/9"
+          />
         </header>
 
         <div
