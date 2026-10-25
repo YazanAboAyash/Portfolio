@@ -27,6 +27,7 @@ export default function robots(): MetadataRoute.Robots {
           "/projects",
           "/blog",
           "/about-portfolio",
+          "/mcp",
           "/privacy",
           "/impressum",
         ],

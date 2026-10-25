@@ -27,7 +27,7 @@ const initialFormData: BlogFormData = {
   metaDescription: "",
   isPublished: false,
   isFeatured: false,
-  tags: [],
+  license: "All Rights Reserved",
 };
 
 export function useBlogAdmin() {
@@ -285,7 +285,6 @@ export function useBlogAdmin() {
         originalAuthor: "",
         originalSource: "",
         sourceUrl: "",
-        licenseType: "",
         creditText: "",
         translatedFrom: "",
         adaptedFrom: "",
@@ -492,13 +491,12 @@ export function useBlogAdmin() {
       metaDescription: blog.metaDescription || "",
       isPublished: blog.isPublished,
       isFeatured: blog.isFeatured,
-      tags: blog.tags?.map((tag) => tag.tagId) || [],
+      license: blog.license,
       credits: blog.credits
         ? {
             originalAuthor: blog.credits.originalAuthor || "",
             originalSource: blog.credits.originalSource || "",
             sourceUrl: blog.credits.sourceUrl || "",
-            licenseType: blog.credits.licenseType || "",
             creditText: blog.credits.creditText || "",
             translatedFrom: blog.credits.translatedFrom || "",
             adaptedFrom: blog.credits.adaptedFrom || "",

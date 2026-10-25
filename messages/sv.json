@@ -31,8 +31,6 @@
       "nextFocus": "Visa nästa fokus",
       "latestPost": "Senaste inlägg",
       "allPosts": "Till bloggen",
-      "site": "Den här sidan",
-      "siteLink": "Så är den byggd",
       "focusItems": [
         "RAG-system med källhänvisningar",
         "AI-agenter och MCP-servrar",
@@ -60,26 +58,38 @@
     "language": "Språk",
     "languagePreviewHint": "Peka på ett språk för att se introduktionen på det.",
     "toggleTheme": "Växla mellan ljust och mörkt läge",
-    "contactInfo": "Öppna kontaktinformation",
     "openMenu": "Öppna navigeringsmenyn"
   },
   "Contact": {
-    "getInTouch": "Låt oss koppla samman",
-    "description": "Vill du prata om en tjänst, ett projekt eller en idé? Skicka ett mejl eller anslut med mig på sociala medier.",
-    "email": "E-post",
-    "sendEmail": "Skicka e-post",
-    "socialMedia": "Sociala medier",
-    "info": "Info",
-    "location": "Plats",
-    "status": "Status",
-    "qualification": "Examen",
-    "employmentStatus": "Heltidsanställd",
-    "position": "Position",
-    "employer": "Arbetsgivare",
-    "role": "Fullstack-utvecklare & AI-ingenjör",
-    "qualificationTitle": "IHK Fachinformatiker AE",
-    "specialization": "Inriktning",
-    "specializationValue": "Artificiell Intelligens"
+    "title": "Hör av dig",
+    "lead": "En tjänst, en idé eller bara ett hej: mejl är det snabbaste sättet att nå mig.",
+    "emailLabel": "Mejl",
+    "write": "Skriv ett mejl",
+    "copy": "Kopiera",
+    "copied": "Kopierad",
+    "copyLabel": "Kopiera mejladress",
+    "availability": "Jag är heltidsanställd och tar inte emot frilans- eller kunduppdrag.",
+    "topicsTitle": "Eller börja från ett utkast",
+    "topics": {
+      "role": {
+        "label": "En tjänst i ditt team",
+        "description": "Ni rekryterar och tror att jag skulle passa.",
+        "subject": "Jobbmöjlighet",
+        "body": "Hej Yazan,\n\nJag hör av mig om en tjänst på [företag]: [tjänsten och en länk till annonsen].\n\n"
+      },
+      "collaboration": {
+        "label": "Samarbete",
+        "description": "Öppen källkod, ett föredrag eller att bygga något tillsammans.",
+        "subject": "Idé om samarbete",
+        "body": "Hej Yazan,\n\nJag har en idé som vi skulle kunna arbeta med tillsammans: [några rader om den].\n\n"
+      },
+      "hello": {
+        "label": "Bara säga hej",
+        "description": "Feedback på sajten, en fråga eller ett snabbt hej.",
+        "subject": "Hej från coldbydefault.com",
+        "body": "Hej Yazan,\n\n"
+      }
+    }
   },
   "Capabilities": {
     "title": "Vad jag levererar",
@@ -114,6 +124,7 @@
         "tooling": "Verktyg & leverans"
       },
       "usedIn": "{count, plural, one {använd på # ställe} other {använd på # ställen}}",
+      "close": "Stäng",
       "kinds": {
         "project": "Projekt med öppen källkod",
         "product": "Produkt",
@@ -174,7 +185,6 @@
       "compliance": "HR & efterlevnad"
     },
     "descriptions": {
-      "portfolioWebsite": "En modern, responsiv portfoliosajt byggd med Next.js 16, med växling mellan mörkt/ljust tema, mjuka animationer med Framer Motion och optimerad prestanda. Inkluderar TypeScript för typsäkerhet och Tailwind CSS för styling.",
       "berichHub": "Fullstack digital lärplattform med användarautentisering, profilsidor och bloggfunktioner. AI-integration för personligt lärande. Helt gratis och öppen källkod. Stöd för 4 språk: engelska, tyska, spanska och svenska.",
       "llmAgent": "AI-chatbot baserad på lokal Ollama, anpassningsbar för att använda vilken LLM-modell som helst, valfri embedding-modell samt två alternativ för vektordatabas: lokal Postgres eller DataStax Astra. Kan läsa webbsidor och svara på frågor baserat på innehållet. Mer kommer snart... Öppen källkod.",
       "subsApi": "API för att hantera användarprenumerationer, inklusive fakturering och betalningshantering. Byggt med Next.js och integrerat med Stripe för säkra betalningar.",
@@ -184,7 +194,6 @@
       "jsStudyAgentPlugin": "Ett sokratiskt JavaScript-plugin för lärande i GitHub Copilot CLI och Claude Code. Fem specialiserade agenter, automatiskt laddade skills och en färdplan i 8 steg leder dig till svaren med ledtrådar och frågor i stället för att ge dig lösningen direkt."
     },
     "summaries": {
-      "portfolioWebsite": "Den här portfolion, byggd med Next.js och TypeScript.",
       "berichHub": "Gratis lärplattform på fyra språk.",
       "voiceToNotion": "Möten blir Notion-sidor på 30 sekunder.",
       "nextJsSeoOptimization": "SEO-hjälpare för Next.js utan beroenden, på npm.",
@@ -216,8 +225,7 @@
     "badge": "Teamprojekt",
     "project": {
       "title": "Staden Büttelborn — AI-avatar för borgmästaren",
-      "description": "Del av teamet på Botgenossen som byggde den flerspråkiga interaktiva AI-avataren för Bürgermeister i Büttelborn, en stad i Tyskland. Avataren talar med invånare på flera språk, svarar på frågor om stadens tjänster och repräsenterar borgmästaren digitalt på stadens officiella webbplats.",
-      "summary": "Flerspråkig AI-avatar på stadens officiella webbplats.",
+      "description": "En flerspråkig avatar som svarar på invånarnas frågor om stadens tjänster, live på stadens officiella webbplats.",
       "visitSite": "Besök Büttelborns officiella webbplats",
       "role": "AI-avatarutveckling",
       "company": "Botgenossen",
@@ -468,7 +476,44 @@
     "emptyDescription": "Prova ett annat språk eller kom tillbaka snart för nya texter.",
     "draft": "Utkast",
     "minutesToRead": "{count} min läsning",
-    "featured": "Utvalt"
+    "featured": "Utvalt",
+    "allPosts": "Alla inlägg",
+    "copyLink": "Kopiera länk",
+    "linkCopied": "Länken kopierad",
+    "replyByEmail": "Svara via e-post",
+    "replySubject": "Sv: {title}",
+    "shareLead": "Var det här användbart? Skicka det vidare eller svara med dina tankar.",
+    "onThisPage": "På den här sidan",
+    "contents": "Innehåll",
+    "readingStatus": "{percent} % · {minutes, plural, =0 {klar} other {# min kvar}}",
+    "views": "{count, plural, one {# visning} other {# visningar}}",
+    "linkToSection": "Länk till det här avsnittet",
+    "labels": "Etiketter",
+    "checklistTitle": "Din checklista",
+    "checklistProgress": "{done} av {total}",
+    "checklistDone": "Allt klart",
+    "credits": {
+      "title": "Källor",
+      "originalAuthor": "Ursprunglig författare",
+      "source": "Källa",
+      "url": "URL",
+      "translatedFrom": "Översatt från",
+      "adaptedFrom": "Bearbetad från"
+    },
+    "licenses": {
+      "CCBY": "CC BY",
+      "CCBYSA": "CC BY-SA",
+      "CCBYNC": "CC BY-NC",
+      "CCBYNCSA": "CC BY-NC-SA",
+      "CCBYND": "CC BY-ND",
+      "CCBYNCND": "CC BY-NC-ND",
+      "MIT": "MIT",
+      "Apache20": "Apache 2.0",
+      "GPL": "GPL",
+      "FairUse": "Fair use",
+      "AllRightsReserved": "Alla rättigheter förbehållna",
+      "Custom": "Egen licens"
+    }
   },
   "ChatBot": {
     "name": "Reem",
@@ -541,7 +586,7 @@
     "browserLanguage": "Webbläsarspråk",
     "browser": "Webbläsare",
     "switchedTo": "bytt till",
-    "matched": "matchade",
+    "dismiss": "Stäng",
     "notSupported": "stöds ej",
     "using": "använder",
     "serverDetected": "Identifierat på serversidan"
@@ -574,7 +619,8 @@
       "products": "Produkter",
       "cert": "Certifieringar",
       "github": "GitHub",
-      "capabilities": "Förmågor"
+      "capabilities": "Förmågor",
+      "contact": "Kontakt"
     }
   },
   "Search": {

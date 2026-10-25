@@ -31,8 +31,6 @@
       "nextFocus": "Nächsten Schwerpunkt zeigen",
       "latestPost": "Neuester Beitrag",
       "allPosts": "Zum Blog",
-      "site": "Diese Seite",
-      "siteLink": "So ist sie gebaut",
       "focusItems": [
         "RAG-Systeme mit Quellenangaben",
         "KI-Agenten und MCP-Server",
@@ -60,26 +58,38 @@
     "language": "Sprache",
     "languagePreviewHint": "Zeig auf eine Sprache, um die Einleitung darin zu sehen.",
     "toggleTheme": "Zwischen hellem und dunklem Modus wechseln",
-    "contactInfo": "Kontaktinformationen öffnen",
     "openMenu": "Navigationsmenü öffnen"
   },
   "Contact": {
-    "getInTouch": "Lassen Sie uns verbinden",
-    "description": "Sie möchten über eine Stelle, ein Projekt oder eine Idee sprechen? Schreiben Sie mir eine E-Mail oder verbinden Sie sich mit mir in den sozialen Medien.",
-    "email": "E-Mail",
-    "sendEmail": "E-Mail schreiben",
-    "socialMedia": "Soziale Medien",
-    "info": "Info",
-    "location": "Standort",
-    "status": "Status",
-    "qualification": "Abschluss",
-    "employmentStatus": "In Vollzeit angestellt",
-    "position": "Position",
-    "employer": "Arbeitgeber",
-    "role": "Full-Stack-Entwickler & AI Engineer",
-    "qualificationTitle": "IHK Fachinformatiker AE",
-    "specialization": "Einsatzgebiet",
-    "specializationValue": "Künstliche Intelligenz"
+    "title": "Kontakt aufnehmen",
+    "lead": "Eine Stelle, eine Idee oder einfach ein Hallo: Per E-Mail erreichen Sie mich am schnellsten.",
+    "emailLabel": "E-Mail",
+    "write": "E-Mail schreiben",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "copyLabel": "E-Mail-Adresse kopieren",
+    "availability": "Ich bin in Vollzeit angestellt und nehme keine Freelance- oder Kundenaufträge an.",
+    "topicsTitle": "Oder mit einem Entwurf beginnen",
+    "topics": {
+      "role": {
+        "label": "Eine Stelle in Ihrem Team",
+        "description": "Sie stellen ein und denken, ich könnte passen.",
+        "subject": "Stellenangebot",
+        "body": "Hallo Yazan,\n\nich melde mich wegen einer Stelle bei [Unternehmen]: [die Stelle und ein Link zur Ausschreibung].\n\n"
+      },
+      "collaboration": {
+        "label": "Zusammenarbeit",
+        "description": "Open Source, ein Vortrag oder gemeinsam etwas bauen.",
+        "subject": "Idee für eine Zusammenarbeit",
+        "body": "Hallo Yazan,\n\nich habe eine Idee, an der wir zusammen arbeiten könnten: [ein paar Zeilen dazu].\n\n"
+      },
+      "hello": {
+        "label": "Einfach Hallo sagen",
+        "description": "Feedback zur Website, eine Frage oder ein kurzer Gruß.",
+        "subject": "Hallo von coldbydefault.com",
+        "body": "Hallo Yazan,\n\n"
+      }
+    }
   },
   "Capabilities": {
     "title": "Was ich liefere",
@@ -114,6 +124,7 @@
         "tooling": "Tooling & Auslieferung"
       },
       "usedIn": "{count, plural, one {an # Stelle eingesetzt} other {an # Stellen eingesetzt}}",
+      "close": "Schließen",
       "kinds": {
         "project": "Open-Source-Projekt",
         "product": "Produkt",
@@ -174,7 +185,6 @@
       "compliance": "HR & Compliance"
     },
     "descriptions": {
-      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 16, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
       "berichHub": "Full-Stack-Lernplattform mit Benutzerauthentifizierung, Profilseiten und Blog-Funktionen. KI-Integration für personalisiertes Lernen. Völlig kostenlos und Open-Source. Unterstützt 4 verschiedene Sprachen: Englisch, Deutsch, Spanisch, Schwedisch.",
       "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, mit 2 Optionen für Vector DB: lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf deren Inhalt beantworten. Mehr kommt bald... Open Source.",
       "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen.",
@@ -184,7 +194,6 @@
       "jsStudyAgentPlugin": "Ein sokratisches JavaScript-Lern-Plugin für GitHub Copilot CLI und Claude Code. Fünf spezialisierte Agenten, automatisch ladende Skills und eine 8-stufige Roadmap führen dich mit Hinweisen und Fragen zur Lösung, statt sie direkt vorzugeben."
     },
     "summaries": {
-      "portfolioWebsite": "Dieses Portfolio, gebaut mit Next.js und TypeScript.",
       "berichHub": "Kostenlose Lernplattform in vier Sprachen.",
       "voiceToNotion": "Meetings in 30 Sekunden als Notion-Seiten.",
       "nextJsSeoOptimization": "SEO-Helfer für Next.js ohne Abhängigkeiten, auf npm.",
@@ -216,8 +225,7 @@
     "badge": "Teamprojekt",
     "project": {
       "title": "Stadt Büttelborn — KI-Avatar für den Bürgermeister",
-      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttelborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
-      "summary": "Mehrsprachiger KI-Avatar auf der offiziellen Stadtwebsite.",
+      "description": "Ein mehrsprachiger Avatar, der Fragen der Bürgerinnen und Bürger zu städtischen Diensten beantwortet, live auf der offiziellen Stadtwebsite.",
       "visitSite": "Website der Stadt Büttelborn besuchen",
       "role": "KI-Avatar-Entwicklung",
       "company": "Botgenossen",
@@ -468,7 +476,44 @@
     "emptyDescription": "Wähle eine andere Sprache oder schau bald wieder vorbei.",
     "draft": "Entwurf",
     "minutesToRead": "{count} Min. Lesezeit",
-    "featured": "Empfohlen"
+    "featured": "Empfohlen",
+    "allPosts": "Alle Beiträge",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert",
+    "replyByEmail": "Per E-Mail antworten",
+    "replySubject": "Re: {title}",
+    "shareLead": "War das hilfreich? Schick es weiter oder antworte mit deiner Sicht.",
+    "onThisPage": "Auf dieser Seite",
+    "contents": "Inhalt",
+    "readingStatus": "{percent} % · {minutes, plural, =0 {fertig} other {noch # Min.}}",
+    "views": "{count, plural, one {# Aufruf} other {# Aufrufe}}",
+    "linkToSection": "Link zu diesem Abschnitt",
+    "labels": "Labels",
+    "checklistTitle": "Deine Checkliste",
+    "checklistProgress": "{done} von {total}",
+    "checklistDone": "Alles erledigt",
+    "credits": {
+      "title": "Quellenangaben",
+      "originalAuthor": "Originalautor",
+      "source": "Quelle",
+      "url": "URL",
+      "translatedFrom": "Übersetzt aus",
+      "adaptedFrom": "Adaptiert von"
+    },
+    "licenses": {
+      "CCBY": "CC BY",
+      "CCBYSA": "CC BY-SA",
+      "CCBYNC": "CC BY-NC",
+      "CCBYNCSA": "CC BY-NC-SA",
+      "CCBYND": "CC BY-ND",
+      "CCBYNCND": "CC BY-NC-ND",
+      "MIT": "MIT",
+      "Apache20": "Apache 2.0",
+      "GPL": "GPL",
+      "FairUse": "Fair Use",
+      "AllRightsReserved": "Alle Rechte vorbehalten",
+      "Custom": "Eigene Lizenz"
+    }
   },
   "ChatBot": {
     "name": "Reem",
@@ -541,7 +586,7 @@
     "browserLanguage": "Browsersprache",
     "browser": "Browser",
     "switchedTo": "gewechselt zu",
-    "matched": "übereinstimmend",
+    "dismiss": "Schließen",
     "notSupported": "nicht unterstützt",
     "using": "verwende",
     "serverDetected": "Serverseitig erkannt"
@@ -574,7 +619,8 @@
       "products": "Produkte",
       "cert": "Zertifikate",
       "github": "GitHub",
-      "capabilities": "Fähigkeiten"
+      "capabilities": "Fähigkeiten",
+      "contact": "Kontakt"
     }
   },
   "Search": {

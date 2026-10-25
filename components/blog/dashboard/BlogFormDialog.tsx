@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import type { Blog } from "@/types/hubs/blogs";
+import { BLOG_LICENSE_TYPES, type Blog } from "@/types/hubs/blogs";
 import type { BlogFormData } from "@/types/main/admin";
 
 interface BlogFormDialogProps {
@@ -127,7 +127,7 @@ export function BlogFormDialog({
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label className="text-sm font-medium">Language</label>
               <select
@@ -153,6 +153,20 @@ export function BlogFormDialog({
                 {categories.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="text-sm font-medium">License</label>
+              <select
+                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                value={formData.license}
+                onChange={(e) => onFormChange("license", e.target.value)}
+              >
+                {BLOG_LICENSE_TYPES.map((license) => (
+                  <option key={license} value={license}>
+                    {license}
                   </option>
                 ))}
               </select>
@@ -199,11 +213,9 @@ export function BlogFormDialog({
             </label>
           </div>
 
-          {/* Credits/License Section */}
+          {/* Credits Section: attribution for content based on someone else's work */}
           <div className="border rounded-lg p-4 space-y-4">
-            <h3 className="text-lg font-semibold">
-              Credits & License (Optional)
-            </h3>
+            <h3 className="text-lg font-semibold">Credits (Optional)</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="text-sm font-medium">Original Author</label>
@@ -227,41 +239,13 @@ export function BlogFormDialog({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium">Source URL</label>
-                <Input
-                  value={formData.credits?.sourceUrl || ""}
-                  onChange={(e) => onCreditsChange("sourceUrl", e.target.value)}
-                  placeholder="https://example.com/original-post"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium">License Type</label>
-                <select
-                  className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  value={formData.credits?.licenseType || ""}
-                  onChange={(e) =>
-                    onCreditsChange("licenseType", e.target.value)
-                  }
-                >
-                  <option value="">Select License</option>
-                  <option value="CC BY">CC BY</option>
-                  <option value="CC BY-SA">CC BY-SA</option>
-                  <option value="CC BY-NC">CC BY-NC</option>
-                  <option value="CC BY-NC-SA">CC BY-NC-SA</option>
-                  <option value="CC BY-ND">CC BY-ND</option>
-                  <option value="CC BY-NC-ND">CC BY-NC-ND</option>
-                  <option value="MIT">MIT</option>
-                  <option value="Apache 2.0">Apache 2.0</option>
-                  <option value="GPL">GPL</option>
-                  <option value="Fair Use">Fair Use</option>
-                  <option value="All Rights Reserved">
-                    All Rights Reserved
-                  </option>
-                  <option value="Custom">Custom</option>
-                </select>
-              </div>
+            <div>
+              <label className="text-sm font-medium">Source URL</label>
+              <Input
+                value={formData.credits?.sourceUrl || ""}
+                onChange={(e) => onCreditsChange("sourceUrl", e.target.value)}
+                placeholder="https://example.com/original-post"
+              />
             </div>
 
             <div>

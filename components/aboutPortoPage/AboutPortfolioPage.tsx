@@ -147,7 +147,12 @@ export function AboutPortfolioPage() {
         />
         <div className="grid gap-2 sm:grid-cols-2">
           {ABOUT_PORTFOLIO_LINKS.map(({ href, label, description, external }) => {
-            const Icon = external ? ExternalLink : ArrowUpRight;
+            // Compare the parsed hostname; a substring check would match any URL containing "github.com".
+            const Icon = external
+              ? new URL(href).hostname === "github.com"
+                ? Github
+                : ExternalLink
+              : ArrowUpRight;
 
             return (
               <Link
@@ -169,11 +174,7 @@ export function AboutPortfolioPage() {
                     {description}
                   </span>
                 </span>
-                {href.includes("github.com") ? (
-                  <Github className="h-5 w-5 shrink-0" aria-hidden="true" />
-                ) : (
-                  <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                )}
+                <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
               </Link>
             );
           })}

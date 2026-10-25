@@ -12,8 +12,8 @@ import {
   FolderGit2,
   User,
   Library,
-  Contact,
   Mail,
+  Plug,
   Search,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
@@ -21,9 +21,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "@/components/languages/language-switcher";
-import { ContactSheet } from "@/components/contact";
 import { useTranslations } from "next-intl";
-import { CTAButton } from "@/components/ui/cta-button";
+import { Button } from "@/components/ui/button";
+import { contactSectionHref } from "@/data/main/contact";
 import { useIsApplePlatform } from "@/hooks/use-search-palette";
 
 interface NavItem {
@@ -66,9 +66,14 @@ export function useNavItems(): NavItem[] {
       icon: User,
     },
     {
-      name: "Blogs",
+      name: t("blog"),
       href: "/blog",
       icon: Library,
+    },
+    {
+      name: t("mcp"),
+      href: "/mcp",
+      icon: Plug,
     },
   ];
 }
@@ -131,28 +136,13 @@ export function SearchTrigger({ onOpen }: { onOpen: () => void }) {
 }
 
 export function DesktopControls({ contactCTA }: { contactCTA: ContactCTA }) {
-  const t = useTranslations("Navigation");
-
   return (
     <div className="hidden items-center gap-1 lg:flex">
       <LanguageSwitcher />
       <ModeToggle />
-      <ContactSheet>
-        <button
-          type="button"
-          aria-label={t("contactInfo")}
-          title={t("contactInfo")}
-          className={NAV_TOOL}
-        >
-          <Contact className="h-[1.1rem] w-[1.1rem]" aria-hidden={true} />
-        </button>
-      </ContactSheet>
-      <CTAButton
-        label={contactCTA.label}
-        variant="default"
-        showIcon={false}
-        className={`ml-2 ${NAV_ACTION}`}
-      />
+      <Button asChild className={`ml-2 ${NAV_ACTION}`}>
+        <Link href={contactSectionHref}>{contactCTA.label}</Link>
+      </Button>
     </div>
   );
 }
@@ -161,12 +151,9 @@ export function MobileControls({ contactCTA }: { contactCTA: ContactCTA }) {
   return (
     <div className="flex items-center gap-1 lg:hidden">
       <ModeToggle />
-      <CTAButton
-        label={contactCTA.label}
-        variant="default"
-        showIcon={false}
-        className={`ml-1 ${NAV_ACTION} px-3 sm:px-4`}
-      />
+      <Button asChild className={`ml-1 ${NAV_ACTION} px-3 sm:px-4`}>
+        <Link href={contactSectionHref}>{contactCTA.label}</Link>
+      </Button>
     </div>
   );
 }
@@ -220,12 +207,12 @@ export function MobileNavigation({
           <LanguageSwitcher />
         </div>
 
-        <CTAButton
-          label={contactCTA.label}
-          variant="default"
-          className={`w-full ${NAV_ACTION} h-12`}
-          onClick={onLinkClick}
-        />
+        <Button asChild className={`w-full ${NAV_ACTION} h-12`}>
+          <Link href={contactSectionHref} onClick={onLinkClick}>
+            <contactCTA.icon className="h-4 w-4" aria-hidden="true" />
+            {contactCTA.label}
+          </Link>
+        </Button>
       </div>
     </SheetContent>
   );

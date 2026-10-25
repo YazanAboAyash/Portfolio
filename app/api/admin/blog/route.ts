@@ -12,10 +12,11 @@ import type {
   BlogAdminAction,
   ApiErrorResponse,
 } from "@/types/main/admin";
-import type {
-  CreateBlogRequest,
-  UpdateBlogRequest,
-  BlogListQuery,
+import {
+  BLOG_LICENSE_TYPES,
+  type CreateBlogRequest,
+  type UpdateBlogRequest,
+  type BlogListQuery,
 } from "@/types/hubs/blogs";
 import {
   getBlogAdminStats,
@@ -26,7 +27,6 @@ import {
   getAdminBlogById,
   checkAdminRateLimit,
   getAdminCategories,
-  getAdminTags,
   type AdminContext,
 } from "@/lib/blog-admin/blog-admin";
 import { createAdminSession, invalidateAdminSession } from "@/proxy";
@@ -39,7 +39,7 @@ const BLOG_AGENT_TOKEN = process.env.BLOG_AGENT_TOKEN;
 
 type AdminRole = "admin" | "agent";
 
-const AGENT_GET_ACTIONS = new Set(["list", "categories", "tags"]);
+const AGENT_GET_ACTIONS = new Set(["list", "categories"]);
 
 /**
  * Rejects an unauthenticated request, throttling repeated token guesses.
@@ -157,12 +157,12 @@ const createBlogSchema = z.object({
     .transform((val) => (val === "" ? undefined : val)),
   isPublished: z.boolean().optional(),
   isFeatured: z.boolean().optional(),
+  license: z.enum(BLOG_LICENSE_TYPES).optional(),
   credits: z
     .object({
       originalAuthor: z.string().optional(),
       originalSource: z.string().optional(),
       sourceUrl: z.string().url().optional().or(z.literal("")),
-      licenseType: z.string().optional(),
       creditText: z.string().optional(),
       translatedFrom: z.string().optional(),
       adaptedFrom: z.string().optional(),
@@ -201,12 +201,12 @@ const updateBlogSchema = z.object({
     .transform((val) => (val === "" ? undefined : val)),
   isPublished: z.boolean().optional(),
   isFeatured: z.boolean().optional(),
+  license: z.enum(BLOG_LICENSE_TYPES).optional(),
   credits: z
     .object({
       originalAuthor: z.string().optional(),
       originalSource: z.string().optional(),
       sourceUrl: z.string().url().optional().or(z.literal("")),
-      licenseType: z.string().optional(),
       creditText: z.string().optional(),
       translatedFrom: z.string().optional(),
       adaptedFrom: z.string().optional(),
@@ -318,11 +318,6 @@ export async function GET(
         return NextResponse.json({ success: true, data: categories });
       }
 
-      case "tags": {
-        const tags = await getAdminTags(context);
-        return NextResponse.json({ success: true, data: tags });
-      }
-
       default:
         return NextResponse.json({
           message: "Blog Admin API",
@@ -331,7 +326,6 @@ export async function GET(
             list: "/api/admin/blog?action=list&page=1&limit=20",
             get: "/api/admin/blog?action=get&id={blogId}",
             categories: "/api/admin/blog?action=categories",
-            tags: "/api/admin/blog?action=tags",
           },
         });
     }

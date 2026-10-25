@@ -8,7 +8,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FiExternalLink } from "react-icons/fi";
+import { ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
   cardRailFeatured,
@@ -70,12 +70,8 @@ export function CollaborationShowcase({
                 {tProject("title")}
               </h3>
 
-              {/* Description: one line on phones, the full story from sm */}
               <p className="max-w-2xl text-base leading-relaxed text-foreground md:text-lg">
-                <span className="sm:hidden">{tProject("summary")}</span>
-                <span className="hidden sm:inline">
-                  {tProject("description")}
-                </span>
+                {tProject("description")}
               </p>
 
               {/* Tech */}
@@ -119,7 +115,7 @@ export function CollaborationShowcase({
                   aria-label={tProject("visitSite")}
                 >
                   buettelborn.de
-                  <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </div>
             </div>

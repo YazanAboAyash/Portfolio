@@ -37,20 +37,37 @@ export const githubCopy = {
     response: "Response",
     failed: "Session failed. The last exchange above shows where.",
   },
+  page: {
+    title: "MCP playground",
+    description:
+      "Call every tool of coldbydefault.com's public MCP server from the browser and see exactly what an AI agent receives.",
+  },
   ask: {
     title: "Ask this site",
+    /** The /mcp playground. */
     intro:
       "coldbydefault.com runs a public MCP server. AI clients such as Claude can read my projects, capabilities, certifications and GitHub through it. Run one of its tools and see exactly what an agent receives.",
-    introShort: "A public MCP server. Run a tool, see what an AI agent gets.",
+    /** The home page section. */
+    introShort:
+      "This site runs a public MCP server, so AI agents like Claude can query my work directly. Try the example question or a GitHub tool.",
     toolsLabel: "MCP tools",
+    example: {
+      label: "Example",
+      question: "Which projects use AI?",
+      hint: "One get_projects call, answered from its result",
+      questionLabel: "Question",
+      answer: "open-source projects use AI:",
+    },
     toolGroups: [
       {
         label: "Portfolio",
         tools: ["get_projects", "get_capabilities", "get_certifications"],
+        onHome: false,
       },
       {
         label: "GitHub",
         tools: ["get_profile", "get_stats", "get_repositories"],
+        onHome: true,
       },
     ],
     tools: {
@@ -76,6 +93,7 @@ export const githubCopy = {
     addTitle: "Connect your own MCP client",
     addHint:
       "Add this URL as a remote MCP server in Claude, ChatGPT, Cursor or VS Code. Streamable HTTP, no sign-in, read-only.",
+    playground: "Open the full MCP playground",
     copy: "Copy",
     copied: "Copied",
     viewLabel: "Response view",

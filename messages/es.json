@@ -31,8 +31,6 @@
       "nextFocus": "Mostrar el siguiente enfoque",
       "latestPost": "Última entrada",
       "allPosts": "Ir al blog",
-      "site": "Este sitio",
-      "siteLink": "Cómo está hecho",
       "focusItems": [
         "Sistemas RAG con citas de fuentes",
         "Agentes de IA y servidores MCP",
@@ -60,26 +58,38 @@
     "language": "Idioma",
     "languagePreviewHint": "Señala un idioma para ver la introducción en él.",
     "toggleTheme": "Cambiar entre modo claro y oscuro",
-    "contactInfo": "Abrir información de contacto",
     "openMenu": "Abrir menú de navegación"
   },
   "Contact": {
-    "getInTouch": "Conectemos",
-    "description": "¿Quieres hablar de un puesto, un proyecto o una idea? Envíame un correo o conéctate conmigo en redes sociales.",
-    "email": "Correo electrónico",
-    "sendEmail": "Enviar un correo",
-    "socialMedia": "Redes sociales",
-    "info": "Info",
-    "location": "Ubicación",
-    "status": "Estado",
-    "qualification": "Titulación",
-    "employmentStatus": "Empleado a tiempo completo",
-    "position": "Puesto",
-    "employer": "Empleador",
-    "role": "Desarrollador Full-Stack e Ingeniero de IA",
-    "qualificationTitle": "IHK Fachinformatiker AE",
-    "specialization": "Especialización",
-    "specializationValue": "Inteligencia Artificial"
+    "title": "Hablemos",
+    "lead": "Un puesto, una idea o simplemente un saludo: el correo es la forma más rápida de contactarme.",
+    "emailLabel": "Correo",
+    "write": "Escribir un correo",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copyLabel": "Copiar dirección de correo",
+    "availability": "Trabajo a tiempo completo y no acepto trabajos freelance ni encargos de clientes.",
+    "topicsTitle": "O empieza con un borrador",
+    "topics": {
+      "role": {
+        "label": "Un puesto en tu equipo",
+        "description": "Estás contratando y crees que encajaría.",
+        "subject": "Oferta de empleo",
+        "body": "Hola, Yazan:\n\nTe escribo por un puesto en [empresa]: [el puesto y un enlace a la oferta].\n\n"
+      },
+      "collaboration": {
+        "label": "Colaboración",
+        "description": "Código abierto, una charla o construir algo juntos.",
+        "subject": "Idea de colaboración",
+        "body": "Hola, Yazan:\n\nTengo una idea en la que podríamos trabajar juntos: [unas líneas sobre ella].\n\n"
+      },
+      "hello": {
+        "label": "Solo saludar",
+        "description": "Comentarios sobre la web, una pregunta o un saludo rápido.",
+        "subject": "Hola desde coldbydefault.com",
+        "body": "Hola, Yazan:\n\n"
+      }
+    }
   },
   "Capabilities": {
     "title": "Lo que entrego",
@@ -114,6 +124,7 @@
         "tooling": "Herramientas y despliegue"
       },
       "usedIn": "{count, plural, one {usada en # lugar} other {usada en # lugares}}",
+      "close": "Cerrar",
       "kinds": {
         "project": "Proyecto de código abierto",
         "product": "Producto",
@@ -174,7 +185,6 @@
       "compliance": "RR. HH. y cumplimiento"
     },
     "descriptions": {
-      "portfolioWebsite": "Un portafolio moderno y responsivo construido con Next.js 16, con alternancia de tema oscuro/claro, animaciones fluidas con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para estilos.",
       "berichHub": "Plataforma de aprendizaje digital full-stack con autenticación de usuarios, páginas de perfil y funcionalidades de blog. Integración de IA para aprendizaje personalizado. Completamente gratuita y de código abierto. Soporta 4 idiomas: inglés, alemán, español y sueco.",
       "llmAgent": "Chatbot de IA local basado en ollama, personalizable para usar cualquier modelo LLM y cualquier modelo de embeddings, con 2 opciones de base de datos vectorial: Postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Próximamente habrá más... Código abierto.",
       "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros.",
@@ -184,7 +194,6 @@
       "jsStudyAgentPlugin": "Un plugin socrático para aprender JavaScript con GitHub Copilot CLI y Claude Code. Cinco agentes especializados, skills de carga automática y una hoja de ruta de 8 etapas te guían hacia las respuestas con pistas y preguntas en lugar de darte la solución."
     },
     "summaries": {
-      "portfolioWebsite": "Este portfolio, hecho con Next.js y TypeScript.",
       "berichHub": "Plataforma de aprendizaje gratuita en cuatro idiomas.",
       "voiceToNotion": "Reuniones convertidas en páginas de Notion en 30 segundos.",
       "nextJsSeoOptimization": "Ayudante SEO sin dependencias para Next.js, en npm.",
@@ -216,8 +225,7 @@
     "badge": "Proyecto en equipo",
     "project": {
       "title": "Ciudad de Büttelborn — Avatar IA para el alcalde",
-      "description": "Parte del equipo de Botgenossen que construyó el avatar de IA interactivo multilingüe para el Bürgermeister de Büttelborn, una ciudad en Alemania. El avatar habla con los ciudadanos en varios idiomas, responde preguntas sobre los servicios municipales y representa digitalmente al alcalde en el sitio web oficial de la ciudad.",
-      "summary": "Avatar de IA multilingüe en la web oficial de la ciudad.",
+      "description": "Un avatar multilingüe que responde a las preguntas de los ciudadanos sobre los servicios municipales, activo en la web oficial de la ciudad.",
       "visitSite": "Visitar la web de la ciudad de Büttelborn",
       "role": "Desarrollo de Avatar IA",
       "company": "Botgenossen",
@@ -468,7 +476,44 @@
     "emptyDescription": "Prueba otro idioma o vuelve pronto para leer nuevos artículos.",
     "draft": "Borrador",
     "minutesToRead": "{count} min de lectura",
-    "featured": "Destacado"
+    "featured": "Destacado",
+    "allPosts": "Todas las publicaciones",
+    "copyLink": "Copiar enlace",
+    "linkCopied": "Enlace copiado",
+    "replyByEmail": "Responder por correo",
+    "replySubject": "Re: {title}",
+    "shareLead": "¿Te resultó útil? Compártelo con alguien o responde con tu opinión.",
+    "onThisPage": "En esta página",
+    "contents": "Contenido",
+    "readingStatus": "{percent} % · {minutes, plural, =0 {terminado} other {quedan # min}}",
+    "views": "{count, plural, one {# vista} other {# vistas}}",
+    "linkToSection": "Enlace a esta sección",
+    "labels": "Etiquetas",
+    "checklistTitle": "Tu lista de comprobación",
+    "checklistProgress": "{done} de {total}",
+    "checklistDone": "Todo listo",
+    "credits": {
+      "title": "Créditos",
+      "originalAuthor": "Autor original",
+      "source": "Fuente",
+      "url": "URL",
+      "translatedFrom": "Traducido de",
+      "adaptedFrom": "Adaptado de"
+    },
+    "licenses": {
+      "CCBY": "CC BY",
+      "CCBYSA": "CC BY-SA",
+      "CCBYNC": "CC BY-NC",
+      "CCBYNCSA": "CC BY-NC-SA",
+      "CCBYND": "CC BY-ND",
+      "CCBYNCND": "CC BY-NC-ND",
+      "MIT": "MIT",
+      "Apache20": "Apache 2.0",
+      "GPL": "GPL",
+      "FairUse": "Uso legítimo",
+      "AllRightsReserved": "Todos los derechos reservados",
+      "Custom": "Licencia propia"
+    }
   },
   "ChatBot": {
     "name": "Reem",
@@ -541,7 +586,7 @@
     "browserLanguage": "Idioma del navegador",
     "browser": "Navegador",
     "switchedTo": "cambiado a",
-    "matched": "coincide",
+    "dismiss": "Cerrar",
     "notSupported": "no soportado",
     "using": "usando",
     "serverDetected": "Detectado del servidor"
@@ -574,7 +619,8 @@
       "products": "Productos",
       "cert": "Certificaciones",
       "github": "GitHub",
-      "capabilities": "Capacidades"
+      "capabilities": "Capacidades",
+      "contact": "Contacto"
     }
   },
   "Search": {

@@ -28,6 +28,7 @@ export const footerNavLinks: LinkItem[][] = [
 
 export const developerLinks: LinkItem[] = [
   { href: "/about-portfolio", label: "About This Site" },
+  { href: "/mcp", label: "MCP Playground" },
   {
     href: "https://docs.coldbydefault.com/",
     label: "Documentation",
@@ -39,7 +40,7 @@ export const socialLinks: LinkItem[] = [
   {
     href: "https://x.com/ccoldbydefault",
     label: "X",
-    icon: "FaSquareXTwitter",
+    icon: "SiX",
     ariaLabel: "Follow ColdByDefault on X (Twitter)",
     isExternal: true,
     variant: "social" as const,
@@ -47,7 +48,7 @@ export const socialLinks: LinkItem[] = [
   {
     href: "https://www.instagram.com/cold.by.default",
     label: "Instagram",
-    icon: "FaInstagramSquare",
+    icon: "SiInstagram",
     ariaLabel: "Follow ColdByDefault on Instagram",
     isExternal: true,
     variant: "social" as const,
@@ -55,7 +56,7 @@ export const socialLinks: LinkItem[] = [
   {
     href: "https://github.com/yazanaboayash",
     label: "GitHub",
-    icon: "FaGithub",
+    icon: "SiGithub",
     ariaLabel: "Visit ColdByDefault GitHub profile",
     isExternal: true,
     variant: "social" as const,

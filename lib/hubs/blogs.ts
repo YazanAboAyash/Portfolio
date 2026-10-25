@@ -66,11 +66,6 @@ export async function getBlogs(
       take: limit,
       include: {
         category: true,
-        tags: {
-          include: {
-            tag: true,
-          },
-        },
         credits: true,
       },
     });
@@ -87,7 +82,6 @@ export async function getBlogs(
       },
       filters: {
         categories: [],
-        tags: [],
       },
     };
   } catch (error) {
@@ -105,7 +99,6 @@ export async function getBlogs(
       },
       filters: {
         categories: [],
-        tags: [],
       },
     };
   }
@@ -136,11 +129,6 @@ async function fetchBlogBySlug(slug: string): Promise<Blog | null> {
       },
       include: {
         category: true,
-        tags: {
-          include: {
-            tag: true,
-          },
-        },
         credits: true,
       },
     });

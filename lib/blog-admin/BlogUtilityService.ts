@@ -152,7 +152,6 @@ export class BlogUtilityService {
         ? sanitizeInput(credits.originalSource)
         : null,
       sourceUrl: credits.sourceUrl || null,
-      licenseType: credits.licenseType || null,
       creditText: credits.creditText ? sanitizeInput(credits.creditText) : null,
       translatedFrom: credits.translatedFrom || null,
       adaptedFrom: credits.adaptedFrom || null,

@@ -3,17 +3,13 @@
 
 -- Drop any existing policies first
 DROP POLICY IF EXISTS "allow_all_blog_categories" ON "public"."blog_categories";
-DROP POLICY IF EXISTS "allow_all_blog_tags" ON "public"."blog_tags";
 DROP POLICY IF EXISTS "allow_all_blogs" ON "public"."blogs";
 DROP POLICY IF EXISTS "allow_all_blog_credits" ON "public"."blog_credits";
-DROP POLICY IF EXISTS "allow_all_blog_tag_relations" ON "public"."blog_tag_relations";
 
 -- Disable RLS completely
 ALTER TABLE "public"."blog_categories" DISABLE ROW LEVEL SECURITY;
 ALTER TABLE "public"."blogs" DISABLE ROW LEVEL SECURITY;
 ALTER TABLE "public"."blog_credits" DISABLE ROW LEVEL SECURITY;
-ALTER TABLE "public"."blog_tag_relations" DISABLE ROW LEVEL SECURITY;
-ALTER TABLE "public"."blog_tags" DISABLE ROW LEVEL SECURITY;
 
 -- Grant maximum permissions to all roles
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO anon;

@@ -10,6 +10,7 @@ import { Hero, HeroBannerSection } from "@/components/hero";
 import dynamic from "next/dynamic";
 import { LoadingSkeleton } from "@/components/visuals";
 import { SectionRail } from "@/components/nav";
+import { ContactSection } from "@/components/contact";
 
 // Heavy sections load client-side. Each skeleton reserves roughly the
 // section's rendered height (measured at 390 / 800 / 1440px) so the page
@@ -45,7 +46,7 @@ const GitHubAskConsole = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="min-h-387 md:min-h-511 lg:min-h-264" />
+      <LoadingSkeleton className="min-h-316 md:min-h-382 lg:min-h-208" />
     ),
     ssr: false,
   },
@@ -112,8 +113,10 @@ export default function HomeContent() {
       {/* Section ruler pinned beside the scrollbar */}
       <SectionRail />
 
+      {/* Fills the first screen so the banner sits at the fold, capped so tall
+          screens don't open a gap between hero and banner */}
       <div
-        className="flex min-h-[calc(100svh-4rem)] flex-col justify-between gap-12 pb-8"
+        className="flex min-h-[min(calc(100svh-4rem),60rem)] flex-col justify-between gap-12 pb-8"
         id="home"
       >
         <Hero />
@@ -144,8 +147,11 @@ export default function HomeContent() {
 
           <CertificationShowcase className={`frame ${SECTION} pt-0 md:pt-0`} />
 
-          {/* PageSpeed Insights Section: supporting proof, so it closes the page */}
+          {/* PageSpeed Insights Section: supporting proof, last before the ask */}
           <SpeedInsight className={`frame ${SECTION} pt-0 md:pt-0`} />
+
+          {/* Contact closes the page; the navbar's Contact action lands here */}
+          <ContactSection className={`frame ${SECTION} pt-0 md:pt-0`} />
         </div>
       </div>
     </div>

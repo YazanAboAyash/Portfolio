@@ -6,11 +6,10 @@
 
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useId, useState } from "react";
-import { FiGithub, FiExternalLink } from "react-icons/fi";
-import { SiNpm } from "react-icons/si";
+import { ExternalLink } from "lucide-react";
+import { SiGithub, SiNpm } from "react-icons/si";
 import { useTranslations } from "next-intl";
 import { projects } from "@/data/hubs/projectsData";
 import {
@@ -40,7 +39,6 @@ interface ProjectsHomeShowcaseProps {
 export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
   const t = useTranslations("Projects");
   const tCategories = useTranslations("Projects.categories");
-  const tDescriptions = useTranslations("Projects.descriptions");
   const tSummaries = useTranslations("Projects.summaries");
   const [activeId, setActiveId] = useState(projects[0]?.id);
   // The one row expanded on phones; desktop rows are always expanded
@@ -67,7 +65,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
             className="hidden min-h-12 items-center gap-2 bg-primary px-6 font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:inline-flex"
           >
             {t("viewAllProjects")}
-            <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         }
       />
@@ -131,13 +129,13 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                   </button>
                 </div>
 
-                {/* Description and tech, top 3 */}
+                {/* One-line outcome (phones show it under the title) and tech, top 3 */}
                 <div
                   id={detailsId}
                   className={cn("flex-col gap-2 md:col-span-5", whenOpen(open))}
                 >
-                  <p className="text-base leading-relaxed text-foreground md:line-clamp-3">
-                    {tDescriptions(project.description)}
+                  <p className="hidden text-base leading-relaxed text-foreground md:block">
+                    {tSummaries(project.description)}
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {project.technologies.slice(0, 3).join(" · ")}
@@ -161,7 +159,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                       rel="noopener noreferrer"
                       className={cn(linkBase, linkQuiet)}
                     >
-                      <FiGithub className="h-3.5 w-3.5" aria-hidden="true" />
+                      <SiGithub className="h-3.5 w-3.5" aria-hidden="true" />
                       {t("code")}
                       <span className="sr-only"> — {project.title}</span>
                     </Link>
@@ -173,7 +171,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                       rel="noopener noreferrer"
                       className={cn(linkBase, linkPrimary)}
                     >
-                      <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       {t("liveDemo")}
                       <span className="sr-only"> — {project.title}</span>
                     </Link>
@@ -207,29 +205,21 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
           className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 bg-primary px-6 font-semibold text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:hidden"
         >
           {t("allCount", { count: projects.length })}
-          <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
         </Link>
       </RevealGroup>
 
-      {/* Preview of the row in focus: its title card, or its name set large. */}
+      {/* Preview of the row in focus: its name set large. */}
       {active && (
         <aside aria-hidden="true" className="col-span-4 hidden lg:block">
           <div className="sticky top-24 flex flex-col gap-4">
             <div className="relative aspect-2/1 overflow-hidden bg-surface">
-              {active.image ? (
-                <Image
-                  key={active.id}
-                  src={active.image}
-                  alt=""
-                  fill
-                  sizes="33vw"
-                  className="object-cover motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
-                />
-              ) : (
-                <span className="absolute inset-x-5 bottom-4 text-4xl font-bold leading-none tracking-[-0.03em]">
-                  {active.title}
-                </span>
-              )}
+              <span
+                key={active.id}
+                className="absolute inset-x-5 bottom-4 text-4xl font-bold leading-none tracking-[-0.03em] motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
+              >
+                {active.title}
+              </span>
             </div>
             <p className="text-lg font-semibold leading-snug">{active.title}</p>
             <p className="text-sm text-muted-foreground">

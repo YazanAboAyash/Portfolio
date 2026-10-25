@@ -71,10 +71,9 @@ export function generateBlogSEO(blog: Blog, locale: string = "en"): BlogSEO {
     blog.excerpt ||
     `Read "${blog.title}" on ${config.siteName}. ${config.description}`;
 
-  // Generate keywords from tags and categories
+  // Generate keywords from the category and title
   const keywords = [
     ...config.keywords,
-    ...(blog.tags?.map((tagRel) => tagRel.tag?.name).filter(Boolean) || []),
     blog.category?.name,
     blog.title.split(" ").slice(0, 3), // First 3 words of title
   ].filter(Boolean) as string[];
@@ -119,10 +118,7 @@ export function generateBlogSEO(blog: Blog, locale: string = "en"): BlogSEO {
       mainEntityOfPage: `${baseUrl}/blog/${blog.slug}`,
       wordCount: blog.content.split(/\s+/).length,
       timeRequired: blog.readingTime ? `PT${blog.readingTime}M` : undefined,
-      keywords: [
-        ...(blog.tags?.map((tagRel) => tagRel.tag?.name).filter(Boolean) || []),
-        blog.category?.name,
-      ].filter((keyword): keyword is string => Boolean(keyword)),
+      keywords: blog.category ? [blog.category.name] : [],
       articleSection: blog.category?.name,
       about: blog.category?.description,
     } as BlogStructuredData,

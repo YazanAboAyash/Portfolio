@@ -34,6 +34,7 @@ function prefersInputFocus(): boolean {
 export function ChatBot({ className = "" }: ChatBotUIProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [scrolledAway, setScrolledAway] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
@@ -82,6 +83,24 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
 
     return () => clearTimeout(timer);
   }, [cookieConsent, isVisible]);
+
+  // Track scroll direction for the launcher; the classes only act below md
+  useEffect(() => {
+    if (isOpen) return;
+
+    let lastY = window.scrollY;
+    const handleScroll = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - lastY) < CHATBOT_CONFIG.LAUNCHER_SCROLL_DELTA) return;
+      setScrolledAway(
+        y > lastY && y > CHATBOT_CONFIG.LAUNCHER_ALWAYS_SHOWN_TOP,
+      );
+      lastY = y;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isOpen]);
 
   // Keep the newest message in view unless the visitor has scrolled away
   useEffect(() => {
@@ -160,14 +179,20 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
         ref={launcherRef}
         onClick={handleOpenChat}
         size="icon"
-        className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 size-14 cursor-pointer rounded-full border border-primary/20 shadow-lg transition-transform hover:scale-105 animate-in fade-in-0 zoom-in-75 duration-300 motion-reduce:animate-none motion-reduce:hover:scale-100 md:bottom-6 md:left-6 ${className}`}
+        // z-40: sheets, drawers and dialogs (z-50) cover the launcher.
+        // Phones get the smaller 44px launcher, out of the way while scrolling down.
+        className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-40 size-11 cursor-pointer rounded-full border border-primary/20 shadow-lg transition-[translate,scale,opacity] hover:scale-105 animate-in fade-in-0 zoom-in-75 duration-300 motion-reduce:animate-none motion-reduce:transition-none motion-reduce:hover:scale-100 md:bottom-6 md:left-6 md:size-14 ${
+          scrolledAway
+            ? "max-md:pointer-events-none max-md:translate-y-20 max-md:opacity-0"
+            : ""
+        } ${className}`}
         title={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
       >
         {/* size-* class opts out of the Button's [&_svg]:size-4 override */}
         <Blobatar
           name={CHATBOT_CONFIG.AVATAR_SEED}
           animate="always"
-          className="size-10"
+          className="size-8 md:size-10"
           aria-hidden="true"
         />
         <span className="sr-only">

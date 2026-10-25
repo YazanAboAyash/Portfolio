@@ -26,20 +26,6 @@ model BlogCategory {
   @@map("blog_categories")
 }
 
-model BlogTag {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  slug      String   @unique
-  color     String?  @default("#6B7280") // Default gray color for tags
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
-  blogs BlogTagRelation[]
-
-  @@map("blog_tags")
-}
-
 model Blog {
   id            String        @id @default(cuid())
   title         String
@@ -55,7 +41,10 @@ model Blog {
   isPublished   Boolean       @default(false)
   isFeatured    Boolean       @default(false)
   isDraft       Boolean       @default(true)
-  
+
+  // License of this post; one of BLOG_LICENSE_TYPES in types/hubs/blogs.ts
+  license       String        @default("All Rights Reserved")
+
   // SEO
   metaTitle     String?
   metaDescription String?
@@ -77,8 +66,6 @@ model Blog {
   // Relations
   categoryId    String?
   category      BlogCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  
-  tags          BlogTagRelation[]
 
   @@map("blogs")
   @@index([slug])
@@ -96,7 +83,6 @@ model BlogCredit {
   originalAuthor  String  // Name of the original author
   originalSource  String? // Website, publication, etc.
   sourceUrl       String? // Link to original source
-  licenseType     String? // e.g., "CC BY-SA", "MIT", "Fair Use", etc.
   creditText      String? // Custom credit text
   translatedFrom  String? // If translated, original language
   adaptedFrom     String? // If adapted/modified from original
@@ -108,20 +94,6 @@ model BlogCredit {
   blog            Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
 
   @@map("blog_credits")
-}
-
-// Many-to-many relation between Blog and Tag
-model BlogTagRelation {
-  id     String @id @default(cuid())
-  blogId String
-  tagId  String
-
-  // Relations
-  blog   Blog    @relation(fields: [blogId], references: [id], onDelete: Cascade)
-  tag    BlogTag @relation(fields: [tagId], references: [id], onDelete: Cascade)
-
-  @@unique([blogId, tagId])
-  @@map("blog_tag_relations")
 }
 
 // Chatbot Models

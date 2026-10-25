@@ -25,6 +25,9 @@ const languageNames: Record<string, string> = {
 /** Delay before showing the toast after page is ready (ms) */
 const TOAST_DELAY = 3000;
 
+/** How long the toast stays before it dismisses itself (ms) */
+const TOAST_DURATION = 4000;
+
 const emptySubscribe = () => () => {};
 
 function getCookie(name: string): string | undefined {
@@ -141,16 +144,24 @@ const LocaleAutoDetect = () => {
     const stored = sessionStorage.getItem("locale-detection-result");
     if (!stored) return;
 
+    let data: typeof toastData;
+    try {
+      data = JSON.parse(stored) as typeof toastData;
+    } catch {
+      return; // Invalid JSON, skip
+    }
+
+    // Nothing to tell when the site already speaks the browser's language
+    if (data.isSupported && data.browserLang === data.switchedTo) {
+      localStorage.setItem("locale-detection-done", "true");
+      return;
+    }
+
     const timer = setTimeout(() => {
-      try {
-        const data = JSON.parse(stored) as typeof toastData;
-        setToastData(data);
-        setShowToast(true);
-        setExiting(false);
-        localStorage.setItem("locale-detection-done", "true");
-      } catch {
-        // Invalid JSON, skip
-      }
+      setToastData(data);
+      setShowToast(true);
+      setExiting(false);
+      localStorage.setItem("locale-detection-done", "true");
     }, TOAST_DELAY);
 
     // Hide toast if another tab already dismissed it
@@ -167,10 +178,10 @@ const LocaleAutoDetect = () => {
     };
   }, [isClient]);
 
-  // Step 3: Auto-dismiss after 7 seconds + cross-tab dismiss
+  // Step 3: Auto-dismiss + cross-tab dismiss
   useEffect(() => {
     if (!showToast || exiting) return;
-    const autoDismiss = setTimeout(() => dismiss(), 7000);
+    const autoDismiss = setTimeout(() => dismiss(), TOAST_DURATION);
 
     // Dismiss in this tab when another tab sets the flag
     const handleStorageChange = (e: StorageEvent) => {
@@ -207,7 +218,7 @@ const LocaleAutoDetect = () => {
         <button
           onClick={dismiss}
           className="absolute top-2 right-2 p-1.5 sm:p-1 rounded-full text-muted-foreground/50 hover:text-foreground hover:bg-muted/50 transition-colors"
-          aria-label="Dismiss"
+          aria-label={t("dismiss")}
         >
           <X className="h-4 w-4 sm:h-3 sm:w-3" />
         </button>
@@ -234,24 +245,11 @@ const LocaleAutoDetect = () => {
                   {t("browserLanguage")}:{" "}
                   <span className="font-medium text-foreground">
                     {browserName}
+                  </span>{" "}
+                  — {t("switchedTo")}{" "}
+                  <span className="font-medium text-foreground">
+                    {langName}
                   </span>
-                  {toastData.browserLang !== toastData.switchedTo ? (
-                    <>
-                      {" "}
-                      — {t("switchedTo")}{" "}
-                      <span className="font-medium text-foreground">
-                        {langName}
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      {" "}
-                      —{" "}
-                      <span className="text-sky-500 font-medium">
-                        {t("matched")}
-                      </span>
-                    </>
-                  )}
                 </>
               ) : (
                 <>

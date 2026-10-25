@@ -49,13 +49,12 @@ export interface BlogFormData {
   metaDescription: string;
   isPublished: boolean;
   isFeatured: boolean;
-  tags?: string[];
+  license: string;
   credits?:
     | {
         originalAuthor: string;
         originalSource: string;
         sourceUrl: string;
-        licenseType: string;
         creditText: string;
         translatedFrom: string;
         adaptedFrom: string;

@@ -8,7 +8,6 @@
 
 import Link from "next/link";
 import { Home } from "lucide-react";
-import { TbError404 } from "react-icons/tb";
 import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
@@ -16,8 +15,8 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center space-y-6 max-w-md mx-auto">
         <div className="space-y-2">
-          <div className="flex items-center text-6xl font-bold justify-center pr-3">
-            <TbError404 />
+          <div className="flex items-center text-6xl font-bold justify-center">
+            404
           </div>
           <h2 className="text-2xl font-semibold">Page Not Found</h2>
           <p className="text-muted-foreground">

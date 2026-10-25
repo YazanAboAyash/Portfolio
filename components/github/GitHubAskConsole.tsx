@@ -6,11 +6,12 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { m, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { Check, Copy, Cpu } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import Link from "next/link";
+import { ArrowRight, Check, Copy, Cpu } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import { RevealGroup, RevealItem } from "@/components/visuals";
 import { mcpConfig } from "@/data/configs/mcp";
 import { useMcpToolCall } from "@/hooks/use-github-mcp-session";
@@ -30,8 +31,14 @@ const copy = githubCopy.ask;
 
 type ToolName = keyof typeof copy.tools;
 
-/** Called once the console scrolls into view, so it never opens empty. */
-const FIRST_TOOL: ToolName = "get_projects";
+/** A tool button, or the example question (answered from `get_projects`). */
+type Selection = ToolName | "example";
+
+/** What counts as "uses AI" for the example: matched against category and technologies. */
+const AI_PATTERN = /\b(AI|LLM|LangChain)\b/;
+
+/** Below Tailwind's lg the tools stack above the response panel. */
+const STACKED_QUERY = "(max-width: 1023px)";
 
 /** The server answers failed calls with a bare code; show its sentence instead. */
 function describeError(code: string | null | undefined): string {
@@ -48,6 +55,57 @@ const STAT_KEYS = Object.keys(copy.statLabels) as Array<
 const CLAMP_ON_PHONES = "line-clamp-2 md:line-clamp-none";
 const TECH_FROM_MD = "hidden text-sm text-muted-foreground md:block";
 
+function ProjectList({ items }: { items: McpProject[] }) {
+  return (
+    <RevealGroup as="ul" className="flex flex-col gap-5">
+      {items.map((project) => (
+        <RevealItem as="li" key={project.title} className="flex flex-col gap-0.5">
+          <a
+            href={project.liveUrl ?? project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit text-lg font-semibold underline decoration-transparent underline-offset-4 transition-colors hover:decoration-foreground"
+          >
+            {project.title}
+          </a>
+          <span className={CLAMP_ON_PHONES}>{project.description}</span>
+          <span className={TECH_FROM_MD}>
+            {[project.category, ...project.technologies].join(" · ")}
+          </span>
+        </RevealItem>
+      ))}
+    </RevealGroup>
+  );
+}
+
+/**
+ * The example question, answered the way an agent would: one `get_projects`
+ * call, then only the projects whose category or stack mention AI.
+ */
+function ExampleAnswer({ data }: { data: Record<string, unknown> }) {
+  const { items } = data as unknown as { items: McpProject[] };
+  const matches = items.filter((project) =>
+    [project.category, ...project.technologies].some((value) =>
+      AI_PATTERN.test(value),
+    ),
+  );
+
+  return (
+    <div className="flex flex-col gap-5">
+      <p className="flex flex-col gap-1">
+        <span className="text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+          {copy.example.questionLabel}
+        </span>
+        <span className="text-lg">{copy.example.question}</span>
+      </p>
+      <p className="text-lg font-semibold">
+        {matches.length} of {items.length} {copy.example.answer}
+      </p>
+      <ProjectList items={matches} />
+    </div>
+  );
+}
+
 /**
  * Readable rendering of a tool's structured output. The client SDK has
  * already validated it against the tool's output schema, so the casts below
@@ -62,30 +120,7 @@ function Readable({
 }) {
   if (tool === "get_projects") {
     const { items } = data as unknown as { items: McpProject[] };
-    return (
-      <RevealGroup as="ul" className="flex flex-col gap-5">
-        {items.map((project) => (
-          <RevealItem
-            as="li"
-            key={project.title}
-            className="flex flex-col gap-0.5"
-          >
-            <a
-              href={project.liveUrl ?? project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit text-lg font-semibold underline decoration-transparent underline-offset-4 transition-colors hover:decoration-foreground"
-            >
-              {project.title}
-            </a>
-            <span className={CLAMP_ON_PHONES}>{project.description}</span>
-            <span className={TECH_FROM_MD}>
-              {[project.category, ...project.technologies].join(" · ")}
-            </span>
-          </RevealItem>
-        ))}
-      </RevealGroup>
-    );
+    return <ProjectList items={items} />;
   }
 
   if (tool === "get_capabilities") {
@@ -224,7 +259,7 @@ function Readable({
             rel="noopener noreferrer"
             className="inline-flex min-h-11 w-fit items-center gap-2 bg-primary px-5 font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
-            <FaGithub className="h-4 w-4" aria-hidden="true" />
+            <SiGithub className="h-4 w-4" aria-hidden="true" />
             {copy.profile.viewProfile}
           </a>
         </RevealItem>
@@ -267,11 +302,20 @@ function Readable({
 
 /**
  * "Ask this site": run one of the public MCP server's tools from the page and
- * read exactly what an agent receives, readable or as raw JSON. The full
- * protocol log stays one click away in {@link GitHubMcpConsole}.
+ * read exactly what an agent receives, readable or as raw JSON.
+ *
+ * The home page shows the example question and the GitHub tools (the rest of
+ * its data is already on the page) and links to /mcp. The /mcp playground has
+ * every tool and the full protocol log in {@link GitHubMcpConsole}.
  */
-export default function GitHubAskConsole() {
+export default function GitHubAskConsole({
+  variant = "home",
+}: {
+  variant?: "home" | "page";
+}) {
   const { status, toolName, result, durationMs, call } = useMcpToolCall();
+  // Starts on the example, which runs as soon as the console scrolls into view
+  const [selected, setSelected] = useState<Selection>("example");
   const [view, setView] = useState<"readable" | "raw">("readable");
   const [copied, setCopied] = useState(false);
   const consoleRef = useRef<HTMLDivElement>(null);
@@ -279,9 +323,45 @@ export default function GitHubAskConsole() {
   const reduceMotion = useReducedMotion();
   const [measureBody, bodyHeight] = useMeasuredHeight<HTMLDivElement>();
 
+  const isPage = variant === "page";
+  const Heading = isPage ? "h1" : "h2";
+  const toolGroups = copy.toolGroups.filter((group) => isPage || group.onHome);
+
+  const run = useCallback(
+    (selection: Selection) => {
+      setSelected(selection);
+      void call(selection === "example" ? "get_projects" : selection);
+
+      // Below lg the response sits under the tools, often below the fold
+      const panel = consoleRef.current;
+      if (
+        panel &&
+        window.matchMedia(STACKED_QUERY).matches &&
+        panel.getBoundingClientRect().top > window.innerHeight / 2
+      ) {
+        panel.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start",
+        });
+      }
+    },
+    [call, reduceMotion],
+  );
+
+  // Run the example once in view, so the panel never opens empty
   useEffect(() => {
-    if (inView) void call(FIRST_TOOL);
+    if (inView) void call("get_projects");
   }, [inView, call]);
+
+  const toolButtonClass = (pressed: boolean) =>
+    `grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 px-5 py-3 text-left md:py-4 transition-[background-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
+      pressed
+        ? "bg-primary text-primary-foreground"
+        : "bg-surface hover:translate-x-1 hover:bg-surface-2 motion-reduce:hover:translate-x-0"
+    }`;
+
+  const groupLabelClass =
+    "text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground";
 
   const copyUrl = async (): Promise<void> => {
     try {
@@ -311,15 +391,14 @@ export default function GitHubAskConsole() {
         live session after it). From lg it is the left column again.
       */}
       <div className="contents lg:col-span-5 lg:flex lg:min-w-0 lg:flex-col lg:gap-7">
-        <h2
+        <Heading
           id="mcp-title"
           className="col-span-12 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
         >
           {copy.title}
-        </h2>
+        </Heading>
         <p className="col-span-12 max-w-[44ch] text-base leading-relaxed sm:text-lg">
-          <span className="sm:hidden">{copy.introShort}</span>
-          <span className="hidden sm:inline">{copy.intro}</span>
+          {isPage ? copy.intro : copy.introShort}
         </p>
 
         <div
@@ -327,45 +406,61 @@ export default function GitHubAskConsole() {
           role="group"
           className="col-span-12 flex flex-col gap-5"
         >
-          {copy.toolGroups.map((group) => (
+          <div
+            role="group"
+            aria-labelledby="mcp-group-example"
+            className="flex flex-col gap-1.5"
+          >
+            <h3 id="mcp-group-example" className={groupLabelClass}>
+              {copy.example.label}
+            </h3>
+            <button
+              type="button"
+              aria-pressed={selected === "example"}
+              onClick={() => run("example")}
+              className={toolButtonClass(selected === "example")}
+            >
+              <span>
+                <b className="block text-lg font-semibold">
+                  {copy.example.question}
+                </b>
+                <span className="hidden text-base md:block">
+                  {copy.example.hint}
+                </span>
+              </span>
+              <code className="font-mono text-sm">get_projects</code>
+            </button>
+          </div>
+
+          {toolGroups.map((group) => (
             <div
               key={group.label}
               role="group"
               aria-labelledby={`mcp-group-${group.label}`}
               className="flex flex-col gap-1.5"
             >
-              <h3
-                id={`mcp-group-${group.label}`}
-                className="text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground"
-              >
+              <h3 id={`mcp-group-${group.label}`} className={groupLabelClass}>
                 {group.label}
               </h3>
-              {group.tools.map((name) => {
-                const pressed = name === toolName;
-                return (
-                  <button
-                    key={name}
-                    type="button"
-                    aria-pressed={pressed}
-                    onClick={() => void call(name)}
-                    className={`grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 px-5 py-3 text-left md:py-4 transition-[background-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
-                      pressed
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-surface hover:translate-x-1 hover:bg-surface-2 motion-reduce:hover:translate-x-0"
-                    }`}
-                  >
-                    <span>
-                      <b className="block text-lg font-semibold">
-                        {copy.tools[name].label}
-                      </b>
-                      <span className="hidden text-base md:block">
-                        {copy.tools[name].hint}
-                      </span>
+              {group.tools.map((name) => (
+                <button
+                  key={name}
+                  type="button"
+                  aria-pressed={selected === name}
+                  onClick={() => run(name)}
+                  className={toolButtonClass(selected === name)}
+                >
+                  <span>
+                    <b className="block text-lg font-semibold">
+                      {copy.tools[name].label}
+                    </b>
+                    <span className="hidden text-base md:block">
+                      {copy.tools[name].hint}
                     </span>
-                    <code className="font-mono text-sm">{name}</code>
-                  </button>
-                );
-              })}
+                  </span>
+                  <code className="font-mono text-sm">{name}</code>
+                </button>
+              ))}
             </div>
           ))}
         </div>
@@ -392,16 +487,26 @@ export default function GitHubAskConsole() {
           </div>
         </div>
 
-        {/* The full protocol log: initialize, tools/list, every call. */}
-        <div className="order-1 col-span-12 lg:order-0">
-          <GitHubMcpConsole />
-        </div>
+        {isPage ? (
+          // The full protocol log: initialize, tools/list, every call.
+          <div className="order-1 col-span-12 lg:order-0">
+            <GitHubMcpConsole />
+          </div>
+        ) : (
+          <Link
+            href="/mcp"
+            className="order-1 col-span-12 inline-flex w-fit items-center gap-2 font-semibold underline decoration-surface-2 decoration-2 underline-offset-4 transition-colors hover:decoration-foreground lg:order-0"
+          >
+            {copy.playground}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        )}
       </div>
 
       <div
         ref={consoleRef}
         data-ui
-        className="col-span-12 flex min-w-0 flex-col bg-surface lg:col-span-7 lg:self-start"
+        className="col-span-12 flex min-w-0 scroll-mt-20 flex-col bg-surface lg:col-span-7 lg:self-start"
       >
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-2 px-5 py-3">
           <code className="font-mono text-sm">
@@ -465,6 +570,9 @@ export default function GitHubAskConsole() {
                   <pre className="max-h-160 overflow-auto font-mono text-[0.8125rem] leading-relaxed">
                     <code>{JSON.stringify(result.raw, null, 2)}</code>
                   </pre>
+                ) : selected === "example" &&
+                  result.toolName === "get_projects" ? (
+                  <ExampleAnswer data={result.structuredContent} />
                 ) : (
                   <Readable
                     key={result.toolName}

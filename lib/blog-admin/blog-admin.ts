@@ -91,12 +91,5 @@ export async function getAdminCategories(context: AdminContext) {
   return BlogAdminService.getAdminCategories(context);
 }
 
-/**
- * Get all tags for admin forms
- */
-export async function getAdminTags(context: AdminContext) {
-  return BlogAdminService.getAdminTags(context);
-}
-
 // Export the AdminContext type for use in API routes
 export type { AdminContext };

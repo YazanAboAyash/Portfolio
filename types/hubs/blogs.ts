@@ -20,6 +20,7 @@ export interface Blog {
   isPublished: boolean;
   isFeatured: boolean;
   isDraft: boolean;
+  license: string; // One of BLOG_LICENSE_TYPES
 
   // SEO
   metaTitle?: string;
@@ -38,7 +39,6 @@ export interface Blog {
   categoryId?: string;
   category?: BlogCategory;
   credits?: BlogCredit;
-  tags?: BlogTagRelation[];
 }
 
 export interface BlogCategory {
@@ -53,37 +53,18 @@ export interface BlogCategory {
   blogs?: Blog[];
 }
 
-export interface BlogTag {
-  id: string;
-  name: string;
-  slug: string;
-  color?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  blogs?: BlogTagRelation[];
-}
-
 export interface BlogCredit {
   id: string;
   blogId: string;
   originalAuthor: string;
   originalSource?: string;
   sourceUrl?: string;
-  licenseType?: string;
   creditText?: string;
   translatedFrom?: string;
   adaptedFrom?: string;
   createdAt: Date;
   updatedAt: Date;
   blog?: Blog;
-}
-
-export interface BlogTagRelation {
-  id: string;
-  blogId: string;
-  tagId: string;
-  blog?: Blog;
-  tag?: BlogTag;
 }
 
 // API Request/Response Types
@@ -95,7 +76,7 @@ export interface CreateBlogRequest {
   featuredImage?: string;
   language?: BlogLanguage; // Defaults to "en" if not provided
   categoryId?: string;
-  tags?: string[]; // Array of tag IDs
+  license?: BlogLicenseType; // Defaults to "All Rights Reserved"
   metaTitle?: string;
   metaDescription?: string;
   isPublished?: boolean;
@@ -112,7 +93,7 @@ export interface UpdateBlogRequest {
   featuredImage?: string;
   language?: BlogLanguage;
   categoryId?: string;
-  tags?: string[];
+  license?: BlogLicenseType;
   metaTitle?: string;
   metaDescription?: string;
   isPublished?: boolean;
@@ -126,7 +107,6 @@ export interface BlogListQuery {
   page?: number;
   limit?: number;
   category?: string;
-  tag?: string;
   search?: string;
   language?: BlogLanguage;
   published?: boolean;
@@ -147,7 +127,6 @@ export interface BlogListResponse {
   };
   filters: {
     categories: BlogCategory[];
-    tags: BlogTag[];
   };
 }
 
@@ -158,13 +137,8 @@ export interface BlogStatsResponse {
   featuredBlogs: number;
   totalReadCount: number;
   categoriesCount: number;
-  tagsCount: number;
   topCategories: Array<{
     category: BlogCategory;
-    blogCount: number;
-  }>;
-  topTags: Array<{
-    tag: BlogTag;
     blogCount: number;
   }>;
   popularBlogs: Array<{
@@ -172,6 +146,12 @@ export interface BlogStatsResponse {
     readCount: number;
   }>;
   recentBlogs: Blog[];
+}
+
+/** An `##` heading in a post, as listed in the "On this page" rail. */
+export interface BlogHeading {
+  id: string;
+  title: string;
 }
 
 // SEO and Meta Types
@@ -251,7 +231,7 @@ export interface BlogFormData {
   content: string;
   featuredImage: string;
   categoryId: string;
-  tags: string[];
+  license: string;
   metaTitle: string;
   metaDescription: string;
   isPublished: boolean;
@@ -261,7 +241,6 @@ export interface BlogFormData {
     originalAuthor: string;
     originalSource: string;
     sourceUrl: string;
-    licenseType: string;
     creditText: string;
     translatedFrom: string;
     adaptedFrom: string;
