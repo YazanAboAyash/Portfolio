@@ -476,7 +476,31 @@
     "emptyDescription": "Prova ett annat språk eller kom tillbaka snart för nya texter.",
     "draft": "Utkast",
     "minutesToRead": "{count} min läsning",
-    "featured": "Utvalt"
+    "featured": "Utvalt",
+    "allPosts": "Alla inlägg",
+    "copyLink": "Kopiera länk",
+    "linkCopied": "Länken kopierad",
+    "replyByEmail": "Svara via e-post",
+    "replySubject": "Sv: {title}",
+    "shareLead": "Var det här användbart? Skicka det vidare eller svara med dina tankar.",
+    "onThisPage": "På den här sidan",
+    "contents": "Innehåll",
+    "readingStatus": "{percent} % · {minutes, plural, =0 {klar} other {# min kvar}}",
+    "views": "{count, plural, one {# visning} other {# visningar}}",
+    "linkToSection": "Länk till det här avsnittet",
+    "topics": "Ämnen",
+    "checklistTitle": "Din checklista",
+    "checklistProgress": "{done} av {total}",
+    "checklistDone": "Allt klart",
+    "credits": {
+      "title": "Källor",
+      "originalAuthor": "Ursprunglig författare",
+      "source": "Källa",
+      "url": "URL",
+      "license": "Licens",
+      "translatedFrom": "Översatt från",
+      "adaptedFrom": "Bearbetad från"
+    }
   },
   "ChatBot": {
     "name": "Reem",

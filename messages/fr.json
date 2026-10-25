@@ -476,7 +476,31 @@
     "emptyDescription": "Essayez une autre langue ou revenez bientôt pour de nouveaux articles.",
     "draft": "Brouillon",
     "minutesToRead": "{count} min de lecture",
-    "featured": "À la une"
+    "featured": "À la une",
+    "allPosts": "Tous les articles",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié",
+    "replyByEmail": "Répondre par e-mail",
+    "replySubject": "Re : {title}",
+    "shareLead": "Cet article vous a été utile ? Partagez-le ou répondez avec votre avis.",
+    "onThisPage": "Sur cette page",
+    "contents": "Sommaire",
+    "readingStatus": "{percent} % · {minutes, plural, =0 {terminé} other {encore # min}}",
+    "views": "{count, plural, one {# vue} other {# vues}}",
+    "linkToSection": "Lien vers cette section",
+    "topics": "Sujets",
+    "checklistTitle": "Votre liste de contrôle",
+    "checklistProgress": "{done} sur {total}",
+    "checklistDone": "Tout est fait",
+    "credits": {
+      "title": "Crédits",
+      "originalAuthor": "Auteur original",
+      "source": "Source",
+      "url": "URL",
+      "license": "Licence",
+      "translatedFrom": "Traduit de",
+      "adaptedFrom": "Adapté de"
+    }
   },
   "ChatBot": {
     "name": "Reem",

@@ -174,6 +174,12 @@ export interface BlogStatsResponse {
   recentBlogs: Blog[];
 }
 
+/** An `##` heading in a post, as listed in the "On this page" rail. */
+export interface BlogHeading {
+  id: string;
+  title: string;
+}
+
 // SEO and Meta Types
 export interface BlogSEO {
   title: string;

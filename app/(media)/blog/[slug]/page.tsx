@@ -7,7 +7,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";
-import { BlogView, BlogBreadcrumb } from "@/components/blog";
+import { BlogView } from "@/components/blog";
 import { generateBlogSEO } from "@/lib/configs/seo";
 import { getBlogBySlug } from "@/lib/hubs/blogs";
 
@@ -33,13 +33,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <div className="frame pt-4 pb-16 sm:pt-6 md:pt-10 md:pb-24">
-      {/* One reading column; the breadcrumb sits on its edge */}
-      <div className="mx-auto max-w-4xl">
-        <BlogBreadcrumb blog={blog} className="mb-8" />
-
-        <BlogView blog={blog} />
-      </div>
+    <div className="frame pt-6 pb-16 md:pt-10 md:pb-24">
+      {/* Reading column plus the "On this page" rail from lg up */}
+      <BlogView blog={blog} className="mx-auto max-w-6xl" />
     </div>
   );
 }

@@ -109,12 +109,12 @@ export function BlogPageClient({ initialBlogs }: BlogPageClientProps) {
 
       {isLoading ? (
         <div
-          className="grid gap-2 md:grid-cols-2 lg:grid-cols-3"
+          className="divide-y divide-border border-y border-border"
           aria-busy="true"
           aria-label={t("loading")}
         >
           {Array.from({ length: 3 }, (_, i) => (
-            <LoadingSkeleton key={i} variant="blog" />
+            <LoadingSkeleton key={i} variant="list" count={2} className="py-8" />
           ))}
         </div>
       ) : (

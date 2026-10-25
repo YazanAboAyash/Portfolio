@@ -476,7 +476,31 @@
     "emptyDescription": "Try another language or check back soon for new writing.",
     "draft": "Draft",
     "minutesToRead": "{count} min read",
-    "featured": "Featured"
+    "featured": "Featured",
+    "allPosts": "All posts",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied",
+    "replyByEmail": "Reply by email",
+    "replySubject": "Re: {title}",
+    "shareLead": "Found this useful? Send it to someone, or reply with your take.",
+    "onThisPage": "On this page",
+    "contents": "Contents",
+    "readingStatus": "{percent}% · {minutes, plural, =0 {finished} other {# min left}}",
+    "views": "{count, plural, one {# view} other {# views}}",
+    "linkToSection": "Link to this section",
+    "topics": "Topics",
+    "checklistTitle": "Your checklist",
+    "checklistProgress": "{done} of {total}",
+    "checklistDone": "All done",
+    "credits": {
+      "title": "Credits",
+      "originalAuthor": "Original author",
+      "source": "Source",
+      "url": "URL",
+      "license": "License",
+      "translatedFrom": "Translated from",
+      "adaptedFrom": "Adapted from"
+    }
   },
   "ChatBot": {
     "name": "Reem",
