@@ -148,19 +148,6 @@ export class BlogAdminService {
       BlogUtilityService.handleBlogError(error, "fetch categories");
     }
   }
-
-  /**
-   * Get all tags for admin forms
-   */
-  static async getAdminTags(context: AdminContext) {
-    BlogValidationService.validateAdminAccess(context);
-
-    try {
-      return await BlogQueryService.getAdminTags();
-    } catch (error) {
-      BlogUtilityService.handleBlogError(error, "fetch tags");
-    }
-  }
 }
 
 // Export the AdminContext type for use in API routes

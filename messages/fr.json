@@ -488,7 +488,7 @@
     "readingStatus": "{percent} % · {minutes, plural, =0 {terminé} other {encore # min}}",
     "views": "{count, plural, one {# vue} other {# vues}}",
     "linkToSection": "Lien vers cette section",
-    "topics": "Sujets",
+    "labels": "Libellés",
     "checklistTitle": "Votre liste de contrôle",
     "checklistProgress": "{done} sur {total}",
     "checklistDone": "Tout est fait",
@@ -497,9 +497,22 @@
       "originalAuthor": "Auteur original",
       "source": "Source",
       "url": "URL",
-      "license": "Licence",
       "translatedFrom": "Traduit de",
       "adaptedFrom": "Adapté de"
+    },
+    "licenses": {
+      "CCBY": "CC BY",
+      "CCBYSA": "CC BY-SA",
+      "CCBYNC": "CC BY-NC",
+      "CCBYNCSA": "CC BY-NC-SA",
+      "CCBYND": "CC BY-ND",
+      "CCBYNCND": "CC BY-NC-ND",
+      "MIT": "MIT",
+      "Apache20": "Apache 2.0",
+      "GPL": "GPL",
+      "FairUse": "Usage loyal",
+      "AllRightsReserved": "Tous droits réservés",
+      "Custom": "Licence personnalisée"
     }
   },
   "ChatBot": {

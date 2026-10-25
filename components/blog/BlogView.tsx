@@ -27,6 +27,7 @@ import { cn } from "@/lib/utils";
 import type { Blog } from "@/types/hubs/blogs";
 import { BLOG_LANGUAGE_NAMES } from "@/types/hubs/blogs";
 import { BlogAbstractHeader } from "./BlogAbstractHeader";
+import { BlogLabels } from "./BlogLabels";
 import { BlogCopyLinkButton, BlogPostActions } from "./BlogPostActions";
 import {
   BLOG_BODY_ID,
@@ -35,7 +36,7 @@ import {
 } from "./BlogSectionRail";
 import { BlogTaskList } from "./BlogTaskList";
 
-/** Mono, square chip used for language, category and tags. */
+/** Mono, square chip used for the language. */
 const chip = "border border-border px-2.5 py-1 font-mono text-xs";
 
 const bodyText = "text-[1.0625rem] leading-8 text-pretty text-foreground/90";
@@ -115,11 +116,6 @@ export function BlogView({ blog, className }: BlogViewProps) {
             <span className={cn(chip, "py-0.5 uppercase tracking-wider")}>
               {languageName}
             </span>
-            {blog.isFeatured && (
-              <span className="bg-foreground px-2 py-0.5 uppercase tracking-wider text-background">
-                {t("featured")}
-              </span>
-            )}
           </div>
 
           <h1 className="max-w-4xl text-[clamp(2.25rem,1.5rem+2.4vw,3.75rem)] font-bold leading-[1.05] tracking-[-0.03em] text-balance">
@@ -131,19 +127,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
             </p>
           )}
 
-          {(blog.category || (blog.tags && blog.tags.length > 0)) && (
-            <ul
-              className="mt-6 flex flex-wrap gap-2 text-muted-foreground"
-              aria-label={t("topics")}
-            >
-              {blog.category && <li className={chip}>{blog.category.name}</li>}
-              {blog.tags?.map((tagRelation) => (
-                <li key={tagRelation.id} className={chip}>
-                  {tagRelation.tag?.name}
-                </li>
-              ))}
-            </ul>
-          )}
+          <BlogLabels blog={blog} className="mt-6" />
 
           <BlogAbstractHeader
             seed={blog.slug}
@@ -366,7 +350,6 @@ export function BlogView({ blog, className }: BlogViewProps) {
                   [
                     ["originalAuthor", blog.credits.originalAuthor],
                     ["source", blog.credits.originalSource],
-                    ["license", blog.credits.licenseType],
                     ["translatedFrom", blog.credits.translatedFrom],
                     ["adaptedFrom", blog.credits.adaptedFrom],
                   ] as const

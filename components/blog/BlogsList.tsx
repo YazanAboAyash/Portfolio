@@ -12,8 +12,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Blog } from "@/types/hubs/blogs";
 import { BLOG_LANGUAGE_NAMES } from "@/types/hubs/blogs";
 import { cn } from "@/lib/utils";
-
-const chip = "border border-border px-2 py-1 font-mono text-[11px]";
+import { BlogLabels } from "./BlogLabels";
 
 function BlogRow({ blog }: { blog: Blog }) {
   const t = useTranslations("Blog");
@@ -68,22 +67,7 @@ function BlogRow({ blog }: { blog: Blog }) {
           </p>
         )}
 
-        <div className="mt-5 flex flex-wrap gap-2 text-muted-foreground">
-          {blog.isFeatured && (
-            <span className={cn(chip, "border-foreground bg-foreground text-background")}>
-              {t("featured")}
-            </span>
-          )}
-          {blog.category && <span className={chip}>{blog.category.name}</span>}
-          {blog.tags?.slice(0, 3).map((tagRelation) => (
-            <span key={tagRelation.id} className={chip}>
-              {tagRelation.tag?.name}
-            </span>
-          ))}
-          {blog.tags && blog.tags.length > 3 && (
-            <span className={chip}>+{blog.tags.length - 3}</span>
-          )}
-        </div>
+        <BlogLabels blog={blog} className="mt-5" />
       </div>
 
       <span

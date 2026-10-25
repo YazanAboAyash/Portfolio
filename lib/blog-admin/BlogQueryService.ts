@@ -114,11 +114,6 @@ export class BlogQueryService {
         take: limit,
         include: {
           category: true,
-          tags: {
-            include: {
-              tag: true,
-            },
-          },
           credits: true,
         },
       }),
@@ -136,7 +131,6 @@ export class BlogQueryService {
       },
       filters: {
         categories: [],
-        tags: [],
       },
     };
   }
@@ -180,6 +174,7 @@ export class BlogQueryService {
         isPublished: data.isPublished || false,
         isFeatured: data.isFeatured || false,
         isDraft: !data.isPublished,
+        ...(data.license && { license: data.license }),
         readingTime,
         publishedAt: data.isPublished ? new Date() : null,
         // Handle relations if needed
@@ -196,11 +191,6 @@ export class BlogQueryService {
       },
       include: {
         category: true,
-        tags: {
-          include: {
-            tag: true,
-          },
-        },
         credits: true,
       },
     });
@@ -279,6 +269,7 @@ export class BlogQueryService {
         }),
         ...(data.isFeatured !== undefined && { isFeatured: data.isFeatured }),
         ...(data.isDraft !== undefined && { isDraft: data.isDraft }),
+        ...(data.license && { license: data.license }),
         ...(data.categoryId !== undefined && {
           category: data.categoryId
             ? { connect: { id: data.categoryId } }
@@ -290,11 +281,6 @@ export class BlogQueryService {
       },
       include: {
         category: true,
-        tags: {
-          include: {
-            tag: true,
-          },
-        },
         credits: true,
       },
     });
@@ -333,7 +319,6 @@ export class BlogQueryService {
 
     // Delete related data first (using transaction for consistency)
     await prisma.$transaction([
-      prisma.blogTagRelation.deleteMany({ where: { blogId: id } }),
       prisma.blogCredit.deleteMany({ where: { blogId: id } }),
       prisma.blog.delete({ where: { id } }),
     ]);
@@ -347,11 +332,6 @@ export class BlogQueryService {
       where: { id },
       include: {
         category: true,
-        tags: {
-          include: {
-            tag: true,
-          },
-        },
         credits: true,
       },
     });
@@ -375,20 +355,5 @@ export class BlogQueryService {
       },
     });
     return categories;
-  }
-
-  /**
-   * Get all tags for admin forms
-   */
-  static async getAdminTags() {
-    const tags = await prisma.blogTag.findMany({
-      orderBy: { name: "asc" },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-      },
-    });
-    return tags;
   }
 }

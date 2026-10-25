@@ -488,7 +488,7 @@
     "readingStatus": "{percent} % · {minutes, plural, =0 {klar} other {# min kvar}}",
     "views": "{count, plural, one {# visning} other {# visningar}}",
     "linkToSection": "Länk till det här avsnittet",
-    "topics": "Ämnen",
+    "labels": "Etiketter",
     "checklistTitle": "Din checklista",
     "checklistProgress": "{done} av {total}",
     "checklistDone": "Allt klart",
@@ -497,9 +497,22 @@
       "originalAuthor": "Ursprunglig författare",
       "source": "Källa",
       "url": "URL",
-      "license": "Licens",
       "translatedFrom": "Översatt från",
       "adaptedFrom": "Bearbetad från"
+    },
+    "licenses": {
+      "CCBY": "CC BY",
+      "CCBYSA": "CC BY-SA",
+      "CCBYNC": "CC BY-NC",
+      "CCBYNCSA": "CC BY-NC-SA",
+      "CCBYND": "CC BY-ND",
+      "CCBYNCND": "CC BY-NC-ND",
+      "MIT": "MIT",
+      "Apache20": "Apache 2.0",
+      "GPL": "GPL",
+      "FairUse": "Fair use",
+      "AllRightsReserved": "Alla rättigheter förbehållna",
+      "Custom": "Egen licens"
     }
   },
   "ChatBot": {
