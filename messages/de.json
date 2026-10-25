@@ -58,26 +58,38 @@
     "language": "Sprache",
     "languagePreviewHint": "Zeig auf eine Sprache, um die Einleitung darin zu sehen.",
     "toggleTheme": "Zwischen hellem und dunklem Modus wechseln",
-    "contactInfo": "Kontaktinformationen öffnen",
     "openMenu": "Navigationsmenü öffnen"
   },
   "Contact": {
-    "getInTouch": "Lassen Sie uns verbinden",
-    "description": "Sie möchten über eine Stelle, ein Projekt oder eine Idee sprechen? Schreiben Sie mir eine E-Mail oder verbinden Sie sich mit mir in den sozialen Medien.",
-    "email": "E-Mail",
-    "sendEmail": "E-Mail schreiben",
-    "socialMedia": "Soziale Medien",
-    "info": "Info",
-    "location": "Standort",
-    "status": "Status",
-    "qualification": "Abschluss",
-    "employmentStatus": "In Vollzeit angestellt",
-    "position": "Position",
-    "employer": "Arbeitgeber",
-    "role": "Full-Stack-Entwickler & AI Engineer",
-    "qualificationTitle": "IHK Fachinformatiker AE",
-    "specialization": "Einsatzgebiet",
-    "specializationValue": "Künstliche Intelligenz"
+    "title": "Kontakt aufnehmen",
+    "lead": "Eine Stelle, eine Idee oder einfach ein Hallo: Per E-Mail erreichen Sie mich am schnellsten.",
+    "emailLabel": "E-Mail",
+    "write": "E-Mail schreiben",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "copyLabel": "E-Mail-Adresse kopieren",
+    "availability": "Ich bin in Vollzeit angestellt und nehme keine Freelance- oder Kundenaufträge an.",
+    "topicsTitle": "Oder mit einem Entwurf beginnen",
+    "topics": {
+      "role": {
+        "label": "Eine Stelle in Ihrem Team",
+        "description": "Sie stellen ein und denken, ich könnte passen.",
+        "subject": "Stellenangebot",
+        "body": "Hallo Yazan,\n\nich melde mich wegen einer Stelle bei [Unternehmen]: [die Stelle und ein Link zur Ausschreibung].\n\n"
+      },
+      "collaboration": {
+        "label": "Zusammenarbeit",
+        "description": "Open Source, ein Vortrag oder gemeinsam etwas bauen.",
+        "subject": "Idee für eine Zusammenarbeit",
+        "body": "Hallo Yazan,\n\nich habe eine Idee, an der wir zusammen arbeiten könnten: [ein paar Zeilen dazu].\n\n"
+      },
+      "hello": {
+        "label": "Einfach Hallo sagen",
+        "description": "Feedback zur Website, eine Frage oder ein kurzer Gruß.",
+        "subject": "Hallo von coldbydefault.com",
+        "body": "Hallo Yazan,\n\n"
+      }
+    }
   },
   "Capabilities": {
     "title": "Was ich liefere",
@@ -570,7 +582,8 @@
       "products": "Produkte",
       "cert": "Zertifikate",
       "github": "GitHub",
-      "capabilities": "Fähigkeiten"
+      "capabilities": "Fähigkeiten",
+      "contact": "Kontakt"
     }
   },
   "Search": {

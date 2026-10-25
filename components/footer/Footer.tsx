@@ -11,7 +11,7 @@ import {
   footerNavLinks,
   socialLinks,
 } from "@/data/main/footerLinks";
-import { contactEmailLink } from "@/data/main/contact";
+import { contactEmail, contactEmailLink } from "@/data/main/contact";
 import { SiVercel } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
 import { Mail } from "lucide-react";
@@ -52,7 +52,6 @@ export default async function Footer() {
   const t = await getTranslations("Footer");
   const tHero = await getTranslations("Hero");
   const currentYear = new Date().getFullYear();
-  const email = contactEmailLink.replace("mailto:", "");
   const github = socialLinks.find((link) => link.label === "GitHub");
 
   return (
@@ -93,7 +92,7 @@ export default async function Footer() {
           <div className="flex flex-col">
             <a href={contactEmailLink} className={PLACE_LINK}>
               <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
-              {email}
+              {contactEmail}
             </a>
             {github && (
               <a

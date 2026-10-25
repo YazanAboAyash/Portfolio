@@ -58,26 +58,38 @@
     "language": "Språk",
     "languagePreviewHint": "Peka på ett språk för att se introduktionen på det.",
     "toggleTheme": "Växla mellan ljust och mörkt läge",
-    "contactInfo": "Öppna kontaktinformation",
     "openMenu": "Öppna navigeringsmenyn"
   },
   "Contact": {
-    "getInTouch": "Låt oss koppla samman",
-    "description": "Vill du prata om en tjänst, ett projekt eller en idé? Skicka ett mejl eller anslut med mig på sociala medier.",
-    "email": "E-post",
-    "sendEmail": "Skicka e-post",
-    "socialMedia": "Sociala medier",
-    "info": "Info",
-    "location": "Plats",
-    "status": "Status",
-    "qualification": "Examen",
-    "employmentStatus": "Heltidsanställd",
-    "position": "Position",
-    "employer": "Arbetsgivare",
-    "role": "Fullstack-utvecklare & AI-ingenjör",
-    "qualificationTitle": "IHK Fachinformatiker AE",
-    "specialization": "Inriktning",
-    "specializationValue": "Artificiell Intelligens"
+    "title": "Hör av dig",
+    "lead": "En tjänst, en idé eller bara ett hej: mejl är det snabbaste sättet att nå mig.",
+    "emailLabel": "Mejl",
+    "write": "Skriv ett mejl",
+    "copy": "Kopiera",
+    "copied": "Kopierad",
+    "copyLabel": "Kopiera mejladress",
+    "availability": "Jag är heltidsanställd och tar inte emot frilans- eller kunduppdrag.",
+    "topicsTitle": "Eller börja från ett utkast",
+    "topics": {
+      "role": {
+        "label": "En tjänst i ditt team",
+        "description": "Ni rekryterar och tror att jag skulle passa.",
+        "subject": "Jobbmöjlighet",
+        "body": "Hej Yazan,\n\nJag hör av mig om en tjänst på [företag]: [tjänsten och en länk till annonsen].\n\n"
+      },
+      "collaboration": {
+        "label": "Samarbete",
+        "description": "Öppen källkod, ett föredrag eller att bygga något tillsammans.",
+        "subject": "Idé om samarbete",
+        "body": "Hej Yazan,\n\nJag har en idé som vi skulle kunna arbeta med tillsammans: [några rader om den].\n\n"
+      },
+      "hello": {
+        "label": "Bara säga hej",
+        "description": "Feedback på sajten, en fråga eller ett snabbt hej.",
+        "subject": "Hej från coldbydefault.com",
+        "body": "Hej Yazan,\n\n"
+      }
+    }
   },
   "Capabilities": {
     "title": "Vad jag levererar",
@@ -570,7 +582,8 @@
       "products": "Produkter",
       "cert": "Certifieringar",
       "github": "GitHub",
-      "capabilities": "Förmågor"
+      "capabilities": "Förmågor",
+      "contact": "Kontakt"
     }
   },
   "Search": {

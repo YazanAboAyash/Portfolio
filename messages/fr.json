@@ -58,26 +58,38 @@
     "language": "Langue",
     "languagePreviewHint": "Pointez une langue pour y voir l'introduction.",
     "toggleTheme": "Basculer entre mode clair et sombre",
-    "contactInfo": "Ouvrir les informations de contact",
     "openMenu": "Ouvrir le menu de navigation"
   },
   "Contact": {
-    "getInTouch": "Connectons-nous",
-    "description": "Vous souhaitez parler d'un poste, d'un projet ou d'une idée ? Envoyez-moi un e-mail ou connectez-vous avec moi sur les réseaux sociaux.",
-    "email": "E-mail",
-    "sendEmail": "Envoyer un e-mail",
-    "socialMedia": "Réseaux sociaux",
-    "info": "Info",
-    "location": "Localisation",
-    "status": "Statut",
-    "qualification": "Diplôme",
-    "employmentStatus": "Salarié à temps plein",
-    "position": "Poste",
-    "employer": "Employeur",
-    "role": "Développeur Full-Stack & Ingénieur IA",
-    "qualificationTitle": "IHK Fachinformatiker AE",
-    "specialization": "Spécialisation",
-    "specializationValue": "Intelligence Artificielle"
+    "title": "Parlons-en",
+    "lead": "Un poste, une idée ou simplement un bonjour : l'e-mail est le moyen le plus rapide de me joindre.",
+    "emailLabel": "E-mail",
+    "write": "Écrire un e-mail",
+    "copy": "Copier",
+    "copied": "Copié",
+    "copyLabel": "Copier l'adresse e-mail",
+    "availability": "Je suis salarié à temps plein et je n'accepte pas de missions freelance ni de projets clients.",
+    "topicsTitle": "Ou partez d'un brouillon",
+    "topics": {
+      "role": {
+        "label": "Un poste dans votre équipe",
+        "description": "Vous recrutez et pensez que je pourrais convenir.",
+        "subject": "Opportunité d'emploi",
+        "body": "Bonjour Yazan,\n\nJe vous contacte au sujet d'un poste chez [entreprise] : [le poste et un lien vers l'offre].\n\n"
+      },
+      "collaboration": {
+        "label": "Collaboration",
+        "description": "Open source, une conférence ou construire quelque chose ensemble.",
+        "subject": "Idée de collaboration",
+        "body": "Bonjour Yazan,\n\nJ'ai une idée sur laquelle nous pourrions travailler ensemble : [quelques lignes à ce sujet].\n\n"
+      },
+      "hello": {
+        "label": "Juste dire bonjour",
+        "description": "Un retour sur le site, une question ou un simple bonjour.",
+        "subject": "Bonjour depuis coldbydefault.com",
+        "body": "Bonjour Yazan,\n\n"
+      }
+    }
   },
   "Capabilities": {
     "title": "Ce que je livre",
@@ -570,7 +582,8 @@
       "products": "Produits",
       "cert": "Certifications",
       "github": "GitHub",
-      "capabilities": "Compétences"
+      "capabilities": "Compétences",
+      "contact": "Contact"
     }
   },
   "Search": {

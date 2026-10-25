@@ -10,6 +10,7 @@ import { Hero, HeroBannerSection } from "@/components/hero";
 import dynamic from "next/dynamic";
 import { LoadingSkeleton } from "@/components/visuals";
 import { SectionRail } from "@/components/nav";
+import { ContactSection } from "@/components/contact";
 
 // Heavy sections load client-side. Each skeleton reserves roughly the
 // section's rendered height (measured at 390 / 800 / 1440px) so the page
@@ -146,8 +147,11 @@ export default function HomeContent() {
 
           <CertificationShowcase className={`frame ${SECTION} pt-0 md:pt-0`} />
 
-          {/* PageSpeed Insights Section: supporting proof, so it closes the page */}
+          {/* PageSpeed Insights Section: supporting proof, last before the ask */}
           <SpeedInsight className={`frame ${SECTION} pt-0 md:pt-0`} />
+
+          {/* Contact closes the page; the navbar's Contact action lands here */}
+          <ContactSection className={`frame ${SECTION} pt-0 md:pt-0`} />
         </div>
       </div>
     </div>

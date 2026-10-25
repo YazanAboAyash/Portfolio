@@ -58,26 +58,38 @@
     "language": "Language",
     "languagePreviewHint": "Point at a language to preview the intro.",
     "toggleTheme": "Switch between light and dark mode",
-    "contactInfo": "Open contact information",
     "openMenu": "Open navigation menu"
   },
   "Contact": {
-    "getInTouch": "Let's Connect",
-    "description": "Want to talk about a role, a project or an idea? Send me an email or connect with me on social media.",
-    "email": "Email",
-    "sendEmail": "Send an Email",
-    "socialMedia": "Social Media",
-    "info": "Info",
-    "location": "Location",
-    "status": "Status",
-    "qualification": "Qualification",
-    "employmentStatus": "Employed full-time",
-    "position": "Position",
-    "employer": "Employer",
-    "role": "Full-Stack Developer & AI Engineer",
-    "qualificationTitle": "IHK Fachinformatiker AE",
-    "specialization": "Specialization",
-    "specializationValue": "Artificial Intelligence"
+    "title": "Let's talk",
+    "lead": "A role, an idea or just a hello: email is the fastest way to reach me.",
+    "emailLabel": "Email",
+    "write": "Write an email",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyLabel": "Copy email address",
+    "availability": "I'm employed full-time and not taking on freelance or client work.",
+    "topicsTitle": "Or start from a draft",
+    "topics": {
+      "role": {
+        "label": "A role on your team",
+        "description": "You're hiring and think I'd be a good fit.",
+        "subject": "Job opportunity",
+        "body": "Hi Yazan,\n\nI'm reaching out about a role at [company]: [the role, and a link to the posting].\n\n"
+      },
+      "collaboration": {
+        "label": "Collaboration",
+        "description": "Open source, a talk or building something together.",
+        "subject": "Collaboration idea",
+        "body": "Hi Yazan,\n\nI have an idea we could work on together: [a few lines about it].\n\n"
+      },
+      "hello": {
+        "label": "Just saying hi",
+        "description": "Feedback on the site, a question or a quick hello.",
+        "subject": "Hello from coldbydefault.com",
+        "body": "Hi Yazan,\n\n"
+      }
+    }
   },
   "Capabilities": {
     "title": "What I Deliver",
@@ -570,7 +582,8 @@
       "products": "Products",
       "cert": "Certifications",
       "github": "GitHub",
-      "capabilities": "Capabilities"
+      "capabilities": "Capabilities",
+      "contact": "Contact"
     }
   },
   "Search": {

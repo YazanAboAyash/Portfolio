@@ -4,4 +4,4 @@
  * @version 7.x.x
  */
 
-export { default as ContactSheet } from "./ContactSheet";
+export { default as ContactSection } from "./ContactSection";
