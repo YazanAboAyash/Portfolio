@@ -112,8 +112,10 @@ export default function HomeContent() {
       {/* Section ruler pinned beside the scrollbar */}
       <SectionRail />
 
+      {/* Fills the first screen so the banner sits at the fold, capped so tall
+          screens don't open a gap between hero and banner */}
       <div
-        className="flex min-h-[calc(100svh-4rem)] flex-col justify-between gap-12 pb-8"
+        className="flex min-h-[min(calc(100svh-4rem),60rem)] flex-col justify-between gap-12 pb-8"
         id="home"
       >
         <Hero />
