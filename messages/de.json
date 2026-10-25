@@ -112,6 +112,7 @@
         "tooling": "Tooling & Auslieferung"
       },
       "usedIn": "{count, plural, one {an # Stelle eingesetzt} other {an # Stellen eingesetzt}}",
+      "close": "Schließen",
       "kinds": {
         "project": "Open-Source-Projekt",
         "product": "Produkt",

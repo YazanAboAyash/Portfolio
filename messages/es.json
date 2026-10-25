@@ -112,6 +112,7 @@
         "tooling": "Herramientas y despliegue"
       },
       "usedIn": "{count, plural, one {usada en # lugar} other {usada en # lugares}}",
+      "close": "Cerrar",
       "kinds": {
         "project": "Proyecto de código abierto",
         "product": "Producto",

@@ -112,6 +112,7 @@
         "tooling": "Verktyg & leverans"
       },
       "usedIn": "{count, plural, one {använd på # ställe} other {använd på # ställen}}",
+      "close": "Stäng",
       "kinds": {
         "project": "Projekt med öppen källkod",
         "product": "Produkt",

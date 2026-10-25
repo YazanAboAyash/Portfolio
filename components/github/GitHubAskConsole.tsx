@@ -37,6 +37,9 @@ type Selection = ToolName | "example";
 /** What counts as "uses AI" for the example: matched against category and technologies. */
 const AI_PATTERN = /\b(AI|LLM|LangChain)\b/;
 
+/** Below Tailwind's lg the tools stack above the response panel. */
+const STACKED_QUERY = "(max-width: 1023px)";
+
 /** The server answers failed calls with a bare code; show its sentence instead. */
 function describeError(code: string | null | undefined): string {
   return code === "RATE_LIMIT_EXCEEDED" || code === "SERVICE_UNAVAILABLE"
@@ -328,8 +331,21 @@ export default function GitHubAskConsole({
     (selection: Selection) => {
       setSelected(selection);
       void call(selection === "example" ? "get_projects" : selection);
+
+      // Below lg the response sits under the tools, often below the fold
+      const panel = consoleRef.current;
+      if (
+        panel &&
+        window.matchMedia(STACKED_QUERY).matches &&
+        panel.getBoundingClientRect().top > window.innerHeight / 2
+      ) {
+        panel.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start",
+        });
+      }
     },
-    [call],
+    [call, reduceMotion],
   );
 
   // Run the example once in view, so the panel never opens empty
@@ -490,7 +506,7 @@ export default function GitHubAskConsole({
       <div
         ref={consoleRef}
         data-ui
-        className="col-span-12 flex min-w-0 flex-col bg-surface lg:col-span-7 lg:self-start"
+        className="col-span-12 flex min-w-0 scroll-mt-20 flex-col bg-surface lg:col-span-7 lg:self-start"
       >
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-2 px-5 py-3">
           <code className="font-mono text-sm">

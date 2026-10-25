@@ -112,6 +112,7 @@
         "tooling": "Tooling & delivery"
       },
       "usedIn": "{count, plural, one {used in # place} other {used in # places}}",
+      "close": "Close",
       "kinds": {
         "project": "Open-source project",
         "product": "Product",
