@@ -31,8 +31,6 @@
       "nextFocus": "Show next focus",
       "latestPost": "Latest post",
       "allPosts": "Read the blog",
-      "site": "This site",
-      "siteLink": "How it's built",
       "focusItems": [
         "RAG systems with source citations",
         "AI agents and MCP servers",
@@ -174,7 +172,6 @@
       "compliance": "HR & Compliance"
     },
     "descriptions": {
-      "portfolioWebsite": "A modern, responsive portfolio website built with Next.js 16, featuring dark/light theme toggle, smooth animations with Framer Motion, and optimized performance. Includes TypeScript for type safety and Tailwind CSS for styling.",
       "berichHub": "Full-stack digital learning platform with user authentication, Profile pages, and Blog features. AI integration for personalized learning. Completely free and open-source. 4 different languages supported: English, German, Spanish, Swedish.",
       "llmAgent": "Local ollama-based AI chatbot, customizable to use any LLM model, any Embed model, 2 Options for Vector DB; local postgres or DataStax Astra. Can read web pages, and answer questions based on the content. More coming soon.. Open source.",
       "subsApi": "API for managing user subscriptions, including features for billing, invoicing, and payment processing. Built with Next.js and integrated with Stripe for secure payments.",
@@ -184,7 +181,6 @@
       "jsStudyAgentPlugin": "A Socratic JavaScript teaching plugin for GitHub Copilot CLI and Claude Code. Five specialist agents, auto-loading skills, and an 8-stage roadmap guide you to answers through hints and questions instead of handing out solutions."
     },
     "summaries": {
-      "portfolioWebsite": "The portfolio you're on, built with Next.js and TypeScript.",
       "berichHub": "Free learning platform in four languages.",
       "voiceToNotion": "Meetings to Notion pages in 30 seconds.",
       "nextJsSeoOptimization": "Zero-dependency SEO helper for Next.js, on npm.",
@@ -216,8 +212,7 @@
     "badge": "Team Project",
     "project": {
       "title": "Büttelborn City — AI Avatar for the Mayor",
-      "description": "Part of the team at Botgenossen that built the multilingual interactive AI avatar for the Bürgermeister of Büttelborn, a city in Germany. The avatar speaks with citizens in multiple languages, answers questions about city services, and represents the mayor digitally on the official city website.",
-      "summary": "Multilingual AI avatar on the official city website.",
+      "description": "A multilingual avatar that answers citizens' questions about city services, live on the official city website.",
       "visitSite": "Visit the Büttelborn city website",
       "role": "AI Avatar Development",
       "company": "Botgenossen",

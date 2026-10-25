@@ -63,7 +63,7 @@ function CapabilityCard({
 
   return (
     <RevealItem className="h-full">
-      {/* Phones: a tone-step tile with title and headline; from md the full card */}
+      {/* Title and headline only; the longer description is served by the MCP tools */}
       <article className="flex h-full flex-col gap-2 bg-surface p-4 md:gap-4 md:bg-transparent md:p-0">
         <h3 className="flex items-center gap-2 text-lg font-bold leading-tight tracking-[-0.015em] md:gap-3 md:text-2xl">
           {IconComponent && (
@@ -76,9 +76,6 @@ function CapabilityCard({
         </h3>
         <p className="text-sm leading-snug md:text-lg md:font-semibold">
           {t(capability.headlineKey)}
-        </p>
-        <p className="hidden text-base leading-relaxed text-foreground md:block">
-          {t(capability.descriptionKey)}
         </p>
         {/* Tech Icons - subtle indicators */}
         {capability.techIcons && capability.techIcons.length > 0 && (

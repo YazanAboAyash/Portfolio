@@ -31,8 +31,6 @@
       "nextFocus": "Mostrar el siguiente enfoque",
       "latestPost": "Última entrada",
       "allPosts": "Ir al blog",
-      "site": "Este sitio",
-      "siteLink": "Cómo está hecho",
       "focusItems": [
         "Sistemas RAG con citas de fuentes",
         "Agentes de IA y servidores MCP",
@@ -174,7 +172,6 @@
       "compliance": "RR. HH. y cumplimiento"
     },
     "descriptions": {
-      "portfolioWebsite": "Un portafolio moderno y responsivo construido con Next.js 16, con alternancia de tema oscuro/claro, animaciones fluidas con Framer Motion y rendimiento optimizado. Incluye TypeScript para seguridad de tipos y Tailwind CSS para estilos.",
       "berichHub": "Plataforma de aprendizaje digital full-stack con autenticación de usuarios, páginas de perfil y funcionalidades de blog. Integración de IA para aprendizaje personalizado. Completamente gratuita y de código abierto. Soporta 4 idiomas: inglés, alemán, español y sueco.",
       "llmAgent": "Chatbot de IA local basado en ollama, personalizable para usar cualquier modelo LLM y cualquier modelo de embeddings, con 2 opciones de base de datos vectorial: Postgres local o DataStax Astra. Puede leer páginas web y responder preguntas basadas en el contenido. Próximamente habrá más... Código abierto.",
       "subsApi": "API para gestionar suscripciones de usuarios, incluyendo funciones de facturación, emisión de facturas y procesamiento de pagos. Construida con Next.js e integrada con Stripe para pagos seguros.",
@@ -184,7 +181,6 @@
       "jsStudyAgentPlugin": "Un plugin socrático para aprender JavaScript con GitHub Copilot CLI y Claude Code. Cinco agentes especializados, skills de carga automática y una hoja de ruta de 8 etapas te guían hacia las respuestas con pistas y preguntas en lugar de darte la solución."
     },
     "summaries": {
-      "portfolioWebsite": "Este portfolio, hecho con Next.js y TypeScript.",
       "berichHub": "Plataforma de aprendizaje gratuita en cuatro idiomas.",
       "voiceToNotion": "Reuniones convertidas en páginas de Notion en 30 segundos.",
       "nextJsSeoOptimization": "Ayudante SEO sin dependencias para Next.js, en npm.",
@@ -216,8 +212,7 @@
     "badge": "Proyecto en equipo",
     "project": {
       "title": "Ciudad de Büttelborn — Avatar IA para el alcalde",
-      "description": "Parte del equipo de Botgenossen que construyó el avatar de IA interactivo multilingüe para el Bürgermeister de Büttelborn, una ciudad en Alemania. El avatar habla con los ciudadanos en varios idiomas, responde preguntas sobre los servicios municipales y representa digitalmente al alcalde en el sitio web oficial de la ciudad.",
-      "summary": "Avatar de IA multilingüe en la web oficial de la ciudad.",
+      "description": "Un avatar multilingüe que responde a las preguntas de los ciudadanos sobre los servicios municipales, activo en la web oficial de la ciudad.",
       "visitSite": "Visitar la web de la ciudad de Büttelborn",
       "role": "Desarrollo de Avatar IA",
       "company": "Botgenossen",

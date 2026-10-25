@@ -9,8 +9,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import VersionDisplay from "@/components/VersionDisplay";
+import { ArrowRight } from "lucide-react";
 import { useLatestPost } from "@/hooks/use-latest-post";
 import { cn } from "@/lib/utils";
 
@@ -20,10 +19,10 @@ const FOCUS_INTERVAL_MS = 3000;
 const LABEL =
   "text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground";
 const CELL = "group flex min-w-0 flex-col gap-1.5 text-left";
-/** Latest post and This site: the blog and the site link stay in the nav and footer on phones. */
+/** Latest post: the blog stays in the nav on phones. */
 const CELL_FROM_SM = cn(CELL, "hidden sm:flex");
 
-/** "Now" strip under the hero copy: current focus, latest post, this site. */
+/** "Now" strip under the hero copy: current focus and latest post. */
 export function HeroNow() {
   const t = useTranslations("Hero.now");
   const locale = useLocale();
@@ -47,7 +46,7 @@ export function HeroNow() {
   return (
     <section
       aria-label={t("label")}
-      className="grid grid-cols-1 gap-x-8 gap-y-5 border-t border-surface-2 pt-5 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3"
+      className="grid grid-cols-1 gap-x-8 gap-y-5 border-t border-surface-2 pt-5 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2"
     >
       <button
         type="button"
@@ -120,21 +119,6 @@ export function HeroNow() {
         )}
       </div>
 
-      <div className={CELL_FROM_SM}>
-        <span className={LABEL}>{t("site")}</span>
-        <Link
-          href="/about-portfolio"
-          className="inline-flex items-start gap-1 text-sm font-semibold leading-snug underline decoration-surface-2 decoration-2 underline-offset-4 transition-colors hover:decoration-foreground"
-        >
-          <span>
-            <VersionDisplay className="tabular-nums" /> · {t("siteLink")}
-          </span>
-          <ArrowUpRight
-            className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground"
-            aria-hidden="true"
-          />
-        </Link>
-      </div>
     </section>
   );
 }

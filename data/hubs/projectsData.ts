@@ -54,28 +54,6 @@ export const productProjects: Project[] = products.map((product) => ({
 
 export const projects: Project[] = [
   {
-    id: 1,
-    title: "Portfolio Website v6",
-    description: "portfolioWebsite",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "React Icons",
-    ],
-    githubUrl: "https://github.com/yazanaboayash/portfolio",
-    liveUrl: "https://coldbydefault.com",
-    image: "/assets/projects/alltracks.png",
-    featured: false,
-    category: "webDevelopment",
-    license: {
-      type: "copyright",
-      text: "copyright",
-      variant: "destructive",
-    },
-  },
-  {
     id: 2,
     title: "beRich.Hub v5",
     description: "berichHub",

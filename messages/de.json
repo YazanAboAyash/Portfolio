@@ -31,8 +31,6 @@
       "nextFocus": "Nächsten Schwerpunkt zeigen",
       "latestPost": "Neuester Beitrag",
       "allPosts": "Zum Blog",
-      "site": "Diese Seite",
-      "siteLink": "So ist sie gebaut",
       "focusItems": [
         "RAG-Systeme mit Quellenangaben",
         "KI-Agenten und MCP-Server",
@@ -174,7 +172,6 @@
       "compliance": "HR & Compliance"
     },
     "descriptions": {
-      "portfolioWebsite": "Eine moderne, responsive Portfolio-Website, erstellt mit Next.js 16, mit Dark/Light-Theme-Umschalter, sanften Animationen durch Framer Motion und optimierter Performance. Enthält TypeScript für Typsicherheit und Tailwind CSS für das Styling.",
       "berichHub": "Full-Stack-Lernplattform mit Benutzerauthentifizierung, Profilseiten und Blog-Funktionen. KI-Integration für personalisiertes Lernen. Völlig kostenlos und Open-Source. Unterstützt 4 verschiedene Sprachen: Englisch, Deutsch, Spanisch, Schwedisch.",
       "llmAgent": "Lokaler ollama-basierter KI-Chatbot, anpassbar für jedes LLM-Modell, jedes Embed-Modell, mit 2 Optionen für Vector DB: lokales Postgres oder DataStax Astra. Kann Webseiten lesen und Fragen basierend auf deren Inhalt beantworten. Mehr kommt bald... Open Source.",
       "subsApi": "API für die Verwaltung von Benutzerabonnements, einschließlich Funktionen für Abrechnung, Rechnungsstellung und Zahlungsabwicklung. Erstellt mit Next.js und integriert mit Stripe für sichere Zahlungen.",
@@ -184,7 +181,6 @@
       "jsStudyAgentPlugin": "Ein sokratisches JavaScript-Lern-Plugin für GitHub Copilot CLI und Claude Code. Fünf spezialisierte Agenten, automatisch ladende Skills und eine 8-stufige Roadmap führen dich mit Hinweisen und Fragen zur Lösung, statt sie direkt vorzugeben."
     },
     "summaries": {
-      "portfolioWebsite": "Dieses Portfolio, gebaut mit Next.js und TypeScript.",
       "berichHub": "Kostenlose Lernplattform in vier Sprachen.",
       "voiceToNotion": "Meetings in 30 Sekunden als Notion-Seiten.",
       "nextJsSeoOptimization": "SEO-Helfer für Next.js ohne Abhängigkeiten, auf npm.",
@@ -216,8 +212,7 @@
     "badge": "Teamprojekt",
     "project": {
       "title": "Stadt Büttelborn — KI-Avatar für den Bürgermeister",
-      "description": "Teil des Teams bei Botgenossen, das den mehrsprachigen interaktiven KI-Avatar für den Bürgermeister von Büttelborn entwickelt hat. Der Avatar spricht mit Bürgerinnen und Bürgern in mehreren Sprachen, beantwortet Fragen zu Stadtdienstleistungen und repräsentiert den Bürgermeister digital auf der offiziellen Stadtwebsite.",
-      "summary": "Mehrsprachiger KI-Avatar auf der offiziellen Stadtwebsite.",
+      "description": "Ein mehrsprachiger Avatar, der Fragen der Bürgerinnen und Bürger zu städtischen Diensten beantwortet, live auf der offiziellen Stadtwebsite.",
       "visitSite": "Website der Stadt Büttelborn besuchen",
       "role": "KI-Avatar-Entwicklung",
       "company": "Botgenossen",

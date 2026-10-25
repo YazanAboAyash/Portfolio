@@ -40,7 +40,6 @@ interface ProjectsHomeShowcaseProps {
 export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
   const t = useTranslations("Projects");
   const tCategories = useTranslations("Projects.categories");
-  const tDescriptions = useTranslations("Projects.descriptions");
   const tSummaries = useTranslations("Projects.summaries");
   const [activeId, setActiveId] = useState(projects[0]?.id);
   // The one row expanded on phones; desktop rows are always expanded
@@ -131,13 +130,13 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                   </button>
                 </div>
 
-                {/* Description and tech, top 3 */}
+                {/* One-line outcome (phones show it under the title) and tech, top 3 */}
                 <div
                   id={detailsId}
                   className={cn("flex-col gap-2 md:col-span-5", whenOpen(open))}
                 >
-                  <p className="text-base leading-relaxed text-foreground md:line-clamp-3">
-                    {tDescriptions(project.description)}
+                  <p className="hidden text-base leading-relaxed text-foreground md:block">
+                    {tSummaries(project.description)}
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {project.technologies.slice(0, 3).join(" · ")}
