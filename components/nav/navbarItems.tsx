@@ -67,7 +67,7 @@ export function useNavItems(): NavItem[] {
       icon: User,
     },
     {
-      name: "Blogs",
+      name: t("blog"),
       href: "/blog",
       icon: Library,
     },

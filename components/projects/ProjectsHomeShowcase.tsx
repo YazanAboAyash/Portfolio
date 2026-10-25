@@ -6,7 +6,6 @@
 
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useId, useState } from "react";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
@@ -210,25 +209,17 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
         </Link>
       </RevealGroup>
 
-      {/* Preview of the row in focus: its title card, or its name set large. */}
+      {/* Preview of the row in focus: its name set large. */}
       {active && (
         <aside aria-hidden="true" className="col-span-4 hidden lg:block">
           <div className="sticky top-24 flex flex-col gap-4">
             <div className="relative aspect-2/1 overflow-hidden bg-surface">
-              {active.image ? (
-                <Image
-                  key={active.id}
-                  src={active.image}
-                  alt=""
-                  fill
-                  sizes="33vw"
-                  className="object-cover motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
-                />
-              ) : (
-                <span className="absolute inset-x-5 bottom-4 text-4xl font-bold leading-none tracking-[-0.03em]">
-                  {active.title}
-                </span>
-              )}
+              <span
+                key={active.id}
+                className="absolute inset-x-5 bottom-4 text-4xl font-bold leading-none tracking-[-0.03em] motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
+              >
+                {active.title}
+              </span>
             </div>
             <p className="text-lg font-semibold leading-snug">{active.title}</p>
             <p className="text-sm text-muted-foreground">
