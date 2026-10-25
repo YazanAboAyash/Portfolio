@@ -14,6 +14,7 @@ import {
   Library,
   Contact,
   Mail,
+  Plug,
   Search,
 } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-toggle";
@@ -69,6 +70,11 @@ export function useNavItems(): NavItem[] {
       name: "Blogs",
       href: "/blog",
       icon: Library,
+    },
+    {
+      name: t("mcp"),
+      href: "/mcp",
+      icon: Plug,
     },
   ];
 }

@@ -537,7 +537,7 @@
     "browserLanguage": "Langue du navigateur",
     "browser": "Navigateur",
     "switchedTo": "changé en",
-    "matched": "correspond",
+    "dismiss": "Fermer",
     "notSupported": "non supporté",
     "using": "utilise",
     "serverDetected": "Détecté côté serveur"

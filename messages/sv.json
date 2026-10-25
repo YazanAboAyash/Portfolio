@@ -537,7 +537,7 @@
     "browserLanguage": "Webbläsarspråk",
     "browser": "Webbläsare",
     "switchedTo": "bytt till",
-    "matched": "matchade",
+    "dismiss": "Stäng",
     "notSupported": "stöds ej",
     "using": "använder",
     "serverDetected": "Identifierat på serversidan"

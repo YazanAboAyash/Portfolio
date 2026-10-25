@@ -26,6 +26,12 @@ export const CHATBOT_CONFIG = {
   // Distance from the bottom (px) within which new content keeps the log pinned
   STICK_TO_BOTTOM_THRESHOLD: 80,
 
+  // Phones: the launcher hides while scrolling down so it never sits on a tap
+  // target, and returns on scroll up or near the top. Scroll moves below
+  // LAUNCHER_SCROLL_DELTA (px) are ignored as jitter.
+  LAUNCHER_SCROLL_DELTA: 8,
+  LAUNCHER_ALWAYS_SHOWN_TOP: 120,
+
   // thinking-orbs typing indicator — 20 is the tuned inline-text preset
   TYPING_ORB: {
     STATE: "working" as OrbState,
