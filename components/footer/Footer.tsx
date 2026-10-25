@@ -12,8 +12,7 @@ import {
   socialLinks,
 } from "@/data/main/footerLinks";
 import { contactEmail, contactEmailLink } from "@/data/main/contact";
-import { SiVercel } from "react-icons/si";
-import { FaGithub } from "react-icons/fa";
+import { SiGithub, SiVercel } from "react-icons/si";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -101,7 +100,7 @@ export default async function Footer() {
                 rel="noopener noreferrer"
                 className={PLACE_LINK}
               >
-                <FaGithub className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <SiGithub className="h-4 w-4 shrink-0" aria-hidden="true" />
                 {github.href.replace("https://", "")}
               </a>
             )}

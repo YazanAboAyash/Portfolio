@@ -11,7 +11,7 @@ import { m, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Copy, Cpu } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { SiGithub } from "react-icons/si";
 import { RevealGroup, RevealItem } from "@/components/visuals";
 import { mcpConfig } from "@/data/configs/mcp";
 import { useMcpToolCall } from "@/hooks/use-github-mcp-session";
@@ -259,7 +259,7 @@ function Readable({
             rel="noopener noreferrer"
             className="inline-flex min-h-11 w-fit items-center gap-2 bg-primary px-5 font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
-            <FaGithub className="h-4 w-4" aria-hidden="true" />
+            <SiGithub className="h-4 w-4" aria-hidden="true" />
             {copy.profile.viewProfile}
           </a>
         </RevealItem>

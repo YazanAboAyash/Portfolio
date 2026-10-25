@@ -6,8 +6,8 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";
-import { FaLinkedin, FaInstagramSquare, FaSpotify } from "react-icons/fa";
+import { SiGithub, SiInstagram, SiSpotify, SiX } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 import type { LinkItem } from "@/data/main/footerLinks";
 
 interface LinksProps {
@@ -16,13 +16,13 @@ interface LinksProps {
   linkClassName?: string;
 }
 
-// Icon mapping for social media icons
+// Social icons (react-icons/si, plus FaLinkedin — simple-icons has no LinkedIn mark)
 const iconMap = {
-  FaSquareXTwitter: <FaSquareXTwitter aria-hidden="true" />,
-  FaInstagramSquare: <FaInstagramSquare aria-hidden="true" />,
-  FaGithub: <FaGithub aria-hidden="true" />,
+  SiX: <SiX aria-hidden="true" />,
+  SiInstagram: <SiInstagram aria-hidden="true" />,
+  SiGithub: <SiGithub aria-hidden="true" />,
   FaLinkedin: <FaLinkedin aria-hidden="true" />,
-  FaSpotify: <FaSpotify aria-hidden="true" />,
+  SiSpotify: <SiSpotify aria-hidden="true" />,
 };
 
 export function Links({ links, className = "", linkClassName }: LinksProps) {

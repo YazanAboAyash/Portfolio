@@ -8,8 +8,8 @@
 
 import Link from "next/link";
 import { useId, useState } from "react";
-import { FiGithub, FiExternalLink } from "react-icons/fi";
-import { SiNpm } from "react-icons/si";
+import { ExternalLink } from "lucide-react";
+import { SiGithub, SiNpm } from "react-icons/si";
 import { useTranslations } from "next-intl";
 import { projects } from "@/data/hubs/projectsData";
 import {
@@ -65,7 +65,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
             className="hidden min-h-12 items-center gap-2 bg-primary px-6 font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:inline-flex"
           >
             {t("viewAllProjects")}
-            <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         }
       />
@@ -159,7 +159,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                       rel="noopener noreferrer"
                       className={cn(linkBase, linkQuiet)}
                     >
-                      <FiGithub className="h-3.5 w-3.5" aria-hidden="true" />
+                      <SiGithub className="h-3.5 w-3.5" aria-hidden="true" />
                       {t("code")}
                       <span className="sr-only"> — {project.title}</span>
                     </Link>
@@ -171,7 +171,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
                       rel="noopener noreferrer"
                       className={cn(linkBase, linkPrimary)}
                     >
-                      <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       {t("liveDemo")}
                       <span className="sr-only"> — {project.title}</span>
                     </Link>
@@ -205,7 +205,7 @@ export function ProjectsHomeShowcase({ className }: ProjectsHomeShowcaseProps) {
           className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 bg-primary px-6 font-semibold text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:hidden"
         >
           {t("allCount", { count: projects.length })}
-          <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
         </Link>
       </RevealGroup>
 

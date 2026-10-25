@@ -15,9 +15,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { FiGithub, FiExternalLink } from "react-icons/fi";
-import { SiNpm } from "react-icons/si";
-import { Mail } from "lucide-react";
+import { SiGithub, SiNpm } from "react-icons/si";
+import { ExternalLink, Mail } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { contactEmailLink } from "@/data/main/contact";
@@ -175,7 +174,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className={cn(projectLinkBase, projectLinkQuiet, footerLink)}
               >
-                <FiGithub className="h-3.5 w-3.5" aria-hidden="true" />
+                <SiGithub className="h-3.5 w-3.5" aria-hidden="true" />
                 {t("code")}
                 <span className="sr-only"> — {project.title}</span>
               </Link>
@@ -204,7 +203,7 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className={cn(projectLinkBase, projectLinkPrimary, footerLink)}
               >
-                <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                 {t("liveDemo")}
                 <span className="sr-only"> — {project.title}</span>
               </Link>

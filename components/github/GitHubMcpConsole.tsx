@@ -7,8 +7,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaTerminal } from "react-icons/fa";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -163,7 +162,7 @@ export default function GitHubMcpConsole() {
                 variant="ghost"
                 className="h-11 cursor-pointer rounded-none bg-surface px-5 text-base font-semibold hover:bg-surface-2"
               >
-                <FaTerminal className="mr-1 h-4 w-4" aria-hidden="true" />
+                <Terminal className="mr-1 h-4 w-4" aria-hidden="true" />
                 {githubCopy.mcp.trigger}
               </Button>
             </DrawerTrigger>

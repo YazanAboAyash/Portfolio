@@ -148,7 +148,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
             </ul>
           )}
 
-          <div className="relative mt-10 aspect-[21/9] overflow-hidden border border-border bg-surface">
+          <div className="relative mt-10 aspect-21/9 overflow-hidden border border-border bg-surface">
             <Image
               src={imageSrc}
               alt={blog.title}
@@ -260,7 +260,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
                   const [box, ...text] = Children.toArray(children);
                   return (
                     <li>
-                      <label className="flex cursor-pointer items-start gap-3 p-2 leading-7 text-foreground/90 transition-colors hover:bg-surface-2 has-[:checked]:text-muted-foreground has-[:checked]:line-through has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-foreground">
+                      <label className="flex cursor-pointer items-start gap-3 p-2 leading-7 text-foreground/90 transition-colors hover:bg-surface-2 has-checked:text-muted-foreground has-checked:line-through has-focus-visible:outline-2 has-focus-visible:outline-foreground">
                         {box}
                         <span>{text}</span>
                       </label>
@@ -301,7 +301,7 @@ export function BlogView({ blog, className }: BlogViewProps) {
 
                 table: ({ children }) => (
                   <div className="overflow-x-auto border border-border">
-                    <table className="w-full min-w-[34rem] text-left text-sm [&_tbody_tr]:border-t [&_tbody_tr]:border-border [&_td:first-child]:font-medium [&_td:first-child]:text-foreground [&_td:first-child_code]:whitespace-nowrap">
+                    <table className="w-full min-w-136 text-left text-sm [&_tbody_tr]:border-t [&_tbody_tr]:border-border [&_td:first-child]:font-medium [&_td:first-child]:text-foreground [&_td:first-child_code]:whitespace-nowrap">
                       {children}
                     </table>
                   </div>
