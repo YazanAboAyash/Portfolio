@@ -12,7 +12,7 @@ export type SearchGroupId = "pages" | "sections" | "work" | "blog" | "settings";
 /** A page the palette links to; the label is a key in the `Navigation` messages. */
 export interface SearchPage {
   href: string;
-  labelKey: "home" | "work" | "about" | "blog" | "aboutSite" | "impressum" | "privacy";
+  labelKey: "home" | "work" | "about" | "blog" | "aboutSite" | "mcp" | "impressum" | "privacy";
 }
 
 /** One row in the palette, already translated and ready to run. */

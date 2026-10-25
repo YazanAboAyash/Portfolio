@@ -28,6 +28,7 @@ export const footerNavLinks: LinkItem[][] = [
 
 export const developerLinks: LinkItem[] = [
   { href: "/about-portfolio", label: "About This Site" },
+  { href: "/mcp", label: "MCP Playground" },
   {
     href: "https://docs.coldbydefault.com/",
     label: "Documentation",

@@ -45,7 +45,7 @@ const GitHubAskConsole = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="min-h-387 md:min-h-511 lg:min-h-264" />
+      <LoadingSkeleton className="min-h-316 md:min-h-382 lg:min-h-208" />
     ),
     ssr: false,
   },

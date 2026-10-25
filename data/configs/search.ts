@@ -20,6 +20,7 @@ export const SEARCH_PAGES: readonly SearchPage[] = [
   { href: "/about", labelKey: "about" },
   { href: "/blog", labelKey: "blog" },
   { href: "/about-portfolio", labelKey: "aboutSite" },
+  { href: "/mcp", labelKey: "mcp" },
   { href: "/impressum", labelKey: "impressum" },
   { href: "/privacy", labelKey: "privacy" },
 ];
