@@ -97,7 +97,10 @@
     "ai": {
       "title": "AI i produktion",
       "headline": "LLM-funktioner som håller längre än demon",
-      "description": "RAG och chattbottar som anger sina källor – text och video –, agenter som använder verktyg med definierade behörigheter, och kontext och promptar utformade så att modellen får exakt det den behöver. Inbyggt i produkten, inte påklistrat som ett chattfönster."
+      "description": "RAG och chattbottar som anger sina källor – text och video –, agenter som använder verktyg med definierade behörigheter, och kontext och promptar utformade så att modellen får exakt det den behöver. Inbyggt i produkten, inte påklistrat som ett chattfönster.",
+      "providers": "Leverantörer",
+      "buildsLabel": "Det jag bygger med dem",
+      "builds": "RAG · AI-agenter · Chattbotar · Röst · Kontextdesign"
     },
     "launch": {
       "title": "Leverans",
@@ -114,45 +117,49 @@
       "headline": "Säkert från början",
       "description": "Inloggning med Microsoft Entra ID, hemligheter i Azure Key Vault, validerad indata och minsta möjliga behörighet – och för AI-funktioner tydliga gränser för vad en modell får se och göra."
     },
-    "explorer": {
-      "title": "Utforska stacken",
-      "lead": "Välj en teknik för att se var jag har använt den: projekt med öppen källkod, produkter och den här sidan.",
-      "groups": {
-        "ai": "AI",
-        "frontend": "Frontend",
-        "backend": "Backend & data",
-        "tooling": "Verktyg & leverans"
-      },
-      "usedIn": "{count, plural, one {använd på # ställe} other {använd på # ställen}}",
-      "close": "Stäng",
-      "kinds": {
-        "project": "Projekt med öppen källkod",
-        "product": "Produkt",
-        "site": "Den här sidan"
-      },
-      "tech": {
-        "llm": "LLMs",
-        "rag": "RAG & vektorsökning",
-        "agents": "AI-agenter",
-        "mcp": "MCP",
-        "ollama": "Ollama",
-        "nextjs": "Next.js",
-        "react": "React",
-        "typescript": "TypeScript",
-        "tailwind": "Tailwind CSS",
-        "motion": "Framer Motion",
-        "i18n": "i18n",
-        "postgres": "PostgreSQL",
-        "prisma": "Prisma",
-        "auth": "Autentisering",
-        "stripe": "Stripe",
-        "docker": "Docker",
-        "vercel": "Vercel",
-        "seo": "SEO & JSON-LD",
-        "npm": "npm-paket",
-        "notion": "Notion API",
-        "playwright": "Playwright"
+    "pipeline": {
+      "title": "Så levererar jag",
+      "lead": "Varje projekt tar samma väg till produktion, AI-funktioner inräknade. Scrolla för att följa en ändring.",
+      "stages": {
+        "commit": {
+          "label": "Commit",
+          "detail": "Små, avgränsade ändringar som är lätta att granska och lätta att backa.",
+          "practices": "Versionshantering med Git · Kodgranskning"
+        },
+        "check": {
+          "label": "Kontroll",
+          "detail": "Automatiska kontroller vid varje ändring: typer, lint och tester. Indata valideras, åtkomst följer minsta behörighet, och hemligheter ligger i ett valv, aldrig i koden.",
+          "practices": "CI/CD · Typkontroll · Linting · Automatiska tester"
+        },
+        "preview": {
+          "label": "Förhandsvisning",
+          "detail": "Varje ändring får en egen förhandsmiljö och körs hela vägen innan någon är beroende av den.",
+          "practices": "Förhandsmiljöer · Containrar"
+        },
+        "deploy": {
+          "label": "Driftsättning",
+          "detail": "Databasmigreringar och hanterad infrastruktur – tillväxt innebär finjustering, inte omskrivning.",
+          "practices": "ORM-migreringar · Hanterad databas · Molnhosting"
+        },
+        "live": {
+          "label": "Live",
+          "detail": "Mäts i produktion och förbättras sedan utifrån verklig användning, inte gissningar.",
+          "practices": "Övervakning · Analys"
+        }
       }
+    },
+    "stack": {
+      "title": "Min stack",
+      "lead": "Välj ett lager för att se verktygen bakom det.",
+      "tabsLabel": "Stackens lager",
+      "groups": {
+        "frontend": "Frontend",
+        "backend": "Backend & arkitektur",
+        "ai": "AI",
+        "infra": "Infrastruktur & DevOps",
+        "workflow": "Arbetssätt"
+      },
+      "practices": "Metoder"
     }
   },
   "Certifications": {

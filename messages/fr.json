@@ -97,7 +97,10 @@
     "ai": {
       "title": "IA en production",
       "headline": "Des fonctionnalités LLM qui tiennent au-delà de la démo",
-      "description": "Du RAG et des chatbots qui citent leurs sources — texte et vidéo —, des agents qui utilisent des outils avec des permissions définies, et un contexte et des prompts conçus pour que le modèle reçoive exactement ce dont il a besoin. Intégrés au produit, pas greffés comme une fenêtre de chat."
+      "description": "Du RAG et des chatbots qui citent leurs sources — texte et vidéo —, des agents qui utilisent des outils avec des permissions définies, et un contexte et des prompts conçus pour que le modèle reçoive exactement ce dont il a besoin. Intégrés au produit, pas greffés comme une fenêtre de chat.",
+      "providers": "Fournisseurs",
+      "buildsLabel": "Ce que je construis avec",
+      "builds": "RAG · Agents IA · Chatbots · Voix · Ingénierie de contexte"
     },
     "launch": {
       "title": "Livraison",
@@ -114,45 +117,49 @@
       "headline": "Sûr par défaut",
       "description": "Connexion via Microsoft Entra ID, secrets dans Azure Key Vault, entrées validées et moindre privilège — et pour les fonctionnalités IA, des garde-fous sur ce qu'un modèle peut voir et faire."
     },
-    "explorer": {
-      "title": "Explorer la stack",
-      "lead": "Choisissez une technologie pour voir où je l'ai utilisée : projets open source, produits et ce site.",
-      "groups": {
-        "ai": "IA",
-        "frontend": "Frontend",
-        "backend": "Backend et données",
-        "tooling": "Outillage et livraison"
-      },
-      "usedIn": "{count, plural, one {utilisée à # endroit} other {utilisée à # endroits}}",
-      "close": "Fermer",
-      "kinds": {
-        "project": "Projet open source",
-        "product": "Produit",
-        "site": "Ce site"
-      },
-      "tech": {
-        "llm": "LLMs",
-        "rag": "RAG et recherche vectorielle",
-        "agents": "Agents IA",
-        "mcp": "MCP",
-        "ollama": "Ollama",
-        "nextjs": "Next.js",
-        "react": "React",
-        "typescript": "TypeScript",
-        "tailwind": "Tailwind CSS",
-        "motion": "Framer Motion",
-        "i18n": "i18n",
-        "postgres": "PostgreSQL",
-        "prisma": "Prisma",
-        "auth": "Authentification",
-        "stripe": "Stripe",
-        "docker": "Docker",
-        "vercel": "Vercel",
-        "seo": "SEO & JSON-LD",
-        "npm": "Paquets npm",
-        "notion": "Notion API",
-        "playwright": "Playwright"
+    "pipeline": {
+      "title": "Comment je livre",
+      "lead": "Chaque projet suit le même chemin jusqu'à la production, fonctionnalités IA comprises. Faites défiler pour suivre un changement.",
+      "stages": {
+        "commit": {
+          "label": "Commit",
+          "detail": "Des changements petits et ciblés, faciles à relire et à annuler.",
+          "practices": "Gestion de versions Git · Revue de code"
+        },
+        "check": {
+          "label": "Vérifier",
+          "detail": "Des vérifications automatiques à chaque changement : types, lint et tests. Les entrées sont validées, les accès limités au strict nécessaire, et les secrets restent dans un coffre, jamais dans le code.",
+          "practices": "CI/CD · Vérification des types · Linting · Tests automatisés"
+        },
+        "preview": {
+          "label": "Aperçu",
+          "detail": "Chaque changement a son propre environnement d'aperçu et fonctionne de bout en bout avant que quiconque en dépende.",
+          "practices": "Environnements d'aperçu · Conteneurs"
+        },
+        "deploy": {
+          "label": "Déploiement",
+          "detail": "Migrations de base de données et infrastructure managée : grandir veut dire ajuster, pas réécrire.",
+          "practices": "Migrations ORM · Base de données managée · Hébergement cloud"
+        },
+        "live": {
+          "label": "En ligne",
+          "detail": "Mesuré en production, puis amélioré à partir de l'usage réel plutôt que de suppositions.",
+          "practices": "Supervision · Analytique"
+        }
       }
+    },
+    "stack": {
+      "title": "Ma stack",
+      "lead": "Choisissez une couche pour voir les outils qui la composent.",
+      "tabsLabel": "Couches de la stack",
+      "groups": {
+        "frontend": "Frontend",
+        "backend": "Backend et architecture",
+        "ai": "IA",
+        "infra": "Infrastructure et DevOps",
+        "workflow": "Méthodes de travail"
+      },
+      "practices": "Pratiques"
     }
   },
   "Certifications": {

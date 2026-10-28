@@ -20,7 +20,7 @@ const Capabilities = dynamic(
     import("@/components/tech").then((mod) => ({ default: mod.Capabilities })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-142 md:min-h-262 lg:min-h-221" />
+      <LoadingSkeleton className="frame min-h-569 md:min-h-605 lg:min-h-570" />
     ),
     ssr: false,
   },

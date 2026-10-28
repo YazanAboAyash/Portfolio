@@ -97,7 +97,10 @@
     "ai": {
       "title": "AI in Production",
       "headline": "LLM features that hold up beyond the demo",
-      "description": "RAG and chatbots that cite their sources — text and video — agents that use tools within defined permissions, and engineered context and prompts so the model sees exactly what it needs. Built into the product, not bolted on as a chat window."
+      "description": "RAG and chatbots that cite their sources — text and video — agents that use tools within defined permissions, and engineered context and prompts so the model sees exactly what it needs. Built into the product, not bolted on as a chat window.",
+      "providers": "Providers",
+      "buildsLabel": "What I build with them",
+      "builds": "RAG · AI agents · Chatbots · Voice · Context engineering"
     },
     "launch": {
       "title": "Ship",
@@ -114,45 +117,49 @@
       "headline": "Safe by default",
       "description": "Sign-in with Microsoft Entra ID, secrets in Azure Key Vault, validated input and least-privilege access — and for AI features, clear limits on what a model can see and do."
     },
-    "explorer": {
-      "title": "Explore the stack",
-      "lead": "Pick a technology to see where I've used it: open-source projects, products and this site.",
-      "groups": {
-        "ai": "AI",
-        "frontend": "Frontend",
-        "backend": "Backend & data",
-        "tooling": "Tooling & delivery"
-      },
-      "usedIn": "{count, plural, one {used in # place} other {used in # places}}",
-      "close": "Close",
-      "kinds": {
-        "project": "Open-source project",
-        "product": "Product",
-        "site": "This site"
-      },
-      "tech": {
-        "llm": "LLMs",
-        "rag": "RAG & vector search",
-        "agents": "AI agents",
-        "mcp": "MCP",
-        "ollama": "Ollama",
-        "nextjs": "Next.js",
-        "react": "React",
-        "typescript": "TypeScript",
-        "tailwind": "Tailwind CSS",
-        "motion": "Framer Motion",
-        "i18n": "i18n",
-        "postgres": "PostgreSQL",
-        "prisma": "Prisma",
-        "auth": "Auth",
-        "stripe": "Stripe",
-        "docker": "Docker",
-        "vercel": "Vercel",
-        "seo": "SEO & JSON-LD",
-        "npm": "npm packages",
-        "notion": "Notion API",
-        "playwright": "Playwright"
+    "pipeline": {
+      "title": "How I ship",
+      "lead": "Every project takes the same path to production, AI features included. Scroll to follow a change.",
+      "stages": {
+        "commit": {
+          "label": "Commit",
+          "detail": "Small, focused changes, each easy to review and easy to roll back.",
+          "practices": "Git version control · Code review"
+        },
+        "check": {
+          "label": "Check",
+          "detail": "Automated checks on every change: types, lint and tests. Input is validated, access is least-privilege, and secrets stay in a vault, never in the code.",
+          "practices": "CI/CD · Type checking · Linting · Automated tests"
+        },
+        "preview": {
+          "label": "Preview",
+          "detail": "Each change gets its own preview environment and runs end to end before anyone depends on it.",
+          "practices": "Preview environments · Containers"
+        },
+        "deploy": {
+          "label": "Deploy",
+          "detail": "Database migrations and managed infrastructure, so growth means tuning, not a rewrite.",
+          "practices": "ORM migrations · Managed database · Cloud hosting"
+        },
+        "live": {
+          "label": "Live",
+          "detail": "Measured in production, then improved from real use instead of guesses.",
+          "practices": "Monitoring · Analytics"
+        }
       }
+    },
+    "stack": {
+      "title": "My stack",
+      "lead": "Pick a layer to see the tools behind it.",
+      "tabsLabel": "Stack layers",
+      "groups": {
+        "frontend": "Frontend",
+        "backend": "Backend & architecture",
+        "ai": "AI",
+        "infra": "Infrastructure & DevOps",
+        "workflow": "Ways of working"
+      },
+      "practices": "Practices"
     }
   },
   "Certifications": {
