@@ -527,6 +527,7 @@
     "pronunciation": "/riːm/",
     "subtitle": "Votre assistant portfolio IA",
     "openAssistant": "Ouvrir l'assistant IA Reem",
+    "movedHint": "Reem vous a amené ici. Touchez pour rouvrir le chat.",
     "closeChat": "Fermer le chat",
     "newChat": "Nouveau chat",
     "greeting": {
@@ -552,7 +553,14 @@
       "get_certifications": "Certifications",
       "get_profile": "Profil GitHub",
       "get_stats": "Statistiques GitHub",
-      "get_repositories": "Dépôts GitHub"
+      "get_repositories": "Dépôts GitHub",
+      "actionsLabel": "Fait sur le site",
+      "actionFallback": "Action sur le site",
+      "navigate": "Page ouverte : {page}",
+      "scroll_to_section": "Aller à {section}",
+      "set_theme": "{theme, select, dark {Mode sombre activé} other {Mode clair activé}}",
+      "set_language": "Langue : {language}",
+      "highlight_project": "Projet affiché : {project}"
     },
     "input": {
       "placeholder": "Demandez à Reem…",

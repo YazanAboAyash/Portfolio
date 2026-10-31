@@ -32,6 +32,13 @@ export const CHATBOT_CONFIG = {
   LAUNCHER_SCROLL_DELTA: 8,
   LAUNCHER_ALWAYS_SHOWN_TOP: 120,
 
+  // Below `sm` the panel covers the page, so a site action that moves the
+  // visitor closes it and leaves a hint by the launcher. Scrolling does not
+  // hide the launcher while the hint shows: Reem's own scroll can land
+  // seconds later, once the target page has loaded.
+  FULL_SCREEN_QUERY: "(max-width: 639px)",
+  MOVED_HINT_DURATION: 6000,
+
   // thinking-orbs typing indicator — 20 is the tuned inline-text preset
   TYPING_ORB: {
     STATE: "working" as OrbState,
@@ -53,6 +60,7 @@ export const CHATBOT_TRANSLATION_KEYS = {
 
   // Actions
   OPEN_ASSISTANT: "openAssistant",
+  MOVED_HINT: "movedHint",
   CLOSE_CHAT: "closeChat",
   NEW_CHAT: "newChat",
 
@@ -84,6 +92,9 @@ export const CHATBOT_TRANSLATION_KEYS = {
   TOOLS_LABEL: "tools.label",
   TOOLS_FAILED: "tools.failed",
   TOOLS_FALLBACK: "tools.fallback",
+  // Site actions get their own list; their labels take the action's input
+  TOOLS_ACTIONS_LABEL: "tools.actionsLabel",
+  TOOLS_ACTION_FALLBACK: "tools.actionFallback",
 
   // Input
   INPUT_PLACEHOLDER: "input.placeholder",

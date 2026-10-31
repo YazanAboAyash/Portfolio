@@ -527,6 +527,7 @@
     "pronunciation": "/riːm/",
     "subtitle": "Ihr KI-Portfolio-Assistent",
     "openAssistant": "Reem KI-Assistent öffnen",
+    "movedHint": "Reem hat Sie hierher gebracht. Tippen Sie, um den Chat wieder zu öffnen.",
     "closeChat": "Chat schließen",
     "newChat": "Neuer Chat",
     "greeting": {
@@ -552,7 +553,14 @@
       "get_certifications": "Zertifikate",
       "get_profile": "GitHub-Profil",
       "get_stats": "GitHub-Statistiken",
-      "get_repositories": "GitHub-Repositories"
+      "get_repositories": "GitHub-Repositories",
+      "actionsLabel": "Auf der Seite erledigt",
+      "actionFallback": "Seitenaktion",
+      "navigate": "{page} geöffnet",
+      "scroll_to_section": "Zu {section} gesprungen",
+      "set_theme": "{theme, select, dark {Dunkelmodus aktiviert} other {Hellmodus aktiviert}}",
+      "set_language": "Sprache: {language}",
+      "highlight_project": "{project} gezeigt"
     },
     "input": {
       "placeholder": "Fragen Sie Reem…",

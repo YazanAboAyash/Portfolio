@@ -8,10 +8,9 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useLocale, useTranslations } from "next-intl";
-import { useReducedMotion } from "framer-motion";
 import {
   CornerDownLeft,
   FileText,
@@ -29,6 +28,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useBlogSearch } from "@/hooks/use-search-palette";
+import { useSiteActions } from "@/hooks/use-site-actions";
 import {
   HOME_SECTION_IDS,
   SEARCH_GROUPS,
@@ -46,9 +46,6 @@ const GROUP_ICONS: Record<SearchGroupId, LucideIcon> = {
   blog: Library,
   settings: Settings2,
 };
-
-/** Sticky navbar height (h-16) plus air, matching the SectionRail jump. */
-const SCROLL_OFFSET = 80;
 
 const KBD_CLASS =
   "bg-surface px-1.5 py-0.5 font-sans text-xs font-medium leading-none text-foreground";
@@ -110,10 +107,9 @@ function PaletteBody({ onSelect }: { onSelect: (item: SearchResult) => void }) {
   const tSections = useTranslations("SectionRail.sections");
   const tCategories = useTranslations("Projects.categories");
   const router = useRouter();
-  const pathname = usePathname();
   const locale = useLocale();
-  const { resolvedTheme, setTheme } = useTheme();
-  const reduceMotion = useReducedMotion();
+  const { resolvedTheme } = useTheme();
+  const siteActions = useSiteActions();
   const listId = useId();
 
   const [query, setQuery] = useState("");
@@ -121,28 +117,7 @@ function PaletteBody({ onSelect }: { onSelect: (item: SearchResult) => void }) {
   const { posts, loading } = useBlogSearch(query);
 
   const staticItems = useMemo<SearchResult[]>(() => {
-    const goToSection = (id: string) => {
-      if (pathname !== "/") {
-        router.push(`/#${id}`);
-        return;
-      }
-      const target = document.getElementById(id);
-      if (!target) return;
-      window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET,
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
-    };
-
-    const switchLocale = (next: string) => {
-      // Same cookie the language menu writes; see LanguageSwitcher.
-      const setCookie = (value: string) => {
-        document.cookie = value;
-      };
-      setCookie(`PORTFOLIOVERSIONLATEST_LOCALE=${next}; path=/;`);
-      router.refresh();
-    };
-
+    const { goToSection, switchLocale, setTheme } = siteActions;
     const isDark = resolvedTheme === "dark";
 
     return [
@@ -199,11 +174,9 @@ function PaletteBody({ onSelect }: { onSelect: (item: SearchResult) => void }) {
     tSections,
     tCategories,
     router,
-    pathname,
     locale,
     resolvedTheme,
-    setTheme,
-    reduceMotion,
+    siteActions,
   ]);
 
   // Every word of the query has to appear somewhere in the item's text.

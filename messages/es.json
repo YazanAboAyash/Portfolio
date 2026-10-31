@@ -527,6 +527,7 @@
     "pronunciation": "/ri:m/",
     "subtitle": "Tu asistente de portafolio con IA",
     "openAssistant": "Abrir asistente de IA Reem",
+    "movedHint": "Reem te trajo aquí. Toca para volver a abrir el chat.",
     "closeChat": "Cerrar chat",
     "newChat": "Nuevo chat",
     "greeting": {
@@ -552,7 +553,14 @@
       "get_certifications": "Certificaciones",
       "get_profile": "Perfil de GitHub",
       "get_stats": "Estadísticas de GitHub",
-      "get_repositories": "Repositorios de GitHub"
+      "get_repositories": "Repositorios de GitHub",
+      "actionsLabel": "Hecho en el sitio",
+      "actionFallback": "Acción en el sitio",
+      "navigate": "Abierto: {page}",
+      "scroll_to_section": "Ir a {section}",
+      "set_theme": "{theme, select, dark {Modo oscuro activado} other {Modo claro activado}}",
+      "set_language": "Idioma: {language}",
+      "highlight_project": "Mostrado: {project}"
     },
     "input": {
       "placeholder": "Pregúntale a Reem…",

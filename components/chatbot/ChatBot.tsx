@@ -15,6 +15,7 @@ import "blobatar/motion.css";
 import { useChatBot } from "@/hooks/use-chatbot";
 import { useCookieConsent } from "@/hooks/use-cookie-consent";
 import type { ChatBotUIProps } from "@/types/configs/chatbot";
+import type { SiteAction, SiteActionName } from "@/types/configs/site-actions";
 import { ChatHeader } from "./ChatHeader";
 import { ChatMessage as ChatMessageComponent } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
@@ -31,6 +32,15 @@ function prefersInputFocus(): boolean {
   return window.matchMedia("(pointer: fine)").matches;
 }
 
+/** Site actions that take the visitor somewhere else on the site. */
+const MOVING_ACTIONS: ReadonlySet<SiteActionName> = new Set([
+  "navigate",
+  "scroll_to_section",
+  "highlight_project",
+]);
+
+const MOVED_HINT_ID = "chatbot-moved-hint";
+
 export function ChatBot({ className = "" }: ChatBotUIProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -45,6 +55,22 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
   const returnFocusRef = useRef(false);
   const t = useTranslations("ChatBot");
   const cookieConsent = useCookieConsent();
+  const [movedHint, setMovedHint] = useState(false);
+  const ignoreScrollUntilRef = useRef(0);
+
+  // Phones only: the panel covers the page, so the visitor would not see
+  // where Reem took them. Theme and language changes are visible either way.
+  const handleSiteAction = (action: SiteAction) => {
+    if (!MOVING_ACTIONS.has(action.name)) return;
+    if (!window.matchMedia(CHATBOT_CONFIG.FULL_SCREEN_QUERY).matches) return;
+
+    ignoreScrollUntilRef.current =
+      Date.now() + CHATBOT_CONFIG.MOVED_HINT_DURATION;
+    setScrolledAway(false);
+    setMovedHint(true);
+    returnFocusRef.current = true;
+    setIsOpen(false);
+  };
 
   const {
     messages,
@@ -57,7 +83,7 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
     clearError,
     clearMessages,
     setConsent,
-  } = useChatBot();
+  } = useChatBot({ onSiteAction: handleSiteAction });
 
   const lastMessage = messages[messages.length - 1];
   // Covers both "submitted" and a stream that has opened but not yet sent text
@@ -91,6 +117,10 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
     let lastY = window.scrollY;
     const handleScroll = () => {
       const y = window.scrollY;
+      if (Date.now() < ignoreScrollUntilRef.current) {
+        lastY = y;
+        return;
+      }
       if (Math.abs(y - lastY) < CHATBOT_CONFIG.LAUNCHER_SCROLL_DELTA) return;
       setScrolledAway(
         y > lastY && y > CHATBOT_CONFIG.LAUNCHER_ALWAYS_SHOWN_TOP,
@@ -101,6 +131,16 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!movedHint) return;
+
+    const timer = setTimeout(
+      () => setMovedHint(false),
+      CHATBOT_CONFIG.MOVED_HINT_DURATION,
+    );
+    return () => clearTimeout(timer);
+  }, [movedHint]);
 
   // Keep the newest message in view unless the visitor has scrolled away
   useEffect(() => {
@@ -139,6 +179,7 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
     // A stale error from an earlier visit should not greet the visitor
     clearError();
     stickToBottomRef.current = true;
+    setMovedHint(false);
     setIsOpen(true);
   };
 
@@ -175,30 +216,43 @@ export function ChatBot({ className = "" }: ChatBotUIProps) {
 
   if (!isOpen) {
     return (
-      <Button
-        ref={launcherRef}
-        onClick={handleOpenChat}
-        size="icon"
-        // z-40: sheets, drawers and dialogs (z-50) cover the launcher.
-        // Phones get the smaller 44px launcher, out of the way while scrolling down.
-        className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-40 size-11 cursor-pointer rounded-full border border-primary/20 shadow-lg transition-[translate,scale,opacity] hover:scale-105 animate-in fade-in-0 zoom-in-75 duration-300 motion-reduce:animate-none motion-reduce:transition-none motion-reduce:hover:scale-100 md:bottom-6 md:left-6 md:size-14 ${
-          scrolledAway
-            ? "max-md:pointer-events-none max-md:translate-y-20 max-md:opacity-0"
-            : ""
-        } ${className}`}
-        title={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
-      >
-        {/* size-* class opts out of the Button's [&_svg]:size-4 override */}
-        <Blobatar
-          name={CHATBOT_CONFIG.AVATAR_SEED}
-          animate="always"
-          className="size-8 md:size-10"
-          aria-hidden="true"
-        />
-        <span className="sr-only">
-          {t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
-        </span>
-      </Button>
+      <>
+        <Button
+          ref={launcherRef}
+          onClick={handleOpenChat}
+          aria-describedby={movedHint ? MOVED_HINT_ID : undefined}
+          size="icon"
+          // z-40: sheets, drawers and dialogs (z-50) cover the launcher.
+          // Phones get the smaller 44px launcher, out of the way while scrolling down.
+          className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-40 size-11 cursor-pointer rounded-full border border-primary/20 shadow-lg transition-[translate,scale,opacity] hover:scale-105 animate-in fade-in-0 zoom-in-75 duration-300 motion-reduce:animate-none motion-reduce:transition-none motion-reduce:hover:scale-100 md:bottom-6 md:left-6 md:size-14 ${
+            scrolledAway
+              ? "max-md:pointer-events-none max-md:translate-y-20 max-md:opacity-0"
+              : ""
+          } ${className}`}
+          title={t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
+        >
+          {/* size-* class opts out of the Button's [&_svg]:size-4 override */}
+          <Blobatar
+            name={CHATBOT_CONFIG.AVATAR_SEED}
+            animate="always"
+            className="size-8 md:size-10"
+            aria-hidden="true"
+          />
+          <span className="sr-only">
+            {t(CHATBOT_TRANSLATION_KEYS.OPEN_ASSISTANT)}
+          </span>
+        </Button>
+        {/* Beside the 44px phone launcher; only ever set below `sm` */}
+        {movedHint && (
+          <p
+            id={MOVED_HINT_ID}
+            role="status"
+            className="pointer-events-none fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-17 z-40 flex min-h-11 max-w-[calc(100vw-5.5rem)] items-center rounded-full border border-border bg-background px-3 text-xs text-foreground shadow-lg animate-in fade-in-0 slide-in-from-left-2 duration-300 motion-reduce:animate-none"
+          >
+            {t(CHATBOT_TRANSLATION_KEYS.MOVED_HINT)}
+          </p>
+        )}
+      </>
     );
   }
 

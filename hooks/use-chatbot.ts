@@ -13,7 +13,10 @@ import type {
   ChatBotErrorCode,
   ReemUIMessage,
 } from "@/types/configs/chatbot";
+import type { SiteAction } from "@/types/configs/site-actions";
 import { CHATBOT_ERROR_TRANSLATION_KEYS } from "@/components/chatbot/ChatBot.constants";
+import { parseSiteAction } from "@/lib/site-actions";
+import { useSiteActions } from "@/hooks/use-site-actions";
 
 interface UseChatBotReturn {
   messages: ReemUIMessage[];
@@ -123,7 +126,15 @@ function toErrorTranslationKey(error: Error | undefined): string | null {
   return CHATBOT_ERROR_TRANSLATION_KEYS.UNKNOWN;
 }
 
-export function useChatBot(): UseChatBotReturn {
+interface UseChatBotOptions {
+  /** Called after Reem has run a site action in this browser. */
+  onSiteAction?: (action: SiteAction) => void;
+}
+
+export function useChatBot({
+  onSiteAction,
+}: UseChatBotOptions = {}): UseChatBotReturn {
+  const siteActions = useSiteActions();
   const [persisted] = useState(loadPersistedState);
   const [sessionId, setSessionId] = useState(persisted.sessionId);
   const [consentGiven, setConsentGiven] = useState(persisted.consentGiven);
@@ -173,6 +184,17 @@ export function useChatBot(): UseChatBotReturn {
         },
       }),
     }),
+    // Fires only for tool calls arriving on a live stream, never for parts
+    // restored from localStorage, so a reload cannot replay old actions. The
+    // input reaching it has already passed the route's schema; a call that
+    // failed it arrives as an error part instead. The stream awaits this, so
+    // nothing in here may block.
+    onToolCall: ({ toolCall }) => {
+      const action = parseSiteAction(toolCall.toolName, toolCall.input);
+      if (!action) return;
+      siteActions.run(action);
+      onSiteAction?.(action);
+    },
   });
 
   // Persist the transcript so it survives a reload

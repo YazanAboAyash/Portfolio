@@ -527,6 +527,7 @@
     "pronunciation": "/ri:m/",
     "subtitle": "Your AI portfolio assistant",
     "openAssistant": "Open Reem AI assistant",
+    "movedHint": "Reem moved you here. Tap to reopen the chat.",
     "closeChat": "Close chat",
     "newChat": "New chat",
     "greeting": {
@@ -552,7 +553,14 @@
       "get_certifications": "Certifications",
       "get_profile": "GitHub profile",
       "get_stats": "GitHub stats",
-      "get_repositories": "GitHub repositories"
+      "get_repositories": "GitHub repositories",
+      "actionsLabel": "Done on the site",
+      "actionFallback": "Site action",
+      "navigate": "Opened {page}",
+      "scroll_to_section": "Jumped to {section}",
+      "set_theme": "{theme, select, dark {Switched to dark mode} other {Switched to light mode}}",
+      "set_language": "Switched to {language}",
+      "highlight_project": "Showed {project}"
     },
     "input": {
       "placeholder": "Ask Reem anything…",

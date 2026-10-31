@@ -36,6 +36,16 @@ import {
 import { prisma } from "@/lib/configs/prisma";
 import { toGitHubErrorCode } from "@/lib/github/service";
 import { portfolioTools } from "@/lib/mcp/portfolio-tools";
+import { SUPPORTED_LOCALES } from "@/data/configs/i18n";
+import { HOME_SECTION_IDS } from "@/data/configs/search";
+import {
+  HIGHLIGHTABLE_PROJECT_TITLES,
+  NAVIGABLE_HREFS,
+  SITE_ACTION_DESCRIPTIONS,
+  SITE_ACTION_NAMES,
+  SITE_THEMES,
+} from "@/data/configs/site-actions";
+import type { SiteActionName } from "@/types/configs/site-actions";
 
 // Streaming replies outlive the default function budget on slower models.
 export const maxDuration = 30;
@@ -352,7 +362,7 @@ const MAX_STEPS = 3;
  * MCP server returns, so Reem can say the data is unavailable instead of the
  * whole turn failing.
  */
-const reemTools: ToolSet = Object.fromEntries(
+const portfolioReadTools: ToolSet = Object.fromEntries(
   Object.entries(portfolioTools).map(([name, { description, load }]) => [
     name,
     tool({
@@ -369,6 +379,39 @@ const reemTools: ToolSet = Object.fromEntries(
     }),
   ]),
 );
+
+/**
+ * Every input is one value from a fixed list, so the model can pick a page or
+ * a setting but never name a URL. A call outside the list fails validation
+ * here and never reaches the browser.
+ */
+const siteActionInputs: Record<SiteActionName, z.ZodType> = {
+  navigate: z.object({ href: z.enum(NAVIGABLE_HREFS) }),
+  scroll_to_section: z.object({ section: z.enum(HOME_SECTION_IDS) }),
+  set_theme: z.object({ theme: z.enum(SITE_THEMES) }),
+  set_language: z.object({ locale: z.enum(SUPPORTED_LOCALES) }),
+  highlight_project: z.object({ title: z.enum(HIGHLIGHTABLE_PROJECT_TITLES) }),
+};
+
+/**
+ * Site actions are acknowledged here and carried out by the browser, which
+ * runs each one as its tool call streams in (`hooks/use-chatbot.ts`). The
+ * client-side tools pattern would need a second request carrying the result,
+ * which this route refuses (the last turn must be the user's) and which would
+ * spend the visitor's rate limit and message cap twice per turn.
+ */
+const siteActionTools: ToolSet = Object.fromEntries(
+  SITE_ACTION_NAMES.map((name) => [
+    name,
+    tool({
+      description: SITE_ACTION_DESCRIPTIONS[name],
+      inputSchema: siteActionInputs[name],
+      execute: async () => ({ ok: true }),
+    }),
+  ]),
+);
+
+const reemTools: ToolSet = { ...portfolioReadTools, ...siteActionTools };
 
 /**
  * Log chat session and messages to database (if logging is enabled AND user consented)

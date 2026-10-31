@@ -527,6 +527,7 @@
     "pronunciation": "/riːm/",
     "subtitle": "Din AI-portföljassistent",
     "openAssistant": "Öppna Reem AI-assistent",
+    "movedHint": "Reem tog dig hit. Tryck för att öppna chatten igen.",
     "closeChat": "Stäng chatt",
     "newChat": "Ny chatt",
     "greeting": {
@@ -552,7 +553,14 @@
       "get_certifications": "Certifieringar",
       "get_profile": "GitHub-profil",
       "get_stats": "GitHub-statistik",
-      "get_repositories": "GitHub-repon"
+      "get_repositories": "GitHub-repon",
+      "actionsLabel": "Gjort på sidan",
+      "actionFallback": "Åtgärd på sidan",
+      "navigate": "Öppnade {page}",
+      "scroll_to_section": "Hoppade till {section}",
+      "set_theme": "{theme, select, dark {Bytte till mörkt läge} other {Bytte till ljust läge}}",
+      "set_language": "Bytte språk till {language}",
+      "highlight_project": "Visade {project}"
     },
     "input": {
       "placeholder": "Fråga Reem…",
