@@ -46,6 +46,7 @@
     "aboutSite": "About Site",
     "projects": "Projects",
     "mcp": "MCP",
+    "feedback": "Feedback",
     "technologies": "Technologies",
     "certifications": "Certifications",
     "media": "Media",
@@ -89,6 +90,61 @@
         "subject": "Hello from coldbydefault.com",
         "body": "Hi Yazan,\n\n"
       }
+    }
+  },
+  "Feedback": {
+    "title": "Leave feedback",
+    "lead": "Something about me or this site you'd like to share? Praise and honest criticism are both welcome.",
+    "formLabel": "Feedback form",
+    "topicLabel": "Feedback on",
+    "topics": {
+      "me": "About Yazan",
+      "website": "About the site"
+    },
+    "ratingLabel": "Rating",
+    "rateValue": "{value} out of 5 stars",
+    "optional": "optional",
+    "nameLabel": "Name",
+    "namePlaceholder": "Leave empty to stay anonymous",
+    "messageLabel": "Your feedback",
+    "messagePlaceholder": "What stood out, what could be better…",
+    "count": "{count} / {max}",
+    "consentLabel": "Show my feedback, and my name if given, publicly on this site once it has been reviewed.",
+    "moderationNote": "Every entry is checked by an AI moderator and then read by me before anything is published. Links are not allowed. Details are in the privacy notice.",
+    "submit": "Send feedback",
+    "sending": "Sending…",
+    "success": {
+      "title": "Thanks for your feedback!",
+      "description": "I read every entry. If you agreed to publication, it will appear here once I've approved it.",
+      "again": "Leave more feedback"
+    },
+    "filed": {
+      "title": "Wow. Message received.",
+      "description": "Thank you for sharing your feelings so… vividly. Your words have been handled with exactly the care they deserve.",
+      "signature": "— Reem"
+    },
+    "errors": {
+      "generic": "Please check this field.",
+      "nameLength": "Use 2 to 40 characters, or leave it empty.",
+      "nameChars": "Only letters, spaces, dots, apostrophes and hyphens.",
+      "messageShort": "Please write at least 10 characters.",
+      "messageLong": "Please keep it under 600 characters.",
+      "messageLinks": "Links are not allowed in feedback."
+    },
+    "submitErrors": {
+      "INVALID_INPUT": "Something in the form is not valid. Please check it and try again.",
+      "RATE_LIMIT_EXCEEDED": "That's a lot of feedback in a short time. Please wait a few minutes.",
+      "DAILY_LIMIT": "You've reached today's limit. Thank you, and feel free to come back tomorrow.",
+      "DUPLICATE": "You have already sent this message.",
+      "SERVICE_UNAVAILABLE": "Feedback can't be sent right now. Please try again later."
+    },
+    "wall": {
+      "title": "What visitors say",
+      "rating": "Rated {value} out of 5",
+      "anonymous": "Anonymous",
+      "emptyTitle": "No feedback yet",
+      "emptyDescription": "Be the first to leave some.",
+      "unavailable": "Feedback couldn't be loaded right now."
     }
   },
   "Capabilities": {
@@ -291,7 +347,7 @@
     },
     "overview": {
       "title": "Overview",
-      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. One feature — the AI assistant — transmits data to an external service provider, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
+      "description": "This website is a personal portfolio. You can browse it without providing any information about yourself. Two features — the AI assistant and the feedback form — transmit data to an external service provider, and performance analytics only runs if you agree to it. The sections below set out each case, its purpose, its legal basis and how long anything is kept.",
       "keyPoint": "What this means in practice",
       "keyPointDescription": "You can read this site without identifying yourself. There is no advertising, no cross-site tracking and no profiling. At the same time, your IP address and anything you type into the assistant are personal data — the sections below explain exactly what happens to them, on what legal basis, and how long anything is kept."
     },
@@ -358,6 +414,17 @@
       "aiNoticeDescription": "You are interacting with an AI system, not with me personally. Please do not enter passwords, payment details, health information or anything else you would not want processed by a US-based AI provider.",
       "legalBasis": "Legal basis: Art. 6(1)(b) and (f) GDPR for producing the answer you asked for; Art. 6(1)(a) GDPR — your consent — for storing the conversation."
     },
+    "feedback": {
+      "title": "Visitor feedback",
+      "description": "You can leave feedback on the home page. Doing so is entirely voluntary.",
+      "storedTitle": "What is stored",
+      "storedDescription": "The topic, your optional rating and name, your message, the site language, whether you agreed to publication, and the result of the moderation check. Your IP address is not stored: only a keyed, one-way hash of it is kept, so that the number of submissions per day can be limited and duplicates recognised.",
+      "moderationTitle": "Automated moderation",
+      "moderationDescription": "Before it is stored, your name and message are sent to OpenAI to be checked for insults, profanity, advertising, personal data and other content that must not be published. Requests are marked so that OpenAI does not store them or use them for training. This check never publishes anything on its own; it can only refuse an entry.",
+      "publicationTitle": "Publication",
+      "publicationDescription": "Feedback is shown publicly only if you ticked the publication box and I have read and approved it by hand. Only the topic, rating, name (if given), message and date are shown. You can withdraw your consent at any time by writing to the address above, and I will remove the entry.",
+      "legalBasis": "Legal basis: Art. 6(1)(a) GDPR — your consent — for publishing your feedback; Art. 6(1)(f) GDPR for storing and moderating it and preventing abuse, my legitimate interest being a site free of spam and abusive content."
+    },
     "contact": {
       "title": "Contact by email",
       "description": "The contact buttons on this site open your own email program with my address filled in; clicking them sends nothing to me or to any third party. If you then write to me, I process your email address, your name if you give it, and the content of your message in order to answer your enquiry.",
@@ -373,7 +440,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Generates the AI assistant's replies.",
+        "purpose": "Generates the AI assistant's replies and checks visitor feedback before it is stored.",
         "location": "United States."
       },
       "squarespace": {
@@ -395,6 +462,7 @@
       "serverLogs": "Hosting and request logs are kept by Vercel for the period set out in its own retention policy; I do not maintain separate access logs.",
       "chatSessions": "My server keeps an assistant conversation only for as long as it takes to answer the message. Nothing about the exchange remains on the server once the reply has been sent, unless you consented to it being stored.",
       "chatRecords": "Conversations stored in the database with your consent are currently deleted manually during review rather than on a fixed automatic schedule. You can have yours removed at any time by writing to the address above; I will do so without undue delay.",
+      "feedback": "Feedback is kept until you ask for it to be removed or I delete it during review. Entries refused by the moderation check are deleted manually during review.",
       "emails": "Emails you send me are deleted once your enquiry has been fully dealt with.",
       "browser": "Entries in your own browser remain until they expire, until you clear your browser storage, or until you use the deletion button on this page."
     },
@@ -635,7 +703,8 @@
       "cert": "Certifications",
       "github": "GitHub",
       "capabilities": "Capabilities",
-      "contact": "Contact"
+      "contact": "Contact",
+      "feedback": "Feedback"
     }
   },
   "Search": {
@@ -684,10 +753,6 @@
     "media": {
       "title": "Loading content…",
       "description": "Preparing the page"
-    },
-    "admin": {
-      "title": "Loading admin dashboard…",
-      "description": "Preparing the admin interface"
     }
   }
 }

@@ -31,6 +31,8 @@ export function hasValidAdminSession(request: NextRequest): boolean {
 
   const [sessionId, expiresAtStr, sig] = parts;
   if (!sessionId || !expiresAtStr || !sig) return false;
+  if (!/^[a-f0-9]{64}$/.test(sessionId) || !/^[a-f0-9]{64}$/.test(sig)) return false;
+  if (!/^\d+$/.test(expiresAtStr)) return false;
 
   // Verify HMAC signature
   const payload = `${sessionId}.${expiresAtStr}`;
@@ -41,8 +43,8 @@ export function hasValidAdminSession(request: NextRequest): boolean {
   if (!timingSafeEqual(sigBuf, expectedBuf)) return false;
 
   // Check expiration
-  const expiresAt = parseInt(expiresAtStr, 10);
-  if (isNaN(expiresAt) || Date.now() > expiresAt) return false;
+  const expiresAt = Number(expiresAtStr);
+  if (!Number.isSafeInteger(expiresAt) || Date.now() >= expiresAt) return false;
 
   return true;
 }

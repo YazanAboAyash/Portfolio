@@ -8,4 +8,3 @@ export { StatsOverview } from "./StatsOverview";
 export { BlogFilters } from "./BlogFilters";
 export { BlogsList } from "./BlogsList";
 export { BlogFormDialog } from "./BlogFormDialog";
-export { Authentication } from "./Authentication";

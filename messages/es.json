@@ -46,6 +46,7 @@
     "aboutSite": "Sobre el Sitio",
     "projects": "Proyectos",
     "mcp": "MCP",
+    "feedback": "Opiniones",
     "technologies": "Tecnologías",
     "certifications": "Certificaciones",
     "media": "Medios",
@@ -89,6 +90,61 @@
         "subject": "Hola desde coldbydefault.com",
         "body": "Hola, Yazan:\n\n"
       }
+    }
+  },
+  "Feedback": {
+    "title": "Deje su opinión",
+    "lead": "¿Quiere comentar algo sobre mí o sobre este sitio? Los elogios y las críticas sinceras son igual de bienvenidos.",
+    "formLabel": "Formulario de opiniones",
+    "topicLabel": "Opinión sobre",
+    "topics": {
+      "me": "Sobre Yazan",
+      "website": "Sobre el sitio"
+    },
+    "ratingLabel": "Valoración",
+    "rateValue": "{value} de 5 estrellas",
+    "optional": "opcional",
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Déjelo vacío para permanecer en el anonimato",
+    "messageLabel": "Su opinión",
+    "messagePlaceholder": "Qué le llamó la atención, qué se podría mejorar…",
+    "count": "{count} / {max}",
+    "consentLabel": "Mostrar públicamente en este sitio mi opinión y, si lo indico, mi nombre una vez revisada.",
+    "moderationNote": "Cada entrada la revisa un moderador de IA y después la leo yo antes de publicar nada. No se permiten enlaces. Encontrará los detalles en el aviso de privacidad.",
+    "submit": "Enviar opinión",
+    "sending": "Enviando…",
+    "success": {
+      "title": "¡Gracias por su opinión!",
+      "description": "Leo todas las entradas. Si aceptó la publicación, aparecerá aquí cuando la haya aprobado.",
+      "again": "Dejar otra opinión"
+    },
+    "filed": {
+      "title": "Vaya. Mensaje recibido.",
+      "description": "Gracias por compartir sus sentimientos de forma tan… expresiva. Sus palabras se han tratado exactamente con el cuidado que merecen.",
+      "signature": "— Reem"
+    },
+    "errors": {
+      "generic": "Revise este campo.",
+      "nameLength": "Use entre 2 y 40 caracteres, o déjelo vacío.",
+      "nameChars": "Solo letras, espacios, puntos, apóstrofos y guiones.",
+      "messageShort": "Escriba al menos 10 caracteres.",
+      "messageLong": "No supere los 600 caracteres.",
+      "messageLinks": "No se permiten enlaces en las opiniones."
+    },
+    "submitErrors": {
+      "INVALID_INPUT": "Algo del formulario no es válido. Revíselo e inténtelo de nuevo.",
+      "RATE_LIMIT_EXCEEDED": "Son muchas opiniones en poco tiempo. Espere unos minutos.",
+      "DAILY_LIMIT": "Ha alcanzado el límite de hoy. Gracias, vuelva mañana si lo desea.",
+      "DUPLICATE": "Ya ha enviado este mensaje.",
+      "SERVICE_UNAVAILABLE": "Ahora mismo no se pueden enviar opiniones. Inténtelo más tarde."
+    },
+    "wall": {
+      "title": "Lo que dicen los visitantes",
+      "rating": "Valorado con {value} de 5",
+      "anonymous": "Anónimo",
+      "emptyTitle": "Aún no hay opiniones",
+      "emptyDescription": "Sea la primera persona en dejar una.",
+      "unavailable": "No se han podido cargar las opiniones en este momento."
     }
   },
   "Capabilities": {
@@ -291,7 +347,7 @@
     },
     "overview": {
       "title": "Resumen",
-      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Una función —el asistente de IA— transmite datos a un proveedor externo, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
+      "description": "Este sitio web es un portafolio personal. Puede navegarlo sin facilitar ningún dato sobre usted. Dos funciones —el asistente de IA y el formulario de opiniones— transmiten datos a un proveedor externo, y la medición de rendimiento solo se ejecuta si usted lo acepta. Las secciones siguientes describen cada caso, su finalidad, su base jurídica y durante cuánto tiempo se conserva la información.",
       "keyPoint": "Qué significa esto en la práctica",
       "keyPointDescription": "Puede leer este sitio sin identificarse. No hay publicidad, ni seguimiento entre sitios, ni elaboración de perfiles. Al mismo tiempo, su dirección IP y todo lo que escriba en el asistente son datos personales: las secciones siguientes explican exactamente qué ocurre con ellos, sobre qué base jurídica y durante cuánto tiempo se conservan."
     },
@@ -358,6 +414,17 @@
       "aiNoticeDescription": "Está interactuando con un sistema de IA, no conmigo personalmente. Por favor, no introduzca contraseñas, datos de pago, información de salud ni ningún otro dato cuyo tratamiento por un proveedor de IA estadounidense no desee.",
       "legalBasis": "Base jurídica: art. 6.1.b y 6.1.f del RGPD para generar la respuesta que usted ha solicitado; art. 6.1.a del RGPD — su consentimiento — para almacenar la conversación."
     },
+    "feedback": {
+      "title": "Opiniones de los visitantes",
+      "description": "Puede dejar su opinión en la página de inicio. Hacerlo es totalmente voluntario.",
+      "storedTitle": "Qué se almacena",
+      "storedDescription": "El tema, su valoración y su nombre opcionales, su mensaje, el idioma del sitio, si aceptó la publicación y el resultado de la moderación. Su dirección IP no se almacena: solo se guarda un hash unidireccional con clave, para poder limitar el número de envíos diarios y reconocer duplicados.",
+      "moderationTitle": "Moderación automatizada",
+      "moderationDescription": "Antes de almacenarse, su nombre y su mensaje se envían a OpenAI para comprobar si contienen insultos, lenguaje vulgar, publicidad, datos personales u otro contenido que no deba publicarse. Las solicitudes se marcan para que OpenAI no las almacene ni las utilice para entrenar. Esta comprobación nunca publica nada por sí sola; solo puede rechazar una entrada.",
+      "publicationTitle": "Publicación",
+      "publicationDescription": "Una opinión solo se muestra públicamente si marcó la casilla de publicación y yo la he leído y aprobado manualmente. Solo se muestran el tema, la valoración, el nombre (si lo indicó), el mensaje y la fecha. Puede retirar su consentimiento en cualquier momento escribiendo a la dirección indicada arriba, y eliminaré la entrada.",
+      "legalBasis": "Base jurídica: art. 6.1.a del RGPD —su consentimiento— para publicar su opinión; art. 6.1.f del RGPD para almacenarla, moderarla y prevenir abusos, siendo mi interés legítimo un sitio libre de spam y contenido ofensivo."
+    },
     "contact": {
       "title": "Contacto por correo electrónico",
       "description": "Los botones de contacto de este sitio abren su propio programa de correo con mi dirección ya indicada; al pulsarlos no se envía nada ni a mí ni a terceros. Si después me escribe, trato su dirección de correo electrónico, su nombre si lo facilita y el contenido de su mensaje para responder a su consulta.",
@@ -373,7 +440,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Genera las respuestas del asistente de IA.",
+        "purpose": "Genera las respuestas del asistente de IA y revisa las opiniones de los visitantes antes de almacenarlas.",
         "location": "Estados Unidos."
       },
       "squarespace": {
@@ -395,6 +462,7 @@
       "serverLogs": "Los registros de alojamiento y de peticiones los conserva Vercel durante el plazo fijado en su propia política de conservación; yo no mantengo registros de acceso separados.",
       "chatSessions": "Mi servidor conserva una conversación del asistente únicamente durante el tiempo necesario para responder al mensaje. Una vez enviada la respuesta, no queda nada del intercambio en el servidor, salvo que usted haya consentido su almacenamiento.",
       "chatRecords": "Las conversaciones almacenadas en la base de datos con su consentimiento se eliminan actualmente de forma manual durante una revisión, y no según un calendario automático fijo. Puede solicitar su eliminación en cualquier momento escribiendo a la dirección indicada arriba; lo haré sin dilación indebida.",
+      "feedback": "Las opiniones se conservan hasta que solicite su eliminación o las borre durante la revisión. Las entradas rechazadas por la moderación se eliminan manualmente durante la revisión.",
       "emails": "Los correos que me envíe se eliminan una vez atendida por completo su consulta.",
       "browser": "Las entradas de su propio navegador permanecen hasta que caducan, hasta que borre el almacenamiento de su navegador o hasta que utilice el botón de eliminación de esta página."
     },
@@ -635,7 +703,8 @@
       "cert": "Certificaciones",
       "github": "GitHub",
       "capabilities": "Capacidades",
-      "contact": "Contacto"
+      "contact": "Contacto",
+      "feedback": "Opiniones"
     }
   },
   "Search": {
@@ -684,10 +753,6 @@
     "media": {
       "title": "Cargando contenido…",
       "description": "Preparando la página"
-    },
-    "admin": {
-      "title": "Cargando panel de administración…",
-      "description": "Preparando la interfaz de administración"
     }
   }
 }

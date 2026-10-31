@@ -82,7 +82,7 @@ public/assets/              Images, icons, use-case visuals
 1. **`proxy.ts` not `middleware.ts`** — Next.js 16 renamed it; never create `middleware.ts`
 2. **No NextAuth** — do not suggest `getServerSession`, `authOptions`, or any NextAuth import
 3. **No `any`** — use `unknown` or proper types in all TypeScript
-4. **No hardcoded user-facing text** — all strings via `useTranslations()` from next-intl
+4. **No hardcoded public-facing text** — use next-intl for public pages. Admin pages (`app/admin/`, `components/admin/`, and `components/blog/dashboard/`) stay English-only with hardcoded text.
 5. **No leaf `loading.tsx`** — group-level files cover all children; don't add per-page ones
 6. **No overengineering** — no abstractions, helpers, or HOCs for single-use logic
 7. **Shadcn UI is read-only** — never edit files inside `components/ui/`

@@ -12,7 +12,7 @@ Unless told otherwise, review `git diff main...HEAD` plus uncommitted changes (`
 
 ## Rules to check
 
-1. **No hardcoded user-facing strings** in `.tsx` under `app/` and `components/`. Text must come from `useTranslations()` / `getTranslations()`. Exceptions: `components/github/` (English-only, copy lives in `GitHub.constants.ts`), `components/ui/`, aria/test ids that are not shown, and admin-only pages under `app/admin` only if the surrounding admin code already hardcodes.
+1. **No hardcoded public-facing strings** in `.tsx` under `app/` and `components/`. Text must come from `useTranslations()` / `getTranslations()`. Exceptions: `components/github/` (English-only, copy lives in `GitHub.constants.ts`), `components/ui/`, aria/test ids that are not shown, and the English-only admin interface (`app/admin/`, `components/admin/`, and `components/blog/dashboard/`), which uses hardcoded text.
 2. **i18n keys**: every key used via `t("...")` in changed code exists in `messages/en.json`, and all of `messages/{de,es,fr,sv}.json` have the same keys (run `node scripts/check-i18n-keys.mjs`).
 3. **File placement**: types belong in `types/`, hooks in `hooks/`, static data in `data/`, never inside `components/<Feature>/`.
 4. **Barrels**: every `components/<Feature>/` has an `index.ts` (`theme/` is a known exception).

@@ -27,6 +27,7 @@ const SECTION_IDS = [
   "cert",
   "speed-insight",
   "contact",
+  "feedback",
 ] as const;
 
 /**

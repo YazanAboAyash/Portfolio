@@ -29,7 +29,7 @@ import {
   getAdminCategories,
   type AdminContext,
 } from "@/lib/blog-admin/blog-admin";
-import { createAdminSession, invalidateAdminSession } from "@/proxy";
+import { createAdminSession, hasValidAdminSession, invalidateAdminSession } from "@/proxy";
 import { adminAuthLimiter, getClientIP } from "@/lib/security";
 
 // Enhanced authentication
@@ -73,7 +73,7 @@ function tokenMatches(token: string, expected: string | undefined): boolean {
 function getRole(request: NextRequest): AdminRole | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader) {
-    return null;
+    return hasValidAdminSession(request) ? "admin" : null;
   }
 
   const token = authHeader.startsWith("Bearer ")

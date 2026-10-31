@@ -13,6 +13,7 @@ import {
   User,
   Library,
   Mail,
+  MessageSquareHeart,
   Plug,
   Search,
 } from "lucide-react";
@@ -24,6 +25,7 @@ import LanguageSwitcher from "@/components/languages/language-switcher";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { contactSectionHref } from "@/data/main/contact";
+import { feedbackSectionHref } from "@/data/configs/feedback";
 import { useIsApplePlatform } from "@/hooks/use-search-palette";
 
 interface NavItem {
@@ -64,6 +66,11 @@ export function useNavItems(): NavItem[] {
       name: t("about"),
       href: "/about",
       icon: User,
+    },
+    {
+      name: t("feedback"),
+      href: feedbackSectionHref,
+      icon: MessageSquareHeart,
     },
     {
       name: t("blog"),

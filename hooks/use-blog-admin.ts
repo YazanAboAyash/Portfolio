@@ -31,10 +31,6 @@ const initialFormData: BlogFormData = {
 };
 
 export function useBlogAdmin() {
-  // Authentication state
-  const [token, setToken] = useState<string>("");
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
   // Data state
   const [stats, setStats] = useState<BlogAdminStats | null>(null);
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -111,12 +107,8 @@ export function useBlogAdmin() {
 
   // API functions
   const loadStats = useCallback(async (): Promise<void> => {
-    if (!isAuthenticated || !token) return;
-
     try {
-      const response = await fetch("/api/admin/blog?action=stats", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch("/api/admin/blog?action=stats");
 
       if (response.ok) {
         const data = (await response.json()) as BlogAdminResponse;
@@ -127,11 +119,9 @@ export function useBlogAdmin() {
     } catch (error) {
       handleError(error, "Error loading stats");
     }
-  }, [token, isAuthenticated, handleError]);
+  }, [handleError]);
 
   const loadBlogs = useCallback(async (): Promise<void> => {
-    if (!isAuthenticated || !token) return;
-
     setLoading(true);
     try {
       const params = new URLSearchParams({
@@ -144,9 +134,7 @@ export function useBlogAdmin() {
       if (selectedLanguage) params.append("language", selectedLanguage);
       if (filterPublished) params.append("published", filterPublished);
 
-      const response = await fetch(`/api/admin/blog?${params}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(`/api/admin/blog?${params}`);
 
       if (response.ok) {
         const apiResponse = (await response.json()) as BlogAdminResponse;
@@ -168,8 +156,6 @@ export function useBlogAdmin() {
       setLoading(false);
     }
   }, [
-    token,
-    isAuthenticated,
     currentPage,
     searchQuery,
     selectedLanguage,
@@ -179,12 +165,8 @@ export function useBlogAdmin() {
   ]);
 
   const loadCategories = useCallback(async (): Promise<void> => {
-    if (!isAuthenticated || !token) return;
-
     try {
-      const response = await fetch("/api/admin/blog?action=categories", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch("/api/admin/blog?action=categories");
 
       if (response.ok) {
         const data = (await response.json()) as {
@@ -198,55 +180,12 @@ export function useBlogAdmin() {
     } catch (error) {
       console.error("Error loading categories:", error);
     }
-  }, [token, isAuthenticated]);
+  }, []);
 
   const loadData = useCallback(async (): Promise<void> => {
     await Promise.all([loadStats(), loadBlogs(), loadCategories()]);
     setLastRefresh(new Date());
   }, [loadStats, loadBlogs, loadCategories]);
-
-  // Authentication
-  const authenticate = useCallback(async (): Promise<void> => {
-    if (!token.trim()) {
-      setMessage("Please enter a valid token");
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const response = await fetch("/api/admin/blog?action=stats", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      if (response.ok) {
-        const data = (await response.json()) as BlogAdminResponse;
-        if (data.success) {
-          setIsAuthenticated(true);
-          setMessage("Authenticated successfully!");
-          setLastRefresh(new Date());
-          // Data loading is handled by useEffects that react to isAuthenticated
-        }
-      } else {
-        const errorData = (await response
-          .json()
-          .catch(() => ({}))) as ApiErrorResponse;
-        setMessage(getErrorMessage(errorData, "Authentication failed"));
-      }
-    } catch (error) {
-      handleError(error, "Authentication failed");
-    } finally {
-      setLoading(false);
-    }
-  }, [token, handleError, getErrorMessage]);
-
-  const handleKeyPress = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>): void => {
-      if (event.key === "Enter" && !loading) {
-        void authenticate();
-      }
-    },
-    [authenticate, loading],
-  );
 
   // Form utilities
   const generateSlug = (title: string): string => {
@@ -339,8 +278,6 @@ export function useBlogAdmin() {
   // Blog operations
   const submitBlog = useCallback(
     async (action: "create" | "update"): Promise<void> => {
-      if (!isAuthenticated || !token) return;
-
       // Client-side validation first
       const clientErrors = validateForm();
       if (clientErrors.length > 0) {
@@ -355,7 +292,6 @@ export function useBlogAdmin() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             action,
@@ -388,8 +324,6 @@ export function useBlogAdmin() {
       }
     },
     [
-      isAuthenticated,
-      token,
       formData,
       editingBlog,
       handleError,
@@ -401,7 +335,6 @@ export function useBlogAdmin() {
 
   const deleteBlog = useCallback(
     async (blogId: string): Promise<void> => {
-      if (!isAuthenticated || !token) return;
       if (!confirm("Are you sure you want to delete this blog?")) return;
 
       setLoading(true);
@@ -410,7 +343,6 @@ export function useBlogAdmin() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             action: "delete",
@@ -433,7 +365,7 @@ export function useBlogAdmin() {
         setLoading(false);
       }
     },
-    [isAuthenticated, token, handleError, loadData, getErrorMessage],
+    [handleError, loadData, getErrorMessage],
   );
 
   const toggleBlogStatus = useCallback(
@@ -441,15 +373,12 @@ export function useBlogAdmin() {
       blogId: string,
       action: "publish" | "unpublish" | "feature" | "unfeature",
     ): Promise<void> => {
-      if (!isAuthenticated || !token) return;
-
       setLoading(true);
       try {
         const response = await fetch("/api/admin/blog", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             action,
@@ -472,7 +401,7 @@ export function useBlogAdmin() {
         setLoading(false);
       }
     },
-    [isAuthenticated, token, handleError, loadData, getErrorMessage],
+    [handleError, loadData, getErrorMessage],
   );
 
   // Dialog handlers
@@ -520,43 +449,19 @@ export function useBlogAdmin() {
     setEditingBlog(null);
   };
 
-  // Effects
+  // The shared admin layout mounts this hook only after session verification.
   useEffect(() => {
-    if (isAuthenticated && token) {
-      // Both loaders only setState after awaiting their fetch; the rule flags
-      // any call that can reach a setState, without distinguishing awaits.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      void loadStats();
-      void loadCategories();
-    }
-  }, [isAuthenticated, token, loadStats, loadCategories]);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void loadStats();
+    void loadCategories();
+  }, [loadStats, loadCategories]);
 
   useEffect(() => {
-    if (isAuthenticated && token) {
-      // Refetch when paging/filters change. Same false positive as above, plus
-      // loadBlogs' leading setLoading(true), which is the intended entry into
-      // the loading state for this fetch.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      void loadBlogs();
-    }
-  }, [
-    currentPage,
-    searchQuery,
-    selectedLanguage,
-    filterPublished,
-    isAuthenticated,
-    token,
-    loadBlogs,
-  ]);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void loadBlogs();
+  }, [loadBlogs]);
 
   return {
-    // Authentication state
-    token,
-    setToken,
-    isAuthenticated,
-    authenticate,
-    handleKeyPress,
-
     // Data state
     stats,
     blogs,

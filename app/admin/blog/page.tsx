@@ -10,7 +10,6 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import {
-  Authentication,
   StatsOverview,
   BlogFilters,
   BlogsList,
@@ -20,13 +19,6 @@ import { useBlogAdmin } from "@/hooks/use-blog-admin";
 
 export default function AdminBlogPage() {
   const {
-    // Authentication
-    token,
-    setToken,
-    isAuthenticated,
-    authenticate,
-    handleKeyPress,
-
     // Data
     stats,
     blogs,
@@ -64,30 +56,24 @@ export default function AdminBlogPage() {
     handleCreditsChange,
   } = useBlogAdmin();
 
-  if (!isAuthenticated) {
-    return (
-      <Authentication
-        token={token}
-        setToken={setToken}
-        onAuthenticate={() => void authenticate()}
-        onKeyPress={handleKeyPress}
-        loading={loading}
-        message={message}
-      />
-    );
-  }
-
   return (
-    <div className="min-h-screen p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">Blog Administration</h1>
+    <div className="space-y-8">
+      <div className="space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Blog
+            </h1>
+            <p className="mt-2 text-muted-foreground">
+              Write articles, manage drafts, and control what gets published.
+            </p>
+          </div>
           <Button
             onClick={openCreateDialog}
             className="flex items-center gap-2"
           >
             <Plus className="h-4 w-4" />
-            Create New Blog
+            New article
           </Button>
         </div>
 

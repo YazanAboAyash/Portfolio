@@ -19,7 +19,7 @@
 - **No NextAuth / `getServerSession`** — auth is `createAdminSession()` / `hasValidAdminSession()` in `proxy.ts`
 - **No IP binding in sessions** — EU privacy compliance
 - **No leaf-level `loading.tsx`** — one per route group covers all children: `(legals)`, `(media)`, `admin`
-- **No hardcoded user-facing text** — always use `useTranslations()` from next-intl
+- **No hardcoded public-facing text** — use next-intl for public pages. Admin pages (`app/admin/`, `components/admin/`, and `components/blog/dashboard/`) stay English-only with hardcoded text.
 - **No `any` types** — use `unknown` or proper types
 - **No overengineering** — don't add abstractions for single-use logic
 

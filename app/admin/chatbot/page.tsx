@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @author © ColdByDefault
  * @license Copyright (c) 2026 ColdByDefault. All rights reserved.
  * @version 7.x.x
@@ -6,388 +6,370 @@
 
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Authentication } from "@/components/blog/dashboard";
 import { LoadingSkeleton } from "@/components/visuals";
-
 import {
-  MessageSquare,
-  Clock,
-  User,
   Bot,
+  ChevronDown,
+  MessageSquareText,
+  RefreshCw,
   Search,
-  Filter,
   Trash2,
-  CheckCircle2,
-  XCircle,
+  User,
 } from "lucide-react";
-import type { ChatSessionLog } from "@/types/configs/chatbot";
+import type { ChatLogsResponse, ChatSessionLog } from "@/types/configs/chatbot";
 
 export default function AdminChatLogsPage() {
-  // Authentication state
-  const [token, setToken] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [authLoading, setAuthLoading] = useState(false);
-  const [authMessage, setAuthMessage] = useState("");
-
   const [sessions, setSessions] = useState<ChatSessionLog[]>([]);
   const [loading, setLoading] = useState(true);
+  const [deleting, setDeleting] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [consentFilter, setConsentFilter] = useState<"all" | "yes" | "no">(
-    "all",
-  );
+  const [consentFilter, setConsentFilter] = useState("all");
+  const [filters, setFilters] = useState({ search: "", consent: "all" });
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [hasMore, setHasMore] = useState(false);
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
 
-  // Authentication
-  const authenticate = useCallback(async (): Promise<void> => {
-    if (!token.trim()) {
-      setAuthMessage("Please enter a valid token");
-      return;
-    }
-
-    setAuthLoading(true);
-    try {
-      const response = await fetch("/api/admin/chatbot/logs?limit=1&offset=0", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      if (response.ok) {
-        setIsAuthenticated(true);
-        setAuthMessage("Authenticated successfully!");
-      } else {
-        setAuthMessage("Authentication failed");
-      }
-    } catch {
-      setAuthMessage("Authentication failed");
-    } finally {
-      setAuthLoading(false);
-    }
-  }, [token]);
-
-  const handleKeyPress = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>): void => {
-      if (event.key === "Enter" && !authLoading) {
-        void authenticate();
-      }
-    },
-    [authenticate, authLoading],
-  );
-
-  // Fetch chat logs
-  const fetchLogs = async () => {
-    try {
+  const fetchLogs = useCallback(
+    async (signal?: AbortSignal) => {
       setLoading(true);
       setError(null);
-
-      const params = new URLSearchParams({
-        limit: "50",
-        offset: "0",
-      });
-
-
-      if (consentFilter !== "all") {
-        params.append("hasConsent", consentFilter === "yes" ? "true" : "false");
-      }
-
-      const response = await fetch(`/api/admin/chatbot/logs?${params}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch chat logs");
-      }
-
-      const data = (await response.json()) as {
-        sessions: ChatSessionLog[];
-        total: number;
-        hasMore: boolean;
-      };
-
-      // Apply search filter client-side
-      let filtered = data.sessions;
-      if (searchQuery) {
-        filtered = filtered.filter((session) =>
-          session.messages?.some((msg) =>
-            msg.content.toLowerCase().includes(searchQuery.toLowerCase()),
-          ),
+      try {
+        const params = new URLSearchParams({
+          limit: "20",
+          offset: String(offset),
+        });
+        if (filters.search) params.set("searchQuery", filters.search);
+        if (filters.consent !== "all")
+          params.set("hasConsent", String(filters.consent === "yes"));
+        const response = await fetch(
+          `/api/admin/chatbot/logs?${params}`,
+          signal ? { signal } : {},
         );
+        if (!response.ok)
+          throw new Error(
+            response.status === 401
+              ? "Your session has expired. Sign in again from the admin workspace."
+              : "Unable to load conversations. Please try again.",
+          );
+        const data = (await response.json()) as ChatLogsResponse;
+        if (signal?.aborted) return;
+        setSessions(data.sessions);
+        setTotal(data.total);
+        setHasMore(data.hasMore);
+      } catch (err) {
+        if (!signal?.aborted)
+          setError(
+            err instanceof Error
+              ? err.message
+              : "Unable to load conversations. Please try again.",
+          );
+      } finally {
+        if (!signal?.aborted) setLoading(false);
       }
-
-      setSessions(filtered);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unknown error");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Delete session
-  const deleteSession = async (sessionId: string) => {
-    if (!confirm("Are you sure you want to delete this chat session?")) {
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `/api/admin/chatbot/logs?sessionId=${sessionId}`,
-        {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to delete session");
-      }
-
-      // Refresh logs
-      await fetchLogs();
-    } catch (err) {
-      alert(err instanceof Error ? err.message : "Failed to delete session");
-    }
-  };
+    },
+    [filters, offset],
+  );
 
   useEffect(() => {
-    if (isAuthenticated) {
-      // Refetch on filter change. The rule flags any call reaching a setState,
-      // without distinguishing awaits; fetchLogs' synchronous setLoading(true)
-      // and setError(null) both match the initial state on mount.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      void fetchLogs();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [consentFilter, isAuthenticated]);
+    const controller = new AbortController();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchLogs(controller.signal);
+    return () => controller.abort();
+  }, [fetchLogs]);
 
-  if (!isAuthenticated) {
-    return (
-      <Authentication
-        token={token}
-        setToken={setToken}
-        onAuthenticate={() => void authenticate()}
-        onKeyPress={handleKeyPress}
-        loading={authLoading}
-        message={authMessage}
-      />
-    );
+  async function deleteSession(sessionId: string) {
+    if (
+      !window.confirm(
+        "Delete this chat session and all its messages? This cannot be undone.",
+      )
+    )
+      return;
+    setDeleting(sessionId);
+    setError(null);
+    try {
+      const response = await fetch(
+        `/api/admin/chatbot/logs?sessionId=${encodeURIComponent(sessionId)}`,
+        { method: "DELETE" },
+      );
+      if (!response.ok)
+        throw new Error("Unable to delete this session. Please try again.");
+      setSelectedSession(null);
+      if (sessions.length === 1 && offset > 0) setOffset(offset - 20);
+      else await fetchLogs();
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Unable to delete this session. Please try again.",
+      );
+    } finally {
+      setDeleting(null);
+    }
   }
 
   return (
-    <div className="min-h-screen p-6 mt-20">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2">
-              <MessageSquare className="w-8 h-8" />
-              ChatBot Logs
-            </h1>
-            <p className="text-muted-foreground mt-1">
-              View and manage chat conversations
+    <div className="space-y-8">
+      <header className="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Chatbot logs
+          </h1>
+          <p className="mt-2 text-muted-foreground">
+            Review conversations, check consent, and manage stored chat
+            sessions.
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          onClick={() => void fetchLogs()}
+          disabled={loading || deleting !== null}
+        >
+          <RefreshCw
+            className={`size-4 ${loading ? "animate-spin" : ""}`}
+            aria-hidden="true"
+          />
+          Refresh
+        </Button>
+      </header>
+
+      <form
+        className="grid gap-4 rounded-xl border bg-card p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]"
+        onSubmit={(event) => {
+          event.preventDefault();
+          setOffset(0);
+          setSelectedSession(null);
+          setFilters({ search: searchQuery.trim(), consent: consentFilter });
+        }}
+      >
+        <div className="space-y-2">
+          <label htmlFor="chat-search" className="text-sm font-medium">
+            Search messages
+          </label>
+          <div className="relative">
+            <Search
+              className="absolute left-3 top-3 size-4 text-muted-foreground"
+              aria-hidden="true"
+            />
+            <Input
+              id="chat-search"
+              placeholder="Find a conversation…"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              maxLength={200}
+              className="pl-9"
+            />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="chat-consent" className="text-sm font-medium">
+            Visitor consent
+          </label>
+          <select
+            id="chat-consent"
+            value={consentFilter}
+            onChange={(event) => setConsentFilter(event.target.value)}
+            className="h-9 w-full rounded-md border border-input bg-background px-3 text-sm"
+          >
+            <option value="all">All sessions</option>
+            <option value="yes">Consent given</option>
+            <option value="no">No consent</option>
+          </select>
+        </div>
+        <Button
+          type="submit"
+          className="self-end"
+          disabled={loading || deleting !== null}
+        >
+          Apply filters
+        </Button>
+      </form>
+
+      {error && (
+        <div
+          role="alert"
+          className="rounded-xl border border-destructive/40 p-5 text-destructive"
+        >
+          {error}
+        </div>
+      )}
+      <section
+        aria-label="Chatbot logs"
+        aria-busy={loading}
+        className="space-y-4"
+      >
+        <p role="status" className="text-sm text-muted-foreground">
+          {`${total} ${total === 1 ? "session" : "sessions"} found`}
+        </p>
+        {loading ? (
+          <LoadingSkeleton variant="list" count={5} />
+        ) : !error && sessions.length === 0 ? (
+          <div className="rounded-xl border border-dashed p-12 text-center">
+            <MessageSquareText
+              className="mx-auto mb-4 size-8 text-muted-foreground"
+              aria-hidden="true"
+            />
+            <h2 className="text-lg font-semibold">No conversations found</h2>
+            <p className="mt-2 text-muted-foreground">
+              Try another search or change the consent filter.
             </p>
           </div>
-          <Button onClick={() => void fetchLogs()} variant="outline">
-            Refresh
-          </Button>
-        </div>
-
-        {/* Filters */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Filter className="w-5 h-5" />
-              Filters
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Search Messages</label>
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <Input
-                    placeholder="Search in messages..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") void fetchLogs();
-                    }}
-                    className="pl-9"
-                  />
+        ) : (
+          !error &&
+          sessions.map((session) => (
+            <article
+              key={session.id}
+              className="overflow-hidden rounded-xl border bg-card"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-4 p-5 sm:p-6">
+                <div className="min-w-0 space-y-3">
+                  <h2 className="break-all font-mono text-xs text-muted-foreground">
+                    {session.id}
+                  </h2>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge
+                      variant={session.consentGiven ? "secondary" : "outline"}
+                    >
+                      {session.consentGiven ? "Consent given" : "No consent"}
+                    </Badge>
+                    {session.isActive && (
+                      <Badge variant="outline">Active</Badge>
+                    )}
+                  </div>
+                  <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                    <time dateTime={new Date(session.startedAt).toISOString()}>
+                      {new Date(session.startedAt).toLocaleString("en-US", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      })}
+                    </time>
+                    <span>
+                      {`${session.totalMessages} ${session.totalMessages === 1 ? "message" : "messages"}`}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    aria-expanded={selectedSession === session.id}
+                    aria-controls={`messages-${session.id}`}
+                    onClick={() =>
+                      setSelectedSession(
+                        selectedSession === session.id ? null : session.id,
+                      )
+                    }
+                  >
+                    {selectedSession === session.id
+                      ? "Hide messages"
+                      : "View messages"}
+                    <ChevronDown
+                      className={`size-4 ${selectedSession === session.id ? "rotate-180" : ""}`}
+                      aria-hidden="true"
+                    />
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    aria-label="Delete session"
+                    disabled={deleting !== null || loading}
+                    onClick={() => void deleteSession(session.id)}
+                  >
+                    <Trash2
+                      className="size-4 text-destructive"
+                      aria-hidden="true"
+                    />
+                  </Button>
                 </div>
               </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">User Consent</label>
-                <select
-                  className="w-full h-10 px-3 border rounded-md"
-                  value={consentFilter}
-                  onChange={(e) =>
-                    setConsentFilter(e.target.value as "all" | "yes" | "no")
-                  }
+              {selectedSession === session.id && (
+                <div
+                  id={`messages-${session.id}`}
+                  className="max-h-96 space-y-3 overflow-y-auto border-t bg-muted/20 p-5 sm:p-6"
                 >
-                  <option value="all">All</option>
-                  <option value="yes">Consented</option>
-                  <option value="no">Not Consented</option>
-                </select>
-              </div>
-            </div>
-
-            <Button onClick={() => void fetchLogs()} className="w-full">
-              Apply Filters
-            </Button>
-          </CardContent>
-        </Card>
-
-        {/* Error State */}
-        {error && (
-          <Card className="border-destructive">
-            <CardContent className="pt-6">
-              <p className="text-destructive">{error}</p>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Loading State */}
-        {loading && (
-          <Card>
-            <CardContent className="pt-6">
-              <LoadingSkeleton variant="list" count={5} />
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Sessions List */}
-        {!loading && !error && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold">
-                {sessions.length} Session{sessions.length !== 1 ? "s" : ""}{" "}
-                Found
-              </h2>
-            </div>
-
-            {sessions.length === 0 && (
-              <Card>
-                <CardContent className="pt-6 text-center text-muted-foreground">
-                  No chat sessions found. Try adjusting your filters.
-                </CardContent>
-              </Card>
-            )}
-
-            {sessions.map((session) => (
-              <Card key={session.id} className="overflow-hidden">
-                <CardHeader className="bg-muted/50">
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-2 flex-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <Badge variant="outline" className="font-mono text-xs">
-                          {session.id}
-                        </Badge>
-                        {session.consentGiven ? (
-                          <Badge
-                            variant="default"
-                            className="bg-green-500 hover:bg-green-600"
-                          >
-                            <CheckCircle2 className="w-3 h-3 mr-1" />
-                            Consented
-                          </Badge>
+                  {session.messages?.length ? (
+                    session.messages.map((message) => (
+                      <div
+                        key={message.id}
+                        className="flex gap-3 rounded-lg border bg-background p-4"
+                      >
+                        {message.role === "user" ? (
+                          <User
+                            className="mt-0.5 size-4 shrink-0 text-muted-foreground"
+                            aria-hidden="true"
+                          />
                         ) : (
-                          <Badge variant="destructive">
-                            <XCircle className="w-3 h-3 mr-1" />
-                            No Consent
-                          </Badge>
+                          <Bot
+                            className="mt-0.5 size-4 shrink-0 text-muted-foreground"
+                            aria-hidden="true"
+                          />
                         )}
-                        {session.isActive && (
-                          <Badge variant="secondary">Active</Badge>
-                        )}
-                      </div>
-
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-muted-foreground" />
-                          <span>
-                            {new Date(session.startedAt).toLocaleString()}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MessageSquare className="w-4 h-4 text-muted-foreground" />
-                          <span>{session.totalMessages} messages</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() =>
-                          setSelectedSession(
-                            selectedSession === session.id ? null : session.id,
-                          )
-                        }
-                      >
-                        {selectedSession === session.id ? "Hide" : "View"}
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => void deleteSession(session.id)}
-                      >
-                        <Trash2 className="w-4 h-4 text-destructive" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-
-                {/* Messages */}
-                {selectedSession === session.id && session.messages && (
-                  <CardContent className="pt-6">
-                    <div className="space-y-3 max-h-96 overflow-y-auto">
-                      {session.messages.map((msg) => (
-                        <div
-                          key={msg.id}
-                          className={`flex gap-3 p-3 rounded-lg ${
-                            msg.role === "user"
-                              ? "bg-blue-50 dark:bg-blue-950/20"
-                              : "bg-green-50 dark:bg-green-950/20"
-                          }`}
-                        >
-                          <div className="shrink-0">
-                            {msg.role === "user" ? (
-                              <User className="w-5 h-5" />
-                            ) : (
-                              <Bot className="w-5 h-5" />
-                            )}
+                        <div className="min-w-0 flex-1">
+                          <div className="mb-2 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                            <span className="font-medium text-foreground">
+                              {message.role === "user"
+                                ? "Visitor"
+                                : "Assistant"}
+                            </span>
+                            <time
+                              dateTime={new Date(
+                                message.timestamp,
+                              ).toISOString()}
+                            >
+                              {new Date(message.timestamp).toLocaleTimeString(
+                                "en-US",
+                                {
+                                  timeStyle: "short",
+                                },
+                              )}
+                            </time>
                           </div>
-                          <div className="flex-1 space-y-1">
-                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span className="font-medium">
-                                {msg.role === "user" ? "User" : "Assistant"}
-                              </span>
-                              <span>•</span>
-                              <span>
-                                {new Date(msg.timestamp).toLocaleTimeString()}
-                              </span>
-                            </div>
-                            <p className="text-sm whitespace-pre-wrap wrap-break-word">
-                              {msg.content}
-                            </p>
-                          </div>
+                          <p className="whitespace-pre-wrap wrap-break-word text-sm leading-relaxed">
+                            {message.content}
+                          </p>
                         </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                )}
-              </Card>
-            ))}
-          </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      No messages in this session.
+                    </p>
+                  )}
+                </div>
+              )}
+            </article>
+          ))
         )}
-      </div>
+      </section>
+      {!error && (offset > 0 || hasMore) && (
+        <nav
+          className="flex flex-wrap items-center justify-between gap-3"
+          aria-label="Conversation pages"
+        >
+          <Button
+            variant="outline"
+            disabled={loading || deleting !== null || offset === 0}
+            onClick={() => setOffset(Math.max(0, offset - 20))}
+          >
+            Previous
+          </Button>
+          <span className="text-sm text-muted-foreground">
+            {`Page ${offset / 20 + 1}`}
+          </span>
+          <Button
+            variant="outline"
+            disabled={loading || deleting !== null || !hasMore}
+            onClick={() => setOffset(offset + 20)}
+          >
+            Next
+          </Button>
+        </nav>
+      )}
     </div>
   );
 }

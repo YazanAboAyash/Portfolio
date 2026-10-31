@@ -4,6 +4,8 @@
  * @version 7.x.x
  */
 
+import { feedbackSectionHref } from "@/data/configs/feedback";
+
 export interface LinkItem {
   href: string;
   label: string;
@@ -23,6 +25,7 @@ export const footerNavLinks: LinkItem[][] = [
     { href: "/projects", label: "Work" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
+    { href: feedbackSectionHref, label: "Feedback" },
   ],
 ];
 

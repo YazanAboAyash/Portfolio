@@ -104,6 +104,19 @@ const SpeedInsight = dynamic(
   },
 );
 
+const FeedbackSection = dynamic(
+  () =>
+    import("@/components/feedback").then((mod) => ({
+      default: mod.FeedbackSection,
+    })),
+  {
+    loading: () => (
+      <LoadingSkeleton className="frame min-h-260 lg:min-h-180" />
+    ),
+    ssr: false,
+  },
+);
+
 /** Space between home sections: clearly larger than any gap inside one. */
 const SECTION = "py-16 md:py-24";
 
@@ -152,6 +165,9 @@ export default function HomeContent() {
 
           {/* Contact closes the page; the navbar's Contact action lands here */}
           <ContactSection className={`frame ${SECTION} pt-0 md:pt-0`} />
+
+          {/* Visitor feedback: moderated, then approved by hand before it shows */}
+          <FeedbackSection className={`frame ${SECTION} pt-0 md:pt-0`} />
         </div>
       </div>
     </div>

@@ -152,3 +152,34 @@ model ChatMessage {
   @@index([timestamp])
   @@index([role])
 }
+
+// Visitor feedback. Shown on the home page only once approved by hand and only
+// with the sender's consent; the AI moderator can reject but never approve.
+model Feedback {
+  id               String    @id @default(cuid())
+  name             String?   // Optional display name
+  topic            String    // FEEDBACK_TOPICS in data/configs/feedback.ts
+  rating           Int?      // 1-5
+  message          String
+  locale           String
+
+  consentToPublish Boolean   @default(false)
+  status           String    @default("pending") // pending | approved | rejected
+
+  // Moderator output; aiVerdict is null when the moderator was unreachable
+  aiVerdict        String?   // approve | review | reject
+  aiReasons        String[]
+  aiFlaggedTerms   String[]  // Offending words as written in the name or message, for highlighting
+
+  // HMAC of the client IP (never the IP itself) and SHA-256 of the message,
+  // for the daily limit and duplicate check
+  ipHash           String
+  contentHash      String
+
+  createdAt        DateTime  @default(now())
+  reviewedAt       DateTime?
+
+  @@map("feedback")
+  @@index([status, consentToPublish, createdAt])
+  @@index([ipHash, createdAt])
+}
