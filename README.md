@@ -62,13 +62,25 @@ Neon PostgreSQL · Zod 4.x · Vercel AI SDK 7 · MCP TypeScript SDK 2 · ESLint 
 
 This portfolio serves as a professional showcase of engineering capability: performant UI, secure API integrations (GitHub, PageSpeed), accessibility‑focused design, production‑grade hardening, and multi‑language + deep structured SEO implementation.
 
-Beyond the portfolio surface, the project hosts an AI assistant and a public, read‑only **portfolio MCP server** (projects, capabilities, certifications and GitHub data) behind a live in‑browser "Ask this site" console, each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
+Beyond the portfolio surface, the project hosts an AI assistant that can also act on the page (navigate, switch theme or language, highlight a project), a public, read‑only **portfolio MCP server** (projects, capabilities, certifications and GitHub data) behind a live in‑browser "Ask this site" console, and a moderated **visitor feedback wall**, each backed by validated, rate‑limited API routes. All code is proprietary and published strictly for viewing.
 
 ---
 
 ## 2. Recent Releases
 
 Condensed summary of recent releases.
+
+**v7.0.9 — Visitor feedback & admin workspace**
+A feedback form and a public wall of approved entries under Contact. Submissions go through a honeypot, a minimum fill time, spam heuristics, per‑IP burst and daily limits and a duplicate check, then OpenAI moderation plus a structured classifier that can only reject; nothing is published until it is approved by hand. A unified `/admin` workspace with one login (signed session cookie) now fronts blog management, chatbot logs and feedback review, replacing the blog dashboard's own token screen. The privacy policy gained a feedback section in all five locales.
+
+**v7.0.8 — Chatbot site actions & named releases**
+Reem can act on the site when asked: open a page, scroll to a home section, switch theme or language, or highlight a project. Actions are validated against allowlists in the browser and shown as chips apart from data lookups. Capabilities gained icons. Releases are now published automatically under a random name, with Copilot‑written notes.
+
+**v7.0.7 — MCP playground & blog licenses**
+A standalone `/mcp` playground for every MCP tool group; a Stack Explorer mobile drawer; a rebuilt Contact section; lucide icons across components; a reading‑progress bar and abstract blog headers. Blog tags were removed and each post now carries a license.
+
+**v7.0.6 — Chatbot meets the MCP tools**
+Reem now calls the same six portfolio tools as the MCP server, in‑process, and shows each call as a chip; a new welcome screen and version badge in the chat; blog components fully localized.
 
 **v7.0.0 – v7.0.5 — v7 redesign**
 Home page rebuilt around left‑aligned section headings with static titles (the v6 scramble effect is retired); a Capabilities section with a Stack Explorer showing where each technology is used; a rotating "now" line in the hero; a search palette with blog search; footer and company banner restyled. The MCP server grew from GitHub‑only to the whole portfolio (projects, capabilities, certifications, GitHub), with the language‑stats and recent‑activity tools dropped. The Services section was removed. The admin blog API gained a scoped `agent` role for draft creation, and a CI workflow now checks lint, types and i18n key parity on every PR.
@@ -135,23 +147,25 @@ Content & Data:
 
 - Typed, translatable project, product, capability and certification data modules
 - Capabilities section with a Stack Explorer: pick a technology, see every project and product that uses it
-- "Ask this site" console: a real in‑browser MCP client calling the site's own MCP server, with GitHub data from one cached GraphQL query
+- "Ask this site" console: a real in‑browser MCP client calling the site's own MCP server, with GitHub data from one cached GraphQL query; the full tool set is on the `/mcp` playground
 - Products (Princeps, LogiX) and Collaboration showcases on the home page
 - Google PageSpeed Insights integration for performance transparency
-- Blog system with dynamic content management, filtering and per‑slug routes
-- CRUD admin dashboard for blog management and chatbot log review
+- Blog system with dynamic content management, filtering, per‑slug routes and per‑post licenses
+- Visitor feedback form and a wall of hand‑approved entries
+- Admin workspace (`/admin`) with one login for blog CRUD, chatbot log review and feedback moderation
 
 ---
 
 ## 5. AI Integrations
 
-One AI‑backed surface, isolated behind its own validated, rate‑limited API route:
+Two AI‑backed surfaces, each isolated behind its own validated, rate‑limited API route:
 
-| Surface          | Route          | Provider                                           | Notes                                                                                |
-| ---------------- | -------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Chatbot ("Reem") | `/api/chatbot` | Vercel AI SDK 7 → `@ai-sdk/openai` (Responses API) | Streamed replies, client‑held history, spam/prompt sanitation, consent‑gated logging |
+| Surface             | Route           | Provider                                                  | Notes                                                                                                  |
+| ------------------- | --------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Chatbot ("Reem")    | `/api/chatbot`  | Vercel AI SDK 7 → `@ai-sdk/openai` (Responses API)        | Streamed replies, client‑held history, portfolio tools and site actions, consent‑gated logging         |
+| Feedback moderation | `/api/feedback` | OpenAI moderation endpoint + structured classifier        | Can only reject; everything else waits for manual approval, including entries it could not check       |
 
-Controls on the AI route:
+Controls on the AI routes:
 
 - Zod request validation with length caps and spam heuristics
 - Per‑IP windowed rate limiting (minute + hour windows) with `Retry-After` on quota exhaustion
@@ -166,6 +180,7 @@ Chatbot specifics since the AI SDK migration:
 - Conversation history is owned by the browser and replayed with each message, so context no longer depends on which serverless instance answers. It is validated server‑side with `validateUIMessages`, capped by message count, and any client‑supplied `system` turn is rejected
 - Failures cross the wire as bare codes (`RATE_LIMIT_EXCEEDED`, `QUOTA_EXCEEDED`, …) that the client maps onto translated strings — no provider text ever reaches the UI
 - Consent‑gated persistence runs in the stream's `onFinish`, skipped when the visitor aborts
+- Reem shares the six read‑only portfolio tools with the MCP server, run in‑process, and can take five site actions (`navigate`, `scroll_to_section`, `set_theme`, `set_language`, `highlight_project`). Site actions run in the visitor's browser only after the call is re‑checked against fixed allowlists of pages, sections, themes, locales and project titles
 
 ---
 
@@ -218,12 +233,12 @@ High‑level structure:
 - `app/` — Next.js routing (App Router, route groups: `(legals)`, `(media)`, plus `admin` and `api`)
 - `components/` — Domain + UI abstraction layers (hero, about, tech, github, projects, products, collaboration, nav, visuals, ui primitives)
 - `data/` — Structured static metadata (projects, products, capabilities, certifications, chatbot persona and MCP configs)
-- `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, Prisma client, `blog-admin/` services, `github/` data service, `mcp/` server definition)
-- `hooks/` — Custom React hooks (chatbot, GitHub MCP session, search palette, latest post, locale preview, mobile detection, client gating)
+- `lib/` — Cross‑cutting utilities (security, SEO, rate limiting, chatbot logging, chatbot site actions, Prisma client, `blog-admin/` services, `feedback/` schema and moderation, `github/` data service, `mcp/` server definition)
+- `hooks/` — Custom React hooks (chatbot, site actions, GitHub MCP session, feedback form and admin review, blog admin, search palette, latest post, locale preview, mobile detection, client gating)
 - `i18n/` — next-intl request/runtime configuration
 - `messages/` — Locale message bundles (en, de, es, fr, sv)
-- `prisma/` — Schema and migrations (Blog, BlogCategory, BlogTag, BlogTagRelation, BlogCredit, ChatSession, ChatMessage)
-- `tests/e2e/` — Playwright suites (accessibility, locale, public pages)
+- `prisma/` — Schema and migrations (Blog, BlogCategory, BlogCredit, ChatSession, ChatMessage, Feedback)
+- `tests/e2e/` — Playwright suites (accessibility, locale, public pages, admin workspace, chatbot site actions)
 - `types/` — Shared type surfaces mirrored per domain
 - `proxy.ts` — Next.js 16 request hook: locale detection and legacy redirects; also holds the admin session‑cookie helpers
 - `scripts/` — Repository checks (i18n key parity across locales)
@@ -250,8 +265,11 @@ Comprehensive API endpoints with security-first design:
 | `/api/mcp`                | Public portfolio MCP server (6 read-only tools: projects, capabilities, certifications, GitHub) | Streamable HTTP, MCP 2026-07-28 + 2025 fallback, rate limited |
 | `/api/speed-insight`      | Surfaces PageSpeed metrics                                                                      | 1h revalidate, `stale-while-revalidate`                       |
 | `/api/chatbot`            | Interactive AI chatbot (Reem) for visitor queries                                               | Vercel AI SDK 7, SSE streamed                                 |
-| `/api/admin/blog`         | Administrative blog CRUD; scoped draft creation for the blog agent                              | Bearer token (`admin` / `agent` roles) + rate limited         |
-| `/api/admin/chatbot/logs` | Consent‑gated chat log review                                                                   | Admin Bearer token + rate limited                             |
+| `/api/feedback`           | Visitor feedback: POST submits, GET returns the public wall                                     | Honeypot, burst + daily limits, AI moderation; wall cached    |
+| `/api/admin/session`      | Admin workspace login status, login and logout                                                  | Signed session cookie, same‑origin check, rate limited        |
+| `/api/admin/blog`         | Administrative blog CRUD; scoped draft creation for the blog agent                              | Bearer token (`admin` / `agent` roles) or session + limited   |
+| `/api/admin/chatbot/logs` | Consent‑gated chat log review                                                                   | Admin Bearer token or session + rate limited                  |
+| `/api/admin/feedback`     | Feedback review queue: list, approve/reject, delete                                             | Admin Bearer token or session + rate limited                  |
 
 Every route is Zod‑validated and returns standardized error envelopes with no internal leakage; abuse and transport controls are covered in §11.
 
@@ -266,8 +284,8 @@ Last internal assessment: 2026‑07 (v6.0.13 maintenance pass) — no known unre
 Implemented Layers:
 
 1. **Transport & Headers**: HSTS, CSP, X-Content-Type-Options, X-Frame-Options (deny), Referrer-Policy, Permissions-Policy.
-2. **Abuse Mitigation**: per‑IP windowed rate limiting on all AI, admin and MCP endpoints; spam heuristics and input sanitation on chat input; request body size caps; session message caps.
-3. **Admin Authentication**: every admin API request carries a Bearer token compared in constant time, with an `admin` role for full CRUD and a narrowly scoped `agent` role for draft creation; failed attempts are rate limited per IP. Login also issues an HMAC‑SHA256 signed, expiring stateless session cookie.
+2. **Abuse Mitigation**: per‑IP windowed rate limiting on all AI, admin and MCP endpoints; spam heuristics and input sanitation on chat and feedback input; request body size caps; session message caps. Feedback adds a honeypot and minimum fill time (bots receive a fake success), a database‑counted daily limit and a duplicate check.
+3. **Admin Authentication**: the `/admin` workspace logs in once and receives an HMAC‑SHA256 signed, expiring (8 h), `httpOnly`, `SameSite=Strict` session cookie; login and logout require a same‑origin request. Admin API routes accept that cookie or a Bearer token compared in constant time, with an `admin` role for full access and a narrowly scoped `agent` role for blog draft creation. Failed attempts are rate limited per IP.
 4. **Dependency Hygiene**: routine `npm audit`, plus explicit `overrides` pinning security‑relevant transitives (postcss, sharp, minimatch, brace-expansion, lodash).
 5. **Automated Scanning**: CodeQL static analysis and dependency review run in CI — see §12.
 
@@ -303,7 +321,13 @@ Security Posture Snapshot:
 **Version Bump:**
 
 - **Triggers**: Merge to main
-- **Purpose**: Automatically increments the package version and commits with `[skip ci]`
+- **Purpose**: Automatically increments the package version (and the version in this README) and commits with `[skip ci]`. The patch counts up to 10, then rolls into the next minor (7.0.10 → 7.1.0); a version set by hand in a PR that has no tag yet is released as‑is
+
+**Release Publishing:**
+
+- **Triggers**: After each version bump
+- **Purpose**: Publishes a GitHub release for the new version tag under an unused random name from `.github/release-names.txt`, with notes filled from `.github/release-template.md`
+- **Notes**: Copilot CLI writes the summary and themed sections when its token is configured; otherwise the notes list commits grouped by type
 
 **End-to-End & Accessibility Testing:**
 
@@ -326,6 +350,7 @@ Security Posture Snapshot:
 - Chat requests are sent to OpenAI with `store: false`, so replies are not retained on the provider side.
 - **No geolocation**: IP‑to‑country/city lookup was removed entirely in v6.0.13; `ipCountry` and `ipCity` are never populated.
 - IP addresses are anonymized before storage when anonymization is enabled.
+- **Visitor feedback**: the raw IP is never stored, only a keyed one‑way hash used for the daily limit and duplicate check. The name and message are sent to OpenAI for moderation with storage and training opted out. An entry appears on the public wall only if the visitor ticked the publication box and it was approved by hand, and it is removed on request.
 - No third‑party ad or profiling scripts.
 - Privacy policy and Impressum maintained under `app/(legals)/` with tracked last‑reviewed dates, localized across all five locales.
 

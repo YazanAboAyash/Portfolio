@@ -20,7 +20,7 @@ Unless told otherwise, review `git diff main...HEAD` plus uncommitted changes (`
 6. **No leaf `loading.tsx`**: only `app/loading.tsx` and the group-level ones under `(legals)`, `(media)`, `admin`.
 7. **Prisma**: no `$queryRaw`/`$executeRaw` with string interpolation or `Unsafe` variants; DB access goes through `lib/configs/prisma.ts`.
 8. **No `any`** (use `unknown`), **no NextAuth**, **no `middleware.ts`** (request hook is `proxy.ts`), **no edits under `components/ui/`**.
-9. **Admin API routes** re-check auth themselves; `proxy.ts` is not an auth gate.
+9. **Admin API routes** re-check auth themselves; `proxy.ts` is not an auth gate. Each route under `app/api/admin/` accepts a Bearer token, or `hasValidAdminSession()` only when no `Authorization` header is present; the `agent` token (`BLOG_AGENT_TOKEN`) is valid only for blog list/categories reads and draft creation.
 10. **No single-use abstractions**: flag new helpers/wrappers used exactly once.
 
 ## Output
