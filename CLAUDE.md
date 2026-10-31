@@ -21,7 +21,7 @@ npm run deploy        # prisma migrate deploy && build
 - Single Playwright test: `npx playwright test tests/e2e/locale.spec.ts -g "name"`. It starts `npm run dev` itself unless `PLAYWRIGHT_BASE_URL` is set. Playwright is not run in CI.
 - CI (`.github/workflows/ci.yml`) runs `i18n:check`, `lint`, `npx next typegen`, `typecheck`. `next-env.d.ts` and route types are gitignored, hence the typegen step. `prisma.config.ts` needs `DATABASE_URL` set even for `prisma generate`.
 - The Prisma client is generated to `lib/generated/prisma` (gitignored). Run `npm run db:generate` if it is missing (`postinstall` normally does it). Import the DB via `lib/configs/prisma.ts`.
-- `bump-version.yml` bumps the version on every push to `main` (`[skip ci]` commits). Don't bump versions by hand.
+- `bump-version.yml` bumps the version on every push to `main` (`[skip ci]` commits), then `.github/scripts/create-release.sh` publishes a GitHub release titled `ROMAJI 漢字` (an unused random name from `.github/release-names.txt`) with a body filled from `.github/release-template.md`. Copilot CLI writes the summary line and themed sections when the `COPILOT_GITHUB_TOKEN` secret is set, otherwise the body lists commits grouped by type. Preview with `DRY_RUN=1 bash .github/scripts/create-release.sh <tag>`. The patch counts up to 10, then rolls into the next minor (7.0.10 → 7.1.0). For a major release, set the version in `package.json` in the PR (e.g. 8.0.0): an untagged version is released as-is.
 
 ## Hard rules
 
@@ -44,7 +44,7 @@ npm run deploy        # prisma migrate deploy && build
 
 **Admin/blog API** (`app/api/admin/blog/route.ts`) authenticates via `Authorization: Bearer` tokens, compared in constant time, with two roles:
 - `admin` (`ADMIN_TOKEN`): full CRUD.
-- `agent` (`BLOG_AGENT_TOKEN`): scoped to list/categories/tags reads and creating drafts, for the scheduled blog-writing routine. Failed auth is throttled by `adminAuthLimiter`.
+- `agent` (`BLOG_AGENT_TOKEN`): scoped to list/categories reads and creating drafts, for the scheduled blog-writing routine. Failed auth is throttled by `adminAuthLimiter`.
 
 Business logic lives in `lib/blog-admin/` (`BlogAdminService`, `BlogQueryService`, `BlogValidationService`, `BlogUtilityService`). The public blog API (`app/api/blog`) hides drafts.
 
@@ -52,7 +52,7 @@ Business logic lives in `lib/blog-admin/` (`BlogAdminService`, `BlogQueryService
 
 **MCP server** (`app/api/mcp/route.ts` → `lib/mcp/portfolio-server.ts`): public, unauthenticated, read-only MCP endpoint over the portfolio, open to outside MCP clients by design. Six tools, defined in `lib/mcp/portfolio-tools.ts` and shared with the chatbot, which runs them in-process (not over HTTP) and shows each call as a chip (`components/chatbot/ChatToolChips.tsx`). Site data from `data/`, with translation keys resolved to English from `messages/en.json`: `get_projects`, `get_capabilities`, `get_certifications`. GitHub: `get_profile` (also returns the declared highlights from `data/configs/githubHighlights.ts`), `get_stats`, `get_repositories` (language stats and `get_recent_activity` were removed in Oct 2026 by choice; don't re-add them). New tools also need a button and a `Readable` renderer in `components/github/GitHubAskConsole.tsx`, with copy in `GitHub.constants.ts` (the `/mcp` playground shows every tool group; the home page only groups with `onHome: true`, today GitHub, plus the example question), plus a `ChatBot.tools.<name>` chip label in all five locales and a line in the "Tools" section of the chatbot system prompt. The GitHub username comes from env (`GITHUB_USERNAME`), never from tool input. It uses `lib/github/service.ts`, which filters out private repos, keeps a 10-minute in-memory cache so public traffic cannot drain the `GITHUB_TOKEN` rate limit. The route rate-limits 60 req/min per IP (in-memory, per instance). Config lives in `data/configs/mcp.ts`.
 
-**Content is mostly static.** Projects, products, about and certification content are TS/JSON in `data/` (`data/hubs`, `data/main`), not fetched at runtime. Only blog and chat logs are in Postgres (`prisma/schema.prisma`: Blog, BlogCategory, BlogTag, BlogTagRelation, BlogCredit, ChatSession, ChatMessage).
+**Content is mostly static.** Projects, products, about and certification content are TS/JSON in `data/` (`data/hubs`, `data/main`), not fetched at runtime. Only blog and chat logs are in Postgres (`prisma/schema.prisma`: Blog, BlogCategory, BlogCredit, ChatSession, ChatMessage). Blog tags were removed. `Blog.license` is a plain string column; the allowed values are `BLOG_LICENSE_TYPES` in `types/hubs/blogs.ts`, enforced only by the admin API's zod schema.
 
 **Route groups** under `app/`: `(legals)`, `(media)` (about, about-portfolio, blog, projects), plus `admin` and `api`. Each group has its own `layout.tsx` and `loading.tsx`.
 

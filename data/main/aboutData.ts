@@ -50,7 +50,7 @@ export const aboutData: AboutData = {
     title:
       "Full-stack web applications and the AI inside them — LLM features, RAG systems, AI agents and MCP servers",
     currentPosition: "Full-Stack Developer & AI Engineer",
-    company: "Botgenossen GmbH, Avarno GmbH",
+    company: "Botgenossen GmbH, avarno GmbH",
     location: "Germany",
     experience: "3+ years",
   },

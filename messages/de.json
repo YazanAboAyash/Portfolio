@@ -97,7 +97,10 @@
     "ai": {
       "title": "KI in Produktion",
       "headline": "LLM-Features, die über die Demo hinaus tragen",
-      "description": "RAG und Chatbots, die ihre Quellen belegen — Text und Video —, Agenten, die Tools mit klar definierten Rechten nutzen, und gezielt gestalteter Kontext und Prompts, damit das Modell genau das bekommt, was es braucht. Ins Produkt integriert, nicht als Chatfenster angehängt."
+      "description": "RAG und Chatbots, die ihre Quellen belegen — Text und Video —, Agenten, die Tools mit klar definierten Rechten nutzen, und gezielt gestalteter Kontext und Prompts, damit das Modell genau das bekommt, was es braucht. Ins Produkt integriert, nicht als Chatfenster angehängt.",
+      "providers": "Anbieter",
+      "buildsLabel": "Was ich damit baue",
+      "builds": "RAG · KI-Agenten · Chatbots · Sprache · Context Engineering"
     },
     "launch": {
       "title": "Umsetzung",
@@ -114,45 +117,49 @@
       "headline": "Sicher von Grund auf",
       "description": "Anmeldung über Microsoft Entra ID, Secrets in Azure Key Vault, validierte Eingaben und minimale Rechte — und bei KI-Features klare Grenzen dafür, was ein Modell sehen und tun darf."
     },
-    "explorer": {
-      "title": "Den Stack erkunden",
-      "lead": "Wähle eine Technologie und sieh, wo ich sie eingesetzt habe: Open-Source-Projekte, Produkte und diese Seite.",
-      "groups": {
-        "ai": "KI",
-        "frontend": "Frontend",
-        "backend": "Backend & Daten",
-        "tooling": "Tooling & Auslieferung"
-      },
-      "usedIn": "{count, plural, one {an # Stelle eingesetzt} other {an # Stellen eingesetzt}}",
-      "close": "Schließen",
-      "kinds": {
-        "project": "Open-Source-Projekt",
-        "product": "Produkt",
-        "site": "Diese Seite"
-      },
-      "tech": {
-        "llm": "LLMs",
-        "rag": "RAG & Vektorsuche",
-        "agents": "KI-Agenten",
-        "mcp": "MCP",
-        "ollama": "Ollama",
-        "nextjs": "Next.js",
-        "react": "React",
-        "typescript": "TypeScript",
-        "tailwind": "Tailwind CSS",
-        "motion": "Framer Motion",
-        "i18n": "i18n",
-        "postgres": "PostgreSQL",
-        "prisma": "Prisma",
-        "auth": "Authentifizierung",
-        "stripe": "Stripe",
-        "docker": "Docker",
-        "vercel": "Vercel",
-        "seo": "SEO & JSON-LD",
-        "npm": "npm-Pakete",
-        "notion": "Notion API",
-        "playwright": "Playwright"
+    "pipeline": {
+      "title": "So liefere ich aus",
+      "lead": "Jedes Projekt nimmt denselben Weg in die Produktion, KI-Features eingeschlossen. Beim Scrollen lässt sich eine Änderung verfolgen.",
+      "stages": {
+        "commit": {
+          "label": "Commit",
+          "detail": "Kleine, fokussierte Änderungen — leicht zu reviewen und leicht zurückzunehmen.",
+          "practices": "Git-Versionskontrolle · Code-Review"
+        },
+        "check": {
+          "label": "Prüfen",
+          "detail": "Automatische Prüfungen bei jeder Änderung: Typen, Lint und Tests. Eingaben werden validiert, Zugriffe folgen minimalen Rechten, und Secrets liegen im Vault, nie im Code.",
+          "practices": "CI/CD · Typprüfung · Linting · Automatisierte Tests"
+        },
+        "preview": {
+          "label": "Vorschau",
+          "detail": "Jede Änderung bekommt eine eigene Vorschauumgebung und läuft durchgängig, bevor sich jemand darauf verlässt.",
+          "practices": "Vorschauumgebungen · Container"
+        },
+        "deploy": {
+          "label": "Deploy",
+          "detail": "Datenbankmigrationen und verwaltete Infrastruktur — Wachstum heißt Feinschliff, nicht Neubau.",
+          "practices": "ORM-Migrationen · Verwaltete Datenbank · Cloud-Hosting"
+        },
+        "live": {
+          "label": "Live",
+          "detail": "In Produktion gemessen, dann anhand echter Nutzung verbessert statt nach Bauchgefühl.",
+          "practices": "Monitoring · Analytics"
+        }
       }
+    },
+    "stack": {
+      "title": "Mein Stack",
+      "lead": "Eine Ebene wählen, um die Tools dahinter zu sehen.",
+      "tabsLabel": "Ebenen des Stacks",
+      "groups": {
+        "frontend": "Frontend",
+        "backend": "Backend & Architektur",
+        "ai": "KI",
+        "infra": "Infrastruktur & DevOps",
+        "workflow": "Arbeitsweise"
+      },
+      "practices": "Methoden"
     }
   },
   "Certifications": {
@@ -520,6 +527,7 @@
     "pronunciation": "/riːm/",
     "subtitle": "Ihr KI-Portfolio-Assistent",
     "openAssistant": "Reem KI-Assistent öffnen",
+    "movedHint": "Reem hat Sie hierher gebracht. Tippen Sie, um den Chat wieder zu öffnen.",
     "closeChat": "Chat schließen",
     "newChat": "Neuer Chat",
     "greeting": {
@@ -545,7 +553,14 @@
       "get_certifications": "Zertifikate",
       "get_profile": "GitHub-Profil",
       "get_stats": "GitHub-Statistiken",
-      "get_repositories": "GitHub-Repositories"
+      "get_repositories": "GitHub-Repositories",
+      "actionsLabel": "Auf der Seite erledigt",
+      "actionFallback": "Seitenaktion",
+      "navigate": "{page} geöffnet",
+      "scroll_to_section": "Zu {section} gesprungen",
+      "set_theme": "{theme, select, dark {Dunkelmodus aktiviert} other {Hellmodus aktiviert}}",
+      "set_language": "Sprache: {language}",
+      "highlight_project": "{project} gezeigt"
     },
     "input": {
       "placeholder": "Fragen Sie Reem…",

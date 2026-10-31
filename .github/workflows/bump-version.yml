@@ -12,6 +12,8 @@ jobs:
     bump-version:
         name: Bump patch version
         runs-on: ubuntu-latest
+        outputs:
+            new_version: ${{ steps.bump.outputs.new_version }}
 
         steps:
             - name: Checkout
@@ -30,10 +32,26 @@ jobs:
                   git config user.name "ColdByDefault"
                   git config user.email "155304740+ColdByDefault@users.noreply.github.com"
 
-            - name: Bump patch version
+            # Patch counts up to MAX_PATCH, then rolls into the next minor (7.0.10 -> 7.1.0).
+            # A version set by hand in the merged PR (no tag yet, e.g. 8.0.0) is released as-is.
+            # --allow-same-version also syncs package-lock.json in that case.
+            - name: Bump version
               id: bump
+              env:
+                  MAX_PATCH: 10
               run: |
-                  NEW_VERSION=$(npm version patch --no-git-tag-version)
+                  CURRENT=$(node -p "require('./package.json').version")
+                  if git rev-parse -q --verify "refs/tags/v$CURRENT" > /dev/null; then
+                      IFS=. read -r MAJOR MINOR PATCH <<< "$CURRENT"
+                      if (( PATCH >= MAX_PATCH )); then
+                          NEXT="$MAJOR.$((MINOR + 1)).0"
+                      else
+                          NEXT="$MAJOR.$MINOR.$((PATCH + 1))"
+                      fi
+                  else
+                      NEXT="$CURRENT"
+                  fi
+                  NEW_VERSION=$(npm version "$NEXT" --no-git-tag-version --allow-same-version)
                   echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
 
             - name: Update version in README
@@ -45,6 +63,32 @@ jobs:
             - name: Commit and tag
               run: |
                   git add package.json package-lock.json README.md
-                  git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} [skip ci]"
+                  git diff --cached --quiet || git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} [skip ci]"
                   git tag "${{ steps.bump.outputs.new_version }}"
                   git push origin main --tags
+
+    release:
+        name: Publish release
+        needs: bump-version
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Install Copilot CLI
+              continue-on-error: true
+              run: npm install -g @github/copilot@1.0.105
+
+            # Name from .github/release-names.txt, body from .github/release-template.md.
+            # COPILOT_GITHUB_TOKEN: fine-grained PAT with the "Copilot Requests" permission;
+            # without it the notes fall back to the grouped commit list.
+            - name: Create release
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+              run: |
+                  git fetch --tags --force
+                  bash .github/scripts/create-release.sh "${{ needs.bump-version.outputs.new_version }}"

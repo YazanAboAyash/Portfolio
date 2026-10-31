@@ -15,7 +15,7 @@ export interface CompanyLogo {
 export const companiesData: CompanyLogo[] = [
   {
     id: "avarno",
-    name: "Avarno-GmbH",
+    name: "avarno-GmbH",
     logo: "/assets/companies/avarno.png",
     url: "https://avarno.de",
     period: "2025~",
@@ -29,7 +29,7 @@ export const companiesData: CompanyLogo[] = [
   },
   {
     id: "avarno",
-    name: "Avarno-GmbH",
+    name: "avarno-GmbH",
     logo: "/assets/companies/avarno.png",
     url: "https://avarno.de",
     period: "2025~",
@@ -43,7 +43,7 @@ export const companiesData: CompanyLogo[] = [
   },
   {
     id: "avarno",
-    name: "Avarno-GmbH",
+    name: "avarno-GmbH",
     logo: "/assets/companies/avarno.png",
     url: "https://avarno.de",
     period: "2025~",
@@ -57,7 +57,7 @@ export const companiesData: CompanyLogo[] = [
   },
   {
     id: "avarno",
-    name: "Avarno-GmbH",
+    name: "avarno-GmbH",
     logo: "/assets/companies/avarno.png",
     url: "https://avarno.de",
     period: "2025~",
@@ -71,7 +71,7 @@ export const companiesData: CompanyLogo[] = [
   },
   {
     id: "avarno",
-    name: "Avarno-GmbH",
+    name: "avarno-GmbH",
     logo: "/assets/companies/avarno.png",
     url: "https://avarno.de",
     period: "2025~",
@@ -85,7 +85,7 @@ export const companiesData: CompanyLogo[] = [
   },
   {
     id: "avarno",
-    name: "Avarno-GmbH",
+    name: "avarno-GmbH",
     logo: "/assets/companies/avarno.png",
     url: "https://avarno.de",
     period: "2025~",
@@ -99,7 +99,7 @@ export const companiesData: CompanyLogo[] = [
   },
   {
     id: "avarno",
-    name: "Avarno-GmbH",
+    name: "avarno-GmbH",
     logo: "/assets/companies/avarno.png",
     url: "https://avarno.de",
     period: "2025~",

@@ -22,21 +22,34 @@ export interface Capability {
   readonly techIcons?: readonly string[];
 }
 
-/** Row a technology sits in on the stack explorer */
-export type StackGroup = "ai" | "frontend" | "backend" | "tooling";
-
 /**
- * One technology on the stack explorer. Projects and products match it when
- * one of their `technologies` equals an alias (case-insensitive).
+ * One stage of the shipping pipeline on the capabilities section, in the
+ * order a change takes from commit to production.
  */
-export interface StackTech {
-  /** Unique identifier, also the key under `Capabilities.explorer.tech` */
+export interface PipelineStage {
+  /** Unique identifier, also the key under `Capabilities.pipeline.stages` */
   readonly id: string;
-  readonly group: StackGroup;
-  /** Spellings used in projectsData / productsData */
-  readonly aliases: readonly string[];
-  /** How this site uses it, if it does (names and versions only) */
-  readonly site?: string;
+  /** Capability this stage demonstrates, by `Capability.id` */
+  readonly capabilityId?: string;
+}
+
+/** One tool in the stack explorer */
+export interface StackTool {
+  /** Unique identifier */
+  readonly id: string;
+  /** Product name in plain English, never translated */
+  readonly name: string;
+  /** Brand mark, by key in the tech icon map */
+  readonly icon?: string;
+}
+
+/** A tab of the stack explorer */
+export interface StackGroup {
+  /** Key under `Capabilities.stack.groups` */
+  readonly id: string;
+  readonly tools: readonly StackTool[];
+  /** Methods rather than tools, in plain English, untranslated */
+  readonly practices: readonly string[];
 }
 
 /**

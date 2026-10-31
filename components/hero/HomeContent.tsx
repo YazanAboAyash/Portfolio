@@ -20,7 +20,7 @@ const Capabilities = dynamic(
     import("@/components/tech").then((mod) => ({ default: mod.Capabilities })),
   {
     loading: () => (
-      <LoadingSkeleton className="frame min-h-142 md:min-h-262 lg:min-h-221" />
+      <LoadingSkeleton className="frame min-h-569 md:min-h-605 lg:min-h-570" />
     ),
     ssr: false,
   },
@@ -46,7 +46,7 @@ const GitHubAskConsole = dynamic(
     })),
   {
     loading: () => (
-      <LoadingSkeleton className="min-h-316 md:min-h-382 lg:min-h-208" />
+      <LoadingSkeleton className="min-h-186 md:min-h-189 lg:min-h-128" />
     ),
     ssr: false,
   },

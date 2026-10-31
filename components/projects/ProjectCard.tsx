@@ -22,6 +22,7 @@ import { useTranslations } from "next-intl";
 import { contactEmailLink } from "@/data/main/contact";
 import { cardSurface, RevealItem } from "@/components/visuals";
 import { cn } from "@/lib/utils";
+import { projectAnchorId } from "@/lib/site-actions";
 import type { ProjectCardProps } from "@/types/hubs/projects";
 import {
   useTruncationDetection,
@@ -55,7 +56,14 @@ export function ProjectCard({ project, index: _index }: ProjectCardProps) {
 
   return (
     <RevealItem className="w-full h-full">
-      <Card className={cn(cardSurface, "h-full gap-0 overflow-hidden py-0")}>
+      {/* Reem's highlight_project scrolls here and sets data-highlighted */}
+      <Card
+        id={projectAnchorId(project)}
+        className={cn(
+          cardSurface,
+          "h-full gap-0 overflow-hidden py-0 data-highlighted:ring-2 data-highlighted:ring-primary motion-safe:data-highlighted:animate-pulse",
+        )}
+      >
         {/* Top accent line - solid for featured and products, quiet for the rest */}
         <div
           className={cn(

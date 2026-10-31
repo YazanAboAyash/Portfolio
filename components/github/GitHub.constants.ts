@@ -49,7 +49,7 @@ export const githubCopy = {
       "coldbydefault.com runs a public MCP server. AI clients such as Claude can read my projects, capabilities, certifications and GitHub through it. Run one of its tools and see exactly what an agent receives.",
     /** The home page section. */
     introShort:
-      "This site runs a public MCP server, so AI agents like Claude can query my work directly. Try the example question or a GitHub tool.",
+      "AI agents like Claude can query this site through its public MCP server. Try a tool.",
     toolsLabel: "MCP tools",
     example: {
       label: "Example",

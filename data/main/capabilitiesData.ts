@@ -7,7 +7,8 @@
 import type {
   Capability,
   CapabilitiesData,
-  StackTech,
+  PipelineStage,
+  StackGroup,
 } from "@/types/main/capabilities";
 
 /**
@@ -23,11 +24,13 @@ export const capabilities: readonly Capability[] = [
     headlineKey: "ai.headline",
     descriptionKey: "ai.description",
     techIcons: [
-      "SiAnthropic",
-      "VscAzure",
       "SiOllama",
+      "SiHuggingface",
       "SiModelcontextprotocol",
-      "SiPostgresql",
+      "SiGithubcopilot",
+      "BsOpenai",
+      "SiAnthropic",
+      "SiElevenlabs",
     ],
   },
   {
@@ -56,10 +59,29 @@ export const capabilities: readonly Capability[] = [
   },
 ] as const;
 
-/** Readable names for `techIcons`, for the MCP server's `get_capabilities`. */
+/**
+ * The path a change takes in every project, shown on the capabilities section.
+ * Label, detail and practices come from `Capabilities.pipeline.stages.<id>`.
+ */
+export const pipelineStages: readonly PipelineStage[] = [
+  { id: "commit" },
+  { id: "check", capabilityId: "security" },
+  { id: "preview", capabilityId: "launch" },
+  { id: "deploy", capabilityId: "scale" },
+  { id: "live" },
+] as const;
+
+/**
+ * Readable names for the capability brand marks (`techIcons`), also used by
+ * the MCP server's `get_capabilities`. Names, not copy: never translated.
+ */
 export const techIconLabels: Readonly<Record<string, string>> = {
+  BsOpenai: "OpenAI",
   SiAnthropic: "Anthropic Claude",
   SiDocker: "Docker",
+  SiElevenlabs: "ElevenLabs",
+  SiGithubcopilot: "GitHub Copilot",
+  SiHuggingface: "Hugging Face",
   SiModelcontextprotocol: "Model Context Protocol",
   SiNextdotjs: "Next.js",
   SiOllama: "Ollama",
@@ -72,88 +94,82 @@ export const techIconLabels: Readonly<Record<string, string>> = {
 };
 
 /**
- * Technologies on the stack explorer, in display order per group.
- * Labels come from `Capabilities.explorer.tech.<id>` in messages/*.json.
+ * The stack explorer, one tab per group. Tool names and practices are plain
+ * English and never translated.
  */
-export const stackTechs: readonly StackTech[] = [
+export const stackGroups: readonly StackGroup[] = [
   {
-    id: "llm",
-    group: "ai",
-    aliases: ["LLM", "LangChain", "Groq AI (Whisper)"],
-    site: "OpenAI · Vercel AI SDK",
-  },
-  { id: "rag", group: "ai", aliases: ["pgvector"] },
-  {
-    id: "agents",
-    group: "ai",
-    aliases: ["AI Agents", "Agent Skills", "Claude Code", "GitHub Copilot CLI"],
-  },
-  { id: "mcp", group: "ai", aliases: [], site: "/api/mcp" },
-  { id: "ollama", group: "ai", aliases: ["Ollama"] },
-  {
-    id: "nextjs",
-    group: "frontend",
-    aliases: ["Next.js"],
-    site: "Next.js 16 · App Router",
+    id: "frontend",
+    tools: [
+      { id: "nextjs", name: "Next.js", icon: "SiNextdotjs" },
+      { id: "react", name: "React", icon: "SiReact" },
+      { id: "typescript", name: "TypeScript", icon: "SiTypescript" },
+      { id: "javascript", name: "JavaScript", icon: "SiJavascript" },
+      { id: "vite", name: "Vite", icon: "SiVite" },
+      { id: "tailwind", name: "Tailwind CSS", icon: "SiTailwindcss" },
+    ],
+    practices: [],
   },
   {
-    id: "react",
-    group: "frontend",
-    aliases: ["React", "Next.js"],
-    site: "React 19",
+    id: "backend",
+    tools: [
+      { id: "nodejs", name: "Node.js", icon: "SiNodedotjs" },
+      { id: "postgres", name: "PostgreSQL", icon: "SiPostgresql" },
+      { id: "neon", name: "Neon", icon: "SiNeon" },
+      { id: "prisma", name: "Prisma", icon: "SiPrisma" },
+      { id: "betterauth", name: "Better Auth", icon: "SiBetterauth" },
+      { id: "pgvector", name: "pgvector" },
+      { id: "entra", name: "Microsoft Entra ID" },
+      { id: "n8n", name: "n8n" },
+    ],
+    practices: ["System design", "Integrations"],
   },
   {
-    id: "typescript",
-    group: "frontend",
-    aliases: ["TypeScript"],
-    site: "TypeScript strict",
+    id: "ai",
+    tools: [
+      { id: "azureai", name: "Azure AI", icon: "AzureAi" },
+      { id: "openai", name: "OpenAI", icon: "BsOpenai" },
+      { id: "ollama", name: "Ollama", icon: "SiOllama" },
+      {
+        id: "mcp",
+        name: "Model Context Protocol",
+        icon: "SiModelcontextprotocol",
+      },
+    ],
+    practices: [
+      "RAG",
+      "Context engineering",
+      "AI engineering: skills & instructions",
+    ],
   },
   {
-    id: "tailwind",
-    group: "frontend",
-    aliases: ["Tailwind CSS"],
-    site: "Tailwind CSS 4",
+    id: "infra",
+    tools: [
+      { id: "docker", name: "Docker", icon: "SiDocker" },
+      { id: "kubernetes", name: "Kubernetes", icon: "SiKubernetes" },
+      { id: "ubuntu", name: "Ubuntu Server", icon: "SiUbuntu" },
+      { id: "nginx", name: "Nginx", icon: "SiNginx" },
+      { id: "vercel", name: "Vercel", icon: "SiVercel" },
+      { id: "githubactions", name: "GitHub Actions", icon: "SiGithubactions" },
+    ],
+    practices: ["CI/CD", "DevOps"],
   },
   {
-    id: "motion",
-    group: "frontend",
-    aliases: ["Framer Motion"],
-    site: "Framer Motion 12",
-  },
-  {
-    id: "i18n",
-    group: "frontend",
-    aliases: ["next-internationalization"],
-    site: "next-intl",
-  },
-  {
-    id: "postgres",
-    group: "backend",
-    aliases: ["PostgreSQL", "NeonDB"],
-    site: "Neon PostgreSQL",
-  },
-  { id: "prisma", group: "backend", aliases: ["Prisma"], site: "Prisma 7" },
-  {
-    id: "auth",
-    group: "backend",
-    aliases: ["Better Auth", "BetterAuth", "Kinde Auth", "Customizable Auth"],
-  },
-  { id: "stripe", group: "backend", aliases: ["Stripe"] },
-  { id: "docker", group: "backend", aliases: ["Docker"] },
-  { id: "vercel", group: "tooling", aliases: [], site: "Vercel" },
-  {
-    id: "seo",
-    group: "tooling",
-    aliases: ["SEO", "JSON-LD"],
-    site: "JSON-LD · sitemap",
-  },
-  { id: "npm", group: "tooling", aliases: ["npm package"] },
-  { id: "notion", group: "tooling", aliases: ["Notion API"] },
-  {
-    id: "playwright",
-    group: "tooling",
-    aliases: [],
-    site: "Playwright + axe-core",
+    id: "workflow",
+    tools: [
+      { id: "git", name: "Git", icon: "SiGit" },
+      { id: "github", name: "GitHub", icon: "SiGithub" },
+      { id: "npm", name: "npm", icon: "SiNpm" },
+      { id: "pnpm", name: "pnpm", icon: "SiPnpm" },
+      { id: "notion", name: "Notion", icon: "SiNotion" },
+      { id: "linear", name: "Linear", icon: "SiLinear" },
+      { id: "playwright", name: "Playwright" },
+    ],
+    practices: [
+      "Scrum",
+      "Project management: tasks & tickets",
+      "Documentation",
+    ],
   },
 ] as const;
 
