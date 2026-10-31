@@ -53,5 +53,9 @@ export const SECTION_SCROLL_OFFSET = 80;
 /** How long a highlighted project card keeps its ring. */
 export const HIGHLIGHT_DURATION_MS = 2400;
 
-/** How long to wait for a project card to mount after navigating to /projects. */
-export const HIGHLIGHT_WAIT_MS = 4000;
+/**
+ * How long to wait for a project card to mount after navigating to /projects.
+ * Generous on purpose: on a slow connection (or a cold dev compile) the page
+ * can take several seconds, and giving up means the highlight never happens.
+ */
+export const HIGHLIGHT_WAIT_MS = 15000;
