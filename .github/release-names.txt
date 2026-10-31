@@ -1,0 +1,47 @@
+# Release names as Romaji|Kanji|Meaning, one per line. create-release.sh picks one at
+# random and skips names an existing release already uses, until the list runs out.
+# Blank lines and lines starting with # are ignored.
+# Already used: Miyabi, Tanren, Fude, Omotenashi, Kodama, Kaizen, Noren, Tsuki-Kage, Seijaku, Kakehashi, Kanso.
+Wabi-Sabi|侘寂|Beauty in imperfection
+Shibui|渋い|Quiet, unobtrusive beauty
+Yugen|幽玄|Profound grace
+Ma|間|The space between
+Ikigai|生き甲斐|A reason for being
+Shoshin|初心|Beginner's mind
+Kintsugi|金継ぎ|Golden repair
+Musubi|結び|Connection
+Hikari|光|Light
+Kokoro|心|Heart and mind
+Shinrai|信頼|Trust
+Seiri|整理|Order
+Kata|型|Form
+Michi|道|The way
+Komorebi|木漏れ日|Sunlight through leaves
+Hanabi|花火|Fireworks
+Kaze|風|Wind
+Sora|空|Sky
+Mizu|水|Water
+Hoshi|星|Star
+Yuki|雪|Snow
+Kumo|雲|Cloud
+Mirai|未来|Future
+Hajimari|始まり|Beginning
+Shugyo|修行|Discipline
+Takumi|匠|Master craftsman
+Shokunin|職人|Artisan
+Ichigo Ichie|一期一会|One time, one meeting
+Fudoshin|不動心|Immovable mind
+Zanshin|残心|Lingering awareness
+Mugen|無限|Infinity
+Kibou|希望|Hope
+Shizen|自然|Nature
+Yoake|夜明け|Dawn
+Tsubasa|翼|Wings
+Kagami|鏡|Mirror
+Irodori|彩り|Colour
+Nagare|流れ|Flow
+Kiseki|軌跡|Trajectory
+Sekkei|設計|Design
+Koushin|更新|Renewal
+Hagane|鋼|Steel
+Tsunagi|繋ぎ|Link

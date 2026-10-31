@@ -21,7 +21,7 @@ npm run deploy        # prisma migrate deploy && build
 - Single Playwright test: `npx playwright test tests/e2e/locale.spec.ts -g "name"`. It starts `npm run dev` itself unless `PLAYWRIGHT_BASE_URL` is set. Playwright is not run in CI.
 - CI (`.github/workflows/ci.yml`) runs `i18n:check`, `lint`, `npx next typegen`, `typecheck`. `next-env.d.ts` and route types are gitignored, hence the typegen step. `prisma.config.ts` needs `DATABASE_URL` set even for `prisma generate`.
 - The Prisma client is generated to `lib/generated/prisma` (gitignored). Run `npm run db:generate` if it is missing (`postinstall` normally does it). Import the DB via `lib/configs/prisma.ts`.
-- `bump-version.yml` bumps the version on every push to `main` (`[skip ci]` commits). Don't bump versions by hand.
+- `bump-version.yml` bumps the version on every push to `main` (`[skip ci]` commits), then `.github/scripts/create-release.sh` publishes a GitHub release titled `ROMAJI 漢字` (an unused random name from `.github/release-names.txt`) with a body filled from `.github/release-template.md`. Copilot CLI writes the summary line and themed sections when the `COPILOT_GITHUB_TOKEN` secret is set, otherwise the body lists commits grouped by type. Preview with `DRY_RUN=1 bash .github/scripts/create-release.sh <tag>`. The patch counts up to 10, then rolls into the next minor (7.0.10 → 7.1.0). For a major release, set the version in `package.json` in the PR (e.g. 8.0.0): an untagged version is released as-is.
 
 ## Hard rules
 
