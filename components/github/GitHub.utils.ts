@@ -54,17 +54,13 @@ function apiLabel(api: GitHubFetchMeta["calls"][number]["api"]): string {
 export function describeUpstream(meta: GitHubFetchMeta): string[] {
   return meta.calls.map((call) => {
     const request = `GitHub ${apiLabel(call.api)} ${call.endpoint} · HTTP ${call.status} · ${formatNumber(call.durationMs)} ms`;
-    const remaining =
-      call.rateLimitRemaining === null
-        ? ""
-        : ` · ${formatNumber(call.rateLimitRemaining)} API requests left`;
 
     if (meta.stale) {
       return `↳ GitHub unreachable, serving cache fetched ${formatAge(meta.ageSeconds)} (${request})`;
     }
     if (meta.source === "cache") {
-      return `↳ from server cache, fetched ${formatAge(meta.ageSeconds)} by ${request}${remaining}`;
+      return `↳ from server cache, fetched ${formatAge(meta.ageSeconds)} by ${request}`;
     }
-    return `↳ fetched live: ${request}${remaining}`;
+    return `↳ fetched live: ${request}`;
   });
 }

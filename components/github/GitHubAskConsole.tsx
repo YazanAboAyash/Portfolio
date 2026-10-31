@@ -59,7 +59,11 @@ function ProjectList({ items }: { items: McpProject[] }) {
   return (
     <RevealGroup as="ul" className="flex flex-col gap-5">
       {items.map((project) => (
-        <RevealItem as="li" key={project.title} className="flex flex-col gap-0.5">
+        <RevealItem
+          as="li"
+          key={project.title}
+          className="flex flex-col gap-0.5"
+        >
           <a
             href={project.liveUrl ?? project.githubUrl}
             target="_blank"
@@ -197,26 +201,39 @@ function Readable({
       [copy.profile.since, formatDate(profile.createdAt)],
     ];
     return (
-      <RevealGroup className="flex flex-col gap-5">
-        <RevealItem className="flex items-center gap-4">
+      <RevealGroup className="flex flex-col gap-4">
+        {/* The profile link sits up top so it stays visible in the home
+            page's fixed-height panel. */}
+        <RevealItem className="flex flex-wrap items-center gap-x-4 gap-y-3">
           {/* GitHub keeps the same avatar URL when the picture changes, so the
               image optimizer's one-year cache (next.config.ts) would pin the
               old one. `unoptimized` loads it from GitHub's CDN, which
               revalidates within minutes. */}
           <Image
-            width={64}
-            height={64}
+            width={48}
+            height={48}
             src={profile.avatarUrl}
             alt={`${copy.profile.avatarAlt} ${displayName}`}
-            className="h-16 w-16 rounded-full"
+            className="h-12 w-12 rounded-full"
             unoptimized
           />
-          <div>
-            <h4 className="text-2xl font-bold leading-tight tracking-[-0.015em]">
+          <div className="mr-auto">
+            <h4 className="text-xl font-bold leading-tight tracking-[-0.015em]">
               {displayName}
             </h4>
-            <span className="text-muted-foreground">@{profile.login}</span>
+            <span className="text-sm text-muted-foreground">
+              @{profile.login}
+            </span>
           </div>
+          <a
+            href={profile.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 w-fit items-center gap-2 bg-primary px-4 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          >
+            <SiGithub className="h-4 w-4" aria-hidden="true" />
+            {copy.profile.viewProfile}
+          </a>
         </RevealItem>
         {profile.bio && (
           <RevealItem>
@@ -224,7 +241,7 @@ function Readable({
           </RevealItem>
         )}
         <RevealItem>
-          <dl className="grid grid-cols-[max-content_1fr] gap-x-6 gap-y-2">
+          <dl className="grid grid-cols-[max-content_1fr] gap-x-6 gap-y-1 text-sm">
             {rows
               .filter((row): row is [string, string] => Boolean(row[1]))
               .map(([label, value]) => (
@@ -236,7 +253,7 @@ function Readable({
           </dl>
         </RevealItem>
         {profile.highlights.length > 0 && (
-          <RevealItem className="flex flex-col gap-2">
+          <RevealItem className="flex flex-col gap-1 text-sm">
             <h5 className="font-semibold">{copy.profile.highlights}</h5>
             {profile.highlights.map((highlight) => (
               <a
@@ -252,17 +269,6 @@ function Readable({
             ))}
           </RevealItem>
         )}
-        <RevealItem>
-          <a
-            href={profile.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-fit items-center gap-2 bg-primary px-5 font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-          >
-            <SiGithub className="h-4 w-4" aria-hidden="true" />
-            {copy.profile.viewProfile}
-          </a>
-        </RevealItem>
       </RevealGroup>
     );
   }
@@ -304,9 +310,10 @@ function Readable({
  * "Ask this site": run one of the public MCP server's tools from the page and
  * read exactly what an agent receives, readable or as raw JSON.
  *
- * The home page shows the example question and the GitHub tools (the rest of
- * its data is already on the page) and links to /mcp. The /mcp playground has
- * every tool and the full protocol log in {@link GitHubMcpConsole}.
+ * The home page shows only the GitHub tools (the rest of its data is already
+ * on the page) in a fixed-height panel, and links to /mcp. The /mcp playground
+ * has the example question, every tool and the full protocol log in
+ * {@link GitHubMcpConsole}.
  */
 export default function GitHubAskConsole({
   variant = "home",
@@ -314,8 +321,10 @@ export default function GitHubAskConsole({
   variant?: "home" | "page";
 }) {
   const { status, toolName, result, durationMs, call } = useMcpToolCall();
-  // Starts on the example, which runs as soon as the console scrolls into view
-  const [selected, setSelected] = useState<Selection>("example");
+  const isPage = variant === "page";
+  // The first selection runs as soon as the console scrolls into view
+  const initial: Selection = isPage ? "example" : "get_profile";
+  const [selected, setSelected] = useState<Selection>(initial);
   const [view, setView] = useState<"readable" | "raw">("readable");
   const [copied, setCopied] = useState(false);
   const consoleRef = useRef<HTMLDivElement>(null);
@@ -323,7 +332,6 @@ export default function GitHubAskConsole({
   const reduceMotion = useReducedMotion();
   const [measureBody, bodyHeight] = useMeasuredHeight<HTMLDivElement>();
 
-  const isPage = variant === "page";
   const Heading = isPage ? "h1" : "h2";
   const toolGroups = copy.toolGroups.filter((group) => isPage || group.onHome);
 
@@ -348,10 +356,10 @@ export default function GitHubAskConsole({
     [call, reduceMotion],
   );
 
-  // Run the example once in view, so the panel never opens empty
+  // Run the first selection once in view, so the panel never opens empty
   useEffect(() => {
-    if (inView) void call("get_projects");
-  }, [inView, call]);
+    if (inView) void call(initial === "example" ? "get_projects" : initial);
+  }, [inView, call, initial]);
 
   const toolButtonClass = (pressed: boolean) =>
     `grid cursor-pointer grid-cols-[1fr_auto] items-center gap-4 px-5 py-3 text-left md:py-4 transition-[background-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
@@ -362,6 +370,13 @@ export default function GitHubAskConsole({
 
   const groupLabelClass =
     "text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground";
+
+  const chipClass = (pressed: boolean) =>
+    `min-h-11 cursor-pointer px-4 py-2 text-base font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
+      pressed
+        ? "bg-primary text-primary-foreground"
+        : "bg-surface hover:bg-surface-2"
+    }`;
 
   const copyUrl = async (): Promise<void> => {
     try {
@@ -381,7 +396,9 @@ export default function GitHubAskConsole({
   return (
     <div
       id="mcp"
-      className="grid scroll-mt-20 grid-cols-12 gap-x-6 gap-y-7 lg:gap-y-10"
+      className={`grid scroll-mt-20 grid-cols-12 gap-x-6 ${
+        isPage ? "gap-y-7 lg:gap-y-10" : "gap-y-5"
+      }`}
       aria-labelledby="mcp-title"
       role="region"
     >
@@ -390,10 +407,16 @@ export default function GitHubAskConsole({
         sit straight under the tools (`order` puts the connect block and the
         live session after it). From lg it is the left column again.
       */}
-      <div className="contents lg:col-span-5 lg:flex lg:min-w-0 lg:flex-col lg:gap-7">
+      <div
+        className={`contents lg:col-span-5 lg:flex lg:min-w-0 lg:flex-col ${
+          isPage ? "lg:gap-7" : "lg:gap-5"
+        }`}
+      >
         <Heading
           id="mcp-title"
-          className="col-span-12 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
+          className={`col-span-12 font-bold leading-[1.05] tracking-tight ${
+            isPage ? "text-4xl sm:text-5xl" : "text-3xl sm:text-4xl"
+          }`}
         >
           {copy.title}
         </Heading>
@@ -401,97 +424,124 @@ export default function GitHubAskConsole({
           {isPage ? copy.intro : copy.introShort}
         </p>
 
-        <div
-          aria-label={copy.toolsLabel}
-          role="group"
-          className="col-span-12 flex flex-col gap-5"
-        >
+        {!isPage ? (
+          // Home: one compact row; the hints and protocol details live on /mcp.
           <div
+            aria-label={copy.toolsLabel}
             role="group"
-            aria-labelledby="mcp-group-example"
-            className="flex flex-col gap-1.5"
+            className="col-span-12 flex flex-wrap gap-2"
           >
-            <h3 id="mcp-group-example" className={groupLabelClass}>
-              {copy.example.label}
-            </h3>
-            <button
-              type="button"
-              aria-pressed={selected === "example"}
-              onClick={() => run("example")}
-              className={toolButtonClass(selected === "example")}
-            >
-              <span>
-                <b className="block text-lg font-semibold">
-                  {copy.example.question}
-                </b>
-                <span className="hidden text-base md:block">
-                  {copy.example.hint}
-                </span>
-              </span>
-              <code className="font-mono text-sm">get_projects</code>
-            </button>
-          </div>
-
-          {toolGroups.map((group) => (
-            <div
-              key={group.label}
-              role="group"
-              aria-labelledby={`mcp-group-${group.label}`}
-              className="flex flex-col gap-1.5"
-            >
-              <h3 id={`mcp-group-${group.label}`} className={groupLabelClass}>
-                {group.label}
-              </h3>
-              {group.tools.map((name) => (
+            {toolGroups
+              .flatMap((group) => group.tools)
+              .map((name) => (
                 <button
                   key={name}
                   type="button"
                   aria-pressed={selected === name}
                   onClick={() => run(name)}
-                  className={toolButtonClass(selected === name)}
+                  className={chipClass(selected === name)}
                 >
-                  <span>
-                    <b className="block text-lg font-semibold">
-                      {copy.tools[name].label}
-                    </b>
-                    <span className="hidden text-base md:block">
-                      {copy.tools[name].hint}
-                    </span>
-                  </span>
-                  <code className="font-mono text-sm">{name}</code>
+                  {copy.tools[name].label}
                 </button>
               ))}
-            </div>
-          ))}
-        </div>
-
-        <div className="order-1 col-span-12 flex min-w-0 flex-col gap-2.5 lg:order-0">
-          <h3 className="text-base font-bold">{copy.addTitle}</h3>
-          <p className="hidden text-sm md:block">{copy.addHint}</p>
-          <div className="flex min-w-0 items-stretch bg-surface">
-            <pre className="min-w-0 flex-1 overflow-x-auto px-4 py-3.5">
-              <code className="font-mono text-sm">{mcpConfig.publicUrl}</code>
-            </pre>
-            <button
-              type="button"
-              onClick={() => void copyUrl()}
-              className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 bg-primary px-4 text-sm font-semibold text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-            >
-              {copied ? (
-                <Check className="h-3.5 w-3.5" aria-hidden="true" />
-              ) : (
-                <Copy className="h-3.5 w-3.5" aria-hidden="true" />
-              )}
-              {copied ? copy.copied : copy.copy}
-            </button>
           </div>
-        </div>
+        ) : (
+          <div
+            aria-label={copy.toolsLabel}
+            role="group"
+            className="col-span-12 flex flex-col gap-5"
+          >
+            <div
+              role="group"
+              aria-labelledby="mcp-group-example"
+              className="flex flex-col gap-1.5"
+            >
+              <h3 id="mcp-group-example" className={groupLabelClass}>
+                {copy.example.label}
+              </h3>
+              <button
+                type="button"
+                aria-pressed={selected === "example"}
+                onClick={() => run("example")}
+                className={toolButtonClass(selected === "example")}
+              >
+                <span>
+                  <b className="block text-lg font-semibold">
+                    {copy.example.question}
+                  </b>
+                  <span className="hidden text-base md:block">
+                    {copy.example.hint}
+                  </span>
+                </span>
+                <code className="font-mono text-sm">get_projects</code>
+              </button>
+            </div>
+
+            {toolGroups.map((group) => (
+              <div
+                key={group.label}
+                role="group"
+                aria-labelledby={`mcp-group-${group.label}`}
+                className="flex flex-col gap-1.5"
+              >
+                <h3 id={`mcp-group-${group.label}`} className={groupLabelClass}>
+                  {group.label}
+                </h3>
+                {group.tools.map((name) => (
+                  <button
+                    key={name}
+                    type="button"
+                    aria-pressed={selected === name}
+                    onClick={() => run(name)}
+                    className={toolButtonClass(selected === name)}
+                  >
+                    <span>
+                      <b className="block text-lg font-semibold">
+                        {copy.tools[name].label}
+                      </b>
+                      <span className="hidden text-base md:block">
+                        {copy.tools[name].hint}
+                      </span>
+                    </span>
+                    <code className="font-mono text-sm">{name}</code>
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
 
         {isPage ? (
-          // The full protocol log: initialize, tools/list, every call.
-          <div className="order-1 col-span-12 lg:order-0">
-            <GitHubMcpConsole />
-          </div>
+          <>
+            <div className="order-1 col-span-12 flex min-w-0 flex-col gap-2.5 lg:order-0">
+              <h3 className="text-base font-bold">{copy.addTitle}</h3>
+              <p className="hidden text-sm md:block">{copy.addHint}</p>
+              <div className="flex min-w-0 items-stretch bg-surface">
+                <pre className="min-w-0 flex-1 overflow-x-auto px-4 py-3.5">
+                  <code className="font-mono text-sm">
+                    {mcpConfig.publicUrl}
+                  </code>
+                </pre>
+                <button
+                  type="button"
+                  onClick={() => void copyUrl()}
+                  className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 bg-primary px-4 text-sm font-semibold text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                >
+                  {copied ? (
+                    <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                  ) : (
+                    <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+                  )}
+                  {copied ? copy.copied : copy.copy}
+                </button>
+              </div>
+            </div>
+
+            {/* The full protocol log: initialize, tools/list, every call. */}
+            <div className="order-1 col-span-12 lg:order-0">
+              <GitHubMcpConsole />
+            </div>
+          </>
         ) : (
           <Link
             href="/mcp"
@@ -506,7 +556,10 @@ export default function GitHubAskConsole({
       <div
         ref={consoleRef}
         data-ui
-        className="col-span-12 flex min-w-0 scroll-mt-20 flex-col bg-surface lg:col-span-7 lg:self-start"
+        className={`col-span-12 flex min-w-0 scroll-mt-20 flex-col bg-surface lg:col-span-7 lg:self-start ${
+          // Home: a fixed height, so switching tools never moves the sections below
+          isPage ? "" : "h-128"
+        }`}
       >
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-2 px-5 py-3">
           <code className="font-mono text-sm">
@@ -545,11 +598,17 @@ export default function GitHubAskConsole({
         */}
         <m.div
           initial={false}
-          {...(bodyHeight !== null && { animate: { height: bodyHeight } })}
+          {...(isPage &&
+            bodyHeight !== null && { animate: { height: bodyHeight } })}
           transition={
             reduceMotion ? { duration: 0 } : { duration: 0.35, ease: "easeOut" }
           }
-          className="min-w-0 overflow-hidden"
+          className={
+            isPage
+              ? "min-w-0 overflow-hidden"
+              : // Home: fills the fixed panel; longer results scroll inside it.
+                "min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto"
+          }
         >
           <div
             ref={measureBody}
