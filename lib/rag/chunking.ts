@@ -13,8 +13,15 @@ import { ragConfig } from "@/data/configs/rag";
  * nearest heading, so a chunk still makes sense when retrieved on its own.
  */
 export function chunkMarkdown(title: string, markdown: string): string[] {
-  const text = markdown
-    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, "")
+  // Repeat until stable: removing one block can join the halves of another
+  // (`<scr<script></script>ipt>`), which a single pass would leave behind.
+  let stripped = markdown;
+  for (let previous = ""; previous !== stripped; ) {
+    previous = stripped;
+    stripped = stripped.replace(/<(script|style)[\s\S]*?<\/\1>/gi, "");
+  }
+
+  const text = stripped
     .replace(/<[^>]+>/g, " ")
     .replace(/\r\n/g, "\n")
     // Collapse runs of spaces, but keep indentation (nested data from sources.ts)
