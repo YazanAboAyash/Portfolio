@@ -605,7 +605,7 @@
     "suggestions": {
       "label": "Testa att fråga",
       "projects": "Vad har Yazan byggt nyligen?",
-      "stack": "Vilken teknikstack jobbar han med?",
+      "blog": "Ta mig till bloggen",
       "availability": "Är han öppen för nya projekt?",
       "site": "Hur byggdes den här webbplatsen?"
     },

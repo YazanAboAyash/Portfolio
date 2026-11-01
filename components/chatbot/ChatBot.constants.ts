@@ -72,7 +72,7 @@ export const CHATBOT_TRANSLATION_KEYS = {
   SUGGESTIONS_LABEL: "suggestions.label",
   SUGGESTIONS: [
     "suggestions.projects",
-    "suggestions.stack",
+    "suggestions.blog",
     "suggestions.availability",
     "suggestions.site",
   ],

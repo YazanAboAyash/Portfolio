@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 import {
   ArrowLeft,
   ArrowUpRight,
-  LayoutGrid,
   Loader2,
   LogOut,
   ShieldCheck,
@@ -195,46 +194,29 @@ export function AdminWorkspace({ children }: AdminWorkspaceProps) {
 
   return (
     <div className="min-h-[75vh] bg-muted/20">
-      <div className="border-y bg-background">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-8">
-          <Link
-            href="/admin"
-            className="inline-flex items-center gap-3 font-semibold"
-          >
-            <span className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <LayoutGrid className="size-4" aria-hidden="true" />
-            </span>
-            Admin workspace
-          </Link>
-          <div className="flex items-center gap-2">
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/">
-                View website
-                <ArrowUpRight className="size-4" aria-hidden="true" />
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => void signOut()}
-              disabled={busy}
-            >
-              <LogOut className="size-4" aria-hidden="true" />
-              Sign out
-            </Button>
-          </div>
-        </div>
-      </div>
       <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-12">
-        {pathname !== "/admin" && (
-          <Link
-            href="/admin"
-            className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+        <div className="mb-8 flex items-center justify-between gap-4">
+          {pathname !== "/admin" ? (
+            <Link
+              href="/admin"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="size-4" aria-hidden="true" />
+              All workspaces
+            </Link>
+          ) : (
+            <span />
+          )}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => void signOut()}
+            disabled={busy}
           >
-            <ArrowLeft className="size-4" aria-hidden="true" />
-            All workspaces
-          </Link>
-        )}
+            <LogOut className="size-4" aria-hidden="true" />
+            Sign out
+          </Button>
+        </div>
         {error && (
           <p role="alert" className="mb-6 text-sm text-destructive">
             {error}
