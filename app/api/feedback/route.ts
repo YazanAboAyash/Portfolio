@@ -209,22 +209,57 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const status: FeedbackStatus =
       moderation?.verdict === "reject" ? "rejected" : "pending";
 
-    await prisma.feedback.create({
-      data: {
-        name,
-        topic: input.topic,
-        rating: input.rating,
-        message,
-        locale: input.locale,
-        consentToPublish: input.consentToPublish,
-        status,
-        aiVerdict: moderation?.verdict ?? null,
-        aiReasons: moderation?.reasons ?? [],
-        aiFlaggedTerms: moderation?.flaggedTerms ?? [],
-        ipHash,
-        contentHash,
-      },
-    });
+    const data = {
+      name,
+      topic: input.topic,
+      rating: input.rating,
+      message,
+      locale: input.locale,
+      consentToPublish: input.consentToPublish,
+      status,
+      aiVerdict: moderation?.verdict ?? null,
+      aiReasons: moderation?.reasons ?? [],
+      aiFlaggedTerms: moderation?.flaggedTerms ?? [],
+      ipHash,
+      contentHash,
+    };
+
+    // Checked again together with the insert. The check above runs before a
+    // moderation call that takes seconds, so on its own it let parallel
+    // submissions all pass on the same count. Under Serializable, Postgres
+    // aborts one of two transactions that read the same count and both insert;
+    // the loser retries and then sees the winner's row.
+    let stored: "stored" | "duplicate" | "limit" | undefined;
+    for (let attempt = 1; !stored; attempt++) {
+      try {
+        stored = await prisma.$transaction(
+          async (tx) => {
+            const inWindow = { ipHash, createdAt: { gte: since } };
+            const duplicate = await tx.feedback.findFirst({
+              where: { ...inWindow, contentHash },
+              select: { id: true },
+            });
+            if (duplicate) return "duplicate";
+            const count = await tx.feedback.count({ where: inWindow });
+            if (count >= FEEDBACK_DAILY_MAX) return "limit";
+            await tx.feedback.create({ data });
+            return "stored";
+          },
+          { isolationLevel: "Serializable" },
+        );
+      } catch (error) {
+        // P2034: lost a serialization conflict to a parallel submission
+        const conflict =
+          error instanceof Error && "code" in error && error.code === "P2034";
+        if (!conflict || attempt >= 3) throw error;
+      }
+    }
+    if (stored === "duplicate") {
+      return reject("DUPLICATE", 409, "same message within 24h (parallel)");
+    }
+    if (stored === "limit") {
+      return reject("DAILY_LIMIT", 429, "daily limit reached (parallel)");
+    }
 
     // Rejected entries are kept so false positives can be found and approved.
     if (status === "rejected") {

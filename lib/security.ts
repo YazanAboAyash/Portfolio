@@ -86,8 +86,21 @@ export class RateLimiter {
  * dev, or a platform change — every caller collapses into one shared bucket and
  * is throttled together. That is the correct direction to fail: a rate limiter
  * that cannot tell callers apart must not issue each request a fresh allowance.
+ *
+ * The same goes for the header itself off Vercel: anywhere else (self-hosting,
+ * `docker compose`) it arrives exactly as the caller wrote it, and trusting it
+ * let a rotating value dodge the admin lockout and the feedback limits. So it
+ * is only read when `VERCEL=1` (set by the platform), or when
+ * `TRUST_PROXY_HEADERS=true` declares a proxy in front that overwrites it. The
+ * local stack and Playwright's dev server set that so tests can give each
+ * client its own bucket; never set it on a host clients reach directly.
  */
+const TRUST_FORWARDED_FOR =
+  process.env.VERCEL === "1" || process.env.TRUST_PROXY_HEADERS === "true";
+
 export function getClientIP(request: NextRequest): string {
+  if (!TRUST_FORWARDED_FOR) return "unknown";
+
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
 
   // Vercel sets a single address, so the length cap is only there to stop a

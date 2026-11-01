@@ -27,6 +27,7 @@ import {
   getAdminBlogById,
   checkAdminRateLimit,
   getAdminCategories,
+  BlogValidationError,
   type AdminContext,
 } from "@/lib/blog-admin/blog-admin";
 import {
@@ -512,6 +513,13 @@ export async function POST(
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
+    // e.g. content under the minimum once the write-time sanitizer stripped it
+    if (error instanceof BlogValidationError) {
+      return NextResponse.json(
+        { error: "Validation failed", details: error.errors },
+        { status: 400 },
+      );
+    }
     console.error("Blog Admin API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
