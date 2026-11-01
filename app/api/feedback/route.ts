@@ -129,12 +129,34 @@ function hashContent(message: string): string {
 export async function POST(request: NextRequest): Promise<NextResponse> {
   if (!isConfigured) return errorResponse("SERVICE_UNAVAILABLE", 503);
 
+  // Same gate as the chatbot route: another site's page must not post this
+  // from its visitors' browsers (a moderation call each, and a forged
+  // `consentToPublish`). Clients that send neither header aren't browsers
+  // acting for someone else. Checked before the burst limiter, so forged
+  // requests don't use up the visitor's allowance.
+  const fetchSite = request.headers.get("sec-fetch-site");
+  const origin = request.headers.get("origin");
+  if (
+    (fetchSite && fetchSite !== "same-origin") ||
+    (origin &&
+      origin !== `${request.nextUrl.protocol}//${request.headers.get("host")}`)
+  ) {
+    return reject("INVALID_INPUT", 403, "cross-site request");
+  }
+
   const clientIP = getClientIP(request);
   if (!burstLimiter.isAllowed(clientIP)) {
     return errorResponse("RATE_LIMIT_EXCEEDED", 429);
   }
 
-  if (!request.headers.get("content-type")?.includes("application/json")) {
+  // The media type itself, not a substring: `text/plain; x=application/json`
+  // is CORS-safelisted and would skip the preflight.
+  const mediaType = request.headers
+    .get("content-type")
+    ?.split(";")[0]
+    ?.trim()
+    .toLowerCase();
+  if (mediaType !== "application/json") {
     return reject("INVALID_INPUT", 400, "content-type is not application/json");
   }
 
