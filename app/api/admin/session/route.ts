@@ -6,12 +6,17 @@
 
 import { timingSafeEqual } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
-import { createAdminSession, hasValidAdminSession } from "@/proxy";
+import {
+  clearAdminSessionCookie,
+  hasValidAdminSession,
+  revokeAdminSessions,
+  setAdminSessionCookie,
+} from "@/lib/admin-session";
 import { adminAuthLimiter, getClientIP } from "@/lib/security";
 
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   return NextResponse.json(
-    { authenticated: hasValidAdminSession(request) },
+    { authenticated: await hasValidAdminSession(request) },
     { headers: { "Cache-Control": "no-store" } },
   );
 }
@@ -50,24 +55,33 @@ export async function POST(request: NextRequest) {
   }
 
   const response = NextResponse.json({ authenticated: true });
-  response.cookies.set("PORTFOLIO_ADMIN_SESSION", createAdminSession(), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 60 * 60 * 8,
-    path: "/",
-  });
+  setAdminSessionCookie(response);
   return response;
 }
 
-export function DELETE(request: NextRequest) {
+export async function DELETE(request: NextRequest) {
   if (
     request.headers.get("origin") !==
     `${request.nextUrl.protocol}//${request.headers.get("host")}`
   ) {
     return NextResponse.json({ authenticated: false }, { status: 403 });
   }
+  // Only a signed-in admin may end the sessions, or any visitor could keep
+  // logging the admin out. Everyone else just has their own cookie cleared.
+  if (await hasValidAdminSession(request)) {
+    try {
+      await revokeAdminSessions();
+    } catch (error) {
+      console.error("Admin session revocation failed:", error);
+      const response = NextResponse.json(
+        { authenticated: false, error: "Sessions could not be revoked" },
+        { status: 500 },
+      );
+      clearAdminSessionCookie(response);
+      return response;
+    }
+  }
   const response = NextResponse.json({ authenticated: false });
-  response.cookies.delete("PORTFOLIO_ADMIN_SESSION");
+  clearAdminSessionCookie(response);
   return response;
 }

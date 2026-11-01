@@ -6,68 +6,10 @@
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createHmac, timingSafeEqual } from "crypto";
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/data/configs/i18n";
 import { contentSecurityPolicy } from "@/lib/csp";
 
 const supportedLocales: readonly string[] = SUPPORTED_LOCALES;
-
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
-const SESSION_DURATION = 8 * 60 * 60 * 1000; // 8 hours
-
-function signToken(payload: string): string {
-  return createHmac("sha256", ADMIN_TOKEN || "")
-    .update(payload)
-    .digest("hex");
-}
-
-export function hasValidAdminSession(request: NextRequest): boolean {
-  if (!ADMIN_TOKEN) return false;
-
-  const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
-  if (!sessionCookie?.value) return false;
-
-  const parts = sessionCookie.value.split(".");
-  if (parts.length !== 3) return false;
-
-  const [sessionId, expiresAtStr, sig] = parts;
-  if (!sessionId || !expiresAtStr || !sig) return false;
-  if (!/^[a-f0-9]{64}$/.test(sessionId) || !/^[a-f0-9]{64}$/.test(sig)) return false;
-  if (!/^\d+$/.test(expiresAtStr)) return false;
-
-  // Verify HMAC signature
-  const payload = `${sessionId}.${expiresAtStr}`;
-  const expectedSig = signToken(payload);
-  const sigBuf = Buffer.from(sig, "hex");
-  const expectedBuf = Buffer.from(expectedSig, "hex");
-  if (sigBuf.length !== expectedBuf.length) return false;
-  if (!timingSafeEqual(sigBuf, expectedBuf)) return false;
-
-  // Check expiration
-  const expiresAt = Number(expiresAtStr);
-  if (!Number.isSafeInteger(expiresAt) || Date.now() >= expiresAt) return false;
-
-  return true;
-}
-
-export function createAdminSession(): string {
-  const randomBytes = new Uint8Array(32);
-  crypto.getRandomValues(randomBytes);
-  const sessionId = Array.from(randomBytes)
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-
-  const expiresAt = Date.now() + SESSION_DURATION;
-  const payload = `${sessionId}.${expiresAt}`;
-  const sig = signToken(payload);
-
-  return `${payload}.${sig}`;
-}
-
-export function invalidateAdminSession(_sessionId: string): void {
-  // Stateless tokens cannot be server-side invalidated.
-  // Logout is handled by deleting the session cookie in the API route.
-}
 
 /**
  * Handle automatic locale detection based on browser language

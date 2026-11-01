@@ -23,7 +23,7 @@ import {
 } from "@/data/configs/feedback";
 import { prisma } from "@/lib/configs/prisma";
 import { adminAuthLimiter, getClientIP } from "@/lib/security";
-import { hasValidAdminSession } from "@/proxy";
+import { hasValidAdminSession } from "@/lib/admin-session";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
@@ -47,7 +47,7 @@ function rejectUnauthorized(request: NextRequest): NextResponse<{
  * `ADMIN_TOKEN` as a Bearer header, or the admin workspace's session cookie.
  * `admin` only: the blog agent token has no business with visitor feedback.
  */
-function isAuthorized(request: NextRequest): boolean {
+async function isAuthorized(request: NextRequest): Promise<boolean> {
   if (!ADMIN_TOKEN) return false;
 
   const authHeader = request.headers.get("authorization");
@@ -93,7 +93,7 @@ const idSchema = z.string().min(1).max(40);
 export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<AdminFeedbackListResponse | { error: string }>> {
-  if (!isAuthorized(request)) return rejectUnauthorized(request);
+  if (!(await isAuthorized(request))) return rejectUnauthorized(request);
 
   const { searchParams } = new URL(request.url);
   const parsed = listFilterSchema.safeParse({
@@ -197,7 +197,7 @@ export async function GET(
 export async function PATCH(
   request: NextRequest,
 ): Promise<NextResponse<{ ok: true } | { error: string }>> {
-  if (!isAuthorized(request)) return rejectUnauthorized(request);
+  if (!(await isAuthorized(request))) return rejectUnauthorized(request);
 
   const parsed = reviewSchema.safeParse(
     await request.json().catch(() => null),
@@ -241,7 +241,7 @@ export async function PATCH(
 export async function DELETE(
   request: NextRequest,
 ): Promise<NextResponse<{ ok: true } | { error: string }>> {
-  if (!isAuthorized(request)) return rejectUnauthorized(request);
+  if (!(await isAuthorized(request))) return rejectUnauthorized(request);
 
   const parsed = idSchema.safeParse(
     new URL(request.url).searchParams.get("id"),

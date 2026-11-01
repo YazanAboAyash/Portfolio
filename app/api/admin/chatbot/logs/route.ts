@@ -4,13 +4,14 @@
  * @version 7.x.x
  */
 
+import { timingSafeEqual } from "node:crypto";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import type { ChatLogsResponse, ChatSessionLog } from "@/types/configs/chatbot";
 import { prisma } from "@/lib/configs/prisma";
 import { adminAuthLimiter, getClientIP } from "@/lib/security";
-import { hasValidAdminSession } from "@/proxy";
+import { hasValidAdminSession } from "@/lib/admin-session";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
@@ -30,7 +31,7 @@ function rejectUnauthorized(request: NextRequest): NextResponse<{
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }
 
-function isAuthorized(request: NextRequest): boolean {
+async function isAuthorized(request: NextRequest): Promise<boolean> {
   if (!ADMIN_TOKEN) return false;
 
   const authHeader = request.headers.get("authorization");
@@ -40,14 +41,9 @@ function isAuthorized(request: NextRequest): boolean {
     ? authHeader.substring(7)
     : authHeader;
 
-  if (token.length !== ADMIN_TOKEN.length) return false;
-
-  let isEqual = true;
-  for (let i = 0; i < token.length; i++) {
-    if (token[i] !== ADMIN_TOKEN[i]) isEqual = false;
-  }
-
-  return isEqual;
+  const actual = Buffer.from(token);
+  const expected = Buffer.from(ADMIN_TOKEN);
+  return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
 
 // Validation schema for query params
@@ -71,7 +67,7 @@ const chatLogsFilterSchema = z.object({
 export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<ChatLogsResponse | { error: string }>> {
-  if (!isAuthorized(request)) {
+  if (!(await isAuthorized(request))) {
     return rejectUnauthorized(request);
   }
 
@@ -237,7 +233,7 @@ export async function GET(
 export async function DELETE(
   request: NextRequest,
 ): Promise<NextResponse<{ success: boolean } | { error: string }>> {
-  if (!isAuthorized(request)) {
+  if (!(await isAuthorized(request))) {
     return rejectUnauthorized(request);
   }
 
