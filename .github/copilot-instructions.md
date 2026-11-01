@@ -9,14 +9,14 @@
 | Styling    | Tailwind CSS v4, Shadcn UI (`components/ui/` — do not modify)                                                          |
 | i18n       | next-intl 4.11 · locales: `en`, `de`, `es`, `fr`, `sv` · cookie-based, messages in `messages/`                         |
 | Database   | Prisma 7.8, WASM query engine, `@prisma/adapter-pg`, Neon PostgreSQL                                                   |
-| Auth       | Bearer tokens or a stateless HMAC-SHA256 `PORTFOLIO_ADMIN_SESSION` cookie — no server-side session state, no NextAuth |
+| Auth       | Bearer tokens or an HMAC-SHA256 `PORTFOLIO_ADMIN_SESSION` cookie (2h, revocable via `AdminAuthState`), no NextAuth    |
 | Proxy      | `proxy.ts` at root (Next.js 16 renamed `middleware.ts` → `proxy.ts`)                                                   |
 | Deployment | Vercel · `coldbydefault.com`                                                                                           |
 
 ## Key Rules
 
 - **No `middleware.ts`** — the proxy file is `proxy.ts`, and it is not an auth gate (locale detection and redirects only)
-- **No NextAuth / `getServerSession`** — the session helpers are `createAdminSession()` / `hasValidAdminSession()` in `proxy.ts`
+- **No NextAuth / `getServerSession`** — the session helpers are in `lib/admin-session.ts` (`hasValidAdminSession()` is async)
 - **Admin API routes check auth themselves** — Bearer token, or the session cookie only when no `Authorization` header is sent
 - **No IP binding in sessions** — EU privacy compliance
 - **No leaf-level `loading.tsx`** — only `app/loading.tsx` and one per route group: `(legals)`, `(media)`, `admin`
