@@ -7,7 +7,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
-import { timingSafeEqual } from "node:crypto";
 import { z } from "zod";
 import type {
   AdminFeedbackEntry,
@@ -22,8 +21,8 @@ import {
   FEEDBACK_WALL_CACHE_TAG,
 } from "@/data/configs/feedback";
 import { prisma } from "@/lib/configs/prisma";
-import { adminAuthLimiter, getClientIP } from "@/lib/security";
-import { hasValidAdminSession } from "@/proxy";
+import { adminAuthLimiter, getClientIP, tokenMatches } from "@/lib/security";
+import { hasValidAdminSession } from "@/lib/admin-session";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
@@ -47,19 +46,18 @@ function rejectUnauthorized(request: NextRequest): NextResponse<{
  * `ADMIN_TOKEN` as a Bearer header, or the admin workspace's session cookie.
  * `admin` only: the blog agent token has no business with visitor feedback.
  */
-function isAuthorized(request: NextRequest): boolean {
+async function isAuthorized(request: NextRequest): Promise<boolean> {
   if (!ADMIN_TOKEN) return false;
 
   const authHeader = request.headers.get("authorization");
   if (!authHeader) return hasValidAdminSession(request);
+  // Locked out: don't evaluate the guess at all (rejectUnauthorized → 429)
+  if (adminAuthLimiter.isLimited(getClientIP(request))) return false;
 
   const token = authHeader.startsWith("Bearer ")
     ? authHeader.substring(7)
     : authHeader;
-
-  const actual = Buffer.from(token);
-  const expected = Buffer.from(ADMIN_TOKEN);
-  return actual.length === expected.length && timingSafeEqual(actual, expected);
+  return tokenMatches(token, ADMIN_TOKEN);
 }
 
 const listFilterSchema = z.object({
@@ -93,7 +91,7 @@ const idSchema = z.string().min(1).max(40);
 export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<AdminFeedbackListResponse | { error: string }>> {
-  if (!isAuthorized(request)) return rejectUnauthorized(request);
+  if (!(await isAuthorized(request))) return rejectUnauthorized(request);
 
   const { searchParams } = new URL(request.url);
   const parsed = listFilterSchema.safeParse({
@@ -197,7 +195,7 @@ export async function GET(
 export async function PATCH(
   request: NextRequest,
 ): Promise<NextResponse<{ ok: true } | { error: string }>> {
-  if (!isAuthorized(request)) return rejectUnauthorized(request);
+  if (!(await isAuthorized(request))) return rejectUnauthorized(request);
 
   const parsed = reviewSchema.safeParse(
     await request.json().catch(() => null),
@@ -241,7 +239,7 @@ export async function PATCH(
 export async function DELETE(
   request: NextRequest,
 ): Promise<NextResponse<{ ok: true } | { error: string }>> {
-  if (!isAuthorized(request)) return rejectUnauthorized(request);
+  if (!(await isAuthorized(request))) return rejectUnauthorized(request);
 
   const parsed = idSchema.safeParse(
     new URL(request.url).searchParams.get("id"),

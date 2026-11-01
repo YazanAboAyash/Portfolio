@@ -15,6 +15,7 @@ import type {
 import type { BlogAdminStats } from "@/types/main/admin";
 import { RateLimiter } from "@/lib/security";
 import {
+  BlogValidationError,
   BlogValidationService,
   type AdminContext,
 } from "@/lib/blog-admin/BlogValidationService";
@@ -83,7 +84,7 @@ export class BlogAdminService {
     // Validate input
     const errors = BlogValidationService.validateBlogData(data);
     if (errors.length > 0) {
-      throw new Error(`Validation errors: ${errors.join(", ")}`);
+      throw new BlogValidationError(errors);
     }
 
     try {
@@ -108,7 +109,7 @@ export class BlogAdminService {
     // Validate input
     const errors = BlogValidationService.validateBlogData(data);
     if (errors.length > 0) {
-      throw new Error(`Validation errors: ${errors.join(", ")}`);
+      throw new BlogValidationError(errors);
     }
 
     try {

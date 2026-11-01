@@ -555,6 +555,27 @@ export async function POST(request: NextRequest): Promise<Response> {
     return errorResponse("SERVICE_UNAVAILABLE", 503);
   }
 
+  // Another site's page must not be able to drive this from its visitors'
+  // browsers: each forged turn costs model tokens on our key, and its
+  // `consentGiven: true` would be stored as consent the visitor never gave.
+  // Browsers mark cross-site requests with Sec-Fetch-Site and Origin; a client
+  // that sends neither isn't a browser acting for someone else, so the rate
+  // limiter handles it. Checked first so forged requests don't use up the
+  // visitor's own allowance.
+  const fetchSite = request.headers.get("sec-fetch-site");
+  const origin = request.headers.get("origin");
+  if (
+    (fetchSite && fetchSite !== "same-origin") ||
+    (origin &&
+      origin !== `${request.nextUrl.protocol}//${request.headers.get("host")}`)
+  ) {
+    diagnostic(
+      "warn",
+      `rejected: cross-site request (sec-fetch-site=${fetchSite ?? "absent"})`,
+    );
+    return errorResponse("INVALID_INPUT", 403);
+  }
+
   // Get client IP and check rate limiting
   const clientIP = getClientIP(request);
 
@@ -568,9 +589,16 @@ export async function POST(request: NextRequest): Promise<Response> {
   // out of its own limit.
   pruneRateLimits(Date.now());
 
-  // Validate content type
-  const contentType = request.headers.get("content-type");
-  if (!contentType?.includes("application/json")) {
+  // The media type itself, not a substring: `text/plain; x=application/json`
+  // passed an `includes` test while still counting as CORS-safelisted, so a
+  // cross-site page could post it without a preflight. `application/json` is
+  // not safelisted, so requiring it exactly forces one.
+  const mediaType = request.headers
+    .get("content-type")
+    ?.split(";")[0]
+    ?.trim()
+    .toLowerCase();
+  if (mediaType !== "application/json") {
     return rejectInvalid("content-type is not application/json");
   }
 
@@ -686,17 +714,32 @@ export async function POST(request: NextRequest): Promise<Response> {
     ...lastMessage,
     parts: [{ type: "text", text: sanitizedText }],
   };
-  // Earlier turns are reduced to their text. Tool results from past turns
-  // would arrive from the client, so the model would be reading data it has
-  // no reason to trust as tool output; Reem re-runs a tool when a later
-  // question needs it. The client strips them too, to stay under the body cap.
-  const conversation = [
-    ...uiMessages.slice(0, -1).map((message) => ({
-      ...message,
-      parts: message.parts.filter((part) => part.type === "text"),
-    })),
-    sanitizedLastMessage,
-  ];
+  // Earlier turns come from the client too, so they're rebuilt from their text
+  // alone and held to the same rules as the turn just typed. Tool results,
+  // files and reasoning parts never reach the model (it would be reading data
+  // it has no reason to trust as tool output; Reem re-runs a tool when a later
+  // question needs it). Invisible carriers are stripped, and each turn is cut
+  // to what a real client could have produced: a typed message, or one reply
+  // of at most `maxOutputTokens`. Cut rather than rejected, because the client
+  // replays this history on every turn, and a rejection would lock the visitor
+  // out of their own conversation.
+  //
+  // This bounds a forged history but can't tell it apart from a real one: a
+  // caller can still write "assistant" turns. Telling them apart would need
+  // signed assistant turns or a server-side transcript.
+  const earlierTurns: ReemUIMessage[] = uiMessages
+    .slice(0, -1)
+    .flatMap((message) => {
+      const cap =
+        message.role === "assistant"
+          ? MAX_ASSISTANT_TURN_CHARS
+          : chatbotConfig.maxMessageLength;
+      const text = sanitizeChatInput(extractText(message).slice(0, cap));
+      return text
+        ? [{ id: message.id, role: message.role, parts: [{ type: "text", text }] }]
+        : [];
+    });
+  const conversation = [...earlierTurns, sanitizedLastMessage];
 
   const result = streamText({
     model: openai(OPENAI_CHAT_MODEL),

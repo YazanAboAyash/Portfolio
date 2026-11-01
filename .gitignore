@@ -47,3 +47,5 @@ TODO.md
 .claude/settings.local.json
 .taste-skill
 .codex
+.codex/
+security-tests/

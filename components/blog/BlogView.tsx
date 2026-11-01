@@ -20,7 +20,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import rehypeHighlight from "rehype-highlight";
-import rehypeRaw from "rehype-raw";
 import "highlight.js/styles/github-dark.css";
 import { getBlogHeadings, slugifyHeading } from "@/lib/blog-headings";
 import { cn } from "@/lib/utils";
@@ -143,9 +142,11 @@ export function BlogView({ blog, className }: BlogViewProps) {
         >
           {/* Content */}
           <div id={BLOG_BODY_ID} className="min-w-0 max-w-3xl space-y-6">
+            {/* No rehype-raw: raw HTML in a post renders as text, so this stays
+                safe even if something gets past the write-time sanitizer. */}
             <ReactMarkdown
               remarkPlugins={[remarkGfm, remarkBreaks]}
-              rehypePlugins={[rehypeHighlight, rehypeRaw]}
+              rehypePlugins={[rehypeHighlight]}
               components={{
                 h1: ({ children }) => (
                   <h2 className="pt-6 text-3xl font-bold tracking-tight text-balance">

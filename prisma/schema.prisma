@@ -214,3 +214,14 @@ model KnowledgeChunk {
   @@unique([sourceId, chunkIndex])
   @@index([blogId])
 }
+
+// Single row (id 1) of server-side admin auth state, for lib/admin-session.ts.
+// Logout moves sessionsValidAfter to now, which ends every session cookie
+// issued before it, on every device.
+model AdminAuthState {
+  id                 Int      @id @default(1)
+  sessionsValidAfter DateTime
+  updatedAt          DateTime @updatedAt
+
+  @@map("admin_auth_state")
+}

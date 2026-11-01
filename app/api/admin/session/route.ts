@@ -4,14 +4,18 @@
  * @version 7.x.x
  */
 
-import { timingSafeEqual } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
-import { createAdminSession, hasValidAdminSession } from "@/proxy";
-import { adminAuthLimiter, getClientIP } from "@/lib/security";
+import {
+  clearAdminSessionCookie,
+  hasValidAdminSession,
+  revokeAdminSessions,
+  setAdminSessionCookie,
+} from "@/lib/admin-session";
+import { adminAuthLimiter, getClientIP, tokenMatches } from "@/lib/security";
 
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   return NextResponse.json(
-    { authenticated: hasValidAdminSession(request) },
+    { authenticated: await hasValidAdminSession(request) },
     { headers: { "Cache-Control": "no-store" } },
   );
 }
@@ -23,51 +27,53 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json({ authenticated: false }, { status: 403 });
   }
+  // Locked out: answer before the guess is evaluated, so the lockout really
+  // stops guessing rather than only hiding which guesses were wrong.
+  const clientIP = getClientIP(request);
+  if (adminAuthLimiter.isLimited(clientIP)) {
+    return NextResponse.json({ authenticated: false }, { status: 429 });
+  }
   const body: unknown = await request.json().catch(() => null);
   const token =
     body && typeof body === "object" && "token" in body ? body.token : null;
-  const expected = process.env.ADMIN_TOKEN;
-  if (typeof token !== "string" || !expected) {
-    return NextResponse.json(
-      { authenticated: false },
-      {
-        status: adminAuthLimiter.isAllowed(getClientIP(request)) ? 401 : 429,
-      },
-    );
-  }
-  const actualBytes = Buffer.from(token);
-  const expectedBytes = Buffer.from(expected);
   if (
-    actualBytes.length !== expectedBytes.length ||
-    !timingSafeEqual(actualBytes, expectedBytes)
+    typeof token !== "string" ||
+    !tokenMatches(token, process.env.ADMIN_TOKEN)
   ) {
     return NextResponse.json(
       { authenticated: false },
-      {
-        status: adminAuthLimiter.isAllowed(getClientIP(request)) ? 401 : 429,
-      },
+      { status: adminAuthLimiter.isAllowed(clientIP) ? 401 : 429 },
     );
   }
 
   const response = NextResponse.json({ authenticated: true });
-  response.cookies.set("PORTFOLIO_ADMIN_SESSION", createAdminSession(), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 60 * 60 * 8,
-    path: "/",
-  });
+  setAdminSessionCookie(response);
   return response;
 }
 
-export function DELETE(request: NextRequest) {
+export async function DELETE(request: NextRequest) {
   if (
     request.headers.get("origin") !==
     `${request.nextUrl.protocol}//${request.headers.get("host")}`
   ) {
     return NextResponse.json({ authenticated: false }, { status: 403 });
   }
+  // Only a signed-in admin may end the sessions, or any visitor could keep
+  // logging the admin out. Everyone else just has their own cookie cleared.
+  if (await hasValidAdminSession(request)) {
+    try {
+      await revokeAdminSessions();
+    } catch (error) {
+      console.error("Admin session revocation failed:", error);
+      const response = NextResponse.json(
+        { authenticated: false, error: "Sessions could not be revoked" },
+        { status: 500 },
+      );
+      clearAdminSessionCookie(response);
+      return response;
+    }
+  }
   const response = NextResponse.json({ authenticated: false });
-  response.cookies.delete("PORTFOLIO_ADMIN_SESSION");
+  clearAdminSessionCookie(response);
   return response;
 }

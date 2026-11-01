@@ -4,6 +4,7 @@
  * @version 7.x.x
  */
 
+import { timingSafeEqual } from "node:crypto";
 import type { NextRequest } from "next/server";
 
 /**
@@ -45,6 +46,15 @@ export class RateLimiter {
     return true;
   }
 
+  /** Whether `identifier` is over the limit, without recording a request. */
+  isLimited(identifier: string): boolean {
+    const now = Date.now();
+    const recent = (this.requests.get(identifier) ?? []).filter(
+      (time) => now - time < this.windowMs,
+    );
+    return recent.length >= this.maxRequests;
+  }
+
   private cleanup(): void {
     const now = Date.now();
     for (const [identifier, requests] of this.requests.entries()) {
@@ -76,8 +86,21 @@ export class RateLimiter {
  * dev, or a platform change — every caller collapses into one shared bucket and
  * is throttled together. That is the correct direction to fail: a rate limiter
  * that cannot tell callers apart must not issue each request a fresh allowance.
+ *
+ * The same goes for the header itself off Vercel: anywhere else (self-hosting,
+ * `docker compose`) it arrives exactly as the caller wrote it, and trusting it
+ * let a rotating value dodge the admin lockout and the feedback limits. So it
+ * is only read when `VERCEL=1` (set by the platform), or when
+ * `TRUST_PROXY_HEADERS=true` declares a proxy in front that overwrites it. The
+ * local stack and Playwright's dev server set that so tests can give each
+ * client its own bucket; never set it on a host clients reach directly.
  */
+const TRUST_FORWARDED_FOR =
+  process.env.VERCEL === "1" || process.env.TRUST_PROXY_HEADERS === "true";
+
 export function getClientIP(request: NextRequest): string {
+  if (!TRUST_FORWARDED_FOR) return "unknown";
+
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
 
   // Vercel sets a single address, so the length cap is only there to stop a
@@ -89,17 +112,33 @@ export function getClientIP(request: NextRequest): string {
 }
 
 /**
- * Throttles failed admin credential attempts on `app/api/admin/**`.
+ * Throttles admin token guessing on `app/api/admin/**`.
  *
- * Only rejected attempts are recorded, so a valid token is never locked out
- * and an attacker cannot exhaust the limit to deny the owner access. Must be
- * consulted on the rejection path itself — checking it after an early 401
- * return leaves token guessing unthrottled.
+ * Check `isLimited()` *before* comparing a presented token: a locked-out IP
+ * gets 429 without its guess being evaluated, so the lockout really stops
+ * guessing instead of only changing the error code on wrong guesses. Record a
+ * failure with `isAllowed()` only after a mismatch. Session cookies skip the
+ * pre-check: they're HMAC-signed, not guessable, so the owner stays signed in
+ * even if someone else shares their IP.
  *
  * State is in-memory and per-instance, so on serverless this is best-effort
  * mitigation rather than a hard guarantee.
  */
 export const adminAuthLimiter = new RateLimiter(15 * 60 * 1000, 5);
+
+/** Constant-time comparison of a presented token with the expected secret. */
+export function tokenMatches(
+  actual: string,
+  expected: string | undefined,
+): boolean {
+  if (!expected) return false;
+  const actualBytes = Buffer.from(actual);
+  const expectedBytes = Buffer.from(expected);
+  return (
+    actualBytes.length === expectedBytes.length &&
+    timingSafeEqual(actualBytes, expectedBytes)
+  );
+}
 
 /**
  * Enhanced input sanitization for contact forms

@@ -28,10 +28,6 @@ services:
   app:
     build:
       context: .
-      args:
-        # Interpolated from .env
-        NEXT_PUBLIC_THEME_SIGNATURE_KEY: ${NEXT_PUBLIC_THEME_SIGNATURE_KEY:-}
-        NEXT_PUBLIC_THEME_VALIDATION_HASH: ${NEXT_PUBLIC_THEME_VALIDATION_HASH:-}
     env_file:
       - path: .env.local
         required: false
@@ -39,6 +35,10 @@ services:
       NODE_ENV: production
       NEXT_PUBLIC_BASE_URL: http://localhost:3000
       PORTFOLIO_URL: http://localhost:3000
+      # Lets e2e tests give each client its own rate-limit bucket via
+      # X-Forwarded-For (see getClientIP in lib/security.ts). Set to false to
+      # test the self-hosting default, where the header is ignored.
+      TRUST_PROXY_HEADERS: ${TRUST_PROXY_HEADERS:-true}
       DATABASE_URL: *local-db-url
       DATABASE_URL_UNPOOLED: *local-db-url
       POSTGRES_URL: *local-db-url

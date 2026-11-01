@@ -27,10 +27,15 @@ import {
   getAdminBlogById,
   checkAdminRateLimit,
   getAdminCategories,
+  BlogValidationError,
   type AdminContext,
 } from "@/lib/blog-admin/blog-admin";
-import { createAdminSession, hasValidAdminSession, invalidateAdminSession } from "@/proxy";
-import { adminAuthLimiter, getClientIP } from "@/lib/security";
+import {
+  clearAdminSessionCookie,
+  hasValidAdminSession,
+  revokeAdminSessions,
+} from "@/lib/admin-session";
+import { adminAuthLimiter, getClientIP, tokenMatches } from "@/lib/security";
 
 // Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
@@ -55,25 +60,14 @@ function rejectUnauthorized(clientIP: string): NextResponse<ApiErrorResponse> {
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }
 
-function tokenMatches(token: string, expected: string | undefined): boolean {
-  if (!expected || token.length !== expected.length) {
-    return false;
-  }
-
-  let isEqual = true;
-  for (let i = 0; i < token.length; i++) {
-    if (token[i] !== expected[i]) {
-      isEqual = false;
-    }
-  }
-
-  return isEqual;
-}
-
-function getRole(request: NextRequest): AdminRole | null {
+async function getRole(request: NextRequest): Promise<AdminRole | null> {
   const authHeader = request.headers.get("authorization");
   if (!authHeader) {
-    return hasValidAdminSession(request) ? "admin" : null;
+    return (await hasValidAdminSession(request)) ? "admin" : null;
+  }
+  // Locked out: don't evaluate the guess at all (rejectUnauthorized → 429)
+  if (adminAuthLimiter.isLimited(getClientIP(request))) {
+    return null;
   }
 
   const token = authHeader.startsWith("Bearer ")
@@ -94,35 +88,15 @@ function forbidden(): NextResponse<ApiErrorResponse> {
   return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 }
 
-function createAdminContext(request: NextRequest): AdminContext {
+function createAdminContext(
+  request: NextRequest,
+  role: AdminRole | null,
+): AdminContext {
   return {
     clientIP: getClientIP(request),
-    isAuthenticated: getRole(request) !== null,
+    isAuthenticated: role !== null,
     userAgent: request.headers.get("user-agent") || undefined,
   };
-}
-
-function setAdminSessionCookie(response: NextResponse): void {
-  const sessionToken = createAdminSession();
-
-  response.cookies.set("PORTFOLIO_ADMIN_SESSION", sessionToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    maxAge: 60 * 60 * 8,
-    path: "/",
-  });
-}
-
-function clearAdminSessionCookie(
-  response: NextResponse,
-  request: NextRequest,
-): void {
-  const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
-  if (sessionCookie?.value) {
-    invalidateAdminSession(sessionCookie.value);
-  }
-  response.cookies.delete("PORTFOLIO_ADMIN_SESSION");
 }
 
 // Validation schemas
@@ -218,7 +192,7 @@ export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   const clientIP = getClientIP(request);
-  const role = getRole(request);
+  const role = await getRole(request);
   if (!role) {
     return rejectUnauthorized(clientIP);
   }
@@ -229,7 +203,7 @@ export async function GET(
   }
 
   // Create admin context
-  const context = createAdminContext(request);
+  const context = createAdminContext(request, role);
 
   const { searchParams } = new URL(request.url);
   const action = searchParams.get("action");
@@ -242,15 +216,10 @@ export async function GET(
   try {
     switch (action) {
       case "stats": {
+        // No session cookie here: only /api/admin/session signs in, so a
+        // Bearer token never quietly turns into a browser session.
         const stats = await getBlogAdminStats(context);
-        const response = NextResponse.json({ success: true, data: stats });
-
-        // Set session cookie on successful authentication
-        if (!request.cookies.get("PORTFOLIO_ADMIN_SESSION")) {
-          setAdminSessionCookie(response);
-        }
-
-        return response;
+        return NextResponse.json({ success: true, data: stats });
       }
 
       case "list": {
@@ -342,7 +311,7 @@ export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<BlogAdminResponse | ApiErrorResponse>> {
   const clientIP = getClientIP(request);
-  const role = getRole(request);
+  const role = await getRole(request);
   if (!role) {
     return rejectUnauthorized(clientIP);
   }
@@ -353,7 +322,7 @@ export async function POST(
   }
 
   // Create admin context
-  const context = createAdminContext(request);
+  const context = createAdminContext(request, role);
 
   try {
     const contentType = request.headers.get("content-type");
@@ -531,11 +500,12 @@ export async function POST(
       }
 
       case "logout": {
+        await revokeAdminSessions();
         const response = NextResponse.json({
           success: true,
           message: "Logged out successfully",
         });
-        clearAdminSessionCookie(response, request);
+        clearAdminSessionCookie(response);
         return response;
       }
 
@@ -543,6 +513,13 @@ export async function POST(
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
+    // e.g. content under the minimum once the write-time sanitizer stripped it
+    if (error instanceof BlogValidationError) {
+      return NextResponse.json(
+        { error: "Validation failed", details: error.errors },
+        { status: 400 },
+      );
+    }
     console.error("Blog Admin API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

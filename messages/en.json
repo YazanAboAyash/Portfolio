@@ -605,7 +605,7 @@
     "suggestions": {
       "label": "Try asking",
       "projects": "What has Yazan built recently?",
-      "stack": "Which tech stack does he work with?",
+      "blog": "Take me to the blog",
       "availability": "Is he open to new projects?",
       "site": "How was this website built?"
     },

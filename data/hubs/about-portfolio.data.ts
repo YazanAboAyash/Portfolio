@@ -28,12 +28,26 @@ export const ABOUT_PORTFOLIO_METADATA = {
   ],
 } as const;
 
+export const ABOUT_PORTFOLIO_DOCS_URL = "https://docs.coldbydefault.com/";
+
 export const ABOUT_PORTFOLIO_CONTENT = {
-  title: "About this site",
-  lead: "The technology and principles behind the ColdByDefault portfolio.",
+  eyebrow: "About this site",
+  title: "ColdByDefault",
+  titleAccent: "under the hood.",
   languageNotice: "Written in English",
   introduction:
     "This is a working portfolio, not a template: a place to show the projects, explain the thinking behind them, and make the underlying information useful to both people and tools.",
+  stackAction: "Explore the stack",
+  docsAction: "Read the docs",
+  statLabels: {
+    next: "Next.js",
+    locales: "Locales",
+    tools: "MCP tools",
+  },
+  closingEyebrow: "The short version",
+  closingTitle: "Built to be visited.",
+  closingAccent: "Engineered to be trusted.",
+  closingAction: "Back to the portfolio",
   stackTitle: "At a glance",
   stackLead:
     "A server-first Next.js application, with a deliberately small client surface where interaction adds value.",
@@ -63,7 +77,7 @@ export const ABOUT_PORTFOLIO_CONTENT = {
       icon: LockKeyhole,
       title: "Privacy is part of the design",
       description:
-        "The site avoids invasive tracking. Optional chatbot logging requires explicit consent, and public APIs expose only intentionally selected information.",
+        "The site avoids invasive tracking. Optional chatbot logging requires explicit consent, visitor feedback keeps only a keyed hash of the IP address, and public APIs expose only intentionally selected information.",
     },
   ],
 } as const;
@@ -87,12 +101,12 @@ export const ABOUT_PORTFOLIO_STACK = [
   {
     icon: Database,
     value: "Prisma + Neon",
-    label: "PostgreSQL for the blog and consented chat logs",
+    label: "PostgreSQL and pgvector for the blog, feedback, chat logs, and search",
   },
   {
     icon: Bot,
     value: "AI SDK + MCP",
-    label: "Streaming assistant and public read-only tools",
+    label: "A streaming assistant with retrieval, plus public read-only tools",
   },
   {
     icon: Globe2,
@@ -110,7 +124,8 @@ export const ABOUT_PORTFOLIO_PRACTICES = [
     points: [
       "Validated input and request-size limits on API routes",
       "Rate limiting for AI, MCP, and administrative endpoints",
-      "Stateless HMAC-signed admin sessions and independent API authorization",
+      "HMAC-signed admin sessions that a single logout revokes on every device",
+      "Visitor feedback screened by moderation, then approved by hand",
     ],
   },
   {
@@ -122,13 +137,14 @@ export const ABOUT_PORTFOLIO_PRACTICES = [
       "TypeScript strict mode and ESLint across the application",
       "Playwright end-to-end tests with axe accessibility assertions",
       "CodeQL and dependency review in GitHub Actions, with Vercel deployment",
+      "A Docker Compose stack that runs the production build against its own database",
     ],
   },
 ] as const;
 
 export const ABOUT_PORTFOLIO_LINKS = [
   {
-    href: "https://docs.coldbydefault.com/",
+    href: ABOUT_PORTFOLIO_DOCS_URL,
     label: "Technical documentation",
     description: "Generated API and component reference material.",
     external: true,

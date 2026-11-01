@@ -605,7 +605,7 @@
     "suggestions": {
       "label": "Prueba a preguntar",
       "projects": "¿Qué ha creado Yazan recientemente?",
-      "stack": "¿Con qué stack tecnológico trabaja?",
+      "blog": "Llévame al blog",
       "availability": "¿Está disponible para nuevos proyectos?",
       "site": "¿Cómo se creó este sitio web?"
     },

@@ -11,6 +11,18 @@ import { RateLimiter } from "@/lib/security";
 // Rate limiter for admin operations
 const adminRateLimiter = new RateLimiter(60000, 100);
 
+/**
+ * Blog data that failed validation. Its own class so the route answers 400
+ * with these messages instead of a 500; they're our own strings, never the
+ * submitted content.
+ */
+export class BlogValidationError extends Error {
+  constructor(readonly errors: string[]) {
+    super(`Validation errors: ${errors.join(", ")}`);
+    this.name = "BlogValidationError";
+  }
+}
+
 // Authentication context interface
 interface AdminContext {
   clientIP: string;

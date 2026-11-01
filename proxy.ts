@@ -6,67 +6,10 @@
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createHmac, timingSafeEqual } from "crypto";
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/data/configs/i18n";
+import { contentSecurityPolicy } from "@/lib/csp";
 
 const supportedLocales: readonly string[] = SUPPORTED_LOCALES;
-
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
-const SESSION_DURATION = 8 * 60 * 60 * 1000; // 8 hours
-
-function signToken(payload: string): string {
-  return createHmac("sha256", ADMIN_TOKEN || "")
-    .update(payload)
-    .digest("hex");
-}
-
-export function hasValidAdminSession(request: NextRequest): boolean {
-  if (!ADMIN_TOKEN) return false;
-
-  const sessionCookie = request.cookies.get("PORTFOLIO_ADMIN_SESSION");
-  if (!sessionCookie?.value) return false;
-
-  const parts = sessionCookie.value.split(".");
-  if (parts.length !== 3) return false;
-
-  const [sessionId, expiresAtStr, sig] = parts;
-  if (!sessionId || !expiresAtStr || !sig) return false;
-  if (!/^[a-f0-9]{64}$/.test(sessionId) || !/^[a-f0-9]{64}$/.test(sig)) return false;
-  if (!/^\d+$/.test(expiresAtStr)) return false;
-
-  // Verify HMAC signature
-  const payload = `${sessionId}.${expiresAtStr}`;
-  const expectedSig = signToken(payload);
-  const sigBuf = Buffer.from(sig, "hex");
-  const expectedBuf = Buffer.from(expectedSig, "hex");
-  if (sigBuf.length !== expectedBuf.length) return false;
-  if (!timingSafeEqual(sigBuf, expectedBuf)) return false;
-
-  // Check expiration
-  const expiresAt = Number(expiresAtStr);
-  if (!Number.isSafeInteger(expiresAt) || Date.now() >= expiresAt) return false;
-
-  return true;
-}
-
-export function createAdminSession(): string {
-  const randomBytes = new Uint8Array(32);
-  crypto.getRandomValues(randomBytes);
-  const sessionId = Array.from(randomBytes)
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-
-  const expiresAt = Date.now() + SESSION_DURATION;
-  const payload = `${sessionId}.${expiresAt}`;
-  const sig = signToken(payload);
-
-  return `${payload}.${sig}`;
-}
-
-export function invalidateAdminSession(_sessionId: string): void {
-  // Stateless tokens cannot be server-side invalidated.
-  // Logout is handled by deleting the session cookie in the API route.
-}
 
 /**
  * Handle automatic locale detection based on browser language
@@ -75,7 +18,10 @@ export function invalidateAdminSession(_sessionId: string): void {
  * Note: PORTFOLIOVERSIONLATEST_BROWSER_LANG is informational only (used by language-switcher
  * and locale-auto-detect components). It should NOT gate the locale detection bypass.
  */
-function handleLocaleDetection(request: NextRequest): NextResponse | null {
+function handleLocaleDetection(
+  request: NextRequest,
+  requestHeaders: Headers,
+): NextResponse | null {
   // Check if locale cookie already exists - this is the only required check
   const existingLocale = request.cookies.get(
     "PORTFOLIOVERSIONLATEST_LOCALE",
@@ -93,7 +39,7 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
     // No Accept-Language header (privacy mode / stripped by browser)
     // Fallback to the default locale. Client-side LocaleAutoDetect component
     // will correct this using navigator.language if needed.
-    const response = NextResponse.next();
+    const response = NextResponse.next({ request: { headers: requestHeaders } });
     response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", DEFAULT_LOCALE, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365, // 1 year
@@ -139,7 +85,7 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
   }
 
   // Set cookies and continue
-  const response = NextResponse.next();
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
   response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", detectedLocale, {
     path: "/",
     maxAge: 60 * 60 * 24 * 365, // 1 year
@@ -177,13 +123,16 @@ export function proxy(request: NextRequest) {
     return pathname === route || pathname.startsWith(`${route}/`);
   });
 
-  // Only redirect /de routes (legacy German locale routes)
-  if (pathname.startsWith("/de")) {
-    const newPath = pathname.replace(/^\/de/, "");
-    const redirectPath = newPath === "" ? "/" : newPath;
+  // Only redirect /de routes (legacy German locale routes). The trailing slash
+  // matters: a bare prefix match lets /dehttps:/evil.com strip down to an
+  // absolute URL. Only the pathname of a clone is set, so the scheme and host
+  // can never change.
+  if (pathname === "/de" || pathname.startsWith("/de/")) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = pathname.slice("/de".length) || "/";
 
     return NextResponse.redirect(
-      new URL(redirectPath, request.url),
+      redirectUrl,
       { status: 301 }, // Permanent redirect for SEO
     );
   }
@@ -199,20 +148,27 @@ export function proxy(request: NextRequest) {
       locale &&
       ["es", "fr", "sv", "it", "pt", "ru", "ja", "ko", "zh"].includes(locale)
     ) {
-      const newPath = pathname.replace(/^\/[a-z]{2}/, "");
-      const redirectPath = newPath === "" ? "/" : newPath;
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = match[2] ?? "/";
 
-      return NextResponse.redirect(new URL(redirectPath, request.url), {
-        status: 301,
-      });
+      return NextResponse.redirect(redirectUrl, { status: 301 });
     }
   }
 
-  // Handle automatic locale detection for first-time visitors
-  const response = handleLocaleDetection(request);
-  if (response) return response;
+  // A fresh nonce per page view. Next reads it from the request's CSP header
+  // and puts it on its own scripts; the layout reads `x-nonce` for next-themes.
+  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+  const csp = contentSecurityPolicy(nonce);
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("Content-Security-Policy", csp);
 
-  return NextResponse.next();
+  // Handle automatic locale detection for first-time visitors
+  const response =
+    handleLocaleDetection(request, requestHeaders) ??
+    NextResponse.next({ request: { headers: requestHeaders } });
+  response.headers.set("Content-Security-Policy", csp);
+  return response;
 }
 
 export const config = {

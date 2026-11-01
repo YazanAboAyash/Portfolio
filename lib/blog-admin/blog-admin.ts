@@ -15,6 +15,8 @@ import type { BlogAdminStats } from "@/types/main/admin";
 import { BlogAdminService } from "@/lib/blog-admin/BlogAdminService";
 import type { AdminContext } from "@/lib/blog-admin/BlogValidationService";
 
+export { BlogValidationError } from "@/lib/blog-admin/BlogValidationService";
+
 // Export all functions using the service layer while maintaining the same API
 
 /**

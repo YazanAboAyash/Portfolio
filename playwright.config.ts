@@ -29,6 +29,9 @@ export default defineConfig({
           url: baseURL,
           reuseExistingServer: !process.env.CI,
           timeout: 120_000,
+          // Tests pick their own X-Forwarded-For so a lockout test can't lock
+          // out the others; see getClientIP in lib/security.ts.
+          env: { TRUST_PROXY_HEADERS: "true" },
         },
       }),
 });

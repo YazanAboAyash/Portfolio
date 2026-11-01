@@ -72,12 +72,13 @@ scripts/                    check-i18n-keys.mjs
 
 ## Authentication
 
-- `proxy.ts` only does locale detection and redirects. It is **not** an auth gate; it just exports the session helpers.
-- Cookie name: `PORTFOLIO_ADMIN_SESSION`, format `{randomId}.{expiresAt}.{hmacSig}`, 8h, signed with `ADMIN_TOKEN`
-- Functions: `createAdminSession()` and `hasValidAdminSession(request)` in `proxy.ts`
-- `invalidateAdminSession()` is a no-op — logout is handled by cookie deletion
+- `proxy.ts` only does locale detection, redirects and the page CSP. It is **not** an auth gate.
+- Session helpers live in `lib/admin-session.ts`: `hasValidAdminSession(request)` (async), `setAdminSessionCookie()`, `clearAdminSessionCookie()`, `revokeAdminSessions()`
+- Cookie name: `PORTFOLIO_ADMIN_SESSION`, format `{randomId}.{issuedAt}.{hmacSig}` (HMAC over `v2.{randomId}.{issuedAt}`), 2h, signed with `ADMIN_TOKEN`
+- Logout is real: it sets the single `AdminAuthState` row's `sessionsValidAfter` to now, which ends every session issued before it on every device. Only a valid session can revoke; anyone else just has their cookie cleared. A failed DB read rejects the cookie (fails closed).
+- Only `POST /api/admin/session` creates a session; Bearer requests never set a cookie
 - **No IP binding** — EU privacy compliance
-- `app/admin/layout.tsx` wraps every admin page in `AdminWorkspace`, which logs in via `app/api/admin/session` (GET status, POST `{ token }` sets the cookie, DELETE clears it; POST/DELETE require a same-origin `Origin`)
+- `app/admin/layout.tsx` wraps every admin page in `AdminWorkspace`, which logs in via `app/api/admin/session` (GET status, POST `{ token }` sets the cookie, DELETE revokes all sessions and clears it; POST/DELETE require a same-origin `Origin`)
 - Every route under `app/api/admin/**` checks auth itself: an `Authorization: Bearer` token, or the session cookie **only when that header is absent** (the cookie always means the `admin` role). The admin hooks rely on the cookie.
 - `/api/admin/blog` has two token roles: `admin` (`ADMIN_TOKEN`, full CRUD) and `agent` (`BLOG_AGENT_TOKEN`, list/categories reads and draft creation only). Other admin routes accept the admin token only. Failed auth is throttled by `adminAuthLimiter`.
 

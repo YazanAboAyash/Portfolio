@@ -9,8 +9,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import type { ChatLogsResponse, ChatSessionLog } from "@/types/configs/chatbot";
 import { prisma } from "@/lib/configs/prisma";
-import { adminAuthLimiter, getClientIP } from "@/lib/security";
-import { hasValidAdminSession } from "@/proxy";
+import { adminAuthLimiter, getClientIP, tokenMatches } from "@/lib/security";
+import { hasValidAdminSession } from "@/lib/admin-session";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
@@ -30,24 +30,18 @@ function rejectUnauthorized(request: NextRequest): NextResponse<{
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }
 
-function isAuthorized(request: NextRequest): boolean {
+async function isAuthorized(request: NextRequest): Promise<boolean> {
   if (!ADMIN_TOKEN) return false;
 
   const authHeader = request.headers.get("authorization");
   if (!authHeader) return hasValidAdminSession(request);
+  // Locked out: don't evaluate the guess at all (rejectUnauthorized → 429)
+  if (adminAuthLimiter.isLimited(getClientIP(request))) return false;
 
   const token = authHeader.startsWith("Bearer ")
     ? authHeader.substring(7)
     : authHeader;
-
-  if (token.length !== ADMIN_TOKEN.length) return false;
-
-  let isEqual = true;
-  for (let i = 0; i < token.length; i++) {
-    if (token[i] !== ADMIN_TOKEN[i]) isEqual = false;
-  }
-
-  return isEqual;
+  return tokenMatches(token, ADMIN_TOKEN);
 }
 
 // Validation schema for query params
@@ -71,7 +65,7 @@ const chatLogsFilterSchema = z.object({
 export async function GET(
   request: NextRequest,
 ): Promise<NextResponse<ChatLogsResponse | { error: string }>> {
-  if (!isAuthorized(request)) {
+  if (!(await isAuthorized(request))) {
     return rejectUnauthorized(request);
   }
 
@@ -237,7 +231,7 @@ export async function GET(
 export async function DELETE(
   request: NextRequest,
 ): Promise<NextResponse<{ success: boolean } | { error: string }>> {
-  if (!isAuthorized(request)) {
+  if (!(await isAuthorized(request))) {
     return rejectUnauthorized(request);
   }
 
