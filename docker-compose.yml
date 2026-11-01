@@ -7,7 +7,8 @@ x-local-db-url: &local-db-url postgresql://portfolio:portfolio@db:5432/portfolio
 
 services:
   db:
-    image: postgres:18-alpine
+    # Postgres 18 with pgvector, for Reem's retrieval index (knowledge_chunks)
+    image: pgvector/pgvector:pg18
     environment:
       POSTGRES_USER: portfolio
       POSTGRES_PASSWORD: portfolio

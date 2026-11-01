@@ -622,6 +622,7 @@
       "get_profile": "Perfil de GitHub",
       "get_stats": "Estadísticas de GitHub",
       "get_repositories": "Repositorios de GitHub",
+      "search_knowledge": "Base de conocimiento",
       "actionsLabel": "Hecho en el sitio",
       "actionFallback": "Acción en el sitio",
       "navigate": "Abierto: {page}",

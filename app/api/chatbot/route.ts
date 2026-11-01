@@ -36,6 +36,12 @@ import {
 import { prisma } from "@/lib/configs/prisma";
 import { toGitHubErrorCode } from "@/lib/github/service";
 import { portfolioTools } from "@/lib/mcp/portfolio-tools";
+import { getEmbeddingModelId } from "@/lib/rag/embeddings";
+import { searchKnowledge } from "@/lib/rag/search";
+import {
+  SEARCH_KNOWLEDGE_DESCRIPTION,
+  SEARCH_KNOWLEDGE_TOOL_NAME,
+} from "@/data/configs/rag";
 import { SUPPORTED_LOCALES } from "@/data/configs/i18n";
 import { HOME_SECTION_IDS } from "@/data/configs/search";
 import {
@@ -411,7 +417,33 @@ const siteActionTools: ToolSet = Object.fromEntries(
   ]),
 );
 
-const reemTools: ToolSet = { ...portfolioReadTools, ...siteActionTools };
+/**
+ * Retrieval over blog posts, `data/` and the notes in `data/knowledge`
+ * (lib/rag). The only tool here that takes free text, capped like a chat
+ * message. Registered only when an embedding model is configured.
+ */
+const knowledgeTools: ToolSet = getEmbeddingModelId()
+  ? {
+      [SEARCH_KNOWLEDGE_TOOL_NAME]: tool({
+        description: SEARCH_KNOWLEDGE_DESCRIPTION,
+        inputSchema: z.object({ query: z.string().trim().min(2).max(200) }),
+        execute: async ({ query }) => {
+          try {
+            return { results: await searchKnowledge(query) };
+          } catch (error) {
+            diagnostic("warn", `tool ${SEARCH_KNOWLEDGE_TOOL_NAME} failed`, error);
+            return { error: "SEARCH_UNAVAILABLE" };
+          }
+        },
+      }),
+    }
+  : {};
+
+const reemTools: ToolSet = {
+  ...portfolioReadTools,
+  ...knowledgeTools,
+  ...siteActionTools,
+};
 
 /**
  * Log chat session and messages to database (if logging is enabled AND user consented)

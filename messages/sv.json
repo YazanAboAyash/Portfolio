@@ -622,6 +622,7 @@
       "get_profile": "GitHub-profil",
       "get_stats": "GitHub-statistik",
       "get_repositories": "GitHub-repon",
+      "search_knowledge": "Kunskapsbas",
       "actionsLabel": "Gjort på sidan",
       "actionFallback": "Åtgärd på sidan",
       "navigate": "Öppnade {page}",
