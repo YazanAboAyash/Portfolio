@@ -1,9 +1,5 @@
 # Yazan's skills and experience
 
-## Experience and training
-
-Yazan has 4+ years of hands-on development experience. He trained at avarno GmbH on AI-powered solutions and is an IHK-certified Fachinformatiker for application development. His certifications include Python (PCEP), EU AI Act training, and the IHK Fachinformatiker qualification.
-
 ## Recent focus
 
 Most of his hands-on work over the last few months: RAG systems and chatbots that cite their sources (text and video), context engineering and prompt engineering, and Azure — Azure AI, Microsoft Entra ID and Azure Key Vault.

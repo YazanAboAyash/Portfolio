@@ -31,7 +31,7 @@ export const ragConfig = {
 export const SEARCH_KNOWLEDGE_TOOL_NAME = "search_knowledge";
 
 export const SEARCH_KNOWLEDGE_DESCRIPTION =
-  "Semantic search over Yazan's published blog posts, his notes (skills, experience, background) and this site's content (about, projects, products, capabilities, certifications, how the site is built). Pass a short, specific query in English or the visitor's language. Returns the best-matching passages with their title and URL.";
+  "Semantic search over Yazan's published blog posts, his notes (skills, career, how he works, FAQ, interests outside work) and this site's content (about, projects, products, capabilities, certifications, how the site is built). Pass a short, specific query in English or the visitor's language. Returns the best-matching passages with their title and URL.";
 
 /** The page each static source links to, so Reem can cite where a fact lives. */
 export const RAG_SOURCE_URLS = {
