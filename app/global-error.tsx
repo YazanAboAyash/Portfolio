@@ -7,6 +7,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { AlertCircle, RefreshCw, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -42,13 +43,11 @@ function ErrorContent({ reset }: { reset: () => void }) {
               <RefreshCw className="w-4 h-4 mr-2" />
               {t("tryAgain")}
             </Button>
-            <Button
-              variant="outline"
-              onClick={() => (window.location.href = "/")}
-              className="flex-1"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              {t("goHome")}
+            <Button variant="outline" asChild className="flex-1">
+              <Link href="/">
+                <Home className="w-4 h-4 mr-2" />
+                {t("goHome")}
+              </Link>
             </Button>
           </div>
           <div className="text-center">
