@@ -8,8 +8,8 @@ import { ragConfig } from "@/data/configs/rag";
 
 /**
  * Splits Markdown into overlapping chunks of about `ragConfig.chunkSize`
- * characters. Blog content may carry raw HTML (rendered with rehype-raw), so
- * tags are stripped first. Each chunk starts with the document title and its
+ * characters. Blog content may carry raw HTML (older posts, or anything that
+ * got past the write-time sanitizer), so tags are stripped first. Each chunk starts with the document title and its
  * nearest heading, so a chunk still makes sense when retrieved on its own.
  */
 export function chunkMarkdown(title: string, markdown: string): string[] {
