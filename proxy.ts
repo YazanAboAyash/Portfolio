@@ -177,13 +177,16 @@ export function proxy(request: NextRequest) {
     return pathname === route || pathname.startsWith(`${route}/`);
   });
 
-  // Only redirect /de routes (legacy German locale routes)
-  if (pathname.startsWith("/de")) {
-    const newPath = pathname.replace(/^\/de/, "");
-    const redirectPath = newPath === "" ? "/" : newPath;
+  // Only redirect /de routes (legacy German locale routes). The trailing slash
+  // matters: a bare prefix match lets /dehttps:/evil.com strip down to an
+  // absolute URL. Only the pathname of a clone is set, so the scheme and host
+  // can never change.
+  if (pathname === "/de" || pathname.startsWith("/de/")) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = pathname.slice("/de".length) || "/";
 
     return NextResponse.redirect(
-      new URL(redirectPath, request.url),
+      redirectUrl,
       { status: 301 }, // Permanent redirect for SEO
     );
   }
@@ -199,12 +202,10 @@ export function proxy(request: NextRequest) {
       locale &&
       ["es", "fr", "sv", "it", "pt", "ru", "ja", "ko", "zh"].includes(locale)
     ) {
-      const newPath = pathname.replace(/^\/[a-z]{2}/, "");
-      const redirectPath = newPath === "" ? "/" : newPath;
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = match[2] ?? "/";
 
-      return NextResponse.redirect(new URL(redirectPath, request.url), {
-        status: 301,
-      });
+      return NextResponse.redirect(redirectUrl, { status: 301 });
     }
   }
 
