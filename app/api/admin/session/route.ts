@@ -4,7 +4,6 @@
  * @version 7.x.x
  */
 
-import { timingSafeEqual } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import {
   clearAdminSessionCookie,
@@ -12,7 +11,7 @@ import {
   revokeAdminSessions,
   setAdminSessionCookie,
 } from "@/lib/admin-session";
-import { adminAuthLimiter, getClientIP } from "@/lib/security";
+import { adminAuthLimiter, getClientIP, tokenMatches } from "@/lib/security";
 
 export async function GET(request: NextRequest) {
   return NextResponse.json(
@@ -28,29 +27,22 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json({ authenticated: false }, { status: 403 });
   }
+  // Locked out: answer before the guess is evaluated, so the lockout really
+  // stops guessing rather than only hiding which guesses were wrong.
+  const clientIP = getClientIP(request);
+  if (adminAuthLimiter.isLimited(clientIP)) {
+    return NextResponse.json({ authenticated: false }, { status: 429 });
+  }
   const body: unknown = await request.json().catch(() => null);
   const token =
     body && typeof body === "object" && "token" in body ? body.token : null;
-  const expected = process.env.ADMIN_TOKEN;
-  if (typeof token !== "string" || !expected) {
-    return NextResponse.json(
-      { authenticated: false },
-      {
-        status: adminAuthLimiter.isAllowed(getClientIP(request)) ? 401 : 429,
-      },
-    );
-  }
-  const actualBytes = Buffer.from(token);
-  const expectedBytes = Buffer.from(expected);
   if (
-    actualBytes.length !== expectedBytes.length ||
-    !timingSafeEqual(actualBytes, expectedBytes)
+    typeof token !== "string" ||
+    !tokenMatches(token, process.env.ADMIN_TOKEN)
   ) {
     return NextResponse.json(
       { authenticated: false },
-      {
-        status: adminAuthLimiter.isAllowed(getClientIP(request)) ? 401 : 429,
-      },
+      { status: adminAuthLimiter.isAllowed(clientIP) ? 401 : 429 },
     );
   }
 

@@ -4,6 +4,7 @@
  * @version 7.x.x
  */
 
+import { timingSafeEqual } from "node:crypto";
 import type { NextRequest } from "next/server";
 
 /**
@@ -43,6 +44,15 @@ export class RateLimiter {
     this.requests.set(identifier, validRequests);
 
     return true;
+  }
+
+  /** Whether `identifier` is over the limit, without recording a request. */
+  isLimited(identifier: string): boolean {
+    const now = Date.now();
+    const recent = (this.requests.get(identifier) ?? []).filter(
+      (time) => now - time < this.windowMs,
+    );
+    return recent.length >= this.maxRequests;
   }
 
   private cleanup(): void {
@@ -89,17 +99,33 @@ export function getClientIP(request: NextRequest): string {
 }
 
 /**
- * Throttles failed admin credential attempts on `app/api/admin/**`.
+ * Throttles admin token guessing on `app/api/admin/**`.
  *
- * Only rejected attempts are recorded, so a valid token is never locked out
- * and an attacker cannot exhaust the limit to deny the owner access. Must be
- * consulted on the rejection path itself — checking it after an early 401
- * return leaves token guessing unthrottled.
+ * Check `isLimited()` *before* comparing a presented token: a locked-out IP
+ * gets 429 without its guess being evaluated, so the lockout really stops
+ * guessing instead of only changing the error code on wrong guesses. Record a
+ * failure with `isAllowed()` only after a mismatch. Session cookies skip the
+ * pre-check: they're HMAC-signed, not guessable, so the owner stays signed in
+ * even if someone else shares their IP.
  *
  * State is in-memory and per-instance, so on serverless this is best-effort
  * mitigation rather than a hard guarantee.
  */
 export const adminAuthLimiter = new RateLimiter(15 * 60 * 1000, 5);
+
+/** Constant-time comparison of a presented token with the expected secret. */
+export function tokenMatches(
+  actual: string,
+  expected: string | undefined,
+): boolean {
+  if (!expected) return false;
+  const actualBytes = Buffer.from(actual);
+  const expectedBytes = Buffer.from(expected);
+  return (
+    actualBytes.length === expectedBytes.length &&
+    timingSafeEqual(actualBytes, expectedBytes)
+  );
+}
 
 /**
  * Enhanced input sanitization for contact forms

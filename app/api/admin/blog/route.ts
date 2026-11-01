@@ -34,7 +34,7 @@ import {
   hasValidAdminSession,
   revokeAdminSessions,
 } from "@/lib/admin-session";
-import { adminAuthLimiter, getClientIP } from "@/lib/security";
+import { adminAuthLimiter, getClientIP, tokenMatches } from "@/lib/security";
 
 // Enhanced authentication
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
@@ -59,25 +59,14 @@ function rejectUnauthorized(clientIP: string): NextResponse<ApiErrorResponse> {
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }
 
-function tokenMatches(token: string, expected: string | undefined): boolean {
-  if (!expected || token.length !== expected.length) {
-    return false;
-  }
-
-  let isEqual = true;
-  for (let i = 0; i < token.length; i++) {
-    if (token[i] !== expected[i]) {
-      isEqual = false;
-    }
-  }
-
-  return isEqual;
-}
-
 async function getRole(request: NextRequest): Promise<AdminRole | null> {
   const authHeader = request.headers.get("authorization");
   if (!authHeader) {
     return (await hasValidAdminSession(request)) ? "admin" : null;
+  }
+  // Locked out: don't evaluate the guess at all (rejectUnauthorized → 429)
+  if (adminAuthLimiter.isLimited(getClientIP(request))) {
+    return null;
   }
 
   const token = authHeader.startsWith("Bearer ")

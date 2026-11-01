@@ -7,7 +7,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
-import { timingSafeEqual } from "node:crypto";
 import { z } from "zod";
 import type {
   AdminFeedbackEntry,
@@ -22,7 +21,7 @@ import {
   FEEDBACK_WALL_CACHE_TAG,
 } from "@/data/configs/feedback";
 import { prisma } from "@/lib/configs/prisma";
-import { adminAuthLimiter, getClientIP } from "@/lib/security";
+import { adminAuthLimiter, getClientIP, tokenMatches } from "@/lib/security";
 import { hasValidAdminSession } from "@/lib/admin-session";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
@@ -52,14 +51,13 @@ async function isAuthorized(request: NextRequest): Promise<boolean> {
 
   const authHeader = request.headers.get("authorization");
   if (!authHeader) return hasValidAdminSession(request);
+  // Locked out: don't evaluate the guess at all (rejectUnauthorized → 429)
+  if (adminAuthLimiter.isLimited(getClientIP(request))) return false;
 
   const token = authHeader.startsWith("Bearer ")
     ? authHeader.substring(7)
     : authHeader;
-
-  const actual = Buffer.from(token);
-  const expected = Buffer.from(ADMIN_TOKEN);
-  return actual.length === expected.length && timingSafeEqual(actual, expected);
+  return tokenMatches(token, ADMIN_TOKEN);
 }
 
 const listFilterSchema = z.object({
