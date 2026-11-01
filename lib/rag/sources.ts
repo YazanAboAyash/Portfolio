@@ -6,7 +6,7 @@
 
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
-import { RAG_SOURCE_URLS, ragConfig } from "@/data/configs/rag";
+import { RAG_SOURCE_URLS } from "@/data/configs/rag";
 import {
   ABOUT_PORTFOLIO_CONTENT,
   ABOUT_PORTFOLIO_LINKS,
@@ -217,7 +217,10 @@ function capabilityDocuments(): KnowledgeDocument[] {
 
 /** `data/knowledge/*.md`, titled by their first `# ` heading. README.md documents the folder. */
 async function noteDocuments(): Promise<KnowledgeDocument[]> {
-  const dir = path.join(process.cwd(), ragConfig.notesDir);
+  // A literal path, not a config value: output file tracing has to resolve it,
+  // or it traces the whole project (.git, .env*, .next/lock) into every route
+  // that imports the indexer, and the Vercel deploy fails.
+  const dir = path.join(process.cwd(), "data/knowledge");
   const files = (await readdir(dir)).filter(
     (file) => file.endsWith(".md") && file.toLowerCase() !== "readme.md",
   );

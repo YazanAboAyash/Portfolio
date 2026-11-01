@@ -23,8 +23,6 @@ export const ragConfig = {
   minScore: 0.25,
   /** Reciprocal rank fusion constant: higher flattens the gap between ranks. */
   rrfK: 60,
-  /** Folder of Markdown notes, relative to the project root. README.md is skipped. */
-  notesDir: "data/knowledge",
   siteUrl: "https://coldbydefault.com",
 } as const;
 
