@@ -1,12 +1,14 @@
 
 
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider        = "prisma-client"
+  output          = "../lib/generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider   = "postgresql"
+  extensions = [vector]
 }
 
 // Blog Models
@@ -66,6 +68,7 @@ model Blog {
   // Relations
   categoryId    String?
   category      BlogCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  knowledgeChunks KnowledgeChunk[]
 
   @@map("blogs")
   @@index([slug])
@@ -151,4 +154,63 @@ model ChatMessage {
   @@index([sessionId])
   @@index([timestamp])
   @@index([role])
+}
+
+// Visitor feedback. Shown on the home page only once approved by hand and only
+// with the sender's consent; the AI moderator can reject but never approve.
+model Feedback {
+  id               String    @id @default(cuid())
+  name             String?   // Optional display name
+  topic            String    // FEEDBACK_TOPICS in data/configs/feedback.ts
+  rating           Int?      // 1-5
+  message          String
+  locale           String
+
+  consentToPublish Boolean   @default(false)
+  status           String    @default("pending") // pending | approved | rejected
+
+  // Moderator output; aiVerdict is null when the moderator was unreachable
+  aiVerdict        String?   // approve | review | reject
+  aiReasons        String[]
+  aiFlaggedTerms   String[]  // Offending words as written in the name or message, for highlighting
+
+  // HMAC of the client IP (never the IP itself) and SHA-256 of the message,
+  // for the daily limit and duplicate check
+  ipHash           String
+  contentHash      String
+
+  createdAt        DateTime  @default(now())
+  reviewedAt       DateTime?
+
+  @@map("feedback")
+  @@index([status, consentToPublish, createdAt])
+  @@index([ipHash, createdAt])
+}
+
+// Reem's retrieval index (lib/rag). Blogs are embedded on every create and
+// update, drafts included; search only returns chunks of published blogs.
+// Static sources (data/, data/knowledge/*.md) are synced by `npm run rag:index`.
+model KnowledgeChunk {
+  id          String   @id @default(cuid())
+  sourceType  String   // blog | data | note (KnowledgeSourceType in types/configs/rag.ts)
+  sourceId    String   // Blog id, or a stable key such as "project:berichHub"
+  blogId      String?
+  title       String
+  url         String?
+  language    String   @default("en")
+  chunkIndex  Int
+  content     String
+  contentHash String   // SHA-256 of the whole source text, to skip unchanged sources
+  // Dimension of EMBEDDING_MODEL (text-embedding-3-large); a new model needs a re-index
+  embedding   Unsupported("vector(3072)")
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  blog        Blog?    @relation(fields: [blogId], references: [id], onDelete: Cascade)
+
+  @@map("knowledge_chunks")
+  @@unique([sourceId, chunkIndex])
+  @@index([blogId])
 }

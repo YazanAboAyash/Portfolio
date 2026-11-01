@@ -10,6 +10,7 @@ import { z } from "zod";
 import type { ChatLogsResponse, ChatSessionLog } from "@/types/configs/chatbot";
 import { prisma } from "@/lib/configs/prisma";
 import { adminAuthLimiter, getClientIP } from "@/lib/security";
+import { hasValidAdminSession } from "@/proxy";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
@@ -33,7 +34,7 @@ function isAuthorized(request: NextRequest): boolean {
   if (!ADMIN_TOKEN) return false;
 
   const authHeader = request.headers.get("authorization");
-  if (!authHeader) return false;
+  if (!authHeader) return hasValidAdminSession(request);
 
   const token = authHeader.startsWith("Bearer ")
     ? authHeader.substring(7)

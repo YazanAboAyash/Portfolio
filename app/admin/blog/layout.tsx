@@ -6,16 +6,12 @@
 
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Blog Admin - Portfolio",
-  description: "Blog management dashboard",
-  robots: "noindex, nofollow",
-};
+export const metadata: Metadata = { title: "Blog" };
 
 export default function AdminBlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="min-h-screen bg-background">{children}</div>;
+  return children;
 }

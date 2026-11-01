@@ -5,7 +5,8 @@
  */
 
 import Link from "next/link";
-import { ArrowUpRight, Check, ExternalLink, Github, Languages } from "lucide-react";
+import { ArrowUpRight, Check, ExternalLink, Languages } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import {
   ABOUT_PORTFOLIO_CONTENT,
   ABOUT_PORTFOLIO_LINKS,
@@ -150,7 +151,7 @@ export function AboutPortfolioPage() {
             // Compare the parsed hostname; a substring check would match any URL containing "github.com".
             const Icon = external
               ? new URL(href).hostname === "github.com"
-                ? Github
+                ? SiGithub
                 : ExternalLink
               : ArrowUpRight;
 

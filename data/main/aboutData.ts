@@ -52,7 +52,7 @@ export const aboutData: AboutData = {
     currentPosition: "Full-Stack Developer & AI Engineer",
     company: "Botgenossen GmbH, avarno GmbH",
     location: "Germany",
-    experience: "3+ years",
+    experience: "6 years of coding, about 1.5 years professionally",
   },
   mainStory:
     "I'm a full-stack developer and AI engineer, employed full-time at Botgenossen GmbH and Avarno GmbH. I build web applications end to end in Next.js, TypeScript and React — and the AI inside them: LLM features, retrieval (RAG) that answers from the right sources, agents that use tools safely, and MCP servers. IHK-certified Fachinformatiker for application development, with EU AI Act training.",

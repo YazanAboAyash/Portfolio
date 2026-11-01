@@ -4,6 +4,16 @@
  * @version 7.x.x
  */
 
+import type { ReactNode } from "react";
+
+export interface AdminWorkspaceProps {
+  children: ReactNode;
+}
+
+export interface AdminSessionResponse {
+  authenticated: boolean;
+}
+
 export interface AdminStats {
   totalSubmissions: number;
   last24h: number;

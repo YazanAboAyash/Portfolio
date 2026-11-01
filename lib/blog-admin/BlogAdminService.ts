@@ -4,6 +4,7 @@
  * @version 7.x.x
  */
 
+import { after } from "next/server";
 import type {
   Blog,
   CreateBlogRequest,
@@ -19,9 +20,24 @@ import {
 } from "@/lib/blog-admin/BlogValidationService";
 import { BlogUtilityService } from "@/lib/blog-admin/BlogUtilityService";
 import { BlogQueryService } from "@/lib/blog-admin/BlogQueryService";
+import { indexBlog } from "@/lib/rag/indexer";
 
 // Rate limiter for admin operations
 const adminRateLimiter = new RateLimiter(60000, 100);
+
+/**
+ * Embeds the post for Reem's search once the response has been sent. A failure
+ * never fails the save; the next `npm run rag:index` picks the post up.
+ */
+function scheduleBlogIndexing(blogId: string): void {
+  after(async () => {
+    try {
+      await indexBlog(blogId);
+    } catch (error) {
+      console.error(`[rag] indexing blog ${blogId} failed:`, error);
+    }
+  });
+}
 
 export class BlogAdminService {
   /**
@@ -71,7 +87,9 @@ export class BlogAdminService {
     }
 
     try {
-      return await BlogQueryService.createBlog(data);
+      const blog = await BlogQueryService.createBlog(data);
+      scheduleBlogIndexing(blog.id);
+      return blog;
     } catch (error) {
       BlogUtilityService.handleBlogError(error, "create blog");
     }
@@ -94,7 +112,9 @@ export class BlogAdminService {
     }
 
     try {
-      return await BlogQueryService.updateBlog(id, data);
+      const blog = await BlogQueryService.updateBlog(id, data);
+      scheduleBlogIndexing(blog.id);
+      return blog;
     } catch (error) {
       BlogUtilityService.handleBlogError(error, "update blog");
     }

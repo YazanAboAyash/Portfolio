@@ -46,6 +46,7 @@
     "aboutSite": "Om sajten",
     "projects": "Projekt",
     "mcp": "MCP",
+    "feedback": "Feedback",
     "technologies": "Teknologier",
     "certifications": "Certifieringar",
     "media": "Media",
@@ -89,6 +90,61 @@
         "subject": "Hej från coldbydefault.com",
         "body": "Hej Yazan,\n\n"
       }
+    }
+  },
+  "Feedback": {
+    "title": "Lämna feedback",
+    "lead": "Vill du säga något om mig eller den här webbplatsen? Både beröm och ärlig kritik är välkommet.",
+    "formLabel": "Feedbackformulär",
+    "topicLabel": "Feedback om",
+    "topics": {
+      "me": "Om Yazan",
+      "website": "Om webbplatsen"
+    },
+    "ratingLabel": "Betyg",
+    "rateValue": "{value} av 5 stjärnor",
+    "optional": "valfritt",
+    "nameLabel": "Namn",
+    "namePlaceholder": "Lämna tomt för att vara anonym",
+    "messageLabel": "Din feedback",
+    "messagePlaceholder": "Vad som stack ut, vad som kunde bli bättre…",
+    "count": "{count} / {max}",
+    "consentLabel": "Visa min feedback, och mitt namn om jag angett det, offentligt på webbplatsen när den har granskats.",
+    "moderationNote": "Varje inlägg kontrolleras av en AI-moderator och läses sedan av mig innan något publiceras. Länkar är inte tillåtna. Detaljer finns i integritetsmeddelandet.",
+    "submit": "Skicka feedback",
+    "sending": "Skickar…",
+    "success": {
+      "title": "Tack för din feedback!",
+      "description": "Jag läser varje inlägg. Om du godkände publicering visas det här när jag har godkänt det.",
+      "again": "Lämna mer feedback"
+    },
+    "filed": {
+      "title": "Oj. Meddelandet har kommit fram.",
+      "description": "Tack för att du delade dina känslor så … målande. Dina ord har behandlats med precis den omsorg de förtjänar.",
+      "signature": "— Reem"
+    },
+    "errors": {
+      "generic": "Kontrollera det här fältet.",
+      "nameLength": "Använd 2 till 40 tecken, eller lämna fältet tomt.",
+      "nameChars": "Endast bokstäver, mellanslag, punkter, apostrofer och bindestreck.",
+      "messageShort": "Skriv minst 10 tecken.",
+      "messageLong": "Håll dig under 600 tecken.",
+      "messageLinks": "Länkar är inte tillåtna i feedback."
+    },
+    "submitErrors": {
+      "INVALID_INPUT": "Något i formuläret är inte giltigt. Kontrollera det och försök igen.",
+      "RATE_LIMIT_EXCEEDED": "Det är mycket feedback på kort tid. Vänta några minuter.",
+      "DAILY_LIMIT": "Du har nått dagens gräns. Tack, och välkommen tillbaka i morgon.",
+      "DUPLICATE": "Du har redan skickat det här meddelandet.",
+      "SERVICE_UNAVAILABLE": "Feedback kan inte skickas just nu. Försök igen senare."
+    },
+    "wall": {
+      "title": "Vad besökarna säger",
+      "rating": "Betyg {value} av 5",
+      "anonymous": "Anonym",
+      "emptyTitle": "Ingen feedback än",
+      "emptyDescription": "Bli den första att lämna någon.",
+      "unavailable": "Feedbacken kunde inte laddas just nu."
     }
   },
   "Capabilities": {
@@ -291,7 +347,7 @@
     },
     "overview": {
       "title": "Översikt",
-      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. En funktion – AI-assistenten – överför uppgifter till en extern tjänsteleverantör, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
+      "description": "Den här webbplatsen är en personlig portfölj. Du kan besöka den utan att lämna några uppgifter om dig själv. Två funktioner – AI-assistenten och feedbackformuläret – överför uppgifter till en extern tjänsteleverantör, och prestandamätningen körs endast om du samtycker till den. Avsnitten nedan beskriver varje fall, ändamålet, den rättsliga grunden och hur länge något sparas.",
       "keyPoint": "Vad detta innebär i praktiken",
       "keyPointDescription": "Du kan läsa den här webbplatsen utan att identifiera dig. Det förekommer ingen reklam, ingen spårning mellan webbplatser och ingen profilering. Samtidigt är din IP-adress och allt du skriver in i assistenten personuppgifter – avsnitten nedan förklarar exakt vad som händer med dem, på vilken rättslig grund och hur länge något sparas."
     },
@@ -358,6 +414,17 @@
       "aiNoticeDescription": "Du interagerar med ett AI-system, inte med mig personligen. Ange inte lösenord, betaluppgifter, hälsouppgifter eller annat som du inte vill ska behandlas av en amerikansk AI-leverantör.",
       "legalBasis": "Rättslig grund: art. 6.1 b och f GDPR för att producera det svar du bett om; art. 6.1 a GDPR – ditt samtycke – för att lagra konversationen."
     },
+    "feedback": {
+      "title": "Feedback från besökare",
+      "description": "Du kan lämna feedback på startsidan. Det är helt frivilligt.",
+      "storedTitle": "Vad som sparas",
+      "storedDescription": "Ämnet, ditt valfria betyg och namn, ditt meddelande, webbplatsens språk, om du godkände publicering samt resultatet av modereringen. Din IP-adress sparas inte: endast ett nyckelbaserat, envägs hashvärde sparas, så att antalet inlägg per dag kan begränsas och dubbletter kännas igen.",
+      "moderationTitle": "Automatiserad moderering",
+      "moderationDescription": "Innan det sparas skickas ditt namn och meddelande till OpenAI för att kontrolleras för förolämpningar, svordomar, reklam, personuppgifter och annat innehåll som inte får publiceras. Förfrågningarna är märkta så att OpenAI varken sparar dem eller använder dem för träning. Kontrollen publicerar aldrig något på egen hand; den kan bara avvisa ett inlägg.",
+      "publicationTitle": "Publicering",
+      "publicationDescription": "Feedback visas offentligt endast om du kryssat i rutan för publicering och jag har läst och godkänt den manuellt. Endast ämne, betyg, namn (om angivet), meddelande och datum visas. Du kan när som helst återkalla ditt samtycke genom att skriva till adressen ovan, så tar jag bort inlägget.",
+      "legalBasis": "Rättslig grund: art. 6.1 a GDPR – ditt samtycke – för att publicera din feedback; art. 6.1 f GDPR för att spara och moderera den och förhindra missbruk, där mitt berättigade intresse är en webbplats fri från spam och kränkande innehåll."
+    },
     "contact": {
       "title": "Kontakt via e-post",
       "description": "Kontaktknapparna på den här webbplatsen öppnar ditt eget e-postprogram med min adress ifylld; ett klick skickar ingenting till mig eller till någon tredje part. Om du sedan skriver till mig behandlar jag din e-postadress, ditt namn om du anger det och innehållet i ditt meddelande för att kunna besvara din förfrågan.",
@@ -373,7 +440,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Genererar AI-assistentens svar.",
+        "purpose": "Genererar AI-assistentens svar och kontrollerar besökarnas feedback innan den sparas.",
         "location": "USA."
       },
       "squarespace": {
@@ -395,6 +462,7 @@
       "serverLogs": "Drift- och anropsloggar sparas av Vercel under den tid som anges i deras egen lagringspolicy; jag för inga separata åtkomstloggar.",
       "chatSessions": "Min server behåller en assistentkonversation endast så länge det tar att besvara meddelandet. När svaret har skickats finns ingenting av utbytet kvar på servern, såvida du inte har samtyckt till lagring.",
       "chatRecords": "Konversationer som med ditt samtycke sparats i databasen raderas för närvarande manuellt vid genomgång, inte enligt ett fast automatiskt schema. Du kan när som helst begära radering genom att skriva till adressen ovan; jag gör det utan onödigt dröjsmål.",
+      "feedback": "Feedback sparas tills du begär att den tas bort eller jag raderar den vid granskning. Inlägg som avvisats av modereringen raderas manuellt vid granskning.",
       "emails": "E-post som du skickar till mig raderas när din förfrågan har hanterats färdigt.",
       "browser": "Poster i din egen webbläsare finns kvar tills de löper ut, tills du rensar din webbläsarlagring, eller tills du använder raderingsknappen på den här sidan."
     },
@@ -554,6 +622,7 @@
       "get_profile": "GitHub-profil",
       "get_stats": "GitHub-statistik",
       "get_repositories": "GitHub-repon",
+      "search_knowledge": "Kunskapsbas",
       "actionsLabel": "Gjort på sidan",
       "actionFallback": "Åtgärd på sidan",
       "navigate": "Öppnade {page}",
@@ -635,7 +704,8 @@
       "cert": "Certifieringar",
       "github": "GitHub",
       "capabilities": "Förmågor",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "feedback": "Feedback"
     }
   },
   "Search": {
@@ -684,10 +754,6 @@
     "media": {
       "title": "Laddar innehåll…",
       "description": "Förbereder sidan"
-    },
-    "admin": {
-      "title": "Laddar adminpanelen…",
-      "description": "Förbereder administrationsgränssnittet"
     }
   }
 }

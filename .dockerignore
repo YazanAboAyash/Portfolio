@@ -1,0 +1,22 @@
+# Keep secrets out of the image: the container gets its env from docker-compose.yml.
+# prisma.config.ts and next build both load .env files, so letting one in would
+# point the container at the production database.
+.env*
+!.env.example
+
+node_modules
+.next
+lib/generated
+.git
+.github
+.vercel
+.claude
+.codex
+CLAUDE-SECURITY-*
+playwright-report
+test-results
+docs
+*.tsbuildinfo
+next-env.d.ts
+Dockerfile
+docker-compose.yml

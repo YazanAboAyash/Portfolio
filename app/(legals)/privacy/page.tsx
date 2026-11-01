@@ -17,6 +17,7 @@ import {
   SlidersHorizontal,
   Check,
   Mail,
+  MessageSquareText,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { PrivacyControls } from "@/components/cookies";
@@ -27,7 +28,7 @@ import Link from "next/link";
  * to have been updated today tells the reader nothing about when its contents
  * were actually checked. Bump this by hand whenever the policy text changes.
  */
-const LAST_REVIEWED = "2026-10-24";
+const LAST_REVIEWED = "2026-10-31";
 
 /**
  * Section order for the whole notice. The table of contents, the numbering and
@@ -42,6 +43,7 @@ const SECTIONS = [
   { id: "analytics", icon: Globe, titleKey: "analytics.title" },
   { id: "controls", icon: SlidersHorizontal, titleKey: "controls.title" },
   { id: "chatbot", icon: Bot, titleKey: "chatbot.title" },
+  { id: "feedback", icon: MessageSquareText, titleKey: "feedback.title" },
   { id: "contact", icon: Mail, titleKey: "contact.title" },
   { id: "recipients", icon: Users, titleKey: "recipients.title" },
   { id: "retention", icon: Timer, titleKey: "retention.title" },
@@ -294,6 +296,21 @@ export default async function Privacy() {
             <LegalBasis>{t("chatbot.legalBasis")}</LegalBasis>
           </Section>
 
+          {/* Visitor feedback */}
+          <Section id="feedback" title={t("feedback.title")}>
+            <Prose>{t("feedback.description")}</Prose>
+            <Item title={t("feedback.storedTitle")}>
+              {t("feedback.storedDescription")}
+            </Item>
+            <Item title={t("feedback.moderationTitle")}>
+              {t("feedback.moderationDescription")}
+            </Item>
+            <Item title={t("feedback.publicationTitle")}>
+              {t("feedback.publicationDescription")}
+            </Item>
+            <LegalBasis>{t("feedback.legalBasis")}</LegalBasis>
+          </Section>
+
           {/* Contact by email */}
           <Section id="contact" title={t("contact.title")}>
             <Prose>{t("contact.description")}</Prose>
@@ -331,6 +348,7 @@ export default async function Privacy() {
                   "serverLogs",
                   "chatSessions",
                   "chatRecords",
+                  "feedback",
                   "emails",
                   "browser",
                 ] as const

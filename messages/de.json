@@ -46,6 +46,7 @@
     "aboutSite": "Über die Seite",
     "projects": "Projekte",
     "mcp": "MCP",
+    "feedback": "Feedback",
     "technologies": "Technologien",
     "certifications": "Zertifikate",
     "media": "Medien",
@@ -89,6 +90,61 @@
         "subject": "Hallo von coldbydefault.com",
         "body": "Hallo Yazan,\n\n"
       }
+    }
+  },
+  "Feedback": {
+    "title": "Feedback geben",
+    "lead": "Möchten Sie etwas über mich oder diese Website loswerden? Lob und ehrliche Kritik sind gleichermaßen willkommen.",
+    "formLabel": "Feedback-Formular",
+    "topicLabel": "Feedback zu",
+    "topics": {
+      "me": "Über Yazan",
+      "website": "Über die Website"
+    },
+    "ratingLabel": "Bewertung",
+    "rateValue": "{value} von 5 Sternen",
+    "optional": "optional",
+    "nameLabel": "Name",
+    "namePlaceholder": "Leer lassen, um anonym zu bleiben",
+    "messageLabel": "Ihr Feedback",
+    "messagePlaceholder": "Was ist Ihnen aufgefallen, was ginge besser …",
+    "count": "{count} / {max}",
+    "consentLabel": "Mein Feedback und, falls angegeben, meinen Namen nach der Prüfung öffentlich auf dieser Website anzeigen.",
+    "moderationNote": "Jeder Eintrag wird von einer KI-Moderation geprüft und anschließend von mir gelesen, bevor etwas veröffentlicht wird. Links sind nicht erlaubt. Einzelheiten finden Sie in der Datenschutzerklärung.",
+    "submit": "Feedback senden",
+    "sending": "Wird gesendet …",
+    "success": {
+      "title": "Danke für Ihr Feedback!",
+      "description": "Ich lese jeden Eintrag. Wenn Sie der Veröffentlichung zugestimmt haben, erscheint er hier, sobald ich ihn freigegeben habe.",
+      "again": "Weiteres Feedback geben"
+    },
+    "filed": {
+      "title": "Wow. Nachricht angekommen.",
+      "description": "Danke, dass Sie Ihre Gefühle so … anschaulich geteilt haben. Ihre Worte wurden mit genau der Sorgfalt behandelt, die sie verdienen.",
+      "signature": "— Reem"
+    },
+    "errors": {
+      "generic": "Bitte prüfen Sie dieses Feld.",
+      "nameLength": "Bitte 2 bis 40 Zeichen verwenden oder das Feld leer lassen.",
+      "nameChars": "Nur Buchstaben, Leerzeichen, Punkte, Apostrophe und Bindestriche.",
+      "messageShort": "Bitte schreiben Sie mindestens 10 Zeichen.",
+      "messageLong": "Bitte bleiben Sie unter 600 Zeichen.",
+      "messageLinks": "Links sind im Feedback nicht erlaubt."
+    },
+    "submitErrors": {
+      "INVALID_INPUT": "Etwas im Formular ist ungültig. Bitte prüfen Sie es und versuchen Sie es erneut.",
+      "RATE_LIMIT_EXCEEDED": "Das ist viel Feedback in kurzer Zeit. Bitte warten Sie ein paar Minuten.",
+      "DAILY_LIMIT": "Sie haben das heutige Limit erreicht. Vielen Dank – schauen Sie gern morgen wieder vorbei.",
+      "DUPLICATE": "Diese Nachricht haben Sie bereits gesendet.",
+      "SERVICE_UNAVAILABLE": "Feedback kann gerade nicht gesendet werden. Bitte versuchen Sie es später erneut."
+    },
+    "wall": {
+      "title": "Was Besucher sagen",
+      "rating": "Mit {value} von 5 bewertet",
+      "anonymous": "Anonym",
+      "emptyTitle": "Noch kein Feedback",
+      "emptyDescription": "Seien Sie die erste Person, die etwas hinterlässt.",
+      "unavailable": "Das Feedback konnte gerade nicht geladen werden."
     }
   },
   "Capabilities": {
@@ -291,7 +347,7 @@
     },
     "overview": {
       "title": "Überblick",
-      "description": "Diese Website ist ein persönliches Portfolio. Sie können sie besuchen, ohne Angaben zu Ihrer Person zu machen. Eine Funktion – der KI-Assistent – übermittelt Daten an einen externen Dienstleister; die Reichweiten- und Leistungsmessung läuft nur, wenn Sie ihr zustimmen. Die folgenden Abschnitte beschreiben jeden Fall, den Zweck, die Rechtsgrundlage und die Speicherdauer.",
+      "description": "Diese Website ist ein persönliches Portfolio. Sie können sie besuchen, ohne Angaben zu Ihrer Person zu machen. Zwei Funktionen – der KI-Assistent und das Feedback-Formular – übermitteln Daten an einen externen Dienstleister; die Reichweiten- und Leistungsmessung läuft nur, wenn Sie ihr zustimmen. Die folgenden Abschnitte beschreiben jeden Fall, den Zweck, die Rechtsgrundlage und die Speicherdauer.",
       "keyPoint": "Was das praktisch bedeutet",
       "keyPointDescription": "Sie können diese Website lesen, ohne sich zu identifizieren. Es gibt keine Werbung, kein seitenübergreifendes Tracking und kein Profiling. Zugleich sind Ihre IP-Adresse und alles, was Sie in den Assistenten eingeben, personenbezogene Daten – die folgenden Abschnitte erläutern genau, was damit geschieht, auf welcher Rechtsgrundlage und wie lange etwas gespeichert wird."
     },
@@ -358,6 +414,17 @@
       "aiNoticeDescription": "Sie interagieren mit einem KI-System, nicht mit mir persönlich. Geben Sie bitte keine Passwörter, Zahlungsdaten, Gesundheitsdaten oder sonstige Angaben ein, deren Verarbeitung durch einen US-amerikanischen KI-Anbieter Sie nicht wünschen.",
       "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. b und f DSGVO für die Erzeugung der von Ihnen angeforderten Antwort; Art. 6 Abs. 1 lit. a DSGVO – Ihre Einwilligung – für die Speicherung der Unterhaltung."
     },
+    "feedback": {
+      "title": "Besucher-Feedback",
+      "description": "Auf der Startseite können Sie Feedback hinterlassen. Das ist vollständig freiwillig.",
+      "storedTitle": "Was gespeichert wird",
+      "storedDescription": "Das Thema, Ihre optionale Bewertung und Ihr optionaler Name, Ihre Nachricht, die Sprache der Website, ob Sie der Veröffentlichung zugestimmt haben, sowie das Ergebnis der Moderationsprüfung. Ihre IP-Adresse wird nicht gespeichert: Gespeichert wird nur ein mit einem Schlüssel gebildeter, nicht umkehrbarer Hashwert, damit die Zahl der Einträge pro Tag begrenzt und Duplikate erkannt werden können.",
+      "moderationTitle": "Automatisierte Moderation",
+      "moderationDescription": "Vor der Speicherung werden Ihr Name und Ihre Nachricht an OpenAI übermittelt und auf Beleidigungen, vulgäre Sprache, Werbung, personenbezogene Daten und andere nicht veröffentlichungsfähige Inhalte geprüft. Die Anfragen sind so gekennzeichnet, dass OpenAI sie weder speichert noch zum Training verwendet. Diese Prüfung veröffentlicht nie selbst etwas; sie kann einen Eintrag nur ablehnen.",
+      "publicationTitle": "Veröffentlichung",
+      "publicationDescription": "Feedback wird nur dann öffentlich angezeigt, wenn Sie das Feld zur Veröffentlichung angekreuzt haben und ich den Eintrag gelesen und von Hand freigegeben habe. Angezeigt werden nur Thema, Bewertung, Name (falls angegeben), Nachricht und Datum. Sie können Ihre Einwilligung jederzeit durch eine Nachricht an die oben genannte Adresse widerrufen; ich entferne den Eintrag dann.",
+      "legalBasis": "Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO – Ihre Einwilligung – für die Veröffentlichung Ihres Feedbacks; Art. 6 Abs. 1 lit. f DSGVO für Speicherung, Moderation und Missbrauchsabwehr. Mein berechtigtes Interesse ist eine Website ohne Spam und beleidigende Inhalte."
+    },
     "contact": {
       "title": "Kontakt per E-Mail",
       "description": "Die Kontakt-Schaltflächen auf dieser Website öffnen Ihr eigenes E-Mail-Programm mit meiner Adresse als Empfänger; durch das Anklicken wird weder an mich noch an Dritte etwas übermittelt. Wenn Sie mir anschließend schreiben, verarbeite ich Ihre E-Mail-Adresse, Ihren Namen, sofern Sie ihn angeben, und den Inhalt Ihrer Nachricht, um Ihre Anfrage zu beantworten.",
@@ -373,7 +440,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Erzeugt die Antworten des KI-Assistenten.",
+        "purpose": "Erzeugt die Antworten des KI-Assistenten und prüft Besucher-Feedback vor der Speicherung.",
         "location": "Vereinigte Staaten."
       },
       "squarespace": {
@@ -395,6 +462,7 @@
       "serverLogs": "Hosting- und Anfrageprotokolle werden von Vercel für den in dessen eigener Aufbewahrungsrichtlinie festgelegten Zeitraum gespeichert; eigene Zugriffsprotokolle führe ich nicht.",
       "chatSessions": "Mein Server hält eine Assistenten-Unterhaltung nur so lange vor, wie die Beantwortung der Nachricht dauert. Nach dem Versand der Antwort verbleibt nichts von dem Austausch auf dem Server, sofern Sie der Speicherung nicht zugestimmt haben.",
       "chatRecords": "Mit Ihrer Einwilligung in der Datenbank gespeicherte Unterhaltungen werden derzeit im Rahmen einer manuellen Durchsicht gelöscht und nicht nach einem festen automatischen Zeitplan. Sie können die Löschung jederzeit unter der oben genannten Adresse verlangen; ich komme dem unverzüglich nach.",
+      "feedback": "Feedback wird aufbewahrt, bis Sie die Löschung verlangen oder ich es bei der Durchsicht lösche. Von der Moderation abgelehnte Einträge werden bei der manuellen Durchsicht gelöscht.",
       "emails": "E-Mails, die Sie mir senden, werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist.",
       "browser": "Einträge in Ihrem eigenen Browser bleiben bestehen, bis sie ablaufen, bis Sie Ihren Browserspeicher leeren oder bis Sie die Löschschaltfläche auf dieser Seite verwenden."
     },
@@ -554,6 +622,7 @@
       "get_profile": "GitHub-Profil",
       "get_stats": "GitHub-Statistiken",
       "get_repositories": "GitHub-Repositories",
+      "search_knowledge": "Wissensbasis",
       "actionsLabel": "Auf der Seite erledigt",
       "actionFallback": "Seitenaktion",
       "navigate": "{page} geöffnet",
@@ -635,7 +704,8 @@
       "cert": "Zertifikate",
       "github": "GitHub",
       "capabilities": "Fähigkeiten",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "feedback": "Feedback"
     }
   },
   "Search": {
@@ -684,10 +754,6 @@
     "media": {
       "title": "Inhalte werden geladen…",
       "description": "Die Seite wird vorbereitet"
-    },
-    "admin": {
-      "title": "Admin-Dashboard wird geladen…",
-      "description": "Die Admin-Oberfläche wird vorbereitet"
     }
   }
 }

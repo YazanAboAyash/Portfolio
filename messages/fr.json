@@ -46,6 +46,7 @@
     "aboutSite": "À propos du site",
     "projects": "Projets",
     "mcp": "MCP",
+    "feedback": "Avis",
     "technologies": "Technologies",
     "certifications": "Certifications",
     "media": "Médias",
@@ -89,6 +90,61 @@
         "subject": "Bonjour depuis coldbydefault.com",
         "body": "Bonjour Yazan,\n\n"
       }
+    }
+  },
+  "Feedback": {
+    "title": "Laisser un avis",
+    "lead": "Vous souhaitez partager quelque chose sur moi ou sur ce site ? Les compliments comme les critiques sincères sont les bienvenus.",
+    "formLabel": "Formulaire d'avis",
+    "topicLabel": "Avis sur",
+    "topics": {
+      "me": "Sur Yazan",
+      "website": "Sur le site"
+    },
+    "ratingLabel": "Note",
+    "rateValue": "{value} étoiles sur 5",
+    "optional": "facultatif",
+    "nameLabel": "Nom",
+    "namePlaceholder": "Laissez vide pour rester anonyme",
+    "messageLabel": "Votre avis",
+    "messagePlaceholder": "Ce qui vous a marqué, ce qui pourrait être mieux…",
+    "count": "{count} / {max}",
+    "consentLabel": "Afficher publiquement mon avis sur ce site, ainsi que mon nom s'il est indiqué, une fois vérifié.",
+    "moderationNote": "Chaque avis est vérifié par un modérateur IA, puis lu par moi avant toute publication. Les liens ne sont pas autorisés. Les détails figurent dans la politique de confidentialité.",
+    "submit": "Envoyer l'avis",
+    "sending": "Envoi…",
+    "success": {
+      "title": "Merci pour votre avis !",
+      "description": "Je lis chaque avis. Si vous avez accepté la publication, il apparaîtra ici une fois que je l'aurai approuvé.",
+      "again": "Laisser un autre avis"
+    },
+    "filed": {
+      "title": "Eh bien. Message reçu.",
+      "description": "Merci d'avoir partagé vos sentiments de façon si… imagée. Vos mots ont été traités avec exactement le soin qu'ils méritent.",
+      "signature": "— Reem"
+    },
+    "errors": {
+      "generic": "Veuillez vérifier ce champ.",
+      "nameLength": "Utilisez entre 2 et 40 caractères, ou laissez le champ vide.",
+      "nameChars": "Uniquement des lettres, espaces, points, apostrophes et traits d'union.",
+      "messageShort": "Veuillez écrire au moins 10 caractères.",
+      "messageLong": "Veuillez rester sous les 600 caractères.",
+      "messageLinks": "Les liens ne sont pas autorisés dans les avis."
+    },
+    "submitErrors": {
+      "INVALID_INPUT": "Un élément du formulaire n'est pas valide. Vérifiez-le et réessayez.",
+      "RATE_LIMIT_EXCEEDED": "Cela fait beaucoup d'avis en peu de temps. Veuillez patienter quelques minutes.",
+      "DAILY_LIMIT": "Vous avez atteint la limite du jour. Merci, et n'hésitez pas à revenir demain.",
+      "DUPLICATE": "Vous avez déjà envoyé ce message.",
+      "SERVICE_UNAVAILABLE": "Impossible d'envoyer un avis pour le moment. Veuillez réessayer plus tard."
+    },
+    "wall": {
+      "title": "Ce qu'en disent les visiteurs",
+      "rating": "Noté {value} sur 5",
+      "anonymous": "Anonyme",
+      "emptyTitle": "Aucun avis pour l'instant",
+      "emptyDescription": "Soyez la première personne à en laisser un.",
+      "unavailable": "Les avis n'ont pas pu être chargés pour le moment."
     }
   },
   "Capabilities": {
@@ -291,7 +347,7 @@
     },
     "overview": {
       "title": "Aperçu",
-      "description": "Ce site est un portfolio personnel. Vous pouvez le consulter sans fournir la moindre information vous concernant. Une fonction — l'assistant IA — transmet des données à un prestataire externe, et la mesure de performance ne s'exécute que si vous l'acceptez. Les sections ci-dessous décrivent chaque cas, sa finalité, sa base légale et la durée de conservation.",
+      "description": "Ce site est un portfolio personnel. Vous pouvez le consulter sans fournir la moindre information vous concernant. Deux fonctions — l'assistant IA et le formulaire d'avis — transmettent des données à un prestataire externe, et la mesure de performance ne s'exécute que si vous l'acceptez. Les sections ci-dessous décrivent chaque cas, sa finalité, sa base légale et la durée de conservation.",
       "keyPoint": "Ce que cela signifie concrètement",
       "keyPointDescription": "Vous pouvez consulter ce site sans vous identifier. Il n'y a ni publicité, ni pistage inter-sites, ni profilage. Dans le même temps, votre adresse IP et tout ce que vous saisissez dans l'assistant constituent des données à caractère personnel : les sections ci-dessous expliquent précisément ce qu'il en advient, sur quelle base légale et pendant combien de temps."
     },
@@ -358,6 +414,17 @@
       "aiNoticeDescription": "Vous interagissez avec un système d'IA, et non avec moi personnellement. Merci de ne pas saisir de mots de passe, de coordonnées bancaires, de données de santé ni aucune autre information dont vous ne souhaiteriez pas le traitement par un prestataire d'IA établi aux États-Unis.",
       "legalBasis": "Base légale : art. 6, § 1, points b et f du RGPD pour produire la réponse que vous avez demandée ; art. 6, § 1, point a du RGPD — votre consentement — pour l'enregistrement de la conversation."
     },
+    "feedback": {
+      "title": "Avis des visiteurs",
+      "description": "Vous pouvez laisser un avis sur la page d'accueil. C'est entièrement facultatif.",
+      "storedTitle": "Ce qui est enregistré",
+      "storedDescription": "Le sujet, votre note et votre nom facultatifs, votre message, la langue du site, votre accord ou non à la publication, ainsi que le résultat de la modération. Votre adresse IP n'est pas enregistrée : seule une empreinte à sens unique, calculée avec une clé, est conservée afin de limiter le nombre d'envois par jour et de repérer les doublons.",
+      "moderationTitle": "Modération automatisée",
+      "moderationDescription": "Avant l'enregistrement, votre nom et votre message sont transmis à OpenAI afin de vérifier l'absence d'insultes, de grossièretés, de publicité, de données personnelles ou d'autres contenus non publiables. Les requêtes sont marquées pour qu'OpenAI ne les conserve pas et ne les utilise pas pour l'entraînement. Cette vérification ne publie jamais rien d'elle-même ; elle peut seulement refuser un avis.",
+      "publicationTitle": "Publication",
+      "publicationDescription": "Un avis n'est affiché publiquement que si vous avez coché la case de publication et que je l'ai lu et approuvé manuellement. Seuls le sujet, la note, le nom (s'il est indiqué), le message et la date sont affichés. Vous pouvez retirer votre consentement à tout moment en écrivant à l'adresse ci-dessus, et je supprimerai l'avis.",
+      "legalBasis": "Base légale : art. 6, § 1, point a du RGPD — votre consentement — pour la publication de votre avis ; art. 6, § 1, point f du RGPD pour son enregistrement, sa modération et la prévention des abus, mon intérêt légitime étant un site exempt de spam et de contenus injurieux."
+    },
     "contact": {
       "title": "Contact par e-mail",
       "description": "Les boutons de contact de ce site ouvrent votre propre logiciel de messagerie avec mon adresse déjà renseignée ; un clic ne transmet rien, ni à moi ni à un tiers. Si vous m'écrivez ensuite, je traite votre adresse e-mail, votre nom si vous l'indiquez et le contenu de votre message afin de répondre à votre demande.",
@@ -373,7 +440,7 @@
       },
       "openai": {
         "name": "OpenAI, L.L.C. / OpenAI Ireland Ltd.",
-        "purpose": "Génère les réponses de l'assistant IA.",
+        "purpose": "Génère les réponses de l'assistant IA et vérifie les avis des visiteurs avant leur enregistrement.",
         "location": "États-Unis."
       },
       "squarespace": {
@@ -395,6 +462,7 @@
       "serverLogs": "Les journaux d'hébergement et de requêtes sont conservés par Vercel pendant la durée fixée par sa propre politique de conservation ; je ne tiens pas de journaux d'accès distincts.",
       "chatSessions": "Mon serveur ne conserve une conversation d'assistant que le temps nécessaire pour répondre au message. Une fois la réponse envoyée, il ne reste rien de l'échange sur le serveur, sauf si vous avez consenti à son enregistrement.",
       "chatRecords": "Les conversations enregistrées en base de données avec votre consentement sont actuellement supprimées manuellement lors d'une revue, et non selon un calendrier automatique fixe. Vous pouvez en demander la suppression à tout moment en écrivant à l'adresse indiquée ci-dessus ; j'y procéderai dans les meilleurs délais.",
+      "feedback": "Les avis sont conservés jusqu'à ce que vous en demandiez la suppression ou que je les supprime lors de la vérification. Les avis refusés par la modération sont supprimés manuellement lors de la vérification.",
       "emails": "Les e-mails que vous m'envoyez sont supprimés une fois votre demande entièrement traitée.",
       "browser": "Les entrées présentes dans votre navigateur subsistent jusqu'à leur expiration, jusqu'à ce que vous effaciez le stockage de votre navigateur, ou jusqu'à ce que vous utilisiez le bouton de suppression de cette page."
     },
@@ -554,6 +622,7 @@
       "get_profile": "Profil GitHub",
       "get_stats": "Statistiques GitHub",
       "get_repositories": "Dépôts GitHub",
+      "search_knowledge": "Base de connaissances",
       "actionsLabel": "Fait sur le site",
       "actionFallback": "Action sur le site",
       "navigate": "Page ouverte : {page}",
@@ -635,7 +704,8 @@
       "cert": "Certifications",
       "github": "GitHub",
       "capabilities": "Compétences",
-      "contact": "Contact"
+      "contact": "Contact",
+      "feedback": "Avis"
     }
   },
   "Search": {
@@ -684,10 +754,6 @@
     "media": {
       "title": "Chargement du contenu…",
       "description": "Préparation de la page"
-    },
-    "admin": {
-      "title": "Chargement du tableau de bord admin…",
-      "description": "Préparation de l’interface d’administration"
     }
   }
 }

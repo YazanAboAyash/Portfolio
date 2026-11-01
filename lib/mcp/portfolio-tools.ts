@@ -119,8 +119,9 @@ const readOnlySiteData = { ...readOnly, openWorldHint: false } as const;
 /**
  * English copy for data that stores translation keys (`Projects.descriptions.x`).
  * Tool output is in one language; a missing key falls back to the path itself.
+ * Also used by Reem's retrieval index (lib/rag/sources.ts).
  */
-function message(path: string): string {
+export function message(path: string): string {
   const value = path
     .split(".")
     .reduce<unknown>(
