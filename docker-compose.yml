@@ -28,10 +28,6 @@ services:
   app:
     build:
       context: .
-      args:
-        # Interpolated from .env
-        NEXT_PUBLIC_THEME_SIGNATURE_KEY: ${NEXT_PUBLIC_THEME_SIGNATURE_KEY:-}
-        NEXT_PUBLIC_THEME_VALIDATION_HASH: ${NEXT_PUBLIC_THEME_VALIDATION_HASH:-}
     env_file:
       - path: .env.local
         required: false

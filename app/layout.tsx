@@ -32,8 +32,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { headers } from "next/headers";
 import { Urbanist } from "next/font/google";
-import { ThemeConfigInitializer } from "@/components/theme/theme-config-initializer";
-import { ViewportRenderer } from "@/components/theme/viewport-renderer";
 import Link from "next/link";
 import { MotionProvider } from "@/components/visuals/MotionProvider";
 
@@ -173,8 +171,6 @@ export default async function RootLayout({
               <NoSSR>
                 <ChatBot />
               </NoSSR>
-              <ThemeConfigInitializer />
-              <ViewportRenderer />
             </MotionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
