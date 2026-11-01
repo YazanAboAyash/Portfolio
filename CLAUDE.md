@@ -17,6 +17,7 @@ npm run db:generate | db:push | db:migrate   # db:migrate = `prisma migrate depl
 npm run deploy        # prisma migrate deploy && build
 ```
 
+- Local stack: `docker compose up --build` runs a production build on `localhost:3000` against its own Postgres (app on `node:26-alpine`, DB `postgres:18-alpine`, host port `127.0.0.1:5433`, user/password/db `portfolio`). It reads API keys from `.env.local` but overrides every DB variable, so it never touches Neon. The container runs `prisma db push` on start (the repo has no migration history). `docker compose up -d db` starts only the DB; `docker compose down -v` wipes it. `.dockerignore` keeps all `.env*` files out of the image on purpose.
 - There is **no** `npm run test`, `analyze`, `type-check`, or `db:seed`. `prisma.config.ts` names `prisma/seed.ts` as the seed, but that file does not exist.
 - Single Playwright test: `npx playwright test tests/e2e/locale.spec.ts -g "name"`. It starts `npm run dev` itself unless `PLAYWRIGHT_BASE_URL` is set. Playwright is not run in CI.
 - CI (`.github/workflows/ci.yml`) runs `i18n:check`, `lint`, `npx next typegen`, `typecheck`. `next-env.d.ts` and route types are gitignored, hence the typegen step. `prisma.config.ts` needs `DATABASE_URL` set even for `prisma generate`.

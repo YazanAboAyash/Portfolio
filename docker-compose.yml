@@ -1,0 +1,64 @@
+# Local stack: the app (production build) plus its own Postgres.
+#   docker compose up --build      -> http://localhost:3000
+#   docker compose up -d db        -> just the database, on localhost:5433
+#   docker compose down -v         -> stop and wipe the local database
+
+x-local-db-url: &local-db-url postgresql://portfolio:portfolio@db:5432/portfolio
+
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+      POSTGRES_DB: portfolio
+    ports:
+      # Localhost only:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      # PG18 images keep data in a versioned subfolder, so mount the parent
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio -d portfolio"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      args:
+        # Interpolated from .env
+        NEXT_PUBLIC_THEME_SIGNATURE_KEY: ${NEXT_PUBLIC_THEME_SIGNATURE_KEY:-}
+        NEXT_PUBLIC_THEME_VALIDATION_HASH: ${NEXT_PUBLIC_THEME_VALIDATION_HASH:-}
+    env_file:
+      - path: .env.local
+        required: false
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_BASE_URL: http://localhost:3000
+      PORTFOLIO_URL: http://localhost:3000
+      DATABASE_URL: *local-db-url
+      DATABASE_URL_UNPOOLED: *local-db-url
+      POSTGRES_URL: *local-db-url
+      POSTGRES_PRISMA_URL: *local-db-url
+      POSTGRES_URL_NON_POOLING: *local-db-url
+      POSTGRES_URL_NO_SSL: *local-db-url
+      # node-postgres falls back to PG* vars, so these must not point at Neon either
+      PGHOST: db
+      PGHOST_UNPOOLED: db
+      PGUSER: portfolio
+      PGPASSWORD: portfolio
+      PGDATABASE: portfolio
+      POSTGRES_HOST: db
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+      POSTGRES_DATABASE: portfolio
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
