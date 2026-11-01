@@ -8,6 +8,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createHmac, timingSafeEqual } from "crypto";
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/data/configs/i18n";
+import { contentSecurityPolicy } from "@/lib/csp";
 
 const supportedLocales: readonly string[] = SUPPORTED_LOCALES;
 
@@ -75,7 +76,10 @@ export function invalidateAdminSession(_sessionId: string): void {
  * Note: PORTFOLIOVERSIONLATEST_BROWSER_LANG is informational only (used by language-switcher
  * and locale-auto-detect components). It should NOT gate the locale detection bypass.
  */
-function handleLocaleDetection(request: NextRequest): NextResponse | null {
+function handleLocaleDetection(
+  request: NextRequest,
+  requestHeaders: Headers,
+): NextResponse | null {
   // Check if locale cookie already exists - this is the only required check
   const existingLocale = request.cookies.get(
     "PORTFOLIOVERSIONLATEST_LOCALE",
@@ -93,7 +97,7 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
     // No Accept-Language header (privacy mode / stripped by browser)
     // Fallback to the default locale. Client-side LocaleAutoDetect component
     // will correct this using navigator.language if needed.
-    const response = NextResponse.next();
+    const response = NextResponse.next({ request: { headers: requestHeaders } });
     response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", DEFAULT_LOCALE, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365, // 1 year
@@ -139,7 +143,7 @@ function handleLocaleDetection(request: NextRequest): NextResponse | null {
   }
 
   // Set cookies and continue
-  const response = NextResponse.next();
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
   response.cookies.set("PORTFOLIOVERSIONLATEST_LOCALE", detectedLocale, {
     path: "/",
     maxAge: 60 * 60 * 24 * 365, // 1 year
@@ -209,11 +213,20 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  // Handle automatic locale detection for first-time visitors
-  const response = handleLocaleDetection(request);
-  if (response) return response;
+  // A fresh nonce per page view. Next reads it from the request's CSP header
+  // and puts it on its own scripts; the layout reads `x-nonce` for next-themes.
+  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+  const csp = contentSecurityPolicy(nonce);
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("Content-Security-Policy", csp);
 
-  return NextResponse.next();
+  // Handle automatic locale detection for first-time visitors
+  const response =
+    handleLocaleDetection(request, requestHeaders) ??
+    NextResponse.next({ request: { headers: requestHeaders } });
+  response.headers.set("Content-Security-Policy", csp);
+  return response;
 }
 
 export const config = {

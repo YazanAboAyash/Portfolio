@@ -30,6 +30,7 @@ import {
 } from "@/lib/configs/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { headers } from "next/headers";
 import { Urbanist } from "next/font/google";
 import { ThemeConfigInitializer } from "@/components/theme/theme-config-initializer";
 import { ViewportRenderer } from "@/components/theme/viewport-renderer";
@@ -76,6 +77,8 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const messages = await getMessages();
   const locale = await getLocale();
+  // Set per request by proxy.ts; the CSP blocks next-themes' script without it
+  const nonce = (await headers()).get("x-nonce") ?? "";
   const seoConfig = locale === "de" ? seoConfigDE : seoConfigEN;
   const structuredData = generateStructuredData(seoConfig);
   return (
@@ -157,6 +160,7 @@ export default async function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
+            nonce={nonce}
           >
             <MotionProvider>
               <Navbar />

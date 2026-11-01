@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import { contentSecurityPolicy } from "./lib/csp";
 
 const nextConfig: NextConfig = {
   // Allow cross-origin requests from local network devices during development
@@ -94,26 +95,10 @@ const nextConfig: NextConfig = {
             value: "max-age=31536000; includeSubDomains; preload",
           },
           {
+            // Fallback for routes the proxy skips; pages get a nonce-based
+            // policy from proxy.ts instead.
             key: "Content-Security-Policy",
-            value: [
-              "default-src 'self'",
-              // TODO: Remove 'unsafe-inline' and 'unsafe-eval' by implementing CSP nonces for Next.js
-              // Current limitation: Required for Next.js runtime and Vercel Analytics
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com",
-              "style-src 'self' 'unsafe-inline'", // Allow inline styles for Tailwind and components
-              "img-src 'self' data: blob: https://avatars.githubusercontent.com https://github.com",
-              "font-src 'self' data:",
-              "connect-src 'self' https://api.github.com https://www.googleapis.com https://generativelanguage.googleapis.com https://vercel.live https://vitals.vercel-analytics.com",
-              "frame-src 'none'",
-              "object-src 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-              "frame-ancestors 'none'",
-              // Only upgrade insecure requests in production
-              ...(process.env.NODE_ENV === "production"
-                ? ["upgrade-insecure-requests"]
-                : []),
-            ].join("; "),
+            value: contentSecurityPolicy(),
           },
         ],
       },
