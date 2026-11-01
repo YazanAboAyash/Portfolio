@@ -238,9 +238,10 @@ test("expired and malformed cookies and cross-origin sign-in are rejected", asyn
     !process.env.ADMIN_E2E_TOKEN,
     "Requires an isolated local admin token.",
   );
-  const payload = `${"a".repeat(64)}.${Date.now() - 1_000}`;
+  // Correctly signed (lib/admin-session.ts format) but issued over 2h ago
+  const payload = `${"a".repeat(64)}.${Date.now() - 2 * 60 * 60 * 1000 - 1_000}`;
   const signature = createHmac("sha256", process.env.ADMIN_E2E_TOKEN!)
-    .update(payload)
+    .update(`v2.${payload}`)
     .digest("hex");
   for (const value of [
     `${payload}.${signature}`,
@@ -257,29 +258,38 @@ test("expired and malformed cookies and cross-origin sign-in are rejected", asyn
     data: { token: process.env.ADMIN_E2E_TOKEN },
   });
   expect(foreign.status()).toBe(403);
-  const invalid = await request.post("/api/admin/session", {
-    headers: { Origin: new URL(baseURL ?? "http://localhost:3000").origin },
-    data: { token: "invalid-token" },
-  });
+
+  // The lockout is per client IP, so this test guesses from its own address
+  // (TEST-NET-3) and never locks out the other tests' shared local bucket.
+  const origin = new URL(baseURL ?? "http://localhost:3000").origin;
+  const guesser = {
+    Origin: origin,
+    "X-Forwarded-For": `203.0.113.${Math.floor(Math.random() * 254) + 1}`,
+  };
+  const signIn = (token: string, headers: Record<string, string>) =>
+    request.post("/api/admin/session", { headers, data: { token } });
+
+  // Signed in before the lockout, from the same address
+  const owner = await signIn(process.env.ADMIN_E2E_TOKEN!, guesser);
+  const ownerCookie = owner
+    .headersArray()
+    .find((h) => h.name.toLowerCase() === "set-cookie")
+    ?.value.split(";")[0];
+  expect(ownerCookie).toMatch(/^PORTFOLIO_ADMIN_SESSION=/);
+
+  const invalid = await signIn("invalid-token", guesser);
   expect([401, 429]).toContain(invalid.status());
   for (let attempt = 0; attempt < 5; attempt++) {
-    await request.post("/api/admin/session", {
-      headers: { Origin: new URL(baseURL ?? "http://localhost:3000").origin },
-      data: { token: "invalid-token" },
-    });
+    await signIn("invalid-token", guesser);
   }
-  const limited = await request.post("/api/admin/session", {
-    headers: { Origin: new URL(baseURL ?? "http://localhost:3000").origin },
-    data: { token: "invalid-token" },
+  expect((await signIn("invalid-token", guesser)).status()).toBe(429);
+  // Locked out means the guess isn't evaluated, so even the right token is refused
+  expect((await signIn(process.env.ADMIN_E2E_TOKEN!, guesser)).status()).toBe(
+    429,
+  );
+  // A session cookie isn't a guess: it keeps working from the locked address
+  const session = await request.get("/api/admin/session", {
+    headers: { ...guesser, Cookie: ownerCookie! },
   });
-  expect(limited.status()).toBe(429);
-  // Failed guesses must never lock out the owner with the valid token.
-  const valid = await request.post("/api/admin/session", {
-    headers: { Origin: new URL(baseURL ?? "http://localhost:3000").origin },
-    data: { token: process.env.ADMIN_E2E_TOKEN },
-  });
-  expect(valid.status()).toBe(200);
-  await request.delete("/api/admin/session", {
-    headers: { Origin: new URL(baseURL ?? "http://localhost:3000").origin },
-  });
+  expect(await session.json()).toEqual({ authenticated: true });
 });
